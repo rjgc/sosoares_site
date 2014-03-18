@@ -40,9 +40,24 @@ class Company_model extends CI_Model
         $data = $query->result_array();
         return $data;
    }*/
+    
+       
+   public function get_obra($id){
+        $query = $this->db->query("select * from obras where id_obra='$id'");
+        
+        $data = $query->row_array();
+        return $data;
+   }
+   
+   public function get_obras(){
+        $query = $this->db->query("select * from obras o inner join (SELECT id_obra, MIN(id), url, priority FROM obras_gallery GROUP BY id_obra) og on o.id_obra=og.id_obra");
+
+        $data = $query->result_array();
+        return $data;
+   }
 
    public function get_galeria_obra($id){
-        $query = $this->db->query("select * from obras_gallery where id='$id'");
+        $query = $this->db->query("select * from obras_gallery where id_obra='$id'");
 
         $data = $query->result_array();
         return $data;
@@ -55,28 +70,21 @@ class Company_model extends CI_Model
         return $data;
    }
    
-   public function get_obra($id){
-        $query = $this->db->query("select * from obras  where id_obra='$id'");
-        
-        $data = $query->result_array();
-        return $data;
-   }
-   
-   public function get_obras(){
-        $query = $this->db->query("select * from obras o inner join obras_gallery og on o.id_obra=og.id_obra where priority=1");
+    public function get_produtos_aluminio_obra($id){
+        $query = $this->db->query("select * from produtos_aluminio_obras pab inner join produtos_aluminio pa on pab.produto_aluminio_id=pa.id_produto_aluminio where obra_id='$id'");
 
         $data = $query->result_array();
         return $data;
    }
-   
-     public function get_produto_aluminio($id){
+
+   public function get_produto_aluminio($id){
         $query = $this->db->query("select * from produtos_aluminio where id_produto_aluminio='$id'");
 
         $data = $query->result_array();
         return $data;
    }
    
-      public function get_produtos_aluminio(){
+   public function get_produtos_aluminio(){
         $query = $this->db->query("select * from produtos_aluminio ");
 
         $data = $query->result_array();

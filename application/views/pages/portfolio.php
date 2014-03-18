@@ -4,9 +4,9 @@
                     <ul class="breadcrumb">
                         <li>Início</li>
                         <li>Portfolio Obras</li>
-                        <li>Travanca Project</li>
+                        <li><?=$obra['nome']?></li>
                     </ul>
-                    <h1 class="title3">Travanca Project</h1>
+                    <h1 class="title3"><?=$obra['nome']?></h1>
                 </div>
             </div>
             <div class="row">
@@ -28,15 +28,15 @@
                         <div class="carousel-inner" style="max-height: 350px;">
                             <?php
                             $i = 0;
-                            foreach ($galeria_obras as $obras){ 
+                            foreach ($galeria_obra as $gobra){ 
                                 if($i==0) {?>
                                     <div class="active item" data-slide-number="<?php echo $i ?>">
-                                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $obras['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                                     </div>
                                     <?php $i++; 
                                      } else{ ?>
                                     <div class="item" data-slide-number="<?php echo $i ?>">
-                                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $obras['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                                     </div>
                                <?php
                                $i++; }
@@ -60,11 +60,11 @@
                 <ul class="list-inline">
                 <?php
                 $z = 0; 
-                foreach ($galeria_obras as $obras){ ?>
+                foreach ($galeria_obra as $gobra){ ?>
                 <?php if($z==0) {?>
                     <li>
                         <a id="carousel-selector-<?php echo $z ?>" class="selected">
-                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $obras['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
                         </a>
                     </li>   
                       
@@ -72,7 +72,7 @@
                      } else{?>
                      <li>
                         <a id="carousel-selector-<?php echo $z ?>">
-                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $obras['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
                         </a>
                     </li>
                 <?php $z++; 
@@ -133,10 +133,10 @@
                     <div class="item active">
                         <div class="row">
                             <?php
-                            foreach ($produto_aluminio as $produto){ 
+                            foreach ($produtos_aluminio_obra as $produto){ 
                                 for ($i = 1; $i <= 6; $i++) { ?>
                                 <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                <p>Sistema OS</p>
+                                <p><?=$produto['nome']?></p>
                         </div>
                             <?php  }
                             } ?>
@@ -147,10 +147,10 @@
                     <div class="item">
                         <div class="row">
                             <?php
-                            foreach ($produto_aluminio as $produto){ 
+                            foreach ($produtos_aluminio_obra as $produto){ 
                                 for ($i = 1; $i <= 6; $i++) { ?>
                                 <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                <p>Sistema OS</p>
+                                <p><?=$produto['nome']?></p>
                         </div>
                             <?php  }
                             } ?>
@@ -161,10 +161,10 @@
                     <div class="item">
                         <div class="row">
                             <?php
-                            foreach ($produto_aluminio as $produto){ 
+                            foreach ($produtos_aluminio_obra as $produto){ 
                                 for ($i = 1; $i <= 6; $i++) { ?>
                                 <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                <p>Sistema OS</p>
+                                <p><?=$produto['nome']?></p>
                         </div>
                             <?php  }
                             } ?>

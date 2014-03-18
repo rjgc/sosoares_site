@@ -233,21 +233,24 @@ class Pages extends CI_Controller {
 	    $data['current'] = 'home';
         */
 		
-		$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
+		
+		/*$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		//$data['obra'] = $this->company_model->get_obra();
-		$data['obras'] = $this->company_model->get_obras();
+		$data['obras'] = $this->company_model->get_obras();*/
 		
 		$this->load->view('templates/header_caixilharia');
 		
 		if($id != null){
-		   // $data['obra'] = $this->company_model->get_obra($id);
+		    $data['obra'] = $this->company_model->get_obra($id);
+		    $data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
+		    $data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id);
 		    //$this->load->view('new',$data);
 		    $this->load->view('pages/portfolio', $data);
 		}
 		else{
+		    $data['obras'] = $this->company_model->get_obras();
 		    $this->load->view('pages/portfolio_list', $data);
 		}
 		//$this->load->view('pages/portfolio', $data);

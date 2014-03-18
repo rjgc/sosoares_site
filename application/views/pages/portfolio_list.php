@@ -26,13 +26,12 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="">
-			    <h1 class="align">Obras</h1>
+			    <!--<h1 class="align">Obras</h1>-->
 				<?php foreach ($obras as $obra){
-				    for($i = 1; $i <= 10; $i++){
+				   // for($i = 1; $i <= 10; $i++){
 				    ?>
-				
 				  <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$obra['id_obra'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>"/><p> <?php echo $obra['nome'] ?></p></div></a> 
-				<?php }
+				<?php //}
 				}?>
 			</div>
 		</div>
