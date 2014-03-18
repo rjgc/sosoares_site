@@ -45,7 +45,7 @@
                         </div>
                     </a>
                     <hr id="separador">
-                    <a href="<?php echo site_url('pages/home_vidro')?>">
+                    <a href="<?php echo site_url('pages/home_extrusao')?>">
                         <div class="box shrink" id="extrusao">
                             <img src="<?php echo base_url() ?>assets/sosoares/img/p_extrusao.png" width="65" height="64">
                             <h3>Extrusão<br>&nbsp;</h3>
