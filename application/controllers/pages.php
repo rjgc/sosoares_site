@@ -31,7 +31,8 @@ class Pages extends CI_Controller {
 	/*	$this->lang->load('gestinfor');
         
     */
-        $this->load->model('company_model');/*
+        $this->load->model('company_model');
+        $this->load->model('product_model');/*
         $this->load->model('news_model');
         $this->load->model('home_model');
         $this->load->model('xml2mysql');
@@ -105,8 +106,7 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-		
-		$this->load->view('templates/header_caixilharia');
+		$this->menu_produtos();
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/carousel_caixilharia');
@@ -257,7 +257,7 @@ class Pages extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 	
-	public function produto_caixilharia()
+	public function produto_caixilharia($id)
 	{
         //$result = $this->company_model->gest_page('1');
         /*$data['news'] = $this->news_model->get_news();
@@ -274,13 +274,29 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-		$this->load->view('templates/header_caixilharia');
+		$data['produto'] = $this->product_model->get_produto($id);
+		$data['obras'] = $this->product_model->get_obras($id);
+		$this->menu_produtos();
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
 		//$this->load->view('templates/carousel_caixilharia');
 		$this->load->view('pages/produto',$data);
 		$this->load->view('templates/footer');
 
+	}
+
+	public function menu_produtos() {
+		$data['batentes_com_corte'] = $this->product_model->get_batentes_com_corte();
+		$data['batentes_sem_corte'] = $this->product_model->get_batentes_sem_corte();
+		$data['aluminios_madeira'] = $this->product_model->get_aluminios_madeira();
+		$data['correres_com_corte'] = $this->product_model->get_correres_com_corte();
+		$data['correres_sem_corte'] = $this->product_model->get_correres_sem_corte();
+		$data['gradeamentos'] = $this->product_model->get_gradeamentos();
+		$data['fachadas'] = $this->product_model->get_fachadas();
+		$data['portadas'] = $this->product_model->get_portadas();
+		$data['portoes'] = $this->product_model->get_portoes();
+		$data['standards'] = $this->product_model->get_standards();
+		$this->load->view('templates/header_caixilharia', $data);
 	}
 	
    /* public function empresa($pagina = 'historia')
