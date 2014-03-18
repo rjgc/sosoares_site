@@ -28,8 +28,8 @@
                 </div>
             </div>
         </header>
-        <!--<section class="before">&nbsp;</section>-->
-        <section style="top: 35% !important; right: 0; position: absolute; left: 0;">
+
+        <section class="section">
             <div class="container" style="position: relative">
                 <div class="center">
                     <a href="<?php echo site_url('pages/home_caixilharia')?>">
@@ -67,14 +67,16 @@
                         <div class="col-md-5">
                             <img src="<?php echo base_url() ?>assets/sosoares/img/gs.jpg" width="29" height="28" alt="GS" /> <h4>&nbsp;&copy; GRUPO SOSOARES</h4> Todos os Direitos Reservados
                         </div>
-                        <div class="col-md-2">
-                            +351 <b>226 096 709</b>
-                        </div>
-                        <div class="col-md-2">
-                            comercial@sosoares.pt
-                        </div>
-                        <div class="col-md-2">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
+                        <div class="vanish">
+                            <div class="col-md-2" >
+                                +351 <b>226 096 709</b>
+                            </div>
+                            <div class="col-md-2">
+                                comercial@sosoares.pt
+                            </div>
+                            <div class="col-md-2">
+                                <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
+                            </div>
                         </div>
                         <div class="col-md-1">
                             <a href="#">
