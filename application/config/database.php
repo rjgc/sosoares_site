@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'projecto2012';
-$db['default']['database'] = 'sosoares';
+$db['default']['hostname'] = 'critecns.com';
+$db['default']['username'] = 'crtns25g_gestor';
+$db['default']['password'] = 'rGGST}T6vm=@';
+$db['default']['database'] = 'crtns25g_sosoares';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
