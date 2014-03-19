@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/reset.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/hover.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles.css">
         
     </head>
@@ -35,26 +36,26 @@
                 <div class="center">
                     <a href="<?php echo site_url('pages/home_caixilharia')?>">
                         <div class="box shrink" id="caixilharia">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/p_caixilharia.png" width="65" height="64" alt="Caixilharia" title="Caixilharia">
+                            <i class="icon-caixilharia font"></i>
                             <h3>Sistemas de Caixilharia</h3>
                         </div>
                     </a>
                     <a href="<?php echo site_url('pages/home_vidro')?>">
                         <div class="box shrink" id="vidro">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/p_vidro.png" width="65" height="64">
+                            <i class="icon-vidro font"></i>
                             <h3>Vidro<br>&nbsp;</h3>
                         </div>
                     </a>
                     <hr id="separador">
                     <a href="<?php echo site_url('pages/home_vidro')?>">
                         <div class="box shrink" id="extrusao">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/p_extrusao.png" width="65" height="64">
+                            <i class="icon-extrusao font"></i>
                             <h3>Extrusão<br>&nbsp;</h3>
                         </div>
                     </a>
                     <a href="<?php echo site_url('pages/home_tratamento')?>">
                         <div class="box shrink" id="abrasivos">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/p_abrasivos.png" width="65" height="64">
+                            <i class="icon-tratamento font"></i>
                             <h3 >Tratamento de Superficíes</h3>
                         </div>
                     </a>
@@ -66,14 +67,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/gs.jpg" width="29" height="28" alt="GS" /> <h4>&nbsp;&copy; GRUPO SOSOARES</h4> Todos os Direitos Reservados
+                            <div style="height: 34px;display: inline-block;">
+                                <i class="icon-sosoares" style="font-size: 30px"></i>
+                                <div class="valign"><h4>&nbsp;&copy; GRUPO SOSOARES</h4> Todos os Direitos Reservados</div>
+                            </div>
                         </div>
                         <div class="vanish">
                             <div class="col-md-2" >
-                                +351 <b>226 096 709</b>
+                                <div style="height: 34px;display: inline-block;">
+                                    <div class="valign">
+                                        +351 <b>226 096 709</b>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-2">
-                                comercial@sosoares.pt
+                                <div style="height: 34px;display: inline-block;">
+                                    <div class="valign">
+                                        comercial@sosoares.pt
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-2">
                                 <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
