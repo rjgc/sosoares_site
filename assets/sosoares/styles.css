@@ -162,7 +162,7 @@ h4 {display: inline-block;color: #494949;font-size: 13px;font-weight: 900;margin
     h3 {font-size: 17px;}
     #separador {display: block;background-color: transparent;border: 0;}
     .vanish .col-md-2:nth-child(3) {display: none!important;}
-    footer#bottom {position: static;height: 150px;}
+    footer#bottom {position: fixed;height: 150px;}
     footer#bottom .col-md-1 {text-align: center;width: 100%;display: block;}
 }
 @media (min-height: 768px) {
@@ -175,7 +175,7 @@ h4 {display: inline-block;color: #494949;font-size: 13px;font-weight: 900;margin
     .box {width: 140px;height: 145px;}
     h3 {font-size: 13px;}
     .vanish {display: none;}
-    footer#bottom {position: static;height: 110px;}
+    footer#bottom {position: fixed;height: 110px;}
 }
 @media (max-width: 420px) {
     #bd {position: static;float: none;margin-top: 15px;}
