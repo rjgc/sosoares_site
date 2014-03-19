@@ -81,7 +81,6 @@ class Pages extends CI_Controller {
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		$data['current'] = 'home';
 		
-		$this->load->view('templates/header_caixilharia', $data);
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/carousel_caixilharia');
@@ -111,7 +110,6 @@ class Pages extends CI_Controller {
 		$this->menu_produtos();				
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/header_caixilharia', $data);
 		$this->load->view('templates/carousel_caixilharia');
 		$this->load->view('pages/caixilharia',$data);
 		$this->load->view('templates/footer');
@@ -285,8 +283,7 @@ class Pages extends CI_Controller {
 		$this->menu_produtos();
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
-		//$this->load->view('templates/carousel_caixilharia');
-		$this->load->view('templates/header_caixilharia', $data);
+		//$this->load->view('templates/carousel_caixilharia');		
 		$this->load->view('pages/produto',$data);
 		$this->load->view('templates/footer');
 
@@ -303,6 +300,8 @@ class Pages extends CI_Controller {
 		$data['portadas'] = $this->product_model->get_portadas();
 		$data['portoes'] = $this->product_model->get_portoes();
 		$data['standards'] = $this->product_model->get_standards();
+
+		$this->load->view('templates/header_caixilharia', $data);
 	}
 	
    /* public function empresa($pagina = 'historia')

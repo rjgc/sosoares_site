@@ -83,7 +83,9 @@ class Product_model extends CI_Model
 	}
 
 	public function get_obras($id){
-		$query = $this->db->query("select og.url as url, og.id_obra as id, o.nome as nome from obras_gallery og inner join produtos_aluminio_obras pao inner join produtos_aluminio pa inner join obras o where pa.id_produto_aluminio=pao.produto_aluminio_id and og.id_obra=pao.obra_id and o.id_obra=og.id_obra and og.priority='1' and pa.id_produto_aluminio='$id'");
+		 $query = $this->db->query("select o.nome as nome, o.id_obra as id, og.url as url from obras o inner join (SELECT id_obra, MIN(id), url, priority FROM obras_gallery GROUP BY id_obra) og on o.id_obra=og.id_obra inner join produtos_aluminio_obras pao inner join produtos_aluminio pa where pa.id_produto_aluminio=pao.produto_aluminio_id and og.id_obra=pao.obra_id and pa.id_produto_aluminio='$id'");
+		 //$query = $this->db->query("select * from obras o inner join produtos_aluminio_obras pao inner join produtos_aluminio pa on o.id_obra=pao.obra_id");
+		 //$query = $this->db->query("select * from obras o inner join (SELECT id_obra, MIN(id), url, priority FROM obras_gallery GROUP BY id_obra) og on o.id_obra=og.id_obra");
 
 		$data = $query->result_array();
 		return $data;
