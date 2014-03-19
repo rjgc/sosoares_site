@@ -338,6 +338,9 @@ nav a:hover {
     margin: 0 auto;
 }
 
+.active {
+    background-color: #000;
+}
 
 /*============================== SLIDER =======================================*/
 .carousel-caption {
@@ -487,6 +490,29 @@ nav a:hover {
     footer .col-md-9 {
         width: 60%;
     }
+}
+
+@media (max-width: 991px) {
+    header > .content > .container > .row .col-md-3,
+    header > .content > .container > .row .col-md-2,
+    header > .content > .container > .row .col-md-5{
+        display: inline-block;
+    }
+    section > .container > .row .col-md-8 {
+        display: inline-block;
+        width: 55%;
+        vertical-align: top;
+    }
+    section > .container > .row .col-md-4 {
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
+    }
+    footer > .content > .container > .row .col-md-9,
+    footer > .content > .container > .row .col-md-3 {
+        display: inline-block;
+    }
+
 }
 
 @media (max-width: 768px) {

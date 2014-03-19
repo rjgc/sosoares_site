@@ -59,9 +59,9 @@
             </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
-                    <li class="menu-title"><a href="#">Grupo Sosoares</a></li>
-                    <li class="dropdown yamm-fw menu-title"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Produtos Alumínio</a>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#">Grupo Sosoares</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Produtos Alumínio</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -191,9 +191,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-title"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
-                    <li class="menu-title"><a href="#">Serviços</a></li>
-                    <li class="dropdown yamm-fw menu-title"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Marcação CE</a>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#">Serviços</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Marcação CE</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -231,7 +231,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown yamm-fw menu-title"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Apoio ao Cliente</a>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Apoio ao Cliente</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -330,7 +330,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-title"><a href="#">Contactos</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'dashboard' ) ? 'active' : ''?>"><a href="#">Contactos</a></li>
                 </ul>
             </div>
         </div>
