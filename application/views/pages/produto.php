@@ -154,10 +154,10 @@
                                     ?>
                                     <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
                                     <?php
-                                } else { ?>
+                                } else if (($i%6)==0){ $i++?>
                                 <li data-target="#myCarousel2" data-slide-to="<?php echo $i ?>"></li>
                                 <?php
-                            } $i++;
+                            };
                         } ?>
                     </ol>
                 </div>
