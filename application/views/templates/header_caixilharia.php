@@ -59,9 +59,9 @@
             </div>
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'active' : ''?>"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'grupo_caixilharia' ) ? 'active' : ''?>"><a href="#">Grupo Sosoares</a></li>
-                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Produtos Alumínio</a>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'grupo_caixilharia' ) ? 'curr' : ''?>"><a href="#">Grupo Sosoares</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Produtos Alumínio</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -191,9 +191,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'portofolio_caixilharia' ) ? 'active' : ''?>"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'servico_caixilharia' ) ? 'active' : ''?>"><a href="#">Serviços</a></li>
-                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'marcacao_caixilharia' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Marcação CE</a>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'portofolio_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'servico_caixilharia' ) ? 'curr' : ''?>"><a href="#">Serviços</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'marcacao_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Marcação CE</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -231,7 +231,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_caixilharia' ) ? 'active' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Apoio ao Cliente</a>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Apoio ao Cliente</a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -330,7 +330,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'active' : ''?>"><a href="#">Contactos</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="#">Contactos</a></li>
                 </ul>
             </div>
         </div>

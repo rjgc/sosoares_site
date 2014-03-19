@@ -337,9 +337,11 @@ nav a:hover {
     max-width: 1020px;
     margin: 0 auto;
 }
-
-.active {
-    background-color: #000!important;
+.curr {
+    background-color: #076e93;
+}
+nav .navbar-nav li:hover {
+    background-color: #107ca3;
 }
 
 /*============================== SLIDER =======================================*/
