@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/yamm.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/demo.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/hover.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-caixilharia.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-caixilharia.css">
 </head>
 <body>
     <header>
@@ -22,10 +22,23 @@
                     </div>
                     <div class="col-md-5">
                         <span id="img">
-                            <a href="<?php echo site_url('pages/home_caixilharia')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/p_caixilharia_a.png" width="49" height="49" alt="Caixilharia" title="Caixilharia" class="grow"></a>
-                            <a href="<?php echo site_url('pages/home_vidro')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/p_vidro.png" width="49" height="49" alt="Vidro" title="Vidro" class="grow"></a>
-                            <a href="<?php echo site_url('pages/home_extrusao')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/p_extrusao.png" width="49" height="49" alt="Extrusão" title="Extrusão" class="grow"></a>
-                            <a href="<?php echo site_url('pages/home_tratamento')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/p_abrasivos.png" width="49" height="49" alt="Abrasivos" title="Abrasivos" class="grow"></a>
+                            <a href="<?php echo site_url('pages/home_caixilharia')?>">
+                                <i class="icon-caixilharia grow font font-active"></i>
+                            </a>
+                            <a href="<?php echo site_url('pages/home_vidro')?>">
+                                <i class="icon-vidro grow font"></i>
+                            </a>
+                            <a href="<?php echo site_url('pages/home_extrusao')?>">
+                                <i class="icon-extrusao grow font"></i>
+                            </a>
+                            <a href="<?php echo site_url('pages/home_tratamento')?>">
+                                <i class="icon-tratamento grow font"></i>
+                            </a>
+                            <!--
+                            <a href="<?php /*echo site_url('pages/home_caixilharia')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_caixilharia_a.png" width="49" height="49" alt="Caixilharia" title="Caixilharia" class="grow"></a>
+                            <a href="<?php /*echo site_url('pages/home_vidro')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_vidro.png" width="49" height="49" alt="Vidro" title="Vidro" class="grow"></a>
+                            <a href="<?php /*echo site_url('pages/home_extrusao')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_extrusao.png" width="49" height="49" alt="Extrusão" title="Extrusão" class="grow"></a>
+                            <a href="<?php /*echo site_url('pages/home_tratamento')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_abrasivos.png" width="49" height="49" alt="Abrasivos" title="Abrasivos" class="grow"></a>-->
                         </span>
                     </div>
                     <div class="col-md-2">
