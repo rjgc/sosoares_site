@@ -1,53 +1,50 @@
+/*============================== FONTS =======================================*/
 @font-face {
-    font-family: ExtraLighte;
+    font-family: 'SourceSansPro';
     src: url('../fonts/SourceSansPro-ExtraLight.eot?');
-    src: url('../fonts/SourceSansPro-ExtraLight.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/SourceSansPro-ExtraLight.otf.woff?') format('woff'),
-    url('../fonts/SourceSansPro-ExtraLight.ttf.woff?') format('truetype'),
-    url('../fonts/SourceSansPro-ExtraLight.svg?') format('svg');
+    src: url('../fonts/SourceSansPro-ExtraLight.eot?#iefix') format('embedded-opentype'), url('../fonts/SourceSansPro-ExtraLight.otf.woff?') format('woff'), url('../fonts/SourceSansPro-ExtraLight.ttf.woff?') format('truetype'), url('../fonts/SourceSansPro-ExtraLight.svg?') format('svg');
+    font-style: normal;
+    font-weight: 100;
 }
 
 @font-face {
-    font-family: Lighte;
+    font-family: 'SourceSansPro';
     src: url('../fonts/SourceSansPro-Light.eot?');
-    src: url('../fonts/SourceSansPro-Light.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/SourceSansPro-Light.otf.woff?') format('woff'),
-    url('../fonts/SourceSansPro-Light.ttf.woff?') format('truetype'),
-    url('../fonts/SourceSansPro-Light.svg?') format('svg');
+    src: url('../fonts/SourceSansPro-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/SourceSansPro-Light.otf.woff?') format('woff'), url('../fonts/SourceSansPro-Light.ttf.woff?') format('truetype'), url('../fonts/SourceSansPro-Light.svg?') format('svg');
+    font-style: normal;
+    font-weight: 300;
 }
 
 @font-face {
-    font-family: Bolde;
+    font-family: 'SourceSansPro';
     src: url('../fonts/SourceSansPro-Bold.eot?');
-    src: url('../fonts/SourceSansPro-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/SourceSansPro-Bold.otf.woff?') format('woff'),
-    url('../fonts/SourceSansPro-Bold.ttf.woff?') format('truetype'),
-    url('../fonts/SourceSansPro-Bold.svg?') format('svg');
+    src: url('../fonts/SourceSansPro-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/SourceSansPro-Bold.otf.woff?') format('woff'), url('../fonts/SourceSansPro-Bold.ttf.woff?') format('truetype'), url('../fonts/SourceSansPro-Bold.svg?') format('svg');
+    font-style: normal;
+    font-weight: 700;
 }
 
 @font-face {
-    font-family: Blacke;
+    font-family: 'SourceSansPro';
     src: url('../fonts/SourceSansPro-Black.eot?');
-    src: url('../fonts/SourceSansPro-Black.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/SourceSansPro-Black.otf.woff?') format('woff'),
-    url('../fonts/SourceSansPro-Black.ttf.woff?') format('truetype'),
-    url('../fonts/SourceSansPro-Black.svg?') format('svg');
+    src: url('../fonts/SourceSansPro-Black.eot?#iefix') format('embedded-opentype'), url('../fonts/SourceSansPro-Black.otf.woff?') format('woff'), url('../fonts/SourceSansPro-Black.ttf.woff?') format('truetype'), url('../fonts/SourceSansPro-Black.svg?') format('svg');
+    font-style: normal;
+    font-weight: 900;
 }
 
 @font-face {
-    font-family: Regulare;
+    font-family: 'SourceSansPro';
     src: url('../fonts/SourceSansPro-Regular.eot?');
-    src: url('../fonts/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/SourceSansPro-Regular.otf.woff?') format('woff'),
-    url('../fonts/SourceSansPro-Regular.ttf.woff?') format('truetype'),
-    url('../fonts/SourceSansPro-Regular.svg?') format('svg');
+    src: url('../fonts/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/SourceSansPro-Regular.otf.woff?') format('woff'), url('../fonts/SourceSansPro-Regular.ttf.woff?') format('truetype'), url('../fonts/SourceSansPro-Regular.svg?') format('svg');
+    font-style: normal;
+    font-weight: normal;
 }
 
 
 /*============================= BODY ==============================================*/
 body {
     background-color: #e8e8e8;
-    font-family: Lighte, sans-serif;
+    font-family: 'SourceSansPro', Arial, sans-serif;
+    font-weight: 300;
     font-size: 16px;
     color: #494949;
 }
@@ -69,12 +66,12 @@ footer {
 }
 
 footer b {
-    font-family: Bolde !important;
+    font-weight: 700!important;
     font-size: 12px;
 }
 
 #group {
-    font-family: Blacke !important;
+    font-weight: 900!important;
     font-size: 13px;
 }
 
@@ -132,7 +129,7 @@ td {
 
 #date {
     text-align: right;
-    font-family: Bolde !important;
+    font-weight: 700!important;
     font-size: 16px;
 }
 
@@ -179,7 +176,7 @@ td {
 }
 
 .title1 {
-    font-family: ExtraLighte !important;
+    font-weight: 100!important;
 }
 
 .title2 {
@@ -188,12 +185,12 @@ td {
 
 .title3 {
     font-size: 36px;
-    font-family: ExtraLighte !important;
+    font-weight: 100!important;
 }
 
 .title4 {
     font-size: 22px;
-    font-family: ExtraLighte !important;
+    font-weight: 100!important;
 }
 
 .breadcrumb {
@@ -225,8 +222,7 @@ td {
 }
 
 #center {
-     margin: auto;
-    margin-top: 100px;
+    margin: 100px auto 0;
 }
 
 .related img {
@@ -298,7 +294,7 @@ nav a:hover {
 .menu-h3 {
     font-size: 12px;
     display: block;
-    font-family: Bolde !important;
+    font-weight: 700!important;
     text-align: left;
     color: #003049;
     text-transform: uppercase;
@@ -321,8 +317,7 @@ nav a:hover {
 .li-b {
     color: #003049;
     font-size: 12px;
-    font-family: Regulare !important;
-    font-weight: 400;
+    font-weight: normal!important;
     display: block;
     margin-bottom: 10px;
 }
@@ -355,7 +350,7 @@ nav .navbar-nav li:hover {
     margin: 0 auto;
 }
 .slider-h1 {
-    font-family: ExtraLighte !important;
+    font-weight: 100!important;
     font-size: 30px;
 }
 .carousel-indicators li {
@@ -454,7 +449,7 @@ nav .navbar-nav li:hover {
 
 .obras-list img {
     position: absolute;
-    width: 100%;
+    /*width: 100%;*/
     width: 250px;
     height: 230px;
     border-radius: 10px;
@@ -468,7 +463,6 @@ nav .navbar-nav li:hover {
     width: 82%;
     color: #FFFFFF !important;
 }
-
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1150px) {
