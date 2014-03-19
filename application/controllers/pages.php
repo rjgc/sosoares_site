@@ -79,7 +79,7 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-		
+		$data['current'] = 'home';
 		$this->load->view('templates/header_caixilharia');
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
@@ -106,11 +106,10 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-		$this->menu_produtos();
-		$data['current'] = 'home_caixilharia';		
+		$data['current'] = 'home_caixilharia';
+		$this->menu_produtos();				
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
-		$this->load->view('templates/header_caixilharia', $data);
 		$this->load->view('templates/carousel_caixilharia');
 		$this->load->view('pages/caixilharia',$data);
 		$this->load->view('templates/footer');
@@ -134,6 +133,8 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
+		$data['current'] = 'home_vidro';
+
 		$this->load->view('templates/header_vidro');
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
@@ -160,6 +161,8 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
+		$data['current'] = 'home_extrusao';
+
 		$this->load->view('templates/header_extrusao');
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
@@ -186,7 +189,8 @@ class Pages extends CI_Controller {
 		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-		
+		$data['current'] = 'home_tratamento';
+
 		$this->load->view('templates/header_tratamento');
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
@@ -240,7 +244,8 @@ class Pages extends CI_Controller {
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		//$data['obra'] = $this->company_model->get_obra();
-		$data['obras'] = $this->company_model->get_obras();*/		
+		$data['obras'] = $this->company_model->get_obras();*/	
+		$data['current'] = 'portfolio_caixilharia';
 		$this->menu_produtos();
 		
 		if($id != null){
@@ -278,11 +283,11 @@ class Pages extends CI_Controller {
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		$data['produto'] = $this->product_model->get_produto($id);
 		$data['obras'] = $this->product_model->get_obras($id);
+		$data['current'] = 'produto_caixilharia';
 		$this->menu_produtos();
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
 		//$this->load->view('templates/carousel_caixilharia');
-		$this->load->view('templates/header_caixilharia', $data);
 		$this->load->view('pages/produto',$data);
 		$this->load->view('templates/footer');
 
@@ -299,6 +304,8 @@ class Pages extends CI_Controller {
 		$data['portadas'] = $this->product_model->get_portadas();
 		$data['portoes'] = $this->product_model->get_portoes();
 		$data['standards'] = $this->product_model->get_standards();
+
+		$this->load->view('templates/header_caixilharia', $data);
 	}
 	
    /* public function empresa($pagina = 'historia')
