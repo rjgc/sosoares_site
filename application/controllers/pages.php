@@ -107,6 +107,7 @@ class Pages extends CI_Controller {
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		$this->menu_produtos();
+		$data['current'] = 'home_caixilharia';		
 		//$this->load->view('templates/nav', $data);
 		//$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/carousel_caixilharia');
