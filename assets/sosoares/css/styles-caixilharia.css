@@ -339,7 +339,7 @@ nav a:hover {
 }
 
 .active {
-    background-color: #000;
+    background-color: #000!important;
 }
 
 /*============================== SLIDER =======================================*/
