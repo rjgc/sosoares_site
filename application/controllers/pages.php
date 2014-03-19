@@ -75,6 +75,8 @@ class Pages extends CI_Controller {
 		$data['title'] = lang('indelague.home');
 	    $data['current'] = 'home';
         */
+        $data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
+		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		$data['current'] = 'home';
@@ -101,6 +103,8 @@ class Pages extends CI_Controller {
 		$data['title'] = lang('indelague.home');
 	    $data['current'] = 'home';
         */
+        $data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
+		$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
 		$data['galeria_obras'] = $this->company_model->get_galeria_obras();
 		$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 		$data['current'] = 'home_caixilharia';
