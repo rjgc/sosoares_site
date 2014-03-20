@@ -4,8 +4,11 @@
             <ul class="breadcrumb">
                 <li><a href="../home_caixilharia">Início</a></li>
                 <li><a href="../produtos_list">Produtos Alumínio</a></li>
-                <li><a href="../produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
-                <li><?=$produto['caracteristica']?></li>
+                <?php print_r($produto) ?>
+                <li><a href="<?php echo base_url();?>/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
+                <?php if (!empty($produto['caracteristica'])) { ?>
+                    <li><?=$produto['caracteristica']?></li>
+                <?php } ?>
                 <li><?=$produto['nome']?></li>
             </ul>
             <h1 class="title3"><?=$produto['nome']?></h1>

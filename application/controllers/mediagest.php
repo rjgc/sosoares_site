@@ -82,7 +82,7 @@ class Mediagest extends CI_Controller {
 		//$crud->set_theme('flexigrid');
 		$crud->set_table('produtos_aluminio');
 		$crud->set_subject('Produtos Aluminio');
-		$crud->required_fields('nome','descricao','id_tipo_produto_aluminio','id_caracteristica_produto_aluminio');
+		$crud->required_fields('nome','descricao','id_tipo_produto_aluminio');
 		$crud->columns('nome','descricao','id_tipo_produto_aluminio','id_caracteristica_produto_aluminio','foto_1');
 		$crud->field_type('descricao', 'text');
 		$crud->set_relation_n_n('ensaios_aluminio', 'ensaios_aluminio_produtos', 'ensaios_aluminio', 'produto_aluminio_id', 'ensaio_aluminio_id', 'nome','priority');

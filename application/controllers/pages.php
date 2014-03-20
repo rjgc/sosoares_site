@@ -288,7 +288,19 @@ $data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
 $data['title'] = lang('indelague.home');
 $data['current'] = 'home';
 */
-$data['produto'] = $this->product_model->get_produto($id);
+$data['caracteristicas'] = $this->product_model->get_caracteristicas_($id);
+
+print_r($data['caracteristicas']);
+
+$produto;
+
+if (!empty($data['caracteristicas'])) {
+$produto = $this->product_model->get_produto($id);
+} else {
+$produto = $this->product_model->get_produto_($id);
+}
+
+$data['produto'] = $produto;
 $data['obras'] = $this->product_model->get_obras($id);
 $data['current'] = 'produto_caixilharia';
 $this->menu_produtos();
@@ -309,72 +321,10 @@ public function produtos_list(){
 	$this->load->view('templates/footer');
 }
 
-public function batente(){
-	$data['current'] = 'batente';
-	$this->menu_produtos();
-
-	$this->load->view('pages/batente', $data);
-	$this->load->view('templates/footer');
-}
-
-public function aluminio_madeira(){
-	$data['current'] = 'aluminio_madeira';
-	$this->menu_produtos();
-
-	$this->load->view('pages/aluminio_madeira', $data);
-	$this->load->view('templates/footer');
-}
-
-public function correr(){
-	$data['current'] = 'correr';
-	$this->menu_produtos();
-
-	$this->load->view('pages/correr', $data);
-	$this->load->view('templates/footer');
-}
-
-public function gradeamentos(){
-	$data['current'] = 'gradeamentos';
-	$this->menu_produtos();
-
-	$this->load->view('pages/gradeamentos', $data);
-	$this->load->view('templates/footer');
-}
-
-public function fachadas(){
-	$data['current'] = 'fachadas';
-	$this->menu_produtos();
-
-	$this->load->view('pages/fachadas', $data);
-	$this->load->view('templates/footer');
-}
-
-public function portadas(){
-	$data['current'] = 'portadas';
-	$this->menu_produtos();
-
-	$this->load->view('pages/portadas', $data);
-	$this->load->view('templates/footer');
-}
-
-public function portoes(){
-	$data['current'] = 'portoes';
-	$this->menu_produtos();
-
-	$this->load->view('pages/portoes', $data);
-	$this->load->view('templates/footer');
-}
-
-public function standards(){
-	$data['current'] = 'standards';
-	$this->menu_produtos();
-
-	$this->load->view('pages/standards', $data);
-	$this->load->view('templates/footer');
-}
-
 public function produtos_tipo($id_tipo_produto_aluminio){
 	$data['caracteristicas'] = $this->product_model->get_caracteristicas($id_tipo_produto_aluminio);
+
+	print_r($data['caracteristicas']);
 
 	if (!empty($data['caracteristicas'])) {
 		$data['current'] = 'produtos_tipo';
