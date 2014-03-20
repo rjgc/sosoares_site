@@ -62,291 +62,289 @@
         </div>
     </header>
     <nav>
-        <div class="container">
-            <div class="navbar navbar-default yamm">
-                <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div id="navbar-collapse-grid" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
-                        <li class="menu-title <?php echo ( isset($current) && $current === 'grupo_caixilharia' ) ? 'curr' : ''?>"><a href="#">Grupo Sosoares</a></li>
-                        <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Produtos Alumínio</a>
-                            <ul class="dropdown-menu">
-                                <li class="grid-demo">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Batente</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Com Rutura Térmica</b>
-                                                            <ul>
-                                                                <?php foreach ($batentes_com_corte as $batente){
-                                                                    ?>
-                                                                    <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome'] ?></a></li>
-                                                                    <?php
-                                                                }?>
-                                                            </ul>
-                                                        </li>
-                                                        <li><b class="li-b">Sem Rutura Térmica</b>
-                                                            <ul>
-                                                                <?php foreach ($batentes_sem_corte as $batente){
-                                                                    ?>
-                                                                    <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome'] ?></a></li>
-                                                                    <?php
-                                                                }?>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Alumínio Madeira</h3>
-                                                    <ul>
-                                                        <?php foreach ($aluminios_madeira as $madeira){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$madeira['id_produto_aluminio'])?>"><?php echo $madeira['nome'] ?></a></li>
+        <div class="navbar navbar-default yamm">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar-collapse-grid" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/home_caixilharia')?>">Início</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'grupo_caixilharia' ) ? 'curr' : ''?>"><a href="#">Grupo Sosoares</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' ) ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">Produtos Alumínio</a>
+                        <ul class="dropdown-menu">
+                            <li class="grid-demo">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Batente</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Com Rutura Térmica</b>
+                                                        <ul>
+                                                            <?php foreach ($batentes_com_corte as $batente){
+                                                                ?>
+                                                                <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome'] ?></a></li>
                                                             <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
+                                                            }?>
+                                                        </ul>
+                                                    </li>
+                                                    <li><b class="li-b">Sem Rutura Térmica</b>
+                                                        <ul>
+                                                            <?php foreach ($batentes_sem_corte as $batente){
+                                                                ?>
+                                                                <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome'] ?></a></li>
+                                                            <?php
+                                                            }?>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Correr</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Com Rutura Térmica</b>
-                                                            <ul>
-                                                                <?php foreach ($correres_com_corte as $correr){
-                                                                    ?>
-                                                                    <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome'] ?></a></li>
-                                                                    <?php
-                                                                }?>
-                                                            </ul>
-                                                        </li>
-                                                        <li><b class="li-b">Sem Rutura Térmica</b>
-                                                            <ul>
-                                                                <?php foreach ($correres_sem_corte as $correr){
-                                                                    ?>
-                                                                    <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome'] ?></a></li>
-                                                                    <?php
-                                                                }?>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Gradeamentos</h3>
-                                                    <ul>
-                                                        <?php foreach ($gradeamentos as $gradeamento){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$gradeamento['id_produto_aluminio'])?>"><?php echo $gradeamento['nome'] ?></a></li>
-                                                            <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Fachada / Quebra-Sol</h3>
-                                                    <ul>
-                                                        <?php foreach ($fachadas as $fachada){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$fachada['id_produto_aluminio'])?>"><?php echo $fachada['nome'] ?></a></li>
-                                                            <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Portadas</h3>
-                                                    <ul>
-                                                        <?php foreach ($portadas as $portada){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$portada['id_produto_aluminio'])?>"><?php echo $portada['nome'] ?></a></li>
-                                                            <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Portões</h3>
-                                                    <ul>
-                                                        <?php foreach ($portoes as $portao){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$portao['id_produto_aluminio'])?>"><?php echo $portao['nome'] ?></a></li>
-                                                            <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Standards</h3>
-                                                    <ul>
-                                                        <?php foreach ($standards as $standard){
-                                                            ?>
-                                                            <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$standard['id_produto_aluminio'])?>"><?php echo $standard['nome'] ?></a></li>
-                                                            <?php
-                                                        }?>
-                                                    </ul>
-                                                </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Alumínio Madeira</h3>
+                                                <ul>
+                                                    <?php foreach ($aluminios_madeira as $madeira){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$madeira['id_produto_aluminio'])?>"><?php echo $madeira['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-title <?php echo ( isset($current) && $current === 'portofolio_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
-                        <li class="menu-title <?php echo ( isset($current) && $current === 'servico_caixilharia' ) ? 'curr' : ''?>"><a href="#">Serviços</a></li>
-                        <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'marcacao_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Marcação CE</a>
-                            <ul class="dropdown-menu">
-                                <li class="grid-demo">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Etiquetas</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Declarações</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Correr</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Com Rutura Térmica</b>
+                                                        <ul>
+                                                            <?php foreach ($correres_com_corte as $correr){
+                                                                ?>
+                                                                <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome'] ?></a></li>
+                                                            <?php
+                                                            }?>
+                                                        </ul>
+                                                    </li>
+                                                    <li><b class="li-b">Sem Rutura Térmica</b>
+                                                        <ul>
+                                                            <?php foreach ($correres_sem_corte as $correr){
+                                                                ?>
+                                                                <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome'] ?></a></li>
+                                                            <?php
+                                                            }?>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Gradeamentos</h3>
+                                                <ul>
+                                                    <?php foreach ($gradeamentos as $gradeamento){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$gradeamento['id_produto_aluminio'])?>"><?php echo $gradeamento['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_caixilharia' ) ? 'curr' : ''?>"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Apoio ao Cliente</a>
-                            <ul class="dropdown-menu">
-                                <li class="grid-demo">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Comercial</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Orçamentaçõ</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Fachada / Quebra-Sol</h3>
+                                                <ul>
+                                                    <?php foreach ($fachadas as $fachada){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$fachada['id_produto_aluminio'])?>"><?php echo $fachada['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Portadas</h3>
+                                                <ul>
+                                                    <?php foreach ($portadas as $portada){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$portada['id_produto_aluminio'])?>"><?php echo $portada['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Técnico</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Estudo Obra / Pormenorização</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Portões</h3>
+                                                <ul>
+                                                    <?php foreach ($portoes as $portao){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$portao['id_produto_aluminio'])?>"><?php echo $portao['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Standards</h3>
+                                                <ul>
+                                                    <?php foreach ($standards as $standard){
+                                                        ?>
+                                                        <li><a href="<?=base_url('index.php/pages/produto_caixilharia/'.$standard['id_produto_aluminio'])?>"><?php echo $standard['nome'] ?></a></li>
+                                                    <?php
+                                                    }?>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">Software Gestão Serralharia</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <h3 class="menu-h3">FAQ Sistemas Caixilharia</h3>
-                                                    <ul>
-                                                        <li><b class="li-b">Something</b>
-                                                            <ul>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                                <li><a href="#">Something</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'portofolio_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'servico_caixilharia' ) ? 'curr' : ''?>"><a href="#">Serviços</a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'marcacao_caixilharia' ) ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">Marcação CE</a>
+                        <ul class="dropdown-menu">
+                            <li class="grid-demo">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Etiquetas</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Declarações</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_caixilharia' ) ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="100" data-close-others="false">Apoio ao Cliente</a>
+                        <ul class="dropdown-menu">
+                            <li class="grid-demo">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Comercial</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Orçamentaçõ</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Técnico</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Estudo Obra / Pormenorização</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">Software Gestão Serralharia</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3">FAQ Sistemas Caixilharia</h3>
+                                                <ul>
+                                                    <li><b class="li-b">Something</b>
+                                                        <ul>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                            <li><a href="#">Something</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="#">Contactos</a></li>
-                    </ul>
-                </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="#">Contactos</a></li>
+                </ul>
             </div>
         </div>
     </nav>
