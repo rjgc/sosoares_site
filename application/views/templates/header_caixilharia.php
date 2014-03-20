@@ -14,49 +14,31 @@
 </head>
 <body>
     <header>
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <a href="<?php echo base_url() ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png" width="210" height="47" class="grow" /></a>
-                    </div>
-                    <div class="col-md-5">
-                        <span id="img">
-                            <a href="<?php echo site_url('pages/home_caixilharia')?>">
-                                <i class="icon-caixilharia grow font font-active"></i>
-                            </a>
-                            <a href="<?php echo site_url('pages/home_vidro')?>">
-                                <i class="icon-vidro grow font"></i>
-                            </a>
-                            <a href="<?php echo site_url('pages/home_extrusao')?>">
-                                <i class="icon-extrusao grow font"></i>
-                            </a>
-                            <a href="<?php echo site_url('pages/home_tratamento')?>">
-                                <i class="icon-tratamento grow font"></i>
-                            </a>
-                            <!--
-                            <a href="<?php /*echo site_url('pages/home_caixilharia')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_caixilharia_a.png" width="49" height="49" alt="Caixilharia" title="Caixilharia" class="grow"></a>
-                            <a href="<?php /*echo site_url('pages/home_vidro')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_vidro.png" width="49" height="49" alt="Vidro" title="Vidro" class="grow"></a>
-                            <a href="<?php /*echo site_url('pages/home_extrusao')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_extrusao.png" width="49" height="49" alt="Extrusão" title="Extrusão" class="grow"></a>
-                            <a href="<?php /*echo site_url('pages/home_tratamento')*/?>"><img src="<?php /*echo base_url() */?>assets/sosoares/img/p_abrasivos.png" width="49" height="49" alt="Abrasivos" title="Abrasivos" class="grow"></a>-->
-                        </span>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" id="search" name="search" placeholder="Pesquisar">
-                    </div>
-                    <div class="col-md-2">
-                        <div id="bd">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow">
-                        </div>
-                        <div>
-                            <a href="#">
-                                <button class="btn button shrink">Sign In</button>
-                            </a>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="logotipo grow">
+                    <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
+                </div>
+                <div class="pages-img">
+                    <a href="<?php echo site_url('pages/home_caixilharia')?>"><i class="icon-caixilharia grow font font-active"></i></a>
+                    <a href="<?php echo site_url('pages/home_vidro')?>"><i class="icon-vidro grow font"></i></a>
+                    <a href="<?php echo site_url('pages/home_extrusao')?>"><i class="icon-extrusao grow font"></i></a>
+                    <a href="<?php echo site_url('pages/home_tratamento')?>"><i class="icon-tratamento grow font"></i></a>
+                </div>
+                <div class="form">
+                    <form>
+                        <input type="search" class="form-control" id="search" name="search" placeholder="Pesquisar" />
+                        <button id="searchButton" class="btn btn-default"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+                <div id="bd">
+                    <a href="<?php echo site_url('pages/home_caixilharia')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
+                    <a href="<?php echo site_url('pages/home_caixilharia')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
+                    <a href="<?php echo site_url('pages/home_caixilharia')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
+                    <a href="<?php echo site_url('pages/home_caixilharia')?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow"></a>
+                </div>
+                <div id="signIn">
+                    <a href="#"><button class="btn button shrink">Sign In</button></a>
                 </div>
             </div>
         </div>
