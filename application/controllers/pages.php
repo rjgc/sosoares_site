@@ -109,7 +109,6 @@ $this->menu_produtos($data);
 $this->load->view('templates/carousel_caixilharia');
 $this->load->view('pages/caixilharia',$data);
 $this->load->view('templates/footer');
-
 }
 
 public function home_vidro()
