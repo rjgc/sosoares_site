@@ -4,78 +4,87 @@
             <ul class="breadcrumb">
                 <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
                 <li><a href="<?php echo base_url();?>index.php/pages/produtos_list">Produtos Alumínio</a></li>
-                <li><a href="<?php echo base_url();?>index.php/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
-                <?php if (!empty($produto['caracteristica'])) { ?>
-                <li><?=$produto['caracteristica']?></li>
-                <?php } ?>
-                <li><?=$produto['nome']?></li>
+                <?php if(empty($id)) {?>
             </ul>
-            <h1 class="title3"><?=$produto['nome']?></h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-md-12" id="carousel-bounding-box">
-                <!--</div>-->
-                <div id="myCarousel" class="carousel slide">
-                    <!-- main slider carousel items -->
-                    <div class="carousel-inner" style="max-height: 400px;">
-                        <?php 
-                        $i=1; 
-                        while ($i<5)
-                        { 
-                            if (!empty($produto['foto_'.$i])){
-                                if ($i==1){?>
-                                <div class="active item" data-slide-number="<?php echo $i ?>">
-                                    <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
-                                </div>
-                                <?php
-                            }
-                            else { ?>
-                            <div class="item" data-slide-number="<?php echo $i ?>">
+    <div class="alert alert-warning">
+        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?php echo base_url();?>index.php/pages/produtos_list">Voltar atrás.</a></h5>
+    </div>
+</div>
+<?php } else {?>
+<li><a href="<?php echo base_url();?>index.php/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
+<?php if (!empty($produto['caracteristica'])) { ?>
+<li><?=$produto['caracteristica']?></li>
+<?php } ?>
+<li><?=$produto['nome']?></li>
+</ul>
+<h1 class="title3"><?=$produto['nome']?></h1>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="col-md-12" id="carousel-bounding-box">
+            <!--</div>-->
+            <div id="myCarousel" class="carousel slide">
+                <!-- main slider carousel items -->
+                <div class="carousel-inner" style="max-height: 400px;">
+                    <?php 
+                    $i=1; 
+                    while ($i<5)
+                    { 
+                        if (!empty($produto['foto_'.$i])){
+                            if ($i==1){?>
+                            <div class="active item" data-slide-number="<?php echo $i ?>">
                                 <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                             </div>
-                            <?php                                
-                        } 
-                    }
-                    $i++;
-                } ?>
-            </div>
-            <!-- main slider carousel nav controls -->
-            <?php
-            if (!empty($produto['foto_1'])){
-                ?>
-                <a class="left carousel-control control-try3" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a>
-                <a class="right carousel-control control-try3" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a>
-                <?php
-            }
-            ?>
+                            <?php
+                        }
+                        else { ?>
+                        <div class="item" data-slide-number="<?php echo $i ?>">
+                            <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                        </div>
+                        <?php                                
+                    } 
+                }
+                $i++;
+            } ?>
         </div>
-        <!--</div>-->
+        <!-- main slider carousel nav controls -->
+        <?php
+        if (!empty($produto['foto_1'])){
+            ?>
+            <a class="left carousel-control control-try3" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a>
+            <a class="right carousel-control control-try3" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a>
+            <?php
+        }
+        ?>
     </div>
-    <!--/main slider carousel-->
-    <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 0px !important;">
-        <ul class="list-inline">
-            <?php 
-            $i=1; 
-            $y=0;
-            while ($i<5)
-            { 
-                if (!empty($produto['foto_'.$i])){
-                    if ($i==1){?>
-                    <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                        <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
-                    </a>
-                </li>
-                <?php
-            }
-            else { ?>
-            <li> <a id="carousel-selector-<?php echo $y ?>">
-                <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
-            </a>
-        </li>
-        <?php                                
-    } 
+    <!--</div>-->
+</div>
+<!--/main slider carousel-->
+<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 0px !important;">
+    <ul class="list-inline">
+        <?php 
+        $i=1; 
+        $y=0;
+        while ($i<5)
+        { 
+            if (!empty($produto['foto_'.$i])){
+                if ($i==1){?>
+                <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
+                    <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+                </a>
+            </li>
+            <?php
+        }
+        else { ?>
+        <li> <a id="carousel-selector-<?php echo $y ?>">
+            <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+        </a>
+    </li>
+    <?php                                
+} 
 }
 $i++;
 $y++;
@@ -265,3 +274,4 @@ if (count($obras)>6) {
 </div>
 </section>
 <!--/Carousel obras-->
+<?php } ?>
