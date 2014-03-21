@@ -325,7 +325,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="#">Contactos</a></li>
+                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos_caixilharia' ) ? 'curr' : ''?>"><a href="<?php echo site_url('pages/contactos_caixilharia')?>">Contactos</a></li>
                 </ul>
             </div>
         </div>

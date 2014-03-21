@@ -364,6 +364,14 @@ public function menu_produtos() {
 	$this->load->view('templates/header_caixilharia', $data);
 }
 
+public function contactos_caixilharia()
+{
+    $data['current'] = 'contactos_caixilharia';
+    $this->load->view('templates/header_caixilharia');
+    $this->load->view('pages/contactos', $data);
+    $this->load->view('templates/footer');
+}
+
 /* public function empresa($pagina = 'historia')
 {
 //if(isset($tipo))
