@@ -121,7 +121,7 @@ nav a:hover {color: #fff;}
 .navbar-nav > li > a {color: #fff !important;font-size: 16px;}
 .dropdown-menu {background-color: #107ca4;border: 0;border-radius: 0;}
 
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
+nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {background-color: #107ca4;}
 
 .grid-demo .row [class*="col-"] {background-color: transparent;border: 0;color: #fff;}
@@ -136,7 +136,6 @@ nav a:hover {color: #fff;}
 .navbar-collapse {max-width: 1020px;margin: 0 auto;}
 
 .curr {background-color: #076e93;}
-nav .navbar-nav li:hover {background-color: #107ca3;}
 
 /*============================== SLIDER =======================================*/
 .carousel-caption {

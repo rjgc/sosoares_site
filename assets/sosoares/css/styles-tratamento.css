@@ -1,13 +1,12 @@
-header, .form #search {background-color: #454545;}
+header, .form #search {background-color: #d5d5d5;}
 
-nav, .navbar {background-color: #797979;}
+nav, .navbar {background-color: #585858;}
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #909090;}
-.curr {background-color: #aa9d9d;}
+.navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #484848;}
+.curr {background-color: #555050;}
 
-.menu-h3 {color: #454545;}
-.li-b {color: #000;}
-.grid-demo .row .row [class*="col-"] {border-left: 1px solid #797979;}
+.menu-h3, .li-b {color: #000;}
+.grid-demo .row .row [class*="col-"] {border-left: 1px solid #585858;}
 
 .button, .form #searchButton, .button_slider {background-color: #909090;box-shadow: 0 3px 0 #585858;}
 .form #search, .input {border-color: #909090;}
