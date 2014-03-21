@@ -1,4 +1,4 @@
- <!-- FOOTER -->
+<!-- FOOTER -->
               </section>
         <footer>
             <div class="content">
@@ -42,44 +42,46 @@
         <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
-         <script>
-             $(function() {
-                 $( "#accordion" ).accordion();
-             });
-         </script>
-	<script>
-	   $('#myCarousel').carousel({
-	      interval: 4000
-	   });
-	  
-	  // handles the carousel thumbnails
-	  $('[id^=carousel-selector-]').click( function(){
-	    var id_selector = $(this).attr("id");
-	    var id = id_selector.substr(id_selector.length -1);
-	    id = parseInt(id);
-	    $('#myCarousel').carousel(id);
-	    $('[id^=carousel-selector-]').removeClass('selected');
-	    $(this).addClass('selected');
-	  });
-	  
-	  // when the carousel slides, auto update
-	  $('#myCarousel').on('slid', function (e) {
-	    var id = $('.item.active').data('slide-number');
-	    id = parseInt(id);
-	    $('[id^=carousel-selector-]').removeClass('selected');
-	    $('[id^=carousel-selector-'+id+']').addClass('selected');
-	  });
-	  </script>
-	  <script>
-	  $(document).ready(function() {
-		  $('#myCarousel2').carousel({
-		  interval: 10000
-		  })
-	      
-	      $('#myCarousel2').on('slid.bs.carousel', function() {
-		  //alert("slid");
-		  });
-	  });
-	  </script>
+        <script>
+            $(function() {
+                $( "#accordion" ).accordion();
+            });
+        </script>
+        <script>
+            $('#myCarousel').carousel({
+                interval: 4000
+            });
+
+            // handles the carousel thumbnails
+            $('[id^=carousel-selector-]').click( function(){
+                var id_selector = $(this).attr("id");
+                var id = id_selector.substr(id_selector.length -1);
+                id = parseInt(id);
+                $('#myCarousel').carousel(id);
+                $('[id^=carousel-selector-]').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            // when the carousel slides, auto update
+            $('#myCarousel').on('slid', function (e) {
+                var id = $('.item.active').data('slide-number');
+                id = parseInt(id);
+                $('[id^=carousel-selector-]').removeClass('selected');
+                $('[id^=carousel-selector-'+id+']').addClass('selected');
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#myCarousel2').carousel({
+                    interval: 10000
+                })
+
+                $('#myCarousel2').on('slid.bs.carousel', function() {
+                //alert("slid");
+                });
+            });
+        </script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACyHnR6xtiTqqjSrYl05xkIKzO6fYJZqk&sensor=false"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/sosoares/js/maps-color-script.js""></script>
     </body>
 </html>
