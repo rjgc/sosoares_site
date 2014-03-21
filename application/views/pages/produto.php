@@ -13,7 +13,7 @@
     </div>
 </div>
 <?php } else {?>
-<li><a href="<?php echo base_url();?>index.php/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
+<li><a href="<?php echo base_url();?>index.php/pages/produtos_list/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
 <?php if (!empty($produto['caracteristica'])) { ?>
 <li><?=$produto['caracteristica']?></li>
 <?php } ?>
