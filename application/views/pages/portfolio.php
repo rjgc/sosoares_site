@@ -38,13 +38,18 @@
             } ?>
         </div>
         <!-- main slider carousel nav controls -->
-        <div class="carousel-caption carousel-caption2">
-            <ul>
-                <li><a class="control-try control-try2" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
-                <li><a class="control-try control-try2" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a></li>
-
-            </ul>
-        </div>
+        <?php
+        if (!empty($galeria_obra) && count($galeria_obra) > 1){
+            ?>
+            <div class="carousel-caption carousel-caption2">
+                <ul>
+                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
+                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a></li>                    
+                </ul>
+            </div>
+            <?php
+        }
+        ?>
     </div>
 <!--</div>
 </div>-->
@@ -109,71 +114,110 @@
                     </div>
                     <div class="col-md-1">
                         <ol class="carousel-indicators" style="margin-bottom: -60px">
-                            <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-                            <li data-target="#myCarousel2" data-slide-to="1"></li>
-                            <li data-target="#myCarousel2" data-slide-to="2"></li>
-                        </ol>
-                    </div>
-                    <div class="col-md-1">&nbsp;</div>
-                </div>
-                <!-- Carousel items -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="row">
-                            <?php
-                            foreach ($produtos_aluminio_obra as $produto){ 
-                                for ($i = 1; $i <= 6; $i++) { ?>
-                                <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                    <p><?=$produto['nome']?></p>
-                                </div>
-                                <?php  }
-                            } ?>
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                    <div class="item">
-                        <div class="row">
-                            <?php
-                            foreach ($produtos_aluminio_obra as $produto){ 
-                                for ($i = 1; $i <= 6; $i++) { ?>
-                                <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                    <p><?=$produto['nome']?></p>
-                                </div>
-                                <?php  }
-                            } ?>
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                    <div class="item">
-                        <div class="row">
-                            <?php
-                            foreach ($produtos_aluminio_obra as $produto){ 
-                                for ($i = 1; $i <= 6; $i++) { ?>
-                                <div class="col-sm-2"><a href="#x"><img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_1'];?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"></a>
-                                    <p><?=$produto['nome']?></p>
-                                </div>
-                                <?php  }
-                            } ?>
+                            <?php $i=0;
+                            $div = 1;
+                            $count = count($produtos_aluminio_obra)/6;
 
-                        </div>
-                        <!--/row-->
-                    </div>
-                    <!--/item-->
-                </div>
-                <?php
-                if (count($obras)>6) {
-                    ?>
-                    <!--/carousel-inner-->
-                    <a class="left carousel-control controls" href="#myCarousel2" data-slide="prev"><span class="glyphicon icon-back icon-tras"></span></a>
-                    <a class="right carousel-control controls" href="#myCarousel2" data-slide="next"><span class="glyphicon icon-front icon-frente"></span></a>
-                    <?php
-                }
-                ?>
+                            if (is_float(round($count))) {
+                                $count++;
+                            }
+
+                            while ($div <= $count ) {
+                                if (!empty($produtos_aluminio_obra)) {
+                                    if ($i==0){?>
+                                    <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+                                    <?php
+                                } else {?>
+                                <li data-target="#myCarousel2" data-slide-to="<?php echo $i ?>"></li>
+                                <?php                                                
+                            }
+                            $i++; 
+                        }
+                        $div++;
+                    }?>
+                </ol>
             </div>
-            <!--/myCarousel-->
-            <!--/well-->
+            <div class="col-md-1">&nbsp;</div>
         </div>
-    </div>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <?php
+            $i = 0;
+            $div = 1;
+            $count = count($produtos_aluminio_obra)/6;
+
+            if (is_float(round($count))) {
+                $count++;
+            }
+
+            while ($div <= $count ) {
+                if ($div==1) { ?>
+                <!--/item-->
+                <div class="item active">
+                    <!--/row-->
+                    <div class="row">
+                        <?php 
+                        for ($i; $i < 6; $i++) {                             
+                            if (!empty($produtos_aluminio_obra[$i])) {
+                                $produto = $produtos_aluminio_obra[$i];
+                                ?>
+                                <div class="col-sm-2">
+                                    <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                        <p><?php echo $produto['nome'] ?></p>
+                                    </a>
+                                </div>
+                                <?php
+                            } 
+                        }?>
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--/item-->
+                <?php
+            }
+            else {  ?>
+            <!--/item-->
+            <div class="item">
+                <!--/row-->
+                <div class="row">
+                    <?php
+                    $y = $i+7;
+                    for ($i; $i < $y; $i++) { 
+                        if (!empty($produtos_aluminio_obra[$i])) {
+                            $produto = $produtos_aluminio_obra[$i];
+                            ?>
+                            <div class="col-sm-2">
+                                <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                    <p><?php echo $obra['nome'] ?></p>
+                                </a>
+                            </div>
+                            <?php
+                        } 
+                    }?>
+                </div>
+                <!--/row-->
+            </div>
+            <!--/item-->
+            <?php 
+        }
+        $div++;
+    }
+    ?>
+</div>
+<?php
+if (count($produtos_aluminio_obra)>6) {
+    ?>
+    <!--/carousel-inner-->
+    <a class="left carousel-control controls" href="#myCarousel2" data-slide="prev"><span class="glyphicon icon-back icon-tras"></span></a>
+    <a class="right carousel-control controls" href="#myCarousel2" data-slide="next"><span class="glyphicon icon-front icon-frente"></span></a>
+    <?php
+}
+?>
+</div>
+<!--/myCarousel-->
+<!--/well-->
+</div>
+</div>
 </section>

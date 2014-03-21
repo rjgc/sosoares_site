@@ -256,6 +256,7 @@ $data['galeria_obras'] = $this->company_model->get_galeria_obras();
 $data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
 //$data['obra'] = $this->company_model->get_obra();
 $data['obras'] = $this->company_model->get_obras();*/	
+$data['id'] = $id;
 $data['current'] = 'portfolio_caixilharia';
 $this->menu_produtos();
 
