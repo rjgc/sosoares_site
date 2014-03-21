@@ -119,13 +119,19 @@
 	<li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
 		  <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>
 	</li>
+	<li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
+		  <a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
+	</li>
+	<li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
+		  <a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
+	</li>
 	<li <?php if ($data['titulo'] == 'Instaladores') echo 'class="section"'; ?>>
 		  <a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Instaladores</a>
 	</li> 
 		<li <?php if ($data['titulo'] == 'Produtos' ||
                       $data['titulo'] == 'Produtos Aluminio' || 
-                      $data['titulo'] == 'Produtos Extrusao' ||
-                      $data['titulo'] == 'Produtos Vidro'/* ||
+                      $data['titulo'] == 'Produtos Extrusao' /*||
+                      $data['titulo'] == 'Produtos Vidro' ||
                       $data['titulo'] == 'Reflectores' ||
                       $data['titulo'] == 'Características' ||
                       $data['titulo'] == 'Luz Tipo/Lâmpada/Casquilho' ||
@@ -134,8 +140,8 @@
 			<ul class="submenu">
 				<li><a href='<?php echo site_url("mediagest/produtos_aluminio_management")?>'>Produtos Aluminio</a></li>
 				<li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
-				<li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
-				<!--<li><a href='<?php echo site_url("mediagest/cat_industrial_management")?>'>Categorias Industrial</a></li>
+				<!--<li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
+				<li><a href='<?php echo site_url("mediagest/cat_industrial_management")?>'>Categorias Industrial</a></li>
                 <li><a href='<?php echo site_url("mediagest/reflectors_management")?>'>Reflectores</a></li>
                 <li><a href='<?php echo site_url("mediagest/norm_management")?>'>Normas</a></li>
                 <li><a href='<?php echo site_url("mediagest/icons1_management")?>'>Características</a></li>
