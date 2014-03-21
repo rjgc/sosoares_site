@@ -2,12 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="../home_caixilharia">Início</a></li>
-                <li><a href="../produtos_list">Produtos Alumínio</a></li>
-                <?php print_r($produto) ?>
-                <li><a href="<?php echo base_url();?>/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/produtos_list">Produtos Alumínio</a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/produtos_tipo/<?php echo $produto['id_tipo_produto_aluminio'] ?>"><?=$produto['tipo']?></a></li>
                 <?php if (!empty($produto['caracteristica'])) { ?>
-                    <li><?=$produto['caracteristica']?></li>
+                <li><?=$produto['caracteristica']?></li>
                 <?php } ?>
                 <li><?=$produto['nome']?></li>
             </ul>
@@ -17,6 +16,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="col-md-12" id="carousel-bounding-box">
+                <!--</div>-->
                 <div id="myCarousel" class="carousel slide">
                     <!-- main slider carousel items -->
                     <div class="carousel-inner" style="max-height: 400px;">
@@ -82,6 +82,7 @@ $y++;
 } ?>
 </ul>
 </div>
+<!--/main slider carousel-->
 </div>
 <div class="col-md-5">
     <div class="descricao">
@@ -108,6 +109,7 @@ $y++;
         <p><b>Altura máxima da folha móvel:</b><?=$produto['altura_maxima']?></p>
     </div>
 </div>
+<!--/accordion-->
 <div class="col-md-3">
     <h2 class="title4">+Informações</h2>
     <div id="accordion">
@@ -147,6 +149,8 @@ $y++;
 </div>
 </div>
 </div>
+<!--/accordion-->
+<!--/Carousel obras-->
 <section class="related">
     <div class="container">
         <div id="center">
@@ -260,3 +264,4 @@ if (count($obras)>6) {
 </div>
 </div>
 </section>
+<!--/Carousel obras-->

@@ -288,16 +288,14 @@ $data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
 $data['title'] = lang('indelague.home');
 $data['current'] = 'home';
 */
-$data['caracteristicas'] = $this->product_model->get_caracteristicas_($id);
-
-print_r($data['caracteristicas']);
+$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
 
 $produto;
 
 if (!empty($data['caracteristicas'])) {
-$produto = $this->product_model->get_produto($id);
+	$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id);
 } else {
-$produto = $this->product_model->get_produto_($id);
+	$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id);
 }
 
 $data['produto'] = $produto;
@@ -314,7 +312,7 @@ $this->load->view('templates/footer');
 
 public function produtos_list(){
 	$data['current'] = 'produtos_list';
-	$data['tipos'] = $this->product_model->get_tipos();
+	$data['tipos'] = $this->product_model->get_tipos_produtos_aluminio();
 	$this->menu_produtos();
 
 	$this->load->view('pages/produtos_list', $data);
@@ -322,9 +320,7 @@ public function produtos_list(){
 }
 
 public function produtos_tipo($id_tipo_produto_aluminio){
-	$data['caracteristicas'] = $this->product_model->get_caracteristicas($id_tipo_produto_aluminio);
-
-	print_r($data['caracteristicas']);
+	$data['caracteristicas'] = $this->product_model->get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio);
 
 	if (!empty($data['caracteristicas'])) {
 		$data['current'] = 'produtos_tipo';
@@ -332,19 +328,19 @@ public function produtos_tipo($id_tipo_produto_aluminio){
 		$produtos;
 
 		foreach ($data['caracteristicas'] as $caracteristica) {
-			$produtos[$caracteristica['nome']] = $this->product_model->get_produtos($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
+			$produtos[$caracteristica['nome']] = $this->product_model->get_produtos_aluminio($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
 		}
 
 		$this->menu_produtos();
 		$data['produtos'] = $produtos;
-		$data['tipo'] = $this->product_model->get_tipo($id_tipo_produto_aluminio);
+		$data['tipo'] = $this->product_model->get_tipo_produtos_aluminio($id_tipo_produto_aluminio);
 
 		$this->load->view('pages/produtos_com_caracteristicas', $data);
 		$this->load->view('templates/footer');
 	} else {
 		$data['current'] = 'produtos_sem_caracteristicas';
-		$data['tipo'] = $this->product_model->get_tipo($id_tipo_produto_aluminio);
-		$data['produtos'] = $this->product_model->get_produtos_($id_tipo_produto_aluminio);
+		$data['tipo'] = $this->product_model->get_tipo_produtos_aluminio($id_tipo_produto_aluminio);
+		$data['produtos'] = $this->product_model->get_produtos_aluminio_tipo($id_tipo_produto_aluminio);
 		$this->menu_produtos();
 
 		$this->load->view('pages/produtos_sem_caracteristicas', $data);

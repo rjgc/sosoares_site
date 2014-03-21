@@ -7,42 +7,42 @@ class Product_model extends CI_Model
 
 	//PAGINAS INTERMEDIAS PRODUTOS
 
-	public function get_tipos(){
+	public function get_tipos_produtos_aluminio(){
 		$query = $this->db->query("select * from tipos_produto_aluminio");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_tipo($id){
-		$query = $this->db->query("select * from tipos_produto_aluminio where id_tipo_produto_aluminio='$id'");
+	public function get_tipo_produtos_aluminio($id_tipo_produto_aluminio){
+		$query = $this->db->query("select * from tipos_produto_aluminio where id_tipo_produto_aluminio='$id_tipo_produto_aluminio'");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_caracteristicas($id){
-		$query = $this->db->query("select cpa.* from caracteristicas_produto_aluminio cpa inner join (select * from produtos_aluminio where id_tipo_produto_aluminio='$id') pa");
+	public function get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio){
+		$query = $this->db->query("select cpa.* from caracteristicas_produto_aluminio cpa inner join (select * from produtos_aluminio where id_tipo_produto_aluminio='$id_tipo_produto_aluminio') pa on cpa.id_caracteristica_produto_aluminio = pa.id_caracteristica_produto_aluminio order by cpa.id_caracteristica_produto_aluminio");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_caracteristicas_($id){
-		$query = $this->db->query("select cpa.* from caracteristicas_produto_aluminio cpa inner join (select * from produtos_aluminio where id_produto_aluminio='$id') pa");
+	public function get_caracteristicas_produto_aluminio($id_tipo_produto_aluminio){
+		$query = $this->db->query("select cpa.* from caracteristicas_produto_aluminio cpa inner join (select * from produtos_aluminio where id_produto_aluminio='$id_tipo_produto_aluminio') pa on cpa.id_caracteristica_produto_aluminio = pa.id_caracteristica_produto_aluminio");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_produtos($id_tipo_produto_aluminio, $id_caracteristica_produto_aluminio){
+	public function get_produtos_aluminio($id_tipo_produto_aluminio, $id_caracteristica_produto_aluminio){
 		$query = $this->db->query("select * from produtos_aluminio where id_tipo_produto_aluminio = '$id_tipo_produto_aluminio' and id_caracteristica_produto_aluminio = '$id_caracteristica_produto_aluminio'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_produtos_($id_tipo_produto_aluminio){
+	public function get_produtos_aluminio_tipo($id_tipo_produto_aluminio){
 		$query = $this->db->query("select * from produtos_aluminio where id_tipo_produto_aluminio = '$id_tipo_produto_aluminio'");
 
 		$data = $query->result_array();
@@ -123,14 +123,14 @@ class Product_model extends CI_Model
 
 	//PAGINA PRODUTO
 
-	public function get_produto($id){
+	public function get_produto_aluminio_com_caracteristica($id){
 		$query = $this->db->query("select pa.*, tpa.nome as tipo, cpa.nome as caracteristica, ea.nome as ensaio from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa inner join ensaios_aluminio ea inner join ensaios_aluminio_produtos eap where pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and ea.id_ensaio_aluminio=eap.ensaio_aluminio_id and eap.produto_aluminio_id=pa.id_produto_aluminio and pa.id_produto_aluminio='$id'");	
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_produto_($id){
+	public function get_produto_aluminio_sem_caracteristica($id){
 		$query = $this->db->query("select pa.*, tpa.nome as tipo, ea.nome as ensaio from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join ensaios_aluminio ea inner join ensaios_aluminio_produtos eap where pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and ea.id_ensaio_aluminio=eap.ensaio_aluminio_id and eap.produto_aluminio_id=pa.id_produto_aluminio and pa.id_produto_aluminio='$id'");
 
 		$data = $query->row_array();

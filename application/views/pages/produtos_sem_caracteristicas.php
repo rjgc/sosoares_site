@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="../home_caixilharia">Início</a></li>
-                <li><a href="../produtos_list">Produtos Alumínio</a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/produtos_list">Produtos Alumínio</a></li>
                 <li><?php echo $tipo['nome'] ?></li>
             </ul>
             <h1 class="title3">Produtos Alumínio</h1>
@@ -12,10 +12,10 @@
 
     <div>
         <h4><?php echo $tipo['nome'] ?></h4>
+        <!-- /row -->
         <div class="row">
             <div class="col-md-12">
                 <div class="">
-                    <!--<h1 class="align">Obras</h1>-->
                     <?php 
                     if (!empty($produtos)) {
                         foreach ($produtos as $produto){

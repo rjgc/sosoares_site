@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="home_caixilharia">Início</a></li>
+                <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
                 <li>Produtos Alumínio</li>
             </ul>
             <h1 class="title3">Produtos Alumínio</h1>
