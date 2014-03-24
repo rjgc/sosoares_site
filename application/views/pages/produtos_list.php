@@ -17,11 +17,13 @@
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){
                             ?>
-                            <a href="<?=base_url('index.php/pages/produtos_list/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome'] ?></p></div></a> 
+                            <a href="<?=base_url('index.php/pages/produtos_list/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_pt'] ?></p></div></a> 
                             <?php }
                         }
                         else {?>
-                        <h6 style="margin: 2px 0 2px 10px;">Sem categorias</h6>
+                        <div class="alert alert-info">
+                        <h5><strong>Atenção!</strong> Páginas dos produtos indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Voltar atrás.</a></h5>
+                        </div>
                         <?php
                     }
                     ?>

@@ -71,7 +71,7 @@ public function get_galeria_obras(){
 }
 
 public function get_produtos_aluminio_obra($id){
-    $query = $this->db->query("select pab.*, pa.foto_1 as url, pa.nome as nome, pa.id_produto_aluminio as id from produtos_aluminio_obras pab inner join produtos_aluminio pa on pab.produto_aluminio_id=pa.id_produto_aluminio where obra_id='$id'");
+    $query = $this->db->query("select pab.*, pa.foto_1 as url, pa.nome_pt as nome, pa.id_produto_aluminio as id from produtos_aluminio_obras pab inner join produtos_aluminio pa on pab.produto_aluminio_id=pa.id_produto_aluminio where obra_id='$id'");
 
     $data = $query->result_array();
     return $data;

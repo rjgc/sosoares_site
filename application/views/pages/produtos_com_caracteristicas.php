@@ -4,26 +4,26 @@
             <ul class="breadcrumb">
                 <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
                 <li><a href="<?php echo base_url();?>index.php/pages/produtos_list">Produtos Alumínio</a></li>
-                <li><?php echo $tipo['nome'] ?></li>
+                <li><?php echo $tipo['nome_pt'] ?></li>
             </ul>
             <h1 class="title3">Produtos Alumínio</h1>
         </div>
     </div>
 
     <div>
-        <h4><?php echo $tipo['nome'] ?></h4>
+        <h4><?php echo $tipo['nome_pt'] ?></h4>
         <?php foreach ($caracteristicas as $caracteristica) {            
             ?>
-            <h5><?php echo $caracteristica['nome'] ?></h5>
+            <h5><?php echo $caracteristica['nome_pt'] ?></h5>
             <!-- /row -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="">
                         <?php
-                        if (!empty($produtos[$caracteristica['nome']])) {
-                            foreach ($produtos[$caracteristica['nome']] as $produto){
+                        if (!empty($produtos[$caracteristica['nome_pt']])) {
+                            foreach ($produtos[$caracteristica['nome_pt']] as $produto){
                                 ?>
-                                <a href="<?=base_url('index.php/pages/produto_caixilharia/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome'] ?></p></div></a> 
+                                <a href="<?=base_url('index.php/pages/produto_caixilharia/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_pt'] ?></p></div></a> 
                                 <?php }
                             }
                             else {?>

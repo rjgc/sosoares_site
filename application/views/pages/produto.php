@@ -17,9 +17,9 @@
 <?php if (!empty($produto['caracteristica'])) { ?>
 <li><?=$produto['caracteristica']?></li>
 <?php } ?>
-<li><?=$produto['nome']?></li>
+<li><?=$produto['nome_pt']?></li>
 </ul>
-<h1 class="title3"><?=$produto['nome']?></h1>
+<h1 class="title3"><?=$produto['nome_pt']?></h1>
 </div>
 </div>
 <div class="row">
@@ -96,7 +96,7 @@ $y++;
 <div class="col-md-5">
     <div class="descricao">
         <h3 class="title4">Descrição</h3>
-        <p style="margin-bottom: 25px;"><?=$produto['descricao']?></p>
+        <p style="margin-bottom: 25px;"><?=$produto['descricao_pt']?></p>
         <p><b>Aros Fixos:</b><?=$produto['aro_fixo']?></p>
         <p><b>Aros Móveis:</b><?=$produto['aro_movel']?></p>
         <p><b>Aros Centrais:</b><?=$produto['aros_centrais']?></p>
@@ -220,7 +220,7 @@ $y++;
                                 <div class="col-sm-2">
                                     <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$obra['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                        <p><?php echo $obra['nome'] ?></p>
+                                        <p><?php echo $obra['nome_pt'] ?></p>
                                     </a>
                                 </div>
                                 <?php
@@ -246,7 +246,7 @@ $y++;
                             <div class="col-sm-2">
                                 <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$obra['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                    <p><?php echo $obra['nome'] ?></p>
+                                    <p><?php echo $obra['nome_pt'] ?></p>
                                 </a>
                             </div>
                             <?php

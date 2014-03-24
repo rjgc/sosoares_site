@@ -32,8 +32,9 @@ function __construct()
 
 */
 $this->load->model('company_model');
-$this->load->model('product_model');/*
-$this->load->model('news_model');
+$this->load->model('product_model');
+$this->load->model('apoio_cliente_model');
+/*$this->load->model('news_model');
 $this->load->model('home_model');
 $this->load->model('xml2mysql');
 $this->load->model('formacao_model');*/
@@ -278,22 +279,22 @@ $data['current'] = 'produto_caixilharia';
 $this->menu_produtos($data);
 
 if ($id != null) {
-$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
+	$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
 
-$produto;
+	$produto;
 
-if (!empty($data['caracteristicas'])) {
-	$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id);
-} else {
-	$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id);
-}
+	if (!empty($data['caracteristicas'])) {
+		$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id);
+	} else {
+		$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id);
+	}
 
-$data['produto'] = $produto;
-$data['obras'] = $this->product_model->get_obras($id);
+	$data['produto'] = $produto;
+	$data['obras'] = $this->product_model->get_obras($id);
 //$this->load->view('templates/nav', $data);
 //$this->load->view('templates/sidebar', $data);
 //$this->load->view('templates/carousel_caixilharia');		
-$this->load->view('pages/produto',$data);
+	$this->load->view('pages/produto',$data);
 } else {
 	$this->load->view('pages/produto',$data);
 }
@@ -308,15 +309,16 @@ public function produtos_list($id_tipo_produto_aluminio=null){
 	if ($id_tipo_produto_aluminio != null) {
 		$data['caracteristicas'] = $this->product_model->get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio);
 		$data['tipo'] = $this->product_model->get_tipo_produtos_aluminio($id_tipo_produto_aluminio);
-
+		
 		if (!empty($data['caracteristicas'])) {
 			$produtos;
 
 			foreach ($data['caracteristicas'] as $caracteristica) {
-				$produtos[$caracteristica['nome']] = $this->product_model->get_produtos_aluminio($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
+				$produtos[$caracteristica['nome_pt']] = $this->product_model->get_produtos_aluminio($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
 			}
 
 			$data['produtos'] = $produtos;
+
 			$this->load->view('pages/produtos_com_caracteristicas', $data);
 			
 		} else {
@@ -350,12 +352,44 @@ public function menu_produtos($data) {
 
 public function contactos_caixilharia()
 {
-    $data['current'] = 'contactos_caixilharia';
-    $this->menu_produtos($data);
+	$data['current'] = 'contactos_caixilharia';
+	$this->menu_produtos($data);
 
-    /*$this->load->view('templates/header_caixilharia', $data);*/
-    $this->load->view('pages/contactos');
-    $this->load->view('templates/footer');
+	/*$this->load->view('templates/header_caixilharia', $data);*/
+	$this->load->view('pages/contactos');
+	$this->load->view('templates/footer');
+}
+
+public function apoio_cliente($page=null) {
+	$data['current'] = 'apoio_cliente';
+	$this->menu_produtos($data);
+	$data['page'] = $page;
+
+	if ($page != null) {
+		$data['page'] = $this->apoio_cliente_model->get_page($page);
+
+		$this->load->view('pages/apoio_cliente', $data);
+	} else {
+		$this->load->view('pages/apoio_cliente', $data);
+	}
+	$this->load->view('templates/footer');
+}
+
+public function apoio_cliente_list() {
+	$data['current'] = 'apoio_cliente_list';
+	$this->menu_produtos($data);
+	$paginas;
+	$y=0;
+
+	for ($i=7; $i < 13; $i++) { 
+		$paginas[$y] = $this->apoio_cliente_model->get_pages($i);
+		$y++;
+	}	
+
+	$data['pages'] = $paginas;
+
+	$this->load->view('pages/apoio_cliente_list', $data);
+	$this->load->view('templates/footer');
 }
 
 /* public function empresa($pagina = 'historia')

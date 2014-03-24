@@ -4,9 +4,9 @@
             <ul class="breadcrumb">
                 <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
                 <li><a href="<?php echo base_url();?>index.php/pages/portfolio_caixilharia">Portfolio Obras</a></li>
-                <li><?=$obra['nome']?></li>
+                <li><?=$obra['nome_pt']?></li>
             </ul>
-            <h1 class="title3"><?=$obra['nome']?></h1>
+            <h1 class="title3"><?=$obra['nome_pt']?></h1>
         </div>
     </div>
     <div class="row">
@@ -89,7 +89,7 @@
 <div class="col-md-5">
     <div class="descricao">
         <h3 class="title4">Descrição</h3>
-        <p style="margin-bottom: 25px;"><?=$obra['descricao']?></p>
+        <p style="margin-bottom: 25px;"><?=$obra['descricao_pt']?></p>
         <p><b>Arquitecto:</b> Rui Rosmaninho</p>
         <p><b>Serralharia:</b> Metaloviana (FC/PS), Metalcovo (QS)</p>
         <p><b>Cor:</b> 7009 cinzento texturado (FC/PS), AC00 (QS)</p>
@@ -164,7 +164,7 @@
                                 <div class="col-sm-2">
                                     <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                        <p><?php echo $produto['nome'] ?></p>
+                                        <p><?php echo $produto['nome_pt'] ?></p>
                                     </a>
                                 </div>
                                 <?php
@@ -190,7 +190,7 @@
                             <div class="col-sm-2">
                                 <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                    <p><?php echo $obra['nome'] ?></p>
+                                    <p><?php echo $obra['nome_pt'] ?></p>
                                 </a>
                             </div>
                             <?php
