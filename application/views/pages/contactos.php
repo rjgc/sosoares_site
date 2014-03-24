@@ -1,6 +1,5 @@
 <main>
     <div id="map">
-        <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d96868.18880989288!2d-8.624477926982228!3d40.649044815449514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-PT!2spt!4v1394463965090" width="100%" height="380" frameborder="0" style="border:0"></iframe>-->
         <div id="map-canvas"></div>
     </div>
     <div class="container">

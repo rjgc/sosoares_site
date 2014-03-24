@@ -41,8 +41,8 @@ function initialize() {
         }
     ];
 
-    var image1 = 'img/markerM.png';
-    var image2 = 'img/markerPG.png';
+    var image1 = '../../../../assets/sosoares/img/35anos.jpg';
+    var image2 = 'img/35anos.jpg';
     var image3 = 'img/markerLove.png';
 
     var styledMap = new google.maps.StyledMapType(styles,
@@ -51,7 +51,7 @@ function initialize() {
 
     var mapOptions = {
         center: new google.maps.LatLng(40.754062,-8.505959),
-        zoom: 10,
+        zoom: 6,
         panControl: false,
         mapTypeControl: false,
         disableDefaultUI: true,
