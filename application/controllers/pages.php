@@ -251,6 +251,20 @@ public function apoio_cliente_list()
 	$this->load->view('templates/footer');
 }
 
+public function candidaturas()
+{
+	$data['current'] = 'apoio_cliente_list';
+	$this->menu_produtos($data);
+
+	$this->load->view('pages/candidatura', $data);
+	$this->load->view('templates/footer');
+}
+
+
+
+
+
+
 /* public function empresa($pagina = 'historia')
 {
 //if(isset($tipo))

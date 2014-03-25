@@ -56,7 +56,33 @@
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                    <li class="menu-title <?php echo ( isset($current) && $current === 'grupo_caixilharia' ) ? 'curr' : ''?>"><a href="#"><?=lang('grupo')?></a></li>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
+                    <ul class="dropdown-menu">
+                            <li class="grid-demo">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#">Quem somos</a></h3>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#">Onde estamos</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#">Notícias</a></h3>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/candidaturas')?>">Candidaturas</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' || $current === 'produtos_list') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('produtos')?></a>
                         <ul class="dropdown-menu">
                             <li class="grid-demo">
