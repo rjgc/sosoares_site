@@ -10,7 +10,7 @@
     </div>
     <div class="alert alert-warning">
         <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('pages/produtos_list')?>">Voltar atrás.</a></h5>
-    </div>
+    </div>  
 </div>
 <?php } else {?>
 <li><a href="<?=site_url('pages/produtos_list/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
@@ -96,26 +96,15 @@ $y++;
 <div class="col-md-5">
     <div class="descricao">
         <h3 class="title4">Descrição</h3>
-        <p style="margin-bottom: 25px;"><?=$produto['descricao_'.$this->lang->lang()]?></p>
-        <p><b>Aros Fixos:</b><?=$produto['aro_fixo']?></p>
-        <p><b>Aros Móveis:</b><?=$produto['aro_movel']?></p>
-        <p><b>Aros Centrais:</b><?=$produto['aros_centrais']?></p>
-        <p><b>Vista Lateral:</b><?=$produto['vista_lateral']?></p>
-        <p><b>Vista Central:</b><?=$produto['vista_central']?></p>
-        <p><b>Vistas Superior e Inferior:</b><?=$produto['vista_superior_inferior']?></p>
-        <p><b>Enchimento:</b><?=$produto['enchimento']?></p>
+        <div>
+            
+        </div>        
     </div>
     <div class="descricao" style="margin-bottom: 50px;">
         <h3 class="title4" style="margin-top: 80px;">Resultados de Ensaio</h3>
-        <p style="margin-bottom: 25px;">Marcação CE (NP EN 14351 - 1)</p>
-        <p><b>Permeabilidade ao Ar:</b>	Classe 3</p>
-        <p><b>Estanquidade à Água:</b>	Classe 7A</p>
-        <p><b>Resistência ao Vento:</b>	Classe B2</p>
-        <p>&nbsp;</p>
-
-        <p><b>Área máxima da folha:</b><?=$produto['area_maxima']?></p>
-        <p><b>Peso máximo da folha móvel:</b><?=$produto['peso_maximo']?></p>
-        <p><b>Altura máxima da folha móvel:</b><?=$produto['altura_maxima']?></p>
+        <div>
+            
+        </div> 
     </div>
 </div>
 <!--/accordion-->
@@ -148,7 +137,13 @@ $y++;
     </div>
     <h3 class="btn button button2">ITTs</h3>
     <div>
-        <a href="#"><li><?=$produto['ensaio']?></li></a>
+        <?php if (!empty($ensaios)) {
+            foreach ($ensaios as $ensaio) { ?>
+            <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <?php }
+        } else { ?>
+        <li>Sem ensaios</li>
+        <?php } ?>
     </div>
     <h3 class="btn button button2">Pormenores</h3>
     <div>

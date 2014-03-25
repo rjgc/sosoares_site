@@ -51,71 +51,71 @@ class Product_model extends CI_Model
 
 	//MENU PRODUTOS
 
-	public function get_batentes_com_corte(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Batente' and cpa.nome_pt = 'Com Corte Térmico'");
+	public function get_batentes_com_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Batente' and cpa.nome_pt = 'Com Corte Térmico'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_batentes_sem_corte(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Batente' and cpa.nome_pt = 'Sem Corte Térmico'");
+	public function get_batentes_sem_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Batente' and cpa.nome_pt = 'Sem Corte Térmico'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_aluminios_madeira(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Aluminio Madeira'");
+	public function get_aluminios_madeira($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Aluminio Madeira'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_correres_com_corte(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Correr' and cpa.nome_pt = 'Com Corte Térmico'");
+	public function get_correres_com_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Correr' and cpa.nome_pt = 'Com Corte Térmico'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_correres_sem_corte(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Correr' and cpa.nome_pt = 'Sem Corte Térmico'");
+	public function get_correres_sem_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Correr' and cpa.nome_pt = 'Sem Corte Térmico'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_gradeamentos(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Gradeamentos'");
+	public function get_gradeamentos($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Gradeamentos'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_fachadas(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Fachada/Quebra-Sol'");
+	public function get_fachadas($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Fachada/Quebra-Sol'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_portadas(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Portadas'");
+	public function get_portadas($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Portadas'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_portoes(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Portões'");
+	public function get_portoes($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Portões'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function get_standards(){
-		$query = $this->db->query("select pa.nome_pt, pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Standards'");
+	public function get_standards($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Standards'");
 
 		$data = $query->result_array();
 		return $data;
@@ -123,22 +123,29 @@ class Product_model extends CI_Model
 
 	//PAGINA PRODUTO
 
-	public function get_produto_aluminio_com_caracteristica($id){
-		$query = $this->db->query("select pa.*, tpa.nome_pt as tipo, cpa.nome_pt as caracteristica, ea.nome_pt as ensaio from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join caracteristicas_produto_aluminio cpa inner join ensaios_aluminio ea inner join ensaios_aluminio_produtos eap where pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and ea.id_ensaio_aluminio=eap.ensaio_aluminio_id and eap.produto_aluminio_id=pa.id_produto_aluminio and pa.id_produto_aluminio='$id'");	
+	public function get_produto_aluminio_com_caracteristica($id, $lang){
+		$query = $this->db->query("select pa.*, tpa.nome_".$lang." as tipo, cpa.nome_pt as caracteristica from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio inner join caracteristicas_produto_aluminio cpa on pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio where pa.id_produto_aluminio='$id'");	
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_produto_aluminio_sem_caracteristica($id){
-		$query = $this->db->query("select pa.*, tpa.nome_pt as tipo, ea.nome_pt as ensaio from produtos_aluminio pa inner join tipos_produto_aluminio tpa inner join ensaios_aluminio ea inner join ensaios_aluminio_produtos eap where pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and ea.id_ensaio_aluminio=eap.ensaio_aluminio_id and eap.produto_aluminio_id=pa.id_produto_aluminio and pa.id_produto_aluminio='$id'");
+	public function get_produto_aluminio_sem_caracteristica($id, $lang){
+		$query = $this->db->query("select pa.*, tpa.nome_".$lang." as tipo from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio where pa.id_produto_aluminio='$id''$id'");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_obras($id){
-		$query = $this->db->query("select o.nome_pt as nome_pt, o.id_obra as id, og.url as url from obras o inner join (SELECT id_obra, MIN(id), url, priority FROM obras_gallery GROUP BY id_obra) og on o.id_obra=og.id_obra inner join produtos_aluminio_obras pao inner join produtos_aluminio pa where pa.id_produto_aluminio=pao.produto_aluminio_id and og.id_obra=pao.obra_id and pa.id_produto_aluminio='$id'");
+	public function get_ensaios($id, $lang){
+		$query = $this->db->query("select ea.* from ensaios_aluminio ea inner join ensaios_aluminio_produtos eap on ea.id_ensaio_aluminio = eap.ensaio_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = eap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_obras($id, $lang){
+		$query = $this->db->query("select o.nome_pt as nome_".$lang.", o.id_obra as id, og.url as url from obras o inner join (SELECT id_obra, MIN(id), url, priority FROM obras_gallery GROUP BY id_obra) og on o.id_obra=og.id_obra inner join produtos_aluminio_obras pao inner join produtos_aluminio pa where pa.id_produto_aluminio=pao.produto_aluminio_id and og.id_obra=pao.obra_id and pa.id_produto_aluminio='$id'");
 
 		$data = $query->result_array();
 		return $data;
