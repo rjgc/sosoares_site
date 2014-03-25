@@ -38,26 +38,21 @@
 |
 */
 
-/*$route['default_controller'] = "welcome";
-$route['404_override'] = '';*/
-
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-$controller_exceptions = array("mediagest", "cizacl","login/check_login", "login/logout", "login_js/scripts","api/(:any)");
-/*
+$controller_exceptions = array("mediagest", "cizacl", "login/check_login", "login/logout", "login_js/scripts", "api/(:any)");
+
 // example: '/en/about' -> use controller 'about'
 $route['^pt/(.+)$'] = "$1";
 $route['^en/(.+)$'] = "$1";
 $route['^fr/(.+)$'] = "$1";
-$route['^de/(.+)$'] = "$1";
+$route['^es/(.+)$'] = "$1";
  
 // '/en' and '/pt' -> use default controller
 $route['^pt$'] = $route['default_controller'];
 $route['^en$'] = $route['default_controller'];
 $route['^fr$'] = $route['default_controller'];
-$route['^de$'] = $route['default_controller'];
-*/
-
+$route['^es$'] = $route['default_controller'];
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

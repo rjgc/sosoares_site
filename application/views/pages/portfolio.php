@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
-                <li><a href="<?php echo base_url();?>index.php/pages/portfolio_caixilharia">Portfolio Obras</a></li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
+                <li><a href="<?=site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
                 <li><?=$obra['nome_pt']?></li>
             </ul>
             <h1 class="title3"><?=$obra['nome_pt']?></h1>
@@ -162,7 +162,7 @@
                                 $produto = $produtos_aluminio_obra[$i];
                                 ?>
                                 <div class="col-sm-2">
-                                    <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                    <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                         <p><?php echo $produto['nome_pt'] ?></p>
                                     </a>
@@ -188,7 +188,7 @@
                             $produto = $produtos_aluminio_obra[$i];
                             ?>
                             <div class="col-sm-2">
-                                <a href="<?=base_url('index.php/pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                     <p><?php echo $obra['nome_pt'] ?></p>
                                 </a>

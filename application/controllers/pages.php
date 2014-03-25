@@ -22,287 +22,131 @@ function __construct()
 {
 	parent::__construct();
 
-// you might want to just autoload these two helpers
+	// you might want to just autoload these two helpers
 	$this->load->helper('language');
 	$this->load->helper('url');
 	$this->load->helper('text');
 
-// load language file
-/*	$this->lang->load('gestinfor');
-
-*/
-$this->load->model('company_model');
-$this->load->model('product_model');
-$this->load->model('apoio_cliente_model');
-/*$this->load->model('news_model');
-$this->load->model('home_model');
-$this->load->model('xml2mysql');
-$this->load->model('formacao_model');*/
+	$this->load->model('company_model');
+	$this->load->model('product_model');
+	$this->load->model('apoio_cliente_model');
 }
 
 
 public function index()
 {
 	$this->home();        
-/*$result = $this->company_model->gest_page('1');
-$data['news'] = $this->news_model->get_news();
-
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-//$this->load->view('templates/carousel');
-$this->load->view('home');
-$this->load->view('templates/footer', $data);*/
-
 }
 
 public function home()
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'home';
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-$data['current'] = 'home';
-
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-$this->load->view('templates/carousel_caixilharia');
-$this->load->view('pages/caixilharia',$data);
-$this->load->view('templates/footer');
-
+	$this->load->view('templates/carousel_caixilharia');
+	$this->load->view('pages/caixilharia', $data);
+	$this->load->view('templates/footer');
 }
 
 public function home_caixilharia()
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'home_caixilharia';
+	$this->menu_produtos($data);
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['current'] = 'home_caixilharia';
-$this->menu_produtos($data);
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-$this->load->view('templates/carousel_caixilharia');
-$this->load->view('pages/caixilharia',$data);
-$this->load->view('templates/footer');
+	$this->load->view('templates/carousel_caixilharia');
+	$this->load->view('pages/caixilharia', $data);
+	$this->load->view('templates/footer');
 }
 
 public function home_vidro()
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'home_vidro';
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-$data['current'] = 'home_vidro';
-
-$this->load->view('templates/header_vidro');
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-$this->load->view('templates/carousel_vidro');
-$this->load->view('pages/vidro',$data);
-$this->load->view('templates/footer');
-
+	$this->load->view('templates/header_vidro');
+	$this->load->view('templates/carousel_vidro');
+	$this->load->view('pages/vidro', $data);
+	$this->load->view('templates/footer');
 }
 
 public function home_extrusao()
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'home_extrusao';
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-$data['current'] = 'home_extrusao';
-
-$this->load->view('templates/header_extrusao');
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-$this->load->view('templates/carousel_extrusao');
-$this->load->view('pages/extrusao',$data);
-$this->load->view('templates/footer');
-
+	$this->load->view('templates/header_extrusao');
+	$this->load->view('templates/carousel_extrusao');
+	$this->load->view('pages/extrusao',$data);
+	$this->load->view('templates/footer');
 }
 
 public function home_tratamento()
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'home_tratamento';
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-$data['current'] = 'home_tratamento';
-
-$this->load->view('templates/header_tratamento');
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-$this->load->view('templates/carousel_tratamento');
-$this->load->view('pages/tratamento',$data);
-$this->load->view('templates/footer');
-
+	$this->load->view('templates/header_tratamento');
+	$this->load->view('templates/carousel_tratamento');
+	$this->load->view('pages/tratamento',$data);
+	$this->load->view('templates/footer');
 }
-
-/*public function portfolio_list_caixilharia()
-{
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
-
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-/*$data['galeria_obra'] = $this->company_model->get_galeria_obra(183);
-$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-$this->load->view('templates/header_caixilharia');
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-//$this->load->view('templates/carousel_caixilharia');
-$this->load->view('pages/portfolio_list', $data);
-$this->load->view('templates/footer');
-}*/
 
 public function portfolio_caixilharia($id=null)
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	$data['id'] = $id;
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'portfolio_caixilharia';
+	$this->menu_produtos($data);
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
+	if($id != null){
+		$data['obra'] = $this->company_model->get_obra($id);
+		$data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
+		$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id);
 
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
+		$this->load->view('pages/portfolio', $data);
+	}
+	else{
+		$data['obras'] = $this->company_model->get_obras();
 
+		$this->load->view('pages/portfolio_list', $data);
+	}
 
-/*$data['produto_aluminio'] = $this->company_model->get_produto_aluminio(1);
-$data['galeria_obras'] = $this->company_model->get_galeria_obras();
-$data['produtos_aluminio'] = $this->company_model->get_produtos_aluminio();
-//$data['obra'] = $this->company_model->get_obra();
-$data['obras'] = $this->company_model->get_obras();*/	
-$data['id'] = $id;
-$data['current'] = 'portfolio_caixilharia';
-$this->menu_produtos($data);
-
-if($id != null){
-	$data['obra'] = $this->company_model->get_obra($id);
-	$data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
-	$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id);
-//$this->load->view('new',$data);
-	$this->load->view('pages/portfolio', $data);
-}
-else{
-	$data['obras'] = $this->company_model->get_obras();
-	$this->load->view('pages/portfolio_list', $data);
-}
-//$this->load->view('pages/portfolio', $data);
-
-$this->load->view('templates/footer');
+	$this->load->view('templates/footer');
 }
 
 public function produto_caixilharia($id=null)
 {
-//$result = $this->company_model->gest_page('1');
-/*$data['news'] = $this->news_model->get_news();
+	$data['id'] = $id;
+	//$data['title'] = lang('indelague.home');
+	$data['current'] = 'produto_caixilharia';
+	$this->menu_produtos($data);
 
-$data['cursos'] = $this->home_model->get_cursos($this->lang->lang());
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
+	if ($id != null) {
+		$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
 
-$data['title'] = lang('indelague.home');
-$data['current'] = 'home';
-*/
-$data['id'] = $id;
-$data['current'] = 'produto_caixilharia';
-$this->menu_produtos($data);
+		$produto;
 
-if ($id != null) {
-	$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
+		if (!empty($data['caracteristicas'])) {
+			$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id);
+		} else {
+			$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id);
+		}
 
-	$produto;
+		$data['produto'] = $produto;
+		$data['obras'] = $this->product_model->get_obras($id);
 
-	if (!empty($data['caracteristicas'])) {
-		$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id);
+		$this->load->view('pages/produto',$data);
 	} else {
-		$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id);
+		$this->load->view('pages/produto',$data);
 	}
 
-	$data['produto'] = $produto;
-	$data['obras'] = $this->product_model->get_obras($id);
-//$this->load->view('templates/nav', $data);
-//$this->load->view('templates/sidebar', $data);
-//$this->load->view('templates/carousel_caixilharia');		
-	$this->load->view('pages/produto',$data);
-} else {
-	$this->load->view('pages/produto',$data);
+	$this->load->view('templates/footer');
 }
 
-$this->load->view('templates/footer');
-}
-
-public function produtos_list($id_tipo_produto_aluminio=null){	
+public function produtos_list($id_tipo_produto_aluminio=null)
+{	
+	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'produtos_list';
 	$this->menu_produtos($data);
 
@@ -329,6 +173,7 @@ public function produtos_list($id_tipo_produto_aluminio=null){
 	}
 	else {
 		$data['tipos'] = $this->product_model->get_tipos_produtos_aluminio();
+
 		$this->load->view('pages/produtos_list', $data);
 	}
 
@@ -352,18 +197,21 @@ public function menu_produtos($data) {
 
 public function contactos_caixilharia()
 {
+	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'contactos_caixilharia';
 	$this->menu_produtos($data);
 
-	/*$this->load->view('templates/header_caixilharia', $data);*/
+	//$this->load->view('templates/header_caixilharia', $data);
 	$this->load->view('pages/contactos');
 	$this->load->view('templates/footer');
 }
 
-public function apoio_cliente($page=null) {
+public function apoio_cliente($page=null) 
+{
+	$data['page'] = $page;
+	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'apoio_cliente';
 	$this->menu_produtos($data);
-	$data['page'] = $page;
 
 	if ($page != null) {
 		$data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -372,12 +220,16 @@ public function apoio_cliente($page=null) {
 	} else {
 		$this->load->view('pages/apoio_cliente', $data);
 	}
+
 	$this->load->view('templates/footer');
 }
 
-public function apoio_cliente_list() {
+public function apoio_cliente_list() 
+{
+	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'apoio_cliente_list';
 	$this->menu_produtos($data);
+
 	$paginas;
 	$y=0;
 

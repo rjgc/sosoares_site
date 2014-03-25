@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Início</a></li>
-                <li><a href="<?php echo base_url();?>index.php/pages/apoio_cliente_list">Apoio ao Cliente</a></li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
+                <li><a href="<?=site_url('pages/apoio_cliente_list')?>">Apoio ao Cliente</a></li>
                 <?php if (!empty($page)) { ?>
                 <li><?php echo $page['titulo_pt'] ?></li>
             </ul>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="alert alert-warning">
-    <h5><strong>Atenção!</strong> Tem de seleccionar uma página de apoio ao cliente. <a href="<?php echo base_url();?>index.php/pages/apoio_cliente_list">Voltar atrás.</a></h5>
+    <h5><strong>Atenção!</strong> Tem de seleccionar uma página de apoio ao cliente. <a href="<?=site_url('pages/apoio_cliente_list')?>">Voltar atrás.</a></h5>
 </div>
 <?php } ?>
 </div>
