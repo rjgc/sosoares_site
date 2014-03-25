@@ -66,7 +66,7 @@ header .container .row {position: relative;min-height: 65px;}
 
 .pages-img {display: inline-block;position:absolute;left:200px;margin: 5px;}
 .pages-img a {margin: 0 3px;}
-.font {font-size: 312.5%;color: #fff;font-weight: 100;}
+.font {font-size: 375.5%;color: #fff;font-weight: 100;}
 .font-active {color: #01aef0!important;}
 
 .form {width: 175px;display: inline-block;position: absolute;bottom: 0;right: 130px;}
@@ -172,15 +172,13 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .icon-tras{font-size: 33px;padding-top: 14px;padding-right: 30px;}
 .icon-frente{font-size: 33px;padding-top: 14px;}
 
-.obras-list {width: 250px;height: 230px;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
-.obras-list img {position: absolute;width: 250px;height: 230px;border-radius: 10px;}
+div.obras-container a {width: 256px;height: 230px;display:inline-block;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
+.obras-list {margin: 0; display:inline-block;width: 100%;height: 100%;}
+.obras-list img {position: absolute;width: 100%;height: 100%;border-radius: 10px;}
 .obras-list p {position: absolute;z-index: 9;font-size: 18px;bottom: 0;left: 19px;width: 82%;color: #FFFFFF !important;}
-div.obras-container {
-    display: inline-block;
-    padding: 0 20px;
-}
+div.obras-container {display: inline-block;padding: 0 10px;margin: 0 auto;position: relative;}
 
-/* **************************** MAPS ********************************** */
+/*============================== MAPS ===================================*/
 #map-canvas {
     width: 100%;
     height: 500px;
@@ -193,8 +191,6 @@ div#map, div#map div {
     transition: none;
 }
 
-
-
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
     .slider-h1 {font-size: 25px;}
@@ -202,7 +198,13 @@ div#map, div#map div {
     .col-md-4 .title1 {margin: 20px 0 10px;}
     footer .col-md-9 {width: 60%;}
     .carousel-caption {width: 80%;}
-    div.obras-container {max-width: 900px;margin: 0 auto;}
+}
+
+@media screen and (max-width: 1184px) {
+    div.obras-container a, .obras-list, .obras-list img {position: relative;float: none}
+    .obras-list {margin: 0}
+    .obras-list img {position: relative;}
+    div.obras-container {text-align: center;}
 }
 
 @media (max-width: 991px) {

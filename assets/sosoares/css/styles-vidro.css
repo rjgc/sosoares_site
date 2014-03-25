@@ -4,5 +4,7 @@ nav, .navbar {background-color: #01adef;}
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #054568;}
 .curr {background-color: #2576a3;}
+.font {font-size: 305.5%;}
 
 .menu-h3, .li-b {color: #04adf2;}
+

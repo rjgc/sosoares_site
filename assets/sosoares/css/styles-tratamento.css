@@ -4,6 +4,7 @@ nav, .navbar {background-color: #585858;}
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #484848;}
 .curr {background-color: #555050;}
+.font {font-size: 305.5%;}
 
 .menu-h3, .li-b {color: #000;}
 .grid-demo .row .row [class*="col-"] {border-left: 1px solid #585858;}
