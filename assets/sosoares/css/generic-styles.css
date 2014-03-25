@@ -175,6 +175,25 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .obras-list {width: 250px;height: 230px;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 .obras-list img {position: absolute;width: 250px;height: 230px;border-radius: 10px;}
 .obras-list p {position: absolute;z-index: 9;font-size: 18px;bottom: 0;left: 19px;width: 82%;color: #FFFFFF !important;}
+div.obras-container {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+/* **************************** MAPS ********************************** */
+#map-canvas {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+div#map, div#map div {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
+}
+
+
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
@@ -183,6 +202,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     .col-md-4 .title1 {margin: 20px 0 10px;}
     footer .col-md-9 {width: 60%;}
     .carousel-caption {width: 80%;}
+    div.obras-container {max-width: 900px;margin: 0 auto;}
 }
 
 @media (max-width: 991px) {
@@ -231,17 +251,4 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     .pages-img a {margin: 0}
     header .form {width: 100%;display: block;top: 100px;left: 0!important;}
     header .form #search {width: 83%;display: inline-block;}
-}
-
-/* **************************** MAPS ********************************** */
-#map-canvas {
-    width: 100%;
-    height: 500px;
-    display: block;
-}
-div#map, div#map div {
-    -moz-transition: none;
-    -webkit-transition: none;
-    -o-transition: color 0 ease-in;
-    transition: none;
 }

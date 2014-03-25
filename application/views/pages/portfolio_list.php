@@ -22,7 +22,7 @@ return strtolower($string);
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="">
+            <div class="obras-container">
                 <?php if (!empty($obras)) {
                     foreach ($obras as $obra){
                         ?>
