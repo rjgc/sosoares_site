@@ -18,7 +18,7 @@
             <!-- /row -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="">
+                    <div class="obras-container">
                         <?php
                         if (!empty($produtos[$caracteristica['nome_pt']])) {
                             foreach ($produtos[$caracteristica['nome_pt']] as $produto){

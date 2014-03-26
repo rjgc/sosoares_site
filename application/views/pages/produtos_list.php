@@ -8,11 +8,10 @@
             <h1 class="title3">Produtos Alumínio</h1>
         </div>
     </div>
-
     <div>
         <div class="row">
             <div class="col-md-12">
-                <div class="">
+                <div class="obras-container">
                     <?php 
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){

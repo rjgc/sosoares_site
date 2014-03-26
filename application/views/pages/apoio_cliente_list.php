@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="">
+            <div class="obras-container">
             <?php if (!empty($pages)) {
                     for ($i=0; $i < count($pages); $i++) { 
                         foreach ($pages[$i] as $page){

@@ -97,13 +97,13 @@ $y++;
     <div class="descricao">
         <h3 class="title4">Descrição</h3>
         <div>
-            
+            <p><?php echo $produto['descricao_'.$this->lang->lang()]; ?></p>
         </div>        
     </div>
     <div class="descricao" style="margin-bottom: 50px;">
         <h3 class="title4" style="margin-top: 80px;">Resultados de Ensaio</h3>
         <div>
-            
+            <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
         </div> 
     </div>
 </div>
