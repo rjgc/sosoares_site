@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li>Portfolio Obras</li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><?=lang('portfolio')?></li>
             </ul>
-            <h1 class="title3">Portfolio Obras</h1>
+            <h1 class="title3"><?=lang('portfolio')?></h1>
         </div>
     </div>
     <div class="row">
@@ -14,7 +14,7 @@
                 <?php if (!empty($obras)) {
                     foreach ($obras as $obra){
                         ?>
-                        <a href="<?=site_url('pages/portfolio_caixilharia/'.$obra['id_obra'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>"/><p> <?php echo $obra['nome_pt'] ?></p></div></a> 
+                        <a href="<?=site_url('pages/portfolio_caixilharia/'.$obra['id_obra'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>"/><p> <?php echo $obra['nome_'.$this->lang->lang()] ?></p></div></a> 
                         <?php
                     }
                 } else {?>

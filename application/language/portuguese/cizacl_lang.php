@@ -41,6 +41,22 @@ $lang["home"] = "Início";
 
 $lang["grupo"] = "Grupo Sosoares";
 
+	$lang["quem"] = "Quem Somos";
+
+	$lang["onde"] = "Onde Estamos";
+
+	$lang["missao"] = "Missão e Valores";
+
+	$lang["responsabilidade"] = "Responsabilidade Social";
+
+	$lang["mercados"] = "Mercado Alvo";	
+
+	$lang["comerciais"] = "Áreas Comerciais";
+
+	$lang["noticias"] = "Notícias";
+
+	$lang["candidaturas"] = "Candidaturas";
+
 $lang["produtos"] = "Produtos Alumínio";
 
 	$lang["batente"] = "Batente";
@@ -86,7 +102,92 @@ $lang["apoio"] = "Apoio ao Cliente";
 $lang["contactos"] = "Contactos";
 
 
+/*Header*/
+
+
+$lang["pesquisar"] = "Pesquisar";
+
+
+/*Footer*/
+
+
+$lang["direitos"] = "Todos os Direitos Reservados";
+
+
+/*Paginas*/
+
+/*Home*/
+
+
+$lang["conhecer"] = "Conhecer";
+
+$lang["destaque"] = "Em Destaque";
+
+$lang["newsletter"] = "Acompanhe o nosso trabalho, subscreva a nossa newsletter.";
+
+$lang["ler"] = "Ler Mais";
+
+$lang["subscrever"] = "Subscrever";
+
+
+/*Candidaturas*/
+
+
+$lang["dados"] = "Dados Pessoais";
+
+$lang["nome"] = "Nome";
+
+$lang["email"] = "E-mail";
+
+$lang["telefone"] = "Telefone";
+
+$lang["telemovel"] = "Telemóvel";
+
+$lang["cv"] = "Curriculum Vitae";
+
+$lang["apresentacao"] = "Apresnetação";
+
+$lang["obrigatorio"] = "Campo Obrigatório";
+
+$lang["limpar"] = "Limpar";
+
+$lang["enviar"] = "Enviar";
+
+
+/*Produtos*/
+
+
+$lang["info"] = "+Info";
+
+$lang["corte"] = "Corte";
+
+$lang["perfis"] = "Perfis";
+
+$lang["pormenores"] = "Pormenores";
+
+$lang["catalogo"] = "Catálogo Técnico";
+
+$lang["itt"] = "ITTs";
+
+$lang["resumo"] = "Resumos";
+
+$lang["descricao"] = "Descrição";
+
+$lang["resultados"] = "Resultados de Ensaio";
+
+$lang["obras"] = "Obras relacionadas com este produto";
+
+
+/*Portfolio*/
+
+
+$lang["modo"] = "Modo";
+
+$lang["produto"] = "Soluções implementadas neste projecto";
+
+
 /**/
+
 
 $lang["library_not_loaded"]		= "CIzACL library not loaded!";
 

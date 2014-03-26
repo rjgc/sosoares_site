@@ -28,7 +28,7 @@
                 </div>
                 <div class="form">
                     <form>
-                        <input type="search" class="form-control" id="search" name="search" placeholder="Pesquisar" />
+                        <input type="search" class="form-control" id="search" name="search" placeholder="<?=lang('pesquisar')?>" />
                         <button id="searchButton" class="btn btn-default"><i class="icon-search"></i></button>
                     </form>
                 </div>
@@ -60,23 +60,43 @@
                     <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="#">Quem somos</a></h3>
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos')?>"><?=lang('quem')?></a></h3>
                                             </div>
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="#">Onde estamos</a></h3>
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('onde')?></a></h3>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="#">Notícias</a></h3>
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('missao')?></a></h3>
                                             </div>
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/candidaturas')?>">Candidaturas</a></h3>
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('responsabilidade')?></a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('mercados')?></a></h3>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('comerciais')?></a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
                                             </div>
                                         </div>
                                     </div>

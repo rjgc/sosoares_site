@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li><a href="<?=site_url('pages/produtos_list')?>">Produtos Alumínio</a></li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('pages/produtos_list')?>"><?=lang('produtos')?></a></li>
                 <?php if(empty($id)) {?>
             </ul>
         </div>
@@ -95,13 +95,13 @@ $y++;
 </div>
 <div class="col-md-5">
     <div class="descricao">
-        <h3 class="title4">Descrição</h3>
+        <h3 class="title4"><?=lang('descricao')?></h3>
         <div>
             <p><?php echo $produto['descricao_'.$this->lang->lang()]; ?></p>
         </div>        
     </div>
     <div class="descricao" style="margin-bottom: 50px;">
-        <h3 class="title4" style="margin-top: 80px;">Resultados de Ensaio</h3>
+        <h3 class="title4" style="margin-top: 80px;"><?=lang('resultados')?></h3>
         <div>
             <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
         </div> 
@@ -109,9 +109,9 @@ $y++;
 </div>
 <!--/accordion-->
 <div class="col-md-3">
-    <h2 class="title4">+Informações</h2>
+    <h2 class="title4"><?=lang('info')?></h2>
     <div id="accordion">
-        <h3 class="btn button button2">Cortes</h3>
+        <h3 class="btn button button2"><?=lang('corte')?></h3>
         <div>
             <?php 
             $i=1; 
@@ -128,14 +128,24 @@ $y++;
             $i++;
         }
         ?>   
-    </div>                                          
-    <h3 class="btn button button2">Catálogo Técnico</h3>
+    </div>  
+    <h3 class="btn button button2"><?=lang('perfis')?></h3>
     <div>
         <ul>
-            <a href="#"><li>Catálogo</li></a>
+            <a href="#"><li>teste</li></a>
+        </ul>
+    </div> 
+    <h3 class="btn button button2"><?=lang('pormenores')?></h3>
+    <div>
+        <p>teste</p>
+    </div>                                       
+    <h3 class="btn button button2"><?=lang('catalogo')?></h3>
+    <div>
+        <ul>
+            <a href="#"><li>teste</li></a>
         </ul>
     </div>
-    <h3 class="btn button button2">ITTs</h3>
+    <h3 class="btn button button2"><?=lang('itt')?></h3>
     <div>
         <?php if (!empty($ensaios)) {
             foreach ($ensaios as $ensaio) { ?>
@@ -145,9 +155,9 @@ $y++;
         <li>Sem ensaios</li>
         <?php } ?>
     </div>
-    <h3 class="btn button button2">Pormenores</h3>
+    <h3 class="btn button button2"><?=lang('resumo')?></h3>
     <div>
-        <p>asdad asda asda asda adas ada asdasda asda sa</p>
+        <p>teste</p>
     </div>
 </div>
 </div>
@@ -161,7 +171,7 @@ $y++;
             <div id="myCarousel2" class="carousel slide">
                 <div class="row">
                     <div class="col-md-11">
-                        <h3 class="title1" style="margin-bottom: 30px">Obras relacionadas com este produto</h3>
+                        <h3 class="title1" style="margin-bottom: 30px"><?=lang('obras')?></h3>
                     </div>
                     <div class="col-md-1">
                         <ol class="carousel-indicators" style="margin-bottom: -60px">

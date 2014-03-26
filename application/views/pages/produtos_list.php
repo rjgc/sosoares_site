@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li>Produtos Alumínio</li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><?=lang('produtos')?></li>
             </ul>
-            <h1 class="title3">Produtos Alumínio</h1>
+            <h1 class="title3"><?=lang('produtos')?></h1>
         </div>
     </div>
     <div>
@@ -16,7 +16,7 @@
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){
                             ?>
-                            <a href="<?=site_url('pages/produtos_list/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_pt'] ?></p></div></a> 
+                            <a href="<?=site_url('pages/produtos_list/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p></div></a> 
                             <?php }
                         }
                         else {?>

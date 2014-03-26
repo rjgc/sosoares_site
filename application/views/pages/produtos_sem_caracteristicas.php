@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li><a href="<?=site_url('pages/produtos_list')?>">Produtos Alumínio</a></li>
-                <li><?php echo $tipo['nome_pt'] ?></li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('pages/produtos_list')?>"><?=lang('produtos')?></a></li>
+                <li><?php echo $tipo['nome_'.$this->lang->lang()] ?></li>
             </ul>
-            <h1 class="title3">Produtos Alumínio</h1>
+            <h1 class="title3"><?=lang('produtos')?></h1>
         </div>
     </div>
 
     <div>
-        <h4><?php echo $tipo['nome_pt'] ?></h4>
+        <h4><?php echo $tipo['nome_'.$this->lang->lang()] ?></h4>
         <!-- /row -->
         <div class="row">
             <div class="col-md-12">
@@ -20,7 +20,7 @@
                     if (!empty($produtos)) {
                         foreach ($produtos as $produto){
                             ?>
-                            <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_pt'] ?></p></div></a> 
+                            <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p></div></a> 
                             <?php }
                         }
                         else {?>

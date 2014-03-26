@@ -40,12 +40,28 @@
 $lang["home"] = "Home";
 
 $lang["grupo"] = "Group Sosoares";
+	
+	$lang["quem"] = "Who We Are";
+
+	$lang["onde"] = "Where We Are";
+
+	$lang["missao"] = "Mission and Values";
+
+	$lang["responsabilidade"] = "Social Responsibility";
+
+	$lang["mercados"] = "Target Market";	
+
+	$lang["comerciais"] = "Commercial Areas";
+
+	$lang["noticias"] = "News";
+
+	$lang["candidaturas"] = "Candidatures";
 
 $lang["produtos"] = "Aluminum Products";
 
 	$lang["batente"] = "Jamb";
 
-		$lang["com_corte"] = "Thermal";
+		$lang["com_corte"] = "With Thermal";
 
 		$lang["sem_corte"] = "Without Thermal";
 
@@ -86,7 +102,92 @@ $lang["apoio"] = "After-Sales Service";
 $lang["contactos"] = "Contacts";
 
 
+/*Header*/
+
+
+$lang["pesquisar"] = "Search";
+
+
+/*Footer*/
+
+
+$lang["direitos"] = "All Rights Reserved";
+
+
+/*Paginas*/
+
+/*Home*/
+
+
+$lang["conhecer"] = "Experience";
+
+$lang["destaque"] = "Featured";
+
+$lang["newsletter"] = "Follow our work, subscribe to our newsletter.";
+
+$lang["ler"] = "Read More";
+
+$lang["subscrever"] = "Subscribe";
+
+
+/*Candidaturas*/
+
+
+$lang["dados"] = "Personal Data";
+
+$lang["nome"] = "Name";
+
+$lang["email"] = "E-mail";
+
+$lang["telefone"] = "Phone";
+
+$lang["telemovel"] = "Cell Phone";
+
+$lang["cv"] = "Curriculum Vitae";
+
+$lang["apresentacao"] = "Presentation";
+
+$lang["obrigatorio"] = "Required Field";
+
+$lang["limpar"] = "Wipe";
+
+$lang["enviar"] = "Send";
+
+
+/*Produtos*/
+
+
+$lang["info"] = "+Info";
+
+$lang["corte"] = "Cut";
+
+$lang["perfis"] = "Side View";
+
+$lang["pormenores"] = "Details";
+
+$lang["catalogo"] = "Technical Catalogue";
+
+$lang["itt"] = "ITTs";
+
+$lang["resumo"] = "Summaries";
+
+$lang["descricao"] = "Description";
+
+$lang["resultados"] = "Test Results";
+
+$lang["obras"] = "Works related to this product";
+
+
+/*Portfolio*/
+
+
+$lang["modo"] = "Mode";
+
+$lang["produto"] = "Solutions implemented in this project";
+
+
 /**/
+
 
 $lang["library_not_loaded"]		= "CIzACL library not loaded!";
 

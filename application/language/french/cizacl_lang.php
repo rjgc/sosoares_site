@@ -40,6 +40,22 @@
 $lang["home"] = "Home";
 
 $lang["grupo"] = "Groupe Sosoares";
+	
+	$lang["quem"] = "Qui Sommes-Nous";
+
+	$lang["onde"] = "Où Sommes-Nous";
+
+	$lang["missao"] = "Mission et Valeurs";
+
+	$lang["responsabilidade"] = "Responsabilité Sociale";
+
+	$lang["mercados"] = "Marché Cible";	
+
+	$lang["comerciais"] = "Zones Commerciales";
+
+	$lang["noticias"] = "Nouvelles";
+
+	$lang["candidaturas"] = "Candidatures";
 
 $lang["produtos"] = "Produits en Aluminium";
 
@@ -84,6 +100,90 @@ $lang["apoio"] = "Service Client";
 	$lang["faqs"] = "FAQs Systèmes de Cadre";
 
 $lang["contactos"] = "Contacts";
+
+
+/*Header*/
+
+
+$lang["pesquisar"] = "Recherche";
+
+
+/*Footer*/
+
+
+$lang["direitos"] = "Tous Droits Réservés";
+
+
+/*Paginas*/
+
+/*Home*/
+
+
+$lang["conhecer"] = "Connaître";
+
+$lang["destaque"] = "En Vedette";
+
+$lang["newsletter"] = "Suivez notre travail, abonnez-vous à notre newsletter.";
+
+$lang["ler"] = "Lire la Suite";
+
+$lang["subscrever"] = "Souscrire";
+
+
+/*Candidaturas*/
+
+
+$lang["dados"] = "Données Personnelles";
+
+$lang["nome"] = "Nom";
+
+$lang["email"] = "E-mail";
+
+$lang["telefone"] = "Téléphone";
+
+$lang["telemovel"] = "Téléphone Portable";
+
+$lang["cv"] = "Curriculum Vitae";
+
+$lang["apresentacao"] = "Présentation";
+
+$lang["obrigatorio"] = "Champ Obligatoire";
+
+$lang["limpar"] = "Essuyer";
+
+$lang["enviar"] = "Envoyer";
+
+
+/*Produtos*/
+
+
+$lang["info"] = "+Info";
+
+$lang["corte"] = "Cut";
+
+$lang["perfis"] = "Vue Latérale";
+
+$lang["pormenores"] = "Détails";
+
+$lang["catalogo"] = "Catalogue Technique";
+
+$lang["itt"] = "ITTs";
+
+$lang["resumo"] = "Résumés";
+
+$lang["descricao"] = "Description";
+
+$lang["resultados"] = "Résultats des Tests";
+
+$lang["obras"] = "Travaux relatifs à ce produit";
+
+
+/*Portfolio*/
+
+
+$lang["modo"] = "Mode";
+
+$lang["produto"] = "Solutions mises en œuvre dans ce projet";
 
 
 /**/

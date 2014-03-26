@@ -49,7 +49,7 @@ public function home()
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'home';
 
-	$this->load->view('templates/carousel_caixilharia');
+	$this->load->view('templates/carousel_caixilharia', $this->get_lang());
 	$this->load->view('pages/caixilharia', $data);
 	$this->load->view('templates/footer');
 }
@@ -83,7 +83,7 @@ public function home_extrusao()
 
 	$this->load->view('templates/header_extrusao');
 	$this->load->view('templates/carousel_extrusao');
-	$this->load->view('pages/extrusao',$data);
+	$this->load->view('pages/extrusao', $data);
 	$this->load->view('templates/footer');
 }
 
@@ -94,7 +94,7 @@ public function home_tratamento()
 
 	$this->load->view('templates/header_tratamento');
 	$this->load->view('templates/carousel_tratamento');
-	$this->load->view('pages/tratamento',$data);
+	$this->load->view('pages/tratamento', $data);
 	$this->load->view('templates/footer');
 }
 
@@ -110,12 +110,12 @@ public function portfolio_caixilharia($id=null)
 		$data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
 		$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id);
 
-		$this->load->view('pages/portfolio', $data);
+		$this->load->view('pages/portfolio', $data, $this->get_lang());
 	}
 	else{
 		$data['obras'] = $this->company_model->get_obras();
 
-		$this->load->view('pages/portfolio_list', $data);
+		$this->load->view('pages/portfolio_list', $data, $this->get_lang());
 	}
 
 	$this->load->view('templates/footer');
@@ -143,9 +143,9 @@ public function produto_caixilharia($id=null)
 		$data['ensaios'] = $this->product_model->get_ensaios($id, $this->lang->lang());
 		$data['obras'] = $this->product_model->get_obras($id, $this->lang->lang());
 
-		$this->load->view('pages/produto',$data);
+		$this->load->view('pages/produto', $data, $this->get_lang());
 	} else {
-		$this->load->view('pages/produto',$data);
+		$this->load->view('pages/produto', $data, $this->get_lang());
 	}
 
 	$this->load->view('templates/footer');
@@ -170,12 +170,12 @@ public function produtos_list($id_tipo_produto_aluminio=null)
 
 			$data['produtos'] = $produtos;
 
-			$this->load->view('pages/produtos_com_caracteristicas', $data);
+			$this->load->view('pages/produtos_com_caracteristicas', $data, $this->get_lang());
 			
 		} else {
 			$data['produtos'] = $this->product_model->get_produtos_aluminio_tipo($id_tipo_produto_aluminio);			
 
-			$this->load->view('pages/produtos_sem_caracteristicas', $data);
+			$this->load->view('pages/produtos_sem_caracteristicas', $data, $this->get_lang());
 		}
 	}
 	else {
@@ -253,14 +253,21 @@ public function apoio_cliente_list()
 
 public function candidaturas()
 {
-	$data['current'] = 'apoio_cliente_list';
+	$data['current'] = 'candidaturas';
 	$this->menu_produtos($data);
 
 	$this->load->view('pages/candidatura', $data);
 	$this->load->view('templates/footer');
 }
 
+public function quem_somos()
+{
+	$data['current'] = 'quem_somos';
+	$this->menu_produtos($data);
 
+	$this->load->view('pages/quem_somos', $data);
+	$this->load->view('templates/footer');
+}
 
 
 

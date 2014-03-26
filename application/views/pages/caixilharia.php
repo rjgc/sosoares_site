@@ -3,7 +3,7 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="md-3">
-                    <h1 class="title1">Em destaque</h1>
+                    <h1 class="title1"><?=lang('destaque')?></h1>
                 </div>
                 <div class="col-md-9">
 <!--<ol class="carousel-indicators">
@@ -31,7 +31,7 @@
     <div class="col-md-7">
         <p>Serviços estão Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras adipiscing elit at augue adipiscing congue. Proin a elementum sem, mollis egestas elit.</p>
         <a href="#">
-            <button class="btn button shrink">Ler Mais</button>
+            <button class="btn button shrink"><?=lang('ler')?></button>
         </a>
     </div>
     <div class="col-md-1">&nbsp;</div>
@@ -40,7 +40,7 @@
 </div>
 <div class="col-md-4">
     <h1 class="title1">Newsletter</h1>
-    <p>Acompanhe o nosso trabalho, subscreva a nossa newsletter.</p>
+    <p><?=lang('newsletter')?></p>
     <form method="post" role="form">
         <div class="form-group">
             <input class="form-control input" type="text" id="nome" name="nome" placeholder="Nome">
@@ -49,7 +49,7 @@
             <input class="form-control input" id="mail" name="mail" placeholder="E-mail">
         </div>
         <div class="form-group">
-            <input class="btn button shrink" type="submit" id="subs" value="Subscrever">
+            <input class="btn button shrink" type="submit" id="subs" value="<?=lang('subscrever')?>">
         </div>
     </form>
 </div>

@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li><a href="<?=site_url('pages/portfolio_caixilharia')?>">Portfolio Obras</a></li>
-                <li><?=$obra['nome_pt']?></li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('pages/portfolio_caixilharia')?>"><?=lang('portfolio')?></a></li>
+                <li><?=$obra['nome_'.$this->lang->lang()]?></li>
             </ul>
-            <h1 class="title3"><?=$obra['nome_pt']?></h1>
+            <h1 class="title3"><?=$obra['nome_'.$this->lang->lang()]?></h1>
         </div>
     </div>
     <div class="row">
@@ -89,17 +89,7 @@
 <div class="col-md-5">
     <div class="descricao">
         <h3 class="title4">Descrição</h3>
-        <p style="margin-bottom: 25px;"><?=$obra['descricao_pt']?></p>
-        <p><b>Arquitecto:</b> Rui Rosmaninho</p>
-        <p><b>Serralharia:</b> Metaloviana (FC/PS), Metalcovo (QS)</p>
-        <p><b>Cor:</b> 7009 cinzento texturado (FC/PS), AC00 (QS)</p>
-        <p><b>Sistema:</b></p>
-        <ul>
-            <li><p>FC - Sistema de fachadas ligeiras</p></li>
-            <li><p>PS - Sistema de portas de batente para uso intensivo</p></li>
-            <li><p>QS - Sistema de lâminas quebra sol</p></li>
-        </ul>
-        <p>Nec luctus tortor pharetra. Quisque et lectus eget arcu vestibulum lobortis quis in sem. In non nibh dui. Nulla scelerisque dictum augue, et vestibulum erat tempor sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+        <p style="margin-bottom: 25px;"><?=$obra['descricao_'.$this->lang->lang()]?></p>
     </div>
 </div>
 </div>
