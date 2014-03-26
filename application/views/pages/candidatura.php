@@ -1,4 +1,4 @@
-<div class="container candidaturas">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
@@ -9,11 +9,11 @@
             <h1 class="title3"><?=lang('candidaturas')?></h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row candidaturas">
         <div class="col-md-8">
             <form method="get">
                 <fieldset>
-                    <legend><?=lang('pesquisar')?></legend>
+                    <legend><?=lang('dados')?></legend>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                         <div class="col-sm-10">
@@ -44,15 +44,12 @@
                             <input class="form-control" id="cv" name="cv" type="file">
                         </div>
                     </div>
-                    <div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5"></textarea>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5"></textarea>
                         </div>
                     </div>
-
                     <div class="row">
                         <span style="display: inline-block">* <?=lang('obrigatorio')?></span>
                         <div style="float: right;margin: 15px 30px">
