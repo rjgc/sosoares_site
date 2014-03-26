@@ -6,58 +6,40 @@
         <div class="contactus">
             <div class="row">
                 <div class="col-md-3">
-                    <h3>Sede Gres Panaria</h3>
-                    <span id="mails"><a href="mailto:grespanaria@grespanaria.pt">grespanaria@grespanaria.pt</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Z.I. de Aveiro</p>
-                    <p>Apartado 3002</p>
-                    <p>3801-101 Aveiro</p>
+                    <h3>Departamento Administrativo</h3>
+                    <span id="mails"><a href="mailto:geral@sosoares.pt">geral@sosoares.pt</a></span>
+                    <p>Rua do Baldeirão, 4440-346</p>
+                    <p>Sobrado, Valongo - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 303 030</p>
-                    <p>F +351 234 303 031</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 224 119 230</p>
+                    <p>F +351 224 119 231</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Unidade Insdutrial de Aveiro</h3>
-                    <span id="mails"><a href="mailto:lovetiles@lovetiles.com">lovetiles@lovetiles.com</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Divisao Love Tiles</p>
-                    <p>Z.I. de Aveiro</p>
-                    <p>Apartado 3002</p>
-                    <p>3801-101 Aveiro</p>
+                    <h3>Departamento Comercial</h3>
+                    <span id="mails"><a href="mailto:comercial@sosoares.pt">comercial@sosoares.pt</a></span>
+                    <p>Rua do Campo Alegre, 474</p>
+                    <p>4150-170 Porto - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 303 030</p>
-                    <p>F +351 234 303 031</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 226 096 709</p>
+                    <p>F +351 226 005 642</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Unidade Insdutrial de Ilhavo</h3>
-                    <span id="mails"><a href="mailto:margres@margres.com">margres@margres.com</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Divisão Margres</p>
-                    <p>Chousa Nova 3830-133</p>
-                    <p>Ílhavo - Portugal</p>
+                    <h3>Departamento Administrativo</h3>
+                    <span id="mails"><a href="mailto:grespanaria@grespanaria.pt">geral@sosoares.pt</a></span>
+                    <p>Rua do Baldeirão, 4440-346</p>
+                    <p>Sobrado, Valongo - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 329 700</p>
-                    <p>F +351 234 329 702</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 224 119 230</p>
+                    <p>F +351 224 119 231</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Contact Us</h3>
-                    <form method="post">
-                        <input class="form-control" type="text" id="name" name="name" placeholder="Name">
-                        <input class="form-control" type="email" id="mail" name="mail" placeholder="E-mail">
-                        <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject">
-                        <textarea class="form-control" id="message" name="message" rows="7" placeholder="Message"></textarea>
-                        <span class="captcha"><img src="http://placehold.it/80x34&text=5 -+ 3 ="><input class="form-control" type="text" id="captcha" name="captcha"></span>
-                        <input class="btn-block" type="submit" value="SEND">
-                    </form>
+                    <h3>Departamento Administrativo</h3>
+                    <span id="mails"><a href="mailto:grespanaria@grespanaria.pt">geral@sosoares.pt</a></span>
+                    <p>Rua do Baldeirão, 4440-346</p>
+                    <p>Sobrado, Valongo - Portugal</p>
+                    <hr class="divider">
+                    <p>T +351 224 119 230</p>
+                    <p>F +351 224 119 231</p>
                 </div>
             </div>
         </div>
