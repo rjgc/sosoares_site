@@ -1,16 +1,5 @@
+/*<![CDATA[*/
 function initialize() {
-
-    // Create an array of styles.
-    /*var styles = [
-     {
-     stylers: [
-     { hue: "#90ba92" },
-     { saturation: 80 },
-     { lightness: -20 },
-     { gamma: 3 },
-     ]
-     }
-     ];*/
 
     var styles = [
         {
@@ -22,13 +11,13 @@ function initialize() {
             featureType: "road",
             elementType: "geometry",
             stylers: [
-                { hue: "#8eb98c" }
+                { hue: "#1f416e" }
             ]
         },{
             featureType: "water",
             elementType: "geometry",
             stylers: [
-                { hue: "#8eb98c" },
+                { hue: "#2c5e93" },
                 { lightness: 0 }
 
             ]
@@ -41,9 +30,9 @@ function initialize() {
         }
     ];
 
-    var image1 = '../../../../assets/sosoares/img/35anos.jpg';
-    var image2 = 'img/35anos.jpg';
-    var image3 = 'img/markerLove.png';
+    var image1 = '../../../assets/sosoares/img/35anos.jpg';
+    var image2 = '../../../assets/sosoares/img/35anos.jpg';
+    var image3 = '../../../assets/sosoares/img/35anos.jpg';
 
     var styledMap = new google.maps.StyledMapType(styles,
         {name: "Styled Map"});
@@ -106,3 +95,5 @@ function initialize() {
 
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+/*]]>*/

@@ -2,10 +2,10 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>">Início</a></li>
-                <li>Apoio ao Cliente</li>
+                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><?=lang('apoio')?></li>
             </ul>
-            <h1 class="title3">Apoio ao Cliente</h1>
+            <h1 class="title3"><?=lang('apoio')?></h1>
         </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
                     for ($i=0; $i < count($pages); $i++) { 
                         foreach ($pages[$i] as $page){
                             ?>
-                            <a href="<?=site_url('pages/apoio_cliente/'.$page['id_pagina'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/files/<?php echo $page['imagem'] ?>"/><p> <?php echo $page['titulo_pt'] ?></p></div></a> 
+                            <a href="<?=site_url('pages/apoio_cliente/'.$page['id_pagina'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/files/<?php echo $page['imagem'] ?>"/><p> <?php echo $page['titulo_'.$this->lang->lang()]?></p></div></a> 
                             <?php
                         }
                     }

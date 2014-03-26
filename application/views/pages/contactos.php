@@ -6,57 +6,129 @@
         <div class="contactus">
             <div class="row">
                 <div class="col-md-3">
-                    <h3>Sede Gres Panaria</h3>
-                    <span id="mails"><a href="mailto:grespanaria@grespanaria.pt">grespanaria@grespanaria.pt</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Z.I. de Aveiro</p>
-                    <p>Apartado 3002</p>
-                    <p>3801-101 Aveiro</p>
+                    <h3>Departamento Administrativo</h3>
+                    <span id="mails"><a href="mailto:geral@sosoares.pt">geral@sosoares.pt</a></span>
+                    <p>Rua do Baldeirão, 4440-346</p>
+                    <p>Sobrado, Valongo - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 303 030</p>
-                    <p>F +351 234 303 031</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 224 119 230</p>
+                    <p>F +351 224 119 231</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Unidade Insdutrial de Aveiro</h3>
-                    <span id="mails"><a href="mailto:lovetiles@lovetiles.com">lovetiles@lovetiles.com</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Divisao Love Tiles</p>
-                    <p>Z.I. de Aveiro</p>
-                    <p>Apartado 3002</p>
-                    <p>3801-101 Aveiro</p>
+                    <h3>Departamento Comercial</h3>
+                    <span id="mails"><a href="mailto:comercial@sosoares.pt">comercial@sosoares.pt</a></span>
+                    <p>Rua do Campo Alegre, 474</p>
+                    <p>4150-170 Porto - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 303 030</p>
-                    <p>F +351 234 303 031</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 226 096 709</p>
+                    <p>F +351 226 005 642</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Unidade Insdutrial de Ilhavo</h3>
-                    <span id="mails"><a href="mailto:margres@margres.com">margres@margres.com</a></span>
-                    <p>Gres Panaria Portugal, S.A.</p>
-                    <p>Divisão Margres</p>
-                    <p>Chousa Nova 3830-133</p>
-                    <p>Ílhavo - Portugal</p>
+                    <h3>Departamento Técnico</h3>
+                    <span id="mails"><a href="mailto:gabinete.tecnico@sosoares.pt">gabinete.tecnico@sosoares.pt</a></span>
+                    <p>Rua do Campo Alegre, 474</p>
+                    <p>4150-170 Porto - Portugal</p>
                     <hr class="divider">
-                    <p>T +351 234 329 700</p>
-                    <p>F +351 234 329 702</p>
-                    <hr class="divider">
-                    <p>N 40.64840º</p>
-                    <p>W 8.60818º</p>
+                    <p>T +351 226 096 709</p>
+                    <p>F +351 226 005 642</p>
                 </div>
                 <div class="col-md-3">
-                    <h3>Contact Us</h3>
-                    <form method="post">
-                        <input class="form-control" type="text" id="name" name="name" placeholder="Name">
-                        <input class="form-control" type="email" id="mail" name="mail" placeholder="E-mail">
-                        <input class="form-control" type="text" id="subject" name="subject" placeholder="Subject">
-                        <textarea class="form-control" id="message" name="message" rows="7" placeholder="Message"></textarea>
-                        <span class="captcha"><img src="http://placehold.it/80x34&text=5 -+ 3 ="><input class="form-control" type="text" id="captcha" name="captcha"></span>
-                        <input class="btn-block" type="submit" value="SEND">
+                    <h3>Departamento Desenvolvimento</h3>
+                    <span id="mails"><a href="mailto:carlos.rodrigues@sosoares.pt">carlos.rodrigues@sosoares.pt</a></span>
+                    <p>Travessa do Bolegão, 10 - Apartado 1</p>
+                    <p>3754-904 Fermentelos</p>
+                    <hr class="divider">
+                    <p>T +351 234 729 740</p>
+                    <p>F +351 234 729 741</p>
+                </div>
+            </div>
+            <div class="row contactos">
+                <div class="col-md-8">
+                    <form method="get">
+                        <fieldset>
+                            <legend>Dados Pessoais</legend>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="nome">Nome:*</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="nome" name="nome" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="empresa">Empresa:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="empresa" name="empresa" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="cargo">Cargo:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="cargo" name="cargo" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="telf">Telefone:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="telf" name="telf" type="tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="fax">Fax:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="fax" name="fax" type="tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="telm">Telemóvel:*</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="telm" name="telm" type="tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="mail">E-mail:*</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="mail" name="mail" type="email">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="morada">Morada:</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="morada" name="morada" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Observações</legend>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="assunto">Assunto:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="assunto" name="assunto">
+                                        <option selected value="-1">Selecione um item</option>
+                                        <option value="comercial">Comercial</option>
+                                        <option value="tecnico">Técnico</option>
+                                        <option value="administrativo">Administrativo</option>
+                                        <option value="desenvolvimento">Desenvolvimento</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="mensagem">Mensagem:</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="mensagem" name="mensagem" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <span style="display: inline-block">* Campo Obrigatório</span>
+                                <div style="float: right;margin: 15px 30px">
+                                    <input class="btn button shrink" type="reset" value="Limpar">
+                                    <input class="btn button shrink" type="submit" value="Enviar">
+                                </div>
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>

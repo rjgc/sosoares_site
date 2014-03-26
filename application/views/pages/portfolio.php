@@ -6,7 +6,12 @@
                 <li><a href="<?=site_url('pages/portfolio_caixilharia')?>"><?=lang('portfolio')?></a></li>
                 <li><?=$obra['nome_'.$this->lang->lang()]?></li>
             </ul>
+<<<<<<< HEAD
             <h1 class="title3"><?=$obra['nome_'.$this->lang->lang()]?></h1>
+=======
+            <h1 class="title3"><?=$obra['nome_pt']?></h1>
+            <p style="font-size: 11px;margin: -15px 5px 10px;"><strong>Localização: </strong>Somewhere ...</p>
+>>>>>>> 9ecde94fd30285433e954a88a8d88524a2ccd3cf
         </div>
     </div>
     <div class="row">
@@ -83,7 +88,7 @@
 </div>
 </div>
 <a href="#">
-    <button class="btn button shrink" style="width: 200px; margin: 10px;">Modo Slideshow</button>
+    <button class="btn button shrink" style="width: 200px; margin: 10px;background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center; background-size: 18px">Modo Slideshow</button>
 </a>
 </div>
 <div class="col-md-5">
