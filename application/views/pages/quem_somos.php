@@ -1,4 +1,4 @@
-<div class="container candidaturas">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
@@ -10,12 +10,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <p>Uma parceria contínua....</p>
             <p>O Grupo Sosoares tem vindo a despender de cada vez mais recursos e sinergias na área do desenvolvimento de novas gamas de produtos para a arquitectura.</p>
             <p>O Gabinete de Desenvolvimento do Grupo Sosoares está cada vez mais vocacionado para responder às necessidades dos nossos clientes, mas também ir ao encontro das necessidades específicas do projectista.</p>
             <p>Esta “parceria” permite responder às grandes exigências e necessidades do mercado, tendo sempre como base os conceitos fundamentais da Inovação, Arquitectura e Design.</p>
-            <img src="<?= base_url() ?>assets/sosoares/img/quem_somos_img.jpg">
+            <div style="text-align: center;max-width: 100%;">
+                <img src="<?= base_url() ?>assets/sosoares/img/quem_somos_img.jpg">
+            </div>
+            <p></p>
         </div>
     </div>
 </div>
