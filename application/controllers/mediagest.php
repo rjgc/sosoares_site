@@ -132,6 +132,7 @@ function noticias_management()
 
 	$data['titulo'] = 'Noticias';  
 	$data['sub-titulo'] = 'Faça aqui a gestão das Noticias'; 
+
 	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
@@ -139,7 +140,8 @@ function noticias_management()
 //$this->_example_output($output);
 }
 
-function paginas_management(){
+function paginas_management()
+{
 	$crud = new grocery_CRUD();
 
 	$crud->unset_delete();
@@ -163,23 +165,129 @@ function paginas_management(){
 	$this->_admin_output($output);
 }
 
-function ficheiros_management(){
+function ensaios_aluminio_management()
+{
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('ficheiros');
-	$crud->set_subject('Ficheiros');
-	$crud->columns('nome_ficheiro', 'id_categoria_ficheiro', 'ficheiro');
-	$crud->order_by('id_ficheiro','asc');
-	
-	$crud->display_as('ficheiro', 'Ficheiro')->display_as('id_categoria_ficheiro', 'Categoria')->display_as('nome_ficheiro', 'Nome');
-	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
+	$crud->set_table('ensaios_aluminio');
+	$crud->set_subject('Ensaios');
+	$crud->columns('nome_pt', 'ensaio');
+	$crud->order_by('id_ensaio_aluminio','asc');
 
-	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome_categoria_ficheiro');
+	$crud->set_field_upload('ensaio', 'assets/uploads/files');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Ficheiros';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros'; 
+	$data['titulo'] = 'Ensaios';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios'; 
+
+	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function ensaios_extrusao_management()
+{
+	$crud = new grocery_CRUD();
+
+//$crud->set_theme('flexigrid');
+	$crud->set_table('ensaios_extrusao');
+	$crud->set_subject('Ensaios de Produto Extrusão');
+	$crud->columns('nome_pt', 'ensaio');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ensaio');	
+	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Ensaios de Produto Extrusão';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios de Produto Extrusão'; 
+
+	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+
+//$this->_example_output($output);
+}
+
+function catalogo_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('catalogos_aluminio');
+	$crud->set_subject('Catalogos');
+	$crud->columns('nome_pt', 'catalogo');
+	$crud->order_by('id_catalogo_aluminio','asc');
+
+	$crud->set_field_upload('catalogo', 'assets/uploads/files');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Catálogos';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Catálogos'; 
+
+	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function pormenores_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('pormenores_aluminio');
+	$crud->set_subject('Pormenores');
+	$crud->columns('nome_pt', 'pormenor');
+	$crud->order_by('id_pormenor_aluminio','asc');
+
+	$crud->set_field_upload('pormenor', 'assets/uploads/files');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Pormenores';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Pormenores'; 
+
+	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function perfis_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('perfis_aluminio');
+	$crud->set_subject('Perfis');
+	$crud->columns('nome_pt', 'perfil');
+	$crud->order_by('id_perfil_aluminio','asc');
+
+	$crud->set_field_upload('perfil', 'assets/uploads/files');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Perfis';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Perfis'; 
+
+	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function resumos_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('resumos_aluminio');
+	$crud->set_subject('Resumos');
+	$crud->columns('nome_pt', 'resumo');
+	$crud->order_by('id_resumo_aluminio','asc');
+
+	$crud->set_field_upload('resumo', 'assets/uploads/files');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Resumos';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Resumos'; 
 
 	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -223,7 +331,7 @@ function produtos_aluminio_management()
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio');		
 	$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text')->field_type('resultado_pt', 'text')->field_type('resultado_en', 'text')->field_type('resultado_fr', 'text')->field_type('resultado_es', 'text');
 	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo');
-	//$crud->display_as('batente_oscilo_batente', 'Batente e oscilo-batente')->display_as('oscilo_paralela_projectante', 'Oscilo-paralela | Projectante')->display_as('pivotante_horizontal_harmonio', 'Pivotante Horizontal | Harmónio');
+//$crud->display_as('batente_oscilo_batente', 'Batente e oscilo-batente')->display_as('oscilo_paralela_projectante', 'Oscilo-paralela | Projectante')->display_as('pivotante_horizontal_harmonio', 'Pivotante Horizontal | Harmónio');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
@@ -259,7 +367,7 @@ function produtos_extrusao_management()
 	$crud->set_table('produtos_extrusao');
 	$crud->set_subject('Produtos Extrusão');	
 	$crud->columns('nome_pt','descricao_pt','id_tipo_produto_extrusao','id_caracteristica_produto_extrusao','foto_1','foto_2','foto_3','foto_4','corte_1','corte_2','corte_3');
-	
+
 	$crud->required_fields('nome_pt','descricao_pt','id_tipo_produto_extrusao','id_caracteristica_produto_extrusao');
 	$crud->field_type('descricao_pt', 'text');
 	$crud->display_as('id_tipo_produto_extrusao','Tipo')->display_as('id_caracteristica_produto_extrusao','Caracteristica');
@@ -408,54 +516,6 @@ function caracteristicas_produto_extrusao_management()
 //$this->_example_output($output);
 }
 
-function ensaios_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-//$crud->set_theme('flexigrid');
-	$crud->set_table('ensaios_aluminio');
-	$crud->set_subject('Ensaios de Produto Aluminio');
-	$crud->columns('nome_pt', 'ensaio');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ensaio');	
-	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Ensaios de Produto Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios de Produto de Aluminio'; 
-
-	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-
-//$this->_example_output($output);
-}
-
-function ensaios_extrusao_management()
-{
-	$crud = new grocery_CRUD();
-
-//$crud->set_theme('flexigrid');
-	$crud->set_table('ensaios_extrusao');
-	$crud->set_subject('Ensaios de Produto Extrusão');
-	$crud->columns('nome_pt', 'ensaio');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ensaio');	
-	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Ensaios de Produto Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios de Produto Extrusão'; 
-
-	$this->load->view('mediagest/header',(object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-
-//$this->_example_output($output);
-}
-
 function servicos_extrusao_management()
 {
 	$crud = new grocery_CRUD();
@@ -517,215 +577,5 @@ $this->_admin_output($output);
 
 //$this->_example_output($output);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*public function employees_management()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_theme('datatables');
-$crud->set_table('employees');
-$crud->set_relation('officeCode','offices','city');
-$crud->display_as('officeCode','Office City');
-$crud->set_subject('Employee');
-
-$crud->required_fields('lastName');
-
-$crud->set_field_upload('file_url','assets/uploads/files');
-
-$output = $crud->render();
-
-$this->_example_output($output);
-}
-
-public function customers_management()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_table('customers');
-$crud->columns('customerName','contactLastName','phone','city','country','salesRepEmployeeNumber','creditLimit');
-$crud->display_as('salesRepEmployeeNumber','from Employeer')
-->display_as('customerName','Name')
-->display_as('contactLastName','Last Name');
-$crud->set_subject('Customer');
-$crud->set_relation('salesRepEmployeeNumber','employees','lastName');
-
-$output = $crud->render();
-
-$this->_example_output($output);
-}
-
-public function orders_management()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_relation('customerNumber','customers','{contactLastName} {contactFirstName}');
-$crud->display_as('customerNumber','Customer');
-$crud->set_table('orders');
-$crud->set_subject('Order');
-$crud->unset_add();
-$crud->unset_delete();
-
-$output = $crud->render();
-
-$this->_example_output($output);
-}
-
-public function products_management()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_table('products');
-$crud->set_subject('Product');
-$crud->unset_columns('productDescription');
-$crud->callback_column('buyPrice',array($this,'valueToEuro'));
-
-$output = $crud->render();
-
-$this->_example_output($output);
-}
-
-public function valueToEuro($value, $row)
-{
-return $value.' &euro;';
-}
-
-public function film_management()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_table('film');
-$crud->set_relation_n_n('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname','priority');
-$crud->set_relation_n_n('category', 'film_category', 'category', 'film_id', 'category_id', 'name');
-$crud->unset_columns('special_features','description','actors');
-
-$crud->fields('title', 'description', 'actors' ,  'category' ,'release_year', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features');
-
-$output = $crud->render();
-
-$this->_example_output($output);
-}
-
-public function film_management_twitter_bootstrap()
-{
-try{
-$crud = new grocery_CRUD();
-
-$crud->set_theme('twitter-bootstrap');
-$crud->set_table('film');
-$crud->set_relation_n_n('actors', 'film_actor', 'actor', 'film_id', 'actor_id', 'fullname','priority');
-$crud->set_relation_n_n('category', 'film_category', 'category', 'film_id', 'category_id', 'name');
-$crud->unset_columns('special_features','description','actors');
-
-$crud->fields('title', 'description', 'actors' ,  'category' ,'release_year', 'rental_duration', 'rental_rate', 'length', 'replacement_cost', 'rating', 'special_features');
-
-$output = $crud->render();
-$this->_example_output($output);
-
-}catch(Exception $e){
-show_error($e->getMessage().' --- '.$e->getTraceAsString());
-}
-}
-
-function multigrids()
-{
-$this->config->load('grocery_crud');
-$this->config->set_item('grocery_crud_dialog_forms',true);
-$this->config->set_item('grocery_crud_default_per_page',10);
-
-$output1 = $this->offices_management2();
-
-$output2 = $this->employees_management2();
-
-$output3 = $this->customers_management2();
-
-$js_files = $output1->js_files + $output2->js_files + $output3->js_files;
-$css_files = $output1->css_files + $output2->css_files + $output3->css_files;
-$output = "<h1>List 1</h1>".$output1->output."<h1>List 2</h1>".$output2->output."<h1>List 3</h1>".$output3->output;
-
-$this->_example_output((object)array(
-'js_files' => $js_files,
-'css_files' => $css_files,
-'output'	=> $output
-));
-}
-
-public function offices_management2()
-{
-$crud = new grocery_CRUD();
-$crud->set_table('offices');
-$crud->set_subject('Office');
-
-$crud->set_crud_url_path(site_url(strtolower(__CLASS__."/".__FUNCTION__)),site_url(strtolower(__CLASS__."/multigrids")));
-
-$output = $crud->render();
-
-if($crud->getState() != 'list') {
-$this->_example_output($output);
-} else {
-return $output;
-}
-}
-
-public function employees_management2()
-{
-$crud = new grocery_CRUD();
-
-$crud->set_theme('datatables');
-$crud->set_table('employees');
-$crud->set_relation('officeCode','offices','city');
-$crud->display_as('officeCode','Office City');
-$crud->set_subject('Employee');
-
-$crud->required_fields('lastName');
-
-$crud->set_field_upload('file_url','assets/uploads/files');
-
-$crud->set_crud_url_path(site_url(strtolower(__CLASS__."/".__FUNCTION__)),site_url(strtolower(__CLASS__."/multigrids")));
-
-$output = $crud->render();
-
-if($crud->getState() != 'list') {
-$this->_example_output($output);
-} else {
-return $output;
-}
-}
-
-public function customers_management2()
-{
-
-$crud = new grocery_CRUD();
-
-$crud->set_table('customers');
-$crud->columns('customerName','contactLastName','phone','city','country','salesRepEmployeeNumber','creditLimit');
-$crud->display_as('salesRepEmployeeNumber','from Employeer')
-->display_as('customerName','Name')
-->display_as('contactLastName','Last Name');
-$crud->set_subject('Customer');
-$crud->set_relation('salesRepEmployeeNumber','employees','lastName');
-
-$crud->set_crud_url_path(site_url(strtolower(__CLASS__."/".__FUNCTION__)),site_url(strtolower(__CLASS__."/multigrids")));
-
-$output = $crud->render();
-
-if($crud->getState() != 'list') {
-$this->_example_output($output);
-} else {
-return $output;
-}
-}*/
-
 
 }
