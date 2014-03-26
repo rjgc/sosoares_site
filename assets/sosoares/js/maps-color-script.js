@@ -1,17 +1,5 @@
 function initialize() {
 
-    // Create an array of styles.
-    /*var styles = [
-     {
-     stylers: [
-     { hue: "#90ba92" },
-     { saturation: 80 },
-     { lightness: -20 },
-     { gamma: 3 },
-     ]
-     }
-     ];*/
-
     var styles = [
         {
             featureType: "all",
@@ -22,13 +10,13 @@ function initialize() {
             featureType: "road",
             elementType: "geometry",
             stylers: [
-                { hue: "#8eb98c" }
+                { hue: "#1f416e" }
             ]
         },{
             featureType: "water",
             elementType: "geometry",
             stylers: [
-                { hue: "#8eb98c" },
+                { hue: "#2c5e93" },
                 { lightness: 0 }
 
             ]

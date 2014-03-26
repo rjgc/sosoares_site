@@ -181,7 +181,7 @@ div.obras-container {display: inline-block;padding: 0 10px;margin: 0 auto;positi
 /*============================== MAPS ===================================*/
 #map-canvas {
     width: 100%;
-    height: 500px;
+    height: 400px;
     display: block;
 }
 div#map, div#map div {
@@ -193,8 +193,11 @@ div#map, div#map div {
 
 /*============================== CANDIDATURAS ===================================*/
 
-.candidaturas .form-group {
+.candidaturas .form-group, .contactos .form-group {
     height: 25px;
+}
+.contactos {
+    margin: 25px 0;
 }
 
 /*============================== MEDIA QUERIES ===================================*/
