@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                <li><a href="#"><?=lang('grupo')?></a></li>
+                <li><?=lang('grupo')?></li>
                 <li><?=lang('candidaturas')?></li>
             </ul>
             <h1 class="title3"><?=lang('candidaturas')?></h1>

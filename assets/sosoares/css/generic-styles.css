@@ -193,12 +193,8 @@ div#map, div#map div {
 
 /*============================== CANDIDATURAS ===================================*/
 
-.candidaturas .form-group, .contactos .form-group {
-    height: 25px;
-}
-.contactos {
-    margin: 25px 0;
-}
+.candidaturas .form-group, .contactos .form-group {height: 25px;}
+.container {margin: 0 auto  25px}
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
@@ -229,6 +225,8 @@ div#map, div#map div {
     
     .slider-h1 {font-size: 30px;}
     .navbar-nav > li > a {font-size: 14px;padding: 15px 10px;}
+
+    section > .container > .row .col-md-8 {width: 85%}
 }
 @media (max-width: 800px) {
     header {height: 140px;}
@@ -250,6 +248,12 @@ div#map, div#map div {
     footer > .content > .container > .row > #contacts [class^="col-"],
     footer > .content > .container > .row > #contacts [class*="col-"] {display: block;text-align: center;}
     footer > .content > .container > .row > #contacts .col-md-1 {display: none}
+
+    .candidaturas .form-group, .contactos .form-group {height: 50px;}
+    .candidaturas form .row, .contactos form .row {margin: 100px 0 25px}
+    .candidaturas form .row span, .contactos form .row span {margin: 10px 15px}
+    .candidaturas form .row div, .contactos form .row div {margin: 0 15px!important;}
+    .contactos form:last-child legend {padding-top: 50px}
 }
 @media (max-width: 580px) {
     header .row .form {bottom:-50px;right: 0;}
