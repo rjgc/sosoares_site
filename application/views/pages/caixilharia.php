@@ -43,10 +43,10 @@
     <p><?=lang('newsletter')?></p>
     <form method="post" role="form">
         <div class="form-group">
-            <input class="form-control input" type="text" id="nome" name="nome" placeholder="Nome">
+            <input class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>">
         </div>
         <div class="form-group">
-            <input class="form-control input" id="mail" name="mail" placeholder="E-mail">
+            <input class="form-control input" id="mail" name="mail" placeholder="<?=lang('email')?>">
         </div>
         <div class="form-group">
             <input class="btn button shrink" type="submit" id="subs" value="<?=lang('subscrever')?>">

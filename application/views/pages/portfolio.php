@@ -6,12 +6,8 @@
                 <li><a href="<?=site_url('pages/portfolio_caixilharia')?>"><?=lang('portfolio')?></a></li>
                 <li><?=$obra['nome_'.$this->lang->lang()]?></li>
             </ul>
-<<<<<<< HEAD
             <h1 class="title3"><?=$obra['nome_'.$this->lang->lang()]?></h1>
-=======
-            <h1 class="title3"><?=$obra['nome_pt']?></h1>
-            <p style="font-size: 11px;margin: -15px 5px 10px;"><strong>Localização: </strong>Somewhere ...</p>
->>>>>>> 9ecde94fd30285433e954a88a8d88524a2ccd3cf
+            <h5 style="margin: 0 5px 10px;"><strong><?=lang('localizacao')?>:</strong> <?=$obra['localizacao']?></h5>
         </div>
     </div>
     <div class="row">
@@ -88,12 +84,12 @@
 </div>
 </div>
 <a href="#">
-    <button class="btn button shrink" style="width: 200px; margin: 10px;background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center; background-size: 18px">Modo Slideshow</button>
+    <button class="btn button shrink" style="width: 200px; margin: 10px;background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center; background-size: 18px"><?=lang('modo')?> Slideshow</button>
 </a>
 </div>
 <div class="col-md-5">
     <div class="descricao">
-        <h3 class="title4">Descrição</h3>
+        <h3 class="title4"><?=lang('descricao')?></h3>
         <p style="margin-bottom: 25px;"><?=$obra['descricao_'.$this->lang->lang()]?></p>
     </div>
 </div>
@@ -105,7 +101,7 @@
             <div id="myCarousel2" class="carousel slide">
                 <div class="row">
                     <div class="col-md-11">
-                        <h3 class="title1" style="margin-bottom: 30px">Soluções implementadas neste projecto</h3>
+                        <h3 class="title1" style="margin-bottom: 30px"><?=lang('produto')?></h3>
                     </div>
                     <div class="col-md-1">
                         <ol class="carousel-indicators" style="margin-bottom: -60px">

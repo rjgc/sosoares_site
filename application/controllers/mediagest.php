@@ -74,13 +74,13 @@ function index()
 
 		$crud->set_table('obras');
 		$crud->set_subject('Obras');
-		$crud->columns('nome_pt','descricao_pt');
+		$crud->columns('nome_pt','descricao_pt', 'localizacao');
 		$crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
 
-		$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+		$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'localizacao');
 		$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
 
-		$crud->set_relation_n_n('produtos_aluminio', 'produtos_aluminio_obras', 'produtos_aluminio', 'obra_id', 'produto_aluminio_id', 'nome_pt','priority');
+		$crud->set_relation_n_n('produtos_aluminio', 'produtos_aluminio_obras', 'produtos_aluminio', 'obra_id', 'produto_aluminio_id', 'nome_pt', 'priority');
 // $crud->display_as('products','Produtos Utilizados no Projecto');
 // $crud->set_relation_n_n('products', 'product_related_case_studies', 'product', 'case_studies', 'product_id', 'name', 'priority');
 
