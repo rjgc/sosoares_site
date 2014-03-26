@@ -62,7 +62,7 @@ $lang["produtos"] = "Productos de Aluminio";
 
 	$lang["batente"] = "Jamba";
 
-		$lang["com_corte"] = "Térmico";
+		$lang["com_corte"] = "Con Térmico";
 
 		$lang["sem_corte"] = "Sin Térmica";
 
@@ -79,6 +79,10 @@ $lang["produtos"] = "Productos de Aluminio";
 	$lang["portoes"] = "Puertas";
 
 	$lang["standards"] = "Normas";
+
+	$lang["guilhotina"] = "Guillotina";
+
+	$lang["resguardos"] = "Vallado Bath";
 
 $lang["portfolio"] = "Portafolios de Works";
 
@@ -107,6 +111,8 @@ $lang["contactos"] = "Contactos";
 
 
 $lang["pesquisar"] = "Búsqueda";
+
+$lang["signin"] = "Registrarse";
 
 
 /*Footer*/
@@ -181,6 +187,8 @@ $lang["obras"] = "Trabajos relacionados con este producto";
 
 /*Portfolio*/
 
+
+$lang["localizacao"] = "Ubicación";
 
 $lang["modo"] = "Modo";
 

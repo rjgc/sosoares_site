@@ -58,6 +58,7 @@ public function home_caixilharia()
 {
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'home_caixilharia';
+	$data['galeria_obra'] = $this->company_model->get_galeria_obra(3);
 	$this->menu_produtos($data);
 
 	$this->load->view('templates/carousel_caixilharia');
@@ -198,6 +199,8 @@ public function menu_produtos($data) {
 	$data['portadas'] = $this->product_model->get_portadas($this->get_lang());
 	$data['portoes'] = $this->product_model->get_portoes($this->get_lang());
 	$data['standards'] = $this->product_model->get_standards($this->get_lang());
+	$data['guilhotinas'] = $this->product_model->get_guilhotinas($this->get_lang());
+	$data['resguardos'] = $this->product_model->get_resguardos($this->get_lang());
 
 	$this->load->view('templates/header_caixilharia', $data, $this->get_lang());
 }

@@ -39,7 +39,7 @@
 
 $lang["home"] = "Home";
 
-$lang["grupo"] = "Group Sosoares";
+$lang["grupo"] = "Grupo Sosoares";
 	
 	$lang["quem"] = "Who We Are";
 
@@ -79,6 +79,10 @@ $lang["produtos"] = "Aluminum Products";
 
 	$lang["standards"] = "Standards";
 
+	$lang["guilhotina"] = "Single-Hung Sash";
+
+	$lang["resguardos"] = "Fenced Bath";
+
 $lang["portfolio"] = "Works Portfolio";
 
 $lang["servicos"] = "Services";
@@ -112,6 +116,8 @@ $lang["pesquisar"] = "Search";
 
 
 $lang["direitos"] = "All Rights Reserved";
+
+$lang["signin"] = "Sign In";
 
 
 /*Paginas*/
@@ -180,6 +186,8 @@ $lang["obras"] = "Works related to this product";
 
 /*Portfolio*/
 
+
+$lang["localizacao"] = "Location";
 
 $lang["modo"] = "Mode";
 

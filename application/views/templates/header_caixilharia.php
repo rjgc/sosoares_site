@@ -39,7 +39,7 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a href="#"><button class="btn button shrink">Sign In</button></a>
+                    <a href="#"><button class="btn button shrink"><?=lang('signin')?></button></a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div id="navbar-collapse-grid" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
+                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas' || $current === 'quem_somos') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
                     <ul class="dropdown-menu">
                             <li class="grid-demo">
                                 <div class="row">
@@ -223,6 +223,32 @@
                                                     <?php foreach ($standards as $standard){
                                                         ?>
                                                         <li><a href="<?=site_url('pages/produto_caixilharia/'.$standard['id_produto_aluminio'])?>"><?php echo $standard['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <?php
+                                                    }?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3"><?=lang('guilhotina')?></h3>
+                                                <ul>
+                                                    <?php foreach ($guilhotinas as $guilhotina){
+                                                        ?>
+                                                        <li><a href="<?=site_url('pages/produto_caixilharia/'.$guilhotina['id_produto_aluminio'])?>"><?php echo $guilhotina['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <?php
+                                                    }?>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h3 class="menu-h3"><?=lang('resguardos')?></h3>
+                                                <ul>
+                                                    <?php foreach ($resguardos as $resguardo){
+                                                        ?>
+                                                        <li><a href="<?=site_url('pages/produto_caixilharia/'.$resguardo['id_produto_aluminio'])?>"><?php echo $resguardo['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>

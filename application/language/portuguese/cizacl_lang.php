@@ -79,6 +79,10 @@ $lang["produtos"] = "Produtos Alumínio";
 
 	$lang["standards"] = "Standards";
 
+	$lang["guilhotina"] = "Guilhotina";
+
+	$lang["resguardos"] = "Resguardos Banheira";
+
 $lang["portfolio"] = "Portfolio Obras";
 
 $lang["servicos"] = "Serviços";
@@ -113,6 +117,8 @@ $lang["pesquisar"] = "Pesquisar";
 
 $lang["direitos"] = "Todos os Direitos Reservados";
 
+$lang["signin"] = "Registar";
+
 
 /*Paginas*/
 
@@ -145,7 +151,7 @@ $lang["telemovel"] = "Telemóvel";
 
 $lang["cv"] = "Curriculum Vitae";
 
-$lang["apresentacao"] = "Apresnetação";
+$lang["apresentacao"] = "Apresentação";
 
 $lang["obrigatorio"] = "Campo Obrigatório";
 
@@ -180,6 +186,8 @@ $lang["obras"] = "Obras relacionadas com este produto";
 
 /*Portfolio*/
 
+
+$lang["localizacao"] = "Localização";
 
 $lang["modo"] = "Modo";
 

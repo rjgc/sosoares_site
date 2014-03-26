@@ -121,6 +121,20 @@ class Product_model extends CI_Model
 		return $data;
 	}
 
+	public function get_guilhotinas($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Guilhotina'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_resguardos($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Resguardos Banheira'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	//PAGINA PRODUTO
 
 	public function get_produto_aluminio_com_caracteristica($id, $lang){
