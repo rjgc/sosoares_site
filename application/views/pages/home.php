@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <a href="index.php"><img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png" width="210" height="47" alt="GRUPO SOSOARES" title="GRUPO SOSOARES" /></a>
+                        <a href="<?php echo base_url() ?>index.php"><img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png" width="210" height="47" alt="GRUPO SOSOARES" title="GRUPO SOSOARES" /></a>
                     </div>
                     <div class="col-md-4">
                         <div id="bd">
