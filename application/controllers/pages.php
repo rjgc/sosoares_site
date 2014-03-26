@@ -263,12 +263,21 @@ public function candidaturas()
 	$this->load->view('templates/footer');
 }
 
-public function quem_somos()
+public function quem_somos($page=null)
 {
+	$data['page'] = $page;
+	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'quem_somos';
 	$this->menu_produtos($data);
 
-	$this->load->view('pages/quem_somos', $data);
+	if ($page != null) {
+		$data['page'] = $this->apoio_cliente_model->get_page($page);
+
+		$this->load->view('pages/quem_somos', $data);
+	} else {
+		$this->load->view('pages/quem_somos', $data);
+	}
+
 	$this->load->view('templates/footer');
 }
 
