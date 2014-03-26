@@ -63,7 +63,7 @@
                                     <div class="col-sm-3">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos')?>"><?=lang('quem')?></a></h3>
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos/13')?>"><?=lang('quem')?></a></h3>
                                             </div>
                                             <div class="col-sm-6">
                                                 <h3 class="menu-h3 links"><a href="#"><?=lang('onde')?></a></h3>
