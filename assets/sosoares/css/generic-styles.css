@@ -232,6 +232,8 @@ div#map, div#map div {
     header {height: 140px;}
     header .row .pages-img {top: 50px;left: -10px;}
 
+    .navbar-nav > li > a {font-size: 14px;padding: 15px 5px;}
+
     .carousel-caption {width: 85%;}
     footer .col-md-9 {width: 40%;}
 }

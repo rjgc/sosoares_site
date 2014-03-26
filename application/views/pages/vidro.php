@@ -13,9 +13,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <?php foreach ($galeria_obra as $obra){ ?>
-				   <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $obra['url'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
-			        <?php } ?>
+                                <img src="<?php echo base_url();?>assets/uploads/obras/6d5fb-0e7ff-20130419_M2SENOS_CASAHVM_163.jpg" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
                             </div>
                             <div class="col-md-7">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras adipiscing elit at augue adipiscing congue. Proin a elementum sem, mollis egestas elit.</p>
