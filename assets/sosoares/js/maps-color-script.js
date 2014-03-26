@@ -1,3 +1,4 @@
+/*<![CDATA[*/
 function initialize() {
 
     var styles = [
@@ -29,9 +30,9 @@ function initialize() {
         }
     ];
 
-    var image1 = '../../../../assets/sosoares/img/35anos.jpg';
-    var image2 = 'img/35anos.jpg';
-    var image3 = 'img/markerLove.png';
+    var image1 = '../../../assets/sosoares/img/35anos.jpg';
+    var image2 = '../../../assets/sosoares/img/35anos.jpg';
+    var image3 = '../../../assets/sosoares/img/35anos.jpg';
 
     var styledMap = new google.maps.StyledMapType(styles,
         {name: "Styled Map"});
@@ -94,3 +95,5 @@ function initialize() {
 
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+/*]]>*/
