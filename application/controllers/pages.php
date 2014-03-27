@@ -56,22 +56,21 @@ public function home()
 
 public function home_caixilharia()
 {
-	//$data['title'] = lang('indelague.home');
+    $data['page_style']= "caixilharia";
 	$data['current'] = 'home_caixilharia';
 	$data['galeria_obra'] = $this->company_model->get_galeria_obra(3);
 	$this->menu_produtos($data);
 
-	$this->load->view('templates/carousel_caixilharia');
 	$this->load->view('pages/caixilharia', $data);
 	$this->load->view('templates/footer');
 }
 
 public function home_vidro()
 {
-	//$data['title'] = lang('indelague.home');
+    $data['page_style']= "vidro";
 	$data['current'] = 'home_vidro';
 
-	$this->load->view('templates/header_vidro');
+	$this->load->view('templates/header', $data);
 	$this->load->view('templates/carousel_vidro');
 	$this->load->view('pages/vidro', $data);
 	$this->load->view('templates/footer');
@@ -79,10 +78,10 @@ public function home_vidro()
 
 public function home_extrusao()
 {
-	//$data['title'] = lang('indelague.home');
+    $data['page_style']= "extrusao";
 	$data['current'] = 'home_extrusao';
 
-	$this->load->view('templates/header_extrusao');
+    $this->load->view('templates/header', $data);
 	$this->load->view('templates/carousel_extrusao');
 	$this->load->view('pages/extrusao', $data);
 	$this->load->view('templates/footer');
@@ -90,10 +89,10 @@ public function home_extrusao()
 
 public function home_tratamento()
 {
-	//$data['title'] = lang('indelague.home');
+    $data['page_style']= "tratamento";
 	$data['current'] = 'home_tratamento';
 
-	$this->load->view('templates/header_tratamento');
+    $this->load->view('templates/header', $data);
 	$this->load->view('templates/carousel_tratamento');
 	$this->load->view('pages/tratamento', $data);
 	$this->load->view('templates/footer');
@@ -101,6 +100,7 @@ public function home_tratamento()
 
 public function portfolio_caixilharia($id=null)
 {
+    $data['page_style']= "caixilharia";
 	$data['id'] = $id;
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'portfolio_caixilharia';
@@ -124,6 +124,7 @@ public function portfolio_caixilharia($id=null)
 
 public function produto_caixilharia($id=null)
 {
+    $data['page_style']= "caixilharia";
 	$data['id'] = $id;
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'produto_caixilharia';
@@ -153,7 +154,8 @@ public function produto_caixilharia($id=null)
 }
 
 public function produtos_list($id_tipo_produto_aluminio=null)
-{	
+{
+    $data['page_style']= "caixilharia";
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'produtos_list';
 	$this->menu_produtos($data);
@@ -202,11 +204,12 @@ public function menu_produtos($data) {
 	$data['guilhotinas'] = $this->product_model->get_guilhotinas($this->get_lang());
 	$data['resguardos'] = $this->product_model->get_resguardos($this->get_lang());
 
-	$this->load->view('templates/header_caixilharia', $data, $this->get_lang());
+	$this->load->view('templates/header', $data, $this->get_lang());
 }
 
 public function contactos_caixilharia()
 {
+    $data['page_style']= "caixilharia";
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'contactos_caixilharia';
 	$this->menu_produtos($data);
@@ -218,6 +221,7 @@ public function contactos_caixilharia()
 
 public function apoio_cliente($page=null) 
 {
+    $data['page_style']= "caixilharia";
 	$data['page'] = $page;
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'apoio_cliente';
@@ -236,6 +240,7 @@ public function apoio_cliente($page=null)
 
 public function apoio_cliente_list() 
 {
+    $data['page_style']= "caixilharia";
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'apoio_cliente_list';
 	$this->menu_produtos($data);
@@ -256,6 +261,7 @@ public function apoio_cliente_list()
 
 public function candidaturas()
 {
+    $data['page_style']= "caixilharia";
 	$data['current'] = 'candidaturas';
 	$this->menu_produtos($data);
 
@@ -265,6 +271,7 @@ public function candidaturas()
 
 public function quem_somos($page=null)
 {
+    $data['page_style']= "caixilharia";
 	$data['page'] = $page;
 	//$data['title'] = lang('indelague.home');
 	$data['current'] = 'quem_somos';
@@ -281,14 +288,15 @@ public function quem_somos($page=null)
 	$this->load->view('templates/footer');
 }
 
-    public function instaladores()
-    {
-        $data['current'] = 'instaladores';
-        $this->menu_produtos($data);
+public function instaladores()
+{
+    $data['page_style']= "caixilharia";
+    $data['current'] = 'instaladores';
+    $this->menu_produtos($data);
 
-        $this->load->view('pages/instaladores', $data);
-        $this->load->view('templates/footer');
-    }
+    $this->load->view('pages/instaladores', $data);
+    $this->load->view('templates/footer');
+}
 
 
 /* public function empresa($pagina = 'historia')
