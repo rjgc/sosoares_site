@@ -44,7 +44,7 @@ $lang["grupo"] = "Grupo Sosoares";
 	
 	$lang["quem"] = "Quienes Somos";
 
-	$lang["onde"] = "Dónde Estamos";
+    $lang["install"] = "Instaladores";
 
 	$lang["missao"] = "Misión y Valores";
 

@@ -281,7 +281,14 @@ public function quem_somos($page=null)
 	$this->load->view('templates/footer');
 }
 
+    public function instaladores()
+    {
+        $data['current'] = 'instaladores';
+        $this->menu_produtos($data);
 
+        $this->load->view('pages/instaladores', $data);
+        $this->load->view('templates/footer');
+    }
 
 
 /* public function empresa($pagina = 'historia')

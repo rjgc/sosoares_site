@@ -191,6 +191,10 @@ div#map, div#map div {
     transition: none;
 }
 
+div#map.instaladores > #map-canvas {
+    height: 600px;
+}
+
 /*============================== CANDIDATURAS ===================================*/
 
 .candidaturas .form-group, .contactos .form-group {height: 25px;}
