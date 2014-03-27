@@ -41,27 +41,30 @@
 			<li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
 			</li>
-			<li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
+			<li <?php if ($data['titulo'] == 'Perfis Alumínio' || 				
+				$data['titulo'] == 'Pormenores Alumínio' ||
+				$data['titulo'] == 'Catálogo Alumínio'||
+				$data['titulo'] == 'Ensaios Alumínio' ||
+				$data['titulo'] == 'Resumos Alumínio' ||
+				$data['titulo'] == 'Ensaios de Produto Extrusão') echo 'class="section"'; ?>>
 				<a href='#'><span class="icon">&#128196;</span> Ficheiros</a>
 				<ul class="submenu">
-					<li><a href='<?php echo site_url("mediagest/ensaios_aluminio_management")?>'>Ensaios Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/catalogo_aluminio_management")?>'>Catálogo Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/pormenores_aluminio_management")?>'>Pormenores Alumínio</a></li>
 					<li><a href='<?php echo site_url("mediagest/perfis_aluminio_management")?>'>Perfis Alumínio</a></li>
+					<li><a href='<?php echo site_url("mediagest/pormenores_aluminio_management")?>'>Pormenores Alumínio</a></li>
+					<li><a href='<?php echo site_url("mediagest/catalogo_aluminio_management")?>'>Catálogo Alumínio</a></li>
+					<li><a href='<?php echo site_url("mediagest/ensaios_aluminio_management")?>'>Ensaios Alumínio</a></li>								
 					<li><a href='<?php echo site_url("mediagest/resumos_aluminio_management")?>'>Resumos Alumínio</a></li>
+					<hr>
 					<li><a href='<?php echo site_url("mediagest/ensaios_extrusao_management")?>'>Ensaios de Produto Extrusão</a></li>	
 				</ul>
 			</li>
 			<li <?php if ($data['titulo'] == 'Instaladores') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Instaladores</a>
 			</li> 
-			<li <?php if ($data['titulo'] == 'Produtos' || 
-				$data['titulo'] == 'Produtos Alumínio' || 
+			<li <?php if ($data['titulo'] == 'Produtos Alumínio' || 
 				$data['titulo'] == 'Produtos Extrusao'||
-				$data['titulo'] == 'Tipos de Produto' ||
 				$data['titulo'] == 'Tipos de Produto Alumínio' ||
 				$data['titulo'] == 'Tipos de Produto Extrusão' ||
-				$data['titulo'] == 'Caracteristicas de Produto' ||
 				$data['titulo'] == 'Caracteristicas de Produto Alumínio' ||
 				$data['titulo'] == 'Caracteristicas de Produto Extrusão') echo 'class="section"'; ?> >
 				<a href='#'><span class="icon">&#59176;</span> Produtos</a>
@@ -69,17 +72,18 @@
 					<li><a href='<?php echo site_url("mediagest/produtos_aluminio_management")?>'>Produtos Alumínio</a></li>
 					<li><a href='<?php echo site_url("mediagest/tipos_produto_aluminio_management")?>'>Tipos de Produto Alumínio</a></li>
 					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
+					<hr>
 					<li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
 					<li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>						
 					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_extrusao_management")?>'>Caract. de Produto Extrusão</a></li>
 				</ul>	
 			</li>
-			<li <?php if ($data['titulo'] == 'Servicos' ||
-				$data['titulo'] == 'Serviços Extrusão' ||
+			<li <?php if ($data['titulo'] == 'Serviços Extrusão' ||
 				$data['titulo'] == 'Serviços Vidro') echo 'class="section"'; ?> >
-				<a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'><span class="icon">&#59176;</span> Serviços</a>
+				<a href='#'><span class="icon">&#59176;</span> Serviços</a>
 				<ul class="submenu">
 					<li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>
+					<hr>
 					<li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'>Serviços Vidro</a></li>		
 				</ul>	
 			</li>
