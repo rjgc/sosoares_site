@@ -29,6 +29,7 @@ function __construct()
 
 	$this->lang->load('cizacl');
 
+	$this->load->model('noticias_model');
 	$this->load->model('company_model');
 	$this->load->model('product_model');
 	$this->load->model('apoio_cliente_model');
@@ -58,9 +59,10 @@ public function home_caixilharia()
 {
     $data['page_style']= "caixilharia";
 	$data['current'] = 'home_caixilharia';
-	$data['galeria_obra'] = $this->company_model->get_galeria_obra(3);
+	$data['noticia'] = $this->noticias_model->get_noticia(3);
 	$this->menu_produtos($data);
 
+	$this->load->view('templates/carousel_caixilharia');
 	$this->load->view('pages/caixilharia', $data);
 	$this->load->view('templates/footer');
 }

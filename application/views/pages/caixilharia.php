@@ -15,21 +15,19 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <h3 id="date">28-02-2014</h3>
+        <h3 id="date"><?=$noticia['data']?></h3>
     </div>
     <div class="col-md-7">
-        <h3 class="title2">Nome do Projecto 2014</h3>
+        <h3 class="title2"><?=$noticia['titulo_'.$this->lang->lang()]?></h3>
     </div>
     <div class="col-md-1">&nbsp;</div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <?php foreach ($galeria_obra as $obra){ ?>
-        <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $obra['url'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
-        <?php } ?>
+        <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
     </div>
     <div class="col-md-7">
-        <p>Serviços estão Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras adipiscing elit at augue adipiscing congue. Proin a elementum sem, mollis egestas elit.</p>
+        <p><?=$noticia['texto_'.$this->lang->lang()]?></p>
         <a href="#">
             <button class="btn button shrink"><?=lang('ler')?></button>
         </a>

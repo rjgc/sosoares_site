@@ -91,23 +91,6 @@ function index()
 	}
 }
 
-function callback_after_upload_obra($uploader_response, $field_info, $files_to_upload)
-{
-	$this->load->library('image_moo');
-
-	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
-
- 	//list - normal - thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->round(5)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(653, 639)->round(5)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 60)->round(5)->save_pa($prepend="thumb_", $append="", $overwrite=true);
-
-	//refold
-	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, $field_info->upload_path."/list/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, $field_info->upload_path."/normal/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
-
-	return true;
-}
-
 function galeria()
 {
 	$image_crud = new image_CRUD();
@@ -129,14 +112,15 @@ function noticias_management()
 
 	$crud->set_table('noticias');
 	$crud->set_subject('Noticias');
-	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
 	$crud->columns('data', 'titulo_pt', 'texto_pt', 'foto');
-	$crud->field_type('texto_pt', 'text');
-	$crud->field_type('texto_en', 'text');
-	$crud->field_type('texto_fr', 'text');
-	$crud->field_type('texto_es', 'text');
+
+	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');	
+	$crud->field_type('texto_pt', 'text')->field_type('texto_en', 'text')->field_type('texto_fr', 'text')->field_type('texto_es', 'text');
+
 	$crud->set_field_upload('foto', 'assets/uploads/noticias');
 	$crud->display_as('foto', 'Foto');
+
+	$crud->callback_after_upload(array($this,'callback_after_upload_noticia'));
 
 	$output = $crud->render();
 
@@ -146,6 +130,21 @@ function noticias_management()
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
+}
+
+function callback_after_upload_noticia($uploader_response, $field_info, $files_to_upload)
+{
+	$this->load->library('image_moo');
+
+	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
+
+ 	//thumb
+	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->round(5)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+
+	//refold
+	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
+
+	return true;
 }
 
 function paginas_management()

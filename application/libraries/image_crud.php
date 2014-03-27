@@ -30,7 +30,7 @@ class image_CRUD {
 	protected $image_path = '';
 	protected $primary_key = 'id';
 	protected $ci = null;
-	protected $thumbnail_prefix = 'thumb__';
+	protected $thumbnail_prefix = 'thumb_';
 	protected $views_as_string = '';
 	protected $css_files = array();
 	protected $js_files = array();
@@ -389,10 +389,24 @@ class image_CRUD {
 
 	protected function _create_thumbnail($image_path, $thumbnail_path)
 	{
+		//$normal_path
+		//$file_name = $this->_upload_file( $this->image_path);
+
 		$this->image_moo
 			->load($image_path)
-			->resize_crop(90,60)
+			->resize_crop(80,60)
+			->round(5)
 			->save($thumbnail_path,true);
+			// ->resize_crop(653,639)
+			// ->round(5)
+			// ->save($this->image_path.'/'.'normal_'.$file_name,true)
+			// ->resize_crop(256,230)
+			// ->round(5)
+			// ->save($this->image_path.'/'.'list_'.$file_name,true);
+
+		//rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, $field_info->upload_path."/list/".$uploader_response[0]->name);
+		//rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, $field_info->upload_path."/normal/".$uploader_response[0]->name);
+		//rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
 	}
 
 	protected function getState()
