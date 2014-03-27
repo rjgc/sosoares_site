@@ -191,8 +191,8 @@ div#map, div#map div {
     transition: none;
 }
 
-div#map.instaladores > #map-canvas {
-    height: 600px;
+div#map-instaladores > #map-canvas {
+    height: 550px;
 }
 
 /*============================== CANDIDATURAS ===================================*/

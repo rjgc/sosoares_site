@@ -210,13 +210,13 @@ public function menu_produtos($data) {
 public function contactos_caixilharia()
 {
     $data['page_style']= "caixilharia";
-	//$data['title'] = lang('indelague.home');
+    $data['page_title'] = "contactos";
 	$data['current'] = 'contactos_caixilharia';
 	$this->menu_produtos($data);
 
 	//$this->load->view('templates/header_caixilharia', $data);
 	$this->load->view('pages/contactos');
-	$this->load->view('templates/footer');
+	$this->load->view('templates/footer', $data);
 }
 
 public function apoio_cliente_caixilharia($page=null)
@@ -291,13 +291,107 @@ public function quem_somos_caixilharia($page=null)
 public function instaladores_caixilharia()
 {
     $data['page_style']= "caixilharia";
+    $data['page_title'] = "instaladores";
     $data['current'] = 'instaladores_caixilharia';
     $this->menu_produtos($data);
 
     $this->load->view('pages/instaladores', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('templates/footer', $data);
 }
 
+
+
+    /* ****************** VIDRO ******************************  */
+
+public function contactos_vidro()
+{
+    $data['page_style']= "vidro";
+    $data['page_title'] = "contactos";
+    $data['current'] = 'contactos_vidro';
+    $this->menu_produtos($data);
+
+    $this->load->view('pages/contactos');
+    $this->load->view('templates/footer', $data);
+}
+
+public function apoio_cliente_vidro($page=null)
+{
+    $data['page_style']= "vidro";
+    $data['page'] = $page;
+    $data['current'] = 'apoio_cliente_vidro';
+    $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+        } else {
+            $this->load->view('pages/apoio_cliente', $data);
+        }
+
+        $this->load->view('templates/footer');
+}
+
+    public function apoio_cliente_list_vidro()
+    {
+        $data['page_style']= "vidro";
+        $data['current'] = 'apoio_cliente_list_vidro';
+        $this->menu_produtos($data);
+
+        $paginas;
+        $y=0;
+
+        for ($i=7; $i < 13; $i++) {
+            $paginas[$y] = $this->apoio_cliente_model->get_pages($i);
+            $y++;
+        }
+
+        $data['pages'] = $paginas;
+
+        $this->load->view('pages/apoio_cliente_list', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function candidaturas_vidro()
+    {
+        $data['page_style']= "vidro";
+        $data['current'] = 'candidaturas_vidro';
+        $this->menu_produtos($data);
+
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function quem_somos_vidro($page=null)
+    {
+        $data['page_style']= "vidro";
+        $data['page'] = $page;
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'quem_somos_vidro';
+        $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+            $this->load->view('pages/quem_somos', $data);
+        } else {
+            $this->load->view('pages/quem_somos', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
+
+    public function instaladores_vidro()
+    {
+        $data['page_style'] = "vidro";
+        $data['page_title'] = "instaladores";
+        $data['current'] = 'instaladores_vidro';
+        $this->menu_produtos($data);
+
+        /*$this->load->model("instalador_model");*/
+
+        $this->load->view('pages/instaladores', $data);
+        $this->load->view('templates/footer', $data);
+    }
 
 /* public function empresa($pagina = 'historia')
 {

@@ -56,6 +56,7 @@
                         </div>
                     </li>
                 </ul>
+            </li>
             <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto_caixilharia' || $current === 'produtos_list') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('produtos')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
