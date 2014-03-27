@@ -15,7 +15,7 @@
                     for ($i=0; $i < count($pages); $i++) { 
                         foreach ($pages[$i] as $page){
                             ?>
-                            <a href="<?=site_url('pages/apoio_cliente/'.$page['id_pagina'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/files/<?php echo $page['imagem'] ?>"/><p> <?php echo $page['titulo_'.$this->lang->lang()]?></p></div></a> 
+                            <a href="<?=site_url('pages/apoio_cliente_caixilharia/'.$page['id_pagina'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/files/<?php echo $page['imagem'] ?>"/><p> <?php echo $page['titulo_'.$this->lang->lang()]?></p></div></a>
                             <?php
                         }
                     }

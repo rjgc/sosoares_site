@@ -153,11 +153,11 @@ public function produto_caixilharia($id=null)
 	$this->load->view('templates/footer');
 }
 
-public function produtos_list($id_tipo_produto_aluminio=null)
+public function produtos_list_caixilharia($id_tipo_produto_aluminio=null)
 {
     $data['page_style']= "caixilharia";
 	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'produtos_list';
+	$data['current'] = 'produtos_list_caixilharia';
 	$this->menu_produtos($data);
 
 	if ($id_tipo_produto_aluminio != null) {
@@ -219,12 +219,12 @@ public function contactos_caixilharia()
 	$this->load->view('templates/footer');
 }
 
-public function apoio_cliente($page=null) 
+public function apoio_cliente_caixilharia($page=null)
 {
     $data['page_style']= "caixilharia";
 	$data['page'] = $page;
 	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'apoio_cliente';
+	$data['current'] = 'apoio_cliente_caixilharia';
 	$this->menu_produtos($data);
 
 	if ($page != null) {
@@ -238,11 +238,11 @@ public function apoio_cliente($page=null)
 	$this->load->view('templates/footer');
 }
 
-public function apoio_cliente_list() 
+public function apoio_cliente_list_caixilharia()
 {
     $data['page_style']= "caixilharia";
 	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'apoio_cliente_list';
+	$data['current'] = 'apoio_cliente_list_caixilharia';
 	$this->menu_produtos($data);
 
 	$paginas;
@@ -259,22 +259,22 @@ public function apoio_cliente_list()
 	$this->load->view('templates/footer');
 }
 
-public function candidaturas()
+public function candidaturas_caixilharia()
 {
     $data['page_style']= "caixilharia";
-	$data['current'] = 'candidaturas';
+	$data['current'] = 'candidaturas_caixilharia';
 	$this->menu_produtos($data);
 
 	$this->load->view('pages/candidatura', $data);
 	$this->load->view('templates/footer');
 }
 
-public function quem_somos($page=null)
+public function quem_somos_caixilharia($page=null)
 {
     $data['page_style']= "caixilharia";
 	$data['page'] = $page;
 	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'quem_somos';
+	$data['current'] = 'quem_somos_caixilharia';
 	$this->menu_produtos($data);
 
 	if ($page != null) {
@@ -288,10 +288,10 @@ public function quem_somos($page=null)
 	$this->load->view('templates/footer');
 }
 
-public function instaladores()
+public function instaladores_caixilharia()
 {
     $data['page_style']= "caixilharia";
-    $data['current'] = 'instaladores';
+    $data['current'] = 'instaladores_caixilharia';
     $this->menu_produtos($data);
 
     $this->load->view('pages/instaladores', $data);

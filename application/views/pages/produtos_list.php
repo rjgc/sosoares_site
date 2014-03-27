@@ -16,7 +16,7 @@
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){
                             ?>
-                            <a href="<?=site_url('pages/produtos_list/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p></div></a> 
+                            <a href="<?=site_url('pages/produtos_list_caixilharia/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p></div></a>
                             <?php }
                         }
                         else {?>

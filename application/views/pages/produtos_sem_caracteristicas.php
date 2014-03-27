@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                <li><a href="<?=site_url('pages/produtos_list')?>"><?=lang('produtos')?></a></li>
+                <li><a href="<?=site_url('pages/produtos_list_caixilharia')?>"><?=lang('produtos')?></a></li>
                 <li><?php echo $tipo['nome_'.$this->lang->lang()] ?></li>
             </ul>
             <h1 class="title3"><?=lang('produtos')?></h1>

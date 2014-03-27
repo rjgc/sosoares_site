@@ -3,17 +3,17 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                <li><a href="<?=site_url('pages/produtos_list')?>"><?=lang('produtos')?></a></li>
+                <li><a href="<?=site_url('pages/produtos_list_caixilharia')?>"><?=lang('produtos')?></a></li>
                 <?php if(empty($id)) {?>
             </ul>
         </div>
     </div>
     <div class="alert alert-warning">
-        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('pages/produtos_list')?>">Voltar atrás.</a></h5>
+        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('pages/produtos_list_caixilharia')?>">Voltar atrás.</a></h5>
     </div>  
 </div>
 <?php } else {?>
-<li><a href="<?=site_url('pages/produtos_list/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
+<li><a href="<?=site_url('pages/produtos_list_caixilharia/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
 <?php if (!empty($produto['caracteristica'])) { ?>
 <li><?=$produto['caracteristica']?></li>
 <?php } ?>

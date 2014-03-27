@@ -9,17 +9,17 @@
     <div id="navbar-collapse-grid" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas' || $current === 'quem_somos') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas_caixilharia' || $current === 'quem_somos_caixilharia' || $current === 'instaladores_caixilharia') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos/13')?>"><?=lang('quem')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos_caixilharia/13')?>"><?=lang('quem')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores')?>"><?=lang('install')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores_caixilharia')?>"><?=lang('install')?></a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                         <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/candidaturas_caixilharia')?>"><?=lang('candidaturas')?></a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -252,37 +252,37 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoio_cliente_list') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente_caixilharia' || $current === 'apoio_cliente_list_caixilharia') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/8')?>"><?=lang('comercial')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/8')?>"><?=lang('comercial')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/9')?>"><?=lang('orcamentacao')?></a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/12')?>"><?=lang('tecnico')?></a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/11')?>"><?=lang('estudo')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/9')?>"><?=lang('orcamentacao')?></a></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/10')?>"><?=lang('software')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/12')?>"><?=lang('tecnico')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente/7')?>"><?=lang('faqs')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/11')?>"><?=lang('estudo')?></a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/10')?>"><?=lang('software')?></a></h3>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/apoio_cliente_caixilharia/7')?>"><?=lang('faqs')?></a></h3>
                                     </div>
                                 </div>
                             </div>
