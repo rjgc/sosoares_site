@@ -145,7 +145,10 @@ public function produto_caixilharia($id=null)
 
 		$data['produto'] = $produto;
 		$data['perfis'] = $this->product_model->get_perfis($id, $this->get_lang());
+		$data['pormenores'] = $this->product_model->get_pormenores($id, $this->get_lang());
+		$data['catalogos'] = $this->product_model->get_catalogos($id, $this->get_lang());
 		$data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
+		$data['resumos'] = $this->product_model->get_resumos($id, $this->get_lang());
 		$data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
 
 		$this->load->view('pages/produto', $data, $this->get_lang());

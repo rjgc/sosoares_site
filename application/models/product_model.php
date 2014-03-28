@@ -158,8 +158,29 @@ class Product_model extends CI_Model
 		return $data;
 	}
 
+	public function get_pormenores($id, $lang){
+		$query = $this->db->query("select pa.* from pormenores_aluminio pa inner join pormenores_aluminio_produtos eap on pa.id_pormenor_aluminio = eap.pormenor_aluminio_id inner join produtos_aluminio pa_ on pa_.id_produto_aluminio = eap.produto_aluminio_id where pa_.id_produto_aluminio='$id'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_catalogos($id, $lang){
+		$query = $this->db->query("select cta.* from catalogo_tecnico_aluminio cta inner join catalogo_tecnico_aluminio_produtos ctap on cta.id_catalogo_aluminio = ctap.catalogo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = ctap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	public function get_ensaios($id, $lang){
-		$query = $this->db->query("select ea.* from ensaios_aluminio ea inner join ensaios_aluminio_produtos eap on ea.id_ensaio_aluminio = eap.ensaio_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = eap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+		$query = $this->db->query("select ra.* from resumos_aluminio ra inner join resumos_aluminio_produtos rap on ra.id_resumo_aluminio = rap.resumo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = rap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_resumos($id, $lang){
+		$query = $this->db->query("select cta.* from catalogo_tecnico_aluminio cta inner join catalogo_tecnico_aluminio_produtos ctap on cta.id_catalogo_aluminio = ctap.catalogo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = ctap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
 
 		$data = $query->result_array();
 		return $data;

@@ -149,7 +149,7 @@
                                 $produto = $produtos_aluminio_obra[$i];
                                 ?>
                                 <div class="col-sm-2">
-                                    <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                    <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                         <p><?php echo $produto['nome'] ?></p>
                                     </a>
@@ -175,7 +175,7 @@
                             $produto = $produtos_aluminio_obra[$i];
                             ?>
                             <div class="col-sm-2">
-                                <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
+                                <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                     <p><?php echo $obra['nome'] ?></p>
                                 </a>

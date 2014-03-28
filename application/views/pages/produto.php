@@ -141,13 +141,23 @@ $y++;
     </div> 
     <h3 class="btn button button2"><?=lang('pormenores')?></h3>
     <div>
-        <p>teste</p>
+        <?php if (!empty($pormenores)) {
+            foreach ($pormenores as $pormenor) { ?>
+            <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['pormenor'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <?php }
+        } else { ?>
+        <li>Sem pormenores</li>
+        <?php } ?>
     </div>                                       
     <h3 class="btn button button2"><?=lang('catalogo')?></h3>
     <div>
-        <ul>
-            <a href="#"><li>teste</li></a>
-        </ul>
+        <?php if (!empty($catalogos)) {
+            foreach ($catalogos as $catalogo) { ?>
+            <a href="<?php echo base_url();?>assets/uploads/catalogos/<?php echo $catalogo['catalogo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <?php }
+        } else { ?>
+        <li>Sem catálogos</li>
+        <?php } ?>
     </div>
     <h3 class="btn button button2"><?=lang('itt')?></h3>
     <div>
@@ -161,7 +171,13 @@ $y++;
     </div>
     <h3 class="btn button button2"><?=lang('resumo')?></h3>
     <div>
-        <p>teste</p>
+        <?php if (!empty($resumos)) {
+            foreach ($resumos as $resumo) { ?>
+            <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['resumo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <?php }
+        } else { ?>
+        <li>Sem ensaios</li>
+        <?php } ?>
     </div>
 </div>
 </div>

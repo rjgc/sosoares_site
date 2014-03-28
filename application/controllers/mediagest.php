@@ -328,7 +328,7 @@ function produtos_aluminio_management()
 	$crud->order_by('id_produto_aluminio', 'asc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis_aluminio', 'pormenores_aluminio', 'catalogo_tecnico_aluminio', 'ensaios_aluminio', 'resumos_aluminio');
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio');		
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1');		
 	$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text')->field_type('resultado_pt', 'text')->field_type('resultado_en', 'text')->field_type('resultado_fr', 'text')->field_type('resultado_es', 'text');
 	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo');
 
@@ -367,9 +367,9 @@ function produtos_extrusao_management()
 	$crud->set_subject('Produtos Extrusão');	
 	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3');
 
-	$crud->required_fields('nome_pt','descricao_pt','id_tipo_produto_extrusao','id_caracteristica_produto_extrusao');
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');		
 	$crud->field_type('descricao_pt', 'text');
-	$crud->display_as('id_tipo_produto_extrusao','Tipo')->display_as('id_caracteristica_produto_extrusao','Caracteristica');
+	$crud->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Caracteristica');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
