@@ -195,6 +195,34 @@ $lang["modo"] = "Modo";
 $lang["produto"] = "Soluciones implementadas en este proyecto";
 
 
+/*Contactos*/
+
+
+$lang["administrativo"] = "Departamento Administrativo";
+
+$lang["dcomercial"] = "Departamento Comercial";
+
+$lang["dtecnico"] = "Departamento Técnico";
+
+$lang["desenvolvimento"] = "Oficina de Desarrollo";
+
+$lang["empresa"] = "Empresa";
+
+$lang["cargo"] = "Papel";
+
+$lang["fax"] = "Fax";
+
+$lang["morada"] = "Dirección";
+
+$lang["observaçoes"] = "Observaciones";
+
+$lang["assunto"] = "Sujeto";
+
+$lang["mensagem"] = "Mensaje";
+
+$lang["item"] = "Seleccione un elemento";
+
+
 /**/
 
 

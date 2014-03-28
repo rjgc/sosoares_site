@@ -31,6 +31,8 @@ class image_CRUD {
 	protected $primary_key = 'id';
 	protected $ci = null;
 	protected $thumbnail_prefix = 'thumb_';
+	protected $list_prefix = 'list_';
+	protected $normal_prefix = 'normal_';
 	protected $views_as_string = '';
 	protected $css_files = array();
 	protected $js_files = array();
@@ -366,7 +368,7 @@ class image_CRUD {
     	foreach($results as $num => $row)
     	{
 			if (!file_exists($this->image_path.'/'.$this->thumbnail_prefix.$row->{$this->url_field})) {
-				$this->_create_thumbnail($this->image_path.'/'.$row->{$this->url_field}, $this->image_path.'/'.$this->thumbnail_prefix.$row->{$this->url_field});
+				//$this->_create_thumbnail($this->image_path.'/'.$row->{$this->url_field}, $this->image_path.'/'.$this->thumbnail_prefix.$row->{$this->url_field});
 			}
 
     		$results[$num]->image_url = base_url().$this->image_path.'/'.$row->{$this->url_field};
@@ -389,24 +391,27 @@ class image_CRUD {
 
 	protected function _create_thumbnail($image_path, $thumbnail_path)
 	{
-		//$normal_path
-		//$file_name = $this->_upload_file( $this->image_path);
-
 		$this->image_moo
 			->load($image_path)
 			->resize_crop(80,60)
 			->round(5)
 			->save($thumbnail_path,true);
-			// ->resize_crop(653,639)
-			// ->round(5)
-			// ->save($this->image_path.'/'.'normal_'.$file_name,true)
-			// ->resize_crop(256,230)
-			// ->round(5)
-			// ->save($this->image_path.'/'.'list_'.$file_name,true);
+	}
 
-		//rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, $field_info->upload_path."/list/".$uploader_response[0]->name);
-		//rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, $field_info->upload_path."/normal/".$uploader_response[0]->name);
-		//rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
+	protected function _create_thumbnail_2($image_path, $thumbnail_path, $list_path, $normal_path, $file_name)
+	{
+		$this->image_moo
+			->load($image_path)
+			->resize_crop(80,60)
+			->save($thumbnail_path,true)
+			->resize_crop(256,230)
+			->save($list_path,true)
+			->resize_crop(1024,600)
+			->save($normal_path,true);
+
+		rename($thumbnail_path, "assets/uploads/obras/thumb/".$file_name);
+		rename($list_path, "assets/uploads/obras/list/".$file_name);
+		rename($normal_path, "assets/uploads/obras/normal/".$file_name);
 	}
 
 	protected function getState()
@@ -537,7 +542,7 @@ class image_CRUD {
 					$file_name = $this->_upload_file( $this->image_path);
 					
 					if ($file_name !== false) {
-						$this->_create_thumbnail( $this->image_path.'/'.$file_name , $this->image_path.'/'.$this->thumbnail_prefix.$file_name );
+						$this->_create_thumbnail_2( $this->image_path.'/'.$file_name , $this->image_path.'/'.$this->thumbnail_prefix.$file_name, $this->image_path.'/'.$this->list_prefix.$file_name, $this->image_path.'/'.$this->normal_prefix.$file_name, $file_name );
 						$this->_insert_table($file_name, $state_info->relation_value);
 						
 						$result = true;

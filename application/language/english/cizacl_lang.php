@@ -194,6 +194,34 @@ $lang["modo"] = "Mode";
 $lang["produto"] = "Solutions implemented in this project";
 
 
+/*Contactos*/
+
+
+$lang["administrativo"] = "Administrative Department";
+
+$lang["dcomercial"] = "Commercial Department";
+
+$lang["dtecnico"] = "Technical Department";
+
+$lang["desenvolvimento"] = "Development Office";
+
+$lang["empresa"] = "Company";
+
+$lang["cargo"] = "Role";
+
+$lang["fax"] = "Fax";
+
+$lang["morada"] = "Address";
+
+$lang["observaçoes"] = "Observations";
+
+$lang["assunto"] = "Subject";
+
+$lang["mensagem"] = "Message";
+
+$lang["item"] = "Select an item";
+
+
 /**/
 
 

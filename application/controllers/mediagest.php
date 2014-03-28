@@ -139,10 +139,10 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
 
  	//thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->round(5)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
 	//refold
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
 
 	return true;
 }
@@ -181,7 +181,7 @@ function ensaios_aluminio_management()
 	$crud->columns('nome_pt', 'ensaio');
 	$crud->order_by('id_ensaio_aluminio','asc');
 
-	$crud->set_field_upload('ensaio', 'assets/uploads/files');
+	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
 
 	$output = $crud->render();
 
@@ -223,7 +223,7 @@ function catalogo_aluminio_management()
 	$crud->columns('nome_pt', 'catalogo');
 	$crud->order_by('id_catalogo_aluminio','asc');
 
-	$crud->set_field_upload('catalogo', 'assets/uploads/files');
+	$crud->set_field_upload('catalogo', 'assets/uploads/catalogos');
 
 	$output = $crud->render();
 
@@ -244,7 +244,7 @@ function pormenores_aluminio_management()
 	$crud->columns('nome_pt', 'pormenor');
 	$crud->order_by('id_pormenor_aluminio','asc');
 
-	$crud->set_field_upload('pormenor', 'assets/uploads/files');
+	$crud->set_field_upload('pormenor', 'assets/uploads/pormenores');
 
 	$output = $crud->render();
 
@@ -265,7 +265,7 @@ function perfis_aluminio_management()
 	$crud->columns('nome_pt', 'perfil');
 	$crud->order_by('id_perfil_aluminio','asc');
 
-	$crud->set_field_upload('perfil', 'assets/uploads/files');
+	$crud->set_field_upload('perfil', 'assets/uploads/perfis');
 
 	$output = $crud->render();
 
@@ -286,7 +286,7 @@ function resumos_aluminio_management()
 	$crud->columns('nome_pt', 'resumo');
 	$crud->order_by('id_resumo_aluminio','asc');
 
-	$crud->set_field_upload('resumo', 'assets/uploads/files');
+	$crud->set_field_upload('resumo', 'assets/uploads/resumos');
 
 	$output = $crud->render();
 
@@ -398,12 +398,12 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
 
  	//list - normal - thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->round(5)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->round(5)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->round(5)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
 	//refold
-	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, $field_info->upload_path."/list/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, $field_info->upload_path."/normal/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, $field_info->upload_path."/thumb/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
 
 	return true;
 }
