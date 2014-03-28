@@ -165,7 +165,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .carousel-caption ul {margin-top: -23px !important;}
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
-.carousel-inner > .item > img {width: 100%;}
+.carousel-inner > .item > img {width: 100%;max-height: 96%;border-radius: 10px;}
 .selected img {opacity:0.5;}
 .carousel-control {border-radius: 10px;width: 65px;height: 65px;display: inline-block;}
 .controls{margin-top: 120px;background-image: none !important;}
@@ -199,6 +199,7 @@ div#map-instaladores > #map-canvas {
 
 .candidaturas .form-group, .contactos .form-group {height: 25px;}
 .container {margin: 0 auto  25px}
+.divider {border: 0;margin: -10px 0 40px;}
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
