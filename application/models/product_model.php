@@ -151,6 +151,13 @@ class Product_model extends CI_Model
 		return $data;
 	}
 
+	public function get_perfis($id, $lang){
+		$query = $this->db->query("select pa.* from perfis_aluminio pa inner join perfis_aluminio_produtos eap on pa.id_perfil_aluminio = eap.perfil_aluminio_id inner join produtos_aluminio pa_ on pa_.id_produto_aluminio = eap.produto_aluminio_id where pa_.id_produto_aluminio='$id'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	public function get_ensaios($id, $lang){
 		$query = $this->db->query("select ea.* from ensaios_aluminio ea inner join ensaios_aluminio_produtos eap on ea.id_ensaio_aluminio = eap.ensaio_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = eap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
 

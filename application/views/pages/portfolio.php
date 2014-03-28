@@ -17,8 +17,6 @@
                     <!-- thumb navigation carousel -->
                     <!-- main slider carousel -->
                     <div class="row">
-<!-- <div class="col-md-12" id="slider">
-    <div class="col-md-12" id="carousel-bounding-box">-->
         <div id="myCarousel" class="carousel slide">
             <!-- main slider carousel items -->
             <div class="carousel-inner" style="max-height: 350px;">
@@ -27,12 +25,12 @@
                 foreach ($galeria_obra as $gobra){ 
                     if($i==0) {?>
                     <div class="active item" data-slide-number="<?php echo $i ?>">
-                        <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                        <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                     </div>
                     <?php $i++; 
                 } else{ ?>
                 <div class="item" data-slide-number="<?php echo $i ?>">
-                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                    <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                 </div>
                 <?php
                 $i++; }
@@ -52,8 +50,6 @@
         }
         ?>
     </div>
-<!--</div>
-</div>-->
 <!--/main slider carousel-->
 <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding-left: 0px !important; padding-right: 0px !important;">
     <ul class="list-inline">
@@ -154,8 +150,8 @@
                                 ?>
                                 <div class="col-sm-2">
                                     <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                        <p><?php echo $produto['nome_'.$this->lang->lang()] ?></p>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                        <p><?php echo $produto['nome'] ?></p>
                                     </a>
                                 </div>
                                 <?php
@@ -180,8 +176,8 @@
                             ?>
                             <div class="col-sm-2">
                                 <a href="<?=site_url('pages/portfolio_caixilharia/'.$produto['id'])?>">
-                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
-                                    <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
+                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                    <p><?php echo $obra['nome'] ?></p>
                                 </a>
                             </div>
                             <?php

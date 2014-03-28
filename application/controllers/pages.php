@@ -111,7 +111,7 @@ public function portfolio_caixilharia($id=null)
 	if($id != null){
 		$data['obra'] = $this->company_model->get_obra($id);
 		$data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
-		$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id);
+		$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id, $this->get_lang());
 
 		$this->load->view('pages/portfolio', $data, $this->get_lang());
 	}
@@ -138,14 +138,15 @@ public function produto_caixilharia($id=null)
 		$produto;
 
 		if (!empty($data['caracteristicas'])) {
-			$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id, $this->lang->lang());
+			$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id, $this->get_lang());
 		} else {
-			$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id, $this->lang->lang());
+			$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id, $this->get_lang());
 		}
 
 		$data['produto'] = $produto;
-		$data['ensaios'] = $this->product_model->get_ensaios($id, $this->lang->lang());
-		$data['obras'] = $this->product_model->get_obras($id, $this->lang->lang());
+		$data['perfis'] = $this->product_model->get_perfis($id, $this->get_lang());
+		$data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
+		$data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
 
 		$this->load->view('pages/produto', $data, $this->get_lang());
 	} else {
@@ -459,11 +460,11 @@ public function formacao($idForm = FALSE, $idForm_detalhes = FALSE)
 $result = $this->company_model->gest_page('1');
 $data['news'] = $this->news_model->get_news();
 if($idForm != FALSE && $idForm_detalhes == FALSE)
-$data['formacao'] = $this->formacao_model->get_formacao($idForm,$this->lang->lang());
+$data['formacao'] = $this->formacao_model->get_formacao($idForm,$this->get_lang());
 elseif($idForm_detalhes != FALSE)
-$data['detalhe'] = $this->formacao_model->get_detalhes($idForm_detalhes,$this->lang->lang());
+$data['detalhe'] = $this->formacao_model->get_detalhes($idForm_detalhes,$this->get_lang());
 else
-$data['formacoes'] = $this->home_model->get_formacoes($this->lang->lang());
+$data['formacoes'] = $this->home_model->get_formacoes($this->get_lang());
 //$data['gest_page'] = $result[0];
 
 $data['title'] = lang('gestinfor.company');
@@ -645,7 +646,7 @@ $this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|m
 $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 //ENDS Form
 $result = $this->company_model->gest_page('1');
-$data['cursos'] = $this->company_model->get_cursos($this->lang->lang());
+$data['cursos'] = $this->company_model->get_cursos($this->get_lang());
 $data['news'] = $this->news_model->get_news();
 // vai buscar lista de produtos ou detalhe
 //$data['gest_page'] = $result[0];
@@ -675,7 +676,7 @@ $this->form_validation->set_rules('curso[]', 'Curso', 'required');
 $this->form_validation->set_rules('descricao','Descricao','required');
 //ENDS Form
 $result = $this->company_model->gest_page('1');
-$data['cursos'] = $this->company_model->get_cursos($this->lang->lang());
+$data['cursos'] = $this->company_model->get_cursos($this->get_lang());
 $data['news'] = $this->news_model->get_news();
 
 // vai buscar lista de produtos ou detalhe
@@ -782,7 +783,7 @@ $this->load->view('templates/nav', $data);
 $this->load->view('templates/sidebar', $data);
 
 if($pagina != null){
-$data['new'] = $this->news_model->get_new($pagina,$this->lang->lang());
+$data['new'] = $this->news_model->get_new($pagina,$this->get_lang());
 $this->load->view('new',$data);
 }
 else{

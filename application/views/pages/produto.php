@@ -36,13 +36,13 @@
                         if (!empty($produto['foto_'.$i])){
                             if ($i==1){?>
                             <div class="active item" data-slide-number="<?php echo $i ?>">
-                                <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                                <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                             </div>
                             <?php
                         }
                         else { ?>
                         <div class="item" data-slide-number="<?php echo $i ?>">
-                            <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                            <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                         </div>
                         <?php                                
                     } 
@@ -73,14 +73,14 @@
             if (!empty($produto['foto_'.$i])){
                 if ($i==1){?>
                 <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                    <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
                 </a>
             </li>
             <?php
         }
         else { ?>
         <li> <a id="carousel-selector-<?php echo $y ?>">
-            <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+            <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
         </a>
     </li>
     <?php                                
@@ -120,7 +120,7 @@ $y++;
                 if (!empty($produto['corte_'.$i])){
                     ?>                                                                    
                     <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                        <img src="<?php echo base_url();?>assets/uploads/files/8877a-bi-rail-h.jpg" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
+                        <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
                     </a>
                 </br>
                 <?php
@@ -131,9 +131,13 @@ $y++;
     </div>  
     <h3 class="btn button button2"><?=lang('perfis')?></h3>
     <div>
-        <ul>
-            <a href="#"><li>teste</li></a>
-        </ul>
+        <?php if (!empty($perfis)) {
+            foreach ($perfis as $perfil) { ?>
+            <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $perfil['perfil'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <?php }
+        } else { ?>
+        <li>Sem perfis</li>
+        <?php } ?>
     </div> 
     <h3 class="btn button button2"><?=lang('pormenores')?></h3>
     <div>
@@ -149,7 +153,7 @@ $y++;
     <div>
         <?php if (!empty($ensaios)) {
             foreach ($ensaios as $ensaio) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+            <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
             <?php }
         } else { ?>
         <li>Sem ensaios</li>
