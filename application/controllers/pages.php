@@ -33,6 +33,7 @@ function __construct()
 	$this->load->model('company_model');
 	$this->load->model('product_model');
 	$this->load->model('apoio_cliente_model');
+    $this->load->model('instalador_model');
 }
 
 public function get_lang() 
@@ -302,6 +303,8 @@ public function instaladores_caixilharia()
     $this->menu_produtos($data);
 
     $this->load->view('pages/instaladores', $data);
+
+    $data['instaladores'] = $this->instalador_model->get_instaladores();
     $this->load->view('templates/footer', $data);
 }
 

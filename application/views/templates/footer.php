@@ -145,7 +145,39 @@
                             var map = new google.maps.Map(document.getElementById("map-canvas"),
                             mapOptions);
 
-                            var myLatLng1 = new google.maps.LatLng(41.152985,-8.634299);
+                            <?php
+
+                                foreach($instaladores as $instalador) {
+                                    $i = 1;
+                            ?>
+                                    var myLatLng<?= $i ?> = new google.maps.LatLng(<?= $instalador['latitude']?> , <?=$instalador['longitude']?>);
+
+                                    var marker<?= $i ?> = new google.maps.Marker({
+                                    position: myLatLng<?= $i ?>,
+                                    map: map,
+                                    animation: google.maps.Animation.DROP,
+                                    icon: image,
+                                    title:"<?= $instalador['titulo']?>"
+                                    });
+
+                                    var popup<?= $i ?>=new google.maps.InfoWindow({
+                                    content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
+                                        "<h4><?= $instalador['titulo']?></h4>" +
+                                        "<div style='font-size: 11px'>" +
+                                        "<p><?= $instalador['morada']?></p>" +
+                                        "<p><b><?= $instalador['nome']?></b></p>" +
+                                        "<p><b>Telf.: </b><?= $instalador['telefone']?></p>" +
+                                        "<p><b>Email: </b><?= $instalador['email']?></p>" +
+                                        "</div></div>"
+                                    });
+                                    google.maps.event.addListener(marker<?= $i ?>, 'click', function(e) {
+                                    console.log(e);
+                                    popup<?= $i ?>.open(map, this);
+                                    });
+                            <?php
+                                }
+                            ?>
+                            /*var myLatLng1 = new google.maps.LatLng(41.152985,-8.634299);
 
                             var marker1 = new google.maps.Marker({
                             position: myLatLng1,
@@ -167,7 +199,7 @@
                             google.maps.event.addListener(marker1, 'click', function(e) {
                             console.log(e);
                             popup1.open(map, this);
-                            });
+                            });*/
 
 
 

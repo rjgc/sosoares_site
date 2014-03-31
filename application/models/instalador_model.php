@@ -1,5 +1,5 @@
 <?php
-class instaladores_model extends CI_Model
+class Instalador_model extends CI_Model
 {
 	public function __construct() {
 		parent::__construct();
