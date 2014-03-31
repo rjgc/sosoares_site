@@ -18,317 +18,299 @@ class Pages extends CI_Controller {
 * @see http://codeigniter.com/user_guide/general/urls.html
 */
 
-function __construct()
-{
-	parent::__construct();
+    function __construct()
+    {
+        parent::__construct();
 
-	// you might want to just autoload these two helpers
-	$this->load->helper('language');
-	$this->load->helper('url');
-	$this->load->helper('text');
+        // you might want to just autoload these two helpers
+        $this->load->helper('language');
+        $this->load->helper('url');
+        $this->load->helper('text');
 
-	$this->lang->load('cizacl');
+        $this->lang->load('cizacl');
 
-	$this->load->model('noticias_model');
-	$this->load->model('company_model');
-	$this->load->model('product_model');
-	$this->load->model('apoio_cliente_model');
-    $this->load->model('instalador_model');
-}
+        $this->load->model('noticias_model');
+        $this->load->model('company_model');
+        $this->load->model('product_model');
+        $this->load->model('apoio_cliente_model');
+        $this->load->model('instalador_model');
+    }
 
-public function get_lang() 
-{
-	return $this->lang->lang();
-}
+    public function get_lang()
+    {
+        return $this->lang->lang();
+    }
 
-public function index()
-{
-	$this->home();        
-}
+    public function index()
+    {
+        $this->home();
+    }
 
-public function home()
-{
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'home';
+    public function home()
+    {
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'home';
 
-	$this->load->view('templates/carousel_caixilharia', $this->get_lang());
-	$this->load->view('pages/caixilharia', $data);
-	$this->load->view('templates/footer');
-}
+        $this->load->view('templates/carousel_caixilharia', $this->get_lang());
+        $this->load->view('pages/caixilharia', $data);
+        $this->load->view('templates/footer');
+    }
 
-public function home_caixilharia()
-{
-    $data['page_style']= "caixilharia";
-	$data['current'] = 'home_caixilharia';
-	$data['noticia'] = $this->noticias_model->get_noticia(3);
-	$this->menu_produtos($data);
+    /* ============================================================ */
+    /* ******************* CAIXILHARIA ****************************  */
+    /* ============================================================ */
 
-	$this->load->view('templates/carousel_caixilharia');
-	$this->load->view('pages/caixilharia', $data);
-	$this->load->view('templates/footer');
-}
+    public function home_caixilharia()
+    {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'home_caixilharia';
+        $data['noticia'] = $this->noticias_model->get_noticia(3);
+        $this->menu_produtos($data);
 
-public function home_vidro()
-{
-    $data['page_style']= "vidro";
-	$data['current'] = 'home_vidro';
+        $this->load->view('templates/carousel_caixilharia');
+        $this->load->view('pages/caixilharia', $data);
+        $this->load->view('templates/footer');
+    }
 
-	$this->load->view('templates/header', $data);
-	$this->load->view('templates/carousel_vidro');
-	$this->load->view('pages/vidro', $data);
-	$this->load->view('templates/footer');
-}
+    public function portfolio_caixilharia($id=null)
+    {
+        $data['page_style']= "caixilharia";
+        $data['id'] = $id;
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'portfolio_caixilharia';
+        $this->menu_produtos($data);
 
-public function home_extrusao()
-{
-    $data['page_style']= "extrusao";
-	$data['current'] = 'home_extrusao';
+        if($id != null){
+            $data['obra'] = $this->company_model->get_obra($id);
+            $data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
+            $data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id, $this->get_lang());
 
-    $this->load->view('templates/header', $data);
-	$this->load->view('templates/carousel_extrusao');
-	$this->load->view('pages/extrusao', $data);
-	$this->load->view('templates/footer');
-}
+            $this->load->view('pages/portfolio', $data, $this->get_lang());
+        }
+        else{
+            $data['obras'] = $this->company_model->get_obras();
 
-public function home_tratamento()
-{
-    $data['page_style']= "tratamento";
-	$data['current'] = 'home_tratamento';
+            $this->load->view('pages/portfolio_list', $data, $this->get_lang());
+        }
 
-    $this->load->view('templates/header', $data);
-	$this->load->view('templates/carousel_tratamento');
-	$this->load->view('pages/tratamento', $data);
-	$this->load->view('templates/footer');
-}
+        $this->load->view('templates/footer');
+    }
 
-public function portfolio_caixilharia($id=null)
-{
-    $data['page_style']= "caixilharia";
-	$data['id'] = $id;
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'portfolio_caixilharia';
-	$this->menu_produtos($data);
+    public function produto_caixilharia($id=null)
+    {
+        $data['page_style']= "caixilharia";
+        $data['id'] = $id;
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'produto_caixilharia';
+        $this->menu_produtos($data);
 
-	if($id != null){
-		$data['obra'] = $this->company_model->get_obra($id);
-		$data['galeria_obra'] = $this->company_model->get_galeria_obra($id);
-		$data['produtos_aluminio_obra'] = $this->company_model->get_produtos_aluminio_obra($id, $this->get_lang());
+        if ($id != null) {
+            $data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
 
-		$this->load->view('pages/portfolio', $data, $this->get_lang());
-	}
-	else{
-		$data['obras'] = $this->company_model->get_obras();
+            $produto;
 
-		$this->load->view('pages/portfolio_list', $data, $this->get_lang());
-	}
+            if (!empty($data['caracteristicas'])) {
+                $produto = $this->product_model->get_produto_aluminio_com_caracteristica($id, $this->get_lang());
+            } else {
+                $produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id, $this->get_lang());
+            }
 
-	$this->load->view('templates/footer');
-}
+            $data['produto'] = $produto;
+            $data['perfis'] = $this->product_model->get_perfis($id, $this->get_lang());
+            $data['pormenores'] = $this->product_model->get_pormenores($id, $this->get_lang());
+            $data['catalogos'] = $this->product_model->get_catalogos($id, $this->get_lang());
+            $data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
+            $data['resumos'] = $this->product_model->get_resumos($id, $this->get_lang());
+            $data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
 
-public function produto_caixilharia($id=null)
-{
-    $data['page_style']= "caixilharia";
-	$data['id'] = $id;
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'produto_caixilharia';
-	$this->menu_produtos($data);
+            $this->load->view('pages/produto', $data, $this->get_lang());
+        } else {
+            $this->load->view('pages/produto', $data, $this->get_lang());
+        }
 
-	if ($id != null) {
-		$data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
+        $this->load->view('templates/footer');
+    }
 
-		$produto;
+    public function produtos_list_caixilharia($id_tipo_produto_aluminio=null)
+    {
+        $data['page_style']= "caixilharia";
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'produtos_list_caixilharia';
+        $this->menu_produtos($data);
 
-		if (!empty($data['caracteristicas'])) {
-			$produto = $this->product_model->get_produto_aluminio_com_caracteristica($id, $this->get_lang());
-		} else {
-			$produto = $this->product_model->get_produto_aluminio_sem_caracteristica($id, $this->get_lang());
-		}
+        if ($id_tipo_produto_aluminio != null) {
+            $data['caracteristicas'] = $this->product_model->get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio);
+            $data['tipo'] = $this->product_model->get_tipo_produtos_aluminio($id_tipo_produto_aluminio);
 
-		$data['produto'] = $produto;
-		$data['perfis'] = $this->product_model->get_perfis($id, $this->get_lang());
-		$data['pormenores'] = $this->product_model->get_pormenores($id, $this->get_lang());
-		$data['catalogos'] = $this->product_model->get_catalogos($id, $this->get_lang());
-		$data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
-		$data['resumos'] = $this->product_model->get_resumos($id, $this->get_lang());
-		$data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
+            if (!empty($data['caracteristicas'])) {
+                $produtos;
 
-		$this->load->view('pages/produto', $data, $this->get_lang());
-	} else {
-		$this->load->view('pages/produto', $data, $this->get_lang());
-	}
+                foreach ($data['caracteristicas'] as $caracteristica) {
+                    $produtos[$caracteristica['nome_pt']] = $this->product_model->get_produtos_aluminio($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
+                }
 
-	$this->load->view('templates/footer');
-}
+                $data['produtos'] = $produtos;
 
-public function produtos_list_caixilharia($id_tipo_produto_aluminio=null)
-{
-    $data['page_style']= "caixilharia";
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'produtos_list_caixilharia';
-	$this->menu_produtos($data);
+                $this->load->view('pages/produtos_com_caracteristicas', $data, $this->get_lang());
 
-	if ($id_tipo_produto_aluminio != null) {
-		$data['caracteristicas'] = $this->product_model->get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio);
-		$data['tipo'] = $this->product_model->get_tipo_produtos_aluminio($id_tipo_produto_aluminio);
-		
-		if (!empty($data['caracteristicas'])) {
-			$produtos;
+            } else {
+                $data['produtos'] = $this->product_model->get_produtos_aluminio_tipo($id_tipo_produto_aluminio);
 
-			foreach ($data['caracteristicas'] as $caracteristica) {
-				$produtos[$caracteristica['nome_pt']] = $this->product_model->get_produtos_aluminio($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
-			}
+                $this->load->view('pages/produtos_sem_caracteristicas', $data, $this->get_lang());
+            }
+        }
+        else {
+            $data['tipos'] = $this->product_model->get_tipos_produtos_aluminio();
 
-			$data['produtos'] = $produtos;
+            $this->load->view('pages/produtos_list', $data);
+        }
 
-			$this->load->view('pages/produtos_com_caracteristicas', $data, $this->get_lang());
-			
-		} else {
-			$data['produtos'] = $this->product_model->get_produtos_aluminio_tipo($id_tipo_produto_aluminio);			
+        $this->load->view('templates/footer');
+    }
 
-			$this->load->view('pages/produtos_sem_caracteristicas', $data, $this->get_lang());
-		}
-	}
-	else {
-		$data['tipos'] = $this->product_model->get_tipos_produtos_aluminio();
+    public function menu_produtos($data) {
+        $data['batentes_com_corte'] = $this->product_model->get_batentes_com_corte($this->get_lang());
+        $data['batentes_sem_corte'] = $this->product_model->get_batentes_sem_corte($this->get_lang());
+        $data['aluminios_madeira'] = $this->product_model->get_aluminios_madeira($this->get_lang());
+        $data['correres_com_corte'] = $this->product_model->get_correres_com_corte($this->get_lang());
+        $data['correres_sem_corte'] = $this->product_model->get_correres_sem_corte($this->get_lang());
+        $data['gradeamentos'] = $this->product_model->get_gradeamentos($this->get_lang());
+        $data['fachadas'] = $this->product_model->get_fachadas($this->get_lang());
+        $data['portadas'] = $this->product_model->get_portadas($this->get_lang());
+        $data['portoes'] = $this->product_model->get_portoes($this->get_lang());
+        $data['standards'] = $this->product_model->get_standards($this->get_lang());
+        $data['guilhotinas'] = $this->product_model->get_guilhotinas($this->get_lang());
+        $data['resguardos'] = $this->product_model->get_resguardos($this->get_lang());
 
-		$this->load->view('pages/produtos_list', $data);
-	}
+        $this->load->view('templates/header', $data, $this->get_lang());
+    }
 
-	$this->load->view('templates/footer');
-}
+    public function contactos_caixilharia()
+    {
+        $data['page_style']= "caixilharia";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos_caixilharia';
+        $this->menu_produtos($data);
 
-public function menu_produtos($data) {
-	$data['batentes_com_corte'] = $this->product_model->get_batentes_com_corte($this->get_lang());
-	$data['batentes_sem_corte'] = $this->product_model->get_batentes_sem_corte($this->get_lang());
-	$data['aluminios_madeira'] = $this->product_model->get_aluminios_madeira($this->get_lang());
-	$data['correres_com_corte'] = $this->product_model->get_correres_com_corte($this->get_lang());
-	$data['correres_sem_corte'] = $this->product_model->get_correres_sem_corte($this->get_lang());
-	$data['gradeamentos'] = $this->product_model->get_gradeamentos($this->get_lang());
-	$data['fachadas'] = $this->product_model->get_fachadas($this->get_lang());
-	$data['portadas'] = $this->product_model->get_portadas($this->get_lang());
-	$data['portoes'] = $this->product_model->get_portoes($this->get_lang());
-	$data['standards'] = $this->product_model->get_standards($this->get_lang());
-	$data['guilhotinas'] = $this->product_model->get_guilhotinas($this->get_lang());
-	$data['resguardos'] = $this->product_model->get_resguardos($this->get_lang());
+        //$this->load->view('templates/header_caixilharia', $data);
+        $this->load->view('pages/contactos');
+        $this->load->view('templates/footer', $data);
+    }
 
-	$this->load->view('templates/header', $data, $this->get_lang());
-}
+    public function apoio_cliente_caixilharia($page=null)
+    {
+        $data['page_style']= "caixilharia";
+        $data['page'] = $page;
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'apoio_cliente_caixilharia';
+        $this->menu_produtos($data);
 
-public function contactos_caixilharia()
-{
-    $data['page_style']= "caixilharia";
-    $data['page_title'] = "contactos";
-	$data['current'] = 'contactos_caixilharia';
-	$this->menu_produtos($data);
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
 
-	//$this->load->view('templates/header_caixilharia', $data);
-	$this->load->view('pages/contactos');
-	$this->load->view('templates/footer', $data);
-}
+            $this->load->view('pages/apoio_cliente', $data);
+        } else {
+            $this->load->view('pages/apoio_cliente', $data);
+        }
 
-public function apoio_cliente_caixilharia($page=null)
-{
-    $data['page_style']= "caixilharia";
-	$data['page'] = $page;
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'apoio_cliente_caixilharia';
-	$this->menu_produtos($data);
+        $this->load->view('templates/footer');
+    }
 
-	if ($page != null) {
-		$data['page'] = $this->apoio_cliente_model->get_page($page);
+    public function apoio_cliente_list_caixilharia()
+    {
+        $data['page_style']= "caixilharia";
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'apoio_cliente_list_caixilharia';
+        $this->menu_produtos($data);
 
-		$this->load->view('pages/apoio_cliente', $data);
-	} else {
-		$this->load->view('pages/apoio_cliente', $data);
-	}
+        $paginas;
+        $y=0;
 
-	$this->load->view('templates/footer');
-}
+        for ($i=7; $i < 13; $i++) {
+            $paginas[$y] = $this->apoio_cliente_model->get_pages($i);
+            $y++;
+        }
 
-public function apoio_cliente_list_caixilharia()
-{
-    $data['page_style']= "caixilharia";
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'apoio_cliente_list_caixilharia';
-	$this->menu_produtos($data);
+        $data['pages'] = $paginas;
 
-	$paginas;
-	$y=0;
+        $this->load->view('pages/apoio_cliente_list', $data);
+        $this->load->view('templates/footer');
+    }
 
-	for ($i=7; $i < 13; $i++) { 
-		$paginas[$y] = $this->apoio_cliente_model->get_pages($i);
-		$y++;
-	}	
+    public function candidaturas_caixilharia()
+    {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'candidaturas_caixilharia';
+        $this->menu_produtos($data);
 
-	$data['pages'] = $paginas;
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
 
-	$this->load->view('pages/apoio_cliente_list', $data);
-	$this->load->view('templates/footer');
-}
+    public function quem_somos_caixilharia($page=null)
+    {
+        $data['page_style']= "caixilharia";
+        $data['page'] = $page;
+        //$data['title'] = lang('indelague.home');
+        $data['current'] = 'quem_somos_caixilharia';
+        $this->menu_produtos($data);
 
-public function candidaturas_caixilharia()
-{
-    $data['page_style']= "caixilharia";
-	$data['current'] = 'candidaturas_caixilharia';
-	$this->menu_produtos($data);
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
 
-	$this->load->view('pages/candidatura', $data);
-	$this->load->view('templates/footer');
-}
+            $this->load->view('pages/quem_somos', $data);
+        } else {
+            $this->load->view('pages/quem_somos', $data);
+        }
 
-public function quem_somos_caixilharia($page=null)
-{
-    $data['page_style']= "caixilharia";
-	$data['page'] = $page;
-	//$data['title'] = lang('indelague.home');
-	$data['current'] = 'quem_somos_caixilharia';
-	$this->menu_produtos($data);
+        $this->load->view('templates/footer');
+    }
 
-	if ($page != null) {
-		$data['page'] = $this->apoio_cliente_model->get_page($page);
+    public function instaladores_caixilharia()
+    {
+        $data['page_style']= "caixilharia";
+        $data['page_title'] = "instaladores";
+        $data['current'] = 'instaladores_caixilharia';
+        $this->menu_produtos($data);
 
-		$this->load->view('pages/quem_somos', $data);
-	} else {
-		$this->load->view('pages/quem_somos', $data);
-	}
+        $this->load->view('pages/instaladores', $data);
 
-	$this->load->view('templates/footer');
-}
+        $data['instaladores'] = $this->instalador_model->get_instaladores();
+        $this->load->view('templates/footer', $data);
+    }
 
-public function instaladores_caixilharia()
-{
-    $data['page_style']= "caixilharia";
-    $data['page_title'] = "instaladores";
-    $data['current'] = 'instaladores_caixilharia';
-    $this->menu_produtos($data);
+    /* ========================================================== */
+    /* ********************* VIDRO ******************************  */
+    /* ========================================================== */
 
-    $this->load->view('pages/instaladores', $data);
+    public function home_vidro()
+    {
+        $data['page_style']= "vidro";
+        $data['current'] = 'home_vidro';
 
-    $data['instaladores'] = $this->instalador_model->get_instaladores();
-    $this->load->view('templates/footer', $data);
-}
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/carousel_vidro');
+        $this->load->view('pages/vidro', $data);
+        $this->load->view('templates/footer');
+    }
 
+    public function contactos_vidro()
+    {
+        $data['page_style']= "vidro";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos_vidro';
+        $this->menu_produtos($data);
 
+        $this->load->view('pages/contactos');
+        $this->load->view('templates/footer', $data);
+    }
 
-    /* ****************** VIDRO ******************************  */
-
-public function contactos_vidro()
-{
-    $data['page_style']= "vidro";
-    $data['page_title'] = "contactos";
-    $data['current'] = 'contactos_vidro';
-    $this->menu_produtos($data);
-
-    $this->load->view('pages/contactos');
-    $this->load->view('templates/footer', $data);
-}
-
-public function apoio_cliente_vidro($page=null)
-{
-    $data['page_style']= "vidro";
-    $data['page'] = $page;
-    $data['current'] = 'apoio_cliente_vidro';
-    $this->menu_produtos($data);
+    public function apoio_cliente_vidro($page=null)
+    {
+        $data['page_style']= "vidro";
+        $data['page'] = $page;
+        $data['current'] = 'apoio_cliente_vidro';
+        $this->menu_produtos($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -338,7 +320,7 @@ public function apoio_cliente_vidro($page=null)
         }
 
         $this->load->view('templates/footer');
-}
+    }
 
     public function apoio_cliente_list_vidro()
     {
@@ -396,212 +378,352 @@ public function apoio_cliente_vidro($page=null)
         $data['current'] = 'instaladores_vidro';
         $this->menu_produtos($data);
 
-        /*$this->load->model("instalador_model");*/
-
         $this->load->view('pages/instaladores', $data);
+
+        $data['instaladores'] = $this->instalador_model->get_instaladores();
         $this->load->view('templates/footer', $data);
     }
 
-/* public function empresa($pagina = 'historia')
-{
-//if(isset($tipo))
-$result = $this->company_model->gest_page($pagina);
-//else
-//	$result = $this->company_model->gest_page($tipo);
-$data['news'] = $this->news_model->get_news();
+    /* ========================================================== */
+    /* ****************** EXTRUSÃO ****************************** */
+    /* ========================================================== */
 
-$data['gest_page'] = $result[0];
+    public function home_extrusao()
+    {
+        $data['page_style']= "extrusao";
+        $data['current'] = 'home_extrusao';
 
-$data['title'] = lang('gestinfor.company');
-$data['current'] = 'company';
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/carousel_extrusao');
+        $this->load->view('pages/extrusao', $data);
+        $this->load->view('templates/footer');
+    }
 
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('empresa');
-$this->load->view('templates/footer', $data);	
-}
+    public function candidaturas_extrusao()
+    {
+        $data['page_style']= "extrusao";
+        $data['current'] = 'candidaturas_extrusao';
+        $this->menu_produtos($data);
 
-public function gestinfor($pagina = 'catalogos')
-{
-//if(isset($tipo))
-$result = $this->company_model->gest_page($pagina);
-//else
-//	$result = $this->company_model->gest_page($tipo);
-$data['news'] = $this->news_model->get_news();
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
 
-$data['gest_page'] = $result[0];
+    public function quem_somos_extrusao($page=null)
+    {
+        $data['page_style']= "extrusao";
+        $data['page'] = $page;
+        $data['current'] = 'quem_somos_extrusao';
+        $this->menu_produtos($data);
 
-$data['title'] = lang('gestinfor.company');
-$data['current'] = 'company';
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
 
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('gestinfor');
-$this->load->view('templates/footer', $data);	
-}
+            $this->load->view('pages/quem_somos', $data);
+        } else {
+            $this->load->view('pages/quem_somos', $data);
+        }
 
-public function areas_actuacao()
-{
+        $this->load->view('templates/footer');
+    }
 
-$result = $this->company_model->gest_page('2');
-$data['news'] = $this->news_model->get_news();
+    public function instaladores_extrusao()
+    {
+        $data['page_style'] = "extrusao";
+        $data['page_title'] = "instaladores";
+        $data['current'] = 'instaladores_extrusao';
+        $this->menu_produtos($data);
 
-// vai buscar lista de produtos ou detalhe
-$data['gest_page'] = $result[0];
+        $this->load->view('pages/instaladores', $data);
 
-$data['title'] = lang('gestinfor.areas-actuacao');
-$data['current'] = 'areas-actuacao';
+        $data['instaladores'] = $this->instalador_model->get_instaladores();
+        $this->load->view('templates/footer', $data);
+    }
 
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('generic-page');
-$this->load->view('templates/footer', $data);	
-}
+    public function contactos_extrusao()
+    {
+        $data['page_style']= "extrusao";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos_extrusao';
+        $this->menu_produtos($data);
 
-public function formacao($idForm = FALSE, $idForm_detalhes = FALSE)
-{
-$result = $this->company_model->gest_page('1');
-$data['news'] = $this->news_model->get_news();
-if($idForm != FALSE && $idForm_detalhes == FALSE)
-$data['formacao'] = $this->formacao_model->get_formacao($idForm,$this->get_lang());
-elseif($idForm_detalhes != FALSE)
-$data['detalhe'] = $this->formacao_model->get_detalhes($idForm_detalhes,$this->get_lang());
-else
-$data['formacoes'] = $this->home_model->get_formacoes($this->get_lang());
-//$data['gest_page'] = $result[0];
+        $this->load->view('pages/contactos');
+        $this->load->view('templates/footer', $data);
+    }
 
-$data['title'] = lang('gestinfor.company');
-$data['current'] = 'formacao';
+    /* ============================================================ */
+    /* ****************** TRATAMENTO ******************************  */
+    /* ============================================================ */
 
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('formacao');
-$this->load->view('templates/footer', $data);	
-}
+    public function home_tratamento()
+    {
+        $data['page_style']= "tratamento";
+        $data['current'] = 'home_tratamento';
 
-public function emprego()
-{
-//Form
-$this->load->helper(array('form', 'url'));
-$this->load->library('form_validation');
-$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
-$this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
-$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-$this->form_validation->set_rules('cv','Curriculum','required');
-//ENDS Form
-$result = $this->company_model->gest_page('1');
-$data['news'] = $this->news_model->get_news();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/carousel_tratamento');
+        $this->load->view('pages/tratamento', $data);
+        $this->load->view('templates/footer');
+    }
 
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
+    public function candidaturas_tratamento()
+    {
+        $data['page_style']= "tratamento";
+        $data['current'] = 'candidaturas_tratamento';
+        $this->menu_produtos($data);
 
-$data['title'] = lang('gestinfor.emprego');
-$data['current'] = 'emprego';
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
 
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('emprego');
-$this->load->view('templates/footer', $data);	
-}
+    public function quem_somos_tratamento($page=null)
+    {
+        $data['page_style']= "tratamento";
+        $data['page'] = $page;
+        $data['current'] = 'quem_somos_tratamento';
+        $this->menu_produtos($data);
 
-public function enviar_curriculum()
-{
-//Form
-//$this->load->helper(array('form', 'url'));
-//$this->load->library('form_validation');
-//$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
-//$this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
-//$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-//$this->form_validation->set_rules('cv','Curriculum','required');
-//ENDS Form
-$result = $this->company_model->gest_page('1');
-$data['news'] = $this->news_model->get_news();
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
 
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
+            $this->load->view('pages/quem_somos', $data);
+        } else {
+            $this->load->view('pages/quem_somos', $data);
+        }
 
-$data['title'] = lang('gestinfor.emprego');
-$data['current'] = 'emprego';
-$data['message'] = '';
-$data['reset'] = FALSE;
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('enviar-curriculum',$data);
-$this->load->view('templates/footer', $data);	
-}
+        $this->load->view('templates/footer');
+    }
 
-public function send_curriculum()
-{
-//Form
-//$this->load->helper(array('form', 'url'));
-$this->load->library('form_validation');
-$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
-$this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
-$this->form_validation->set_rules('pais', 'Pais', 'required');
-$this->form_validation->set_rules('data_nasc', 'Data_Nasc', 'max_length[12]');
-$this->form_validation->set_rules('sexo', 'Sexo', 'required');
-$this->form_validation->set_rules('estado_civil', 'Estado_Civil', 'required');
-$this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
-$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-$this->form_validation->set_rules('fax', 'Fax', 'is_natural|min_length[6]|max_length[14]');
-$this->form_validation->set_rules('curso', 'Curso', 'max_length[50]');
-$this->form_validation->set_rules('nivel', 'Nivel', 'max_length[50]');
-$this->form_validation->set_rules('formacao', 'Formacao', 'max_length[50]');
-$this->form_validation->set_rules('experiencia', 'Experiencia', 'max_length[50]');
-$this->form_validation->set_rules('profissao', 'Profissao', 'max_length[50]');
-$this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
-$this->form_validation->set_rules('idiomas', 'Idiomas', 'max_length[50]');
-$this->form_validation->set_rules('cv','Curriculum','required');
-//ENDS Form
-$result = $this->company_model->gest_page('1');
-$data['news'] = $this->news_model->get_news();
+    public function instaladores_tratamento()
+    {
+        $data['page_style'] = "tratamento";
+        $data['page_title'] = "instaladores";
+        $data['current'] = 'instaladores_tratamento';
+        $this->menu_produtos($data);
 
-// vai buscar lista de produtos ou detalhe
-//$data['gest_page'] = $result[0];
-$data['title'] = lang('gestinfor.emprego');
-$data['current'] = 'emprego';
-if($this->form_validation->run() == FALSE){
-$data['message'] = '';
-$data['reset'] = FALSE;
-$this->load->view('templates/header', $data);
-$this->load->view('templates/nav', $data);
-$this->load->view('templates/sidebar', $data);
-$this->load->view('enviar-curriculum');
-$this->load->view('templates/footer', $data);
-}
-else{
-//$data['message'] = 'O seu Pedido foi enviado com sucesso';
-$data['reset'] = TRUE;
-// Load the rest client spark
-$this->load->spark('restclient/2.1.0');
+        $this->load->view('pages/instaladores', $data);
 
-// Load the library
-$this->load->library('rest');
+        $data['instaladores'] = $this->instalador_model->get_instaladores();
+        $this->load->view('templates/footer', $data);
+    }
 
-// Set config options (only 'server' is required to work)
+    public function contactos_tratamento()
+    {
+        $data['page_style']= "tratamento";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos_tratamento';
+        $this->menu_produtos($data);
 
-$config = array('server'            => 'http://62.28.251.194:8081/api/',
-//'api_key'         => 'Setec_Astronomy'
-//'api_name'        => 'X-API-KEY'
-//'http_user'       => 'username',
-//'http_pass'       => 'password',
-//'http_auth'       => 'basic',
-//'ssl_verify_peer' => TRUE,
-//'ssl_cainfo'      => '/certs/cert.pem'
-);
+        $this->load->view('pages/contactos');
+        $this->load->view('templates/footer', $data);
+    }
 
-// Run some setup
-$this->rest->initialize($config);
 
-///// Teste GET //////
-/*$valor = $this->rest->get('/Cursos/GetCurso?codcurso=10010000100010');
-print_r($valor);*/
+
+
+
+    /* ============================================================ */
+
+    /* public function empresa($pagina = 'historia')
+    {
+    //if(isset($tipo))
+    $result = $this->company_model->gest_page($pagina);
+    //else
+    //	$result = $this->company_model->gest_page($tipo);
+    $data['news'] = $this->news_model->get_news();
+
+    $data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.company');
+    $data['current'] = 'company';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('empresa');
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function gestinfor($pagina = 'catalogos')
+    {
+    //if(isset($tipo))
+    $result = $this->company_model->gest_page($pagina);
+    //else
+    //	$result = $this->company_model->gest_page($tipo);
+    $data['news'] = $this->news_model->get_news();
+
+    $data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.company');
+    $data['current'] = 'company';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('gestinfor');
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function areas_actuacao()
+    {
+
+    $result = $this->company_model->gest_page('2');
+    $data['news'] = $this->news_model->get_news();
+
+    // vai buscar lista de produtos ou detalhe
+    $data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.areas-actuacao');
+    $data['current'] = 'areas-actuacao';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('generic-page');
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function formacao($idForm = FALSE, $idForm_detalhes = FALSE)
+    {
+    $result = $this->company_model->gest_page('1');
+    $data['news'] = $this->news_model->get_news();
+    if($idForm != FALSE && $idForm_detalhes == FALSE)
+    $data['formacao'] = $this->formacao_model->get_formacao($idForm,$this->get_lang());
+    elseif($idForm_detalhes != FALSE)
+    $data['detalhe'] = $this->formacao_model->get_detalhes($idForm_detalhes,$this->get_lang());
+    else
+    $data['formacoes'] = $this->home_model->get_formacoes($this->get_lang());
+    //$data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.company');
+    $data['current'] = 'formacao';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('formacao');
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function emprego()
+    {
+    //Form
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
+    $this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    $this->form_validation->set_rules('cv','Curriculum','required');
+    //ENDS Form
+    $result = $this->company_model->gest_page('1');
+    $data['news'] = $this->news_model->get_news();
+
+    // vai buscar lista de produtos ou detalhe
+    //$data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.emprego');
+    $data['current'] = 'emprego';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('emprego');
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function enviar_curriculum()
+    {
+    //Form
+    //$this->load->helper(array('form', 'url'));
+    //$this->load->library('form_validation');
+    //$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
+    //$this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
+    //$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    //$this->form_validation->set_rules('cv','Curriculum','required');
+    //ENDS Form
+    $result = $this->company_model->gest_page('1');
+    $data['news'] = $this->news_model->get_news();
+
+    // vai buscar lista de produtos ou detalhe
+    //$data['gest_page'] = $result[0];
+
+    $data['title'] = lang('gestinfor.emprego');
+    $data['current'] = 'emprego';
+    $data['message'] = '';
+    $data['reset'] = FALSE;
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('enviar-curriculum',$data);
+    $this->load->view('templates/footer', $data);
+    }
+
+    public function send_curriculum()
+    {
+    //Form
+    //$this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[12]');
+    $this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
+    $this->form_validation->set_rules('pais', 'Pais', 'required');
+    $this->form_validation->set_rules('data_nasc', 'Data_Nasc', 'max_length[12]');
+    $this->form_validation->set_rules('sexo', 'Sexo', 'required');
+    $this->form_validation->set_rules('estado_civil', 'Estado_Civil', 'required');
+    $this->form_validation->set_rules('telefone', 'Telefone', 'required|is_natural|min_length[6]|max_length[14]');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    $this->form_validation->set_rules('fax', 'Fax', 'is_natural|min_length[6]|max_length[14]');
+    $this->form_validation->set_rules('curso', 'Curso', 'max_length[50]');
+    $this->form_validation->set_rules('nivel', 'Nivel', 'max_length[50]');
+    $this->form_validation->set_rules('formacao', 'Formacao', 'max_length[50]');
+    $this->form_validation->set_rules('experiencia', 'Experiencia', 'max_length[50]');
+    $this->form_validation->set_rules('profissao', 'Profissao', 'max_length[50]');
+    $this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
+    $this->form_validation->set_rules('idiomas', 'Idiomas', 'max_length[50]');
+    $this->form_validation->set_rules('cv','Curriculum','required');
+    //ENDS Form
+    $result = $this->company_model->gest_page('1');
+    $data['news'] = $this->news_model->get_news();
+
+    // vai buscar lista de produtos ou detalhe
+    //$data['gest_page'] = $result[0];
+    $data['title'] = lang('gestinfor.emprego');
+    $data['current'] = 'emprego';
+    if($this->form_validation->run() == FALSE){
+    $data['message'] = '';
+    $data['reset'] = FALSE;
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/nav', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('enviar-curriculum');
+    $this->load->view('templates/footer', $data);
+    }
+    else{
+    //$data['message'] = 'O seu Pedido foi enviado com sucesso';
+    $data['reset'] = TRUE;
+    // Load the rest client spark
+    $this->load->spark('restclient/2.1.0');
+
+    // Load the library
+    $this->load->library('rest');
+
+    // Set config options (only 'server' is required to work)
+
+    $config = array('server'            => 'http://62.28.251.194:8081/api/',
+    //'api_key'         => 'Setec_Astronomy'
+    //'api_name'        => 'X-API-KEY'
+    //'http_user'       => 'username',
+    //'http_pass'       => 'password',
+    //'http_auth'       => 'basic',
+    //'ssl_verify_peer' => TRUE,
+    //'ssl_cainfo'      => '/certs/cert.pem'
+    );
+
+    // Run some setup
+    $this->rest->initialize($config);
+
+    ///// Teste GET //////
+    /*$valor = $this->rest->get('/Cursos/GetCurso?codcurso=10010000100010');
+    print_r($valor);*/
 
 ///// Teste POST /////
 
