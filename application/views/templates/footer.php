@@ -68,7 +68,10 @@
                 id = parseInt(id);
                 $('[id^=carousel-selector-]').removeClass('selected');
                 $('[id^=carousel-selector-'+id+']').addClass('selected');
+                $('[id^=title-]').removeClass('hidden');
+                $('[id^=title-'+id+']').addClass('hidden');
             });
+            
         </script>
         <script>
             $(document).ready(function() {

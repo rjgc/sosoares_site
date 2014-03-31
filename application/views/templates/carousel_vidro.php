@@ -1,7 +1,7 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                        <!-- <div class="carousel-caption">
                             <ul>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="item">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                         <!--<div class="carousel-caption">
                             <ul>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="item">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                         <!--<div class="carousel-caption">
                             <ul>

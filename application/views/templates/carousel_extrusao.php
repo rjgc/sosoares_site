@@ -1,7 +1,7 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                        <!-- <div class="carousel-caption">
                             <ul>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="item">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                         <!--<div class="carousel-caption">
                             <ul>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="item">
-                     <img src="<?php echo base_url() ?>assets/sosoares/img/slideshow.jpg" alt="First slide">
+                     <img src="<?php echo base_url() ?>assets/sosoares/img/slide1.jpg" alt="First slide">
                     <div class="container">
                         <!--<div class="carousel-caption">
                             <ul>
@@ -51,7 +51,7 @@
                             <ul>
                               <li><a class="control-try" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
                                 <li><a class="control-try" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a></li>
-                                <li><h1 class="slider-h1">Extrusao 1</h1></li>
+                                <li><h1 id="title" class="slider-h1">Extrusao 1</h1></li>
                                 <a href="#">
                                    <button class="pull-right btn button_slider">Conhecer</button>
                                 </a>
