@@ -59,7 +59,7 @@
 				</ul>
 			</li>
 			<li <?php if ($data['titulo'] == 'Instaladores') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Instaladores</a>
+				<a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
 			</li> 
 			<li <?php if ($data['titulo'] == 'Produtos Alumínio' || 
 				$data['titulo'] == 'Produtos Extrusao'||

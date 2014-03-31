@@ -310,8 +310,8 @@ function instaladores_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Instaladores';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Instaladores'; 
+	$data['titulo'] = 'Áreas Comerciais';
+	$data['sub-titulo'] = 'Faça aqui a gestão das Áreas Comerciais';
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
