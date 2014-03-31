@@ -304,9 +304,9 @@ function instaladores_management()
 
 	$crud->set_table('instaladores');
 	$crud->set_subject('Instaladores');
-	$crud->columns('titulo', 'morada', 'nome', 'telefone', 'email');
+	$crud->columns('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
 
-	$crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email');
+	$crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
 
 	$output = $crud->render();
 

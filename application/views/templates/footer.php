@@ -157,24 +157,27 @@
                                     map: map,
                                     animation: google.maps.Animation.DROP,
                                     icon: image,
-                                    title:"<?= $instalador['titulo']?>"
+                                    title:"<?= $instalador['titulo'] ?>"
                                     });
 
                                     var popup<?= $i ?>=new google.maps.InfoWindow({
-                                    content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
-                                        "<h4><?= $instalador['titulo']?></h4>" +
-                                        "<div style='font-size: 11px'>" +
-                                        "<p><?= $instalador['morada']?></p>" +
-                                        "<p><b><?= $instalador['nome']?></b></p>" +
-                                        "<p><b>Telf.: </b><?= $instalador['telefone']?></p>" +
-                                        "<p><b>Email: </b><?= $instalador['email']?></p>" +
-                                        "</div></div>"
+                                        content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
+                                            "<h4><?= $instalador['titulo'] ?></h4>" +
+                                            "<div style='font-size: 11px'>" +
+                                            "<p><?= $instalador['morada'] ?></p>" +
+                                            "<p><b><?= $instalador['nome'] ?></b></p>" +
+                                            "<p><b>Telf.: </b><?= $instalador['telefone'] ?></p>" +
+                                            "<p><b>Email: </b><?= $instalador['email'] ?></p>" +
+                                            "</div></div>"
                                     });
                                     google.maps.event.addListener(marker<?= $i ?>, 'click', function(e) {
                                     console.log(e);
                                     popup<?= $i ?>.open(map, this);
                                     });
+
+
                             <?php
+                                    $i++;
                                 }
                             ?>
                             /*var myLatLng1 = new google.maps.LatLng(41.152985,-8.634299);

@@ -184,7 +184,7 @@ div.obras-container {display: inline-block;padding: 0 10px;margin: 0 auto;positi
     height: 380px;
     display: block;
 }
-div#map, div#map div {
+div#map, div#map div, div#map-instaladores, div#map-instaladores div {
     -moz-transition: none;
     -webkit-transition: none;
     -o-transition: color 0 ease-in;
