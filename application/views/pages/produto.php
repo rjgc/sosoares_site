@@ -93,18 +93,12 @@ $y++;
 </div>
 <!--/main slider carousel-->
 </div>
-<div class="col-md-8">
+<div class="col-md-5">
     <div class="descricao">
         <h3 class="title4"><?=lang('descricao')?></h3>
         <div>
             <p><?php echo $produto['descricao_'.$this->lang->lang()]; ?></p>
         </div>        
-    </div>
-    <div class="descricao" style="margin-bottom: 50px;">
-        <h3 class="title4" style="margin-top: 80px;"><?=lang('resultados')?></h3>
-        <div>
-            <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
-        </div> 
     </div>
     <h2 class="title4"><?=lang('info')?></h2>
     <div class="tabs">
@@ -188,6 +182,14 @@ $y++;
         </div>
     </div>
 </div>
+</div>
+<div class="col-md-3">
+    <div class="descricao" style="margin-bottom: 50px;">
+        <h3 class="title4"><?=lang('resultados')?></h3>
+        <div>
+            <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
+        </div> 
+    </div>
 </div>
 </div>
 </div>
