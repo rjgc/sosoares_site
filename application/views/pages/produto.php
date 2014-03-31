@@ -93,7 +93,7 @@ $y++;
 </div>
 <!--/main slider carousel-->
 </div>
-<div class="col-md-5">
+<div class="col-md-8">
     <div class="descricao">
         <h3 class="title4"><?=lang('descricao')?></h3>
         <div>
@@ -106,84 +106,45 @@ $y++;
             <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
         </div> 
     </div>
-</div>
-<!--/accordion-->
-<div class="col-md-3">
     <h2 class="title4"><?=lang('info')?></h2>
-    <div id="accordion">
-        <h3 class="btn button button2"><?=lang('corte')?></h3>
-        <div>
-            <?php 
-            $i=1; 
-            while ($i<4)
-            { 
-                if (!empty($produto['corte_'.$i])){
-                    ?>                                                                    
-                    <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                        <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
-                    </a>
-                </br>
-                <?php
+    <div class="tabs">
+        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+        <label for="tab-1" class="tab-label-1">Cortes</label>
+
+        <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+        <label for="tab-2" class="tab-label-2">Downloads</label>
+
+        <div class="clear-shadow"></div>
+
+        <div class="tab-content">
+            <div class="content-1">
+                <?php 
+                $i=1; 
+                while ($i<4)
+                { 
+                    if (!empty($produto['corte_'.$i])){
+                        ?>                                                                    
+                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
+                        </a>
+                    </br>
+                    <?php
+                }
+                $i++;
             }
-            $i++;
-        }
-        ?>   
-    </div>  
-    <h3 class="btn button button2"><?=lang('perfis')?></h3>
-    <div>
-        <?php if (!empty($perfis)) {
-            foreach ($perfis as $perfil) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $perfil['perfil'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-            <?php }
-        } else { ?>
-        <li>Sem perfis</li>
-        <?php } ?>
-    </div> 
-    <h3 class="btn button button2"><?=lang('pormenores')?></h3>
-    <div>
-        <?php if (!empty($pormenores)) {
-            foreach ($pormenores as $pormenor) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['pormenor'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-            <?php }
-        } else { ?>
-        <li>Sem pormenores</li>
-        <?php } ?>
-    </div>                                       
-    <h3 class="btn button button2"><?=lang('catalogo')?></h3>
-    <div>
-        <?php if (!empty($catalogos)) {
-            foreach ($catalogos as $catalogo) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/catalogos/<?php echo $catalogo['catalogo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-            <?php }
-        } else { ?>
-        <li>Sem catálogos</li>
-        <?php } ?>
-    </div>
-    <h3 class="btn button button2"><?=lang('itt')?></h3>
-    <div>
-        <?php if (!empty($ensaios)) {
-            foreach ($ensaios as $ensaio) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-            <?php }
-        } else { ?>
-        <li>Sem ensaios</li>
-        <?php } ?>
-    </div>
-    <h3 class="btn button button2"><?=lang('resumo')?></h3>
-    <div>
-        <?php if (!empty($resumos)) {
-            foreach ($resumos as $resumo) { ?>
-            <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['resumo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-            <?php }
-        } else { ?>
-        <li>Sem ensaios</li>
-        <?php } ?>
+            ?>   
+        </div>
+        <div class="content-2">
+            <h2>About us</h2>
+            <p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man.</p>
+            <h3>How we work</h3>
+            <p>Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price. </p>
+        </div>
     </div>
 </div>
 </div>
 </div>
 </div>
-<!--/accordion-->
 <!--/Carousel obras-->
 <section class="related">
     <div class="container">

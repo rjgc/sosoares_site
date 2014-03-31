@@ -14,27 +14,27 @@
     <?php if(isset($page_style)) {
         switch($page_style) {
             case "vidro":
-    ?>
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
-    <?php
-                break;
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
+            <?php
+            break;
             case "extrusao":
-    ?>
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
-    <?php
-                break;
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
+            <?php
+            break;
             case "tratamento":
-    ?>
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
-    <?php
-                break;
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
+            <?php
+            break;
             default:
-                break;
+            break;  
         }
     }
-
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/accordion_faqs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
 </head>
 <body>
     <header>
@@ -68,24 +68,24 @@
         </div>
     </header>
     <nav>
-    <?php if(isset($page_style)) {
-        switch($page_style) {
-            case "caixilharia":
+        <?php if(isset($page_style)) {
+            switch($page_style) {
+                case "caixilharia":
                 require_once('nav_caixilharia.php');
                 break;
-            case "vidro":
+                case "vidro":
                 require_once('nav_vidro.php');
                 break;
-            case "extrusao":
+                case "extrusao":
                 require_once('nav_extrusao.php');
                 break;
-            case "tratamento":
+                case "tratamento":
                 require_once('nav_tratamento.php');
                 break;
-            default:
+                default:
                 break;
+            }
         }
-    }
-    ?>
+        ?>
     </nav>
     <section>
