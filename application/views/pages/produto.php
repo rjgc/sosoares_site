@@ -108,10 +108,10 @@ $y++;
     </div>
     <h2 class="title4"><?=lang('info')?></h2>
     <div class="tabs">
-        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
-        <label for="tab-1" class="tab-label-1">Cortes</label>
+        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" onclick="tab(this)"/>
+        <label for="tab-1" class="tab-label-1"><?=lang('corte')?></label>
 
-        <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+        <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" onclick="tab(this)"/>
         <label for="tab-2" class="tab-label-2">Downloads</label>
 
         <div class="clear-shadow"></div>
@@ -135,10 +135,56 @@ $y++;
             ?>   
         </div>
         <div class="content-2">
-            <h2>About us</h2>
-            <p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man.</p>
-            <h3>How we work</h3>
-            <p>Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price. </p>
+            <h3><?=lang('perfis')?></h3>
+            <p>
+                <?php if (!empty($perfis)) {
+                    foreach ($perfis as $perfil) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $perfil['perfil'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem perfis</li>
+                <?php } ?>
+            </p> 
+            <h3><?=lang('pormenores')?></h3>
+            <p>
+                <?php if (!empty($pormenores)) {
+                    foreach ($pormenores as $pormenor) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['pormenor'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem pormenores</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('catalogo')?></h3>
+            <p>
+                <?php if (!empty($catalogos)) {
+                    foreach ($catalogos as $catalogo) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/catalogos/<?php echo $catalogo['catalogo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem catálogos</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('itt')?></h3>
+            <p>
+                <?php if (!empty($ensaios)) {
+                    foreach ($ensaios as $ensaio) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem ensaios</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('resumo')?></h3>
+            <p>
+                <?php if (!empty($resumos)) {
+                    foreach ($resumos as $resumo) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['resumo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem ensaios</li>
+                <?php } ?>
+            </p>
         </div>
     </div>
 </div>

@@ -89,3 +89,8 @@
         ?>
     </nav>
     <section>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
