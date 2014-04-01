@@ -323,6 +323,33 @@ function produtos_extrusao_management()
 	$this->_admin_output($output);
 }
 
+function produtos_vidro_management()
+{
+    $crud = new grocery_CRUD();
+
+    $crud->set_table('produtos_vidro');
+    $crud->set_subject('Produtos Vidro');
+    $crud->columns('id_produto_vidro', 'nome_pt', 'descricao_pt', 'id_categoria');
+
+    $crud->required_fields('id_produto_vidro', 'nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'categoria_pt', 'categoria_en', 'categoria_fr', 'categoria_es', 'foto_1');
+    $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
+    $crud->display_as('id_categoria', 'Caracteristica');
+
+    $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+    $crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+
+    $crud->set_relation('id_categoria', 'produtos_vidro_categorias', 'nome_categoria_pt');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Produtos Vidro';
+    $data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
 function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
 {
 	$this->load->library('image_moo');

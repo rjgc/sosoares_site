@@ -383,6 +383,7 @@ class Pages extends CI_Controller {
         $data['current'] = 'produto_vidro';
         $this->menu_produtos($data);
 
+        $data['categorias'] = $this->product_model->get_produtos_vidro_categoria();
         $data['produtos'] = $this->product_model->get_produtos_vidro();
 
         $this->load->view('pages/produtos_vidro', $data, $this->get_lang());

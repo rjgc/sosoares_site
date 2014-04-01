@@ -11,27 +11,41 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <div class="obras-container">
-                    <?php
+                <div class="produtos_vidro_list">
+    <?php
                     if (!empty($produtos)) {
-                        foreach ($produtos as $produto){
-                            ?>
-                            <a href="<?=site_url('pages/produtos_vidro/') ?>">
-                                <div class="obras-list grow">
-                                    <h4> <?php echo $produto['categoria_'.$this->lang->lang()] ?></h4>
-                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
-                                    <p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p>
-                                </div>
-                            </a>
-                        <?php }
-                    }
-                    else {?>
+                        foreach($categorias as $categoria) {
+    ?>
+                            <div class="vidro-list grow">
+                                <h4> <?php echo $categoria['nome_categoria_pt'] ?></h4>
+                                <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produtos[0]['foto_1'] ?>"/>
+                                <ul>
+
+
+    <?php
+                                foreach ($produtos as $produto) {
+                                    if($categoria['id_produtos_vidro_cat'] == $produto['id_categoria']) {
+    ?>
+                                        <a href="<?=site_url('pages/produtos_vidro/') ?>">
+                                            <li><?php echo $produto['nome_'.$this->lang->lang()] ?></li>
+                                        </a>
+    <?php
+                                    }
+                                }
+    ?>
+                                </ul>
+                            </div>
+    <?php
+                        }
+                    } else {
+    ?>
                         <div class="alert alert-info">
-                            <h5><strong>Atenção!</strong> Páginas dos produtos indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/pages/home_caixilharia">Voltar atrás.</a></h5>
+                            <h5><strong>Atenção!</strong> Páginas dos produtos indisponíveis.</br>
+                                </br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/pages/home_vidro">Voltar atrás.</a></h5>
                         </div>
-                    <?php
+    <?php
                     }
-                    ?>
+    ?>
                 </div>
             </div>
         </div>

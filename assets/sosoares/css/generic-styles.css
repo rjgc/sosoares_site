@@ -208,6 +208,41 @@ hr.divider {
 .container {margin: 0 auto  25px}
 .divider {border: 0;margin: -10px 0 40px;}
 
+
+/* ============================== PRODUTOS VIDRO =================================== */
+.produtos_vidro_list {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0 0 20px;
+    display: block;
+    position: relative;
+    min-height: 550px;
+}
+.vidro-list {
+    max-width: 300px;
+    width: 30%;
+    min-width: 200px;
+    min-height: 180px;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.vidro-list img {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.vidro-list a {
+    margin: 20px 0 0;
+    display: inline-block;
+    width: 49%;
+    list-style: circle;
+    list-style-position: inside;
+}
+
+
+
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
     .slider-h1 {font-size: 25px;}
