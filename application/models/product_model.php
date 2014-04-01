@@ -5,6 +5,70 @@ class Product_model extends CI_Model
 		parent::__construct();
 	}
 
+	//ORDEM PRODUTOS
+
+	public function change_order_aluminio($event, $clickEl, $el){
+		echo "aaaaaaa";
+		$posClickEl = $this->db->query("select ordem from produtos_aluminio where id_produto_aluminio = $clickEl");
+		$posClickEl = $posClickEl->result_array();
+		$posClickEl = $posClickEl[0]['ordem'];
+
+		$posEl = $this->db->query("select ordem from produtos_aluminio where id_produto_aluminio = $el");
+		$posEl = $posEl->result_array();
+		$posEl = $posEl[0]['ordem'];
+
+		$resClick = false;
+		$resEl = false;
+
+		$this->db->where('id_produto_aluminio', $clickEl);              
+		if ($this->db->update('produtos_aluminio', array('ordem' =>  $posEl)))
+			$resClick = true;
+		else
+			$resClick = false;
+
+		$this->db->where('id_produto_aluminio', $el);              
+		if ($this->db->update('produtos_aluminio', array('ordem' =>  $posClickEl)))
+			$resEl = true;
+		else
+			$resEl = false;
+
+		if($resClick && $resEl)
+			return true;
+		else
+			return false;
+	}
+
+	public function change_order_extrusao($event, $clickEl, $el){
+		echo "bbbbbbb";
+		$posClickEl = $this->db->query("select ordem from produtos_extrusao where id_produto_extrusao = $clickEl");
+		$posClickEl = $posClickEl->result_array();
+		$posClickEl = $posClickEl[0]['ordem'];
+
+		$posEl = $this->db->query("select ordem from produtos_extrusao where id_produto_extrusao = $el");
+		$posEl = $posEl->result_array();
+		$posEl = $posEl[0]['ordem'];
+
+		$resClick = false;
+		$resEl = false;
+
+		$this->db->where('id_produto_extrusao', $clickEl);              
+		if ($this->db->update('produtos_extrusao', array('ordem' =>  $posEl)))
+			$resClick = true;
+		else
+			$resClick = false;
+
+		$this->db->where('id_produto_extrusao', $el);              
+		if ($this->db->update('produtos_extrusao', array('ordem' =>  $posClickEl)))
+			$resEl = true;
+		else
+			$resEl = false;
+
+		if($resClick && $resEl)
+			return true;
+		else
+			return false;
+	}
+
 	//PAGINAS INTERMEDIAS PRODUTOS
 
 	public function get_tipos_produtos_aluminio(){
