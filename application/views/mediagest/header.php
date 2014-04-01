@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/mediagest/css/style.css" media="all" />
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/mediagest/css/form_tabs.css" media="all" />
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>assets/mediagest/css/change_order.css" />
 	<?php foreach($css_files as $file): ?>
 		<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
 	<?php endforeach; ?>
@@ -16,7 +17,8 @@
 		<script src="<?php echo $file; ?>"></script>
 	<?php endforeach; ?>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/duplicate_item/js/duplicate_item.js" ></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/mediagest/js/form_tabs.js" ></script>
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/mediagest/js/form_tabs.js" ></script>	
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/mediagest/js/change_order.js" ></script>
 </head>
 <body>
 	<div class="testing">
@@ -34,6 +36,18 @@
 		<ul>
 			<li <?php if ($data['titulo'] == 'Obras') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest")?>'><span class="icon">&#128196;</span> Obras</a>
+			</li>
+			<li <?php if ($data['titulo'] == 'Banners Alumínio' || 
+				$data['titulo'] == 'Banners Vidro'||
+				$data['titulo'] == 'Banners Extrusão' ||
+				$data['titulo'] == 'Banners Tratamento') echo 'class="section"'; ?> >
+				<a href='#'><span class="icon">&#59176;</span> Gestão de Banners</a>
+				<ul class="submenu">
+					<li><a href='<?php echo site_url("mediagest/banner_aluminio_management")?>'>Banners Alumínio</a></li>
+					<li><a href='<?php echo site_url("mediagest/banner_vidro_management")?>'>Banners Vidro</a></li>
+					<li><a href='<?php echo site_url("mediagest/banner_extrusao_management")?>'>Banners Extrusão</a></li>
+					<li><a href='<?php echo site_url("mediagest/banner_tratamento_management")?>'>Banners Tratamento</a></li>
+				</ul>	
 			</li>
 			<li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>

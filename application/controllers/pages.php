@@ -29,6 +29,7 @@ class Pages extends CI_Controller {
 
         $this->lang->load('cizacl');
 
+        $this->load->model('banners_model');
         $this->load->model('noticias_model');
         $this->load->model('company_model');
         $this->load->model('product_model');
@@ -64,9 +65,10 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['current'] = 'home_caixilharia';
         $data['noticia'] = $this->noticias_model->get_noticia(3);
+        $data['banners'] = $this->banners_model->get_banners_aluminio();
         $this->menu_produtos($data);
 
-        $this->load->view('templates/carousel_caixilharia');
+        $this->load->view('templates/carousel_caixilharia', $data, $this->get_lang());
         $this->load->view('pages/caixilharia', $data);
         $this->load->view('templates/footer');
     }
