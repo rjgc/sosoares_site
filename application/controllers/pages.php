@@ -64,7 +64,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['current'] = 'home_caixilharia';
-        $data['noticia'] = $this->noticias_model->get_noticia(3);
+        $data['noticia'] = $this->noticias_model->get_noticia(4);
         $data['banners'] = $this->banners_model->get_banners_aluminio();
         $this->menu_produtos($data);
 
