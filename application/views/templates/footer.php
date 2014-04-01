@@ -41,6 +41,8 @@
     $(function(){
         var content1 = $('.content-1').height();
 
+        document.getElementById("tab-1").checked=true;
+
         $('.tab-content').css('height', content1+40);
     });
 
