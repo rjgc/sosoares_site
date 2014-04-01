@@ -172,130 +172,62 @@ function paginas_management()
 	$this->_admin_output($output);
 }
 
-function ensaios_aluminio_management()
+function ficheiros_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('ensaios_aluminio');
-	$crud->set_subject('Ensaios');
-	$crud->columns('nome_pt', 'ensaio');
-	$crud->order_by('id_ensaio_aluminio', 'asc');
+	$crud->set_table('ficheiros');
+	$crud->set_subject('Ficheiros');
+	$crud->columns('nome_pt');
+	$crud->order_by('id_ficheiro', 'asc');
 
-	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
+
+	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
+
+	$crud->callback_after_insert(array($this, 'callback_after_insert'));
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Ensaios';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios'; 
+	$data['titulo'] = 'Ficheiros';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
 }
 
-function ensaios_extrusao_management()
-{
-	$crud = new grocery_CRUD();
+function callback_after_insert($post_array)
+{	
+	switch ($post_array['id_categoria_ficheiro']) {
+		case '1':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
+		break;
+		case '3':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
+		break;
+		case '4':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
+		break;
+		case '5':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
+		break;
+		case '6':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/resumos/".$post_array['ficheiro']);
+		break;
+		case '7':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
+		break;
+		case '8':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/extrusao/".$post_array['ficheiro']);
+		break;
+		case '9':
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
+		break;
+	}
 
-	$crud->set_table('ensaios_extrusao');
-	$crud->set_subject('Ensaios de Produto Extrusão');
-	$crud->columns('nome_pt', 'ensaio');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ensaio');	
-	$crud->set_field_upload('ensaio', 'assets/uploads/ensaios');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Ensaios de Produto Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ensaios de Produto Extrusão'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function catalogo_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('catalogos_aluminio');
-	$crud->set_subject('Catalogos');
-	$crud->columns('nome_pt', 'catalogo');
-	$crud->order_by('id_catalogo_aluminio', 'asc');
-
-	$crud->set_field_upload('catalogo', 'assets/uploads/catalogos');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Catálogos';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Catálogos'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function pormenores_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('pormenores_aluminio');
-	$crud->set_subject('Pormenores');
-	$crud->columns('nome_pt', 'pormenor');
-	$crud->order_by('id_pormenor_aluminio', 'asc');
-
-	$crud->set_field_upload('pormenor', 'assets/uploads/pormenores');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Pormenores';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Pormenores'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function perfis_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('perfis_aluminio');
-	$crud->set_subject('Perfis');
-	$crud->columns('nome_pt', 'perfil');
-	$crud->order_by('id_perfil_aluminio', 'asc');
-
-	$crud->set_field_upload('perfil', 'assets/uploads/perfis');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Perfis';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Perfis'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function resumos_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('resumos_aluminio');
-	$crud->set_subject('Resumos');
-	$crud->columns('nome_pt', 'resumo');
-	$crud->order_by('id_resumo_aluminio', 'asc');
-
-	$crud->set_field_upload('resumo', 'assets/uploads/resumos');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Resumos';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Resumos'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
+	return true;
 }
 
 function instaladores_management()
@@ -327,7 +259,7 @@ function produtos_aluminio_management()
 	$crud->columns('nome_pt', 'descricao_pt', 'resultado_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio');
 	$crud->order_by('id_produto_aluminio', 'asc');
 
-	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis_aluminio', 'pormenores_aluminio', 'catalogo_tecnico_aluminio', 'ensaios_aluminio', 'resumos_aluminio');
+	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'resumos');
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1');		
 	$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text')->field_type('resultado_pt', 'text')->field_type('resultado_en', 'text')->field_type('resultado_fr', 'text')->field_type('resultado_es', 'text');
 	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo');
@@ -341,11 +273,11 @@ function produtos_aluminio_management()
 	$crud->set_field_upload('pdf_1', 'assets/uploads/pdfs')->set_field_upload('pdf_2', 'assets/uploads/pdfs')->set_field_upload('pdf_3', 'assets/uploads/pdfs');
 	$crud->display_as('corte_1','Corte 1')->display_as('corte_2','Corte 2')->display_as('corte_3','Corte 3');
 
-	$crud->set_relation_n_n('perfis_aluminio', 'perfis_aluminio_produtos', 'perfis_aluminio', 'produto_aluminio_id', 'perfil_aluminio_id', 'nome_pt');
-	$crud->set_relation_n_n('pormenores_aluminio', 'pormenores_aluminio_produtos', 'pormenores_aluminio', 'produto_aluminio_id', 'pormenor_aluminio_id', 'nome_pt');
-	$crud->set_relation_n_n('catalogo_tecnico_aluminio', 'catalogo_tecnico_aluminio_produtos', 'catalogo_tecnico_aluminio', 'produto_aluminio_id', 'catalogo_aluminio_id', 'nome_pt');
-	$crud->set_relation_n_n('ensaios_aluminio', 'ensaios_aluminio_produtos', 'ensaios_aluminio', 'produto_aluminio_id', 'ensaio_aluminio_id', 'nome_pt', 'priority');
-	$crud->set_relation_n_n('resumos_aluminio', 'resumos_aluminio_produtos', 'resumos_aluminio', 'produto_aluminio_id', 'resumo_aluminio_id', 'nome_pt');
+	$crud->set_relation_n_n('perfis', 'perfis_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'perfil_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>1));
+	$crud->set_relation_n_n('pormenores', 'pormenores_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'pormenor_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>3));
+	$crud->set_relation_n_n('catalogo', 'catalogos_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'catalogo_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>4));
+	$crud->set_relation_n_n('ensaios', 'ensaios_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'ensaio_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>5));
+	$crud->set_relation_n_n('resumos', 'resumos_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'resumo_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>6));
 	$crud->set_relation('id_tipo_produto_aluminio', 'tipos_produto_aluminio', 'nome_pt');
 	$crud->set_relation('id_caracteristica_produto_aluminio', 'caracteristicas_produto_aluminio', 'nome_pt');
 

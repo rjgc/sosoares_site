@@ -133,7 +133,7 @@ $y++;
             <p>
                 <?php if (!empty($perfis)) {
                     foreach ($perfis as $perfil) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $perfil['perfil'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><li><?=$perfil['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
                 <li>Sem perfis</li>
@@ -143,7 +143,7 @@ $y++;
             <p>
                 <?php if (!empty($pormenores)) {
                     foreach ($pormenores as $pormenor) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['pormenor'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><li><?=$pormenor['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
                 <li>Sem pormenores</li>
@@ -153,7 +153,7 @@ $y++;
             <p>
                 <?php if (!empty($catalogos)) {
                     foreach ($catalogos as $catalogo) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/catalogos/<?php echo $catalogo['catalogo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><li><?=$catalogo['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
                 <li>Sem catálogos</li>
@@ -163,7 +163,7 @@ $y++;
             <p>
                 <?php if (!empty($ensaios)) {
                     foreach ($ensaios as $ensaio) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/ensaios/<?php echo $ensaio['ensaio'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
                 <li>Sem ensaios</li>
@@ -173,7 +173,7 @@ $y++;
             <p>
                 <?php if (!empty($resumos)) {
                     foreach ($resumos as $resumo) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['resumo'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
                 <li>Sem ensaios</li>

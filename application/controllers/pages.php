@@ -48,7 +48,6 @@ class Pages extends CI_Controller {
 
     public function home()
     {
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'home';
 
         $this->load->view('templates/carousel_caixilharia', $this->get_lang());
@@ -57,7 +56,7 @@ class Pages extends CI_Controller {
     }
 
     /* ============================================================ */
-    /* ******************* CAIXILHARIA ****************************  */
+    /* ******************* CAIXILHARIA **************************** */
     /* ============================================================ */
 
     public function home_caixilharia()
@@ -76,7 +75,6 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['id'] = $id;
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'portfolio_caixilharia';
         $this->menu_produtos($data);
 
@@ -100,7 +98,6 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['id'] = $id;
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'produto_caixilharia';
         $this->menu_produtos($data);
 
@@ -134,7 +131,6 @@ class Pages extends CI_Controller {
     public function produtos_list_caixilharia($id_tipo_produto_aluminio=null)
     {
         $data['page_style']= "caixilharia";
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'produtos_list_caixilharia';
         $this->menu_produtos($data);
 
@@ -192,7 +188,6 @@ class Pages extends CI_Controller {
         $data['current'] = 'contactos_caixilharia';
         $this->menu_produtos($data);
 
-        //$this->load->view('templates/header_caixilharia', $data);
         $this->load->view('pages/contactos');
         $this->load->view('templates/footer', $data);
     }
@@ -201,7 +196,6 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['page'] = $page;
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'apoio_cliente_caixilharia';
         $this->menu_produtos($data);
 
@@ -219,7 +213,6 @@ class Pages extends CI_Controller {
     public function apoio_cliente_list_caixilharia()
     {
         $data['page_style']= "caixilharia";
-        //$data['title'] = lang('indelague.home');
         $data['current'] = 'apoio_cliente_list_caixilharia';
         $this->menu_produtos($data);
 
@@ -280,7 +273,7 @@ class Pages extends CI_Controller {
     }
 
     /* ========================================================== */
-    /* ********************* VIDRO ******************************  */
+    /* ********************* VIDRO ****************************** */
     /* ========================================================== */
 
     public function home_vidro()
@@ -452,7 +445,7 @@ class Pages extends CI_Controller {
     }
 
     /* ============================================================ */
-    /* ****************** TRATAMENTO ******************************  */
+    /* ****************** TRATAMENTO ****************************** */
     /* ============================================================ */
 
     public function home_tratamento()

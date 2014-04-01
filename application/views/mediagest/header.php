@@ -41,22 +41,8 @@
 			<li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
 			</li>
-			<li <?php if ($data['titulo'] == 'Perfis Alumínio' || 				
-				$data['titulo'] == 'Pormenores Alumínio' ||
-				$data['titulo'] == 'Catálogo Alumínio'||
-				$data['titulo'] == 'Ensaios Alumínio' ||
-				$data['titulo'] == 'Resumos Alumínio' ||
-				$data['titulo'] == 'Ensaios de Produto Extrusão') echo 'class="section"'; ?>>
-				<a href='#'><span class="icon">&#128196;</span> Ficheiros</a>
-				<ul class="submenu">
-					<li><a href='<?php echo site_url("mediagest/perfis_aluminio_management")?>'>Perfis Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/pormenores_aluminio_management")?>'>Pormenores Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/catalogo_aluminio_management")?>'>Catálogo Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/ensaios_aluminio_management")?>'>Ensaios Alumínio</a></li>								
-					<li><a href='<?php echo site_url("mediagest/resumos_aluminio_management")?>'>Resumos Alumínio</a></li>
-					<hr>
-					<li><a href='<?php echo site_url("mediagest/ensaios_extrusao_management")?>'>Ensaios de Produto Extrusão</a></li>	
-				</ul>
+			<li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
+				<a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
 			</li>
 			<li <?php if ($data['titulo'] == 'Instaladores') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
