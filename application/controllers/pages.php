@@ -377,6 +377,19 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
 
+    public function produtos_vidro()
+    {
+        $data['page_style']= "vidro";
+        $data['current'] = 'produto_vidro';
+        $this->menu_produtos($data);
+
+        $data['produtos'] = $this->product_model->get_produtos_vidro();
+
+        $this->load->view('pages/produtos_vidro', $data, $this->get_lang());
+
+        $this->load->view('templates/footer');
+    }
+
     /* ========================================================== */
     /* ****************** EXTRUSÃO ****************************** */
     /* ========================================================== */

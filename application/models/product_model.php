@@ -192,4 +192,11 @@ class Product_model extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+
+    public function get_produtos_vidro() {
+        $query = $this->db->query("select * from produtos_vidro");
+
+        $data = $query->result_array();
+        return $data;
+    }
 }

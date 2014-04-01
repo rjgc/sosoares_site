@@ -466,3 +466,6 @@ $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
 
+
+
+$lang["produtos_vidro"]				= "Productos de Vidrio";
