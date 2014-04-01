@@ -446,7 +446,6 @@ function produtos_extrusao_management()
 	$this->_admin_output($output);
 }
 
-<<<<<<< HEAD
 function produtos_vidro_management()
 {
     $crud = new grocery_CRUD();
@@ -472,7 +471,8 @@ function produtos_vidro_management()
     $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
     $this->_admin_output($output);
-=======
+
+}
 public function change_order_extrusao() {   
 	print_r($_POST['eventRow']);
 	print_r($_POST['clickEl']);
@@ -494,8 +494,7 @@ public function change_order_extrusao() {
 		}
 	} else {
 		exit("error3");
-	}    
->>>>>>> 7da4c0402f7424d90e856db6de22e8d137f6319f
+	}
 }
 
 function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
