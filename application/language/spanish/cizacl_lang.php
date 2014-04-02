@@ -84,7 +84,7 @@ $lang["produtos"] = "Productos de Aluminio";
 
 	$lang["resguardos"] = "Vallado Bath";
 
-$lang["portfolio"] = "Inspírese!";
+$lang["portfolio"] = "Obras";
 
 $lang["servicos"] = "Servicios";
 
