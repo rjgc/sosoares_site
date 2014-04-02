@@ -66,7 +66,7 @@ class Pages extends CI_Controller {
         $data['current'] = 'home_caixilharia';
         $data['noticia'] = $this->noticias_model->get_noticia(4);
         $data['banners'] = $this->banners_model->get_banners_aluminio();
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('templates/carousel_caixilharia', $data, $this->get_lang());
         $this->load->view('pages/caixilharia', $data);
@@ -78,7 +78,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['id'] = $id;
         $data['current'] = 'portfolio_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if($id != null){
             $data['obra'] = $this->company_model->get_obra($id);
@@ -101,7 +101,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['id'] = $id;
         $data['current'] = 'produto_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($id != null) {
             $data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_aluminio($id);
@@ -134,7 +134,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['current'] = 'produtos_list_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($id_tipo_produto_aluminio != null) {
             $data['caracteristicas'] = $this->product_model->get_caracteristicas_produtos_aluminio($id_tipo_produto_aluminio);
@@ -166,7 +166,8 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function menu_produtos($data) {
+    public function menu_produtos_caixilharia($data) 
+    {
         $data['batentes_com_corte'] = $this->product_model->get_batentes_com_corte($this->get_lang());
         $data['batentes_sem_corte'] = $this->product_model->get_batentes_sem_corte($this->get_lang());
         $data['aluminios_madeira_com_corte'] = $this->product_model->get_aluminios_madeira_com_corte($this->get_lang());
@@ -177,7 +178,7 @@ class Pages extends CI_Controller {
         $data['fachadas'] = $this->product_model->get_fachadas($this->get_lang());
         $data['portadas'] = $this->product_model->get_portadas($this->get_lang());
         $data['portoes'] = $this->product_model->get_portoes($this->get_lang());
-        $data['standards'] = $this->product_model->get_standards($this->get_lang());
+        $data['standards'] = $this->product_model->get_standards_caixilharia($this->get_lang());
         $data['guilhotinas'] = $this->product_model->get_guilhotinas($this->get_lang());
         $data['resguardos'] = $this->product_model->get_resguardos($this->get_lang());
 
@@ -189,7 +190,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['page_title'] = "contactos";
         $data['current'] = 'contactos_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/contactos');
         $this->load->view('templates/footer', $data);
@@ -200,7 +201,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['page'] = $page;
         $data['current'] = 'apoio_cliente_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -217,7 +218,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['current'] = 'apoio_cliente_list_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $paginas;
         $y=0;
@@ -238,7 +239,7 @@ class Pages extends CI_Controller {
         $data['page_style'] = "caixilharia";
         $data['current'] = 'grupo_sosoares_caixilharia';
         $data['page'] = $page;
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -255,7 +256,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['current'] = 'candidaturas_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
@@ -266,7 +267,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['page_title'] = "instaladores";
         $data['current'] = 'instaladores_caixilharia';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/instaladores', $data);
 
@@ -294,7 +295,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "vidro";
         $data['current'] = 'grupo_sosoares_vidro';
         $data['page'] = $page;
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -312,7 +313,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "vidro";
         $data['page_title'] = "contactos";
         $data['current'] = 'contactos_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/contactos');
         $this->load->view('templates/footer', $data);
@@ -323,7 +324,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "vidro";
         $data['page'] = $page;
         $data['current'] = 'apoio_cliente_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -339,7 +340,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "vidro";
         $data['current'] = 'apoio_cliente_list_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $paginas;
         $y=0;
@@ -359,7 +360,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "vidro";
         $data['current'] = 'candidaturas_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
@@ -370,7 +371,7 @@ class Pages extends CI_Controller {
         $data['page_style'] = "vidro";
         $data['page_title'] = "instaladores";
         $data['current'] = 'instaladores_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/instaladores', $data);
 
@@ -382,7 +383,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "vidro";
         $data['current'] = 'produto_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $data['categorias'] = $this->product_model->get_produtos_vidro_categoria();
         $data['produtos'] = $this->product_model->get_produtos_vidro();
@@ -397,7 +398,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "vidro";
         $data['id'] = $id;
         $data['current'] = 'produto_vidro';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($id != null) {
 
@@ -419,11 +420,26 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "extrusao";
         $data['current'] = 'home_extrusao';
+        $this->menu_produtos_extrusao($data);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('templates/carousel_extrusao');
         $this->load->view('pages/extrusao', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function menu_produtos_extrusao($data) 
+    {
+        $data['caixilharia_batente'] = $this->product_model->get_caixilharia_batente($this->get_lang());
+        $data['caixilharia_correr'] = $this->product_model->get_caixilharia_correr($this->get_lang());
+        $data['caixilharia_portadas'] = $this->product_model->get_caixilharia_portadas($this->get_lang());
+        $data['standards_extrusao'] = $this->product_model->get_standards_extrusao($this->get_lang());
+        $data['estores'] = $this->product_model->get_estores($this->get_lang());
+        $data['diversos_divisorias'] = $this->product_model->get_diversos_divisorias($this->get_lang());
+        $data['diversos_gradeamentos'] = $this->product_model->get_diversos_gradeamento($this->get_lang());
+        $data['diversos_mosquiteiras'] = $this->product_model->get_diversos_mosquiteiras($this->get_lang());
+        $data['diversos_laminas'] = $this->product_model->get_diversos_laminas($this->get_lang());
+
+        $this->load->view('templates/header', $data, $this->get_lang());
     }
 
     public function grupo_sosoares_extrusao($page=null)
@@ -431,7 +447,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "extrusao";
         $data['current'] = 'grupo_sosoares_extrusao';
         $data['page'] = $page;
-        $this->menu_produtos($data);
+        $this->menu_produtos_extrusao($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -444,11 +460,47 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function produto_extrusao($id=null)
+    {
+        $data['page_style']= "extrusao";
+        $data['id'] = $id;
+        $data['current'] = 'produto_extrusao';
+        $this->menu_produtos_extrusao($data);
+
+        if ($id != null) {
+            $data['caracteristicas'] = $this->product_model->get_caracteristicas_produto_extrusao($id);
+
+            $produto;
+
+            if (!empty($data['caracteristicas'])) {
+                $produto = $this->product_model->get_produto_extrusao_com_caracteristica($id, $this->get_lang());
+            } else {
+                $produto = $this->product_model->get_produto_extrusao_sem_caracteristica($id, $this->get_lang());
+            }
+
+            $data['produto'] = $produto;
+            //REVER
+            $data['perfis'] = $this->product_model->get_perfis($id, $this->get_lang());
+            $data['pormenores'] = $this->product_model->get_pormenores($id, $this->get_lang());
+            $data['catalogos'] = $this->product_model->get_catalogos($id, $this->get_lang());
+            $data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
+            $data['folhetos'] = $this->product_model->get_folheto_promocional($id, $this->get_lang());
+            $data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
+            //
+
+            $this->load->view('pages/produto', $data, $this->get_lang());
+        } else {
+            $this->load->view('pages/produto', $data, $this->get_lang());
+        }
+
+        $this->load->view('templates/footer');
+    }
+
     public function candidaturas_extrusao()
     {
         $data['page_style']= "extrusao";
         $data['current'] = 'candidaturas_extrusao';
-        $this->menu_produtos($data);
+        $this->menu_produtos_extrusao($data);
 
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
@@ -459,7 +511,7 @@ class Pages extends CI_Controller {
         $data['page_style'] = "extrusao";
         $data['page_title'] = "instaladores";
         $data['current'] = 'instaladores_extrusao';
-        $this->menu_produtos($data);
+        $this->menu_produtos_extrusao($data);
 
         $this->load->view('pages/instaladores', $data);
 
@@ -472,7 +524,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "extrusao";
         $data['page_title'] = "contactos";
         $data['current'] = 'contactos_extrusao';
-        $this->menu_produtos($data);
+        $this->menu_produtos_extrusao($data);
 
         $this->load->view('pages/contactos');
         $this->load->view('templates/footer', $data);
@@ -498,7 +550,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['current'] = 'grupo_sosoares_tratamento';
         $data['page'] = $page;
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         if ($page != null) {
             $data['page'] = $this->apoio_cliente_model->get_page($page);
@@ -515,7 +567,7 @@ class Pages extends CI_Controller {
     {
         $data['page_style']= "tratamento";
         $data['current'] = 'candidaturas_tratamento';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
@@ -526,7 +578,7 @@ class Pages extends CI_Controller {
         $data['page_style'] = "tratamento";
         $data['page_title'] = "instaladores";
         $data['current'] = 'instaladores_tratamento';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/instaladores', $data);
 
@@ -539,7 +591,7 @@ class Pages extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['page_title'] = "contactos";
         $data['current'] = 'contactos_tratamento';
-        $this->menu_produtos($data);
+        $this->menu_produtos_caixilharia($data);
 
         $this->load->view('pages/contactos');
         $this->load->view('templates/footer', $data);
