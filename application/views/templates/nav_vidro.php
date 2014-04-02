@@ -57,7 +57,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-title"><a href="#"><?=lang('produtos_vidro')?></a></li>
+            <li class="menu-title"><a href="<?=site_url('pages/produtos_vidro')?>"><?=lang('produtos_vidro')?></a></li>
             <li class="menu-title"><a href="#">Serviços Vidro</a></li>
             <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Área Técnica</a>
                 <ul class="dropdown-menu">

@@ -18,7 +18,7 @@
     ?>
                             <div class="vidro-list grow">
                                 <h4> <?php echo $categoria['nome_categoria_pt'] ?></h4>
-                                <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produtos[0]['foto_1'] ?>"/>
+                                <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $categoria['foto_1'] ?>"/>
                                 <ul>
 
 

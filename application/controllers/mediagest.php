@@ -452,7 +452,7 @@ function produtos_vidro_management()
 
     $crud->set_table('produtos_vidro');
     $crud->set_subject('Produtos Vidro');
-    $crud->columns('id_produto_vidro', 'nome_pt', 'descricao_pt', 'id_categoria');
+    $crud->columns('nome_pt', 'descricao_pt', 'id_categoria');
 
     $crud->required_fields('id_produto_vidro', 'nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'categoria_pt', 'categoria_en', 'categoria_fr', 'categoria_es', 'foto_1');
     $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
@@ -473,6 +473,31 @@ function produtos_vidro_management()
     $this->_admin_output($output);
 
 }
+
+function categorias_produto_vidro_management()
+{
+    $crud = new grocery_CRUD();
+
+    $crud->set_table('produtos_vidro_categorias');
+    $crud->set_subject('Categorias de Produtos Vidro');
+    $crud->columns('nome_categoria_pt');
+
+    $crud->required_fields('id_produtos_vidro_cat', 'nome_categoria_pt', 'nome_categoria_en', 'nome_categoria_fr', 'nome_categoria_es', 'foto_1');
+
+
+    $crud->set_field_upload('foto_1', 'assets/uploads/produtos');
+    $crud->display_as('foto_1', 'Foto Categoria');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Categorias de Produtos Vidro';
+    $data['sub-titulo'] = 'Faça aqui a gestão das Categorias de Produtos Vidro';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
 public function change_order_extrusao() {   
 	print_r($_POST['eventRow']);
 	print_r($_POST['clickEl']);
