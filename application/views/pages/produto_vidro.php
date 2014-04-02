@@ -99,9 +99,9 @@
         </div>
         <div class="col-md-3">
             <div class="descricao" style="margin-bottom: 50px;">
-                <h3 class="title4">Aplicação</h3>
+                <h3 class="title4"><?=lang('aplicacao')?></h3>
                 <div>
-                    <p></p>
+                    <p><?php echo $produto['aplicacao_'.$this->lang->lang()]; ?></p>
                 </div>
             </div>
         </div>

@@ -452,10 +452,10 @@ function produtos_vidro_management()
 
     $crud->set_table('produtos_vidro');
     $crud->set_subject('Produtos Vidro');
-    $crud->columns('nome_pt', 'descricao_pt', 'id_categoria');
+    $crud->columns('nome_pt', 'descricao_pt', 'id_categoria', 'aplicacao_pt');
 
-    $crud->required_fields('id_produto_vidro', 'nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'categoria_pt', 'categoria_en', 'categoria_fr', 'categoria_es', 'foto_1');
-    $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
+    $crud->required_fields('id_produto_vidro', 'nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_categoria');
+    $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text')->field_type('aplicacao_pt', 'text')->field_type('aplicacao_en', 'text')->field_type('aplicacao_fr', 'text')->field_type('aplicacao_es', 'text');
     $crud->display_as('id_categoria', 'Caracteristica');
 
     $crud->callback_after_upload(array($this,'callback_after_upload_produto'));

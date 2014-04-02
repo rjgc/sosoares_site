@@ -271,7 +271,7 @@ class Product_model extends CI_Model
     }
 
     public function get_produto_vidro($id, $lang) {
-        $query = $this->db->query("select id_produto_vidro, nome_".$lang.", descricao_".$lang.", foto_1, foto_2, foto_3, foto_4 from produtos_vidro where id_produto_vidro='$id'");
+        $query = $this->db->query("select id_produto_vidro, nome_".$lang.", descricao_".$lang.", aplicacao_".$lang.", foto_1, foto_2, foto_3, foto_4 from produtos_vidro where id_produto_vidro='$id'");
 
         $data = $query->row_array();
         return $data;
