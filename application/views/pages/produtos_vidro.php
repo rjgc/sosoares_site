@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('pages/home_vidro')?>"><?=lang('home')?></a></li>
-                <li><?=lang('produtos_vidro')?></li>
+                <li><a href="<?=site_url('pages/produtos_vidro')?>"><?=lang('produtos_vidro')?></a></li>
             </ul>
             <h1 class="title3"><?=lang('produtos_vidro')?></h1>
         </div>
@@ -26,7 +26,7 @@
                                 foreach ($produtos as $produto) {
                                     if($categoria['id_produtos_vidro_cat'] == $produto['id_categoria']) {
     ?>
-                                        <a href="<?=site_url('pages/produtos_vidro/') ?>">
+                                        <a href="<?=site_url('pages/produto_vidro/'.$produto['id_produto_vidro']) ?>">
                                             <li><?php echo $produto['nome_'.$this->lang->lang()] ?></li>
                                         </a>
     <?php

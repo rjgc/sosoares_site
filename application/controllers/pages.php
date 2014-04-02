@@ -392,6 +392,25 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function produto_vidro($id=null)
+    {
+        $data['page_style']= "vidro";
+        $data['id'] = $id;
+        $data['current'] = 'produto_vidro';
+        $this->menu_produtos($data);
+
+        if ($id != null) {
+
+            $data['produto'] = $this->product_model->get_produto_vidro($id, $this->get_lang());
+
+            $this->load->view('pages/produto_vidro', $data, $this->get_lang());
+        } else {
+            $this->load->view('pages/produto_vidro', $data, $this->get_lang());
+        }
+
+        $this->load->view('templates/footer');
+    }
+
     /* ========================================================== */
     /* ****************** EXTRUSÃO ****************************** */
     /* ========================================================== */

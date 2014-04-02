@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
-$controller_exceptions = array("mediagest", "cizacl", "login/check_login", "login/logout", "login_js/scripts", "api/(:any)");
+$controller_exceptions = array("mediagest", "cizacl", "login/check_login", "login/logout", "login_js/scripts");
 
 // example: '/en/about' -> use controller 'about'
 $route['^pt/(.+)$'] = "$1";
