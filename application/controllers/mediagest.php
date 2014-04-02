@@ -458,6 +458,8 @@ function produtos_vidro_management()
     $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
     $crud->display_as('id_categoria', 'Caracteristica');
 
+    $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+
     $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
     $crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
 

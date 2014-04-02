@@ -32,13 +32,13 @@
                             if (!empty($produto['foto_'.$i])){
                                 if ($i==1){?>
                                     <div class="active item" data-slide-number="<?php echo $i ?>">
-                                        <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                                        <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                                     </div>
                                 <?php
                                 }
                                 else { ?>
                                     <div class="item" data-slide-number="<?php echo $i ?>">
-                                        <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                                        <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                                     </div>
                                 <?php
                                 }
@@ -69,14 +69,14 @@
                         if (!empty($produto['foto_'.$i])){
                             if ($i==1){?>
                                 <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                                        <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+                                        <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
                                     </a>
                                 </li>
                             <?php
                             }
                             else { ?>
                                 <li> <a id="carousel-selector-<?php echo $y ?>">
-                                        <img src="<?php echo base_url();?>assets/uploads/produtos/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+                                        <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
                                     </a>
                                 </li>
                             <?php
