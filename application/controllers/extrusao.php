@@ -1,0 +1,228 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Extrusao extends CI_Controller {
+
+/**
+* Index Page for this controller.
+*
+* Maps to the following URL
+* 		http://example.com/index.php/welcome
+*	- or -  
+* 		http://example.com/index.php/welcome/index
+*	- or -
+* Since this controller is set as the default controller in 
+* config/routes.php, it's displayed at http://example.com/
+*
+* So any other public methods not prefixed with an underscore will
+* map to /index.php/welcome/<method_name>
+* @see http://codeigniter.com/user_guide/general/urls.html
+*/
+
+function __construct()
+{
+    parent::__construct();
+
+        // you might want to just autoload these two helpers
+    $this->load->helper('language');
+    $this->load->helper('url');
+    $this->load->helper('text');
+
+    $this->lang->load('cizacl');
+
+    $this->load->model('extrusao_model');
+    $this->load->model('sosoares_model');
+}
+
+public function get_lang()
+{
+    return $this->lang->lang();
+}
+
+public function home()
+{
+    $data['page_style']= "extrusao";
+    $data['current'] = 'home';
+    $data['noticia'] = $this->sosoares_model->get_noticia(4);
+    $data['banners'] = $this->extrusao_model->get_banners();
+    $this->menu_produtos($data);
+
+    $this->load->view('templates/carousel_extrusao', $data, $this->get_lang());
+    $this->load->view('pages/extrusao', $data);
+    $this->load->view('templates/footer');
+}
+
+public function grupo_sosoares($page=null)
+{
+    $data['page_style'] = "extrusao";
+    $data['current'] = 'grupo_sosoares';
+    $data['page'] = $page;
+    $this->menu_produtos($data);
+
+    if ($page != null) {
+        $data['page'] = $this->sosoares_model->get_page($page);
+
+        $this->load->view('pages/grupo_sosoares', $data);
+    } else {
+        $this->load->view('pages/grupo_sosoares', $data);
+    }
+
+    $this->load->view('templates/footer');
+}
+
+public function candidaturas()
+{
+    $data['page_style']= "extrusao";
+    $data['current'] = 'candidaturas';
+    $this->menu_produtos($data);
+
+    $this->load->view('pages/candidatura', $data);
+    $this->load->view('templates/footer');
+}
+
+public function areas_comerciais()
+{
+    $data['page_style']= "extrusao";
+    $data['page_title'] = "areas_comerciais";
+    $data['current'] = 'areas_comerciais';
+    $this->menu_produtos($data);
+
+    $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
+
+    $this->load->view('pages/areas_comerciais', $data);
+    $this->load->view('templates/footer', $data);
+}
+
+public function menu_produtos($data) 
+{
+    $data['caixilharia_batente'] = $this->extrusao_model->get_caixilharia_batente($this->get_lang());
+    $data['caixilharia_correr'] = $this->extrusao_model->get_caixilharia_correr($this->get_lang());
+    $data['caixilharia_portadas'] = $this->extrusao_model->get_caixilharia_portadas($this->get_lang());
+    $data['standards_extrusao'] = $this->extrusao_model->get_standards($this->get_lang());
+    $data['estores'] = $this->extrusao_model->get_estores($this->get_lang());
+    $data['diversos_divisorias'] = $this->extrusao_model->get_diversos_divisorias($this->get_lang());
+    $data['diversos_gradeamentos'] = $this->extrusao_model->get_diversos_gradeamento($this->get_lang());
+    $data['diversos_mosquiteiras'] = $this->extrusao_model->get_diversos_mosquiteiras($this->get_lang());
+    $data['diversos_laminas'] = $this->extrusao_model->get_diversos_laminas($this->get_lang());
+
+    $this->load->view('templates/header', $data, $this->get_lang());
+}
+
+public function produto($id=null)
+{
+    $data['page_style']= "extrusao";
+    $data['current'] = 'produto';
+    $data['id'] = $id;        
+    $this->menu_produtos($data);
+
+    if ($id != null) {
+        $data['caracteristicas'] = $this->extrusao_model->get_caracteristicas_produto($id);
+
+        $produto;
+
+        if (!empty($data['caracteristicas'])) {
+            $produto = $this->extrusao_model->get_produto_com_caracteristica($id, $this->get_lang());
+        } else {
+            $produto = $this->extrusao_model->get_produto_sem_caracteristica($id, $this->get_lang());
+        }
+
+        $data['produto'] = $produto;
+        $data['perfis'] = $this->extrusao_model->get_perfis($id, $this->get_lang());
+        $data['pormenores'] = $this->extrusao_model->get_pormenores($id, $this->get_lang());
+        $data['catalogos'] = $this->extrusao_model->get_catalogos($id, $this->get_lang());
+        $data['ensaios'] = $this->extrusao_model->get_ensaios($id, $this->get_lang());
+        $data['folhetos'] = $this->extrusao_model->get_folheto_promocional($id, $this->get_lang());
+        $data['obras'] = $this->extrusao_model->get_obras($id, $this->get_lang());
+
+        $this->load->view('pages/produto', $data, $this->get_lang());
+    } else {
+        $this->load->view('pages/produto', $data, $this->get_lang());
+    }
+
+    $this->load->view('templates/footer');
+}
+
+public function produtos($id_tipo_produto_aluminio=null)
+{
+    $data['page_style']= "extrusao";
+    $data['current'] = 'produtos';
+    $this->menu_produtos($data);
+
+    if ($id_tipo_produto_aluminio != null) {
+        $data['caracteristicas'] = $this->extrusao_model->get_caracteristicas_produtos($id_tipo_produto_aluminio);
+        $data['tipo'] = $this->extrusao_model->get_tipo_produtos($id_tipo_produto_aluminio);
+
+        if (!empty($data['caracteristicas'])) {
+            $produtos;
+
+            foreach ($data['caracteristicas'] as $caracteristica) {
+                $produtos[$caracteristica['nome_pt']] = $this->extrusao_model->get_produtos($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_extrusao']);
+            }
+
+            $data['produtos'] = $produtos;
+
+            $this->load->view('pages/produtos_com_caracteristicas', $data, $this->get_lang());
+
+        } else {
+            $data['produtos'] = $this->extrusao_model->get_produtos_tipo($id_tipo_produto_aluminio);
+
+            $this->load->view('pages/produtos_sem_caracteristicas', $data, $this->get_lang());
+        }
+    }
+    else {
+        $data['tipos'] = $this->extrusao_model->get_tipos_produtos();
+
+        $this->load->view('pages/produtos_list', $data);
+    }
+
+    $this->load->view('templates/footer');
+}
+
+public function apoio_cliente($page=null)
+{
+    $data['page_style']= "extrusao";        
+    $data['current'] = 'apoio_cliente';
+    $data['page'] = $page;
+    $this->menu_produtos($data);
+
+    if ($page != null) {
+        $data['page'] = $this->sosoares_model->get_page($page);
+
+        $this->load->view('pages/apoio_cliente', $data);
+    } else {
+        $this->load->view('pages/apoio_cliente', $data);
+    }
+
+    $this->load->view('templates/footer');
+}
+
+public function apoios_cliente()
+{
+    $data['page_style']= "extrusao";
+    $data['current'] = 'apoios_cliente';
+    $this->menu_produtos($data);
+
+    $paginas;
+    $y=0;
+
+    for ($i=7; $i < 13; $i++) {
+        $paginas[$y] = $this->sosoares_model->get_pages($i);
+        $y++;
+    }
+
+    $data['pages'] = $paginas;
+
+    $this->load->view('pages/apoio_cliente_list', $data);
+    $this->load->view('templates/footer');
+}
+
+public function contactos()
+{
+    $data['page_style']= "extrusao";
+    $data['page_title']= "contactos";
+    $data['current'] = 'contactos';
+    $this->menu_produtos($data);
+
+    $this->load->view('pages/contactos');
+    $this->load->view('templates/footer', $data);
+}
+}

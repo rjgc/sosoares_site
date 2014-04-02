@@ -110,7 +110,7 @@ if(isset($page_title)) {
         <script type="text/javascript" src="<?php echo base_url() ?>assets/sosoares/js/map-contact.js"></script>
         <?php
         break;
-        case 'instaladores':
+        case 'areas_comerciais':
         ?>
         <script type="text/javascript" >
             function initialize() {
@@ -156,42 +156,41 @@ if(isset($page_title)) {
                     zoomControl: false,
                     scaleControl: true,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
-
-
                 };
+
                 var map = new google.maps.Map(document.getElementById("map-canvas"),
                     mapOptions);
 
                 <?php
 
-                foreach($instaladores as $instalador) {
+                foreach($areas_comerciais as $area_comercial) {
                     $i = 1;
                     ?>
-                    var myLatLng<?= $i ?> = new google.maps.LatLng(<?= $instalador['latitude']?> , <?=$instalador['longitude']?>);
+                    var myLatLng<?= $i ?> = new google.maps.LatLng(<?= $area_comercial['latitude']?> , <?=$area_comercial['longitude']?>);
 
                     var marker<?= $i ?> = new google.maps.Marker({
                         position: myLatLng<?= $i ?>,
                         map: map,
                         animation: google.maps.Animation.DROP,
                         icon: image,
-                        title:"<?= $instalador['titulo'] ?>"
+                        title:"<?= $area_comercial['titulo'] ?>"
                     });
 
                     var popup<?= $i ?>=new google.maps.InfoWindow({
                         content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
-                        "<h4><?= $instalador['titulo'] ?></h4>" +
+                        "<h4><?= $area_comercial['titulo'] ?></h4>" +
                         "<div style='font-size: 11px'>" +
-                        "<p><?= $instalador['morada'] ?></p>" +
-                        "<p><b><?= $instalador['nome'] ?></b></p>" +
-                        "<p><b>Telf.: </b><?= $instalador['telefone'] ?></p>" +
-                        "<p><b>Email: </b><?= $instalador['email'] ?></p>" +
+                        "<p><?= $area_comercial['morada'] ?></p>" +
+                        "<p><b><?= $area_comercial['nome'] ?></b></p>" +
+                        "<p><b>Telf.: </b><?= $area_comercial['telefone'] ?></p>" +
+                        "<p><b>Email: </b><?= $area_comercial['email'] ?></p>" +
                         "</div></div>"
                     });
+
                     google.maps.event.addListener(marker<?= $i ?>, 'click', function(e) {
                         console.log(e);
                         popup<?= $i ?>.open(map, this);
                     });
-
 
                     <?php
                     $i++;
@@ -200,7 +199,6 @@ if(isset($page_title)) {
 
                 map.mapTypes.set('map_style', styledMap);
                 map.setMapTypeId('map_style');
-
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);

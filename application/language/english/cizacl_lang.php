@@ -37,13 +37,12 @@
 
 /*Menu*/
 
+
 $lang["home"] = "Home";
 
 $lang["grupo"] = "Grupo Sosoares";
 	
 	$lang["quem"] = "Who We Are";
-
-    $lang["install"] = "Commercial Areas";
 
 	$lang["missao"] = "Mission and Values";
 

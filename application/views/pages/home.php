@@ -34,26 +34,26 @@
         <section class="section">
             <div class="container" style="position: relative">
                 <div class="center">
-                    <a href="<?php echo site_url('pages/home_caixilharia')?>">
+                    <a href="<?php echo site_url('caixilharia/home')?>">
                         <div class="box shrink" id="caixilharia">
                             <i class="icon-caixilharia font"></i>
                             <h3>Sistemas de Caixilharia</h3>
                         </div>
                     </a>
-                    <a href="<?php echo site_url('pages/home_vidro')?>">
+                    <a href="<?php echo site_url('vidro/home')?>">
                         <div class="box shrink" id="vidro">
                             <i class="icon-vidro font"></i>
                             <h3>Vidro<br>&nbsp;</h3>
                         </div>
                     </a>
                     <hr id="separador">
-                    <a href="<?php echo site_url('pages/home_vidro')?>">
+                    <a href="<?php echo site_url('extrusao/home')?>">
                         <div class="box shrink" id="extrusao">
                             <i class="icon-extrusao font"></i>
                             <h3>Extrusão<br>&nbsp;</h3>
                         </div>
                     </a>
-                    <a href="<?php echo site_url('pages/home_tratamento')?>">
+                    <a href="<?php echo site_url('tratamento/home')?>">
                         <div class="box shrink" id="abrasivos">
                             <i class="icon-tratamento font"></i>
                             <h3 >Tratamento de Superficíes</h3>

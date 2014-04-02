@@ -2,18 +2,18 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_extrusao')?>"><?=lang('home')?></a></li>
-                <li><a href="#">Produtos Extrusão</a></li>
+                <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('produtos')?></a></li>
                 <?php if(empty($id)) {?>
             </ul>
         </div>
     </div>
     <div class="alert alert-warning">
-        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="#">Voltar atrás.</a></h5>
+        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
     </div>  
 </div>
 <?php } else {?>
-<li><a href="#"><?=$produto['tipo']?></a></li>
+<li><a href="<?=site_url('caixilharia/produtos/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
 <?php if (!empty($produto['caracteristica'])) { ?>
 <li><?=$produto['caracteristica']?></li>
 <?php } ?>
@@ -252,7 +252,7 @@ $y++;
                                 $obra = $obras[$i];
                                 ?>
                                 <div class="col-sm-2">
-                                    <a href="<?=site_url('pages/portfolio_caixilharia/'.$obra['id'])?>">
+                                    <a href="<?=site_url('caixilharia/obra/'.$obra['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                         <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                     </a>
@@ -278,7 +278,7 @@ $y++;
                             $obra = $obras[$i];
                             ?>
                             <div class="col-sm-2">
-                                <a href="<?=site_url('pages/portfolio_caixilharia/'.$obra['id'])?>">
+                                <a href="<?=site_url('caixilharia/obra/'.$obra['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                     <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                 </a>

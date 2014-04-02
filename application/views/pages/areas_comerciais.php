@@ -2,11 +2,19 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
+                <li><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    echo site_url('caixilharia/home');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                    echo site_url('vidro/home');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                    echo site_url('extrusao/home');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                    echo site_url('tratamento/home');
+                }?>"><?=lang('home')?></a></li>
                 <li><?=lang('grupo')?></li>
-                <li><?=lang('install')?></li>
+                <li><?=lang('comerciais')?></li>
             </ul>
-            <h1 class="title3"><?=lang('install')?></h1>
+            <h1 class="title3"><?=lang('comerciais')?></h1>
         </div>
     </div>
     <div class="row">

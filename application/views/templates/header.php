@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/demo.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/hover.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/accordion_faqs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
     <?php if(isset($page_style)) {
         switch($page_style) {
             case "vidro":
@@ -33,8 +35,6 @@
         }
     }
     ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/accordion_faqs.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
 </head>
 <body>
     <header>
@@ -44,10 +44,10 @@
                     <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
                 </div>
                 <div class="pages-img">
-                    <a href="<?=site_url('pages/home_caixilharia')?>"><i class="icon-caixilharia grow font <?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"></i></a>
-                    <a href="<?=site_url('pages/home_vidro')?>"><i class="icon-vidro grow font  <?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"></i></a>
-                    <a href="<?=site_url('pages/home_extrusao')?>"><i class="icon-extrusao grow font  <?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"></i></a>
-                    <a href="<?=site_url('pages/home_tratamento')?>"><i class="icon-tratamento grow font  <?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"></i></a>
+                    <a href="<?=site_url('caixilharia/home')?>"><i class="icon-caixilharia grow font <?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"></i></a>
+                    <a href="<?=site_url('vidro/home')?>"><i class="icon-vidro grow font  <?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"></i></a>
+                    <a href="<?=site_url('extrusao/home')?>"><i class="icon-extrusao grow font  <?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"></i></a>
+                    <a href="<?=site_url('tratamento/home')?>"><i class="icon-tratamento grow font  <?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"></i></a>
                 </div>
                 <div class="form">
                     <form>

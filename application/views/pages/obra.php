@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-                <li><a href="<?=site_url('pages/portfolio_caixilharia')?>"><?=lang('portfolio')?></a></li>
+                <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('caixilharia/obras')?>"><?=lang('portfolio')?></a></li>
                 <li><?=$obra['nome_'.$this->lang->lang()]?></li>
             </ul>
             <h1 class="title3"><?=$obra['nome_'.$this->lang->lang()]?></h1>
@@ -17,66 +17,66 @@
                     <!-- thumb navigation carousel -->
                     <!-- main slider carousel -->
                     <div class="row">
-        <div id="myCarousel" class="carousel slide">
-            <!-- main slider carousel items -->
-            <div class="carousel-inner" style="max-height: 350px;">
-                <?php
-                $i = 0;
-                foreach ($galeria_obra as $gobra){ 
-                    if($i==0) {?>
-                    <div class="active item" data-slide-number="<?php echo $i ?>">
-                        <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                        <div id="myCarousel" class="carousel slide">
+                            <!-- main slider carousel items -->
+                            <div class="carousel-inner" style="max-height: 350px;">
+                                <?php
+                                $i = 0;
+                                foreach ($galeria_obra as $gobra){ 
+                                    if($i==0) {?>
+                                    <div class="active item" data-slide-number="<?php echo $i ?>">
+                                        <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                    </div>
+                                    <?php $i++; 
+                                } else{ ?>
+                                <div class="item" data-slide-number="<?php echo $i ?>">
+                                    <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                </div>
+                                <?php
+                                $i++; }
+                            } ?>
+                        </div>
+                        <!-- main slider carousel nav controls -->
+                        <?php
+                        if (!empty($galeria_obra) && count($galeria_obra) > 1){
+                            ?>
+                            <div class="carousel-caption carousel-caption2">
+                                <ul>
+                                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
+                                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a></li>                    
+                                </ul>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
-                    <?php $i++; 
-                } else{ ?>
-                <div class="item" data-slide-number="<?php echo $i ?>">
-                    <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
-                </div>
-                <?php
-                $i++; }
-            } ?>
-        </div>
-        <!-- main slider carousel nav controls -->
-        <?php
-        if (!empty($galeria_obra) && count($galeria_obra) > 1){
-            ?>
-            <div class="carousel-caption carousel-caption2">
-                <ul>
-                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
-                    <li><a class="control-try control-try2" href="#myCarousel" data-slide="next"><span class="glyphicon icon-front"></span></a></li>                    
-                </ul>
-            </div>
-            <?php
-        }
-        ?>
-    </div>
-<!--/main slider carousel-->
-<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding-left: 0px !important; padding-right: 0px !important;">
-    <ul class="list-inline">
-        <?php
-        $z = 0; 
-        foreach ($galeria_obra as $gobra){ ?>
-        <?php if($z==0) {?>
-        <li>
-            <a id="carousel-selector-<?php echo $z ?>" class="selected">
-                <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
-            </a>
-        </li>   
+                    <!--/main slider carousel-->
+                    <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding-left: 0px !important; padding-right: 0px !important;">
+                        <ul class="list-inline">
+                            <?php
+                            $z = 0; 
+                            foreach ($galeria_obra as $gobra){ ?>
+                            <?php if($z==0) {?>
+                            <li>
+                                <a id="carousel-selector-<?php echo $z ?>" class="selected">
+                                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                                </a>
+                            </li>   
 
-        <?php $z++; 
-    } else{?>
-    <li>
-        <a id="carousel-selector-<?php echo $z ?>">
-            <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
-        </a>
-    </li>
-    <?php $z++; 
-} 
-} ?>
-<!-- thumb navigation carousel items -->
-</ul>
-</div>
-</div>
+                            <?php $z++; 
+                        } else{?>
+                        <li>
+                            <a id="carousel-selector-<?php echo $z ?>">
+                                <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                            </a>
+                        </li>
+                        <?php $z++; 
+                    } 
+                } ?>
+                <!-- thumb navigation carousel items -->
+            </ul>
+        </div>
+    </div>
 </div>
 </div>
 <a href="#">
@@ -149,7 +149,7 @@
                                 $produto = $produtos_aluminio_obra[$i];
                                 ?>
                                 <div class="col-sm-2">
-                                    <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id'])?>">
+                                    <a href="<?=site_url('caixilharia/produto/'.$produto['id'])?>">
                                         <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                         <p><?php echo $produto['nome'] ?></p>
                                     </a>
@@ -175,7 +175,7 @@
                             $produto = $produtos_aluminio_obra[$i];
                             ?>
                             <div class="col-sm-2">
-                                <a href="<?=site_url('pages/produto_caixilharia/'.$produto['id'])?>">
+                                <a href="<?=site_url('caixilharia/produto/'.$produto['id'])?>">
                                     <img src="<?php echo base_url() ?>assets/uploads/produtos/normal/<?php echo $produto['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                     <p><?php echo $obra['nome'] ?></p>
                                 </a>
