@@ -175,7 +175,7 @@ $lang["catalogo"] = "Catalogue Technique";
 
 $lang["itt"] = "ITTs";
 
-$lang["resumo"] = "Résumés";
+$lang["folheto"] = "Brochure Promotionnelle";
 
 $lang["descricao"] = "Description";
 

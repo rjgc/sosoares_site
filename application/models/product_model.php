@@ -129,8 +129,15 @@ class Product_model extends CI_Model
 		return $data;
 	}
 
-	public function get_aluminios_madeira($lang){
-		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio and tpa.nome_pt = 'Aluminio Madeira'");
+	public function get_aluminios_madeira_com_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio inner join caracteristicas_produto_aluminio cpa on pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Aluminio Madeira' and cpa.nome_pt = 'Com Corte Térmico'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_aluminios_madeira_sem_corte($lang){
+		$query = $this->db->query("select pa.nome_".$lang.", pa.id_produto_aluminio, pa.foto_1 from produtos_aluminio pa inner join tipos_produto_aluminio tpa on pa.id_tipo_produto_aluminio = tpa.id_tipo_produto_aluminio inner join caracteristicas_produto_aluminio cpa on pa.id_caracteristica_produto_aluminio = cpa.id_caracteristica_produto_aluminio and tpa.nome_pt = 'Aluminio Madeira' and cpa.nome_pt = 'Sem Corte Térmico'");
 
 		$data = $query->result_array();
 		return $data;
@@ -243,8 +250,8 @@ class Product_model extends CI_Model
 		return $data;
 	}
 
-	public function get_resumos($id, $lang){
-		$query = $this->db->query("select f.* from ficheiros f inner join resumos_aluminio_produto rap on f.id_ficheiro = rap.resumo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = rap.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+	public function get_folheto_promocional($id, $lang){
+		$query = $this->db->query("select f.* from ficheiros f inner join folheto_promocional_produto fpp on f.id_ficheiro = fpp.resumo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = fpp.produto_aluminio_id where pa.id_produto_aluminio='$id'");
 
 		$data = $query->result_array();
 		return $data;

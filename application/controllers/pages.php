@@ -119,7 +119,7 @@ class Pages extends CI_Controller {
             $data['pormenores'] = $this->product_model->get_pormenores($id, $this->get_lang());
             $data['catalogos'] = $this->product_model->get_catalogos($id, $this->get_lang());
             $data['ensaios'] = $this->product_model->get_ensaios($id, $this->get_lang());
-            $data['resumos'] = $this->product_model->get_resumos($id, $this->get_lang());
+            $data['folhetos'] = $this->product_model->get_folheto_promocional($id, $this->get_lang());
             $data['obras'] = $this->product_model->get_obras($id, $this->get_lang());
 
             $this->load->view('pages/produto', $data, $this->get_lang());
@@ -169,7 +169,8 @@ class Pages extends CI_Controller {
     public function menu_produtos($data) {
         $data['batentes_com_corte'] = $this->product_model->get_batentes_com_corte($this->get_lang());
         $data['batentes_sem_corte'] = $this->product_model->get_batentes_sem_corte($this->get_lang());
-        $data['aluminios_madeira'] = $this->product_model->get_aluminios_madeira($this->get_lang());
+        $data['aluminios_madeira_com_corte'] = $this->product_model->get_aluminios_madeira_com_corte($this->get_lang());
+        $data['aluminios_madeira_sem_corte'] = $this->product_model->get_aluminios_madeira_sem_corte($this->get_lang());
         $data['correres_com_corte'] = $this->product_model->get_correres_com_corte($this->get_lang());
         $data['correres_sem_corte'] = $this->product_model->get_correres_sem_corte($this->get_lang());
         $data['gradeamentos'] = $this->product_model->get_gradeamentos($this->get_lang());
@@ -232,6 +233,24 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function grupo_sosoares_caixilharia($page=null)
+    {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares_caixilharia';
+        $data['page'] = $page;
+        $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+        
+        $this->load->view('templates/footer');
+    }
+
     public function candidaturas_caixilharia()
     {
         $data['page_style']= "caixilharia";
@@ -239,25 +258,6 @@ class Pages extends CI_Controller {
         $this->menu_produtos($data);
 
         $this->load->view('pages/candidatura', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function quem_somos_caixilharia($page=null)
-    {
-        $data['page_style']= "caixilharia";
-        $data['page'] = $page;
-        //$data['title'] = lang('indelague.home');
-        $data['current'] = 'quem_somos_caixilharia';
-        $this->menu_produtos($data);
-
-        if ($page != null) {
-            $data['page'] = $this->apoio_cliente_model->get_page($page);
-
-            $this->load->view('pages/quem_somos', $data);
-        } else {
-            $this->load->view('pages/quem_somos', $data);
-        }
-
         $this->load->view('templates/footer');
     }
 
@@ -286,6 +286,24 @@ class Pages extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('templates/carousel_vidro');
         $this->load->view('pages/vidro', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function grupo_sosoares_vidro($page=null)
+    {
+        $data['page_style']= "vidro";
+        $data['current'] = 'grupo_sosoares_vidro';
+        $data['page'] = $page;
+        $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+        
         $this->load->view('templates/footer');
     }
 
@@ -347,25 +365,6 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function quem_somos_vidro($page=null)
-    {
-        $data['page_style']= "vidro";
-        $data['page'] = $page;
-        //$data['title'] = lang('indelague.home');
-        $data['current'] = 'quem_somos_vidro';
-        $this->menu_produtos($data);
-
-        if ($page != null) {
-            $data['page'] = $this->apoio_cliente_model->get_page($page);
-
-            $this->load->view('pages/quem_somos', $data);
-        } else {
-            $this->load->view('pages/quem_somos', $data);
-        }
-
-        $this->load->view('templates/footer');
-    }
-
     public function instaladores_vidro()
     {
         $data['page_style'] = "vidro";
@@ -408,6 +407,24 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function grupo_sosoares_extrusao($page=null)
+    {
+        $data['page_style']= "extrusao";
+        $data['current'] = 'grupo_sosoares_extrusao';
+        $data['page'] = $page;
+        $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+        
+        $this->load->view('templates/footer');
+    }
+
     public function candidaturas_extrusao()
     {
         $data['page_style']= "extrusao";
@@ -415,24 +432,6 @@ class Pages extends CI_Controller {
         $this->menu_produtos($data);
 
         $this->load->view('pages/candidatura', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function quem_somos_extrusao($page=null)
-    {
-        $data['page_style']= "extrusao";
-        $data['page'] = $page;
-        $data['current'] = 'quem_somos_extrusao';
-        $this->menu_produtos($data);
-
-        if ($page != null) {
-            $data['page'] = $this->apoio_cliente_model->get_page($page);
-
-            $this->load->view('pages/quem_somos', $data);
-        } else {
-            $this->load->view('pages/quem_somos', $data);
-        }
-
         $this->load->view('templates/footer');
     }
 
@@ -475,6 +474,24 @@ class Pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function grupo_sosoares_tratamento($page=null)
+    {
+        $data['page_style']= "tratamento";
+        $data['current'] = 'grupo_sosoares_tratamento';
+        $data['page'] = $page;
+        $this->menu_produtos($data);
+
+        if ($page != null) {
+            $data['page'] = $this->apoio_cliente_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+        
+        $this->load->view('templates/footer');
+    }
+
     public function candidaturas_tratamento()
     {
         $data['page_style']= "tratamento";
@@ -482,24 +499,6 @@ class Pages extends CI_Controller {
         $this->menu_produtos($data);
 
         $this->load->view('pages/candidatura', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function quem_somos_tratamento($page=null)
-    {
-        $data['page_style']= "tratamento";
-        $data['page'] = $page;
-        $data['current'] = 'quem_somos_tratamento';
-        $this->menu_produtos($data);
-
-        if ($page != null) {
-            $data['page'] = $this->apoio_cliente_model->get_page($page);
-
-            $this->load->view('pages/quem_somos', $data);
-        } else {
-            $this->load->view('pages/quem_somos', $data);
-        }
-
         $this->load->view('templates/footer');
     }
 

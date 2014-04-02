@@ -169,14 +169,14 @@ $y++;
                 <li>Sem ensaios</li>
                 <?php } ?>
             </p>
-            <h3><?=lang('resumo')?></h3>
+            <h3><?=lang('folheto')?></h3>
             <p>
-                <?php if (!empty($resumos)) {
-                    foreach ($resumos as $resumo) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/resumos/<?php echo $resumo['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                <?php if (!empty($folhetos)) {
+                    foreach ($folhetos as $folheto) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><li><?=$folheto['nome_'.$this->lang->lang()]?></li></a>
                     <?php }
                 } else { ?>
-                <li>Sem ensaios</li>
+                <li>Sem folhetos promocionais</li>
                 <?php } ?>
             </p>
         </div>

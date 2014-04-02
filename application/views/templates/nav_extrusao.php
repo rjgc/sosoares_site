@@ -9,37 +9,37 @@
     <div id="navbar-collapse-grid" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             <li class="menu-title <?php /*echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''*/?>"><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas_extrusao' || $current === 'quem_somos_extrusao' || $current === 'instaladores_extrusao') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas_extrusao' || $current === 'grupo_sosoares_extrusao' || $current === 'instaladores_extrusao') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos_extrusao/13')?>"><?=lang('quem')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_extrusao/3')?>"><?=lang('grupo')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores_extrusao')?>"><?=lang('install')?></a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('missao')?></a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('responsabilidade')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_extrusao/13')?>"><?=lang('quem')?></a></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('mercados')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_extrusao/2')?>"><?=lang('missao')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('comerciais')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_extrusao/4')?>"><?=lang('responsabilidade')?></a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_extrusao/1')?>"><?=lang('mercados')?></a></h3>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores_extrusao')?>"><?=lang('comerciais')?></a></h3>
                                     </div>
                                 </div>
                             </div>

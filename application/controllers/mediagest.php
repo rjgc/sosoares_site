@@ -302,7 +302,7 @@ function callback_after_insert($post_array)
 			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
 		break;
 		case '6':
-			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/resumos/".$post_array['ficheiro']);
+			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
 		break;
 		case '7':
 			rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);

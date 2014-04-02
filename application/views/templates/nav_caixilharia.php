@@ -9,37 +9,37 @@
     <div id="navbar-collapse-grid" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             <li class="menu-title <?php echo ( isset($current) && $current === 'home_caixilharia' ) ? 'curr' : ''?>"><a href="<?=site_url('pages/home_caixilharia')?>"><?=lang('home')?></a></li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas_caixilharia' || $current === 'quem_somos_caixilharia' || $current === 'instaladores_caixilharia') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'candidaturas_caixilharia' || $current === 'grupo_sosoares_caixilharia' || $current === 'instaladores_caixilharia') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('grupo')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/quem_somos_caixilharia/13')?>"><?=lang('quem')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_caixilharia/3')?>"><?=lang('grupo')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores_caixilharia')?>"><?=lang('install')?></a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('missao')?></a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('responsabilidade')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_caixilharia/13')?>"><?=lang('quem')?></a></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('mercados')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_caixilharia/2')?>"><?=lang('missao')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('comerciais')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_caixilharia/4')?>"><?=lang('responsabilidade')?></a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/grupo_sosoares_caixilharia/1')?>"><?=lang('mercados')?></a></h3>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('pages/instaladores_caixilharia')?>"><?=lang('comerciais')?></a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                                     <?php foreach ($batentes_com_corte as $batente){
                                                         ?>
                                                         <li><a href="<?=site_url('pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome_'.$this->lang->lang()] ?></a></li>
-                                                    <?php
+                                                        <?php
                                                     }?>
                                                 </ul>
                                             </li>
@@ -80,26 +80,12 @@
                                                     <?php foreach ($batentes_sem_corte as $batente){
                                                         ?>
                                                         <li><a href="<?=site_url('/pages/produto_caixilharia/'.$batente['id_produto_aluminio'])?>"><?php echo $batente['nome_'.$this->lang->lang()] ?></a></li>
-                                                    <?php
+                                                        <?php
                                                     }?>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3"><?=lang('madeira')?></h3>
-                                        <ul>
-                                            <?php foreach ($aluminios_madeira as $madeira){
-                                                ?>
-                                                <li><a href="<?=site_url('pages/produto_caixilharia/'.$madeira['id_produto_aluminio'])?>"><?php echo $madeira['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
-                                            }?>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="row">
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3"><?=lang('correr')?></h3>
                                         <ul>
@@ -108,7 +94,7 @@
                                                     <?php foreach ($correres_com_corte as $correr){
                                                         ?>
                                                         <li><a href="<?=site_url('pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome_'.$this->lang->lang()] ?></a></li>
-                                                    <?php
+                                                        <?php
                                                     }?>
                                                 </ul>
                                             </li>
@@ -117,7 +103,34 @@
                                                     <?php foreach ($correres_sem_corte as $correr){
                                                         ?>
                                                         <li><a href="<?=site_url('pages/produto_caixilharia/'.$correr['id_produto_aluminio'])?>"><?php echo $correr['nome_'.$this->lang->lang()] ?></a></li>
-                                                    <?php
+                                                        <?php
+                                                    }?>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3 class="menu-h3"><?=lang('madeira')?></h3>
+                                        <ul>
+                                            <li><b class="li-b"><?=lang('com_corte')?></b>
+                                                <ul>
+                                                    <?php foreach ($aluminios_madeira_com_corte as $madeira){
+                                                        ?>
+                                                        <li><a href="<?=site_url('pages/produto_caixilharia/'.$madeira['id_produto_aluminio'])?>"><?php echo $madeira['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <?php
+                                                    }?>
+                                                </ul>
+                                            </li>
+                                            <li><b class="li-b"><?=lang('sem_corte')?></b>
+                                                <ul>
+                                                    <?php foreach ($aluminios_madeira_sem_corte as $madeira){
+                                                        ?>
+                                                        <li><a href="<?=site_url('pages/produto_caixilharia/'.$madeira['id_produto_aluminio'])?>"><?php echo $madeira['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <?php
                                                     }?>
                                                 </ul>
                                             </li>
@@ -129,7 +142,7 @@
                                             <?php foreach ($gradeamentos as $gradeamento){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$gradeamento['id_produto_aluminio'])?>"><?php echo $gradeamento['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -143,7 +156,7 @@
                                             <?php foreach ($fachadas as $fachada){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$fachada['id_produto_aluminio'])?>"><?php echo $fachada['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -153,7 +166,7 @@
                                             <?php foreach ($portadas as $portada){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$portada['id_produto_aluminio'])?>"><?php echo $portada['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -167,7 +180,7 @@
                                             <?php foreach ($portoes as $portao){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$portao['id_produto_aluminio'])?>"><?php echo $portao['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -177,7 +190,7 @@
                                             <?php foreach ($standards as $standard){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$standard['id_produto_aluminio'])?>"><?php echo $standard['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -193,7 +206,7 @@
                                             <?php foreach ($guilhotinas as $guilhotina){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$guilhotina['id_produto_aluminio'])?>"><?php echo $guilhotina['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
@@ -203,7 +216,7 @@
                                             <?php foreach ($resguardos as $resguardo){
                                                 ?>
                                                 <li><a href="<?=site_url('pages/produto_caixilharia/'.$resguardo['id_produto_aluminio'])?>"><?php echo $resguardo['nome_'.$this->lang->lang()] ?></a></li>
-                                            <?php
+                                                <?php
                                             }?>
                                         </ul>
                                     </div>
