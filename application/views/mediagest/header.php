@@ -58,8 +58,8 @@
 			<li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
 				<a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
 			</li>
-			<li <?php if ($data['titulo'] == 'Instaladores') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/instaladores_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
+			<li <?php if ($data['titulo'] == 'Áreas Comerciais') echo 'class="section"'; ?>>
+				<a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
 			</li> 
 			<li <?php if ($data['titulo'] == 'Produtos Alumínio' || 
 				$data['titulo'] == 'Produtos Vidro' ||
@@ -76,7 +76,7 @@
 					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
                     <hr>
                     <li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
-                    <li><a href='<?php echo site_url("mediagest/categorias_produto_vidro_management")?>'>Categorias Produtos Vidro</a></li>
+                    <li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
                     <hr>
 					<li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
 					<li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>						
