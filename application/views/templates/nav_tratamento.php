@@ -57,8 +57,8 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-title"><a href="#">Lacagem</a></li>
-            <li class="menu-title"><a href="#">Anodização</a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'lacagem' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/lacagem')?>">Lacagem</a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'anodizacao' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/anodizacao')?>">Anodização</a></li>
             <li class="menu-title"><a href="#">Imitação Madeira</a></li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/contactos')?>"><?=lang('contactos')?></a></li>
         </ul>

@@ -64,11 +64,11 @@
                             <div class="col-sm-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Caixilharia</a></h3>
+                                        <h3 class="menu-h3 links"><a href="#">extrusao</a></h3>
                                         <ul>
                                             <li><b class="li-b">Batente</b>
                                                 <ul>
-                                                    <?php foreach ($caixilharia_batente as $batente){
+                                                    <?php foreach ($extrusao_batente as $batente){
                                                         ?>
                                                         <li><a href="<?=site_url('extrusao/produto_extrusao/'.$batente['id_produto_extrusao'])?>"><?php echo $batente['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
@@ -77,7 +77,7 @@
                                             </li>
                                             <li><b class="li-b">Correr</b>
                                                 <ul>
-                                                    <?php foreach ($caixilharia_correr as $correr){
+                                                    <?php foreach ($extrusao_correr as $correr){
                                                         ?>
                                                         <li><a href="<?=site_url('extrusao/produto_extrusao/'.$correr['id_produto_extrusao'])?>"><?php echo $correr['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
@@ -86,7 +86,7 @@
                                             </li>
                                             <li><b class="li-b">Portadas</b>
                                                 <ul>
-                                                    <?php foreach ($caixilharia_portadas as $portada){
+                                                    <?php foreach ($extrusao_portadas as $portada){
                                                         ?>
                                                         <li><a href="<?=site_url('extrusao/produto_extrusao/'.$portada['id_produto_extrusao'])?>"><?php echo $portada['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
@@ -166,21 +166,7 @@
                 </li>
             </ul>
         </li>
-        <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Serviços Extrusão</a>
-            <ul class="dropdown-menu">
-                <li class="grid-demo">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="#">Fabrico de Matrizes Personalizadas</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
+        <li class="menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="<?=site_url('extrusao/servico')?>"><?=lang('servicos')?></a></li>
         <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
             <ul class="dropdown-menu">
                 <li class="grid-demo">

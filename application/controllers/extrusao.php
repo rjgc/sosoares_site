@@ -44,7 +44,7 @@ public function home()
     $data['current'] = 'home';
     $data['noticia'] = $this->sosoares_model->get_noticia(4);
     $data['banners'] = $this->extrusao_model->get_banners();
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     $this->load->view('templates/carousel_extrusao', $data, $this->get_lang());
     $this->load->view('pages/extrusao', $data);
@@ -56,7 +56,7 @@ public function grupo_sosoares($page=null)
     $data['page_style'] = "extrusao";
     $data['current'] = 'grupo_sosoares';
     $data['page'] = $page;
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     if ($page != null) {
         $data['page'] = $this->sosoares_model->get_page($page);
@@ -73,7 +73,7 @@ public function candidaturas()
 {
     $data['page_style']= "extrusao";
     $data['current'] = 'candidaturas';
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     $this->load->view('pages/candidatura', $data);
     $this->load->view('templates/footer');
@@ -84,7 +84,7 @@ public function areas_comerciais()
     $data['page_style']= "extrusao";
     $data['page_title'] = "areas_comerciais";
     $data['current'] = 'areas_comerciais';
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
 
@@ -92,7 +92,7 @@ public function areas_comerciais()
     $this->load->view('templates/footer', $data);
 }
 
-public function menu_produtos($data) 
+public function menu($data) 
 {
     $data['caixilharia_batente'] = $this->extrusao_model->get_caixilharia_batente($this->get_lang());
     $data['caixilharia_correr'] = $this->extrusao_model->get_caixilharia_correr($this->get_lang());
@@ -112,7 +112,7 @@ public function produto($id=null)
     $data['page_style']= "extrusao";
     $data['current'] = 'produto';
     $data['id'] = $id;        
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     if ($id != null) {
         $data['caracteristicas'] = $this->extrusao_model->get_caracteristicas_produto($id);
@@ -145,7 +145,7 @@ public function produtos($id_tipo_produto_aluminio=null)
 {
     $data['page_style']= "extrusao";
     $data['current'] = 'produtos';
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     if ($id_tipo_produto_aluminio != null) {
         $data['caracteristicas'] = $this->extrusao_model->get_caracteristicas_produtos($id_tipo_produto_aluminio);
@@ -177,12 +177,24 @@ public function produtos($id_tipo_produto_aluminio=null)
     $this->load->view('templates/footer');
 }
 
+public function servico()
+{
+    $data['page_style']= "extrusao";        
+    $data['current'] = 'servico';
+    $this->menu($data);
+
+    $data['servico'] = $this->extrusao_model->get_servico();    
+    
+    $this->load->view('pages/servico', $data);
+    $this->load->view('templates/footer');
+}
+
 public function apoio_cliente($page=null)
 {
     $data['page_style']= "extrusao";        
     $data['current'] = 'apoio_cliente';
     $data['page'] = $page;
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     if ($page != null) {
         $data['page'] = $this->sosoares_model->get_page($page);
@@ -199,7 +211,7 @@ public function apoios_cliente()
 {
     $data['page_style']= "extrusao";
     $data['current'] = 'apoios_cliente';
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     $paginas;
     $y=0;
@@ -220,7 +232,7 @@ public function contactos()
     $data['page_style']= "extrusao";
     $data['page_title']= "contactos";
     $data['current'] = 'contactos';
-    $this->menu_produtos($data);
+    $this->menu($data);
 
     $this->load->view('pages/contactos');
     $this->load->view('templates/footer', $data);

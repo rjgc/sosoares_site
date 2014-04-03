@@ -93,6 +93,30 @@ public function areas_comerciais()
     $this->load->view('templates/footer', $data);
 }
 
+public function lacagem()
+{
+    $data['page_style']= "tratamento";
+    $data['current'] = 'lacagem';
+
+    $data['page'] = $this->sosoares_model->get_page(14);
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('pages/tratamento/lacagem');
+    $this->load->view('templates/footer', $data);
+}
+
+public function anodizacao()
+{
+    $data['page_style']= "tratamento";
+    $data['current'] = 'anodizacao';
+
+    $data['page'] = $this->sosoares_model->get_page(15);
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('pages/tratamento/anodizacao');
+    $this->load->view('templates/footer', $data);
+}
+
 public function contactos()
 {
     $data['page_style']= "tratamento";

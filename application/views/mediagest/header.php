@@ -63,10 +63,10 @@
 			</li> 
 			<li <?php if ($data['titulo'] == 'Produtos Alumínio' || 
 				$data['titulo'] == 'Produtos Vidro' ||
-                $data['titulo'] == 'Produtos Extrusao' ||
+				$data['titulo'] == 'Produtos Extrusao' ||
 				$data['titulo'] == 'Tipos de Produto Alumínio' ||
 				$data['titulo'] == 'Tipos de Produto Extrusão' ||
-                $data['titulo'] == 'Categorias Produtos Vidro'||
+				$data['titulo'] == 'Categorias Produtos Vidro'||
 				$data['titulo'] == 'Caracteristicas de Produto Alumínio' ||
 				$data['titulo'] == 'Caracteristicas de Produto Extrusão') echo 'class="section"'; ?> >
 				<a href='#'><span class="icon">&#59176;</span> Produtos</a>
@@ -74,26 +74,28 @@
 					<li><a href='<?php echo site_url("mediagest/produtos_aluminio_management")?>'>Produtos Alumínio</a></li>
 					<li><a href='<?php echo site_url("mediagest/tipos_produto_aluminio_management")?>'>Tipos de Produto Alumínio</a></li>
 					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
-                    <hr>
-                    <li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
-                    <li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
-                    <hr>
+					<hr>
+					<li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
+					<li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
+					<hr>
 					<li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
 					<li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>						
 					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_extrusao_management")?>'>Caract. de Produto Extrusão</a></li>
 				</ul>
 			</li>
 			<li <?php if ($data['titulo'] == 'Serviços Extrusão' ||
-				$data['titulo'] == 'Serviços Vidro') echo 'class="section"'; ?> >
-				<a href='#'><span class="icon">&#59176;</span> Serviços</a>
-				<ul class="submenu">
-					<li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>
-					<hr>
-					<li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'>Serviços Vidro</a></li>		
-				</ul>	
-			</li>
+			$data['titulo'] == 'Serviços Vidro') echo 'class="section"'; ?> >
+			<a href='#'><span class="icon">&#59176;</span> Serviços</a>
+			<ul class="submenu">
+				<li><a href='<?php echo site_url("mediagest/servicos_aluminio_management")?>'>Serviços Alumínio</a></li>
+				<hr>
+				<li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'>Serviços Vidro</a></li>
+				<hr>
+				<li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>		
+			</ul>	
 		</li>
-	</ul>
+	</li>
+</ul>
 </nav>
 <section class="content" style="margin-top: 0px;">	
 	<section class="widget">

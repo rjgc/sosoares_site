@@ -43,9 +43,9 @@ public function home()
     $data['page_style'] = "vidro";
     $data['current'] = 'home';
     $data['noticia'] = $this->sosoares_model->get_noticia(4);
-    $data['banners'] = $this->vidro_model->get_banners();    
-
-    $this->load->view('templates/header', $data);
+    $data['banners'] = $this->vidro_model->get_banners();   
+    $this->menu($data);
+    
     $this->load->view('templates/carousel_vidro', $data, $this->get_lang());
     $this->load->view('pages/vidro', $data);
     $this->load->view('templates/footer');
@@ -56,8 +56,7 @@ public function grupo_sosoares($page=null)
     $data['page_style'] = "vidro";
     $data['current'] = 'grupo_sosoares';
     $data['page'] = $page;    
-
-    $this->load->view('templates/header', $data);
+    $this->menu($data);
 
     if ($page != null) {
         $data['page'] = $this->sosoares_model->get_page($page);
@@ -74,8 +73,8 @@ public function candidaturas()
 {
     $data['page_style'] = "vidro";
     $data['current'] = 'candidaturas';    
+    $this->menu($data);
 
-    $this->load->view('templates/header', $data);
     $this->load->view('pages/candidatura', $data);
     $this->load->view('templates/footer');
 }
@@ -85,10 +84,10 @@ public function areas_comerciais()
     $data['page_style'] = "vidro";
     $data['page_title'] = "areas_comerciais";
     $data['current'] = 'areas_comerciais'; 
+    $this->menu($data);
 
     $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
 
-    $this->load->view('templates/header', $data);
     $this->load->view('pages/areas_comerciais', $data);
     $this->load->view('templates/footer', $data);
 }
@@ -98,8 +97,7 @@ public function produto($id=null)
     $data['page_style'] = "vidro";        
     $data['current'] = 'produto';
     $data['id'] = $id;    
-
-    $this->load->view('templates/header', $data);
+    $this->menu($data);
 
     if ($id != null) {
         $data['produto'] = $this->vidro_model->get_produto($id, $this->get_lang());
@@ -125,13 +123,29 @@ public function produtos()
     $this->load->view('templates/footer');
 }
 
+public function menu($data) 
+{
+    $this->load->view('templates/header', $data, $this->get_lang());
+}
+
+public function servico()
+{
+    $data['page_style']= "vidro";        
+    $data['current'] = 'servico';
+    $this->menu($data);
+
+    $data['page'] = $this->vidro_model->get_servico();
+
+    $this->load->view('pages/vidro/servico', $data);
+    $this->load->view('templates/footer');
+}
+
 public function apoio_cliente($page=null)
 {
     $data['page_style'] = "vidro";        
     $data['current'] = 'apoio_cliente';
-    $data['page'] = $page;   
-
-    $this->load->view('templates/header', $data); 
+    $data['page'] = $page;  
+    $this->menu($data); 
 
     if ($page != null) {
         $data['page'] = $this->sosoares_model->get_page($page);
@@ -148,8 +162,7 @@ public function apoios_cliente()
 {
     $data['page_style'] = "vidro";
     $data['current'] = 'apoios_cliente';    
-
-    $this->load->view('templates/header', $data);
+    $this->menu($data);
 
     $paginas;
     $y=0;
@@ -170,8 +183,8 @@ public function contactos()
     $data['page_style'] = "vidro";
     $data['page_title'] = "contactos";
     $data['current'] = 'contactos';    
+    $this->menu($data);
 
-    $this->load->view('templates/header', $data);
     $this->load->view('pages/contactos');
     $this->load->view('templates/footer', $data);
 }
