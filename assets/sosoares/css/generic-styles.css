@@ -242,6 +242,46 @@ hr.divider {
     list-style-position: inside;
 }
 
+/* ============================== NOTICIAS =================================== */
+.noticias {
+    margin: 50px 0 30px;
+}
+.noticias ul {
+    list-style: none;
+}
+
+.noticias ul li {
+    margin: 30px 0;
+    max-height: 220px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    padding: 25px 0;
+}
+
+.noticias ul li:last-child {
+    border: 0;
+}
+
+.noticias ul li h3 {
+    color: #107ca4;
+    font-size: 18px;
+    margin: 0 0 2px;
+}
+
+.noticias ul li .date {font-size: 11px;color: #717171;}
+
+.noticias ul li .news-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 30px;     /* fallback */
+    max-height: 60px;      /* fallback */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    padding-right: 100px;
+}
+
+.noticias ul li button { margin: 13px 50px 0;}
 
 
 /*============================== MEDIA QUERIES ===================================*/
