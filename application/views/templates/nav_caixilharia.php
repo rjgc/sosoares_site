@@ -46,7 +46,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/noticias')?>"><?=lang('noticias')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
