@@ -58,7 +58,7 @@
                 </ul>
             </li>
             <li class="menu-title  <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('vidro/produtos')?>"><?=lang('produtos_vidro')?></a></li>
-            <li class="menu-title"><a href="#">Serviços Vidro</a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="<?=site_url('vidro/servico')?>"><?=lang('servicos')?></a></li>
             <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Área Técnica</a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">

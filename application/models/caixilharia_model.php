@@ -284,4 +284,20 @@ class Caixilharia_model extends CI_Model
         $data = $query->result_array();
         return $data;
     }
+
+    //SERVICOS
+
+	public function get_servico($servico){
+		$query = $this->db->query("select * from servicos_aluminio where id_servico_aluminio ='$servico'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	public function get_servicos(){
+		$query = $this->db->query("select * from servicos_aluminio");
+
+		$data = $query->result_array();
+		return $data;
+	}
 }

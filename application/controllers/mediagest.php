@@ -619,6 +619,26 @@ function caracteristicas_produto_extrusao_management()
 	$this->_admin_output($output);
 }
 
+function servicos_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('servicos_aluminio');
+	$crud->set_subject('Serviços Alumínio');
+	$crud->columns('nome_pt', 'descricao_pt');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Serviços Alumínio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Alumínio'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
 function servicos_extrusao_management()
 {
 	$crud = new grocery_CRUD();
@@ -628,7 +648,6 @@ function servicos_extrusao_management()
 	$crud->columns('nome_pt', 'descricao_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
-	$crud->field_type('descricao_pt', 'text');
 
 	$output = $crud->render();
 
@@ -649,7 +668,6 @@ function servicos_vidro_management()
 	$crud->columns('nome_pt', 'descricao_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
-	$crud->field_type('descricao_pt', 'text');	
 
 	$output = $crud->render();
 

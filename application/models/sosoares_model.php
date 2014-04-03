@@ -8,14 +8,14 @@ class Sosoares_model extends CI_Model
 	//PAGINAS
 
 	public function get_page($page){
-		$query = $this->db->query("select * from paginas where id_pagina='$page'");
+		$query = $this->db->query("select * from paginas where id_pagina ='$page'");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
 	public function get_pages($id_pagina) {
-		$query = $this->db->query("select * from paginas where id_pagina='$id_pagina'");
+		$query = $this->db->query("select * from paginas where id_pagina ='$id_pagina'");
 
 		$data = $query->result_array();
 		return $data;
@@ -33,7 +33,7 @@ class Sosoares_model extends CI_Model
 	//NOTICIAS
 
 	public function get_noticia($noticia){
-		$query = $this->db->query("select * from noticias where id_noticia='$noticia'");
+		$query = $this->db->query("select * from noticias where id_noticia ='$noticia'");
 
 		$data = $query->row_array();
 		return $data;

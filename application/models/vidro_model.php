@@ -36,4 +36,13 @@ class Vidro_model extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+
+	//SERVICOS
+
+	public function get_servico(){
+		$query = $this->db->query("select * from servicos_vidro where id_servico_vidro = 1");
+
+		$data = $query->row_array();
+		return $data;
+	}
 }

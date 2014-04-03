@@ -135,4 +135,13 @@ class Extrusao_model extends CI_Model
 		$data = $query->row_array();
 		return $data;
 	}
+
+	//SERVICOS
+
+	public function get_servico(){
+		$query = $this->db->query("select * from servicos_extrusao where id_servico_extrusao = 1");
+
+		$data = $query->row_array();
+		return $data;
+	}
 }

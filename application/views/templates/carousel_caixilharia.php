@@ -1,6 +1,7 @@
+<?php if (!empty($banners)) { ?>
 <div id="myCarousel_" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <?php $i=0; foreach ($banners as $banner) {
+    <div class="carousel-inner carousel-inner-banner">
+        <?php $i=0;  foreach ($banners as $banner) {
             if ($i == 0) { ?>
             <div class="item active" data-slide-number="<?=$i?>">
                 <img src="<?php echo base_url();?>assets/uploads/banners/aluminio/<?php echo $banner['banner'];?>" alt="slide">
@@ -62,3 +63,4 @@ $('#myCarousel_').on('slid.bs.carousel', function () {
     };    
 });            
 </script>
+<?php } ?>
