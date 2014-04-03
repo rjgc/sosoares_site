@@ -284,4 +284,17 @@ class Caixilharia extends CI_Controller {
         $this->load->view('pages/noticias', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    public function noticia($id=null)
+    {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
+
+        $data['id'] = $id;
+        $data['noticia'] = $this->sosoares_model->get_noticia($id);
+
+        $this->load->view('pages/noticia', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }

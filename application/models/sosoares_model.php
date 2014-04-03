@@ -40,7 +40,7 @@ class Sosoares_model extends CI_Model
 	}
 
     public function get_noticias(){
-        $query = $this->db->query("select * from noticias order by id_noticia desc");
+        $query = $this->db->query("select * from noticias order by data_noticia desc");
 
         $data = $query->result_array();
         return $data;

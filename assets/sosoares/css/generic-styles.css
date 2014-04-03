@@ -243,33 +243,12 @@ hr.divider {
 }
 
 /* ============================== NOTICIAS =================================== */
-.noticias {
-    margin: 50px 0 30px;
-}
-.noticias ul {
-    list-style: none;
-}
-
-.noticias ul li {
-    margin: 30px 0;
-    max-height: 220px;
-    overflow: hidden;
-    border-bottom: 1px solid #ccc;
-    padding: 25px 0;
-}
-
-.noticias ul li:last-child {
-    border: 0;
-}
-
-.noticias ul li h3 {
-    color: #107ca4;
-    font-size: 18px;
-    margin: 0 0 2px;
-}
-
+.noticias {margin: 50px 0 30px;}
+.noticias ul {list-style: none;}
+.noticias ul li {margin: 30px 0;max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
+.noticias ul li:last-child {border: 0;}
+.noticias ul li h3 {color: #107ca4;font-size: 18px;margin: 0 0 2px;}
 .noticias ul li .date {font-size: 11px;color: #717171;}
-
 .noticias ul li .news-text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -280,8 +259,15 @@ hr.divider {
     -webkit-box-orient: vertical;
     padding-right: 100px;
 }
-
 .noticias ul li button { margin: 13px 50px 0;}
+
+.noticia {margin: 0 0 30px;}
+.noticia h3 {color: #107ca4;font-size: 26px;margin: 0 0 2px;}
+.noticia .date {font-size: 11px;color: #717171;}
+.noticia .news-text {
+    line-height: 25px;
+    text-indent: 20px;
+}
 
 
 /*============================== MEDIA QUERIES ===================================*/
