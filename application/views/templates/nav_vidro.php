@@ -87,31 +87,31 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
-                <ul class="dropdown-menu">
-                    <li class="grid-demo">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('comercial')?></a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('orcamentacao')?></a></h3>
-                                    </div>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+            <ul class="dropdown-menu">
+                <li class="grid-demo">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/8')?>"><?=lang('comercial')?></a></h3>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('faqs')?></a></h3>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/9')?>"><?=lang('orcamentacao')?></a></h3>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </li>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/5')?>"><?=lang('faqs')?></a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('vidro/contactos')?>"><?=lang('contactos')?></a></li>
         </ul>
     </div>

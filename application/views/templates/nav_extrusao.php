@@ -68,27 +68,27 @@
                                         <ul>
                                             <li><b class="li-b">Batente</b>
                                                 <ul>
-                                                    <?php foreach ($extrusao_batente as $batente){
+                                                    <?php foreach ($caixilharia_batente as $batente){
                                                         ?>
-                                                        <li><a href="<?=site_url('extrusao/produto_extrusao/'.$batente['id_produto_extrusao'])?>"><?php echo $batente['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <li><a href="<?=site_url('extrusao/produto/'.$batente['id_produto_extrusao'])?>"><?php echo $batente['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>
                                             </li>
                                             <li><b class="li-b">Correr</b>
                                                 <ul>
-                                                    <?php foreach ($extrusao_correr as $correr){
+                                                    <?php foreach ($caixilharia_correr as $correr){
                                                         ?>
-                                                        <li><a href="<?=site_url('extrusao/produto_extrusao/'.$correr['id_produto_extrusao'])?>"><?php echo $correr['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <li><a href="<?=site_url('extrusao/produto/'.$correr['id_produto_extrusao'])?>"><?php echo $correr['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>
                                             </li>
                                             <li><b class="li-b">Portadas</b>
                                                 <ul>
-                                                    <?php foreach ($extrusao_portadas as $portada){
+                                                    <?php foreach ($caixilharia_portadas as $portada){
                                                         ?>
-                                                        <li><a href="<?=site_url('extrusao/produto_extrusao/'.$portada['id_produto_extrusao'])?>"><?php echo $portada['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <li><a href="<?=site_url('extrusao/produto/'.$portada['id_produto_extrusao'])?>"><?php echo $portada['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>
@@ -98,9 +98,9 @@
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3 links"><a href="#">Standards</a></h3>
                                         <ul>
-                                            <?php foreach ($standards_extrusao as $standard){
+                                            <?php foreach ($standards as $standard){
                                                 ?>
-                                                <li><a href="<?=site_url('extrusao/produto_extrusao/'.$standard['id_produto_extrusao'])?>"><?php echo $standard['nome_'.$this->lang->lang()] ?></a></li>
+                                                <li><a href="<?=site_url('extrusao/produto/'.$standard['id_produto_extrusao'])?>"><?php echo $standard['nome_'.$this->lang->lang()] ?></a></li>
                                                 <?php
                                             }?>
                                         </ul>
@@ -114,7 +114,7 @@
                                         <ul>
                                             <?php foreach ($estores as $estor){
                                                 ?>
-                                                <li><a href="<?=site_url('extrusao/produto_extrusao/'.$estor['id_produto_extrusao'])?>"><?php echo $estor['nome_'.$this->lang->lang()] ?></a></li>
+                                                <li><a href="<?=site_url('extrusao/produto/'.$estor['id_produto_extrusao'])?>"><?php echo $estor['nome_'.$this->lang->lang()] ?></a></li>
                                                 <?php
                                             }?>
                                         </ul>
@@ -126,7 +126,7 @@
                                                 <ul>
                                                     <?php foreach ($diversos_divisorias as $divisorias){
                                                         ?>
-                                                        <li><a href="<?=site_url('extrusao/produto_extrusao/'.$divisorias['id_produto_extrusao'])?>"><?php echo $divisorias['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <li><a href="<?=site_url('extrusao/produto/'.$divisorias['id_produto_extrusao'])?>"><?php echo $divisorias['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>
@@ -135,16 +135,16 @@
                                                 <ul>
                                                     <?php foreach ($diversos_gradeamentos as $gradeamentos){
                                                         ?>
-                                                        <li><a href="<?=site_url('extrusao/produto_extrusao/'.$gradeamentos['id_produto_extrusao'])?>"><?php echo $gradeamentos['nome_'.$this->lang->lang()] ?></a></li>
+                                                        <li><a href="<?=site_url('extrusao/produto/'.$gradeamentos['id_produto_extrusao'])?>"><?php echo $gradeamentos['nome_'.$this->lang->lang()] ?></a></li>
                                                         <?php
                                                     }?>
                                                 </ul>
                                             </li>
                                             <li><b class="li-b">Mosquiteiras</b>
-                                             <ul>
+                                               <ul>
                                                 <?php foreach ($diversos_mosquiteiras as $mosquiteiras){
                                                     ?>
-                                                    <li><a href="<?=site_url('extrusao/produto_extrusao/'.$mosquiteiras['id_produto_extrusao'])?>"><?php echo $mosquiteiras['nome_'.$this->lang->lang()] ?></a></li>
+                                                    <li><a href="<?=site_url('extrusao/produto/'.$mosquiteiras['id_produto_extrusao'])?>"><?php echo $mosquiteiras['nome_'.$this->lang->lang()] ?></a></li>
                                                     <?php
                                                 }?>
                                             </ul>
@@ -153,7 +153,7 @@
                                             <ul>
                                                 <?php foreach ($diversos_laminas as $laminas){
                                                     ?>
-                                                    <li><a href="<?=site_url('extrusao/produto_extrusao/'.$laminas['id_produto_extrusao'])?>"><?php echo $laminas['nome_'.$this->lang->lang()] ?></a></li>
+                                                    <li><a href="<?=site_url('extrusao/produto/'.$laminas['id_produto_extrusao'])?>"><?php echo $laminas['nome_'.$this->lang->lang()] ?></a></li>
                                                     <?php
                                                 }?>
                                             </ul>
@@ -167,24 +167,24 @@
             </ul>
         </li>
         <li class="menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="<?=site_url('extrusao/servico')?>"><?=lang('servicos')?></a></li>
-        <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+        <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
             <ul class="dropdown-menu">
                 <li class="grid-demo">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="#"><?=lang('comercial')?></a></h3>
+                                <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/8')?>"><?=lang('comercial')?></a></h3>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="#"><?=lang('orcamentacao')?></a></h3>
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/9')?>"><?=lang('orcamentacao')?></a></h3>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="#"><?=lang('faqs')?></a></h3>
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/6')?>"><?=lang('faqs')?></a></h3>
                                 </div>
                             </div>
                         </div>

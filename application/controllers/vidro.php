@@ -167,14 +167,17 @@ public function apoios_cliente()
     $paginas;
     $y=0;
 
-    for ($i=7; $i < 13; $i++) {
-        $paginas[$y] = $this->sosoares_model->get_pages($i);
-        $y++;
+    for ($i=5; $i < 10; $i++) {
+        if ($i != 6 && $i != 7) {
+            $paginas[$y] = $this->sosoares_model->get_pages($i);
+
+            $y++;
+        }
     }
 
     $data['pages'] = $paginas;
 
-    $this->load->view('pages/apoio_cliente_list', $data);
+    $this->load->view('pages/apoios_cliente', $data);
     $this->load->view('templates/footer');
 }
 

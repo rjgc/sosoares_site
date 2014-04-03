@@ -113,17 +113,52 @@ class Extrusao_model extends CI_Model
 
 	//PAGINAS INTERMEDIAS PRODUTOS EXTRUSAO
 
-	public function get_caracteristicas_produto($id_tipo_produto_extrusao){
-		$query = $this->db->query("select cp3.* from caracteristicas_produto_extrusao cpe inner join (select * from produtos_extrusao where id_produto_extrusao='$id_tipo_produto_extrusao') pe on cpe.id_caracteristica_produto_extrusao = pe.id_caracteristica_produto_extrusao");
+	public function get_tipo_produtos($id_tipo_produto_extrusao){
+		$query = $this->db->query("select * from tipos_produto_extrusao where id_tipo_produto_extrusao='$id_tipo_produto_extrusao'");
 
 		$data = $query->row_array();
+		return $data;
+	}
+
+	public function get_tipos_produtos(){
+		$query = $this->db->query("select * from tipos_produto_extrusao");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_caracteristicas_produto($id_tipo_produto_extrusao){
+		$query = $this->db->query("select cpe.* from caracteristicas_produto_extrusao cpe inner join (select * from produtos_extrusao where id_produto_extrusao='$id_tipo_produto_extrusao') pe on cpe.id_caracteristica_produto_extrusao = pe.id_caracteristica_produto_extrusao");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	public function get_caracteristicas_produtos($id_tipo_produto_extrusao){
+		$query = $this->db->query("select distinct cpe.* from caracteristicas_produto_extrusao cpe inner join (select * from produtos_extrusao where id_produto_extrusao='$id_tipo_produto_extrusao') pe on cpe.id_caracteristica_produto_extrusao = pe.id_caracteristica_produto_extrusao order by cpe.id_caracteristica_produto_extrusao");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_produtos($id_tipo_produto_extrusao, $id_caracteristica_produto_extrusao){
+		$query = $this->db->query("select * from produtos_extrusao where id_tipo_produto_extrusao = '$id_tipo_produto_extrusao' and id_caracteristica_produto_extrusao = '$id_caracteristica_produto_extrusao'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_produtos_tipo($id_tipo_produto_extrusao){
+		$query = $this->db->query("select * from produtos_extrusao where id_tipo_produto_extrusao = '$id_tipo_produto_extrusao'");
+
+		$data = $query->result_array();
 		return $data;
 	}
 
 	//PAGINA PRODUTO EXTRUSAO
 
 	public function get_produto_com_caracteristica($id, $lang){
-		$query = $this->db->query("select pe.*, tpe.nome_".$lang." as tipo, cpe.nome_".$lang." as caracteristica from produtos_extrusao pe inner join tipos_produto_extrusao tpe on pe.id_tipo_produto_extrusao = tpe.id_tipo_produto_extrusao inner join caracteristicas_produto_extrusao cpe on pe.id_caracteristica_produto_extrusao = cpe.id_caracteristica_produto_extrusao where pa.id_produto_extrusao='$id'");	
+		$query = $this->db->query("select pe.*, tpe.nome_".$lang." as tipo, cpe.nome_".$lang." as caracteristica from produtos_extrusao pe inner join tipos_produto_extrusao tpe on pe.id_tipo_produto_extrusao = tpe.id_tipo_produto_extrusao inner join caracteristicas_produto_extrusao cpe on pe.id_caracteristica_produto_extrusao = cpe.id_caracteristica_produto_extrusao where pe.id_produto_extrusao='$id'");	
 
 		$data = $query->row_array();
 		return $data;
