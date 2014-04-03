@@ -38,4 +38,11 @@ class Sosoares_model extends CI_Model
 		$data = $query->row_array();
 		return $data;
 	}
+
+    public function get_noticias(){
+        $query = $this->db->query("select * from noticias order by id_noticia desc");
+
+        $data = $query->result_array();
+        return $data;
+    }
 }
