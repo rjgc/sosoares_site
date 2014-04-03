@@ -1,3 +1,4 @@
+<script src="<?php echo base_url() ?>assets/sosoares/js/modernizr.custom.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -10,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="obras-container">
+            <div class="obras-container grid effect-6" id="grid">
                 <?php if (!empty($obras)) {
                     foreach ($obras as $obra){
                         ?>
@@ -28,3 +29,14 @@
     </div>
 </div><!-- /row -->
 </div>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/masonry.pkgd.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/imagesloaded.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/classie.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/AnimOnScroll.js"></script>
+        <script>
+            new AnimOnScroll( document.getElementById( 'grid' ), {
+                minDuration : 0.4,
+                maxDuration : 0.7,
+                viewportFactor : 0.2
+            } );
+        </script>

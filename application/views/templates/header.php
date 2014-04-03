@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">    
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/accordion_faqs.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/component.css">
     <?php if(isset($page_style)) {
         switch($page_style) {
             case "vidro":
