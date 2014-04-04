@@ -29,7 +29,6 @@
                 </div>
                 <div class="col-md-1">&nbsp;</div>
             </div>
-
         </div>
         <div class="col-md-4">
             <h1 class="title1">Newsletter</h1>

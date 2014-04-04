@@ -20,14 +20,22 @@
          <?php foreach($noticias as $noticia) { ?>
          <li>
             <div class="row">
-                <div class="col-md-3">
-                    <img src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>" width="230" height="160">
+            <div class="col-md-3">
+                    <img src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>" style="border-radius: 10px;" width="230" height="160">
                 </div>
                 <div class="col-md-9">
                     <h3><?php echo $noticia['titulo_'.$this->lang->lang()] ?></h3>
-                    <p class="date"><b>Publicado:</b> <?= $noticia['data_noticia'] ?></p>
-                    <p class="news-text"><?php echo $noticia['texto_'.$this->lang->lang()] ?></p>
-                    <a href="<?php echo site_url('caixilharia/noticia/'.$noticia['id_noticia']); ?>"><button class="btn button shrink">Ler Mais</button></a>
+                    <p class="date"><b><?=lang('publicado')?>:</b> <?= $noticia['data_noticia'] ?></p>
+                    <p class="news-text"><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>
+                    <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                        echo site_url('caixilharia/noticia/'.$noticia['id_noticia']);
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                        echo site_url('vidro/noticia/'.$noticia['id_noticia']);
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                        echo site_url('extrusao/noticia/'.$noticia['id_noticia']);
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                        echo site_url('tratamento/noticia/'.$noticia['id_noticia']);
+                    } ?>"><button class="btn button shrink"><?=lang('ler')?></button></a>
                 </div>
             </div>
         </li>

@@ -187,6 +187,12 @@ $lang["ler"] = "Ler Mais";
 $lang["subscrever"] = "Subscrever";
 
 
+/*Noticias*/
+
+
+$lang["publicado"] = "Publicado";
+
+
 /*Candidaturas*/
 
 
@@ -237,7 +243,7 @@ $lang["resultados"] = "Resultados de Ensaio";
 $lang["obras"] = "Obras relacionadas com este produto";
 
 
-/*Portfolio*/
+/*Obras*/
 
 
 $lang["localizacao"] = "Localização";

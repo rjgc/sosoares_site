@@ -245,7 +245,6 @@ hr.divider {
 }
 
 /* ============================== NOTICIAS =================================== */
-.noticias {}
 .noticias ul {list-style: none;}
 .noticias ul li {max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
 .noticias ul li:last-child {border: 0;}
@@ -261,7 +260,6 @@ hr.divider {
     -webkit-box-orient: vertical;
     padding-right: 100px;
 }
-.noticias ul li button { margin: 13px 50px 0;}
 
 .noticia {margin: 0 0 30px;}
 .noticia h3 {color: #107ca4;font-size: 26px;margin: 0 0 2px;}

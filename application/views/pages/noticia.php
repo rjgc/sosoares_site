@@ -45,12 +45,12 @@
     <div class="row">
         <div class="col-md-10">
             <h3><?php echo $noticia['titulo_'.$this->lang->lang()] ?></h3>
-            <p class="date"><b>Publicado:</b> <?= $noticia['data_noticia'] ?></p>
+            <p class="date"><b><?=lang('publicado')?>:</b> <?= $noticia['data_noticia'] ?></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>" width="300" height="200">
+            <img src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>" style="border-radius: 10px;" width="300" height="200">
         </div>
         <div class="col-md-7">
             <div class="news-text"><?php echo $noticia['texto_'.$this->lang->lang()] ?></div>
