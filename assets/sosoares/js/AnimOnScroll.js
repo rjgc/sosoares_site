@@ -86,7 +86,7 @@
 			viewportFactor : 0
 		},
 		_init : function() {
-			this.items = Array.prototype.slice.call( document.querySelectorAll( '#' + this.el.id + ' > li' ) );
+			this.items = Array.prototype.slice.call( document.querySelectorAll( '#' + this.el.id + ' > a' ) );
 			this.itemsCount = this.items.length;
 			this.itemsRenderedCount = 0;
 			this.didScroll = false;
@@ -97,7 +97,7 @@
 				
 				// initialize masonry
 				new Masonry( self.el, {
-					itemSelector: 'li',
+					itemSelector: 'a',
 					transitionDuration : 0
 				} );
 				
