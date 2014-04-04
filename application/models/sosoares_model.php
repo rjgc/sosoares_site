@@ -45,4 +45,13 @@ class Sosoares_model extends CI_Model
         $data = $query->result_array();
         return $data;
     }
+
+    //CONTACTOS
+
+    public function get_contactos($seccao){
+        $query = $this->db->query("select * from contactos where id_seccao=".$seccao);
+
+        $data = $query->result_array();
+        return $data;
+    }
 }
