@@ -10,7 +10,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h3 id="date"><?=$noticia['data']?></h3>
+                    <h3 id="date"><?=$noticia['data_noticia']?></h3>
                 </div>
                 <div class="col-md-7">
                     <h3 class="title2"><?=$noticia['titulo_'.$this->lang->lang()]?></h3>
