@@ -34,6 +34,9 @@
 	</div>
 	<nav>
         <ul>
+            <li <?php if ($data['titulo'] == 'Imagem de Fundo') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/background_image_management")?>'><span class="icon">&#128196;</span> Imagem de Fundo</a>
+            </li>
             <li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
                 <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>
             </li>

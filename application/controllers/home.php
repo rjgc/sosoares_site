@@ -25,14 +25,19 @@ class Home extends CI_Controller {
         // you might want to just autoload these two helpers
 		$this->load->helper('language');
 		$this->load->helper('url');
+		$this->load->helper('text');
 
-		$this->load->helper('url');
+        $this->lang->load('cizacl');
+
+        $this->load->model('sosoares_model');
 	}
 	
 	
 	public function index()
 	{
-		$this->load->view('pages/home', $this->lang->lang());
+		$data['background_image'] = $this->sosoares_model->get_background_image();
+
+		$this->load->view('pages/home', $data, $this->lang->lang());
 	}	
 	
 }

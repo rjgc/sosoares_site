@@ -105,6 +105,43 @@ function galeria()
 	$this->_example_output($output);
 }
 
+function background_image_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->unset_delete();
+	$crud->unset_add();
+
+	$crud->set_table('background_image');
+	$crud->set_subject('Background Image');
+	$crud->columns('foto');
+
+	$crud->required_fields('foto');
+
+	$crud->set_field_upload('foto', 'assets/uploads/background');
+	$crud->callback_after_upload(array($this,'callback_after_upload_background_image'));
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Imagem de Fundo';  
+	$data['sub-titulo'] = 'Faça aqui a gestão da Imagem de Fundo'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function callback_after_upload_background_image($uploader_response, $field_info, $files_to_upload)
+{
+	$this->load->library('image_moo');
+
+	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
+
+	$this->image_moo->load($file_uploaded)->resize_crop(1361, 610)->save($file_uploaded, true);
+
+	return true;
+}
+
 function banner_aluminio_management()
 {
 	$crud = new grocery_CRUD();
@@ -497,30 +534,30 @@ function produtos_vidro_management()
 }
 
 function contactos_management()
-    {
-        $crud = new grocery_CRUD();
+{
+	$crud = new grocery_CRUD();
 
-        $crud->set_table('contactos');
-        $crud->set_subject('Contactos');
-        $crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
+	$crud->set_table('contactos');
+	$crud->set_subject('Contactos');
+	$crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
 
-        $crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
-        $crud->display_as('id_seccao', 'Seccao');
+	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
+	$crud->display_as('id_seccao', 'Seccao');
 
-        $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-        $crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
 
-        $crud->set_relation('id_seccao', 'contactos_seccoes', 'nome_seccao');
+	$crud->set_relation('id_seccao', 'contactos_seccoes', 'nome_seccao');
 
-        $output = $crud->render();
+	$output = $crud->render();
 
-        $data['titulo'] = 'Produtos Vidro';
-        $data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
+	$data['titulo'] = 'Produtos Vidro';
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
 
-        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-        $this->_admin_output($output);
-    }
+	$this->_admin_output($output);
+}
 
 function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
 {

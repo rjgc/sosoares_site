@@ -5,6 +5,15 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//BACKGROUND IMAGE
+
+	public function get_background_image(){
+		$query = $this->db->query("select * from background_image");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 	//PAGINAS
 
 	public function get_page($page){
