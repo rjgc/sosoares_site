@@ -57,7 +57,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('produtos')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('cprodutos')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
@@ -399,7 +399,7 @@
                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/10')?>"><?=lang('software')?></a></h3>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/7')?>"><?=lang('faqs')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/7')?>"><?=lang('cfaqs')?></a></h3>
                                                             </div>
                                                         </div>
                                                     </div>

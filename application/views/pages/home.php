@@ -21,10 +21,10 @@
                     </div>
                     <div class="col-md-4">
                         <div id="bd">
-                            <a href="#"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
-                            <a href="#"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
-                            <a href="#"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
-                            <a href="#"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow"></a>
+                            <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
+                            <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
+                            <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
+                            <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow"></a>
                         </div>
                     </div>
                 </div>
@@ -37,26 +37,26 @@
                     <a href="<?php echo site_url('caixilharia/home')?>">
                         <div class="box shrink" id="caixilharia">
                             <i class="icon-caixilharia font"></i>
-                            <h3>Sistemas de Caixilharia</h3>
+                            <h3><?=lang('caixilharia')?></h3>
                         </div>
                     </a>
                     <a href="<?php echo site_url('vidro/home')?>">
                         <div class="box shrink" id="vidro">
                             <i class="icon-vidro font"></i>
-                            <h3>Vidro<br>&nbsp;</h3>
+                            <h3><?=lang('vidro')?><br>&nbsp;</h3>
                         </div>
                     </a>
                     <hr id="separador">
                     <a href="<?php echo site_url('extrusao/home')?>">
                         <div class="box shrink" id="extrusao">
                             <i class="icon-extrusao font"></i>
-                            <h3>Extrusão<br>&nbsp;</h3>
+                            <h3><?=lang('extrusao')?><br>&nbsp;</h3>
                         </div>
                     </a>
                     <a href="<?php echo site_url('tratamento/home')?>">
                         <div class="box shrink" id="abrasivos">
                             <i class="icon-tratamento font"></i>
-                            <h3 >Tratamento de Superficíes</h3>
+                            <h3 ><?=lang('tratamento')?></h3>
                         </div>
                     </a>
                 </div>
@@ -69,7 +69,7 @@
                         <div class="col-md-5">
                             <div style="height: 34px;display: inline-block;">
                                 <i class="icon-sosoares" style="font-size: 30px"></i>
-                                <div class="valign"><h4>&nbsp;&copy; GRUPO SOSOARES</h4> Todos os Direitos Reservados</div>
+                                <div class="valign"><h4>&nbsp;&copy; GRUPO SOSOARES</h4> <?=lang('direitos')?></div>
                             </div>
                         </div>
                         <div class="vanish">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-1">
                             <a href="#">
-                                <button class="btn button shrink">Sign In</button>
+                                <button class="btn button shrink"><?=lang('signin')?></button>
                             </a>
                         </div>
                     </div>

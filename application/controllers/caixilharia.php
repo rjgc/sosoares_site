@@ -51,47 +51,6 @@ class Caixilharia extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function grupo_sosoares($page=null)
-    {
-        $data['page_style'] = "caixilharia";
-        $data['current'] = 'grupo_sosoares';
-        $data['page'] = $page;
-        $this->menu($data);
-
-        if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_page($page);
-
-            $this->load->view('pages/grupo_sosoares', $data);
-        } else {
-            $this->load->view('pages/grupo_sosoares', $data);
-        }
-
-        $this->load->view('templates/footer');
-    }
-
-    public function candidaturas()
-    {
-        $data['page_style']= "caixilharia";
-        $data['current'] = 'candidaturas';
-        $this->menu($data);
-
-        $this->load->view('pages/candidatura', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function areas_comerciais()
-    {
-        $data['page_style']= "caixilharia";
-        $data['page_title'] = "areas_comerciais";
-        $data['current'] = 'areas_comerciais';
-        $this->menu($data);
-
-        $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
-
-        $this->load->view('pages/areas_comerciais', $data);
-        $this->load->view('templates/footer', $data);
-    }
-
     public function menu($data)
     {
         $data['batentes_com_corte'] = $this->caixilharia_model->get_batentes_com_corte($this->get_lang());
@@ -111,6 +70,72 @@ class Caixilharia extends CI_Controller {
         $data['servicos'] = $this->caixilharia_model->get_servicos();
 
         $this->load->view('templates/header', $data, $this->get_lang());
+    }
+
+    public function grupo_sosoares($page=null)
+    {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $data['page'] = $page;
+        $this->menu($data);
+
+        if ($page != null) {
+            $data['page'] = $this->sosoares_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
+
+    public function areas_comerciais()
+    {
+        $data['page_style']= "caixilharia";
+        $data['page_title'] = "areas_comerciais";
+        $data['current'] = 'areas_comerciais';
+        $this->menu($data);
+
+        $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
+
+        $this->load->view('pages/areas_comerciais', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function noticia($id=null)
+    {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
+
+        $data['id'] = $id;
+        $data['noticia'] = $this->sosoares_model->get_noticia($id);
+
+        $this->load->view('pages/noticia', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function noticias()
+    {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
+
+        $data['noticias'] = $this->sosoares_model->get_noticias();
+
+        $this->load->view('pages/noticias', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function candidaturas()
+    {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'candidaturas';
+        $this->menu($data);
+
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
     }
 
     public function produto($id=null)
@@ -270,31 +295,6 @@ class Caixilharia extends CI_Controller {
         $this->menu($data);
 
         $this->load->view('pages/contactos');
-        $this->load->view('templates/footer', $data);
-    }
-
-    public function noticias()
-    {
-        $data['page_style'] = "caixilharia";
-        $data['current'] = 'grupo_sosoares';
-        $this->menu($data);
-
-        $data['noticias'] = $this->sosoares_model->get_noticias();
-
-        $this->load->view('pages/noticias', $data);
-        $this->load->view('templates/footer', $data);
-    }
-
-    public function noticia($id=null)
-    {
-        $data['page_style'] = "caixilharia";
-        $data['current'] = 'grupo_sosoares';
-        $this->menu($data);
-
-        $data['id'] = $id;
-        $data['noticia'] = $this->sosoares_model->get_noticia($id);
-
-        $this->load->view('pages/noticia', $data);
         $this->load->view('templates/footer', $data);
     }
 }

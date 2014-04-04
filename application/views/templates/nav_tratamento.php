@@ -46,7 +46,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/noticias')?>"><?=lang('noticias')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
@@ -57,9 +57,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-title <?php echo ( isset($current) && $current === 'lacagem' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/lacagem')?>">Lacagem</a></li>
-            <li class="menu-title <?php echo ( isset($current) && $current === 'anodizacao' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/anodizacao')?>">Anodização</a></li>
-            <li class="menu-title"><a href="#">Imitação Madeira</a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'lacagem' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/lacagem')?>"><?=lang('lacagem')?></a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'anodizacao' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/anodizacao')?>"><?=lang('anodizacao')?></a></li>
+            <li class="menu-title"><a href="#"><?=lang('imitacao')?></a></li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/contactos')?>"><?=lang('contactos')?></a></li>
         </ul>
     </div>

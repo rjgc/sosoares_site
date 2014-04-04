@@ -35,7 +35,19 @@
  **/
 
 
-/*Menu*/
+/*Home*/
+
+
+$lang["caixilharia"] = "Sistemas de Caixilharia";
+
+$lang["vidro"] = "Vidro";
+
+$lang["extrusao"] = "Extrusão";
+
+$lang["tratamento"] = "Tratamento de Superficíes";
+
+
+/*Menu Caixilharia*/
 
 
 $lang["home"] = "Início";
@@ -56,7 +68,7 @@ $lang["grupo"] = "Grupo Sosoares";
 
 	$lang["candidaturas"] = "Candidaturas";
 
-$lang["produtos"] = "Produtos Alumínio";
+$lang["cprodutos"] = "Produtos Alumínio";
 
 	$lang["batente"] = "Batente";
 
@@ -64,9 +76,9 @@ $lang["produtos"] = "Produtos Alumínio";
 
 		$lang["sem_corte"] = "Sem Corte Térmico";
 
-	$lang["madeira"] = "Madeira Alumínio";
-
 	$lang["correr"] = "Correr";
+
+	$lang["madeira"] = "Madeira Alumínio";	
 
 	$lang["gradeamentos"] = "Gradeamentos";
 
@@ -103,6 +115,46 @@ $lang["apoio"] = "Apoio ao Cliente";
 	$lang["faqs"] = "FAQs Sistemas de Caixilharia";
 
 $lang["contactos"] = "Contactos";
+
+
+/*Menu Vidro*/
+
+
+$lang["atecnica"] = "Área Técnica";
+
+$lang["vprodutos"] = "Produtos Vidro";
+
+$lang["vfaqs"] = "FAQs Sistemas de Vidro";
+
+
+/*Menu Extrusao*/
+
+
+$lang["eprodutos"] = "Produtos Extrusão";
+
+	$lang["pextrusao"] = "Extrusão";
+
+	$lang["estores"] = "Estores";
+
+	$lang["diversos"] = "Diversos";
+
+		$lang["divisorias"] = "Divisórias";
+
+		$lang["mosquiteiras"] = "Mosquiteiras";
+
+		$lang["laminas"] = "Lâminas";
+
+$lang["efaqs"] = "FAQs Sistemas de Extrusão";
+
+
+/*Menu Tratamento*/
+
+
+$lang["lacagem"] = "Lacagem";
+
+$lang["anodizacao"] = "Anodização";
+
+$lang["imitacao"] = "Imitação Madeira";
 
 
 /*Header*/
@@ -163,6 +215,8 @@ $lang["enviar"] = "Enviar";
 
 
 $lang["info"] = "+Info";
+
+$lang["aplicacao"] = "Aplicação";
 
 $lang["corte"] = "Corte";
 
@@ -463,8 +517,3 @@ $lang["all"]					= "All";
 $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
-
-
-$lang["produtos_vidro"]				= "Produtos Vidro";
-
-$lang["aplicacao"]					= "Aplicação";

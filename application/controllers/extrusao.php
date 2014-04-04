@@ -51,6 +51,21 @@ public function home()
 	$this->load->view('templates/footer');
 }
 
+public function menu($data) 
+{
+	$data['caixilharia_batente'] = $this->extrusao_model->get_caixilharia_batente($this->get_lang());
+	$data['caixilharia_correr'] = $this->extrusao_model->get_caixilharia_correr($this->get_lang());
+	$data['caixilharia_portadas'] = $this->extrusao_model->get_caixilharia_portadas($this->get_lang());
+	$data['standards'] = $this->extrusao_model->get_standards($this->get_lang());
+	$data['estores'] = $this->extrusao_model->get_estores($this->get_lang());
+	$data['diversos_divisorias'] = $this->extrusao_model->get_diversos_divisorias($this->get_lang());
+	$data['diversos_gradeamentos'] = $this->extrusao_model->get_diversos_gradeamento($this->get_lang());
+	$data['diversos_mosquiteiras'] = $this->extrusao_model->get_diversos_mosquiteiras($this->get_lang());
+	$data['diversos_laminas'] = $this->extrusao_model->get_diversos_laminas($this->get_lang());
+
+	$this->load->view('templates/header', $data, $this->get_lang());
+}
+
 public function grupo_sosoares($page=null)
 {
 	$data['page_style'] = "extrusao";
@@ -69,16 +84,6 @@ public function grupo_sosoares($page=null)
 	$this->load->view('templates/footer');
 }
 
-public function candidaturas()
-{
-	$data['page_style']= "extrusao";
-	$data['current'] = 'candidaturas';
-	$this->menu($data);
-
-	$this->load->view('pages/candidatura', $data);
-	$this->load->view('templates/footer');
-}
-
 public function areas_comerciais()
 {
 	$data['page_style']= "extrusao";
@@ -92,19 +97,39 @@ public function areas_comerciais()
 	$this->load->view('templates/footer', $data);
 }
 
-public function menu($data) 
+public function noticia($id=null)
 {
-	$data['caixilharia_batente'] = $this->extrusao_model->get_caixilharia_batente($this->get_lang());
-	$data['caixilharia_correr'] = $this->extrusao_model->get_caixilharia_correr($this->get_lang());
-	$data['caixilharia_portadas'] = $this->extrusao_model->get_caixilharia_portadas($this->get_lang());
-	$data['standards'] = $this->extrusao_model->get_standards($this->get_lang());
-	$data['estores'] = $this->extrusao_model->get_estores($this->get_lang());
-	$data['diversos_divisorias'] = $this->extrusao_model->get_diversos_divisorias($this->get_lang());
-	$data['diversos_gradeamentos'] = $this->extrusao_model->get_diversos_gradeamento($this->get_lang());
-	$data['diversos_mosquiteiras'] = $this->extrusao_model->get_diversos_mosquiteiras($this->get_lang());
-	$data['diversos_laminas'] = $this->extrusao_model->get_diversos_laminas($this->get_lang());
+	$data['page_style'] = "extrusao";
+	$data['current'] = 'grupo_sosoares';
+	$this->menu($data);
 
-	$this->load->view('templates/header', $data, $this->get_lang());
+	$data['id'] = $id;
+	$data['noticia'] = $this->sosoares_model->get_noticia($id);
+
+	$this->load->view('pages/noticia', $data);
+	$this->load->view('templates/footer', $data);
+}
+
+public function noticias()
+{
+	$data['page_style'] = "extrusao";
+	$data['current'] = 'grupo_sosoares';
+	$this->menu($data);
+
+	$data['noticias'] = $this->sosoares_model->get_noticias();
+
+	$this->load->view('pages/noticias', $data);
+	$this->load->view('templates/footer', $data);
+}
+
+public function candidaturas()
+{
+	$data['page_style']= "extrusao";
+	$data['current'] = 'candidaturas';
+	$this->menu($data);
+
+	$this->load->view('pages/candidatura', $data);
+	$this->load->view('templates/footer');
 }
 
 public function produto($id=null)

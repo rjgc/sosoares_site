@@ -46,7 +46,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/noticias')?>"><?=lang('noticias')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
@@ -57,16 +57,16 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Produtos Extrusão</a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('eprodutos')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">extrusao</a></h3>
+                                        <h3 class="menu-h3 links"><a href="#"><?=lang('pextrusao')?></a></h3>
                                         <ul>
-                                            <li><b class="li-b">Batente</b>
+                                            <li><b class="li-b"><?=lang('batente')?></b>
                                                 <ul>
                                                     <?php foreach ($caixilharia_batente as $batente){
                                                         ?>
@@ -75,7 +75,7 @@
                                                     }?>
                                                 </ul>
                                             </li>
-                                            <li><b class="li-b">Correr</b>
+                                            <li><b class="li-b"><?=lang('correr')?></b>
                                                 <ul>
                                                     <?php foreach ($caixilharia_correr as $correr){
                                                         ?>
@@ -84,7 +84,7 @@
                                                     }?>
                                                 </ul>
                                             </li>
-                                            <li><b class="li-b">Portadas</b>
+                                            <li><b class="li-b"><?=lang('portadas')?></b>
                                                 <ul>
                                                     <?php foreach ($caixilharia_portadas as $portada){
                                                         ?>
@@ -96,7 +96,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Standards</a></h3>
+                                        <h3 class="menu-h3 links"><a href="#"><?=lang('standards')?></a></h3>
                                         <ul>
                                             <?php foreach ($standards as $standard){
                                                 ?>
@@ -110,7 +110,7 @@
                             <div class="col-sm-4">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Estores</a></h3>
+                                        <h3 class="menu-h3 links"><a href="#"><?=lang('estores')?></a></h3>
                                         <ul>
                                             <?php foreach ($estores as $estor){
                                                 ?>
@@ -120,9 +120,9 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Diversos</a></h3>
+                                        <h3 class="menu-h3 links"><a href="#"><?=lang('diversos')?></a></h3>
                                         <ul>
-                                            <li><b class="li-b">Divisórias</b>
+                                            <li><b class="li-b"><?=lang('divisorias')?></b>
                                                 <ul>
                                                     <?php foreach ($diversos_divisorias as $divisorias){
                                                         ?>
@@ -131,7 +131,7 @@
                                                     }?>
                                                 </ul>
                                             </li>
-                                            <li><b class="li-b">Gradeamento</b>
+                                            <li><b class="li-b"><?=lang('gradeamentos')?></b>
                                                 <ul>
                                                     <?php foreach ($diversos_gradeamentos as $gradeamentos){
                                                         ?>
@@ -140,7 +140,7 @@
                                                     }?>
                                                 </ul>
                                             </li>
-                                            <li><b class="li-b">Mosquiteiras</b>
+                                            <li><b class="li-b"><?=lang('mosquiteiras')?></b>
                                                <ul>
                                                 <?php foreach ($diversos_mosquiteiras as $mosquiteiras){
                                                     ?>
@@ -149,7 +149,7 @@
                                                 }?>
                                             </ul>
                                         </li>
-                                        <li><b class="li-b">Lâminas</b>
+                                        <li><b class="li-b"><?=lang('laminas')?></b>
                                             <ul>
                                                 <?php foreach ($diversos_laminas as $laminas){
                                                     ?>
@@ -184,7 +184,7 @@
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/6')?>"><?=lang('faqs')?></a></h3>
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/6')?>"><?=lang('efaqs')?></a></h3>
                                 </div>
                             </div>
                         </div>

@@ -46,7 +46,7 @@
                             <div class="col-sm-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#"><?=lang('noticias')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('vidro/noticias')?>"><?=lang('noticias')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
                                         <h3 class="menu-h3 links"><a href="<?=site_url('vidro/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
@@ -57,7 +57,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-title  <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('vidro/produtos')?>"><?=lang('produtos_vidro')?></a></li>
+            <li class="menu-title  <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('vidro/produtos')?>"><?=lang('vprodutos')?></a></li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="<?=site_url('vidro/servico')?>"><?=lang('servicos')?></a></li>
             <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Área Técnica</a>
                 <ul class="dropdown-menu">
@@ -104,7 +104,7 @@
                         <div class="col-sm-4">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/5')?>"><?=lang('faqs')?></a></h3>
+                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/5')?>"><?=lang('vfaqs')?></a></h3>
                                 </div>
                             </div>
                         </div>

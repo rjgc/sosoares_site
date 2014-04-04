@@ -35,7 +35,19 @@
  **/
 
 
-/*Menu*/
+/*Home*/
+
+
+$lang["caixilharia"] = "Sistemas de Marco";
+
+$lang["vidro"] = "Vidrio";
+
+$lang["extrusao"] = "Extrusion";
+
+$lang["tratamento"] = "Tratamiento Superficial";
+
+
+/*Menu Caixilharia*/
 
 
 $lang["home"] = "Casa";
@@ -56,7 +68,7 @@ $lang["grupo"] = "Grupo Sosoares";
 
 	$lang["candidaturas"] = "Las Candidaturas";
 
-$lang["produtos"] = "Productos de Aluminio";
+$lang["cprodutos"] = "Productos de Aluminio";
 
 	$lang["batente"] = "Jamba";
 
@@ -64,9 +76,9 @@ $lang["produtos"] = "Productos de Aluminio";
 
 		$lang["sem_corte"] = "Sin Térmica";
 
-	$lang["madeira"] = "Madera Aluminio";
-
 	$lang["correr"] = "Corredizo";
+
+	$lang["madeira"] = "Madera Aluminio";
 
 	$lang["gradeamentos"] = "Barandillas";
 
@@ -100,9 +112,49 @@ $lang["apoio"] = "Servicio Post-Venta";
 
 	$lang["software"] = "Programa de Gestión de Metalistería";
 
-	$lang["faqs"] = "FAQs Sistemas de Marco";
+	$lang["cfaqs"] = "FAQs Sistemas de Marco";
 
 $lang["contactos"] = "Contactos";
+
+
+/*Menu Vidro*/
+
+
+$lang["atecnica"] = "Área Técnica";
+
+$lang["vprodutos"] = "Productos de Vidrio";
+
+$lang["vfaqs"] = "FAQs Sistemas de Vidrio";
+
+
+/*Menu Extrusao*/
+
+
+$lang["eprodutos"] = "Produtos de Extrusión";
+
+	$lang["pextrusao"] = "Extrusión";
+
+	$lang["estores"] = "Persianas";
+
+	$lang["diversos"] = "Diversos";
+
+		$lang["divisorias"] = "Particiones";
+
+		$lang["mosquiteiras"] = "Mosquiteros";
+
+		$lang["laminas"] = "Cuchillas";
+
+$lang["efaqs"] = "FAQs Sistemas de Extrusión";
+
+
+/*Menu Tratamento*/
+
+
+$lang["lacagem"] = "Lacado";
+
+$lang["anodizacao"] = "El Anodizado";
+
+$lang["imitacao"] = "Imitación Madera";
 
 
 /*Header*/
@@ -163,6 +215,8 @@ $lang["enviar"] = "Enviar";
 
 
 $lang["info"] = "+Info";
+
+$lang["aplicacao"] = "Aplicación";
 
 $lang["corte"] = "Corte";
 
@@ -463,9 +517,3 @@ $lang["all"]					= "All";
 $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
-
-
-
-$lang["produtos_vidro"]				= "Productos de Vidrio";
-
-$lang["aplicacao"]					= "Aplicación";

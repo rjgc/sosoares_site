@@ -243,9 +243,9 @@ hr.divider {
 }
 
 /* ============================== NOTICIAS =================================== */
-.noticias {margin: 50px 0 30px;}
+.noticias {}
 .noticias ul {list-style: none;}
-.noticias ul li {margin: 30px 0;max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
+.noticias ul li {max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
 .noticias ul li:last-child {border: 0;}
 .noticias ul li h3 {color: #107ca4;font-size: 18px;margin: 0 0 2px;}
 .noticias ul li .date {font-size: 11px;color: #717171;}

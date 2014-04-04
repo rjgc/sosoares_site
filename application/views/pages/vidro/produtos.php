@@ -3,9 +3,9 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('vidro/home')?>"><?=lang('home')?></a></li>
-                <li><?=lang('produtos_vidro')?></li>
+                <li><?=lang('vprodutos')?></li>
             </ul>
-            <h1 class="title3"><?=lang('produtos_vidro')?></h1>
+            <h1 class="title3"><?=lang('vprodutos')?></h1>
         </div>
     </div>
     <div>

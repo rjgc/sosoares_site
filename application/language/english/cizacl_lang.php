@@ -35,7 +35,19 @@
  **/
 
 
-/*Menu*/
+/*Home*/
+
+
+$lang["caixilharia"] = "Frame Systems";
+
+$lang["vidro"] = "Glass";
+
+$lang["extrusao"] = "Extrusion";
+
+$lang["tratamento"] = "Surface Treatment";
+
+
+/*Menu Caixilharia*/
 
 
 $lang["home"] = "Home";
@@ -56,7 +68,7 @@ $lang["grupo"] = "Grupo Sosoares";
 
 	$lang["candidaturas"] = "Candidatures";
 
-$lang["produtos"] = "Aluminum Products";
+$lang["cprodutos"] = "Aluminum Products";
 
 	$lang["batente"] = "Jamb";
 
@@ -64,9 +76,9 @@ $lang["produtos"] = "Aluminum Products";
 
 		$lang["sem_corte"] = "Without Thermal";
 
-	$lang["madeira"] = "Wood-Aluminium";
-
 	$lang["correr"] = "Sliding";
+
+	$lang["madeira"] = "Wood-Aluminium";
 
 	$lang["gradeamentos"] = "Railings";
 
@@ -100,9 +112,49 @@ $lang["apoio"] = "After-Sales Service";
 
 	$lang["software"] = "Metalwork Management Programme";
 
-	$lang["faqs"] = "FAQs Frame Systems";
+	$lang["cfaqs"] = "FAQs Frame Systems";
 
 $lang["contactos"] = "Contacts";
+
+
+/*Menu Vidro*/
+
+
+$lang["atecnica"] = "Technical Area";
+
+$lang["vprodutos"] = "Glass Products";
+
+$lang["vfaqs"] = "FAQs Glass Systems";
+
+
+/*Menu Extrusao*/
+
+
+$lang["eprodutos"] = "Extrusion Products";
+
+	$lang["pextrusao"] = "Extrusion";
+
+	$lang["estores"] = "Blinds";
+
+	$lang["diversos"] = "Various";
+
+		$lang["divisorias"] = "Partitions";
+
+		$lang["mosquiteiras"] = "Mosquito Nets";
+
+		$lang["laminas"] = "Blades";
+
+$lang["efaqs"] = "FAQs Extrusion Systems";
+
+
+/*Menu Tratamento*/
+
+
+$lang["lacagem"] = "Lacquering";
+
+$lang["anodizacao"] = "Anodizing";
+
+$lang["imitacao"] = "Imitation Wood";
 
 
 /*Header*/
@@ -163,6 +215,8 @@ $lang["enviar"] = "Send";
 
 
 $lang["info"] = "+Info";
+
+$lang["aplicacao"] = "Application";
 
 $lang["corte"] = "Cut";
 
@@ -463,9 +517,3 @@ $lang["all"]					= "All";
 $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
-
-
-
-$lang["produtos_vidro"]				= "Glass Products";
-
-$lang["aplicacao"]					= "Application";
