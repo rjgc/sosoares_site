@@ -5,42 +5,18 @@
     <div class="container">
         <div class="contactus">
             <div class="row">
+<?php       foreach($contactos as $contacto) { ?>
                 <div class="col-md-3">
-                    <h3><?=lang('administrativo')?></h3>
-                    <span id="mails"><a href="mailto:geral@sosoares.pt">geral@sosoares.pt</a></span>
-                    <p>Rua do Baldeirão, 4440-346</p>
-                    <p>Sobrado, Valongo - Portugal</p>
+                    <h3><?=$contacto['nome_departamento_'.$this->lang->lang()]?></h3>
+                    <span id="mails"><a href="mailto:<?=$contacto['email'] ?>"><?=$contacto['email'] ?></a></span>
+                    <p><?=$contacto['morada'] ?></p>
+                    <p><?=$contacto['codigo_postal'] ?></p>
                     <hr class="divider">
-                    <p>T +351 224 119 230</p>
-                    <p>F +351 224 119 231</p>
+                    <p>T +351 <?=$contacto['telefone'] ?></p>
+                    <p>F +351 <?=$contacto['fax'] ?></p>
                 </div>
-                <div class="col-md-3">
-                    <h3><?=lang('dcomercial')?></h3>
-                    <span id="mails"><a href="mailto:comercial@sosoares.pt">comercial@sosoares.pt</a></span>
-                    <p>Rua do Campo Alegre, 474</p>
-                    <p>4150-170 Porto - Portugal</p>
-                    <hr class="divider">
-                    <p>T +351 226 096 709</p>
-                    <p>F +351 226 005 642</p>
-                </div>
-                <div class="col-md-3">
-                    <h3><?=lang('dtecnico')?></h3>
-                    <span id="mails"><a href="mailto:gabinete.tecnico@sosoares.pt">gabinete.tecnico@sosoares.pt</a></span>
-                    <p>Rua do Campo Alegre, 474</p>
-                    <p>4150-170 Porto - Portugal</p>
-                    <hr class="divider">
-                    <p>T +351 226 096 709</p>
-                    <p>F +351 226 005 642</p>
-                </div>
-                <div class="col-md-3">
-                    <h3><?=lang('desenvolvimento')?></h3>
-                    <span id="mails"><a href="mailto:carlos.rodrigues@sosoares.pt">carlos.rodrigues@sosoares.pt</a></span>
-                    <p>Travessa do Bolegão, 10 - Apartado 1</p>
-                    <p>3754-904 Fermentelos</p>
-                    <hr class="divider">
-                    <p>T +351 234 729 740</p>
-                    <p>F +351 234 729 741</p>
-                </div>
+
+<?php       } ?>
             </div>
             <div class="row contactos">
                 <div class="col-md-8">

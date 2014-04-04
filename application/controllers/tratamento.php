@@ -149,7 +149,10 @@ public function contactos()
     $data['current'] = 'contactos';
 
     $this->load->view('templates/header', $data);
-    $this->load->view('pages/contactos');
+
+    $data['contactos'] = $this->sosoares_model->get_contactos(4);
+    $this->load->view('pages/contactos', $data);
+
     $this->load->view('templates/footer', $data);
 }
 }

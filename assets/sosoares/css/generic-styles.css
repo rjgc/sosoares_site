@@ -203,6 +203,8 @@ hr.divider {
     margin: -10px 0 40px !important;
 }
 
+.contactus .row.contactos {margin: 30px -15px;}
+
 /*============================== CANDIDATURAS ===================================*/
 
 .candidaturas .form-group, .contactos .form-group {height: 25px;}

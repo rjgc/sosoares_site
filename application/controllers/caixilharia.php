@@ -294,7 +294,9 @@ class Caixilharia extends CI_Controller {
         $data['current'] = 'contactos';
         $this->menu($data);
 
-        $this->load->view('pages/contactos');
+        $data['contactos'] = $this->sosoares_model->get_contactos(1);
+
+        $this->load->view('pages/contactos', $data);
         $this->load->view('templates/footer', $data);
     }
 }

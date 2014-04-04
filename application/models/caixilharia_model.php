@@ -300,4 +300,5 @@ class Caixilharia_model extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+
 }
