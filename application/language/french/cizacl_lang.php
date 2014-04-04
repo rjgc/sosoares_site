@@ -112,7 +112,7 @@ $lang["apoio"] = "Service Client";
 
 	$lang["software"] = "Programme de Gestion en Serrurerie";
 
-	$lang["faqs"] = "FAQs Systèmes de Cadre";
+	$lang["cfaqs"] = "FAQs Systèmes de Cadre";
 
 $lang["contactos"] = "Contacts";
 

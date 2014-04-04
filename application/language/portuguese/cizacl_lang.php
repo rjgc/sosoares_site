@@ -112,7 +112,7 @@ $lang["apoio"] = "Apoio ao Cliente";
 
 	$lang["software"] = "Programa de Gestão de Serralharia";
 
-	$lang["faqs"] = "FAQs Sistemas de Caixilharia";
+	$lang["cfaqs"] = "FAQs Sistemas de Caixilharia";
 
 $lang["contactos"] = "Contactos";
 

@@ -14,6 +14,7 @@
         body
         {
             background:url("<?php echo base_url() ?>assets/uploads/background/<?php echo $background_image['foto'];?>") #e8e8e8 no-repeat fixed center;
+            background-size: cover;
             min-width: 320px;
             min-height: 600px;
         }

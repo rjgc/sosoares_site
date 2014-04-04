@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('extrusao/home')?>"><?=lang('home')?></a></li>
-                <li><a href="<?=site_url('extrusao/produtos')?>"><?=lang('produtos')?></a></li>
+                <li><a href="<?=site_url('extrusao/produtos')?>"><?=lang('eprodutos')?></a></li>
                 <?php if(empty($id)) {?>
             </ul>
         </div>
