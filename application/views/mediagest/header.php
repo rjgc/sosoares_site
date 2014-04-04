@@ -33,70 +33,70 @@
 		</section>
 	</div>
 	<nav>
-		<ul>
-			<li <?php if ($data['titulo'] == 'Obras') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest")?>'><span class="icon">&#128196;</span> Obras</a>
-			</li>
-			<li <?php if ($data['titulo'] == 'Banners Alumínio' || 
-				$data['titulo'] == 'Banners Vidro'||
-				$data['titulo'] == 'Banners Extrusão' ||
-				$data['titulo'] == 'Banners Tratamento') echo 'class="section"'; ?> >
-				<a href='#'><span class="icon">&#59176;</span> Gestão de Banners</a>
-				<ul class="submenu">
-					<li><a href='<?php echo site_url("mediagest/banner_aluminio_management")?>'>Banners Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/banner_vidro_management")?>'>Banners Vidro</a></li>
-					<li><a href='<?php echo site_url("mediagest/banner_extrusao_management")?>'>Banners Extrusão</a></li>
-					<li><a href='<?php echo site_url("mediagest/banner_tratamento_management")?>'>Banners Tratamento</a></li>
-				</ul>	
-			</li>
-			<li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>
-			</li>
-			<li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
-			</li>
-			<li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
-			</li>
-			<li <?php if ($data['titulo'] == 'Áreas Comerciais') echo 'class="section"'; ?>>
-				<a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
-			</li> 
-			<li <?php if ($data['titulo'] == 'Produtos Alumínio' || 
-				$data['titulo'] == 'Produtos Vidro' ||
-				$data['titulo'] == 'Produtos Extrusao' ||
-				$data['titulo'] == 'Tipos de Produto Alumínio' ||
-				$data['titulo'] == 'Tipos de Produto Extrusão' ||
-				$data['titulo'] == 'Categorias Produtos Vidro'||
-				$data['titulo'] == 'Caracteristicas de Produto Alumínio' ||
-				$data['titulo'] == 'Caracteristicas de Produto Extrusão') echo 'class="section"'; ?> >
-				<a href='#'><span class="icon">&#59176;</span> Produtos</a>
-				<ul class="submenu">
-					<li><a href='<?php echo site_url("mediagest/produtos_aluminio_management")?>'>Produtos Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/tipos_produto_aluminio_management")?>'>Tipos de Produto Alumínio</a></li>
-					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
-					<hr>
-					<li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
-					<li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
-					<hr>
-					<li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
-					<li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>						
-					<li><a href='<?php echo site_url("mediagest/caracteristicas_produto_extrusao_management")?>'>Caract. de Produto Extrusão</a></li>
-				</ul>
-			</li>
-			<li <?php if ($data['titulo'] == 'Serviços Extrusão' ||
-			$data['titulo'] == 'Serviços Vidro') echo 'class="section"'; ?> >
-			<a href='#'><span class="icon">&#59176;</span> Serviços</a>
-			<ul class="submenu">
-				<li><a href='<?php echo site_url("mediagest/servicos_aluminio_management")?>'>Serviços Alumínio</a></li>
-				<hr>
-				<li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'>Serviços Vidro</a></li>
-				<hr>
-				<li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>		
-			</ul>	
-		</li>
-	</li>
-</ul>
-</nav>
+        <ul>
+            <li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Produtos Alumínio' ||
+                $data['titulo'] == 'Produtos Vidro' ||
+                $data['titulo'] == 'Produtos Extrusao' ||
+                $data['titulo'] == 'Tipos de Produto Alumínio' ||
+                $data['titulo'] == 'Tipos de Produto Extrusão' ||
+                $data['titulo'] == 'Categorias Produtos Vidro'||
+                $data['titulo'] == 'Caracteristicas de Produto Alumínio' ||
+                $data['titulo'] == 'Caracteristicas de Produto Extrusão') echo 'class="section"'; ?> >
+                <a href='#'><span class="icon">&#59176;</span> Produtos</a>
+                <ul class="submenu">
+                    <li><a href='<?php echo site_url("mediagest/produtos_aluminio_management")?>'>Produtos Alumínio</a></li>
+                    <li><a href='<?php echo site_url("mediagest/tipos_produto_aluminio_management")?>'>Tipos de Produto Alumínio</a></li>
+                    <li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
+                    <hr>
+                    <li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
+                    <li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
+                    <hr>
+                    <li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
+                    <li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>
+                    <li><a href='<?php echo site_url("mediagest/caracteristicas_produto_extrusao_management")?>'>Caract. de Produto Extrusão</a></li>
+                </ul>
+            </li>
+            <li <?php if ($data['titulo'] == 'Obras') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest")?>'><span class="icon">&#128196;</span> Obras</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Serviços Extrusão' ||
+                $data['titulo'] == 'Serviços Vidro') echo 'class="section"'; ?> >
+                <a href='#'><span class="icon">&#59176;</span> Serviços</a>
+                <ul class="submenu">
+                    <li><a href='<?php echo site_url("mediagest/servicos_aluminio_management")?>'>Serviços Alumínio</a></li>
+                    <li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'>Serviços Vidro</a></li>
+                    <li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>
+                </ul>
+            </li>
+            <li <?php if ($data['titulo'] == 'Banners Alumínio' ||
+                $data['titulo'] == 'Banners Vidro'||
+                $data['titulo'] == 'Banners Extrusão' ||
+                $data['titulo'] == 'Banners Tratamento') echo 'class="section"'; ?> >
+                <a href='#'><span class="icon">&#59176;</span> Gestão de Banners</a>
+                <ul class="submenu">
+                    <li><a href='<?php echo site_url("mediagest/banner_aluminio_management")?>'>Banners Alumínio</a></li>
+                    <li><a href='<?php echo site_url("mediagest/banner_vidro_management")?>'>Banners Vidro</a></li>
+                    <li><a href='<?php echo site_url("mediagest/banner_extrusao_management")?>'>Banners Extrusão</a></li>
+                    <li><a href='<?php echo site_url("mediagest/banner_tratamento_management")?>'>Banners Tratamento</a></li>
+                </ul>
+            </li>
+            <li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Áreas Comerciais') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Contactos') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/contactos_management")?>'><span class="icon">&#128196;</span> Contactos</a>
+            </li>
+        </ul>
+    </nav>
 <section class="content" style="margin-top: 0px;">	
 	<section class="widget">
 		<header>
