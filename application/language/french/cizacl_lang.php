@@ -524,3 +524,6 @@ $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
 
+
+
+$lang["reserved"]				= "Espace Réservé";

@@ -44,26 +44,26 @@
             <div class="center">
                 <a href="<?php echo site_url('caixilharia/home')?>">
                     <div class="box shrink" id="caixilharia">
-                        <i class="icon-caixilharia font"></i>
+                        <i class="icon-produtos_caixilharia font"></i>
                         <h3><?=lang('caixilharia')?></h3>
                     </div>
                 </a>
                 <a href="<?php echo site_url('vidro/home')?>">
                     <div class="box shrink" id="vidro">
-                        <i class="icon-vidro font"></i>
+                        <i class="icon-produtos_vidro font"></i>
                         <h3><?=lang('vidro')?><br>&nbsp;</h3>
                     </div>
                 </a>
                 <hr id="separador">
                 <a href="<?php echo site_url('extrusao/home')?>">
                     <div class="box shrink" id="extrusao">
-                        <i class="icon-extrusao font"></i>
+                        <i class="icon-extrusao_new font"></i>
                         <h3><?=lang('extrusao')?><br>&nbsp;</h3>
                     </div>
                 </a>
                 <a href="<?php echo site_url('tratamento/home')?>">
                     <div class="box shrink" id="abrasivos">
-                        <i class="icon-tratamento font"></i>
+                        <i class="icon-tratamento_new font"></i>
                         <h3 ><?=lang('tratamento')?></h3>
                     </div>
                 </a>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="col-md-1">
                         <a href="#">
-                            <button class="btn button shrink"><?=lang('signin')?></button>
+                            <button class="btn button shrink"><?=lang('reserved')?></button>
                         </a>
                     </div>
                 </div>

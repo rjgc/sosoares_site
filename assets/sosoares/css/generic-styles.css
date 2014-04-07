@@ -65,9 +65,19 @@ header .container .row {position: relative;min-height: 65px;}
 .logotipo h1 {background: url("../img/logotipo.png") no-repeat;background-size: contain;text-indent: -99999px;width: 210px;height: 39px;margin: 0}
 
 .pages-img {display: inline-block;position:absolute;left:200px;margin: 5px;}
-.pages-img a {margin: 0 3px;}
-.font {font-size: 375.5%;color: #fff;font-weight: 100;}
-.font-active {color: #01aef0!important;}
+.pages-img a {
+    margin: 0 1px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    width: 52px;
+    height: 52px;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+}
+.font {font-size: 230%;color: #fff;font-weight: 100;}
+.font-active {color: #01aef0!important;border-color: #01aef0!important;}
+.font-active > i.font {color: #01aef0!important;}
 
 .form {width: 175px;display: inline-block;position: absolute;bottom: 0;right: 130px;}
 .form #search, .form #searchButton {background-color: #054667;display: inline-block;height: 34px;width: 86%;padding: 10px;color: #fff;border-radius: 5px;border: 1px solid #107ca4;}
