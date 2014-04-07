@@ -46,6 +46,8 @@ $lang["extrusao"] = "Extrusión";
 
 $lang["tratamento"] = "Traitement de Surface";
 
+$lang["reserved"] = "Espace Réservé";
+
 
 /*Menu Caixilharia*/
 
@@ -523,7 +525,3 @@ $lang["all"]					= "All";
 $lang["all_users"]				= "All Users";
 
 $lang["all_roles"]				= "All Roles";
-
-
-
-$lang["reserved"]				= "Espace Réservé";
