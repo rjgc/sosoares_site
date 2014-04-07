@@ -19,7 +19,7 @@
                                         <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/3')?>"><?=lang('grupo')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/13')?>"><?=lang('quem')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/5')?>"><?=lang('quem')?></a></h3>
                                     </div>
                                 </div>
                             </div>
@@ -376,30 +376,30 @@
                                                     <div class="col-sm-4">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/8')?>"><?=lang('comercial')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/1')?>"><?=lang('comercial')?></a></h3>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/9')?>"><?=lang('orcamentacao')?></a></h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="row">
-                                                            <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/12')?>"><?=lang('tecnico')?></a></h3>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/11')?>"><?=lang('estudo')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/2')?>"><?=lang('orcamentacao')?></a></h3>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/10')?>"><?=lang('software')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/3')?>"><?=lang('tecnico')?></a></h3>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/7')?>"><?=lang('cfaqs')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/4')?>"><?=lang('estudo')?></a></h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/5')?>"><?=lang('software')?></a></h3>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/6')?>"><?=lang('cfaqs')?></a></h3>
                                                             </div>
                                                         </div>
                                                     </div>

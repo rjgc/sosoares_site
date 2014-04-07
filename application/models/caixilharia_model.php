@@ -5,15 +5,6 @@ class Caixilharia_model extends CI_Model
 		parent::__construct();
 	}
 
-	//BANNERS
-
-	public function get_banners(){
-		$query = $this->db->query("select * from banners_aluminio");
-
-		$data = $query->result_array();
-		return $data;
-	}
-
 	//ORDEM PRODUTOS
 
 	public function change_order($event, $clickEl, $el){

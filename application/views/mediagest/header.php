@@ -74,17 +74,14 @@
             <li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
                 <a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
             </li>
-            <li <?php if ($data['titulo'] == 'Banners Alumínio' ||
-                $data['titulo'] == 'Banners Vidro'||
-                $data['titulo'] == 'Banners Extrusão' ||
-                $data['titulo'] == 'Banners Tratamento') echo 'class="section"'; ?> >
-                <a href='#'><span class="icon">&#59176;</span> Gestão de Banners</a>
-                <ul class="submenu">
-                    <li><a href='<?php echo site_url("mediagest/banner_aluminio_management")?>'>Banners Alumínio</a></li>
-                    <li><a href='<?php echo site_url("mediagest/banner_vidro_management")?>'>Banners Vidro</a></li>
-                    <li><a href='<?php echo site_url("mediagest/banner_extrusao_management")?>'>Banners Extrusão</a></li>
-                    <li><a href='<?php echo site_url("mediagest/banner_tratamento_management")?>'>Banners Tratamento</a></li>
-                </ul>
+            <li <?php if ($data['titulo'] == 'Apoio Cliente') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/apoio_cliente_management")?>'><span class="icon">&#128196;</span> Apoio Cliente</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Area Tecncia') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/area_tecnica_management")?>'><span class="icon">&#128196;</span> Área Técnica</a>
+            </li>
+            <li <?php if ($data['titulo'] == 'Banners') echo 'class="section"'; ?> >
+                <a href='<?php echo site_url("mediagest/banners_management")?>'><span class="icon">&#128196;</span> Banners</a>
             </li>
             <li <?php if ($data['titulo'] == 'Imagem de Fundo' ||
                 $data['titulo'] == 'Áreas Comerciais'||

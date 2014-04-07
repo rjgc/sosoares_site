@@ -19,7 +19,7 @@
                                         <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/3')?>"><?=lang('grupo')?></a></h3>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/13')?>"><?=lang('quem')?></a></h3>
+                                        <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/5')?>"><?=lang('quem')?></a></h3>
                                     </div>
                                 </div>
                             </div>

@@ -5,15 +5,6 @@ class Vidro_model extends CI_Model
 		parent::__construct();
 	}
 
-	//BANNERS
-
-	public function get_banners(){
-		$query = $this->db->query("select * from banners_vidro");
-
-		$data = $query->result_array();
-		return $data;
-	}
-
 	//PRODUTOS VIDRO
 
 	public function get_categoria_produtos() {

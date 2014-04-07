@@ -14,10 +14,19 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
+	//BANNERS
+
+	public function get_banners($id_categoria_banner){
+		$query = $this->db->query("select * from banners where id_categoria_banner = '$id_categoria_banner'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	//PAGINAS
 
-	public function get_page($page){
-		$query = $this->db->query("select * from paginas where id_pagina ='$page'");
+	public function get_page($id_pagina){
+		$query = $this->db->query("select * from paginas where id_pagina ='$id_pagina'");
 
 		$data = $query->row_array();
 		return $data;
@@ -54,6 +63,22 @@ class Sosoares_model extends CI_Model
         $data = $query->result_array();
         return $data;
     }
+
+    //APOIO CLIENTE
+
+    public function get_apoio($id_pagina){
+		$query = $this->db->query("select * from apoio_cliente where id_pagina ='$id_pagina'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	public function get_apoios($id_pagina) {
+		$query = $this->db->query("select * from apoio_cliente where id_pagina ='$id_pagina'");
+
+		$data = $query->result_array();
+		return $data;
+	}
 
     //CONTACTOS
 

@@ -43,7 +43,7 @@ class Caixilharia extends CI_Controller {
         $data['page_style']= "caixilharia";
         $data['current'] = 'home';
         $data['noticia'] = $this->sosoares_model->get_noticia(4);
-        $data['banners'] = $this->caixilharia_model->get_banners();
+        $data['banners'] = $this->sosoares_model->get_banners(1);
         $this->menu($data);
 
         $this->load->view('templates/carousel_caixilharia', $data, $this->get_lang());
@@ -257,7 +257,7 @@ class Caixilharia extends CI_Controller {
         $this->menu($data);
 
         if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_page($page);
+            $data['page'] = $this->sosoares_model->get_apoio($page);
 
             $this->load->view('pages/apoio_cliente', $data);
         } else {
@@ -274,11 +274,9 @@ class Caixilharia extends CI_Controller {
         $this->menu($data);
 
         $paginas;
-        $y=0;
 
-        for ($i=7; $i < 13; $i++) {
-            $paginas[$y] = $this->sosoares_model->get_pages($i);
-            $y++;
+        for ($i=1; $i < 7; $i++) {
+            $paginas[$i] = $this->sosoares_model->get_apoios($i);
         }
 
         $data['pages'] = $paginas;

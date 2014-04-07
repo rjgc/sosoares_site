@@ -130,17 +130,19 @@ function background_image_management()
 	$this->_admin_output($output);
 }
 
-function banner_aluminio_management()
+function banners_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('banners_aluminio');
-	$crud->set_subject('Banners Alumímio');
+	$crud->set_table('banners');
+	$crud->set_subject('Banners');
 	$crud->columns('nome_pt');
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner');
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner');
 
 	$crud->set_field_upload('banner', 'assets/uploads/banners/aluminio');
+
+	$crud->set_relation('id_categoria_banner', 'categoria_banner', 'nome');
 
 	$output = $crud->render();
 
@@ -152,66 +154,47 @@ function banner_aluminio_management()
 	$this->_admin_output($output);
 }
 
-function banner_vidro_management()
+function apoio_cliente_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('banners_vidro');
-	$crud->set_subject('Banners Vidro');
-	$crud->columns('nome_pt');
+	$crud->unset_delete();
+	$crud->unset_add();
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner');
+	$crud->set_table('apoio_cliente');
+	$crud->set_subject('Apoio ao Cliente');
+	$crud->columns('titulo_pt');
+	$crud->order_by('id_pagina', 'asc');
 
-	$crud->set_field_upload('banner', 'assets/uploads/banners/vidro');
+	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Banners Vidro';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners Vidro'; 
+	$data['titulo'] = 'Apoio ao Cliente';  
+	$data['sub-titulo'] = 'Faça aqui a gestão do Apoio ao Cliente'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
 }
 
-function banner_extrusao_management()
+function apoio_cliente_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('banners_extrusao');
-	$crud->set_subject('Banners Extrusão');
-	$crud->columns('nome_pt');
+	$crud->set_table('area_tecnica');
+	$crud->set_subject('Área Técnica');
+	$crud->columns('titulo_pt');
+	$crud->order_by('id_pagina', 'asc');
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner');
-
-	$crud->set_field_upload('banner', 'assets/uploads/banners/extrusao');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Banners Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners Extrusão'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function banner_tratamento_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('banners_tratamento');
-	$crud->set_subject('Banners Tratamento');
-	$crud->columns('nome_pt');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner');
-
-	$crud->set_field_upload('banner', 'assets/uploads/banners/tratamento');
+	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Banners Tratamento';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners Tratamento'; 
+	$data['titulo'] = 'Área Técnica';  
+	$data['sub-titulo'] = 'Faça aqui a gestão da Área Técnica'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -272,7 +255,7 @@ function paginas_management()
 	$crud->order_by('id_pagina', 'asc');
 
 	$crud->display_as('titulo_pt', 'Titulo');
-	$crud->set_field_upload('imagem', 'assets/uploads/files');
+	$crud->set_field_upload('imagem', 'assets/uploads/paginas');
 
 	$output = $crud->render();
 

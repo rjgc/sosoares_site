@@ -43,8 +43,15 @@ public function home()
 	$data['page_style']= "extrusao";
 	$data['current'] = 'home';
 	$data['noticia'] = $this->sosoares_model->get_noticia(4);
-	$data['banners'] = $this->extrusao_model->get_banners();
 	$this->menu($data);
+
+    $banners = $this->sosoares_model->get_banners(3);
+
+    if (!empty($banners)) {
+        $data['banners'] = $banners;
+    } else {
+        $data['banners_default'] = $this->sosoares_model->get_banners(1);
+    } 
 
 	$this->load->view('templates/carousel_extrusao', $data, $this->get_lang());
 	$this->load->view('pages/extrusao', $data);
@@ -222,7 +229,7 @@ public function apoio_cliente($page=null)
 	$this->menu($data);
 
 	if ($page != null) {
-		$data['page'] = $this->sosoares_model->get_page($page);
+		$data['page'] = $this->sosoares_model->get_apoio($page);
 
 		$this->load->view('pages/apoio_cliente', $data);
 	} else {
@@ -238,16 +245,9 @@ public function apoios_cliente()
 	$data['current'] = 'apoios_cliente';
 	$this->menu($data);
 
-	$paginas;
-	$y=0;
-
-	for ($i=6; $i < 10; $i++) {
-		if ($i != 7) {
-			$paginas[$y] = $this->sosoares_model->get_pages($i);
-
-			$y++;
-		}
-	}
+	$paginas[0] = $this->sosoares_model->get_apoios(1);
+	$paginas[1] = $this->sosoares_model->get_apoios(2);
+	$paginas[2] = $this->sosoares_model->get_apoios(8);
 
 	$data['pages'] = $paginas;
 
