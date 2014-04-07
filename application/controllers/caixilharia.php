@@ -42,7 +42,7 @@ class Caixilharia extends CI_Controller {
     {
         $data['page_style']= "caixilharia";
         $data['current'] = 'home';
-        $data['noticia'] = $this->sosoares_model->get_noticia(4);
+        $data['noticia'] = $this->sosoares_model->get_destaque();
         $data['banners'] = $this->sosoares_model->get_banners(1);
         $this->menu($data);
 

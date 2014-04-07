@@ -289,6 +289,7 @@ hr.divider {
 .noticia h3 {color: #107ca4;font-size: 26px;margin: 0 0 2px;}
 .noticia .date {font-size: 11px;color: #717171;}
 .noticia .news-text {
+    padding-left: 25px;
     line-height: 25px;
     text-indent: 20px;
 }

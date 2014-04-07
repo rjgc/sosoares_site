@@ -42,7 +42,7 @@ public function home()
 {
     $data['page_style'] = "vidro";
     $data['current'] = 'home';
-    $data['noticia'] = $this->sosoares_model->get_noticia(4);
+    $data['noticia'] = $this->sosoares_model->get_destaque();
     $this->menu($data);
 
     $banners = $this->sosoares_model->get_banners(2);

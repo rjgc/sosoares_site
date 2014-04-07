@@ -105,6 +105,8 @@ function galeria()
 	$this->_example_output($output);
 }
 
+//DEFINICOES
+
 function background_image_management()
 {
 	$crud = new grocery_CRUD();
@@ -154,52 +156,52 @@ function banners_management()
 	$this->_admin_output($output);
 }
 
-function apoio_cliente_management()
+function areas_comerciais_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->unset_delete();
-	$crud->unset_add();
+	$crud->set_table('areas_comerciais');
+	$crud->set_subject('Áreas Comerciais');
 
-	$crud->set_table('apoio_cliente');
-	$crud->set_subject('Apoio ao Cliente');
-	$crud->columns('titulo_pt');
-	$crud->order_by('id_pagina', 'asc');
-
-	$crud->display_as('titulo_pt', 'Titulo');
-	$crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
+	$crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Apoio ao Cliente';  
-	$data['sub-titulo'] = 'Faça aqui a gestão do Apoio ao Cliente'; 
+	$data['titulo'] = 'Áreas Comerciais';
+	$data['sub-titulo'] = 'Faça aqui a gestão das Áreas Comerciais';
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
 }
 
-function apoio_cliente_management()
+function contactos_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('area_tecnica');
-	$crud->set_subject('Área Técnica');
-	$crud->columns('titulo_pt');
-	$crud->order_by('id_pagina', 'asc');
+	$crud->set_table('contactos');
+	$crud->set_subject('Contactos');
+	$crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
 
-	$crud->display_as('titulo_pt', 'Titulo');
-	$crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
+	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
+	$crud->display_as('id_seccao', 'Seccao');
+
+	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+
+	$crud->set_relation('id_seccao', 'contactos_seccoes', 'nome_seccao');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Área Técnica';  
-	$data['sub-titulo'] = 'Faça aqui a gestão da Área Técnica'; 
+	$data['titulo'] = 'Produtos Vidro';
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
 	$this->_admin_output($output);
 }
+
+//NOTICIAS
 
 function noticias_management()
 {
@@ -242,30 +244,9 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
 	return true;
 }
 
-function paginas_management()
-{
-	$crud = new grocery_CRUD();
+//PRODUTOS
 
-	$crud->unset_delete();
-	$crud->unset_add();
-
-	$crud->set_table('paginas');
-	$crud->set_subject('Páginas');
-	$crud->columns('titulo_pt');
-	$crud->order_by('id_pagina', 'asc');
-
-	$crud->display_as('titulo_pt', 'Titulo');
-	$crud->set_field_upload('imagem', 'assets/uploads/paginas');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Páginas';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Páginas'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
+//FICHEIROS
 
 function ficheiros_management()
 {
@@ -325,23 +306,30 @@ function callback_after_insert($post_array)
 	return true;
 }
 
-function areas_comerciais_management()
-{
-	$crud = new grocery_CRUD();
+//PRODUTOS ALUMINIO
 
-	$crud->set_table('areas_comerciais');
-	$crud->set_subject('Áreas Comerciais');
-
-	$crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Áreas Comerciais';
-	$data['sub-titulo'] = 'Faça aqui a gestão das Áreas Comerciais';
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
+public function change_order_aluminio() {   
+	print_r($_POST['eventRow']);
+	print_r($_POST['clickEl']);
+	print_r($_POST['el']);
+	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+		$this->load->model('product_model');
+		$event = trim($_POST['eventRow']);
+		$clickEl = intval($_POST['clickEl']);
+		$el = intval($_POST['el']);
+		if ($event && $clickEl && $el) {
+			if ($this->product_model->change_order_alumnio($event, $clickEl, $el)) {
+				exit("success"); 
+			} else {
+				exit("error1");
+			} 
+			$this->product_model->change_order_alumnio($event, $clickEl, $el);
+		} else {
+			exit("error2");
+		}
+	} else {
+		exit("error3");
+	}    
 }
 
 function produtos_aluminio_management()
@@ -352,7 +340,7 @@ function produtos_aluminio_management()
 
 	$crud->set_table('produtos_aluminio');
 	$crud->set_subject('Produtos Aluminio');
-	$crud->columns('nome_pt', 'descricao_pt', 'resultado_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio');
+	$crud->columns('nome_pt', 'descricao_pt', 'resultado_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
 	$crud->order_by('ordem', 'desc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
@@ -390,7 +378,104 @@ function produtos_aluminio_management()
 	$this->_admin_output($output);
 }	
 
-public function change_order_aluminio() {   
+function tipos_produto_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('tipos_produto_aluminio');
+	$crud->set_subject('Tipos de Produto Aluminio');
+	$crud->columns('nome_pt');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
+	$crud->set_field_upload('foto', 'assets/uploads/paginas');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Tipos de Produto Aluminio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Aluminio'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function caracteristicas_produto_aluminio_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('caracteristicas_produto_aluminio');
+	$crud->set_subject('Caracteristicas de Produto Aluminio');
+	$crud->columns('nome_pt');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Caracteristicas de Produto Aluminio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão das Caracteristicas de Produto de Aluminio'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+//PRODUTOS VIDRO
+
+function produtos_vidro_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('produtos_vidro');
+	$crud->set_subject('Produtos Vidro');
+	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
+	$crud->display_as('id_tipo_produto_vidro', 'Tipo');
+
+	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+
+	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+
+	$crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Produtos Vidro';
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+	$this->_admin_output($output);
+}
+
+function tipos_produto_vidro_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('tipos_produto_vidro');
+	$crud->set_subject('Tipos de Produto Vidro');
+	$crud->columns('nome_pt');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
+
+
+	$crud->set_field_upload('foto', 'assets/uploads/produtos');
+	$crud->display_as('foto', 'Foto');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Tipos de Produto Vidro';
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Vidro';
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+	$this->_admin_output($output);
+}
+
+//PRODUTOS EXTRUSAO
+
+public function change_order_extrusao() {   
 	print_r($_POST['eventRow']);
 	print_r($_POST['clickEl']);
 	print_r($_POST['el']);
@@ -400,18 +485,18 @@ public function change_order_aluminio() {
 		$clickEl = intval($_POST['clickEl']);
 		$el = intval($_POST['el']);
 		if ($event && $clickEl && $el) {
-			if ($this->product_model->change_order_alumnio($event, $clickEl, $el)) {
+			if ($this->product_model->change_order_extrusao($event, $clickEl, $el)) {
 				exit("success"); 
 			} else {
 				exit("error1");
 			} 
-			$this->product_model->change_order_alumnio($event, $clickEl, $el);
+			$this->product_model->change_order_extrusao($event, $clickEl, $el);
 		} else {
 			exit("error2");
 		}
 	} else {
 		exit("error3");
-	}    
+	}
 }
 
 function produtos_extrusao_management()
@@ -452,122 +537,6 @@ function produtos_extrusao_management()
 	$this->_admin_output($output);
 }
 
-public function change_order_extrusao() {   
-	print_r($_POST['eventRow']);
-	print_r($_POST['clickEl']);
-	print_r($_POST['el']);
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('product_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->product_model->change_order_extrusao($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->product_model->change_order_extrusao($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}
-}
-
-function produtos_vidro_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('produtos_vidro');
-	$crud->set_subject('Produtos Vidro');
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
-	$crud->display_as('id_tipo_produto_vidro', 'Tipo');
-
-	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
-
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
-
-	$crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Produtos Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
-
-	$this->_admin_output($output);
-}
-
-function contactos_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('contactos');
-	$crud->set_subject('Contactos');
-	$crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
-
-	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
-	$crud->display_as('id_seccao', 'Seccao');
-
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
-
-	$crud->set_relation('id_seccao', 'contactos_seccoes', 'nome_seccao');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Produtos Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
-
-	$this->_admin_output($output);
-}
-
-function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
-{
-	$this->load->library('image_moo');
-
-	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
-
- 	//list - normal - thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
-
-	//refold
-	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
-
-	return true;
-}
-
-function tipos_produto_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('tipos_produto_aluminio');
-	$crud->set_subject('Tipos de Produto Aluminio');
-	$crud->columns('nome_pt');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
-	$crud->set_field_upload('foto', 'assets/uploads/paginas');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Tipos de Produto Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Aluminio'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
 function tipos_produto_extrusao_management()
 {
 	$crud = new grocery_CRUD();
@@ -583,50 +552,6 @@ function tipos_produto_extrusao_management()
 
 	$data['titulo'] = 'Tipos de Produto Extrusão';  
 	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Extrusão'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function tipos_produto_vidro_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('tipos_produto_vidro');
-	$crud->set_subject('Tipos de Produto Vidro');
-	$crud->columns('nome_pt');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
-
-
-	$crud->set_field_upload('foto', 'assets/uploads/produtos');
-	$crud->display_as('foto', 'Foto');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Tipos de Produto Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Vidro';
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
-
-	$this->_admin_output($output);
-}
-
-function caracteristicas_produto_aluminio_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('caracteristicas_produto_aluminio');
-	$crud->set_subject('Caracteristicas de Produto Aluminio');
-	$crud->columns('nome_pt');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Caracteristicas de Produto Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Caracteristicas de Produto de Aluminio'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -653,6 +578,30 @@ function caracteristicas_produto_extrusao_management()
 	$this->_admin_output($output);
 }
 
+//UPLOAD FOTO PRODUTO
+
+function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
+{
+	$this->load->library('image_moo');
+
+	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
+
+ 	//list - normal - thumb
+	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+
+	//refold
+	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
+
+	return true;
+}
+
+//OBRAS
+
+
+//SERVIÇOS
+
 function servicos_aluminio_management()
 {
 	$crud = new grocery_CRUD();
@@ -667,6 +616,26 @@ function servicos_aluminio_management()
 
 	$data['titulo'] = 'Serviços Alumínio';  
 	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Alumínio'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function servicos_vidro_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('servicos_vidro');
+	$crud->set_subject('Serviços Vidro');
+	$crud->columns('nome_pt', 'descricao_pt');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Serviços Vidro';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Vidro'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -693,20 +662,79 @@ function servicos_extrusao_management()
 	$this->_admin_output($output);
 }
 
-function servicos_vidro_management()
+
+//PAGINAS
+
+function paginas_management()
 {
 	$crud = new grocery_CRUD();
 
-	$crud->set_table('servicos_vidro');
-	$crud->set_subject('Serviços Vidro');
-	$crud->columns('nome_pt', 'descricao_pt');
+	$crud->unset_delete();
+	$crud->unset_add();
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+	$crud->set_table('paginas');
+	$crud->set_subject('Páginas');
+	$crud->columns('titulo_pt');
+	$crud->order_by('id_pagina', 'asc');
+
+	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->set_field_upload('imagem', 'assets/uploads/paginas');
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Serviços Vidro';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Vidro'; 
+	$data['titulo'] = 'Páginas';  
+	$data['sub-titulo'] = 'Faça aqui a gestão das Páginas'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+//APOIO CLIENTE
+
+function apoio_cliente_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->unset_delete();
+	$crud->unset_add();
+
+	$crud->set_table('apoio_cliente');
+	$crud->set_subject('Apoio ao Cliente');
+	$crud->columns('titulo_pt');
+	$crud->order_by('id_pagina', 'asc');
+
+	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Apoio ao Cliente';  
+	$data['sub-titulo'] = 'Faça aqui a gestão do Apoio ao Cliente'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+//AREA TECNICA
+
+function area_tecnica_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('area_tecnica');
+	$crud->set_subject('Área Técnica');
+	$crud->columns('titulo_pt');
+	$crud->order_by('id_pagina', 'asc');
+
+	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Área Técnica';  
+	$data['sub-titulo'] = 'Faça aqui a gestão da Área Técnica'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 

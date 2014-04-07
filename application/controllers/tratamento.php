@@ -42,7 +42,7 @@ class Tratamento extends CI_Controller {
     {
         $data['page_style']= "tratamento";
         $data['current'] = 'home';
-        $data['noticia'] = $this->sosoares_model->get_noticia(4);
+        $data['noticia'] = $this->sosoares_model->get_destaque();
 
         $banners = $this->sosoares_model->get_banners(4);
 

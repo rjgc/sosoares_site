@@ -50,6 +50,13 @@ class Sosoares_model extends CI_Model
 
 	//NOTICIAS
 
+	public function get_destaque(){
+		$query = $this->db->query("select * from noticias order by data_noticia desc limit 1");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 	public function get_noticia($noticia){
 		$query = $this->db->query("select * from noticias where id_noticia ='$noticia'");
 
