@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/noticias_management")?>'> Noticias</a>
+                <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#59176;</span> Noticias</a>
             </li>
             <li <?php if ($data['titulo'] == 'Produtos Alumínio' ||
                 $data['titulo'] == 'Produtos Vidro' ||
@@ -70,7 +70,7 @@
                     <li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>
                     <li><a href='<?php echo site_url("mediagest/caracteristicas_produto_extrusao_management")?>'>Caract. de Produto Extrusão</a></li>
                     <hr>
-                    <li><a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#59176;</span> Ficheiros</a></li>
+                    <li><a href='<?php echo site_url("mediagest/ficheiros_management")?>'> Ficheiros</a></li>
                 </ul>
             </li>
             <li <?php if ($data['titulo'] == 'Obras') echo 'class="section"'; ?>>
