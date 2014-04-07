@@ -57,7 +57,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('cprodutos')?></a>
+            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/produtos') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('cprodutos')?></a>
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
