@@ -73,14 +73,14 @@
             if (!empty($produto['foto_'.$i])){
                 if ($i==1){?>
                 <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                    <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                 </a>
             </li>
             <?php
         }
         else { ?>
         <li> <a id="carousel-selector-<?php echo $y ?>">
-            <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+            <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
         </a>
     </li>
     <?php                                
