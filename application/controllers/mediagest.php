@@ -236,7 +236,7 @@ function noticias_management()
 
 	$crud->set_table('noticias');
 	$crud->set_subject('Notícias');
-	$crud->columns('data', 'titulo_pt', 'texto_pt', 'foto');
+	$crud->columns('data_noticia', 'titulo_pt', 'texto_pt', 'foto');
 
 	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');	
 	$crud->field_type('texto_pt', 'text')->field_type('texto_en', 'text')->field_type('texto_fr', 'text')->field_type('texto_es', 'text');
@@ -302,7 +302,7 @@ function ficheiros_management()
 
 	$crud->set_table('ficheiros');
 	$crud->set_subject('Ficheiros');
-	$crud->columns('nome_pt');
+	$crud->columns('nome_pt', 'id_categoria_ficheiro');
 	$crud->order_by('id_ficheiro', 'asc');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');

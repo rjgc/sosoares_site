@@ -59,7 +59,7 @@
             </li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'lacagem' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/lacagem')?>"><?=lang('lacagem')?></a></li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'anodizacao' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/anodizacao')?>"><?=lang('anodizacao')?></a></li>
-            <li class="menu-title"><a href="#"><?=lang('imitacao')?></a></li>
+            <li class="menu-title <?php echo ( isset($current) && $current === 'imitacao_madeira' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/imitacao_madeira')?>"><?=lang('imitacao')?></a></li>
             <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('tratamento/contactos')?>"><?=lang('contactos')?></a></li>
         </ul>
     </div>

@@ -5,21 +5,23 @@
     <div class="container">
         <div class="contactus">
             <div class="row">
-<?php       foreach($contactos as $contacto) { ?>
-                <div class="col-md-3">
-                    <h3><?=$contacto['nome_departamento_'.$this->lang->lang()]?></h3>
-                    <span id="mails"><a href="mailto:<?=$contacto['email'] ?>"><?=$contacto['email'] ?></a></span>
-                    <p><?=$contacto['morada'] ?></p>
-                    <p><?=$contacto['codigo_postal'] ?></p>
-                    <hr class="divider">
-                    <p>T +351 <?=$contacto['telefone'] ?></p>
-                    <p>F +351 <?=$contacto['fax'] ?></p>
+                <div class="col-md-6">
+                    <div class="row">
+<?php           foreach($contactos as $contacto) { ?>
+                        <div class="col-md-6">
+                            <h3><?=$contacto['nome_departamento_'.$this->lang->lang()]?></h3>
+                            <span id="mails"><a href="mailto:<?=$contacto['email'] ?>"><?=$contacto['email'] ?></a></span>
+                            <p><?=$contacto['morada'] ?></p>
+                            <p><?=$contacto['codigo_postal'] ?></p>
+                            <hr class="divider">
+                            <p>T +351 <?=$contacto['telefone'] ?></p>
+                            <p>F +351 <?=$contacto['fax'] ?></p>
+                        </div>
+<?php           } ?>
+                    </div>
                 </div>
+                <div class="col-md-6">
 
-<?php       } ?>
-            </div>
-            <div class="row contactos">
-                <div class="col-md-8">
                     <form method="get">
                         <fieldset>
                             <legend><?=lang('dados')?></legend>
