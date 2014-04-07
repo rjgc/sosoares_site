@@ -73,14 +73,14 @@
             if (!empty($produto['foto_'.$i])){
                 if ($i==1){?>
                 <li> <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                 </a>
             </li>
             <?php
         }
         else { ?>
         <li> <a id="carousel-selector-<?php echo $y ?>">
-            <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px;">
+            <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
         </a>
     </li>
     <?php                                
@@ -114,7 +114,7 @@ $y++;
             <div class="content-1">
                 <?php 
                 $i=1; 
-                while ($i<4)
+                while ($i<5)
                 { 
                     if (!empty($produto['corte_'.$i])){
                         ?>                                                                    
@@ -123,8 +123,9 @@ $y++;
                         </a>
                     </br>
                     <?php
-                }
-                $i++;
+                } else if (empty($produto['corte_'.$i]) && $i == 1) { ?>
+                <li>Sem Cortes</li>
+                <?php } $i++;
             }
             ?>   
         </div>
@@ -185,21 +186,19 @@ $y++;
 </div>
 <div class="col-md-3">
     <div class="descricao" style="margin-bottom: 50px;">
+        <?php if (!empty($produto['resultado_'.$this->lang->lang()])) { ?>
         <h3 class="title4"><?=lang('resultados')?></h3>
         <div>
             <p><?php echo $produto['resultado_'.$this->lang->lang()]; ?></p>
         </div> 
+        <?php } ?>
     </div>
 </div>
 </div>
 </div>
 <!--/Carousel obras-->
-    <?php
-        if(count($obras)== 0) {
-
-        } else {
-
-    ?>
+<?php
+if(!empty($obras)) { ?>
 <section class="related">
     <div class="container">
         <div id="center">
@@ -218,7 +217,7 @@ $y++;
                                 $count++;
                             }
 
-                            while ($div <= $count ) {
+                            while ($div < $count ) {
                                 if (!empty($obras)) {
                                     if ($i==0){?>
                                     <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
@@ -246,7 +245,7 @@ $y++;
                 $count++;
             }
 
-            while ($div <= $count ) {
+            while ($div < $count ) {
                 if ($div==1) { ?>
                 <!--/item-->
                 <div class="item active">
@@ -313,6 +312,6 @@ if (count($obras)>6) {
 </div>
 </div>
 </section>
-            <?php } ?>
+<?php } ?>
 <!--/Carousel obras-->
 <?php } ?>

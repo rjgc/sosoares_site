@@ -69,6 +69,8 @@ class Caixilharia extends CI_Controller {
 
         $data['servicos'] = $this->caixilharia_model->get_servicos();
 
+        $data['marcacoes'] = $this->caixilharia_model->get_marcacoes();
+
         $this->load->view('templates/header', $data, $this->get_lang());
     }
 
@@ -244,6 +246,24 @@ class Caixilharia extends CI_Controller {
             $this->load->view('pages/servico', $data);
         } else {
             $this->load->view('pages/servico', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
+
+    public function marcacao($marcacao=null)
+    {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'marcacao';
+        $data['marcacao'] = $marcacao;
+        $this->menu($data);
+
+        if ($marcacao != null) {
+            $data['marcacao'] = $this->caixilharia_model->get_marcacao($marcacao);
+
+            $this->load->view('pages/marcacao', $data);
+        } else {
+            $this->load->view('pages/marcacao', $data);
         }
 
         $this->load->view('templates/footer');

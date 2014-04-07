@@ -292,4 +292,19 @@ class Caixilharia_model extends CI_Model
 		return $data;
 	}
 
+	//MARCACAO CE
+
+	public function get_marcacao($marcacao){
+		$query = $this->db->query("select * from marcacao_ce where id_marcacao_aluminio ='$marcacao'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	public function get_marcacoes(){
+		$query = $this->db->query("select * from marcacao_ce");
+
+		$data = $query->result_array();
+		return $data;
+	}
 }
