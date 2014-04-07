@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-7">
                     <p><?=$noticia['texto_'.$this->lang->lang()]?></p>
-                    <a href="#">
+                    <a href="<?=site_url('caixilharia/noticia/'.$noticia['id_noticia'])?>">
                         <button class="btn button shrink"><?=lang('ler')?></button>
                     </a>
                 </div>
@@ -41,10 +41,17 @@
                     <input class="form-control input" id="mail" name="mail" placeholder="<?=lang('email')?>">
                 </div>
                 <div class="form-group">
-                    <input class="btn button shrink" type="submit" id="subs" value="<?=lang('subscrever')?>">
+                    <input class="btn button shrink" type="submit" id="subs" name="submit" value="<?=lang('subscrever')?>">
                 </div>
             </form>
         </div>
     </div>
 </div>
+<?php
+if (isset($_POST['submit'])) {
+    $data = array('nome' => $_POST["nome"], 'email' => $_POST["mail"]);
+
+    $this->db->insert('newsletter', $data);
+}
+?>
 

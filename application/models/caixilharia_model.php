@@ -228,7 +228,7 @@ class Caixilharia_model extends CI_Model
 	}
 
 	public function get_folheto_promocional($id, $lang){
-		$query = $this->db->query("select f.* from ficheiros f inner join folheto_promocional_produto fpp on f.id_ficheiro = fpp.resumo_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = fpp.produto_aluminio_id where pa.id_produto_aluminio='$id'");
+		$query = $this->db->query("select f.* from ficheiros f inner join folheto_promocional_produto fpp on f.id_ficheiro = fpp.folheto_promocional_aluminio_id inner join produtos_aluminio pa on pa.id_produto_aluminio = fpp.produto_aluminio_id where pa.id_produto_aluminio='$id'");
 
 		$data = $query->result_array();
 		return $data;
