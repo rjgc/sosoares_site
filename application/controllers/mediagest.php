@@ -119,7 +119,6 @@ function background_image_management()
 	$crud->required_fields('foto');
 
 	$crud->set_field_upload('foto', 'assets/uploads/background');
-	//$crud->callback_after_upload(array($this,'callback_after_upload_background_image'));
 
 	$output = $crud->render();
 
@@ -130,17 +129,6 @@ function background_image_management()
 
 	$this->_admin_output($output);
 }
-
-// function callback_after_upload_background_image($uploader_response, $field_info, $files_to_upload)
-// {
-// 	$this->load->library('image_moo');
-
-// 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
-
-// 	$this->image_moo->load($file_uploaded)->resize_crop(1361, 610)->save($file_uploaded, true);
-
-// 	return true;
-// }
 
 function banner_aluminio_management()
 {
