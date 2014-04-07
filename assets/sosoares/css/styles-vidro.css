@@ -8,3 +8,6 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 
 .menu-h3, .li-b {color: #04adf2;}
 
+@media screen and (max-width: 768px) {
+    nav li {background-color: #01adef!important;}
+}

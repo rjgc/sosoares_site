@@ -14,3 +14,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .form #search, .input {border-color: #909090;}
 .title1, .title2, .title3, .title4 {color: #797979}
 .carousel-indicators li {background-color: #454545;}
+
+@media screen and (max-width: 768px) {
+    nav li {background-color: #797979!important;}
+}
