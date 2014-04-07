@@ -194,6 +194,12 @@ $y++;
 </div>
 </div>
 <!--/Carousel obras-->
+    <?php
+        if(count($obras)== 0) {
+
+        } else {
+
+    ?>
 <section class="related">
     <div class="container">
         <div id="center">
@@ -307,5 +313,6 @@ if (count($obras)>6) {
 </div>
 </div>
 </section>
+            <?php } ?>
 <!--/Carousel obras-->
 <?php } ?>
