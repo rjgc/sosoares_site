@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#59176;</span> Noticias</a>
+                <a href='<?php echo site_url("mediagest/noticias_management")?>'> Noticias</a>
             </li>
             <li <?php if ($data['titulo'] == 'Produtos Alumínio' ||
                 $data['titulo'] == 'Produtos Vidro' ||
