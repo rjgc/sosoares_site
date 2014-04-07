@@ -34,9 +34,6 @@
 	</div>
 	<nav>
         <ul>
-            <li <?php if ($data['titulo'] == 'Imagem de Fundo') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/background_image_management")?>'><span class="icon">&#128196;</span> Imagem de Fundo</a>
-            </li>
             <li <?php if ($data['titulo'] == 'Noticias') echo 'class="section"'; ?>>
                 <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#128196;</span> Noticias</a>
             </li>
@@ -74,6 +71,9 @@
                     <li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'>Serviços Extrusão</a></li>
                 </ul>
             </li>
+            <li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
+            </li>
             <li <?php if ($data['titulo'] == 'Banners Alumínio' ||
                 $data['titulo'] == 'Banners Vidro'||
                 $data['titulo'] == 'Banners Extrusão' ||
@@ -86,18 +86,23 @@
                     <li><a href='<?php echo site_url("mediagest/banner_tratamento_management")?>'>Banners Tratamento</a></li>
                 </ul>
             </li>
-            <li <?php if ($data['titulo'] == 'Paginas') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/paginas_management")?>'><span class="icon">&#128196;</span> Páginas</a>
+            <li <?php if ($data['titulo'] == 'Imagem de Fundo' ||
+                $data['titulo'] == 'Áreas Comerciais'||
+                $data['titulo'] == 'Ficheiros' ||
+                $data['titulo'] == 'Contactos') echo 'class="section"'; ?>>
+                <a href='#'><span class="icon">&#59176;</span> Definições</a>
+                <ul class="submenu">
+                    <li><a href='<?php echo site_url("mediagest/background_image_management")?>'><span class="icon">&#128196;</span> Imagem de Fundo</a>
+                    </li>
+                    <li><a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
+                    </li>
+                    <li><a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
+                    </li>
+                    <li><a href='<?php echo site_url("mediagest/contactos_management")?>'><span class="icon">&#128196;</span> Contactos</a>
+                    </li>
+                </ul>
             </li>
-            <li <?php if ($data['titulo'] == 'Áreas Comerciais') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'><span class="icon">&#128196;</span> Áreas Comerciais</a>
-            </li>
-            <li <?php if ($data['titulo'] == 'Ficheiros') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/ficheiros_management")?>'><span class="icon">&#128196;</span> Ficheiros</a>
-            </li>
-            <li <?php if ($data['titulo'] == 'Contactos') echo 'class="section"'; ?>>
-                <a href='<?php echo site_url("mediagest/contactos_management")?>'><span class="icon">&#128196;</span> Contactos</a>
-            </li>
+
         </ul>
     </nav>
 <section class="content" style="margin-top: 0px;">	
