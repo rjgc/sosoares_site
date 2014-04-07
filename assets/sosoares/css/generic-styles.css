@@ -176,7 +176,19 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 div.obras-container a {width: 256px;height: 230px;display:inline-block;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 .obras-list {margin: 0; display:inline-block;width: 100%;height: 100%;}
 .obras-list img {position: absolute;width: 100%;height: 100%;border-radius: 10px;}
-.obras-list p {position: absolute;z-index: 9;font-size: 18px;bottom: 0;left: 19px;width: 82%;color: #FFFFFF !important;}
+.obras-list p {
+    position: absolute;
+    z-index: 9;
+    font-size: 18px;
+    bottom: -10px;
+    left: 0px;
+    width: 100%;
+    color: #fff !important;
+    text-shadow: 3px 3px 5px #555;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 0 0 10px 10px;
+    padding: 2px 15px;
+}
 div.obras-container {display: inline-block;padding: 0 10px;margin: 0 auto;position: relative;}
 
 /*============================== MAPS ===================================*/

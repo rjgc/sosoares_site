@@ -146,7 +146,7 @@ public function produtos()
     $data['current'] = 'produtos';    
 
     $data['categorias'] = $this->vidro_model->get_categoria_produtos();
-    $data['produtos'] = $this->vidro_model->get_produtos();
+    $data['tipos'] = $this->vidro_model->get_produtos();
 
     $this->load->view('templates/header', $data);
     $this->load->view('pages/vidro/produtos', $data, $this->get_lang());

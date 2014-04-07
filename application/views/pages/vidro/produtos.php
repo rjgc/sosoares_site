@@ -11,38 +11,24 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <div class="produtos_vidro_list">
+                <div class="obras-container">
                     <?php
-                    if (!empty($produtos)) {
-                        foreach($categorias as $categoria) {
+                    if (!empty($tipos)) {
+                        foreach ($tipos as $tipo){
                             ?>
-                            <div class="vidro-list grow">
-                                <h4> <?php echo $categoria['nome_'.$this->lang->lang()] ?></h4>
-                                <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $categoria['foto'] ?>"/>
-                                <ul>
-
-
-                                    <?php
-                                    foreach ($produtos as $produto) {
-                                        if($categoria['id_tipo_produto_vidro'] == $produto['id_tipo_produto_vidro']) {
-                                            ?>
-                                            <a href="<?=site_url('vidro/produto/'.$produto['id_produto_vidro']) ?>">
-                                                <li><?php echo $produto['nome_'.$this->lang->lang()] ?></li>
-                                            </a>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </div>
-                            <?php
-                        }
-                    } else {
-                        ?>
+                            <a href="<?=site_url('vidro/produto/'.$tipo['id_tipo_produto_vidro'])?>">
+                                <div class="obras-list grow">
+                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $tipo['foto_1'] ?>"/>
+                                    <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
+                                </div>
+                            </a>
+                        <?php }
+                    }
+                    else {?>
                         <div class="alert alert-info">
                             <h5><strong>Atenção!</strong> Página dos produtos indisponível.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/vidro/home">Voltar atrás.</a></h5>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </div>
