@@ -89,13 +89,20 @@ header .container .row {position: relative;min-height: 65px;}
 
 footer {
     margin-top: 0px !important;
-    padding-top: 25px;
+    padding: 25px 0 15px;
     background-color: #f0f0f0;
     width: 100%;
     font-size: 14px;
 }
 footer b {font-weight: 700!important;font-size: 12px;}
-footer > .container { margin: 0 auto;}
+footer > .container { margin: 0 auto;position: relative;}
+footer > .container > .row:first-child > .col-md-3 {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    width: 270px;
+}
+
 #group {font-weight: 900!important;font-size: 13px;}
 #date {text-align: right;font-weight: 700!important;font-size: 16px;}
 #text {vertical-align: top;}
@@ -150,7 +157,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 
 .curr {background-color: #076e93;}
 
-/*============================== SLIDER =======================================*/
+/*============================== SLIDER HOME =======================================*/
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
@@ -161,27 +168,64 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     margin: 20px auto;
     right: 0;
     left: 0;
+    padding: 12px 10px 10px
 }
-.slider-h1 {font-weight: 100!important;font-size: 30px;}
+.carousel-caption > ul {position: relative;margin: 0;max-height: 40px;}
+.carousel-caption > ul > li {display: inline-block;height: 40px;margin: 0 5px;}
+.carousel-caption li .control-try {
+    width: 50px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+.carousel-caption li:nth-child(2) .control-try {left: 45px;}
+.carousel-caption li .slider-h1 {
+    font-weight: 100!important;
+    font-size: 30px;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 750px;
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+}
+.carousel-caption li a button {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    margin: 0;
+}
+
 .carousel-indicators li {background-color: #004b67;border: 0;}
 .carousel-indicators .active {background-color: #969696;}
 .carousel-control {border-radius: 10px;width: 65px;height: 65px;display: inline-block;}
-.carousel-caption li {display: inline-block;height: 65px;}
 
-.control-try {border-radius: 10px;width: 65px;height: 65px;display: inline-block;text-align: center;color: #fff;font-size: 30px;}
+
+/*============================== SLIDER PRODUTOS / OBRAS =======================================*/
 .carousel-caption2 {width: 120px !important;height: 50px !important;margin: -20px -100px 0 auto !important; right: 20%; left: 20%;}
 .control-try2 {height: 50px !important;padding-top: 12px;padding-left: 15px;width: 50px !important;}
 .control-try3 {bottom: auto;top: 50% !important;background-image: none !important;font-size: 40px !important;}
-.carousel-caption ul {margin-top: -23px !important;}
+
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
 .carousel-inner > .item > img {width: 100%;max-height: 96%;border-radius: 10px;}
 .carousel-inner-banner > .item > img {border-radius: 0 !important;}
 .selected img {opacity:0.5;}
-.carousel-control {border-radius: 10px;width: 65px;height: 65px;display: inline-block;}
 .controls{margin-top: 120px;background-image: none !important;}
 .icon-tras{font-size: 33px;padding-top: 14px;padding-right: 30px;}
 .icon-frente{font-size: 33px;padding-top: 14px;}
+
+
+/*============================== OBRAS =======================================*/
 
 div.obras-container a {width: 256px;height: 230px;display:inline-block;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 .obras-list {margin: 0; display:inline-block;width: 100%;height: 100%;}
@@ -298,10 +342,9 @@ hr.divider {
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
-    .slider-h1 {font-size: 25px;}
+    .carousel-caption li .slider-h1 {font-size: 25px;max-width: 500px;}
     .title1 {margin: 20px 20px 10px;}
     .col-md-4 .title1 {margin: 20px 0 10px;}
-    footer .col-md-9 {width: 60%;}
     .carousel-caption {width: 80%;}
 }
 
@@ -316,17 +359,13 @@ hr.divider {
     section > .container > .row .col-md-8 {display: inline-block;width: 55%;vertical-align: top;}
     section > .container > .row .col-md-4 {display: inline-block;width: 40%;vertical-align: top;}
 
-    footer > .container > .row .col-md-9,
-    footer > .container > .row .col-md-3 {display: inline-block;}
     footer > .container > .row > #contacts [class^="col-"],
     footer > .container > .row > #contacts [class*="col-"] {display: inline-block;}
-    footer .col-md-9 {width: 45%;}
 
-    
-    .slider-h1 {font-size: 30px;}
+    .carousel-caption li .slider-h1 {font-size: 25px;max-width: 360px;}
     .navbar-nav > li > a {font-size: 14px;padding: 15px 10px;}
 
-    section > .container > .row .col-md-8 {width: 85%}
+
 }
 @media (max-width: 800px) {
     header {height: 140px;}
@@ -334,8 +373,8 @@ hr.divider {
 
     .navbar-nav > li > a {font-size: 14px;padding: 15px 5px;}
 
-    .carousel-caption {width: 85%;}
-    footer .col-md-9 {width: 40%;}
+    .carousel-caption {width: 90%;}
+    .carousel-caption li .slider-h1 {max-width: 380px;}
 }
 @media (max-width: 768px) {
     .content, .input, #contacts {width: 100% !important;}
@@ -346,7 +385,7 @@ hr.divider {
     section > .container > .row .col-md-8, section > .container > .row .col-md-4 {display: block; width: 100%}
 
     footer > .container > .row .col-md-9 {width: 100%;text-align: center;}
-    footer > .container > .row .col-md-3 {display: none;}
+    footer > .container > .row:first-child > .col-md-3 {display: none;}
     footer > .container > .row > #contacts [class^="col-"],
     footer > .container > .row > #contacts [class*="col-"] {display: block;text-align: center;}
     footer > .container > .row > #contacts .col-md-1 {display: none}
