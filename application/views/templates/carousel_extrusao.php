@@ -4,13 +4,13 @@
         <?php $i=0; foreach ($banners as $banner) {
             if ($i == 0) { ?>
             <div class="item active" data-slide-number="<?=$i?>">
-                <img src="<?php echo base_url();?>assets/uploads/banners/extrusao/<?php echo $banner['banner'];?>" alt="slide">
+                <img src="<?php echo base_url();?>assets/uploads/banners/thumb/<?php echo $banner['banner'];?>" alt="slide">
                 <div class="container">
                 </div>
             </div>
             <?php } else { ?>
             <div class="item" data-slide-number="<?=$i?>">
-                <img src="<?php echo base_url();?>assets/uploads/banners/extrusao/<?php echo $banner['banner'];?>" alt="slide">
+                <img src="<?php echo base_url();?>assets/uploads/banners/thumb/<?php echo $banner['banner'];?>" alt="slide">
                 <div class="container">
                 </div>
             </div>
@@ -34,14 +34,19 @@
             <li><a class="control-try" href="#myCarousel_" data-slide="next"><span class="glyphicon icon-front"></span></a></li>
             <?php $i=0; foreach ($banners as $banner) { 
                 if ($i == 0) { ?>
-                <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1></li>
+                <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
+                    <a href="#">
+                        <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
+                    </a>
+                </li>
                 <?php } else { ?>
-                <li id="title-<?=$i?>" class="hidden"><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1></li>
+                <li id="title-<?=$i?>" class="hidden"><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
+                    <a href="#">
+                        <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
+                    </a>
+                </li>
                 <?php } $i++;
             } ?>
-            <a href="#">
-                <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
-            </a>
         </ul>
     </div>
 </div>
@@ -69,13 +74,13 @@ $('#myCarousel_').on('slid.bs.carousel', function () {
     <?php $i=0; foreach ($banners_default as $banner) {
             if ($i == 0) { ?>
             <div class="item active" data-slide-number="<?=$i?>">
-                <img src="<?php echo base_url();?>assets/uploads/banners/aluminio/<?php echo $banner['banner'];?>" alt="slide">
+                <img src="<?php echo base_url();?>assets/uploads/banners/thumb/<?php echo $banner['banner'];?>" alt="slide">
                 <div class="container">
                 </div>
             </div>
             <?php } else { ?>
             <div class="item" data-slide-number="<?=$i?>">
-                <img src="<?php echo base_url();?>assets/uploads/banners/aluminio/<?php echo $banner['banner'];?>" alt="slide">
+                <img src="<?php echo base_url();?>assets/uploads/banners/thumb/<?php echo $banner['banner'];?>" alt="slide">
                 <div class="container">
                 </div>
             </div>
@@ -99,14 +104,19 @@ $('#myCarousel_').on('slid.bs.carousel', function () {
             <li><a class="control-try" href="#myCarousel_" data-slide="next"><span class="glyphicon icon-front"></span></a></li>
             <?php $i=0; foreach ($banners_default as $banner) { 
                 if ($i == 0) { ?>
-                <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1></li>
+                <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
+                    <a href="#">
+                        <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
+                    </a>
+                </li>
                 <?php } else { ?>
-                <li id="title-<?=$i?>" class="hidden"><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1></li>
+                <li id="title-<?=$i?>" class="hidden"><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
+                    <a href="#">
+                        <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
+                    </a>
+                </li>
                 <?php } $i++;
             } ?>
-            <a href="#">
-                <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
-            </a>
         </ul>
     </div>
 </div>
