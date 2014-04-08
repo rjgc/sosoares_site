@@ -132,30 +132,49 @@ function background_image_management()
 	$this->_admin_output($output);
 }
 
-function banners_management()
-{
-	$crud = new grocery_CRUD();
+// BANNERS
+    function banners_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_table('banners');
-	$crud->set_subject('Banners');
-	$crud->columns('nome_pt');
+        $crud->set_table('banners');
+        $crud->set_subject('Banners');
+        $crud->columns('nome_pt', 'id_categoria_banner');
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner');
 
-	$crud->set_field_upload('banner', 'assets/uploads/banners/aluminio');
+        $crud->set_field_upload('banner', 'assets/uploads/banners');
 
-	$crud->set_relation('id_categoria_banner', 'categoria_banner', 'nome');
+        $crud->set_relation('id_categoria_banner', 'categoria_banner', 'nome');
 
-	$output = $crud->render();
+        $crud->callback_after_upload(array($this,'callback_after_upload_banners'));
 
-	$data['titulo'] = 'Banners';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners Alumínio'; 
+        $output = $crud->render();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $data['titulo'] = 'Banners Alumínio';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Banners Alumínio';
 
-	$this->_admin_output($output);
-}
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
+        $this->_admin_output($output);
+    }
+
+    function callback_after_upload_banners($uploader_response, $field_info, $files_to_upload)
+    {
+        $this->load->library('image_moo');
+
+        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
+
+        //thumb
+        $this->image_moo->load($file_uploaded)->resize_crop(2000, 600)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+
+        //refold
+        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/banners/thumb/".$uploader_response[0]->name);
+
+        return true;
+    }
+
+// ÁREAS COMERCIAIS
 function areas_comerciais_management()
 {
 	$crud = new grocery_CRUD();
