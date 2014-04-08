@@ -3,9 +3,9 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
-                <li><?=lang('produtos')?></li>
+                <li><?=lang('cprodutos')?></li>
             </ul>
-            <h1 class="title3"><?=lang('produtos')?></h1>
+            <h1 class="title3"><?=lang('cprodutos')?></h1>
         </div>
     </div>
     <div>

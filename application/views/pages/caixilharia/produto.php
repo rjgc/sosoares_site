@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
-                <li><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('produtos')?></a></li>
+                <li><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('cprodutos')?></a></li>
                 <?php if(empty($id)) {?>
             </ul>
         </div>

@@ -22,7 +22,7 @@
                     <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
                 </div>
                 <div class="col-md-7">
-                    <p><?=$noticia['texto_'.$this->lang->lang()]?></p>
+                    <p><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>
                     <a href="<?=site_url('caixilharia/noticia/'.$noticia['id_noticia'])?>">
                         <button class="btn button shrink"><?=lang('ler')?></button>
                     </a>

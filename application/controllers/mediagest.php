@@ -148,7 +148,7 @@ function banners_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Banners Alumínio';  
+	$data['titulo'] = 'Banners';  
 	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners Alumínio'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
@@ -193,8 +193,8 @@ function contactos_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Produtos Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
+	$data['titulo'] = 'Contactos';
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Contactos';
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
@@ -221,8 +221,8 @@ function noticias_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Noticias';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Noticias'; 
+	$data['titulo'] = 'Notícias';  
+	$data['sub-titulo'] = 'Faça aqui a gestão das Notícias'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -308,30 +308,6 @@ function callback_after_insert($post_array)
 
 //PRODUTOS ALUMINIO
 
-public function change_order_aluminio() {   
-	print_r($_POST['eventRow']);
-	print_r($_POST['clickEl']);
-	print_r($_POST['el']);
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('product_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->product_model->change_order_alumnio($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->product_model->change_order_alumnio($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}    
-}
-
 function produtos_aluminio_management()
 {
 	$crud = new grocery_CRUD();
@@ -340,7 +316,7 @@ function produtos_aluminio_management()
 
 	$crud->set_table('produtos_aluminio');
 	$crud->set_subject('Produtos Aluminio');
-	$crud->columns('nome_pt', 'descricao_pt', 'resultado_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3');
 	$crud->order_by('ordem', 'desc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
@@ -370,13 +346,34 @@ function produtos_aluminio_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Produtos Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Aluminio'; 
+	$data['titulo'] = 'Produtos Alumínio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Alumínio'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
 }	
+
+function change_order_aluminio() { 
+	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+		$this->load->model('caixilharia_model');
+		$event = trim($_POST['eventRow']);
+		$clickEl = intval($_POST['clickEl']);
+		$el = intval($_POST['el']);
+		if ($event && $clickEl && $el) {
+			if ($this->caixilharia_model->change_order($event, $clickEl, $el)) {
+				exit("success"); 
+			} else {
+				exit("error1");
+			} 
+			$this->caixilharia_model->change_order($event, $clickEl, $el);
+		} else {
+			exit("error2");
+		}
+	} else {
+		exit("error3");
+	}    
+}
 
 function tipos_produto_aluminio_management()
 {
@@ -391,8 +388,8 @@ function tipos_produto_aluminio_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Tipos de Produto Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Aluminio'; 
+	$data['titulo'] = 'Tipos de Produto Alumínio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Alumínio'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -411,8 +408,8 @@ function caracteristicas_produto_aluminio_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Caracteristicas de Produto Aluminio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Caracteristicas de Produto de Aluminio'; 
+	$data['titulo'] = 'Caract. de Produto Alumínio';  
+	$data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Alumínio'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -475,30 +472,6 @@ function tipos_produto_vidro_management()
 
 //PRODUTOS EXTRUSAO
 
-public function change_order_extrusao() {   
-	print_r($_POST['eventRow']);
-	print_r($_POST['clickEl']);
-	print_r($_POST['el']);
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('product_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->product_model->change_order_extrusao($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->product_model->change_order_extrusao($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}
-}
-
 function produtos_extrusao_management()
 {
 	$crud = new grocery_CRUD();
@@ -529,12 +502,33 @@ function produtos_extrusao_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Produtos Extrusao';  
+	$data['titulo'] = 'Produtos Extrusão';  
 	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Extrusão'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
+}
+
+function change_order_extrusao() {   
+	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+		$this->load->model('extrusao_model');
+		$event = trim($_POST['eventRow']);
+		$clickEl = intval($_POST['clickEl']);
+		$el = intval($_POST['el']);
+		if ($event && $clickEl && $el) {
+			if ($this->extrusao_model->change_order($event, $clickEl, $el)) {
+				exit("success"); 
+			} else {
+				exit("error1");
+			} 
+			$this->extrusao_model->change_order($event, $clickEl, $el);
+		} else {
+			exit("error2");
+		}
+	} else {
+		exit("error3");
+	}
 }
 
 function tipos_produto_extrusao_management()
@@ -570,8 +564,8 @@ function caracteristicas_produto_extrusao_management()
 
 	$output = $crud->render();
 
-	$data['titulo'] = 'Caracteristicas de Produto Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Caracteristicas de Produto Extrusão'; 
+	$data['titulo'] = 'Caract. de Produto Extrusão';  
+	$data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Extrusão'; 
 
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -598,7 +592,6 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
 }
 
 //OBRAS
-
 
 //SERVIÇOS
 

@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('extrusao/home')?>"><?=lang('home')?></a></li>
-                <li><?=lang('produtos')?></li>
+                <li><?=lang('eprodutos')?></li>
             </ul>
             <h1 class="title3"><?=lang('produtos')?></h1>
         </div>
