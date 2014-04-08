@@ -130,7 +130,7 @@ class Tratamento extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['current'] = 'lacagem';
 
-        $data['page'] = $this->sosoares_model->get_page(14);
+        $data['page'] = $this->sosoares_model->get_page(6);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/lacagem');
@@ -142,7 +142,7 @@ class Tratamento extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['current'] = 'anodizacao';
 
-        $data['page'] = $this->sosoares_model->get_page(15);
+        $data['page'] = $this->sosoares_model->get_page(7);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/anodizacao');
@@ -154,7 +154,7 @@ class Tratamento extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['current'] = 'imitacao_madeira';
 
-        $data['page'] = $this->sosoares_model->get_page(16);
+        $data['page'] = $this->sosoares_model->get_page(8);
 
         $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/imitacao_madeira');
