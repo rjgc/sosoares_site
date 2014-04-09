@@ -364,7 +364,7 @@ function produtos_aluminio_management()
 
 	$crud->set_table('produtos_aluminio');
 	$crud->set_subject('Produtos Aluminio');
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3');
+	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio');
 	$crud->order_by('ordem', 'desc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
@@ -543,7 +543,7 @@ function produtos_extrusao_management()
 
 	$crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
 	$crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
-	$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
+	//$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
 
 	$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
 	$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
@@ -558,7 +558,14 @@ function produtos_extrusao_management()
 	$this->_admin_output($output);
 }
 
-function change_order_extrusao() {   
+function change_order_extrusao() {
+	$message = $_POST['eventRow'];
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	$message = $_POST['clickEl'];
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	$message = $_POST['el'];
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	
 	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
 		$this->load->model('extrusao_model');
 		$event = trim($_POST['eventRow']);
