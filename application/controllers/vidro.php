@@ -114,6 +114,7 @@ public function noticias()
     $this->menu($data);
 
     $data['noticias'] = $this->sosoares_model->get_noticias();
+    $data['destinatario'] = $this->sosoares_model->get_destinatario();
 
     $this->load->view('pages/noticias', $data);
     $this->load->view('templates/footer', $data);
@@ -124,6 +125,8 @@ public function candidaturas()
     $data['page_style'] = "vidro";
     $data['current'] = 'candidaturas';    
     $this->menu($data);
+    
+    $data['destinatario'] = $this->sosoares_model->get_destinatario();
 
     $this->load->view('pages/candidatura', $data);
     $this->load->view('templates/footer');
