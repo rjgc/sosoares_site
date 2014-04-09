@@ -186,9 +186,9 @@ function destinatarios_management()
 	$crud->set_table('destinatarios');
 	$crud->set_subject('Destinatários');
 
-	$crud->required_fields('email', 'categoria');
+	$crud->required_fields('email', 'id_categoria');
 
-	$crud->set_relation('categoria', 'categoria_destinatario', 'nome');
+	$crud->set_relation('id_categoria', 'categoria_destinatario', 'nome');
 
 	$output = $crud->render();
 
