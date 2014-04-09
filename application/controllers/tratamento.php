@@ -120,6 +120,8 @@ class Tratamento extends CI_Controller {
         $data['page_style']= "tratamento";
         $data['current'] = 'candidaturas';
 
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
+
         $this->load->view('templates/header', $data);
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
@@ -167,11 +169,11 @@ class Tratamento extends CI_Controller {
         $data['page_title']= "contactos";
         $data['current'] = 'contactos';
 
-        $this->load->view('templates/header', $data);
-
         $data['contactos'] = $this->sosoares_model->get_contactos(4);
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+        
+        $this->load->view('templates/header', $data);
         $this->load->view('pages/contactos', $data);
-
         $this->load->view('templates/footer', $data);
     }
 }
