@@ -125,7 +125,6 @@ class Caixilharia extends CI_Controller {
         $this->menu($data);
 
         $data['noticias'] = $this->sosoares_model->get_noticias();
-        $data['destinatario'] = $this->sosoares_model->get_destinatario();
 
         $this->load->view('pages/noticias', $data);
         $this->load->view('templates/footer', $data);
