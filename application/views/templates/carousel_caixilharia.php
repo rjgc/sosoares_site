@@ -35,13 +35,13 @@
             <?php $i=0; foreach ($banners as $banner) { 
                 if ($i == 0) { ?>
                 <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
-                    <a href="#">
+                    <a href="<?=site_url('caixilharia/obras/'.$banner['id_obra'])?>">
                         <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
                     </a>
                 </li>
                 <?php } else { ?>
                 <li id="title-<?=$i?>" class="hidden"><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
-                    <a href="#">
+                    <a href="<?=site_url('caixilharia/obras/'.$banner['id_obra'])?>">
                         <button class="pull-right btn button_slider"><?=lang('conhecer')?></button>
                     </a>
                 </li>
