@@ -1,6 +1,14 @@
 /*============================== FONTS =======================================*/
 @font-face {
     font-family: 'SourceSansPro';
+    src: url('fonts/SourceSansPro-ExtraLight.eot?');
+    src: url('fonts/SourceSansPro-ExtraLight.eot?#iefix') format('embedded-opentype'), url('fonts/SourceSansPro-ExtraLight.otf.woff?') format('woff'), url('fonts/SourceSansPro-ExtraLight.ttf.woff?') format('truetype'), url('fonts/SourceSansPro-ExtraLight.svg?') format('svg');
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'SourceSansPro';
     src: url('fonts/SourceSansPro-Light.eot?');
     src: url('fonts/SourceSansPro-Light.eot?#iefix') format('embedded-opentype'), url('fonts/SourceSansPro-Light.otf.woff?') format('woff'), url('fonts/SourceSansPro-Light.ttf.woff?') format('truetype'), url('fonts/SourceSansPro-Light.svg?') format('svg');
     font-style: normal;
@@ -35,25 +43,52 @@
 *, div {
     -webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;
 }
+html {
+    height: 100%;
+    min-height: 500px;
+}
 body {
-    background: url("img/Castoral.jpg") #e8e8e8 no-repeat fixed center;background-size: cover;font-family: 'SourceSansPro', Arial, sans-serif;
-    font-weight: 300;font-size: 14px;color: #494949;min-width: 320px;min-height: 600px;
+    background: url("img/Castoral.jpg") #e8e8e8 no-repeat fixed center;
+    background-size: cover;
+    font-family: 'SourceSansPro', Arial, sans-serif!important;
+    font-weight: 300;
+    font-size: 14px;
+    color: #494949;
+    min-width: 320px;
+    min-height: 500px;
+    position: relative;
+    height: 100%;
 }
 
 a:hover {text-decoration: none;}
 header {width:100%;height:100px;padding:15px;}
+header .row {position: relative;}
+#bd {display: inline-block;margin: 5px;position: absolute;top: 10px; right: 10px;
+    -webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;
+}
+.logotipo {max-width: 210px;max-height: 47px;overflow: hidden;margin: 5px 0;}
+.logotipo h1 {background: url("img/logotipo.png") no-repeat;background-size: contain;text-indent: -99999px;width: 210px;height: 39px;margin: 0;}
+
+/*============================== FOOTER =======================================*/
 footer {background-color:#f0f0f0;width:100%;height:90px;
     -webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;
+    position: absolute;bottom: 0;
 }
-#bottom {position:fixed;bottom:0;}
-footer .content {padding-top:25px;}
-p {line-height:1.8;}
-.btn {padding: 6px 8px;}
-.button {background-color:#107ca4!important;box-shadow: 0 3px 0 #05698e!important;color:#fff!important;border:0;font-size:14px!important;width:107px!important;}
+footer .container {padding-top:25px;height: 100%;position: relative;}
+footer .container .row {height: 34px;}
+footer .container .row > div {display: inline-block;vertical-align: top;}
+footer .container .row div h4, footer .container .row div p {margin: 0 5px;vertical-align: top;display: inline-block;height: 25px;}
+footer .container .row div h4 {padding-top: 5px;}
+
+footer .rights {width: 360px;}
+footer .telefone {width: 135px;}
+footer .email {width: 150px;}
+footer .areaReservada, footer .imgSistemas {position: absolute;top: 20px;right: 10px;}
+footer .imgSistemas {right: 140px;top: 15px;}
+
 footer b {font-weight: 700;}
-#bd {float: right;display: inline-block;margin: 5px;
-    -webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;
-}
+.button {background-color:#107ca4;box-shadow: 0 3px 0 #05698e;color:#fff;border:0;font-size:14px;}
+
 /*============================== CAIXAS =======================================*/
 .box {width: 170px;height: 170px;display: inline-block;border-radius: 100%;margin: 15px;text-align: center;padding: 30px 15px;
     -webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;
@@ -70,63 +105,103 @@ footer b {font-weight: 700;}
 .center {width: 80%;margin: 0 auto 100px;padding: 15px 0;text-align: center;}
 #separador {display: none;}
 h3 {color: #fff;font-size: 17px;font-weight: normal;margin: 10px auto;width: 100%;}
-.valign {vertical-align: top;display: inline-block;padding: 5px 0;height: 34px;}
 h4 {display: inline-block;color: #494949;font-size: 13px;font-weight: 900;margin: 0}
-.section {position: absolute;top: 35%!important;right: 0;left: 0;vertical-align: top;}
+main {position: absolute;top: 35%!important;right: 0;left: 0;}
 .font {font-size: 60px;color: #fff;}
 
 /*============================== MEDIA QUERIES =======================================*/
-@media (max-width: 1200px) {
-    #bd {position: absolute;top: 0;right: 5%;}
+@media screen and (max-width: 1200px) {
     .center {width: 90%;text-align: center;}
-    footer#bottom .row {width: 100%;}
-    .section {top: 30%!important;}
+    main {top: 30%!important;}
 }
-@media (max-width: 995px) {
-    #bd {top: -40px;}
-    .section {top: 20%!important;}
-    .center {width: 100%;padding: 15px 0;margin: 0 auto 200px;}
+@media screen and (max-width: 991px) {
+    main {top: 25%!important;}
+    .center {width: 100%;padding: 15px 0;margin: 0 auto ;}
     .box {width: 147px;height: 150px;}
     h3 {font-size: 14px;}
-    .font {font-size: 60px}
-    .vanish {display: inline;}
-    footer {height: 150px;text-align: center;line-height: 2.5;}
-    footer#bottom .vanish .col-md-2 {text-align: right;width: 48%;display: inline-block;}
-    footer#bottom .vanish .col-md-2:nth-child(2), footer#bottom .col-md-1 {text-align: left;width: 48%;display: inline-block;}
+    .font {font-size: 50px}
+
+    footer {height: 120px;}
+    footer .rights, footer .telefone, footer .email {display: block;width: 400px;}
+    footer .telefone, footer .email {padding-left: 7%;}
+    footer .areaReservada {top: 70px;right: 35px;}
+    footer .imgSistemas {top: 15px;right: 10px;}
+
 }
-@media (max-width: 768px) {
-    .section {position: static;}
-    .center {margin: 0 auto 150px;}
+@media screen and (max-width: 768px) {
+    main {top: 20%!important;}
     .box {width: 165px;height: 160px;}
     h3 {font-size: 17px;}
     #separador {display: block;background-color: transparent;border: 0;}
-    .vanish .col-md-2:nth-child(3) {display: none!important;}
-    footer#bottom {position: fixed;height: 150px;}
-    footer#bottom .col-md-1 {text-align: center;width: 100%;display: block;}
+    footer .container {margin: 0 10px;}
 }
-@media (max-width: 450px){
+
+@media screen and (max-height: 700px) {
+    main {top: 25%!important;}
+}
+
+@media screen and (max-height: 650px) {
+    main {top: 20%!important;}
+}
+
+@media screen and (max-width: 550px){
+    footer > .container > .row {height: 100%;}
+    footer > .container > .row > div.rights {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    footer > .container > .row > div.imgSistemas {display: none;}
+    footer > .container > .row > div.telefone, footer > .container > .row > div.email {display: block;width: 50%;}
+    footer .areaReservada {top: 55px;right: 25px;}
+}
+
+@media screen and (max-height: 600px) {
+    main {top: 15%!important;}
+}
+
+@media screen and (max-height: 500px) {
+    main {top: 65px!important;}
+}
+
+@media screen and (max-width: 768px) and (max-height: 700px) {
+    main {top: 13%!important;}
+}
+
+@media screen and (max-width: 768px) and (max-height: 600px) {
+    main {top: 65px!important;}
+    .box {width: 140px;height: 140px;padding: 22px 15px;}
+    h3 {font-size: 13px;}
+    footer {bottom: -30px}
+}
+
+@media screen and (max-width: 768px) and (max-height: 550px) {
+    .box {width: 125px;height: 125px;}
+}
+
+@media screen and (max-width: 450px){
     header {min-height: 100px;}
-    .section {position: static;}
-    .center {margin: 0px 0 50px;}
     .box {width: 140px;height: 145px;}
     h3 {font-size: 13px;}
-    .vanish {display: none;}
-    footer#bottom {min-height: 110px;}
     .icon-sosoares {font-size: 20px!important;}
 }
-@media (max-width: 420px) {
-    #bd {position: static;float: none;margin-top: 15px;}
-    footer#bottom {font-size: 12px;}
-}
-@media (max-width: 390px){
-    .box {width: 120px;height: 125px;}
+
+@media screen and (max-width: 390px){
+    .box {width: 125px;height: 125px;padding: 22px 15px;}
     h3 {font-size: 13px;}
 }
-@media (max-width: 350px){
-    .box {width: 45%;height: 125px;margin: 5px;}
-    h3 {font-size: 13px;font-weight: 300;}
-    .font {font-size: 50px}
-    .icon-sosoares {font-size: 15px!important;}
-    .valign {width: 80%;min-height: 34px}
-    footer#bottom .col-md-1 {margin-top: 34px}
+@media screen and (max-width: 350px){
+    .box {width: 110px;height: 110px;}
+    h3 {font-weight: 300;}
+    .font {font-size: 35px}
+    footer .icon-sosoares {font-size: 18px!important;}
+    footer h4 {font-size: 11px;padding-top: 2px;}
+    footer p {font-size: 12px}
+}
+
+@media screen and (max-width: 768px) and (max-height: 500px) {
+    .box {width: 110px;height: 110px;}
+    h3 {font-weight: 300;}
+    .font {font-size: 35px}
 }

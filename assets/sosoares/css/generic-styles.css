@@ -339,6 +339,12 @@ hr.divider {
     text-indent: 20px;
 }
 
+/* ============ BOOTSTRAP ACORDION ====================== */
+.panel-group {width: 100%;}
+.panel-group .panel {border-radius: 10px;}
+.panel.panel-default {margin: 0 0 15px;}
+.panel-default > .panel-heading {background-color: #107ca4;border-radius: 10px 10px 0 0;color: #fff;}
+
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {

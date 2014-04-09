@@ -15,8 +15,6 @@
         {
             background:url("<?php echo base_url() ?>assets/uploads/background/<?php echo $background_image['foto'];?>") #e8e8e8 no-repeat fixed center;
             background-size: cover;
-            min-width: 320px;
-            min-height: 600px;
         }
     </style>        
 </head>
@@ -24,22 +22,20 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <a href="<?php echo base_url() ?>index.php"><img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png" width="210" height="47" alt="GRUPO SOSOARES" title="GRUPO SOSOARES" /></a>
+                <div class="logotipo grow">
+                    <a href="http://localhost/GitHub/sosoares_site/"><h1>Grupo Sosoares</h1></a>
                 </div>
-                <div class="col-md-4">
-                    <div id="bd">
-                        <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
-                        <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
-                        <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
-                        <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow"></a>
-                    </div>
+                <div id="bd">
+                    <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Spain" title="Spain" class="grow"></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="section">
+    <main>
         <div class="container" style="position: relative">
             <div class="center">
                 <a href="<?php echo site_url('caixilharia/home')?>">
@@ -69,42 +65,28 @@
                 </a>
             </div>
         </div>
-    </section>
+    </main>
 
-    <footer id="bottom">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div style="height: 34px;display: inline-block;">
-                            <i class="icon-sosoares" style="font-size: 30px"></i>
-                            <div class="valign"><h4>&nbsp;&copy; GRUPO SOSOARES</h4> <?=lang('direitos')?></div>
-                        </div>
-                    </div>
-                    <div class="vanish">
-                        <div class="col-md-2" >
-                            <div style="height: 34px;display: inline-block;">
-                                <div class="valign">
-                                    +351 <b>226 096 709</b>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div style="height: 34px;display: inline-block;">
-                                <div class="valign">
-                                    comercial@sosoares.pt
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="#">
-                            <button class="btn button shrink"><?=lang('reserved')?></button>
-                        </a>
-                    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="rights">
+                    <i class="icon-sosoares" style="font-size: 25px"></i>
+                    <h4>&nbsp;&copy; GRUPO SOSOARES</h4><p> <?=lang('direitos')?> </p>
+                </div>
+                <div class="telefone">
+                    <p>+351 <b>226 096 709</b></p>
+                </div>
+                <div class="email">
+                    <p>comercial@sosoares.pt</p>
+                </div>
+                <div class="imgSistemas">
+                    <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
+                </div>
+                <div class="areaReservada">
+                    <a href="#">
+                        <button class="btn button shrink"><?=lang('reserved')?></button>
+                    </a>
                 </div>
             </div>
         </div>
