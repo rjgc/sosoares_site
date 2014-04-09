@@ -25,8 +25,8 @@ class Sosoares_model extends CI_Model
 
 	//DESTINATARIOS
 
-	public function get_destinatario($categoria) {
-		$query = $this->db->query("select * from destinatarios where id_categoria = '$categoria'");
+	public function get_destinatario($id_categoria) {
+		$query = $this->db->query("select * from destinatarios where id_categoria = '$id_categoria'");
 
 		$data = $query->row_array();
 		return $data;

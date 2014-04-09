@@ -114,7 +114,6 @@ public function noticias()
     $this->menu($data);
 
     $data['noticias'] = $this->sosoares_model->get_noticias();
-    $data['destinatario'] = $this->sosoares_model->get_destinatario();
 
     $this->load->view('pages/noticias', $data);
     $this->load->view('templates/footer', $data);
@@ -125,8 +124,8 @@ public function candidaturas()
     $data['page_style'] = "vidro";
     $data['current'] = 'candidaturas';    
     $this->menu($data);
-    
-    $data['destinatario'] = $this->sosoares_model->get_destinatario();
+
+    $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
 
     $this->load->view('pages/candidatura', $data);
     $this->load->view('templates/footer');
@@ -217,6 +216,7 @@ public function contactos()
     $this->menu($data);
 
     $data['contactos'] = $this->sosoares_model->get_contactos(2);
+    $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
     $this->load->view('pages/contactos', $data);
     $this->load->view('templates/footer', $data);

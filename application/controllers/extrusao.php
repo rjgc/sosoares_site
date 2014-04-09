@@ -135,6 +135,8 @@ public function candidaturas()
 	$data['current'] = 'candidaturas';
 	$this->menu($data);
 
+	$data['destinatario'] = $this->sosoares_model->get_destinatario(2);
+
 	$this->load->view('pages/candidatura', $data);
 	$this->load->view('templates/footer');
 }
@@ -263,6 +265,7 @@ public function contactos()
 	$this->menu($data);
 
     $data['contactos'] = $this->sosoares_model->get_contactos(3);
+    $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
     $this->load->view('pages/contactos', $data);
 	$this->load->view('templates/footer', $data);
