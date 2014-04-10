@@ -211,10 +211,35 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 
 
 /*============================== SLIDER PRODUTOS / OBRAS =======================================*/
-.carousel-caption2 {width: 120px !important;height: 50px !important;margin: -20px -100px 0 auto !important; right: 20%; left: 20%;}
-.control-try2 {height: 50px !important;padding-top: 12px;padding-left: 15px;width: 50px !important;}
-.control-try3 {bottom: auto;top: 50% !important;background-image: none !important;font-size: 40px !important;}
 
+/* PRODUTOS */
+.control-try3 {bottom: auto;top: 45% !important;background-image: none !important;font-size: 40px !important;}
+
+/* OBRAS */
+.portfolio .carousel {
+    max-width: 650px;
+    position: relative;
+}
+.portfolio .carousel-caption.carousel-caption2 {
+    width: 120px;
+    height: 50px;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    left: initial;
+    top: initial;
+    display: inline-block;
+}
+.portfolio .carousel-caption.carousel-caption2 ul {position: relative;}
+.portfolio .carousel-caption.carousel-caption2 ul li .control-try.control-try2 {
+    height: 30px !important;
+    width: 50px !important;
+    position: absolute;
+    top: -6px;
+}
+
+.related .img-responsive {width:150px;height: 150px;}
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
 .carousel-inner > .item > img {width: 100%;max-height: 96%;border-radius: 10px;}
@@ -262,7 +287,7 @@ div#map-instaladores > #map-canvas {
     height: 550px;
 }
 
-/*============================== Contactos ===================================*/
+/*============================== CONTACTOS ===================================*/
 
 hr.divider {
     border: 0 !important;
@@ -280,38 +305,6 @@ hr.divider {
 .container {margin: 0 auto  25px}
 .divider {border: 0;margin: -10px 0 40px;}
 
-
-/* ============================== PRODUTOS VIDRO =================================== */
-.produtos_vidro_list {
-    width: 100%;
-    margin: 0 0 20px 0;
-    padding: 0 0 20px;
-    display: block;
-    position: relative;
-    min-height: 550px;
-}
-.vidro-list {
-    max-width: 300px;
-    width: 30%;
-    min-width: 200px;
-    min-height: 180px;
-    margin: 20px;
-    vertical-align: top;
-}
-
-.vidro-list img {
-    width: 100%;
-    height: 200px;
-    border-radius: 15px;
-}
-
-.vidro-list a {
-    margin: 20px 0 0;
-    display: inline-block;
-    width: 49%;
-    list-style: circle;
-    list-style-position: inside;
-}
 
 /* ============================== NOTICIAS =================================== */
 .noticias ul {list-style: none;}
@@ -377,6 +370,11 @@ hr.divider {
     .noticias ul li .row .col-md-9 {width: 64%;display: inline-block;vertical-align: top;}
     .noticias ul li .news-text {padding: 0;}
 
+    .portfolio .col-md-12.thumbs {max-width: 770px;}
+    .related #center {margin: 80px auto 0;}
+    .related .container #center .carousel.slide .row {position: relative;}
+    .related .container #center .carousel.slide .row .col-md-2 {position: absolute;top: 10px;right: -30px;width: 200px;}
+    .related .img-responsive {width:125px;height: 120px;}
 
 }
 @media (max-width: 800px) {
@@ -387,6 +385,26 @@ hr.divider {
 
     .carousel-caption {width: 90%;}
     .carousel-caption li .slider-h1 {max-width: 380px;}
+
+    .related {height: 550px;overflow: hidden;}
+    .related .carousel-inner {height: 500px; text-align: center;}
+    .related .carousel-inner .item .row .col-sm-2 {
+        display: inline-block;
+        margin-bottom: 25px;
+        width: 33%;
+        height: 150px;
+        text-align: center;
+        position: relative;
+    }
+    .related .carousel-inner .item .row .col-sm-2 a {display: inline-block;}
+    .related .carousel.slide .controls {
+        margin-top: 193px;
+    }
+    .related .carousel-inner .active {
+        max-width: 600px;
+        margin: 0 auto;
+        display: inline-block;
+    }
 }
 @media (max-width: 768px) {
     .content, .input, #contacts {width: 100% !important;}
@@ -414,6 +432,14 @@ hr.divider {
     .noticias ul li .row .col-md-3 img {float: right;width: 190px;height: 130px;}
     .noticias ul li .row .col-md-9 {width: 100%;margin-top: -50px;}
     .noticias ul li h3 {width: 340px;white-space: nowrap;overflow: hidden}
+
+    .portfolio .carousel {max-height: 320px;}
+    .related .container #center .carousel.slide .row .col-md-2 {top: 0;}
+    .related .carousel-inner .active {max-width: 580px;}
+    .related .carousel-inner .item .row .col-sm-2 {width: 28%;}
+}
+@media (max-width: 600px) {
+    .related {display: none;}
 }
 @media (max-width: 580px) {
     header .row .form {bottom:-50px;right: 0;}
@@ -438,4 +464,5 @@ hr.divider {
     header .form #searchButton {position: absolute;right: 0;top: 3px;width: 50px;}
 
     header #signIn {top: 42px;}
+    .portfolio .carousel {max-height: 290px;}
 }

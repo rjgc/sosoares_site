@@ -4,10 +4,42 @@ nav, .navbar {background-color: #01adef;}
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #054568;}
 .curr {background-color: #2576a3;}
-/*.font {font-size: 305.5%;}*/
 
 .menu-h3, .li-b {color: #04adf2;}
 
+/* ============================== PRODUTOS VIDRO =================================== */
+.produtos_vidro_list {
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 0 0 20px;
+    display: block;
+    position: relative;
+    min-height: 550px;
+}
+.vidro-list {
+    max-width: 300px;
+    width: 30%;
+    min-width: 200px;
+    min-height: 180px;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.vidro-list img {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.vidro-list a {
+    margin: 20px 0 0;
+    display: inline-block;
+    width: 49%;
+    list-style: circle;
+    list-style-position: inside;
+}
+
+/* ============================== MEDIA QUERYS =================================== */
 @media screen and (max-width: 768px) {
     nav li {background-color: #01adef!important;}
 }
