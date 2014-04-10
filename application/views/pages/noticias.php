@@ -26,7 +26,7 @@
                 <div class="col-md-9">
                     <h3><?php echo $noticia['titulo_'.$this->lang->lang()] ?></h3>
                     <p class="date"><b><?=lang('publicado')?>:</b> <?= $noticia['data_noticia'] ?></p>
-                    <p class="news-text"><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>
+                    <div class="news-text"><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></div>
                     <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                         echo site_url('caixilharia/noticia/'.$noticia['id_noticia']);
                     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {

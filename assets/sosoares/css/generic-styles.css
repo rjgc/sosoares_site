@@ -88,7 +88,7 @@ header .container .row {position: relative;min-height: 65px;}
 #signIn {bottom: 3px}
 
 footer {
-    margin-top: 0px !important;
+    margin-top: 0 !important;
     padding: 25px 0 15px;
     background-color: #f0f0f0;
     width: 100%;
@@ -339,6 +339,7 @@ hr.divider {
     text-indent: 20px;
 }
 
+
 /* ============ BOOTSTRAP ACORDION ====================== */
 .panel-group {width: 100%;}
 .panel-group .panel {border-radius: 10px;}
@@ -362,7 +363,7 @@ hr.divider {
 }
 
 @media (max-width: 991px) {
-    section > .container > .row .col-md-8 {display: inline-block;width: 55%;vertical-align: top;}
+    section > .container > .row .col-md-8 {display: inline-block;width: 100%;vertical-align: top;}
     section > .container > .row .col-md-4 {display: inline-block;width: 40%;vertical-align: top;}
 
     footer > .container > .row > #contacts [class^="col-"],
@@ -370,6 +371,11 @@ hr.divider {
 
     .carousel-caption li .slider-h1 {font-size: 25px;max-width: 360px;}
     .navbar-nav > li > a {font-size: 14px;padding: 15px 10px;}
+
+    .noticias ul li .row {max-height: 190px;overflow: hidden;}
+    .noticias ul li .row .col-md-3 {width: 260px; margin-right: 5px;display: inline-block;vertical-align: top;}
+    .noticias ul li .row .col-md-9 {width: 64%;display: inline-block;vertical-align: top;}
+    .noticias ul li .news-text {padding: 0;}
 
 
 }
@@ -401,10 +407,22 @@ hr.divider {
     .candidaturas form .row span, .contactos form .row span {margin: 10px 15px}
     .candidaturas form .row div, .contactos form .row div {margin: 0 15px!important;}
     .contactos form:last-child legend {padding-top: 50px}
+
+    .noticias ul li {max-height: 280px;}
+    .noticias ul li .row {max-height: 250px;height: 250px;}
+    .noticias ul li .row .col-md-3 {width: 100%;margin-bottom: 5px;}
+    .noticias ul li .row .col-md-3 img {float: right;width: 190px;height: 130px;}
+    .noticias ul li .row .col-md-9 {width: 100%;margin-top: -50px;}
+    .noticias ul li h3 {width: 340px;white-space: nowrap;overflow: hidden}
 }
 @media (max-width: 580px) {
     header .row .form {bottom:-50px;right: 0;}
     .carousel-indicators {text-align: right;}
+    .noticias ul li .row > .col-md-3 {display: none;}
+    .noticias ul li .row > .col-md-9 {margin: 0}
+    .noticias ul li {max-height: 200px;}
+    .noticias ul li .row > .col-md-9 a {float: right;margin: 10px 10px 0 0;}
+    .noticias ul li h3 {width: 100%;white-space: normal;overflow: visible}
 }
 @media (max-width: 450px) {
     header {height: 160px;}

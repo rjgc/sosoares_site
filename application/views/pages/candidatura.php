@@ -52,7 +52,8 @@
                             <input class="form-control" id="cv" name="cv" type="file">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <br>
+                    <div class="form-group" style="margin-top: -13px;">
                         <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5"></textarea>
