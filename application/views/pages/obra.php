@@ -92,6 +92,8 @@
             </div>
         </div>
     </div>
+    <?php
+    if(!empty($produtos_aluminio_obra)) { ?>
     <section class="related">
         <div class="container">
             <div id="center">
@@ -209,4 +211,5 @@
             </div>
         </div>
     </section>
+    <?php } ?>
 </main>
