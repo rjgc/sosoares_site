@@ -74,6 +74,8 @@ function index()
 		$crud->columns('nome_pt','descricao_pt', 'localizacao');
 		$crud->order_by('ordem', 'asc');
 
+		$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('localizacao', 'Localização');
+
 		$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'localizacao');
 		$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
 
@@ -135,6 +137,7 @@ function change_order()
 	}    
 }
 
+
 //DEFINICOES
 
 //IMAGEM DE FUNDO
@@ -164,7 +167,9 @@ function background_image_management()
 	$this->_admin_output($output);
 }
 
+
 // BANNERS
+
 function banners_management()
 {
 	$crud = new grocery_CRUD();
@@ -208,6 +213,7 @@ function callback_after_upload_banners($uploader_response, $field_info, $files_t
 	return true;
 }
 
+
 //DESTINATARIOS
 
 function destinatarios_management()
@@ -232,6 +238,7 @@ function destinatarios_management()
 	$this->_admin_output($output);
 }
 
+
 // ÁREAS COMERCIAIS
 
 function areas_comerciais_management()
@@ -252,6 +259,7 @@ function areas_comerciais_management()
 
 	$this->_admin_output($output);
 }
+
 
 //CONTACTOS
 
@@ -277,6 +285,7 @@ function contactos_management()
 
 	$this->_admin_output($output);
 }
+
 
 //NOTICIAS
 
@@ -320,6 +329,7 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
 	return true;
 }
 
+
 //PRODUTOS
 
 //PRODUTOS ALUMINIO
@@ -332,20 +342,18 @@ function produtos_aluminio_management()
 
 	$crud->set_table('produtos_aluminio');
 	$crud->set_subject('Produtos Aluminio');
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio');
+	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
 	$crud->order_by('ordem', 'asc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1', 'restrito');		
-	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo')->display_as('catalogo', 'Catálogo');
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_caracteristica_produto_aluminio', 'Característica')->display_as('id_tipo_produto_aluminio', 'Tipo')->display_as('catalogo', 'Catálogo');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
 	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
 	$crud->set_field_upload('corte_1', 'assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
-	$crud->set_field_upload('pdf_1', 'assets/uploads/pdfs')->set_field_upload('pdf_2', 'assets/uploads/pdfs')->set_field_upload('pdf_3', 'assets/uploads/pdfs');
-	$crud->display_as('corte_1','Corte 1')->display_as('corte_2','Corte 2')->display_as('corte_3','Corte 3');
 
 	$crud->set_relation_n_n('perfis', 'perfis_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'perfil_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>1));
 	$crud->set_relation_n_n('pormenores', 'pormenores_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'pormenor_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>3));
@@ -395,11 +403,12 @@ function tipos_produto_aluminio_management()
 	$crud = new grocery_CRUD();
 
 	$crud->set_table('tipos_produto_aluminio');
-	$crud->set_subject('Tipos de Produto Aluminio');
-	$crud->columns('nome_pt');
+	$crud->set_subject('Tipos de Produto Alumínio');
+	$crud->columns('nome_pt', 'foto');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
-	$crud->set_field_upload('foto', 'assets/uploads/paginas');
+
+	$crud->set_field_upload('foto', 'assets/uploads/produtos');
 
 	$output = $crud->render();
 
@@ -416,7 +425,7 @@ function caracteristicas_produto_aluminio_management()
 	$crud = new grocery_CRUD();
 
 	$crud->set_table('caracteristicas_produto_aluminio');
-	$crud->set_subject('Caracteristicas de Produto Aluminio');
+	$crud->set_subject('Características de Produto Alumínio');
 	$crud->columns('nome_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
@@ -431,6 +440,7 @@ function caracteristicas_produto_aluminio_management()
 	$this->_admin_output($output);
 }
 
+
 //PRODUTOS VIDRO
 
 function produtos_vidro_management()
@@ -442,12 +452,11 @@ function produtos_vidro_management()
 	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
-	$crud->display_as('id_tipo_produto_vidro', 'Tipo');
-
-	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es')->display_as('id_tipo_produto_vidro', 'Tipo');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+
+	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
 	$crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
 
@@ -467,13 +476,11 @@ function tipos_produto_vidro_management()
 
 	$crud->set_table('tipos_produto_vidro');
 	$crud->set_subject('Tipos de Produto Vidro');
-	$crud->columns('nome_pt');
+	$crud->columns('nome_pt', 'foto');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
 
-
 	$crud->set_field_upload('foto', 'assets/uploads/produtos');
-	$crud->display_as('foto', 'Foto');
 
 	$output = $crud->render();
 
@@ -485,6 +492,7 @@ function tipos_produto_vidro_management()
 	$this->_admin_output($output);
 }
 
+
 //PRODUTOS EXTRUSAO
 
 function produtos_extrusao_management()
@@ -495,18 +503,18 @@ function produtos_extrusao_management()
 
 	$crud->set_table('produtos_extrusao');
 	$crud->set_subject('Produtos Extrusão');	
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3');
+	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
 	$crud->order_by('ordem', 'asc');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');		
 	$crud->field_type('descricao_pt', 'text');
-	$crud->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Caracteristica');
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Característica');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
+
+	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
 	$crud->set_field_upload('corte_1','assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
-	$crud->display_as('corte_1', 'Corte 1')->display_as('corte_2', 'Corte 2')->display_as('corte_3', 'Corte 3');	
 
 	$crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
 	$crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
@@ -553,10 +561,11 @@ function tipos_produto_extrusao_management()
 
 	$crud->set_table('tipos_produto_extrusao');
 	$crud->set_subject('Tipos de Produto Extrusão');
-	$crud->columns('nome_pt');
+	$crud->columns('nome_pt', 'foto');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
-	$crud->set_field_upload('foto', 'assets/uploads/paginas');
+
+	$crud->set_field_upload('foto', 'assets/uploads/produtos');
 
 	$output = $crud->render();
 
@@ -573,7 +582,7 @@ function caracteristicas_produto_extrusao_management()
 	$crud = new grocery_CRUD();
 
 	$crud->set_table('caracteristicas_produto_extrusao');
-	$crud->set_subject('Caracteristicas de Produto Extrusão');
+	$crud->set_subject('Características de Produto Extrusão');
 	$crud->columns('nome_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
@@ -588,6 +597,7 @@ function caracteristicas_produto_extrusao_management()
 	$this->_admin_output($output);
 }
 
+
 //FICHEIROS
 
 function ficheiros_management()
@@ -600,6 +610,7 @@ function ficheiros_management()
 	$crud->order_by('id_ficheiro', 'asc');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+
 	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
 
 	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
@@ -648,6 +659,7 @@ function callback_after_insert($post_array)
 	return true;
 }
 
+
 //UPLOAD FOTO PRODUTO
 
 function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
@@ -667,7 +679,9 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
 	return true;
 }
 
+
 //OBRAS
+
 
 //SERVIÇOS
 
@@ -680,6 +694,7 @@ function servicos_aluminio_management()
 	$crud->columns('nome_pt', 'descricao_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
 	$output = $crud->render();
 
@@ -700,6 +715,7 @@ function servicos_vidro_management()
 	$crud->columns('nome_pt', 'descricao_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
 	$output = $crud->render();
 
@@ -720,6 +736,7 @@ function servicos_extrusao_management()
 	$crud->columns('nome_pt', 'descricao_pt');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
 	$output = $crud->render();
 
@@ -743,10 +760,10 @@ function paginas_management()
 
 	$crud->set_table('paginas');
 	$crud->set_subject('Páginas');
-	$crud->columns('titulo_pt');
+	$crud->columns('titulo_pt', 'imagem');
 	$crud->order_by('id_pagina', 'asc');
 
-	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->display_as('titulo_pt', 'Título');
 	$crud->set_field_upload('imagem', 'assets/uploads/paginas');
 
 	$output = $crud->render();
@@ -759,6 +776,7 @@ function paginas_management()
 	$this->_admin_output($output);
 }
 
+
 //APOIO CLIENTE
 
 function apoio_cliente_management()
@@ -770,10 +788,10 @@ function apoio_cliente_management()
 
 	$crud->set_table('apoio_cliente');
 	$crud->set_subject('Apoio ao Cliente');
-	$crud->columns('titulo_pt');
+	$crud->columns('titulo_pt', 'imagem');
 	$crud->order_by('id_pagina', 'asc');
 
-	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->display_as('titulo_pt', 'Título');
 	$crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
 
 	$output = $crud->render();
@@ -786,6 +804,7 @@ function apoio_cliente_management()
 	$this->_admin_output($output);
 }
 
+
 //AREA TECNICA
 
 function area_tecnica_management()
@@ -794,10 +813,10 @@ function area_tecnica_management()
 
 	$crud->set_table('area_tecnica');
 	$crud->set_subject('Área Técnica');
-	$crud->columns('titulo_pt');
+	$crud->columns('titulo_pt', 'imagem');
 	$crud->order_by('id_pagina', 'asc');
 
-	$crud->display_as('titulo_pt', 'Titulo');
+	$crud->display_as('titulo_pt', 'Título');
 	$crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
 
 	$output = $crud->render();
