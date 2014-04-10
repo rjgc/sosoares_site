@@ -62,7 +62,7 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a href="#"><button class="btn button shrink"><?=lang('signin')?></button></a>
+                    <a href="<?=site_url('auth/login')?>"><button class="btn button shrink"><?=lang('signin')?></button></a>
                 </div>
             </div>
         </div>

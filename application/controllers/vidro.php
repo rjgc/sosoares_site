@@ -29,6 +29,8 @@ function __construct()
 
     $this->lang->load('cizacl');
 
+    $this->load->library('ion_auth');
+
     $this->load->model('vidro_model');
     $this->load->model('sosoares_model');
 }
@@ -164,14 +166,19 @@ public function produtos()
 
 public function servico()
 {
-    $data['page_style']= "vidro";        
-    $data['current'] = 'servico';
-    $this->menu($data);
+    if (!$this->ion_auth->logged_in())
+    {
+        redirect('auth/login');
+    } else {
+        $data['page_style']= "vidro";        
+        $data['current'] = 'servico';
+        $this->menu($data);
 
-    $data['page'] = $this->vidro_model->get_servico();
+        $data['page'] = $this->vidro_model->get_servico();
 
-    $this->load->view('pages/vidro/servico', $data);
-    $this->load->view('templates/footer');
+        $this->load->view('pages/vidro/servico', $data);
+        $this->load->view('templates/footer');
+    }
 }
 
 public function apoio_cliente($page=null)

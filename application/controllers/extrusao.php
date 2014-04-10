@@ -29,6 +29,8 @@ function __construct()
 
 	$this->lang->load('cizacl');
 
+	$this->load->library('ion_auth');
+
 	$this->load->model('extrusao_model');
 	$this->load->model('sosoares_model');
 }
@@ -45,13 +47,13 @@ public function home()
 	$data['noticia'] = $this->sosoares_model->get_destaque();
 	$this->menu($data);
 
-    $banners = $this->sosoares_model->get_banners(3);
+	$banners = $this->sosoares_model->get_banners(3);
 
-    if (!empty($banners)) {
-        $data['banners'] = $banners;
-    } else {
-        $data['banners_default'] = $this->sosoares_model->get_banners(1);
-    } 
+	if (!empty($banners)) {
+		$data['banners'] = $banners;
+	} else {
+		$data['banners_default'] = $this->sosoares_model->get_banners(1);
+	} 
 
 	$this->load->view('templates/carousel_extrusao', $data, $this->get_lang());
 	$this->load->view('pages/extrusao', $data);
@@ -213,14 +215,19 @@ public function produtos($id_tipo_produto_extrusao=null)
 
 public function servico()
 {
-	$data['page_style']= "extrusao";        
-	$data['current'] = 'servico';
-	$this->menu($data);
+	if (!$this->ion_auth->logged_in())
+	{
+		redirect('auth/login');
+	} else {
+		$data['page_style']= "extrusao";        
+		$data['current'] = 'servico';
+		$this->menu($data);
 
-	$data['servico'] = $this->extrusao_model->get_servico();    
+		$data['servico'] = $this->extrusao_model->get_servico();    
 
-	$this->load->view('pages/servico', $data);
-	$this->load->view('templates/footer');
+		$this->load->view('pages/servico', $data);
+		$this->load->view('templates/footer');
+	}
 }
 
 public function apoio_cliente($page=null)
@@ -264,10 +271,10 @@ public function contactos()
 	$data['current'] = 'contactos';
 	$this->menu($data);
 
-    $data['contactos'] = $this->sosoares_model->get_contactos(3);
-    $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+	$data['contactos'] = $this->sosoares_model->get_contactos(3);
+	$data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
-    $this->load->view('pages/contactos', $data);
+	$this->load->view('pages/contactos', $data);
 	$this->load->view('templates/footer', $data);
 }
 }

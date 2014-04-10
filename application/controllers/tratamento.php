@@ -29,6 +29,8 @@ class Tratamento extends CI_Controller {
 
         $this->lang->load('cizacl');
 
+        $this->load->library('ion_auth');
+
         $this->load->model('tratamento_model');
         $this->load->model('sosoares_model');
     }
