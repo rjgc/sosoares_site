@@ -67,20 +67,26 @@ function index()
 	try{
 		$crud = new grocery_CRUD();
 
+		$this->load->model('caixilharia_model');
+
 		$crud->set_table('obras');
 		$crud->set_subject('Obras');
 		$crud->columns('nome_pt','descricao_pt', 'localizacao');
-		$crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
+		$crud->order_by('ordem', 'asc');
 
 		$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'localizacao');
 		$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
 
 		$crud->set_relation_n_n('produtos_aluminio', 'produtos_aluminio_obras', 'produtos_aluminio', 'obra_id', 'produto_aluminio_id', 'nome_pt', 'priority');
 
+		$crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
+		$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
+		$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
+
 		$output = $crud->render();
 
 		$data['titulo'] = 'Obras';
-		$data['sub-titulo'] = 'Faça aqui a gestão das Obras Realizadas'; 
+		$data['sub-titulo'] = 'Faça aqui a gestão das Obras'; 
 
 		$this->load->view('mediagest/header',  (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
@@ -103,6 +109,30 @@ function galeria()
 	$output = $image_crud->render();
 
 	$this->_example_output($output);
+}
+
+function change_order() 
+{ 
+	$message = "wrong answer";
+	echo "<script type='text/javascript'>alert('$message');</script>";
+	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+		$this->load->model('caixilharia_model');
+		$event = trim($_POST['eventRow']);
+		$clickEl = intval($_POST['clickEl']);
+		$el = intval($_POST['el']);
+		if ($event && $clickEl && $el) {
+			if ($this->caixilharia_model->change_order($event, $clickEl, $el)) {
+				exit("success"); 
+			} else {
+				exit("error1");
+			} 
+			$this->caixilharia_model->change_order($event, $clickEl, $el);
+		} else {
+			exit("error2");
+		}
+	} else {
+		exit("error3");
+	}    
 }
 
 //DEFINICOES
@@ -141,13 +171,14 @@ function banners_management()
 
 	$crud->set_table('banners');
 	$crud->set_subject('Banners');
-	$crud->columns('nome_pt', 'id_categoria_banner');
+	$crud->columns('nome_pt', 'banner');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra');
+	$crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra');
 
 	$crud->set_field_upload('banner', 'assets/uploads/banners');
 
-	$crud->set_relation('id_categoria_banner', 'categoria_banner', 'nome');
+	$crud->set_relation('id_categoria_banner', 'categorias', 'nome');
 	$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
 
 	$crud->callback_after_upload(array($this,'callback_after_upload_banners'));
@@ -187,6 +218,7 @@ function destinatarios_management()
 	$crud->set_subject('Destinatários');
 
 	$crud->required_fields('email', 'id_categoria');
+	$crud->display_as('id_categoria', 'Categoria');
 
 	$crud->set_relation('id_categoria', 'categoria_destinatario', 'nome');
 
@@ -232,12 +264,9 @@ function contactos_management()
 	$crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
 
 	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
-	$crud->display_as('id_seccao', 'Seccao');
+	$crud->display_as('id_categoria', 'Categoria');
 
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
-
-	$crud->set_relation('id_seccao', 'contactos_seccoes', 'nome_seccao');
+	$crud->set_relation('id_categoria', 'categorias', 'nome');
 
 	$output = $crud->render();
 
@@ -258,12 +287,11 @@ function noticias_management()
 	$crud->set_table('noticias');
 	$crud->set_subject('Notícias');
 	$crud->columns('data_noticia', 'titulo_pt', 'texto_pt', 'foto');
+	$crud->display_as('data_noticia', 'Data');
 
-	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');	
-	$crud->field_type('texto_pt', 'text')->field_type('texto_en', 'text')->field_type('texto_fr', 'text')->field_type('texto_es', 'text');
+	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
 
 	$crud->set_field_upload('foto', 'assets/uploads/noticias');
-	$crud->display_as('foto', 'Foto');
 
 	$crud->callback_after_upload(array($this,'callback_after_upload_noticia'));
 
@@ -287,72 +315,12 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
 	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
 	//refold
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
+	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/noticias/thumb/".$uploader_response[0]->name);
 
 	return true;
 }
 
 //PRODUTOS
-
-//FICHEIROS
-
-function ficheiros_management()
-{
-	$crud = new grocery_CRUD();
-
-	$crud->set_table('ficheiros');
-	$crud->set_subject('Ficheiros');
-	$crud->columns('nome_pt', 'id_categoria_ficheiro');
-	$crud->order_by('id_ficheiro', 'asc');
-
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
-	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
-
-	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
-
-	$crud->callback_after_insert(array($this, 'callback_after_insert'));
-
-	$output = $crud->render();
-
-	$data['titulo'] = 'Ficheiros';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros'; 
-
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
-
-	$this->_admin_output($output);
-}
-
-function callback_after_insert($post_array)
-{	
-	switch ($post_array['id_categoria_ficheiro']) {
-		case '1':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
-		break;
-		case '3':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
-		break;
-		case '4':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
-		break;
-		case '5':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
-		break;
-		case '6':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
-		break;
-		case '7':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
-		break;
-		case '8':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/extrusao/".$post_array['ficheiro']);
-		break;
-		case '9':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
-		break;
-	}
-
-	return true;
-}
 
 //PRODUTOS ALUMINIO
 
@@ -365,15 +333,13 @@ function produtos_aluminio_management()
 	$crud->set_table('produtos_aluminio');
 	$crud->set_subject('Produtos Aluminio');
 	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio');
-	$crud->order_by('ordem', 'desc');
+	$crud->order_by('ordem', 'asc');
 
 	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1', 'restrito');		
-	$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text')->field_type('resultado_pt', 'text')->field_type('resultado_en', 'text')->field_type('resultado_fr', 'text')->field_type('resultado_es', 'text');
-	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo');
+	$crud->display_as('id_caracteristica_produto_aluminio', 'Caracteristica')->display_as('id_tipo_produto_aluminio', 'Tipo')->display_as('catalogo', 'Catálogo');
 
 	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
-	$crud->display_as('foto_1', 'Foto 1')->display_as('foto_2', 'Foto 2')->display_as('foto_3', 'Foto 3')->display_as('foto_4', 'Foto 4');
 
 	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
@@ -389,8 +355,8 @@ function produtos_aluminio_management()
 	$crud->set_relation('id_tipo_produto_aluminio', 'tipos_produto_aluminio', 'nome_pt');
 	$crud->set_relation('id_caracteristica_produto_aluminio', 'caracteristicas_produto_aluminio', 'nome_pt');
 
-	$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_aluminio', 'order-position-product-down');
-	$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_aluminio', 'order-position-product-up');
+	$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_aluminio', 'order-position-product-down');
+	$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_aluminio', 'order-position-product-up');
 
 	$output = $crud->render();
 
@@ -402,19 +368,20 @@ function produtos_aluminio_management()
 	$this->_admin_output($output);
 }	
 
-function change_order_aluminio() { 
+function change_order_aluminio() 
+{ 
 	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
 		$this->load->model('caixilharia_model');
 		$event = trim($_POST['eventRow']);
 		$clickEl = intval($_POST['clickEl']);
 		$el = intval($_POST['el']);
 		if ($event && $clickEl && $el) {
-			if ($this->caixilharia_model->change_order($event, $clickEl, $el)) {
+			if ($this->caixilharia_model->change_order_aluminio($event, $clickEl, $el)) {
 				exit("success"); 
 			} else {
 				exit("error1");
 			} 
-			$this->caixilharia_model->change_order($event, $clickEl, $el);
+			$this->caixilharia_model->change_order_aluminio($event, $clickEl, $el);
 		} else {
 			exit("error2");
 		}
@@ -529,7 +496,7 @@ function produtos_extrusao_management()
 	$crud->set_table('produtos_extrusao');
 	$crud->set_subject('Produtos Extrusão');	
 	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3');
-	$crud->order_by('ordem', 'desc');
+	$crud->order_by('ordem', 'asc');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');		
 	$crud->field_type('descricao_pt', 'text');
@@ -558,14 +525,8 @@ function produtos_extrusao_management()
 	$this->_admin_output($output);
 }
 
-function change_order_extrusao() {
-	$message = $_POST['eventRow'];
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	$message = $_POST['clickEl'];
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	$message = $_POST['el'];
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	
+function change_order_extrusao() 
+{
 	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
 		$this->load->model('extrusao_model');
 		$event = trim($_POST['eventRow']);
@@ -625,6 +586,66 @@ function caracteristicas_produto_extrusao_management()
 	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
 
 	$this->_admin_output($output);
+}
+
+//FICHEIROS
+
+function ficheiros_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('ficheiros');
+	$crud->set_subject('Ficheiros');
+	$crud->columns('nome_pt', 'id_categoria_ficheiro');
+	$crud->order_by('id_ficheiro', 'asc');
+
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
+
+	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
+
+	$crud->callback_after_insert(array($this, 'callback_after_insert'));
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Ficheiros';  
+	$data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros'; 
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function callback_after_insert($post_array)
+{	
+	switch ($post_array['id_categoria_ficheiro']) {
+		case '1':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
+		break;
+		case '3':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
+		break;
+		case '4':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
+		break;
+		case '5':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
+		break;
+		case '6':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
+		break;
+		case '7':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
+		break;
+		case '8':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/extrusao/".$post_array['ficheiro']);
+		break;
+		case '9':
+		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
+		break;
+	}
+
+	return true;
 }
 
 //UPLOAD FOTO PRODUTO

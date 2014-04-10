@@ -35,14 +35,14 @@ class Sosoares_model extends CI_Model
 	//PAGINAS
 
 	public function get_page($id_pagina) {
-		$query = $this->db->query("select * from paginas where id_pagina ='$id_pagina'");
+		$query = $this->db->query("select * from paginas where id_pagina = '$id_pagina'");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
 	public function get_pages($id_pagina) {
-		$query = $this->db->query("select * from paginas where id_pagina ='$id_pagina'");
+		$query = $this->db->query("select * from paginas where id_pagina = '$id_pagina'");
 
 		$data = $query->result_array();
 		return $data;
@@ -67,7 +67,7 @@ class Sosoares_model extends CI_Model
 	}
 
 	public function get_noticia($noticia) {
-		$query = $this->db->query("select * from noticias where id_noticia ='$noticia'");
+		$query = $this->db->query("select * from noticias where id_noticia = '$noticia'");
 
 		$data = $query->row_array();
 		return $data;
@@ -83,14 +83,14 @@ class Sosoares_model extends CI_Model
     //APOIO CLIENTE
 
     public function get_apoio($id_pagina) {
-		$query = $this->db->query("select * from apoio_cliente where id_pagina ='$id_pagina'");
+		$query = $this->db->query("select * from apoio_cliente where id_pagina = '$id_pagina'");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
 	public function get_apoios($id_pagina) {
-		$query = $this->db->query("select * from apoio_cliente where id_pagina ='$id_pagina'");
+		$query = $this->db->query("select * from apoio_cliente where id_pagina = '$id_pagina'");
 
 		$data = $query->result_array();
 		return $data;
@@ -98,8 +98,8 @@ class Sosoares_model extends CI_Model
 
     //CONTACTOS
 
-    public function get_contactos($seccao) {
-        $query = $this->db->query("select * from contactos where id_seccao=".$seccao);
+    public function get_contactos($id_categoria) {
+        $query = $this->db->query("select * from contactos where id_categoria= '$id_categoria'");
 
         $data = $query->result_array();
         return $data;
