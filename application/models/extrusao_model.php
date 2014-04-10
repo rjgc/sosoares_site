@@ -37,6 +37,16 @@ class Extrusao_model extends CI_Model
 			return false;
 	}
 
+	//SET ORDEM
+
+	public function set_ordem() {
+		$query = $this->db->query("select max(ordem) as ordem from produtos_extrusao");
+
+		$ordem = $query->row_array();
+
+		return $ordem['ordem'] + 1;
+	}
+
 	//MENU PRODUTO EXTRUSAO
 
 	public function get_caixilharia_batente($lang){

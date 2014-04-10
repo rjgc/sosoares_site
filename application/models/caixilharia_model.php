@@ -69,6 +69,24 @@ class Caixilharia_model extends CI_Model
 			return false;
 	}
 
+	//SET ORDEM
+
+	public function set_ordem() {
+		$query = $this->db->query("select max(ordem) as ordem from obras");
+
+		$ordem = $query->row_array();
+
+		return $ordem['ordem'] + 1;
+	}
+
+	public function set_ordem_produto() {
+		$query = $this->db->query("select max(ordem) as ordem from produtos_aluminio");
+
+		$ordem = $query->row_array();
+
+		return $ordem['ordem'] + 1;
+	}
+
 	//PAGINAS INTERMEDIAS PRODUTOS CAIXILHARIA
 
 	public function get_tipo_produtos($id_tipo_produto_aluminio) {
