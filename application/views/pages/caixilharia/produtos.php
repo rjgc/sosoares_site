@@ -12,11 +12,25 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="obras-container">
-                    <?php 
+                    <?php
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){
                             ?>
-                            <a href="<?=site_url('caixilharia/produtos/'.$tipo['id_tipo_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/><p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p></div></a>
+                            <a href="<?=site_url('caixilharia/produtos/'.$tipo['id_tipo_produto_aluminio'])?>">
+                                <div class="obras-list grow">
+                                    <?php if(!empty($tipo['foto'])) {
+                                    ?>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $tipo['foto'] ?>"/>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
+                                    <?php
+                                    }
+                                    ?>
+                                    <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
+                                </div>
+                            </a>
                             <?php }
                         }
                         else {?>
