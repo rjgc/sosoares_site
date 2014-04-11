@@ -304,13 +304,13 @@ public function apoios_cliente()
 
     $paginas;
 
-    for ($i=1; $i < 7; $i++) {
+    for ($i=1; $i < 8; $i++) {
         $paginas[$i] = $this->sosoares_model->get_apoios($i);
     }
 
     $data['pages'] = $paginas;
 
-    $this->load->view('pages/caixilharia/apoios_cliente', $data);
+    $this->load->view('pages/apoios_cliente', $data);
     $this->load->view('templates/footer');
 }
 
