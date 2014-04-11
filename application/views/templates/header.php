@@ -63,35 +63,77 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a href="<?=site_url('auth/login')?>"><button class="btn button shrink"><?=lang('signin')?></button></a>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink"><?=lang('signin')?></button></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Login</h4>
+                            <p style="visibility: hidden;" id='erro'>Erro</p>
+                        </div>
+                        <form method="post" role="form">
+                            <div class="modal-body">
+                                <input class="form-control input" type="text" id="username" name="username" placeholder="Username">
+                                <p></p>
+                                <input class="form-control input" type="password" id="password" name="password" placeholder="Password">
+                                <p style="display:inline-block;">Remember:</p><input style="margin:0 0 0 5px !important;" type="checkbox" name="remember" value="1">
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel" data-dismiss="modal">
+                                <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-    <nav>
-        <?php if(isset($page_style)) {
-            switch($page_style) {
-                case "caixilharia":
-                require_once('nav_caixilharia.php');
-                break;
-                case "vidro":
-                require_once('nav_vidro.php');
-                break;
-                case "extrusao":
-                require_once('nav_extrusao.php');
-                break;
-                case "tratamento":
-                require_once('nav_tratamento.php');
-                break;
-                default:
-                break;
-            }
+    </div>
+</div>
+</header>
+<nav>
+    <?php if(isset($page_style)) {
+        switch($page_style) {
+            case "caixilharia":
+            require_once('nav_caixilharia.php');
+            break;
+            case "vidro":
+            require_once('nav_vidro.php');
+            break;
+            case "extrusao":
+            require_once('nav_extrusao.php');
+            break;
+            case "tratamento":
+            require_once('nav_tratamento.php');
+            break;
+            default:
+            break;
         }
-        ?>
-    </nav>
-    <section>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
+    }
+    ?>
+</nav>
+<section>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
+    <?php
+    if (isset($_POST['login']))
+    {
+        if (isset($_POST['username']) && isset($_POST['password'])) 
+        {
+            $active = isset($_POST['remember']) && $_POST['remember']  ? "1" : "0";
+
+            $this->ion_auth->login($_POST['username'], $_POST['password'], $active);
+        }
+
+        if (!$this->ion_auth->logged_in())
+        {
+            echo "<script type='text/javascript'> $('#signin').click(); document.getElementById('erro').style.visibility='visible';</script>";
+        } else if ($this->ion_auth->logged_in()) {
+            echo "<script type='text/javascript'> $('#cancel').click();</script>";
+        }
+    }
+    ?>
