@@ -39,9 +39,7 @@
     font-weight: normal;
 }
 /*============================= Menu ==============================================*/
-.menu-h3>a {
-    color: #fff !important;
-}
+.menu-h3>a {color: #fff !important;}
 
 /*============================= BODY ==============================================*/
 *, div {
@@ -87,21 +85,10 @@ header .container .row {position: relative;min-height: 65px;}
 #bd img {margin: 0 0 0 3px;top:0}
 #signIn {bottom: 3px}
 
-footer {
-    margin-top: 0 !important;
-    padding: 25px 0 15px;
-    background-color: #f0f0f0;
-    width: 100%;
-    font-size: 14px;
-}
+footer {margin-top: 0 !important;padding: 25px 0 15px;background-color: #f0f0f0;width: 100%;font-size: 14px;}
 footer b {font-weight: 700!important;font-size: 12px;}
 footer > .container { margin: 0 auto;position: relative;}
-footer > .container > .row:first-child > .col-md-3 {
-    position: absolute;
-    top: -5px;
-    right: 5px;
-    width: 270px;
-}
+footer > .container > .row:first-child > .col-md-3 {position: absolute;top: -5px;right: 5px;width: 270px;}
 
 #group {font-weight: 900!important;font-size: 13px;}
 #date {text-align: right;font-weight: 700!important;font-size: 16px;}
@@ -143,18 +130,16 @@ nav a:hover {color: #fff;}
 
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {background-color: #107ca4;}
+.navbar-collapse {max-width: 1170px;margin: 0 auto;}
 
 .grid-demo .row [class*="col-"] {background-color: transparent;border: 0;color: #fff;}
 .grid-demo .row .row [class*="col-"] {border-left: 1px solid #16627e;padding-bottom: 10px;}
+.grid-demo li, .grid-demo li a {font-size: 14px;line-height: 1.6;text-align: left;color: #fff;display: block;}
+.grid-demo li:last-child {margin-bottom: 15px;}
+.grid-demo {max-width: 1170px;margin: 0 auto;}
 
 .menu-h3 {font-size: 12px;display: block;font-weight: 700!important;text-align: left;color: #003049;text-transform: uppercase;height: 35px;}
-.grid-demo li, .grid-demo li a {
-    font-size: 14px;line-height: 1.6;text-align: left;color: #fff;display: block;}
-.grid-demo li:last-child {margin-bottom: 15px;}
 .li-b {color: #003049;font-size: 12px;font-weight: normal!important;display: block;margin-bottom: 10px;}
-.grid-demo {max-width: 1170px;margin: 0 auto;}
-.navbar-collapse {max-width: 1170px;margin: 0 auto;}
-
 .curr {background-color: #076e93;}
 
 /*============================== SLIDER HOME =======================================*/
@@ -198,28 +183,18 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     top: 5px;
     left: 100px;
 }
-.carousel-caption li a button {
-    position: absolute;
-    top: 2px;
-    right: 10px;
-    margin: 0;
-}
-
+.carousel-caption li a button {position: absolute;top: 2px;right: 10px;margin: 0;}
 .carousel-indicators li {background-color: #004b67;border: 0;}
 .carousel-indicators .active {background-color: #969696;}
 .carousel-control {border-radius: 10px;width: 65px;height: 65px;display: inline-block;}
 
 
 /*============================== SLIDER PRODUTOS / OBRAS =======================================*/
-
 /* PRODUTOS */
 .control-try3 {bottom: auto;top: 45% !important;background-image: none !important;font-size: 40px !important;}
 
 /* OBRAS */
-.portfolio .carousel {
-    max-width: 650px;
-    position: relative;
-}
+.portfolio .carousel {max-width: 650px;position: relative;}
 .portfolio .carousel-caption.carousel-caption2 {
     width: 120px;
     height: 50px;
@@ -238,7 +213,6 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     position: absolute;
     top: -6px;
 }
-
 .related .img-responsive {width:150px;height: 150px;}
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
@@ -251,7 +225,6 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 
 
 /*============================== OBRAS =======================================*/
-
 div.obras-container a {width: 256px;height: 230px;display:inline-block;float: left;margin: 12px;position: relative;box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 .obras-list {margin: 0; display:inline-block;width: 100%;height: 100%;}
 .obras-list img {position: absolute;width: 100%;height: 100%;border-radius: 10px;}
@@ -271,11 +244,7 @@ div.obras-container a {width: 256px;height: 230px;display:inline-block;float: le
 div.obras-container {display: inline-block;padding: 0 10px;margin: 0 auto;position: relative;}
 
 /*============================== MAPS ===================================*/
-#map-canvas {
-    width: 100%;
-    height: 380px;
-    display: block;
-}
+#map-canvas {width: 100%;height: 380px;display: block;}
 div#map, div#map div, div#map-instaladores, div#map-instaladores div {
     -moz-transition: none;
     -webkit-transition: none;
@@ -283,29 +252,21 @@ div#map, div#map div, div#map-instaladores, div#map-instaladores div {
     transition: none;
 }
 
-div#map-instaladores > #map-canvas {
-    height: 550px;
-}
+div#map-instaladores > #map-canvas {height: 550px;}
 
 /*============================== CONTACTOS ===================================*/
-
-hr.divider {
-    border: 0 !important;
-    margin: -10px 0 40px !important;
-}
-
+hr.divider {border: 0 !important;margin: -10px 0 40px !important;}
 .contactus > .row {margin: 30px 0;}
 .contactus > .row h3 {margin-top: 15px;}
 .contactus > .row > .col-md-6 input, .contactus > .row > .col-md-6 textarea, .contactus > .row > .col-md-6 select {margin: 0 0 8px;}
 .contactus > .row > .col-md-6 label {padding: 10px 0 8px;margin: 0;}
 .contactus .row .col-md-6 .row .col-md-6 {vertical-align: top;width: 49%;height: 280px;}
 
-/*============================== CANDIDATURAS ===================================*/
 
+/*============================== CANDIDATURAS ===================================*/
 .candidaturas .form-group, .contactos .form-group {height: 25px;}
 .container {margin: 0 auto  25px}
 .divider {border: 0;margin: -10px 0 40px;}
-
 
 /* ============================== NOTICIAS =================================== */
 .noticias ul {list-style: none;}
@@ -323,23 +284,16 @@ hr.divider {
     -webkit-box-orient: vertical;
     padding-right: 100px;
 }
-
 .noticia {margin: 0 0 30px;}
 .noticia h3 {color: #107ca4;font-size: 26px;margin: 0 0 2px;}
 .noticia .date {font-size: 11px;color: #717171;}
-.noticia .news-text {
-    padding-left: 25px;
-    line-height: 25px;
-    text-indent: 20px;
-}
-
+.noticia .news-text {padding-left: 25px;line-height: 25px;text-indent: 20px;}
 
 /* ============ BOOTSTRAP ACORDION ====================== */
 .panel-group {width: 100%;}
 .panel-group .panel {border-radius: 10px;}
 .panel.panel-default {margin: 0 0 15px;}
 .panel-default > .panel-heading {background-color: #107ca4;border-radius: 10px 10px 0 0;color: #fff;}
-
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
@@ -384,7 +338,6 @@ hr.divider {
 @media (max-width: 800px) {
     header {height: 140px;}
     header .row .pages-img {top: 50px;left: -10px;}
-
     .navbar-nav > li > a {font-size: 14px;padding: 15px 5px;}
 
     .carousel-caption {width: 90%;}
@@ -401,21 +354,14 @@ hr.divider {
         position: relative;
     }
     .related .carousel-inner .item .row .col-sm-2 a {display: inline-block;}
-    .related .carousel.slide .controls {
-        margin-top: 193px;
-    }
-    .related .carousel-inner .active {
-        max-width: 600px;
-        margin: 0 auto;
-        display: inline-block;
-    }
+    .related .carousel.slide .controls {margin-top: 193px;}
+    .related .carousel-inner .active {max-width: 600px;margin: 0 auto;display: inline-block;}
 }
 @media (max-width: 768px) {
     .content, .input, #contacts {width: 100% !important;}
     .nav > li {background-color: #016285;}
     .yamm .dropdown.yamm-fw .dropdown-menu {display: none;}
     .carousel-caption {display: none;}
-
     section > .container > .row .col-md-8, section > .container > .row .col-md-4 {display: block; width: 100%}
 
     footer > .container > .row .col-md-9 {width: 100%;text-align: center;}
