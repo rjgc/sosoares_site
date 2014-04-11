@@ -298,6 +298,7 @@ hr.divider {
 .contactus > .row h3 {margin-top: 15px;}
 .contactus > .row > .col-md-6 input, .contactus > .row > .col-md-6 textarea, .contactus > .row > .col-md-6 select {margin: 0 0 8px;}
 .contactus > .row > .col-md-6 label {padding: 10px 0 8px;margin: 0;}
+.contactus .row .col-md-6 .row .col-md-6 {vertical-align: top;}
 
 /*============================== CANDIDATURAS ===================================*/
 
@@ -376,6 +377,8 @@ hr.divider {
     .related .container #center .carousel.slide .row .col-md-2 {position: absolute;top: 10px;right: -30px;width: 200px;}
     .related .img-responsive {width:125px;height: 120px;}
 
+    .contactus .row .col-md-6 .row .col-md-6 {width: 49%;display: inline-block;}
+
 }
 @media (max-width: 800px) {
     header {height: 140px;}
@@ -449,6 +452,7 @@ hr.divider {
     .noticias ul li {max-height: 200px;}
     .noticias ul li .row > .col-md-9 a {float: right;margin: 10px 10px 0 0;}
     .noticias ul li h3 {width: 100%;white-space: normal;overflow: visible}
+    .contactus .row .col-md-6 .row .col-md-6 {width: 100%;display: block;text-align: center}
 }
 @media (max-width: 450px) {
     header {height: 160px;}

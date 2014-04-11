@@ -310,7 +310,7 @@ public function apoios_cliente()
 
     $data['pages'] = $paginas;
 
-    $this->load->view('pages/apoios_cliente', $data);
+    $this->load->view('pages/caixilharia/apoios_cliente', $data);
     $this->load->view('templates/footer');
 }
 
