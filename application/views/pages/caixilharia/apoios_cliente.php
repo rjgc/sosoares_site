@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="obras-container">
                 <?php if (!empty($pages)) {
-                    for ($i=0; $i < count($pages); $i++) {
+                    for ($i=1; $i <= count($pages); $i++) {
                         foreach ($pages[$i] as $page) {
                             ?>
                             <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {

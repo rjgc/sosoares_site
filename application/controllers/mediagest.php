@@ -272,7 +272,7 @@ function contactos_management()
 
 	$crud->set_table('contactos');
 	$crud->set_subject('Contactos');
-	$crud->columns('id_seccao', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
+	$crud->columns('id_categoria', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
 
 	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
 	$crud->display_as('id_categoria', 'Categoria');

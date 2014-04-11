@@ -435,7 +435,7 @@
                                                                     </li>
                                                                 </ul>
                                                             </li>
-                                                            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="apoios_cliente" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+                                                            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?= site_url('caixilharia/apoios_cliente') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
                                                                 <ul class="dropdown-menu">
                                                                     <li class="grid-demo">
                                                                         <div class="row">
