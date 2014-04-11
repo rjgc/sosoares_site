@@ -92,8 +92,13 @@ $y++;
 </ul>
 </div>
 <!--/main slider carousel-->
-<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div>
-<div><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div>
+<!--Share Links-->
+<div class="col-md-12">
+    <div class="facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div></div>
+    <div class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div>
+    <div class="google"><div class="g-plusone" data-size="tall" data-annotation="none"></div></div>
+</div>
+<!--/Share Links-->
 </div>
 <div class="col-md-5">
     <div class="descricao">
@@ -318,19 +323,3 @@ if (count($obras)>6) {
 <!--/Carousel obras-->
 <?php } ?>
 </main>
-<div id="fb-root"></div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>
-    !function(d,s,id){
-        var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-        fjs.parentNode.insertBefore(js,fjs);
-    }
-}(document, 'script', 'twitter-wjs');</script>

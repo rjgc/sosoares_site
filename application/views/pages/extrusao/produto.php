@@ -92,6 +92,13 @@ $y++;
 </ul>
 </div>
 <!--/main slider carousel-->
+<!--Share Links-->
+<div class="col-md-12">
+    <div class="facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div></div>
+    <div class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div>
+    <div class="google"><div class="g-plusone" data-size="tall" data-annotation="none"></div></div>
+</div>
+<!--/Share Links-->
 </div>
 <div class="col-md-5">
     <div class="descricao">
