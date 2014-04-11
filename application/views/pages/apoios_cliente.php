@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="obras-container">
                 <?php if (!empty($pages)) {
-                    for ($i=0; $i < count($pages); $i++) { 
+                    for ($i=1; $i <= count($pages); $i++) {
                         foreach ($pages[$i] as $page) {
                             ?>
                             <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
@@ -27,7 +27,18 @@
                                 echo site_url('vidro/apoio_cliente/'.$page['id_pagina']);
                             } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
                                 echo site_url('extrusao/apoio_cliente/'.$page['id_pagina']);
-                            } ?><?=site_url('pages/apoio_cliente_caixilharia/'.$page['id_pagina'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/apoio_cliente/<?php echo $page['imagem'] ?>"/><p> <?php echo $page['titulo_'.$this->lang->lang()]?></p></div></a>
+                            } ?><?=site_url('pages/apoio_cliente_caixilharia/'.$page['id_pagina'])?>">
+
+                                <div class="obras-list grow">
+                            <?php   if(empty($page['imagem'])) { ?>
+                                    <img src="<?php echo base_url() ?>assets/uploads/apoio_cliente/apoio_cliente.jpg"/>
+                            <?php   } else { ?>
+                                    <img src="<?php echo base_url() ?>assets/uploads/apoio_cliente/<?php echo $page['imagem'] ?>"/>
+                            <?php   } ?>
+                                    <p> <?php echo $page['titulo_'.$this->lang->lang()]?></p>
+                                </div>
+
+                            </a>
                             <?php
                         }
                     }
