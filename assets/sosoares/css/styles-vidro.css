@@ -7,6 +7,9 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 
 .menu-h3, .li-b {color: #04adf2;}
 
+.panel-default > .panel-heading {background-color: #054568;}
+
+
 /* ============================== PRODUTOS VIDRO =================================== */
 .produtos_vidro_list {
     width: 100%;
