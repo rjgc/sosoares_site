@@ -79,6 +79,24 @@ class Tratamento extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function grupos_sosoares()
+    {
+        $data['page_style']= "tratamento";
+        $data['current'] = 'grupos_sosoares';
+        $this->load->view('templates/header', $data);
+
+        $paginas;
+
+        for ($i=1; $i < 7; $i++) {
+            $paginas[$i] = $this->sosoares_model->get_pages($i);
+        }
+
+        $data['pages'] = $paginas;
+
+        $this->load->view('pages/grupos_sosoares', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function areas_comerciais()
     {
         $data['page_style']= "tratamento";

@@ -36,36 +36,52 @@
     </div>
 </footer>
 <script>
-    $(function(){
-        var content1 = $('.content-1').height();
+// TABS PRODUTOS
 
-        document.getElementById("tab-1").checked=true;
+$(function(){
+    var content1 = $('.content-1').height();
 
+    document.getElementById("tab-1").checked=true;
+
+    $('.tab-content').css('height', content1+40);
+});
+
+function tab(elem){
+    var content1 = $('.content-1').height();
+    var content2 = $('.content-2').height();
+
+    if (elem.getAttribute('id') == 'tab-1') {
         $('.tab-content').css('height', content1+40);
-    });
-
-    function tab(elem){
-        var content1 = $('.content-1').height();
-        var content2 = $('.content-2').height();
-
-        if (elem.getAttribute('id') == 'tab-1') {
-            $('.tab-content').css('height', content1+40);
-        } else {
-            $('.tab-content').css('height', content2+40);
-        }
+    } else {
+        $('.tab-content').css('height', content2+40);
     }
-</script>
-<script>
-    $(function() {
-        $( "#accordion" ).accordion();
-    });
-</script>
-<script>
-    $('#myCarousel').carousel({
-        interval: 4000
-    });
+}
+
+// TABS LOGIN
+
+document.getElementById("tab").style.width="290px";
+document.getElementById("form").style.padding="0 0 0 20px";
+
+function login(elem){
+    document.getElementById("tab").style.width="290px";
+    document.getElementById("form").style.padding="0 0 0 20px";
+}
+
+function registar(elem){
+}
+
+//BANNERS
+
+$(function() {
+    $( "#accordion" ).accordion();
+});
+
+$('#myCarousel').carousel({
+    interval: 4000
+});
 
 // handles the carousel thumbnails
+
 $('[id^=carousel-selector-]').click( function(){
     var id_selector = $(this).attr("id");
     var id = id_selector.substr(id_selector.length -1);
@@ -76,6 +92,7 @@ $('[id^=carousel-selector-]').click( function(){
 });
 
 // when the carousel slides, auto update
+
 $('#myCarousel').on('slid.bs.carousel', function () {
     var id = $('.item.active').data('slide-number');
     id = parseInt(id);
@@ -87,17 +104,16 @@ $('#myCarousel').on('slid.bs.carousel', function () {
             $('[id^=title-'+i+']').addClass('hidden');  
         }
     };    
-});            
-</script>
-<script>
-    $(document).ready(function() {
-        $('#myCarousel2').carousel({
-            interval: 10000
-        })
+});      
 
-        $('#myCarousel2').on('slid.bs.carousel', function() {
-        });
+$(document).ready(function() {
+    $('#myCarousel2').carousel({
+        interval: 10000
+    })
+
+    $('#myCarousel2').on('slid.bs.carousel', function() {
     });
+});
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACyHnR6xtiTqqjSrYl05xkIKzO6fYJZqk&sensor=false"></script>
 <?php
@@ -209,36 +225,36 @@ if(isset($page_title)) {
 }
 ?>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/html5shiv.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/respond.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/holder.js"></script>
-        <![endif]-->
+<!--[if lt IE 9]>
+<script src="<?php echo base_url() ?>assets/sosoares/js/html5shiv.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/respond.min.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/holder.js"></script>
+<![endif]-->
 
-    </body>
-    </html>
-    <!--Share Links-->
-    <!--Facebook-->
-    <div id="fb-root"></div>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    <!--Twitter-->
-    <script>
-        !function(d,s,id){
-            var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-            if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js,fjs);
-        }
-    }(document, 'script', 'twitter-wjs');</script>
-    <!--Google+-->
-    <script type="text/javascript">
-      (function() {
+</body>
+</html>
+<!--Share Links-->
+<!--Facebook-->
+<div id="fb-root"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--Twitter-->
+<script>
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js,fjs);
+    }
+}(document, 'script', 'twitter-wjs');</script>
+<!--Google+-->
+<script type="text/javascript">
+    (function() {
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/platform.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);

@@ -25,7 +25,7 @@
                     case 4:
                     echo lang('responsabilidade');
                     break;
-                    case 13:
+                    case 5:
                     echo lang('quem');
                     break;
                 } ?></li>

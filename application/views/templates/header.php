@@ -63,25 +63,29 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink"><?=lang('signin')?></button></a>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink"><?=lang('area_privada')?></button></a>
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" id="tab">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#login" data-toggle="tab">Área Privada</a></li>
+                                        <li class="active"><a href="#area_privada" data-toggle="tab" onclick="login(this)">Área Privada</a></li>
                                         <li><a href="#registar" data-toggle="tab">Registe-se</a></li>
                                     </ul>
                                 </div>
                                 <form method="post" role="form">
-                                    <div class="modal-body">                        
+                                    <div class="modal-body" id="form">                        
                                         <p style="visibility: hidden;" id='erro'>Erro</p>
-                                        <div class="tab-pane fade in active" id="login">
-                                            <input class="form-control input" type="text" id="username" name="username" placeholder="Username">
+                                        <div class="tab-pane fade in active" id="area_privada">
+                                            <label>Username: </label> 
+                                            <label id="label-username" data-container="#area_privada" data-toggle="popover" data-placement="left" data-content="Verifique o seu Username."></label> 
+                                            <input style="padding: 0 0 0 10px!important;" class="form-control input" type="text" id="username" name="username" placeholder="Username">
                                             <p></p>
-                                            <input class="form-control input" type="password" id="password" name="password" placeholder="Password">
+                                            <label>Password: </label> 
+                                            <label id="label-password" data-container="#area_privada" data-toggle="popover" data-placement="left" data-content="Verifique a sua Password."></label> 
+                                            <input style="padding: 0 0 0 10px!important;" class="form-control input" type="password" id="password" name="password" placeholder="Password">
                                             <p style="display:inline-block;">Remember:</p><input style="margin:0 0 0 5px !important;" type="checkbox" name="remember" value="1">
                                         </div>
                                         <div class="tab-pane fade" id="registar">...</div>
@@ -137,9 +141,31 @@
 
             if (!$this->ion_auth->logged_in())
             {
-                echo "<script type='text/javascript'> $('#signin').click(); document.getElementById('erro').style.visibility='visible';</script>";
+                echo "<script type='text/javascript'> 
+                $('#signin').click(); 
+
+                document.getElementById('erro').style.visibility='visible';
+
+                var x = document.getElementsByTagName('div');
+
+                //x = Array.prototype.slice.call(x);
+
+                // foreach (var y in x) {
+                //     alert(y)
+                //     if (y.className == 'popover') {
+                //         document.getElementById(y).style.top='61px';
+                //         document.getElementById(y).style.left='-181px';
+                //     }
+                // }
+                
+                $('#label-username').popover('show');
+                
+                document.getElementById('label-password').style.top='133px';
+                document.getElementById('label-password').style.left='-176px';
+                $('#label-password').popover('show');         
+                </script>";
             } else if ($this->ion_auth->logged_in()) {
-                echo "<script type='text/javascript'> $('#cancel').click();</script>";
+                echo "<script type='text/javascript'> $('#cancel').click(); </script>";
             }
         }
         ?>

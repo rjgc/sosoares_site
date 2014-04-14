@@ -15,7 +15,7 @@
     </div>
     <?php } else { ?>
     <li><a href="<?=site_url('caixilharia/produtos/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
-    <?php               if (!empty($produto['caracteristica'])) { ?>
+    <?php if (!empty($produto['caracteristica'])) { ?>
     <li><?=$produto['caracteristica']?></li>
     <?php } ?>
     <li><?=$produto['nome_'.$this->lang->lang()]?></li>

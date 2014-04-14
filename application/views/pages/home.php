@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="logotipo grow">
-                    <a href="http://localhost/GitHub/sosoares_site/"><h1>Grupo Sosoares</h1></a>
+                    <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
                 </div>
                 <div id="bd">
                     <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="areaReservada">
                     <a href="#">
-                        <button class="btn button shrink"><?=lang('reserved')?></button>
+                        <button class="btn button shrink"><?=lang('area_privada')?></button>
                     </a>
                 </div>
             </div>

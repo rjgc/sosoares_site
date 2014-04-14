@@ -46,9 +46,6 @@ $lang["extrusao"] = "Extrusión";
 
 $lang["tratamento"] = "Traitement de Surface";
 
-$lang["reserved"] = "Espace Réservé";
-
-
 /*Menu Caixilharia*/
 
 
@@ -164,13 +161,13 @@ $lang["imitacao"] = "Imitation Bois";
 
 $lang["pesquisar"] = "Recherche";
 
+$lang["area_privada"] = "Espace Privé";
+
 
 /*Footer*/
 
 
 $lang["direitos"] = "Tous Droits Réservés";
-
-$lang["signin"] = "Signer Dans";
 
 
 /*Paginas*/
