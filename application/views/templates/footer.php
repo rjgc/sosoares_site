@@ -1,7 +1,7 @@
 <!-- FOOTER -->
 </section>
 <footer>
-    <div class="container">
+    <div style="padding-left: 18px;" class="container">
         <div class="row">
             <div class="col-md-9">
                 <img src="<?php echo base_url() ?>assets/sosoares/img/gs.jpg" width="29" height="28" alt="GS" /> &nbsp;&copy; <b id="group">GRUPO SOSOARES</b> <?=lang('direitos')?>

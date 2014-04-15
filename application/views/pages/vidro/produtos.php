@@ -11,7 +11,7 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <div class="obras-container">
+                <div class="obras-container produtos-container">
                     <?php
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){

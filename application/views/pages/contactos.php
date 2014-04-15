@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="row">
-                                <span style="display: inline-block">* <?=lang('obrigatorio')?></span>
+                                <span style="display: inline-block; padding-left: 15px;">* <?=lang('obrigatorio')?></span>
                                 <div style="float: right;margin: 15px 30px">
                                     <input class="btn button shrink" type="reset" value="<?=lang('limpar')?>">
                                     <input class="btn button shrink" type="submit" value="<?=lang('enviar')?>">

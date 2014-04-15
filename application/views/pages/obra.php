@@ -8,7 +8,7 @@
                     <li><?=$obra['nome_'.$this->lang->lang()]?></li>
                 </ul>
                 <h1 class="title3"><?=$obra['nome_'.$this->lang->lang()]?></h1>
-                <h5 style="margin: 0 5px 10px;"><strong><?=lang('localizacao')?>:</strong> <?=$obra['localizacao']?></h5>
+                <h5 style="margin: 0 5px 10px 17px;"><strong><?=lang('localizacao')?>:</strong> <?=$obra['localizacao']?></h5>
             </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
                         <!-- thumb navigation carousel -->
                         <!-- main slider carousel -->
                         <div class="row">
-                            <div id="myCarousel" class="carousel slide">
+                            <div style="padding-left: 8px;" id="myCarousel" class="carousel slide">
                                 <!-- main slider carousel items -->
                                 <div class="carousel-inner" style="max-height: 350px;">
                                     <?php
@@ -52,7 +52,7 @@
                                 ?>
                             </div>
                             <!--/main slider carousel-->
-                            <div class="col-md-12 thumbs" id="slider-thumbs" style="padding-left: 0px !important; padding-right: 0px !important;">
+                            <div class="col-md-12 thumbs" id="slider-thumbs" style="padding-left: 8px !important; padding-right: 0px !important;">
                                 <ul class="list-inline">
                                     <?php
                                     $z = 0;
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a style="padding-left: 8px;" href="#">
                     <button class="btn button shrink" style="width: 200px; margin: 10px;background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center; background-size: 18px"><?=lang('modo')?> Slideshow</button>
                 </a>
             </div>
@@ -95,7 +95,7 @@
     <?php
     if(!empty($produtos_aluminio_obra)) { ?>
     <section class="related">
-        <div class="container">
+        <div style="padding-left: 32px;" class="container">
             <div id="center">
                 <div id="myCarousel2" class="carousel slide">
                     <div class="row">

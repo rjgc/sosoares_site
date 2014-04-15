@@ -49,7 +49,7 @@ public function home()
     $this->menu($data);
 
     $this->load->view('templates/carousel_caixilharia', $data, $this->get_lang());
-    $this->load->view('pages/caixilharia', $data);
+    $this->load->view('pages/inicio', $data);
     $this->load->view('templates/footer');
 }
 

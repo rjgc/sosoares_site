@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <div id="map-instaladores">
                 <div id="map-canvas"></div>
             </div>

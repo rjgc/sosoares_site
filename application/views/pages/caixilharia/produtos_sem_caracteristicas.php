@@ -11,7 +11,7 @@
     </div>
 
     <div>
-        <h4><?php echo $tipo['nome_'.$this->lang->lang()] ?></h4>
+        <h4 style="padding-left: 15px;"><?php echo $tipo['nome_'.$this->lang->lang()] ?></h4>
         <!-- /row -->
         <div class="row">
             <div class="col-md-12">

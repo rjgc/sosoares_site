@@ -8,8 +8,10 @@
             </ul>
         </div>
     </div>
-    <div class="alert alert-warning">
-        <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('vidro/produtos')?>">Voltar atrás.</a></h5>
+    <div style="padding-left: 15px;">
+        <div class="alert alert-warning">
+            <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('vidro/produtos')?>">Voltar atrás.</a></h5>
+        </div>
     </div>
 </div>
 <?php } else { ?>
@@ -59,7 +61,7 @@
     <!--</div>-->
 </div>
 <!--/main slider carousel-->
-<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 0px !important;">
+<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 15px !important;">
     <ul class="list-inline">
         <?php
         $i=1;

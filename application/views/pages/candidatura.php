@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="row candidaturas">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <form method="get">
                 <fieldset>
                     <legend><?=lang('dados')?></legend>
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <span style="display: inline-block">* <?=lang('obrigatorio')?></span>
+                        <span style="display: inline-block; padding-left: 30px;">* <?=lang('obrigatorio')?></span>
                         <div style="float: right;margin: 15px 30px">
                             <input class="btn button shrink" type="reset" value="<?=lang('limpar')?>">
                             <input class="btn button shrink" type="submit" value="<?=lang('enviar')?>">

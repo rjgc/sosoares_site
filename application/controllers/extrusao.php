@@ -56,7 +56,7 @@ public function home()
 	} 
 
 	$this->load->view('templates/carousel_extrusao', $data, $this->get_lang());
-	$this->load->view('pages/extrusao', $data);
+	$this->load->view('pages/inicio', $data);
 	$this->load->view('templates/footer');
 }
 

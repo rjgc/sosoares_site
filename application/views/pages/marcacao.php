@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div style="margin-bottom: 10px;"><?php echo $marcacao['descricao_'.$this->lang->lang()]?></div>
+    <div style="padding-left: 15px; margin-bottom: 10px;"><?php echo $marcacao['descricao_'.$this->lang->lang()]?></div>
     <?php } else { ?>
 </ul>
 </div>

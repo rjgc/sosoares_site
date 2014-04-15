@@ -1486,6 +1486,8 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     var $e = this.$element
     var o  = this.options
 
+    alert(o)
+
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
             o.content.call($e[0]) :

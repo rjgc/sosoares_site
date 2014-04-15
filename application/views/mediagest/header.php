@@ -36,6 +36,7 @@
         <ul>
             <li <?php if ($data['titulo'] == 'Imagem de Fundo' ||
                 $data['titulo'] == 'Banners' ||
+                $data['titulo'] == 'Newsletter' ||
                 $data['titulo'] == 'Destinatários'||
                 $data['titulo'] == 'Áreas Comerciais'||
                 $data['titulo'] == 'Contactos') echo 'class="section"'; ?>>
@@ -43,6 +44,7 @@
                 <ul class="submenu">
                     <li><a href='<?php echo site_url("mediagest/background_image_management")?>'> Imagem de Fundo</a></li>
                     <li><a href='<?php echo site_url("mediagest/banners_management")?>'> Banners</a></li>
+                    <li><a href='<?php echo site_url("mediagest/newsletter_management")?>'> Newsletter</a></li>
                     <li><a href='<?php echo site_url("mediagest/destinatarios_management")?>'> Destinatários</a></li>
                     <li><a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'> Áreas Comerciais</a></li>
                     <li><a href='<?php echo site_url("mediagest/contactos_management")?>'> Contactos</a></li>

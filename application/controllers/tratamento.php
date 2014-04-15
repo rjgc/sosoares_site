@@ -56,7 +56,7 @@ class Tratamento extends CI_Controller {
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/carousel_tratamento', $data, $this->get_lang());
-        $this->load->view('pages/tratamento', $data);
+        $this->load->view('pages/inicio', $data);
         $this->load->view('templates/footer');
     }
 

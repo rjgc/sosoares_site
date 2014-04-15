@@ -9,8 +9,10 @@
                 </ul>
             </div>
         </div>
-        <div class="alert alert-warning">
-            <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
+        <div style="padding-left: 15px;">
+            <div class="alert alert-warning">
+                <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
+            </div>
         </div>
     </div>
     <?php } else { ?>
@@ -63,7 +65,7 @@
     <!--</div>-->
 </div>
 <!--/main slider carousel-->
-<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 0px !important;">
+<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 15px !important;">
     <ul class="list-inline">
         <?php
         $i=1;
@@ -200,6 +202,88 @@ $y++;
         </div>
         <?php } ?>
     </div>
+    <h2 class="title4"><?=lang('info')?></h2>
+    <div class="tabs">
+        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" onclick="tab(this)"/>
+        <label for="tab-1" class="tab-label-1"><?=lang('corte')?></label>
+
+        <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" onclick="tab(this)"/>
+        <label for="tab-2" class="tab-label-2">Downloads</label>
+
+        <div class="clear-shadow"></div>
+
+        <div class="tab-content">
+            <div class="content-1">
+                <?php
+                $i=1;
+                while ($i<5)
+                {
+                    if (!empty($produto['corte_'.$i])){
+                        ?>
+                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
+                        </a>
+                    </br>
+                    <?php
+                } else if (empty($produto['corte_'.$i]) && $i == 1) { ?>
+                <li>Sem Cortes</li>
+                <?php } $i++;
+            }
+            ?>
+        </div>
+        <div class="content-2">
+            <h3><?=lang('perfis')?></h3>
+            <p>
+                <?php if (!empty($perfis)) {
+                    foreach ($perfis as $perfil) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><li><?=$perfil['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem perfis</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('pormenores')?></h3>
+            <p>
+                <?php if (!empty($pormenores)) {
+                    foreach ($pormenores as $pormenor) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><li><?=$pormenor['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem pormenores</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('catalogo')?></h3>
+            <p>
+                <?php if (!empty($catalogos)) {
+                    foreach ($catalogos as $catalogo) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><li><?=$catalogo['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem catálogos</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('itt')?></h3>
+            <p>
+                <?php if (!empty($ensaios)) {
+                    foreach ($ensaios as $ensaio) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem ensaios</li>
+                <?php } ?>
+            </p>
+            <h3><?=lang('folheto')?></h3>
+            <p>
+                <?php if (!empty($folhetos)) {
+                    foreach ($folhetos as $folheto) { ?>
+                    <a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><li><?=$folheto['nome_'.$this->lang->lang()]?></li></a>
+                    <?php }
+                } else { ?>
+                <li>Sem folhetos promocionais</li>
+                <?php } ?>
+            </p>
+        </div>
+    </div>
 </div>
 </div>
 </div>
@@ -207,7 +291,7 @@ $y++;
 <?php
 if(!empty($obras)) { ?>
 <section class="related">
-    <div class="container">
+    <div style="padding-left: 32px;" class="container">
         <div id="center">
             <div id="myCarousel2" class="carousel slide">
                 <div class="row">

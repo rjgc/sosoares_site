@@ -181,13 +181,14 @@ function banners_management()
 	$crud->set_subject('Banners');
 	$crud->columns('nome_pt', 'banner');
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra');
-	$crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra');
+	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra', 'id_banner_noticia');
+	$crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
 
 	$crud->set_field_upload('banner', 'assets/uploads/banners');
 
 	$crud->set_relation('id_categoria_banner', 'categorias', 'nome');
 	$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
+	$crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');
 
 	$crud->callback_after_upload(array($this,'callback_after_upload_banners'));
 
@@ -207,13 +208,112 @@ function callback_after_upload_banners($uploader_response, $field_info, $files_t
 
 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-    //thumb
+//thumb
 	$this->image_moo->load($file_uploaded)->resize_crop(2000, 600)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-    //refold
+//refold
 	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/banners/thumb/".$uploader_response[0]->name);
 
 	return true;
+}
+
+
+//NEWSLETTER
+
+function newsletter_management()
+{
+	$crud = new grocery_CRUD();
+
+	$crud->set_table('newsletter');
+	$crud->set_subject('Newsletter');
+
+	$crud->unset_add();
+
+	$crud->add_action('Export', 'http://cdn-img.easyicon.net/png/5295/529568.png', 'mediagest/export_to_csv');
+
+	$output = $crud->render();
+
+	$data['titulo'] = 'Newsletter';
+	$data['sub-titulo'] = 'Faça aqui a gestão da Newsletter';
+
+	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+
+	$this->_admin_output($output);
+}
+
+function export_to_csv()
+{	
+	/*******EDIT LINES 3-8*******/
+	$DB_Server = "critecns.com"; //MySQL Server 
+	$DB_Username = "crtns25g_gestor"; //MySQL Username 
+	$DB_Password = "rGGST}T6vm=@";             //MySQL Password 
+	$DB_DBName = "crtns25g_sosoares";         //MySQL Database Name 
+	$DB_TBLName = "newsletter"; //MySQL Table Name
+	$filename = "newsletter";         //File Name
+	/*******YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE*******/
+
+	//create MySQL connection
+	$sql = "Select * from $DB_TBLName";
+
+	$Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password)
+	or die("Couldn't connect to MySQL:<br>" . mysql_error() . "<br>" . mysql_errno());
+
+	//select database
+	$Db = @mysql_select_db($DB_DBName, $Connect)
+	or die("Couldn't select database:<br>" . mysql_error(). "<br>" . mysql_errno());
+
+	//execute query
+	$result = @mysql_query($sql,$Connect)
+	or die("Couldn't execute query:<br>" . mysql_error(). "<br>" . mysql_errno());
+	$file_ending = "xls";
+
+	//header info for browser
+	header("Content-Type: application/xls");
+
+	header("Content-Disposition: attachment; filename=$filename.xls");
+
+	header("Pragma: no-cache");
+
+	header("Expires: 0");
+
+	/*******Start of Formatting for Excel*******/
+
+	//define separator (defines columns in excel & tabs in word)
+	$sep = "\t"; //tabbed character
+
+	//start of printing column names as names of MySQL fields
+	for ($i = 0; $i < mysql_num_fields($result); $i++) {
+		echo mysql_field_name($result,$i) . "\t";
+	}
+
+	print("\n");
+	//end of printing column names
+
+	//start while loop to get data
+	while($row = mysql_fetch_row($result))
+	{
+		$schema_insert = "";
+
+		for($j=0; $j<mysql_num_fields($result);$j++)
+		{
+			if(!isset($row[$j]))
+				$schema_insert .= "NULL".$sep;
+			elseif ($row[$j] != "")
+				$schema_insert .= "$row[$j]".$sep;
+			else
+				$schema_insert .= "".$sep;
+		}
+
+		$schema_insert = str_replace($sep."$", "", $schema_insert);
+
+		$schema_insert = preg_replace("/\r\n|\n\r|\n|\r/", " ", $schema_insert);
+
+		$schema_insert .= "\t";
+
+		print(trim($schema_insert));
+
+		print "\n";	
+	}
 }
 
 
@@ -323,10 +423,10 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
 
 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
 
- 	//thumb
+//thumb
 	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-	//refold
+//refold
 	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/noticias/thumb/".$uploader_response[0]->name);
 
 	return true;
@@ -525,7 +625,7 @@ function produtos_extrusao_management()
 
 	$crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
 	$crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
-	//$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
+//$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
 
 	$crud->callback_before_insert(array($this, 'callback_before_insert'));
 
@@ -690,10 +790,10 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
 
 	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
 
- 	//list - normal - thumb
+//list - normal - thumb
 	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-	//refold
+//refold
 	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
 	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
 	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
