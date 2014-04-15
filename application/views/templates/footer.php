@@ -17,16 +17,16 @@
                     <img src="<?php echo base_url() ?>assets/sosoares/img/35anos.jpg" width="68" height="77" alt="35 Anos">
                 </div>
                 <div class="col-md-3">
-                    <p><b>RUA DO CAMPO ALEGRE, 474</p>
-                    <p>4150-170 PORTO - PORTUGAL</b></p>
+                    <p class="footer"><b>RUA DO CAMPO ALEGRE, 474</p>
+                    <p class="footer">4150-170 PORTO - PORTUGAL</b></p>
                 </div>
                 <div class="col-md-2">
-                    <p>Tel +351 <b>226 096 709</b></p>
-                    <p> Tel +351 <b>226 005 642</b></p>
+                    <p class="footer">Tel +351 <b>226 096 709</b></p>
+                    <p class="footer"> Tel +351 <b>226 005 642</b></p>
                 </div>
                 <div class="col-md-3">
-                    <p>geral@sosoares.pt</p>
-                    <p>comercial@sosoares.pt</p>
+                    <p class="footer">geral@sosoares.pt</p>
+                    <p class="footer">comercial@sosoares.pt</p>
                 </div>
                 <div class="col-md-3">
                     &nbsp;

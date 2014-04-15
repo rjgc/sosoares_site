@@ -45,9 +45,9 @@
                     <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
                 </div>
                 <div class="pages-img">
-                    <a href="<?=site_url('caixilharia/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"><i class="icon-produtos_caixilharia grow font"></i></a>
-                    <a href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-produtos_vidro grow font"></i></a>
-                    <a href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-extrusao_new grow font"></i></a>
+                    <a class="lang" href="<?=site_url('caixilharia/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"><i class="icon-produtos_caixilharia grow font"></i></a>
+                    <a class="lang" href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-produtos_vidro grow font"></i></a>
+                    <a class="lang" href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-extrusao_new grow font"></i></a>
                     <a href="<?=site_url('tratamento/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"><i class="icon-tratamento_new grow font"></i></a>
                 </div>
                 <div class="form">
