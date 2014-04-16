@@ -201,7 +201,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 /* OBRAS */
 .portfolio .carousel {max-width: 650px;position: relative;}
 .portfolio .carousel-caption.carousel-caption2 {
-    width: 120px;
+    width: 80px;
     height: 50px;
     margin: 0;
     position: absolute;
@@ -212,12 +212,10 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     display: inline-block;
 }
 .portfolio .carousel-caption.carousel-caption2 ul {position: relative;}
-.portfolio .carousel-caption.carousel-caption2 ul li .control-try.control-try2 {
-    height: 30px !important;
-    width: 50px !important;
-    position: absolute;
-    top: -6px;
-}
+.portfolio .carousel-caption.carousel-caption2 ul li {margin: 0;}
+.portfolio .carousel-caption.carousel-caption2 ul li .control-try.control-try2 {height: 30px !important;width: 30px !important;position: absolute;top: -7px;}
+.portfolio .carousel-caption.carousel-caption2 ul li:nth-child(2) .control-try.control-try2 {left: 30px}
+
 .related .img-responsive {width:150px;height: 150px;}
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
