@@ -341,20 +341,20 @@ public function contactos()
     $this->load->view('templates/footer', $data);
 }
 
-    public function account()
-    {
-        if($this->ion_auth->logged_in() == true){
-            $data['page_style']= "caixilharia";
-            $data['current'] = 'reserved';
-            $this->menu($data);
-    
-            $this->load->view('pages/account', $data);
-            $this->load->view('templates/footer');
-        }
-        else{
-            //$this->home();
-            redirect('home');
-        }
-        
+public function account()
+{
+    if($this->ion_auth->logged_in() == true){
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'reserved';
+        $this->menu($data);
+
+        $this->load->view('pages/account', $data);
+        $this->load->view('templates/footer');
     }
+    else{
+        $this->home();
+        //redirect('home');
+    }
+    
+}
 }

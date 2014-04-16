@@ -59,6 +59,11 @@ class Tratamento extends CI_Controller {
         $this->load->view('pages/inicio', $data);
         $this->load->view('templates/footer');
     }
+    
+    public function menu($data) 
+    {
+        $this->load->view('templates/header', $data, $this->get_lang());
+    }
 
     public function grupo_sosoares($page=null)
     {
@@ -195,5 +200,22 @@ class Tratamento extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('pages/contactos', $data);
         $this->load->view('templates/footer', $data);
+    }
+    
+    public function account()
+    {
+        if($this->ion_auth->logged_in() == true){
+            $data['page_style']= "tratamento";
+            $data['current'] = 'reserved';
+            $this->menu($data);
+    
+            $this->load->view('pages/account', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $this->home();
+            //redirect('home');
+        }
+        
     }
 }

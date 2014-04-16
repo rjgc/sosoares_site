@@ -77,9 +77,26 @@
                 </div>
                 <div id="signIn">
                     <?php if($this->ion_auth->logged_in() == true){
-                          //echo $this->ion_auth->user()->row()->username; ?>
-                         <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
-                    <?php }else{ ?>
+                          //echo $this->ion_auth->user()->row()->username; 
+                                if(isset($page_style)) {
+                                      switch($page_style) {
+                                          case "caixilharia": ?>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                  <?php       break;
+                                          case "vidro": ?>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                  <?php       break;
+                                          case "extrusao": ?>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                  <?php       break;
+                                          case "tratamento": ?>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                  <?php       break;
+                                          default:
+                                              break;
+                                      }
+                                  }
+                         }else{ ?>
                            <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink" id="btn_signin">Login</button></a>
                     <?php } ?>
                 </div>
