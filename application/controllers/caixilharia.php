@@ -257,25 +257,20 @@ public function obras($id=null)
 
 public function servico($servico=null)
 {
-    if (!$this->ion_auth->logged_in())
-    {
-        redirect('auth/login');
+    $data['page_style']= "caixilharia";
+    $data['current'] = 'servico';
+    $data['servico'] = $servico;
+    $this->menu($data);
+
+    if ($servico != null) {
+        $data['servico'] = $this->caixilharia_model->get_servico($servico);
+
+        $this->load->view('pages/servico', $data);
     } else {
-        $data['page_style']= "caixilharia";
-        $data['current'] = 'servico';
-        $data['servico'] = $servico;
-        $this->menu($data);
+        $this->load->view('pages/servico', $data);
+    }
 
-        if ($servico != null) {
-            $data['servico'] = $this->caixilharia_model->get_servico($servico);
-
-            $this->load->view('pages/servico', $data);
-        } else {
-            $this->load->view('pages/servico', $data);
-        }
-
-        $this->load->view('templates/footer');
-    }        
+    $this->load->view('templates/footer');      
 }
 
 public function marcacao($marcacao=null)

@@ -12,21 +12,21 @@
                     echo site_url('tratamento/home');
                 } ?>"><?=lang('home')?></a></li>
                 <li><?=lang('grupo')?></li>
-                <li><?php switch ($page['id_pagina']) {
+                <li><?php switch ($page['id_pagina']) {                 
                     case 1:
-                    echo lang('mercados');
-                    break;
+                    echo lang('grupo');
+                    break;                    
                     case 2:
-                    echo lang('missao');
+                    echo lang('quem');
                     break;
                     case 3:
-                    echo lang('grupo');
+                    echo lang('missao');
                     break;
                     case 4:
                     echo lang('responsabilidade');
                     break;
                     case 5:
-                    echo lang('quem');
+                    echo lang('mercados');
                     break;
                 } ?></li>
             </ul>

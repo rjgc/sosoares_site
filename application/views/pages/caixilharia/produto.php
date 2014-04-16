@@ -109,89 +109,6 @@ $y++;
             <p><?php echo $produto['descricao_'.$this->lang->lang()]; ?></p>
         </div>
     </div>
-    <h2 class="title4"><?=lang('info')?></h2>
-    <div class="tabs">
-        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" onclick="tab(this)"/>
-        <label for="tab-1" class="tab-label-1"><?=lang('corte')?></label>
-
-        <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" onclick="tab(this)"/>
-        <label for="tab-2" class="tab-label-2">Downloads</label>
-
-        <div class="clear-shadow"></div>
-
-        <div class="tab-content">
-            <div class="content-1">
-                <?php
-                $i=1;
-                while ($i<5)
-                {
-                    if (!empty($produto['corte_'.$i])){
-                        ?>
-                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
-                        </a>
-                    </br>
-                    <?php
-                } else if (empty($produto['corte_'.$i]) && $i == 1) { ?>
-                <li>Sem Cortes</li>
-                <?php } $i++;
-            }
-            ?>
-        </div>
-        <div class="content-2">
-            <h3><?=lang('perfis')?></h3>
-            <p>
-                <?php if (!empty($perfis)) {
-                    foreach ($perfis as $perfil) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><li><?=$perfil['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem perfis</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('pormenores')?></h3>
-            <p>
-                <?php if (!empty($pormenores)) {
-                    foreach ($pormenores as $pormenor) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><li><?=$pormenor['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem pormenores</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('catalogo')?></h3>
-            <p>
-                <?php if (!empty($catalogos)) {
-                    foreach ($catalogos as $catalogo) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><li><?=$catalogo['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem catálogos</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('itt')?></h3>
-            <p>
-                <?php if (!empty($ensaios)) {
-                    foreach ($ensaios as $ensaio) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem ensaios</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('folheto')?></h3>
-            <p>
-                <?php if (!empty($folhetos)) {
-                    foreach ($folhetos as $folheto) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><li><?=$folheto['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem folhetos promocionais</li>
-                <?php } ?>
-            </p>
-        </div>
-    </div>
-</div>
 </div>
 <div class="col-md-3">
     <div class="descricao" style="margin-bottom: 50px;">
@@ -202,6 +119,8 @@ $y++;
         </div>
         <?php } ?>
     </div>
+</div>
+<div class="col-md-12">
     <h2 class="title4"><?=lang('info')?></h2>
     <div class="tabs">
         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" onclick="tab(this)"/>
@@ -213,77 +132,121 @@ $y++;
         <div class="clear-shadow"></div>
 
         <div class="tab-content">
-            <div class="content-1">
-                <?php
-                $i=1;
-                while ($i<5)
-                {
-                    if (!empty($produto['corte_'.$i])){
-                        ?>
-                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
-                        </a>
-                    </br>
+            <div class="content-1" style="width: 100%;">
+                <ul>
                     <?php
+                    $i=1;
+                    while ($i<5)
+                    {
+                        if (!empty($produto['corte_'.$i])) {
+                            if ($i==1){
+                                ?>                            
+                                <li style=" margin: 0;
+                                margin-left: 0;
+                                float: left;
+                                display: block;">
+                                <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                                    <img style="width: 180px;" src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
+                                </a>
+                            </li>
+                            <?php
+                        } else { ?>
+                        <li style=" margin: 0;
+                        margin-left: 15px;
+                        float: left;
+                        display: block;">
+                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                            <img style="width: 180px;" src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width:95%; height:70px; margin:2px 0 2px 0;">
+                        </a>
+                    </li>
+                    <?php }
                 } else if (empty($produto['corte_'.$i]) && $i == 1) { ?>
                 <li>Sem Cortes</li>
                 <?php } $i++;
             }
             ?>
-        </div>
-        <div class="content-2">
+        </ul>
+    </div>
+    <div class="content-2" style="width: 100%;">
+        <ul>
+            <li style=" margin: 0;
+            margin-left: 0;
+            float: left;
+            display: block;">
             <h3><?=lang('perfis')?></h3>
-            <p>
+            <ul style="margin-left: 18px;">
                 <?php if (!empty($perfis)) {
                     foreach ($perfis as $perfil) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><li><?=$perfil['nome_'.$this->lang->lang()]?></li></a>
+                    <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                     <?php }
                 } else { ?>
                 <li>Sem perfis</li>
                 <?php } ?>
-            </p>
-            <h3><?=lang('pormenores')?></h3>
-            <p>
-                <?php if (!empty($pormenores)) {
-                    foreach ($pormenores as $pormenor) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><li><?=$pormenor['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem pormenores</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('catalogo')?></h3>
-            <p>
-                <?php if (!empty($catalogos)) {
-                    foreach ($catalogos as $catalogo) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><li><?=$catalogo['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem catálogos</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('itt')?></h3>
-            <p>
-                <?php if (!empty($ensaios)) {
-                    foreach ($ensaios as $ensaio) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><li><?=$ensaio['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem ensaios</li>
-                <?php } ?>
-            </p>
-            <h3><?=lang('folheto')?></h3>
-            <p>
-                <?php if (!empty($folhetos)) {
-                    foreach ($folhetos as $folheto) { ?>
-                    <a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><li><?=$folheto['nome_'.$this->lang->lang()]?></li></a>
-                    <?php }
-                } else { ?>
-                <li>Sem folhetos promocionais</li>
-                <?php } ?>
-            </p>
-        </div>
-    </div>
+            </ul>
+        </li>
+        <li style=" margin: 0;
+        margin-left: 50px;
+        float: left;
+        display: block;">
+        <h3><?=lang('pormenores')?></h3>
+        <ul style="margin-left: 18px;">
+            <?php if (!empty($pormenores)) {
+                foreach ($pormenores as $pormenor) { ?>
+                <li><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                <?php }
+            } else { ?>
+            <li>Sem pormenores</li>
+            <?php } ?>
+        </ul>
+    </li>
+    <li style=" margin: 0;
+    margin-left: 50px;
+    float: left;
+    display: block;">
+    <h3><?=lang('catalogo')?></h3>
+    <ul style="margin-left: 18px;">
+        <?php if (!empty($catalogos)) {
+            foreach ($catalogos as $catalogo) { ?>
+            <li><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+            <?php }
+        } else { ?>
+        <li>Sem catálogos</li>
+        <?php } ?>
+    </ul>
+</li>
+<li style=" margin: 0;
+margin-left: 50px;
+float: left;
+display: block;">
+<h3><?=lang('itt')?></h3>
+<ul style="margin-left: 18px;">
+    <?php if (!empty($ensaios)) {
+        foreach ($ensaios as $ensaio) { ?>
+        <li><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
+        <?php }
+    } else { ?>
+    <li>Sem ensaios</li>
+    <?php } ?>
+</ul>
+</li>
+<li style=" margin: 0;
+margin-left: 50px;
+float: left;
+display: block;">
+<h3><?=lang('folheto')?></h3>
+<ul style="margin-left: 18px;">
+    <?php if (!empty($folhetos)) {
+        foreach ($folhetos as $folheto) { ?>
+        <li><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+        <?php }
+    } else { ?>
+    <li>Sem folhetos promocionais</li>
+    <?php } ?>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
