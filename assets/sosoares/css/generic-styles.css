@@ -172,7 +172,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     color: #fff;
     font-size: 30px;
     position: absolute;
-    top: 5px;
+    top: 0;
     left: 0;
 }
 .carousel-caption li:nth-child(2) .control-try {left: 45px;}
@@ -187,7 +187,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
     display: inline-block;
     margin: 0;
     position: absolute;
-    top: 5px;
+    top: 2px;
     left: 100px;
 }
 .carousel-caption li a button {position: absolute;top: 2px;right: 10px;margin: 0;}
