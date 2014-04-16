@@ -64,16 +64,11 @@ header .container .row {position: relative;min-height: 65px;}
 
 .pages-img {display: inline-block;position:absolute;left:200px;margin: 5px; top: 0;}
 .pages-img a {
-    margin: 0 1px;
-    border-radius: 100%;
-    border: 2px solid #fff;
     width: 52px;
     height: 52px;
     display: inline-block;
-    text-align: center;
-    padding: 10px 0;
 }
-.font {font-size: 170%;color: #fff;}
+.font {font-size: 320%;color: #fff;}
 .font-active {color: #01aef0!important;border-color: #01aef0!important;}
 .font-active > i.font {color: #01aef0!important;}
 

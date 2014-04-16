@@ -23,6 +23,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-outline_vidro:before {
+    content: "\e61d";
+}
+.icon-outline_tratamento:before {
+    content: "\e61e";
+}
+.icon-outline_extrusao:before {
+    content: "\e61f";
+}
+.icon-outline_caixilharia:before {
+    content: "\e620";
+}
 .icon-tratamento_new:before {
     content: "\e61b";
 }
