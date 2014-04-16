@@ -120,7 +120,7 @@ $y++;
         <?php } ?>
     </div>
 </div>
-<div class="col-md-12">
+<div class="col-md-12" style="margin-left: 15px;">
     <h2 class="title4"><?=lang('info')?></h2>
     <div class="tabs">
         <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" onclick="tab(this)"/>
