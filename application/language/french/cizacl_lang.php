@@ -161,7 +161,7 @@ $lang["imitacao"] = "Imitation Bois";
 
 $lang["pesquisar"] = "Recherche";
 
-$lang["area_privada"] = "Espace Privé";
+$lang["area_privada"] = "Espace Réservé";
 
 
 /*Footer*/

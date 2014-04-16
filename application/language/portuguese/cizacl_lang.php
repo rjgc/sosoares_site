@@ -162,7 +162,7 @@ $lang["imitacao"] = "Imitação Madeira";
 
 $lang["pesquisar"] = "Pesquisar";
 
-$lang["area_privada"] = "Área Privada";
+$lang["area_privada"] = "Área Reservada";
 
 
 /*Footer*/

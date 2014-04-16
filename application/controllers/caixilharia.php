@@ -340,4 +340,14 @@ public function contactos()
     $this->load->view('pages/contactos', $data);
     $this->load->view('templates/footer', $data);
 }
+
+    public function account()
+    {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'reserved';
+        $this->menu($data);
+
+        $this->load->view('pages/account', $data);
+        $this->load->view('templates/footer');
+    }
 }
