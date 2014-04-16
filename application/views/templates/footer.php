@@ -133,7 +133,8 @@ $('#myCarousel').on('slid.bs.carousel', function () {
     var id = $('.item.active').data('slide-number');
     id = parseInt(id);
     $('[id^=carousel-selector-]').removeClass('selected');
-    $('[id^=carousel-selector-'+id+']').addClass('selected');         
+    $('#carousel-selector-'+id+'').addClass('selected');         
+    
     $('[id^=title-]').removeClass('hidden');
     for (var i = 0; i < 20; i++) {
         if (id != i) {

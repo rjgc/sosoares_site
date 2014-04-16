@@ -14,27 +14,21 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/share_links.css">
-    <?php if(isset($page_style)) {
-        switch($page_style) {
-            case "vidro":
-            ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
-            <?php
-            break;
-            case "extrusao":
-            ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
-            <?php
-            break;
-            case "tratamento":
-            ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
-            <?php
-            break;
-            default:
-            break;  
-        }
-    }
+    <?php   if(isset($page_style)) {
+                switch($page_style) {
+                    case "vidro": ?>
+                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
+                <?php   break;
+                    case "extrusao": ?>
+                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
+                <?php   break;
+                    case "tratamento": ?>
+                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
+                <?php   break;
+                    default:
+                        break;
+                }
+            }
     ?>
 </head>
 <body>
@@ -49,12 +43,30 @@
                     <a href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-outline_vidro grow font"></i></a>
                     <a href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-outline_extrusao grow font"></i></a>
                     <a href="<?=site_url('tratamento/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"><i class="icon-outline_tratamento grow font"></i></a>
+                    <?php   if(isset($page_style)) {
+                                switch($page_style) {
+                                    case "caixilharia": ?>
+                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_caixilharia.png">
+                            <?php       break;
+                                    case "vidro": ?>
+                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_vidro.png">
+                            <?php       break;
+                                    case "extrusao": ?>
+                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_extrusao.png">
+                            <?php       break;
+                                    case "tratamento": ?>
+                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_tratamento.png">
+                            <?php       break;
+                                    default:
+                                        break;
+                                }
+                            }
+                    ?>
                 </div>
                 <div class="form">
                     <form>
                         <input type="search" class="form-control" id="search" name="search" placeholder="<?=lang('pesquisar')?>" />
                         <button id="searchButton" class="btn btn-default"><i class="icon-search"></i></button>
-                        <label>Qualquer coisa, <a href="">Logout</a></label>
                     </form>
                 </div>
                 <div id="bd">
@@ -65,61 +77,60 @@
                 </div>
                 <div id="signIn">
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink"><?=lang('area_privada')?></button></a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" id="tab">
-                            <div class="modal-content" id="tab-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="reset()">&times;</button>
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#area_privada" data-toggle="tab" onclick="login(this)">Área Privada</a></li>
-                                        <li><a href="#registar" data-toggle="tab">Registe-se</a></li>
-                                    </ul>
-                                </div>                                
-                                <form method="post" role="form">
-                                    <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
-                                    <div class="modal-body" id="form">            
-                                        <div class="tab-pane fade in active" id="area_privada">
-                                            <label>Username:</label>  
-                                            <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
-                                            <p></p>
-                                            <label>Password:</label> 
-                                            <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
-                                            <p style="display:inline-block;">Remember Me:</p><input style="margin:0 0 0 5px !important;" type="checkbox" name="remember" value="1">
-                                        </div>
-                                        <div class="tab-pane fade" id="registar">...</div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
-                                        <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
-                                    </div>
-                                </form>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" id="tab">
+                        <div class="modal-content" id="tab-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="reset()">&times;</button>
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#area_privada" data-toggle="tab" onclick="login(this)">Área Privada</a></li>
+                                    <li><a href="#registar" data-toggle="tab">Registe-se</a></li>
+                                </ul>
                             </div>
+                            <form method="post" role="form">
+                                <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
+                                <div class="modal-body" id="form">
+                                    <div class="tab-pane fade in active" id="area_privada">
+                                        <label>Username:</label>
+                                        <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
+                                        <p></p>
+                                        <label>Password:</label>
+                                        <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                        <p style="display:inline-block;">Remember Me:</p><input style="margin:0 0 0 5px !important;" type="checkbox" name="remember" value="1">
+                                    </div>
+                                    <div class="tab-pane fade" id="registar">...</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
+                                    <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
     </header>
     <nav>
-        <?php if(isset($page_style)) {
-            switch($page_style) {
-                case "caixilharia":
-                require_once('nav_caixilharia.php');
-                break;
-                case "vidro":
-                require_once('nav_vidro.php');
-                break;
-                case "extrusao":
-                require_once('nav_extrusao.php');
-                break;
-                case "tratamento":
-                require_once('nav_tratamento.php');
-                break;
-                default:
-                break;
-            }
-        }
+        <?php   if(isset($page_style)) {
+                    switch($page_style) {
+                        case "caixilharia":
+                            require_once('nav_caixilharia.php');
+                            break;
+                        case "vidro":
+                            require_once('nav_vidro.php');
+                            break;
+                        case "extrusao":
+                            require_once('nav_extrusao.php');
+                            break;
+                        case "tratamento":
+                            require_once('nav_tratamento.php');
+                            break;
+                        default:
+                            break;
+                    }
+                }
         ?>
     </nav>
     <section>
