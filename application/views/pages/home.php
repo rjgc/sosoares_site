@@ -16,7 +16,12 @@
             background:url("<?php echo base_url() ?>assets/uploads/background/<?php echo $background_image['foto'];?>") #e8e8e8 no-repeat fixed center;
             background-size: cover;
         }
-    </style>        
+    </style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="<?php echo base_url() ?>assets/js/html5shiv.js"></script>
+      <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
     <header>
