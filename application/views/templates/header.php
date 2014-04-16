@@ -76,7 +76,7 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink"><?=lang('area_privada')?></button></a>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" id="tab">
@@ -148,6 +148,17 @@
             }
         </script>
         <?php
+           if($this->ion_auth->logged_in() == true){
+             echo $this->ion_auth->user()->row()->username;
+            ?>
+            <script>
+              $('#signin').attr('href', '<?php echo site_url() ?>/caixilharia/account');
+              $('#btn_signin').text('Teste!!');
+           </script>
+          <?php
+          }
+        ?>
+        <?php
         if (isset($_POST['login']))
         {
             if (!empty($_POST['username']) && !empty($_POST['password'])) 
@@ -160,13 +171,13 @@
                 {
                     echo "<script type='text/javascript'> 
                     $('#signin').click(); 
-
                     document.getElementById('erro').style.visibility='visible';
-
                     $('#erro').popover('show');
                 </script>";
             } else if ($this->ion_auth->logged_in()) {
-                echo "<script type='text/javascript'> $('#cancel').click(); </script>";
+                print_r($this->ion_auth->user()->row());
+                echo "<script type='text/javascript'> $('#cancel').click();
+                </script>";
             }
         } else if (isset($_POST['cancel'])) {
             echo "<script type='text/javascript'> 
