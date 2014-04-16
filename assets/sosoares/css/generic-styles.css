@@ -268,6 +268,7 @@ hr.divider {border: 0 !important;margin: -10px 0 40px !important;}
 .contactus > .row > .col-md-6 input, .contactus > .row > .col-md-6 textarea, .contactus > .row > .col-md-6 select {margin: 0 0 8px;}
 .contactus > .row > .col-md-6 label {padding: 10px 0 8px;margin: 0;}
 .contactus .row .col-md-6 .row .col-md-6 {vertical-align: top;width: 49%;height: 280px;}
+legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 
 
 /*============================== CANDIDATURAS ===================================*/
