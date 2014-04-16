@@ -22,15 +22,21 @@
                 <fieldset>
                     <legend><?=lang('dados')?></legend>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
+                        <label class="col-sm-2 control-label" for="nome">Username:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="nome" name="nome" type="text">
+                            <?= $this->ion_auth->user()->row()->username; ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="mail"><?=lang('nome')?>:*</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="mail" name="mail" type="email" value="<?= $this->ion_auth->user()->row()->username; ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="mail" name="mail" type="email">
+                            <input class="form-control" id="mail" name="mail" type="email" value="<?= $this->ion_auth->user()->row()->email; ?>">
                         </div>
                     </div>
                     <div class="form-group">
