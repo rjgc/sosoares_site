@@ -62,7 +62,7 @@ header .container .row {position: relative;min-height: 65px;}
 .logotipo {max-width: 210px;max-height: 47px;overflow: hidden;margin: 5px 0}
 .logotipo h1 {background: url("../img/logotipo.png") no-repeat;background-size: contain;text-indent: -99999px;width: 210px;height: 39px;margin: 0}
 
-.pages-img {display: inline-block;position:absolute;left:200px;margin: 5px;}
+.pages-img {display: inline-block;position:absolute;left:200px;margin: 5px; top: 0;}
 .pages-img a {
     margin: 0 1px;
     border-radius: 100%;
@@ -81,9 +81,9 @@ header .container .row {position: relative;min-height: 65px;}
 .form #search, .form #searchButton {background-color: #054667;display: inline-block;height: 34px;width: 86%;padding: 10px;color: #fff;border-radius: 5px;border: 1px solid #107ca4;}
 .form #searchButton {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;height: 31px;width: 20%;border: 0;font-size: 18px;padding: 5px;margin: -3px 0 0 -15px;}
 .button {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;height: 31px;}
-#bd, #signIn {display: inline-block;position: absolute; right: 0;margin: 0}
+#bd, #signIn {display: inline-block;position: absolute; right: 0;margin: 0; top:0;}
 #bd img {margin: 0 0 0 3px;top:0}
-#signIn {bottom: 3px}
+#signIn {bottom: 3px; top: initial;}
 
 footer {margin-top: 0 !important;padding: 25px 0 15px;background-color: #f0f0f0;width: 100%;font-size: 14px;}
 footer b {font-weight: 700!important;font-size: 12px;}
