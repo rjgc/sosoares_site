@@ -76,7 +76,7 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
                 </div>
                 <div id="signIn">
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink" id="btn_signin">Login</button></a>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" id="tab">
@@ -149,11 +149,11 @@
         </script>
         <?php
            if($this->ion_auth->logged_in() == true){
-             echo $this->ion_auth->user()->row()->username;
+             //echo $this->ion_auth->user()->row()->username;
             ?>
             <script>
               $('#signin').attr('href', '<?php echo site_url() ?>/caixilharia/account');
-              $('#btn_signin').text('Teste!!');
+              $('#btn_signin').text('<?=lang('area_privada')?>');
            </script>
           <?php
           }
@@ -175,7 +175,6 @@
                     $('#erro').popover('show');
                 </script>";
             } else if ($this->ion_auth->logged_in()) {
-                print_r($this->ion_auth->user()->row());
                 echo "<script type='text/javascript'> $('#cancel').click();
                 </script>";
             }
