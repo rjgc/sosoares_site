@@ -719,6 +719,7 @@ function ficheiros_management()
 	$crud->order_by('id_ficheiro', 'asc');
 
 	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+	$crud->display_as('id_categoria_ficheiro', 'Categoria');
 
 	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
 
