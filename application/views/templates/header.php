@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/yamm.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/demo.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/hover.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/component.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">
@@ -169,34 +169,42 @@
                 document.getElementById('password').value='';
             }
         </script>
-        
-        <?php
-        if (isset($_POST['login']))
-        {
-            if (!empty($_POST['username']) && !empty($_POST['password'])) 
-            {
-                $active = isset($_POST['remember']) && $_POST['remember']  ? "1" : "0";
+        <?php   if (isset($_POST['login'])) {
+                    if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
-                $this->ion_auth->login($_POST['username'], $_POST['password'], $active);
+                        $active = isset($_POST['remember']) && $_POST['remember']  ? "1" : "0";
 
-                if (!$this->ion_auth->logged_in())
-                {
-                    echo "<script type='text/javascript'> 
-                    $('#signin').click(); 
-                    document.getElementById('erro').style.visibility='visible';
-                    $('#erro').popover('show');
-                </script>";
-            } else if ($this->ion_auth->logged_in()) {
-                echo "<script type='text/javascript'> $('#cancel').click();
-                </script>";
-            }
-        } else if (isset($_POST['cancel'])) {
-            echo "<script type='text/javascript'> 
-            $('#erro').popover('hide');
+                        $this->ion_auth->login($_POST['username'], $_POST['password'], $active);
 
-            document.getElementById('username').value='';
-            document.getElementById('password').value='';
-        </script>";
-    }
-}
-?>
+                        if (!$this->ion_auth->logged_in()) { ?>
+                            <script type='text/javascript'>
+                                $('#signin').click();
+                                document.getElementById('erro').style.visibility='visible';
+                                $('#erro').popover('show');
+                            </script>
+        <?php           } else if ($this->ion_auth->logged_in()) { ?>
+                            <script type='text/javascript'> $('#cancel').click();</script>
+                        <?php
+
+                            if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                                redirect('caixilharia/account');
+                            } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                                redirect('vidro/account');
+                            } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                                redirect('extrusao/account');
+                            } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                                redirect('tratamento/account');
+                            }
+
+                        ?>
+
+        <?php           }
+                    } else if (isset($_POST['cancel'])) { ?>
+                        <script type='text/javascript'>
+                            $('#erro').popover('hide');
+
+                            document.getElementById('username').value='';
+                            document.getElementById('password').value='';
+                        </script>
+        <?php       }
+                } ?>
