@@ -66,7 +66,7 @@ header .container .row {position: relative;min-height: 65px;}
     display: inline-block;
     vertical-align: top;
 }
-.pages-img img {margin-top: 5px;}
+.pages-img img {margin: 5px 0 0 15px;}
 
 .font {font-size: 320%;color: #fff;}
 .font-active {color: #01aef0!important;border-color: #01aef0!important;}

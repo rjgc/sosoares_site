@@ -124,8 +124,8 @@
                                     <div class="tab-pane fade" id="registar">...</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
                                     <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
+                                    <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
                                 </div>
                             </form>
                         </div>
