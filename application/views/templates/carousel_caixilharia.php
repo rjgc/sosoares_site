@@ -1,5 +1,5 @@
 <?php if (!empty($banners)) { ?>
-<div id="myCarousel_" class="carousel slide" data-ride="carousel">
+<div id="myCarousel_" class="carousel carousel2 slide" data-ride="carousel">
     <div class="carousel-inner carousel-inner-banner">
         <?php $i=0;  foreach ($banners as $banner) {
             if ($i == 0) { ?>

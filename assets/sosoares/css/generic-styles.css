@@ -150,6 +150,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 }
 
 /*============================== SLIDER HOME =======================================*/
+.carousel2 {overflow: hidden;max-height: 410px;}
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
