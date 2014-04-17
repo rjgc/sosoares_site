@@ -51,11 +51,11 @@ class Tratamento extends CI_Controller {
         if (!empty($banners)) {
             $data['banners'] = $banners;
         } else {
-            $data['banners_default'] = $this->sosoares_model->get_banners(1);
-        } 
+            $data['banners'] = $this->sosoares_model->get_banners(1);
+        }
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/carousel_tratamento', $data, $this->get_lang());
+        $this->load->view('templates/carousel', $data, $this->get_lang());
         $this->load->view('pages/inicio', $data);
         $this->load->view('templates/footer');
     }

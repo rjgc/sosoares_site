@@ -52,10 +52,10 @@ public function home()
     if (!empty($banners)) {
         $data['banners'] = $banners;
     } else {
-        $data['banners_default'] = $this->sosoares_model->get_banners(1);
-    }    
-    
-    $this->load->view('templates/carousel_vidro', $data, $this->get_lang());
+        $data['banners'] = $this->sosoares_model->get_banners(1);
+    }
+
+    $this->load->view('templates/carousel', $data, $this->get_lang());
     $this->load->view('pages/inicio', $data);
     $this->load->view('templates/footer');
 }

@@ -171,49 +171,34 @@ class Mediagest extends CI_Controller {
 
     // BANNERS
 
-        function banners_management()
-        {
-        	$crud = new grocery_CRUD();
+    function banners_management()
+    {
+        $crud = new grocery_CRUD();
 
-<<<<<<< HEAD
         $crud->set_table('banners');
         $crud->set_subject('Banners');
         $crud->columns('nome_pt', 'banner', 'id_categoria_banner');
 
         $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner');
         $crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
-=======
-        	$crud->set_table('banners');
-        	$crud->set_subject('Banners');
-        	$crud->columns('nome_pt', 'banner');
 
-        	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra', 'id_banner_noticia');
-        	$crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
->>>>>>> 48079d305d44cc8ef04ca2a590bd918330d0480f
+        $crud->set_field_upload('banner', 'assets/uploads/banners');
 
-        	$crud->set_field_upload('banner', 'assets/uploads/banners');
-
-<<<<<<< HEAD
         $crud->set_relation('id_categoria_banner', 'categorias', 'nome');
         /*$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
         $crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');*/
-=======
-        	$crud->set_relation('id_categoria_banner', 'categorias', 'nome');
-        	$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
-        	$crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');
->>>>>>> 48079d305d44cc8ef04ca2a590bd918330d0480f
 
-        	$crud->callback_after_upload(array($this,'callback_after_upload_banners'));
+        $crud->callback_after_upload(array($this,'callback_after_upload_banners'));
 
-        	$output = $crud->render();
+        $output = $crud->render();
 
-        	$data['titulo'] = 'Banners';
-        	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners';
+        $data['titulo'] = 'Banners';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Banners';
 
-        	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-        	$this->_admin_output($output);
-        }
+        $this->_admin_output($output);
+    }
 
         function callback_after_upload_banners($uploader_response, $field_info, $files_to_upload)
         {
