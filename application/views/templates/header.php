@@ -30,6 +30,11 @@
                 }
             }
     ?>
+
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-ie-styles.css">
+    <![endif]-->
+
 </head>
 <body>
     <header>
