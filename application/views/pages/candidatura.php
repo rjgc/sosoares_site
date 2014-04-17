@@ -17,8 +17,7 @@
             <h1 class="title3"><?=lang('candidaturas')?></h1>
         </div>
     </div>
-    <?php if (!empty($message))echo $message; ?>
-    <?php //echo validation_errors(); ?>
+    <?php if (!empty($message)) echo $message; ?>
     <?php $this->load->helper('form'); ?>
     <?php echo form_open($this->lang->lang().'/caixilharia/send_candidatura/'); ?>
     <div class="row candidaturas">
@@ -66,8 +65,8 @@
                     <div class="row">
                         <span style="display: inline-block; padding-left: 30px;">* <?=lang('obrigatorio')?></span>
                         <div style="float: right;margin: 15px 30px">
-                            <input class="btn button shrink" type="reset" value="<?=lang('limpar')?>">
-                            <input class="btn button shrink" type="submit" value="<?=lang('enviar')?>">
+                            <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
+                            <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
                         </div>
                     </div>
                 </fieldset>
