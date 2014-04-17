@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="telf"><?=lang('telefone')?>:</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="telf" name="telf" type="tel">
+                                    <input class="form-control" id="telefone" name="telefone" type="tel">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -58,13 +58,13 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="telm"><?=lang('telemovel')?>:*</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="telm" name="telm" type="tel">
+                                    <input class="form-control" id="telemovel" name="telemovel" type="tel">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" id="mail" name="mail" type="email">
+                                    <input class="form-control" id="email" name="email" type="email">
                                 </div>
                             </div>
                             <div>
