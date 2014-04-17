@@ -402,10 +402,13 @@ class image_CRUD {
 	{
 		$this->image_moo
 			->load($image_path)
+			->set_background_colour("#D9D9D9")
 			->resize_crop(80,60)
 			->save($thumbnail_path,true)
+			->set_background_colour("#D9D9D9")
 			->resize_crop(256,230)
 			->save($list_path,true)
+			->set_background_colour("#D9D9D9")
 			->resize_crop(1024,600)
 			->save($normal_path,true);
 
