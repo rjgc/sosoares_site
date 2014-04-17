@@ -104,7 +104,7 @@ footer > .container > .row:first-child > .col-md-3 {position: absolute;top: -5px
 .title4 {font-size: 22px;font-weight: 100!important;}
 .breadcrumb {background-color: #e8e8e8;margin-top: 15px;}
 
-.portfolio img {margin: 10px;border-radius: 10px;}
+.portfolio img {margin: 10px;border-radius: 12px;}
 .descricao b {color: #107ca4;}
 .descricao li {list-style: none;}
 .descricao li:last-child {margin-bottom: 25px;}
@@ -201,7 +201,7 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .control-try3 {bottom: auto;top: 45% !important;background-image: none !important;font-size: 40px !important;}
 
 /* OBRAS */
-.portfolio .carousel {max-width: 650px;position: relative;}
+.portfolio .carousel {max-width: 650px;position: relative;max-height: 350px; margin: 10px 0 20px 30px;border-radius: 15px; overflow: hidden;}
 .portfolio .carousel-caption.carousel-caption2 {
     width: 80px;
     height: 50px;
@@ -217,11 +217,16 @@ nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-defau
 .portfolio .carousel-caption.carousel-caption2 ul li {margin: 0;}
 .portfolio .carousel-caption.carousel-caption2 ul li .control-try.control-try2 {height: 30px !important;width: 30px !important;position: absolute;top: -7px;}
 .portfolio .carousel-caption.carousel-caption2 ul li:nth-child(2) .control-try.control-try2 {left: 30px}
+.portfolio .img-responsive2 {max-width: 100%!important;margin: 0;border-radius: 0;}
+
+.portfolio .col-md-12.thumbs {max-width: 650px; margin: 0 0 10px 30px;padding: 0;}
+.portfolio .col-md-12.thumbs .list-inline {margin: 0;}
+.portfolio .col-md-12.thumbs li img {margin: 0 0 10px;}
 
 .related .img-responsive {width:150px;height: 150px;}
 
 .button_slider {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 107px;margin-top: 16px;margin-right: 20px;}
-.carousel-inner > .item > img {width: 100%;max-height: 96%;border-radius: 10px;}
+.carousel-inner > .item > img {width: 100%;}
 .carousel-inner-banner > .item > img {border-radius: 0 !important;}
 .selected img {opacity:0.5;}
 .controls{margin-top: 120px;background-image: none !important;}

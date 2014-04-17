@@ -18,7 +18,7 @@
                         <!-- thumb navigation carousel -->
                         <!-- main slider carousel -->
                         <div class="row">
-                            <div style="padding-left: 8px;" id="myCarousel" class="carousel slide">
+                            <div id="myCarousel" class="carousel slide">
                                 <!-- main slider carousel items -->
                                 <div class="carousel-inner" style="max-height: 350px;">
                                     <?php
@@ -26,12 +26,12 @@
                                     foreach ($galeria_obra as $gobra){
                                         if($i==0) {?>
                                             <div class="active item" data-slide-number="<?php echo $i ?>">
-                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive img-responsive2">
                                             </div>
                                             <?php $i++;
                                         } else{ ?>
                                             <div class="item" data-slide-number="<?php echo $i ?>">
-                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive img-responsive2">
                                             </div>
                                             <?php
                                             $i++; }
@@ -52,7 +52,7 @@
                                 ?>
                             </div>
                             <!--/main slider carousel-->
-                            <div class="col-md-12 thumbs" id="slider-thumbs" style="padding-left: 8px !important; padding-right: 0px !important;">
+                            <div class="col-md-12 thumbs" id="slider-thumbs">
                                 <ul class="list-inline">
                                     <?php
                                     $z = 0;

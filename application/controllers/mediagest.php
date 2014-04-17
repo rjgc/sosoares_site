@@ -16,940 +16,957 @@ header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
 
 class Mediagest extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();
+    function __construct()
+    {
+        parent::__construct();
 
-		$this->load->database();
-		$this->load->helper('url');
+        $this->load->database();
+        $this->load->helper('url');
 
-		$this->load->library('grocery_CRUD');
-		$this->load->library('image_CRUD');
-		$this->load->library('session');
-	}
-
-	function _admin_output($output = null)
-	{
-
-		$this->load->view('mediagest/mediagest',$output);	
-	}
-
-	function _example_output($output = null)
-	{
-		$this->load->view('example.php',$output);	
-	}
-
-	function _form_tabs()
-	{
-$tabs = $this->session->userdata('myproject_film_tabs'); // retrieve arrays from session data
-
-// build the tabs
-$html = '
-<!-- tabs -->
-<ul class="nav nav-tabs" data-toggle="myproject.tabs.fields_box">'. "\n";
-	$i = 0;
-
-	foreach ($tabs as $tab) {
-		$html .= '<li';
-		if ($i == 0){$html .= ' class="active"'; $i = 1;}
-		$html .= '><a href="#' . implode(",", array_slice($tab,1)) . '">'. $tab[0] . '</a></li>' . "\n";
-	}
-
-	$html .= '</ul>
-	<!-- #/tabs -->';
-//
-	return $html;        
-}
+        $this->load->library('grocery_CRUD');
+        $this->load->library('image_CRUD');
+        $this->load->library('session');
+    }
 
-// por defeito abre a lista de obras
-function index()
-{
-	try{
-		$crud = new grocery_CRUD();
+    function _admin_output($output = null)
+    {
 
-		$this->load->model('caixilharia_model');
+        $this->load->view('mediagest/mediagest',$output);
+    }
 
-		$crud->set_table('obras');
-		$crud->set_subject('Obras');
-		$crud->columns('nome_pt','descricao_pt', 'localizacao');
-		$crud->order_by('ordem', 'asc');
+    function _example_output($output = null)
+    {
+        $this->load->view('example.php',$output);
+    }
 
-		$crud->field_type('ordem', 'hidden');
-		$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('localizacao', 'Localização');
+    function _form_tabs()
+    {
+        $tabs = $this->session->userdata('myproject_film_tabs'); // retrieve arrays from session data
 
-		$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'localizacao');
-		$crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
+        // build the tabs
+        $html = '
+        <!-- tabs -->
+        <ul class="nav nav-tabs" data-toggle="myproject.tabs.fields_box">'. "\n";
+        $i = 0;
 
-		$crud->set_relation_n_n('produtos_aluminio', 'produtos_aluminio_obras', 'produtos_aluminio', 'obra_id', 'produto_aluminio_id', 'nome_pt', 'priority');
+        foreach ($tabs as $tab) {
+            $html .= '<li';
+            if ($i == 0){$html .= ' class="active"'; $i = 1;}
+            $html .= '><a href="#' . implode(",", array_slice($tab,1)) . '">'. $tab[0] . '</a></li>' . "\n";
+        }
+
+        $html .= '</ul>
+	        <!-- #/tabs -->';
+
+        return $html;
+    }
 
-		$crud->callback_before_insert(array($this, 'callback_before_insert'));
+    // por defeito abre a lista de obras
+    function index()
+    {
+        try{
+            $crud = new grocery_CRUD();
 
-		$crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
-		$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
-		$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
+            $this->load->model('caixilharia_model');
 
-		$output = $crud->render();
+            $crud->set_table('obras');
+            $crud->set_subject('Obras');
+            $crud->columns('nome_pt','descricao_pt', 'localizacao');
+            $crud->order_by('ordem', 'asc');
 
-		$data['titulo'] = 'Obras';
-		$data['sub-titulo'] = 'Faça aqui a gestão das Obras'; 
+            $crud->field_type('ordem', 'hidden');
+            $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('localizacao', 'Localização');
 
-		$this->load->view('mediagest/header',  (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+            $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'localizacao');
+            $crud->field_type('descricao_pt', 'text')->field_type('descricao_en', 'text')->field_type('descricao_fr', 'text')->field_type('descricao_es', 'text');
 
-		$this->_admin_output($output);
-	}catch(Exception $e){
-		show_error($e->getMessage().' --- '.$e->getTraceAsString());
-	}
-}
+            $crud->set_relation_n_n('produtos_aluminio', 'produtos_aluminio_obras', 'produtos_aluminio', 'obra_id', 'produto_aluminio_id', 'nome_pt', 'priority');
 
-function galeria()
-{
-	$image_crud = new image_CRUD();
+            $crud->callback_before_insert(array($this, 'callback_before_insert'));
 
-	$image_crud->set_table('obras_gallery');
-	$image_crud->set_primary_key_field('id');
-	$image_crud->set_url_field('url');
+            $crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
+            $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
+            $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
 
-	$image_crud->set_relation_field('id_obra')->set_ordering_field('priority')->set_image_path('assets/uploads/obras');
+            $output = $crud->render();
 
-	$output = $image_crud->render();
+            $data['titulo'] = 'Obras';
+            $data['sub-titulo'] = 'Faça aqui a gestão das Obras';
 
-	$this->_example_output($output);
-}
+            $this->load->view('mediagest/header',  (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-function change_order() 
-{ 
-	$message = "wrong answer";
-	echo "<script type='text/javascript'>alert('$message');</script>";
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('caixilharia_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->caixilharia_model->change_order($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->caixilharia_model->change_order($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}    
-}
+            $this->_admin_output($output);
+        }catch(Exception $e){
+            show_error($e->getMessage().' --- '.$e->getTraceAsString());
+        }
+    }
 
+    function callback_after_upload_obras($uploader_response, $field_info, $files_to_upload)
+    {
+        $this->load->library('image_moo');
 
-//DEFINICOES
+        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-//IMAGEM DE FUNDO
+        //list - normal - thumb
+        $this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(650, 350)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 60)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-function background_image_management()
-{
-	$crud = new grocery_CRUD();
+        //refold
+        rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/obras/list/".$uploader_response[0]->name);
+        rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/obras/normal/".$uploader_response[0]->name);
+        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/obras/thumb/".$uploader_response[0]->name);
 
-	$crud->unset_delete();
-	$crud->unset_add();
+        return true;
+    }
 
-	$crud->set_table('background_image');
-	$crud->set_subject('Background Image');
-	$crud->columns('foto');
+    function galeria()
+    {
+        $image_crud = new image_CRUD();
 
-	$crud->required_fields('foto');
+        $image_crud->set_table('obras_gallery');
+        $image_crud->set_primary_key_field('id');
+        $image_crud->set_url_field('url');
 
-	$crud->set_field_upload('foto', 'assets/uploads/background');
+        $image_crud->set_relation_field('id_obra')->set_ordering_field('priority')->set_image_path('assets/uploads/obras');
 
-	$output = $crud->render();
+        $output = $image_crud->render();
 
-	$data['titulo'] = 'Imagem de Fundo';  
-	$data['sub-titulo'] = 'Faça aqui a gestão da Imagem de Fundo'; 
+        $this->_example_output($output);
+    }
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+    function change_order()
+    {
+        $message = "wrong answer";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+            $this->load->model('caixilharia_model');
+            $event = trim($_POST['eventRow']);
+            $clickEl = intval($_POST['clickEl']);
+            $el = intval($_POST['el']);
+            if ($event && $clickEl && $el) {
+                if ($this->caixilharia_model->change_order($event, $clickEl, $el)) {
+                    exit("success");
+                } else {
+                    exit("error1");
+                }
+                $this->caixilharia_model->change_order($event, $clickEl, $el);
+            } else {
+                exit("error2");
+            }
+        } else {
+            exit("error3");
+        }
+    }
 
-	$this->_admin_output($output);
-}
 
+    //DEFINICOES
 
-// BANNERS
+    //IMAGEM DE FUNDO
 
-function banners_management()
-{
-	$crud = new grocery_CRUD();
+    function background_image_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_table('banners');
-	$crud->set_subject('Banners');
-	$crud->columns('nome_pt', 'banner');
+        $crud->unset_delete();
+        $crud->unset_add();
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra', 'id_banner_noticia');
-	$crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
+        $crud->set_table('background_image');
+        $crud->set_subject('Background Image');
+        $crud->columns('foto');
 
-	$crud->set_field_upload('banner', 'assets/uploads/banners');
+        $crud->required_fields('foto');
 
-	$crud->set_relation('id_categoria_banner', 'categorias', 'nome');
-	$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
-	$crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');
+        $crud->set_field_upload('foto', 'assets/uploads/background');
 
-	$crud->callback_after_upload(array($this,'callback_after_upload_banners'));
+        $output = $crud->render();
 
-	$output = $crud->render();
+        $data['titulo'] = 'Imagem de Fundo';
+        $data['sub-titulo'] = 'Faça aqui a gestão da Imagem de Fundo';
 
-	$data['titulo'] = 'Banners';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Banners';
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+        $this->_admin_output($output);
+    }
 
-	$this->_admin_output($output);
-}
 
-function callback_after_upload_banners($uploader_response, $field_info, $files_to_upload)
-{
-	$this->load->library('image_moo');
+    // BANNERS
 
-	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
+    function banners_management()
+    {
+        $crud = new grocery_CRUD();
 
-//thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(2000, 600)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+        $crud->set_table('banners');
+        $crud->set_subject('Banners');
+        $crud->columns('nome_pt', 'banner');
 
-//refold
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/banners/thumb/".$uploader_response[0]->name);
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra', 'id_banner_noticia');
+        $crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
 
-	return true;
-}
+        $crud->set_field_upload('banner', 'assets/uploads/banners');
 
+        $crud->set_relation('id_categoria_banner', 'categorias', 'nome');
+        $crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
+        $crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');
 
-//NEWSLETTER
+        $crud->callback_after_upload(array($this,'callback_after_upload_banners'));
 
-function newsletter_management()
-{
-	$crud = new grocery_CRUD();
+        $output = $crud->render();
 
-	$crud->set_table('newsletter');
-	$crud->set_subject('Newsletter');
+        $data['titulo'] = 'Banners';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Banners';
 
-	$crud->unset_add();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->add_action('Export', 'http://cdn-img.easyicon.net/png/5295/529568.png', 'mediagest/export_to_csv');
+        $this->_admin_output($output);
+    }
 
-	$output = $crud->render();
+    function callback_after_upload_banners($uploader_response, $field_info, $files_to_upload)
+    {
+        $this->load->library('image_moo');
 
-	$data['titulo'] = 'Newsletter';
-	$data['sub-titulo'] = 'Faça aqui a gestão da Newsletter';
+        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+    //thumb
+        $this->image_moo->load($file_uploaded)->resize_crop(2000, 600)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-	$this->_admin_output($output);
-}
+    //refold
+        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/banners/thumb/".$uploader_response[0]->name);
 
-function export_to_csv()
-{	
-	/*******EDIT LINES 3-8*******/
-	$DB_Server = "critecns.com"; //MySQL Server 
-	$DB_Username = "crtns25g_gestor"; //MySQL Username 
-	$DB_Password = "rGGST}T6vm=@";             //MySQL Password 
-	$DB_DBName = "crtns25g_sosoares";         //MySQL Database Name 
-	$DB_TBLName = "newsletter"; //MySQL Table Name
-	$filename = "newsletter";         //File Name
-	/*******YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE*******/
+        return true;
+    }
 
-	//create MySQL connection
-	$sql = "Select * from $DB_TBLName";
 
-	$Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password)
-	or die("Couldn't connect to MySQL:<br>" . mysql_error() . "<br>" . mysql_errno());
+    //NEWSLETTER
 
-	//select database
-	$Db = @mysql_select_db($DB_DBName, $Connect)
-	or die("Couldn't select database:<br>" . mysql_error(). "<br>" . mysql_errno());
+    function newsletter_management()
+    {
+        $crud = new grocery_CRUD();
 
-	//execute query
-	$result = @mysql_query($sql,$Connect)
-	or die("Couldn't execute query:<br>" . mysql_error(). "<br>" . mysql_errno());
-	$file_ending = "xls";
+        $crud->set_table('newsletter');
+        $crud->set_subject('Newsletter');
 
-	//header info for browser
-	header("Content-Type: application/xls");
+        $crud->unset_add();
 
-	header("Content-Disposition: attachment; filename=$filename.xls");
+        $crud->add_action('Export', 'http://cdn-img.easyicon.net/png/5295/529568.png', 'mediagest/export_to_csv');
 
-	header("Pragma: no-cache");
+        $output = $crud->render();
 
-	header("Expires: 0");
+        $data['titulo'] = 'Newsletter';
+        $data['sub-titulo'] = 'Faça aqui a gestão da Newsletter';
 
-	/*******Start of Formatting for Excel*******/
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	//define separator (defines columns in excel & tabs in word)
-	$sep = "\t"; //tabbed character
+        $this->_admin_output($output);
+    }
 
-	//start of printing column names as names of MySQL fields
-	for ($i = 0; $i < mysql_num_fields($result); $i++) {
-		echo mysql_field_name($result,$i) . "\t";
-	}
+    function export_to_csv()
+    {
+        /*******EDIT LINES 3-8*******/
+        $DB_Server = "critecns.com"; //MySQL Server
+        $DB_Username = "crtns25g_gestor"; //MySQL Username
+        $DB_Password = "rGGST}T6vm=@";             //MySQL Password
+        $DB_DBName = "crtns25g_sosoares";         //MySQL Database Name
+        $DB_TBLName = "newsletter"; //MySQL Table Name
+        $filename = "newsletter";         //File Name
+        /*******YOU DO NOT NEED TO EDIT ANYTHING BELOW THIS LINE*******/
 
-	print("\n");
-	//end of printing column names
+        //create MySQL connection
+        $sql = "Select * from $DB_TBLName";
 
-	//start while loop to get data
-	while($row = mysql_fetch_row($result))
-	{
-		$schema_insert = "";
+        $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password)
+            or die("Couldn't connect to MySQL:<br>" . mysql_error() . "<br>" . mysql_errno());
 
-		for($j=0; $j<mysql_num_fields($result);$j++)
-		{
-			if(!isset($row[$j]))
-				$schema_insert .= "NULL".$sep;
-			elseif ($row[$j] != "")
-				$schema_insert .= "$row[$j]".$sep;
-			else
-				$schema_insert .= "".$sep;
-		}
+        //select database
+        $Db = @mysql_select_db($DB_DBName, $Connect)
+            or die("Couldn't select database:<br>" . mysql_error(). "<br>" . mysql_errno());
 
-		$schema_insert = str_replace($sep."$", "", $schema_insert);
+        //execute query
+        $result = @mysql_query($sql,$Connect)
+            or die("Couldn't execute query:<br>" . mysql_error(). "<br>" . mysql_errno());
+        $file_ending = "xls";
 
-		$schema_insert = preg_replace("/\r\n|\n\r|\n|\r/", " ", $schema_insert);
+        //header info for browser
+        header("Content-Type: application/xls");
 
-		$schema_insert .= "\t";
+        header("Content-Disposition: attachment; filename=$filename.xls");
 
-		print(trim($schema_insert));
+        header("Pragma: no-cache");
 
-		print "\n";	
-	}
-}
+        header("Expires: 0");
 
+        /*******Start of Formatting for Excel*******/
 
-//DESTINATARIOS
+        //define separator (defines columns in excel & tabs in word)
+        $sep = "\t"; //tabbed character
 
-function destinatarios_management()
-{
-	$crud = new grocery_CRUD();
+        //start of printing column names as names of MySQL fields
+        for ($i = 0; $i < mysql_num_fields($result); $i++) {
+            echo mysql_field_name($result,$i) . "\t";
+        }
 
-	$crud->set_table('destinatarios');
-	$crud->set_subject('Destinatários');
+        print("\n");
+        //end of printing column names
 
-	$crud->required_fields('email', 'id_categoria');
-	$crud->display_as('id_categoria', 'Categoria');
+        //start while loop to get data
+        while($row = mysql_fetch_row($result))
+        {
+            $schema_insert = "";
 
-	$crud->set_relation('id_categoria', 'categoria_destinatario', 'nome');
+            for($j=0; $j<mysql_num_fields($result);$j++)
+            {
+                if(!isset($row[$j]))
+                    $schema_insert .= "NULL".$sep;
+                elseif ($row[$j] != "")
+                    $schema_insert .= "$row[$j]".$sep;
+                else
+                    $schema_insert .= "".$sep;
+            }
 
-	$output = $crud->render();
+            $schema_insert = str_replace($sep."$", "", $schema_insert);
 
-	$data['titulo'] = 'Destinatários';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Destinatários';
+            $schema_insert = preg_replace("/\r\n|\n\r|\n|\r/", " ", $schema_insert);
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+            $schema_insert .= "\t";
 
-	$this->_admin_output($output);
-}
+            print(trim($schema_insert));
 
+            print "\n";
+        }
+    }
 
-// ÁREAS COMERCIAIS
 
-function areas_comerciais_management()
-{
-	$crud = new grocery_CRUD();
+    //DESTINATARIOS
 
-	$crud->set_table('areas_comerciais');
-	$crud->set_subject('Áreas Comerciais');
+    function destinatarios_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
+        $crud->set_table('destinatarios');
+        $crud->set_subject('Destinatários');
 
-	$output = $crud->render();
+        $crud->required_fields('email', 'id_categoria');
+        $crud->display_as('id_categoria', 'Categoria');
 
-	$data['titulo'] = 'Áreas Comerciais';
-	$data['sub-titulo'] = 'Faça aqui a gestão das Áreas Comerciais';
+        $crud->set_relation('id_categoria', 'categoria_destinatario', 'nome');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $output = $crud->render();
 
-	$this->_admin_output($output);
-}
+        $data['titulo'] = 'Destinatários';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Destinatários';
 
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-//CONTACTOS
+        $this->_admin_output($output);
+    }
 
-function contactos_management()
-{
-	$crud = new grocery_CRUD();
 
-	$crud->set_table('contactos');
-	$crud->set_subject('Contactos');
-	$crud->columns('id_categoria', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
+    // ÁREAS COMERCIAIS
 
-	$crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
-	$crud->display_as('id_categoria', 'Categoria');
+    function areas_comerciais_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_relation('id_categoria', 'categorias', 'nome');
+        $crud->set_table('areas_comerciais');
+        $crud->set_subject('Áreas Comerciais');
 
-	$output = $crud->render();
+        $crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
 
-	$data['titulo'] = 'Contactos';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Contactos';
+        $output = $crud->render();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+        $data['titulo'] = 'Áreas Comerciais';
+        $data['sub-titulo'] = 'Faça aqui a gestão das Áreas Comerciais';
 
-	$this->_admin_output($output);
-}
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
+        $this->_admin_output($output);
+    }
 
-//NOTICIAS
 
-function noticias_management()
-{
-	$crud = new grocery_CRUD();
+    //CONTACTOS
 
-	$crud->set_table('noticias');
-	$crud->set_subject('Notícias');
-	$crud->columns('data_noticia', 'titulo_pt', 'texto_pt', 'foto');
-	$crud->display_as('data_noticia', 'Data');
+    function contactos_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
+        $crud->set_table('contactos');
+        $crud->set_subject('Contactos');
+        $crud->columns('id_categoria', 'nome_departamento_pt', 'email', 'morada', 'codigo_postal', 'telefone', 'fax');
 
-	$crud->set_field_upload('foto', 'assets/uploads/noticias');
+        $crud->required_fields('nome_departamento_pt', 'nome_departamento_en', 'nome_departamento_fr', 'nome_departamento_es', 'email', 'morada', 'codigo_postal', 'telefone', 'id_seccao');
+        $crud->display_as('id_categoria', 'Categoria');
 
-	$crud->callback_after_upload(array($this,'callback_after_upload_noticia'));
+        $crud->set_relation('id_categoria', 'categorias', 'nome');
 
-	$output = $crud->render();
+        $output = $crud->render();
 
-	$data['titulo'] = 'Notícias';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Notícias'; 
+        $data['titulo'] = 'Contactos';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Contactos';
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$this->_admin_output($output);
-}
+        $this->_admin_output($output);
+    }
 
-function callback_after_upload_noticia($uploader_response, $field_info, $files_to_upload)
-{
-	$this->load->library('image_moo');
 
-	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
+    //NOTICIAS
 
-//thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+    function noticias_management()
+    {
+        $crud = new grocery_CRUD();
 
-//refold
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/noticias/thumb/".$uploader_response[0]->name);
+        $crud->set_table('noticias');
+        $crud->set_subject('Notícias');
+        $crud->columns('data_noticia', 'titulo_pt', 'texto_pt', 'foto');
+        $crud->display_as('data_noticia', 'Data');
 
-	return true;
-}
+        $crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
 
+        $crud->set_field_upload('foto', 'assets/uploads/noticias');
 
-//PRODUTOS
+        $crud->callback_after_upload(array($this,'callback_after_upload_noticia'));
 
-//PRODUTOS ALUMINIO
+        $output = $crud->render();
 
-function produtos_aluminio_management()
-{
-	$crud = new grocery_CRUD();
+        $data['titulo'] = 'Notícias';
+        $data['sub-titulo'] = 'Faça aqui a gestão das Notícias';
 
-	$this->load->model('caixilharia_model');
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->set_table('produtos_aluminio');
-	$crud->set_subject('Produtos Aluminio');
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
-	$crud->order_by('ordem', 'asc');
+        $this->_admin_output($output);
+    }
 
-	$crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'ordem', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
-	$crud->field_type('ordem', 'hidden');
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1', 'restrito');		
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_caracteristica_produto_aluminio', 'Característica')->display_as('id_tipo_produto_aluminio', 'Tipo')->display_as('catalogo', 'Catálogo');
+    function callback_after_upload_noticia($uploader_response, $field_info, $files_to_upload)
+    {
+        $this->load->library('image_moo');
 
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+    //thumb
+        $this->image_moo->load($file_uploaded)->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-	$crud->set_field_upload('corte_1', 'assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
+    //refold
+        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/noticias/thumb/".$uploader_response[0]->name);
 
-	$crud->set_relation_n_n('perfis', 'perfis_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'perfil_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>1));
-	$crud->set_relation_n_n('pormenores', 'pormenores_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'pormenor_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>3));
-	$crud->set_relation_n_n('catalogo', 'catalogos_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'catalogo_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>4));
-	$crud->set_relation_n_n('ensaios', 'ensaios_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'ensaio_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>5));
-	$crud->set_relation_n_n('folhetos_promocionais', 'folheto_promocional_produto', 'ficheiros', 'produto_aluminio_id', 'folheto_promocional_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>6));
-	$crud->set_relation('id_tipo_produto_aluminio', 'tipos_produto_aluminio', 'nome_pt');
-	$crud->set_relation('id_caracteristica_produto_aluminio', 'caracteristicas_produto_aluminio', 'nome_pt');
+        return true;
+    }
 
-	$crud->callback_before_insert(array($this, 'callback_before_insert'));
 
-	$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_aluminio', 'order-position-product-down');
-	$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_aluminio', 'order-position-product-up');
+    //PRODUTOS
 
-	$output = $crud->render();
+    //PRODUTOS ALUMINIO
 
-	$data['titulo'] = 'Produtos Alumínio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Alumínio'; 
+    function produtos_aluminio_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $this->load->model('caixilharia_model');
 
-	$this->_admin_output($output);
-}	
+        $crud->set_table('produtos_aluminio');
+        $crud->set_subject('Produtos Aluminio');
+        $crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+        $crud->order_by('ordem', 'asc');
 
-function change_order_aluminio() 
-{ 
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('caixilharia_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->caixilharia_model->change_order_aluminio($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->caixilharia_model->change_order_aluminio($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}    
-}
+        $crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'id_caracteristica_produto_aluminio', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'ordem', 'perfis', 'pormenores', 'catalogo', 'ensaios', 'folhetos_promocionais');
+        $crud->field_type('ordem', 'hidden');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_aluminio', 'foto_1', 'restrito');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_caracteristica_produto_aluminio', 'Característica')->display_as('id_tipo_produto_aluminio', 'Tipo')->display_as('catalogo', 'Catálogo');
 
-function tipos_produto_aluminio_management()
-{
-	$crud = new grocery_CRUD();
+        $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
-	$crud->set_table('tipos_produto_aluminio');
-	$crud->set_subject('Tipos de Produto Alumínio');
-	$crud->columns('nome_pt', 'foto');
+        $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
+        $crud->set_field_upload('corte_1', 'assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
 
-	$crud->set_field_upload('foto', 'assets/uploads/produtos');
+        $crud->set_relation_n_n('perfis', 'perfis_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'perfil_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>1));
+        $crud->set_relation_n_n('pormenores', 'pormenores_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'pormenor_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>3));
+        $crud->set_relation_n_n('catalogo', 'catalogos_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'catalogo_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>4));
+        $crud->set_relation_n_n('ensaios', 'ensaios_aluminio_produto', 'ficheiros', 'produto_aluminio_id', 'ensaio_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>5));
+        $crud->set_relation_n_n('folhetos_promocionais', 'folheto_promocional_produto', 'ficheiros', 'produto_aluminio_id', 'folheto_promocional_aluminio_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>6));
+        $crud->set_relation('id_tipo_produto_aluminio', 'tipos_produto_aluminio', 'nome_pt');
+        $crud->set_relation('id_caracteristica_produto_aluminio', 'caracteristicas_produto_aluminio', 'nome_pt');
 
-	$output = $crud->render();
+        $crud->callback_before_insert(array($this, 'callback_before_insert'));
 
-	$data['titulo'] = 'Tipos de Produto Alumínio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Alumínio'; 
+        $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_aluminio', 'order-position-product-down');
+        $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_aluminio', 'order-position-product-up');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $output = $crud->render();
 
-	$this->_admin_output($output);
-}
+        $data['titulo'] = 'Produtos Alumínio';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Alumínio';
 
-function caracteristicas_produto_aluminio_management()
-{
-	$crud = new grocery_CRUD();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->set_table('caracteristicas_produto_aluminio');
-	$crud->set_subject('Características de Produto Alumínio');
-	$crud->columns('nome_pt');
+        $this->_admin_output($output);
+    }
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
+    function change_order_aluminio()
+    {
+        if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+            $this->load->model('caixilharia_model');
+            $event = trim($_POST['eventRow']);
+            $clickEl = intval($_POST['clickEl']);
+            $el = intval($_POST['el']);
+            if ($event && $clickEl && $el) {
+                if ($this->caixilharia_model->change_order_aluminio($event, $clickEl, $el)) {
+                    exit("success");
+                } else {
+                    exit("error1");
+                }
+                $this->caixilharia_model->change_order_aluminio($event, $clickEl, $el);
+            } else {
+                exit("error2");
+            }
+        } else {
+            exit("error3");
+        }
+    }
 
-	$output = $crud->render();
+    function tipos_produto_aluminio_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$data['titulo'] = 'Caract. de Produto Alumínio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Alumínio'; 
+        $crud->set_table('tipos_produto_aluminio');
+        $crud->set_subject('Tipos de Produto Alumínio');
+        $crud->columns('nome_pt', 'foto');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
 
-	$this->_admin_output($output);
-}
+        $crud->set_field_upload('foto', 'assets/uploads/produtos');
 
+        $output = $crud->render();
 
-//PRODUTOS VIDRO
+        $data['titulo'] = 'Tipos de Produto Alumínio';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto de Alumínio';
 
-function produtos_vidro_management()
-{
-	$crud = new grocery_CRUD();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->set_table('produtos_vidro');
-	$crud->set_subject('Produtos Vidro');
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+        $this->_admin_output($output);
+    }
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es')->display_as('id_tipo_produto_vidro', 'Tipo');
+    function caracteristicas_produto_aluminio_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+        $crud->set_table('caracteristicas_produto_aluminio');
+        $crud->set_subject('Características de Produto Alumínio');
+        $crud->columns('nome_pt');
 
-	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
 
-	$crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
+        $output = $crud->render();
 
-	$output = $crud->render();
+        $data['titulo'] = 'Caract. de Produto Alumínio';
+        $data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Alumínio';
 
-	$data['titulo'] = 'Produtos Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+        $this->_admin_output($output);
+    }
 
-	$this->_admin_output($output);
-}
 
-function tipos_produto_vidro_management()
-{
-	$crud = new grocery_CRUD();
+    //PRODUTOS VIDRO
 
-	$crud->set_table('tipos_produto_vidro');
-	$crud->set_subject('Tipos de Produto Vidro');
-	$crud->columns('nome_pt', 'foto');
+    function produtos_vidro_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
+        $crud->set_table('produtos_vidro');
+        $crud->set_subject('Produtos Vidro');
+        $crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
 
-	$crud->set_field_upload('foto', 'assets/uploads/produtos');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es')->display_as('id_tipo_produto_vidro', 'Tipo');
 
-	$output = $crud->render();
+        $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
-	$data['titulo'] = 'Tipos de Produto Vidro';
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Vidro';
+        $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+        $crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
 
-	$this->_admin_output($output);
-}
+        $output = $crud->render();
 
+        $data['titulo'] = 'Produtos Vidro';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Vidro';
 
-//PRODUTOS EXTRUSAO
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-function produtos_extrusao_management()
-{
-	$crud = new grocery_CRUD();
+        $this->_admin_output($output);
+    }
 
-	$this->load->model('extrusao_model');
+    function tipos_produto_vidro_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_table('produtos_extrusao');
-	$crud->set_subject('Produtos Extrusão');	
-	$crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
-	$crud->order_by('ordem', 'asc');
+        $crud->set_table('tipos_produto_vidro');
+        $crud->set_subject('Tipos de Produto Vidro');
+        $crud->columns('nome_pt', 'foto');
 
-	$crud->field_type('ordem', 'hidden');
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');		
-	$crud->field_type('descricao_pt', 'text');
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Característica');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
 
-	$crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
+        $crud->set_field_upload('foto', 'assets/uploads/produtos');
 
-	$crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+        $output = $crud->render();
 
-	$crud->set_field_upload('corte_1','assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
+        $data['titulo'] = 'Tipos de Produto Vidro';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Vidro';
 
-	$crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
-	$crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
-//$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->callback_before_insert(array($this, 'callback_before_insert'));
+        $this->_admin_output($output);
+    }
 
-	$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
-	$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
 
-	$output = $crud->render();
+    //PRODUTOS EXTRUSAO
 
-	$data['titulo'] = 'Produtos Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Extrusão'; 
+    function produtos_extrusao_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $this->load->model('extrusao_model');
 
-	$this->_admin_output($output);
-}
+        $crud->set_table('produtos_extrusao');
+        $crud->set_subject('Produtos Extrusão');
+        $crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+        $crud->order_by('ordem', 'asc');
 
-function change_order_extrusao() 
-{
-	if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-		$this->load->model('extrusao_model');
-		$event = trim($_POST['eventRow']);
-		$clickEl = intval($_POST['clickEl']);
-		$el = intval($_POST['el']);
-		if ($event && $clickEl && $el) {
-			if ($this->extrusao_model->change_order($event, $clickEl, $el)) {
-				exit("success"); 
-			} else {
-				exit("error1");
-			} 
-			$this->extrusao_model->change_order($event, $clickEl, $el);
-		} else {
-			exit("error2");
-		}
-	} else {
-		exit("error3");
-	}
-}
+        $crud->field_type('ordem', 'hidden');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');
+        $crud->field_type('descricao_pt', 'text');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Característica');
 
-function tipos_produto_extrusao_management()
-{
-	$crud = new grocery_CRUD();
+        $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
-	$crud->set_table('tipos_produto_extrusao');
-	$crud->set_subject('Tipos de Produto Extrusão');
-	$crud->columns('nome_pt', 'foto');
+        $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
+        $crud->set_field_upload('corte_1','assets/uploads/files')->set_field_upload('corte_2', 'assets/uploads/files')->set_field_upload('corte_3', 'assets/uploads/files');
 
-	$crud->set_field_upload('foto', 'assets/uploads/produtos');
+        $crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
+        $crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
+        //$crud->set_relation_n_n('ensaios_extrusao', 'ensaios_extrusao_produtos', 'ensaios_extrusao', 'produto_extrusao_id', 'ensaio_extrusao_id', 'nome_pt', 'priority');
 
-	$output = $crud->render();
+        $crud->callback_before_insert(array($this, 'callback_before_insert'));
 
-	$data['titulo'] = 'Tipos de Produto Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Extrusão'; 
+        $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
+        $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $output = $crud->render();
 
-	$this->_admin_output($output);
-}
+        $data['titulo'] = 'Produtos Extrusão';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Produtos Extrusão';
 
-function caracteristicas_produto_extrusao_management()
-{
-	$crud = new grocery_CRUD();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->set_table('caracteristicas_produto_extrusao');
-	$crud->set_subject('Características de Produto Extrusão');
-	$crud->columns('nome_pt');
+        $this->_admin_output($output);
+    }
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
+    function change_order_extrusao()
+    {
+        if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+            $this->load->model('extrusao_model');
+            $event = trim($_POST['eventRow']);
+            $clickEl = intval($_POST['clickEl']);
+            $el = intval($_POST['el']);
+            if ($event && $clickEl && $el) {
+                if ($this->extrusao_model->change_order($event, $clickEl, $el)) {
+                    exit("success");
+                } else {
+                    exit("error1");
+                }
+                $this->extrusao_model->change_order($event, $clickEl, $el);
+            } else {
+                exit("error2");
+            }
+        } else {
+            exit("error3");
+        }
+    }
 
-	$output = $crud->render();
+    function tipos_produto_extrusao_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$data['titulo'] = 'Caract. de Produto Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Extrusão'; 
+        $crud->set_table('tipos_produto_extrusao');
+        $crud->set_subject('Tipos de Produto Extrusão');
+        $crud->columns('nome_pt', 'foto');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
 
-	$this->_admin_output($output);
-}
+        $crud->set_field_upload('foto', 'assets/uploads/produtos');
 
+        $output = $crud->render();
 
-//FICHEIROS
+        $data['titulo'] = 'Tipos de Produto Extrusão';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Extrusão';
 
-function ficheiros_management()
-{
-	$crud = new grocery_CRUD();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->set_table('ficheiros');
-	$crud->set_subject('Ficheiros');
-	$crud->columns('nome_pt', 'id_categoria_ficheiro');
-	$crud->order_by('id_ficheiro', 'asc');
+        $this->_admin_output($output);
+    }
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
-	$crud->display_as('id_categoria_ficheiro', 'Categoria');
+    function caracteristicas_produto_extrusao_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_field_upload('ficheiro', 'assets/uploads/files');
+        $crud->set_table('caracteristicas_produto_extrusao');
+        $crud->set_subject('Características de Produto Extrusão');
+        $crud->columns('nome_pt');
 
-	$crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es');
 
-	$crud->callback_after_insert(array($this, 'callback_after_insert'));
+        $output = $crud->render();
 
-	$output = $crud->render();
+        $data['titulo'] = 'Caract. de Produto Extrusão';
+        $data['sub-titulo'] = 'Faça aqui a gestão das Caract. de Produto Extrusão';
 
-	$data['titulo'] = 'Ficheiros';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros'; 
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $this->_admin_output($output);
+    }
 
-	$this->_admin_output($output);
-}
 
-function callback_after_insert($post_array)
-{	
-	switch ($post_array['id_categoria_ficheiro']) {
-		case '1':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
-		break;
-		case '3':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
-		break;
-		case '4':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
-		break;
-		case '5':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
-		break;
-		case '6':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
-		break;
-		case '7':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
-		break;
-		case '8':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/extrusao/".$post_array['ficheiro']);
-		break;
-		case '9':
-		rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
-		break;
-	}
+    //FICHEIROS
 
-	return true;
-}
+    function ficheiros_management()
+    {
+        $crud = new grocery_CRUD();
 
-function callback_before_insert($post_array)
-{	
-	if (strpos($post_array, 'id_obra')) {
-		$post_array['ordem'] = $this->caixilharia_model->set_ordem();
-	} else if (strpos($post_array, 'id_produto_aluminio')) {
-		$post_array['ordem'] = $this->caixilharia_model->set_ordem_produto();
-	} else {
-		$post_array['ordem'] = $this->extrusao_model->set_ordem();
-	}
+        $crud->set_table('ficheiros');
+        $crud->set_subject('Ficheiros');
+        $crud->columns('nome_pt', 'id_categoria_ficheiro');
+        $crud->order_by('id_ficheiro', 'asc');
 
-	return $post_array;
-}
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+        $crud->display_as('id_categoria_ficheiro', 'Categoria');
 
+        $crud->set_field_upload('ficheiro', 'assets/uploads/files');
 
-//UPLOAD FOTO PRODUTO
+        $crud->set_relation('id_categoria_ficheiro', 'categoria_ficheiro', 'nome');
 
-function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
-{
-	$this->load->library('image_moo');
+        $crud->callback_after_insert(array($this, 'callback_after_insert'));
 
-	$file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name; 
+        $output = $crud->render();
 
-//list - normal - thumb
-	$this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+        $data['titulo'] = 'Ficheiros';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Ficheiros';
 
-//refold
-	rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
-	rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	return true;
-}
+        $this->_admin_output($output);
+    }
 
+    function callback_after_insert($post_array)
+    {
+        switch ($post_array['id_categoria_ficheiro']) {
+            case '1':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
+                break;
+            case '3':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
+                break;
+            case '4':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
+                break;
+            case '5':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
+                break;
+            case '6':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
+                break;
+            case '7':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
+                break;
+            case '8':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/extrusao/".$post_array['ficheiro']);
+                break;
+            case '9':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
+                break;
+        }
 
-//OBRAS
+        return true;
+    }
 
+    function callback_before_insert($post_array)
+    {
+        if (strpos($post_array, 'id_obra')) {
+            $post_array['ordem'] = $this->caixilharia_model->set_ordem();
+        } else if (strpos($post_array, 'id_produto_aluminio')) {
+            $post_array['ordem'] = $this->caixilharia_model->set_ordem_produto();
+        } else {
+            $post_array['ordem'] = $this->extrusao_model->set_ordem();
+        }
 
-//SERVIÇOS
+        return $post_array;
+    }
 
-function servicos_aluminio_management()
-{
-	$crud = new grocery_CRUD();
 
-	$crud->set_table('servicos_aluminio');
-	$crud->set_subject('Serviços Alumínio');
-	$crud->columns('nome_pt', 'descricao_pt');
+    //UPLOAD FOTO PRODUTO
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
+    function callback_after_upload_produto($uploader_response, $field_info, $files_to_upload)
+    {
+        $this->load->library('image_moo');
 
-	$output = $crud->render();
+        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
-	$data['titulo'] = 'Serviços Alumínio';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Alumínio'; 
+        //list - normal - thumb
+        $this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        //refold
+        rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);
+        rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/produtos/normal/".$uploader_response[0]->name);
+        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/produtos/thumb/".$uploader_response[0]->name);
 
-	$this->_admin_output($output);
-}
+        return true;
+    }
 
-function servicos_vidro_management()
-{
-	$crud = new grocery_CRUD();
 
-	$crud->set_table('servicos_vidro');
-	$crud->set_subject('Serviços Vidro');
-	$crud->columns('nome_pt', 'descricao_pt');
+    //OBRAS
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-	$output = $crud->render();
+    //SERVIÇOS
 
-	$data['titulo'] = 'Serviços Vidro';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Vidro'; 
+    function servicos_aluminio_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $crud->set_table('servicos_aluminio');
+        $crud->set_subject('Serviços Alumínio');
+        $crud->columns('nome_pt', 'descricao_pt');
 
-	$this->_admin_output($output);
-}
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-function servicos_extrusao_management()
-{
-	$crud = new grocery_CRUD();
+        $output = $crud->render();
 
-	$crud->set_table('servicos_extrusao');
-	$crud->set_subject('Serviços Extrusão');
-	$crud->columns('nome_pt', 'descricao_pt');
+        $data['titulo'] = 'Serviços Alumínio';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Alumínio';
 
-	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
-	$crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$output = $crud->render();
+        $this->_admin_output($output);
+    }
 
-	$data['titulo'] = 'Serviços Extrusão';  
-	$data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Extrusão'; 
+    function servicos_vidro_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $crud->set_table('servicos_vidro');
+        $crud->set_subject('Serviços Vidro');
+        $crud->columns('nome_pt', 'descricao_pt');
 
-	$this->_admin_output($output);
-}
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
+        $output = $crud->render();
 
-//PAGINAS
+        $data['titulo'] = 'Serviços Vidro';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Vidro';
 
-function paginas_management()
-{
-	$crud = new grocery_CRUD();
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
-	$crud->unset_delete();
-	$crud->unset_add();
+        $this->_admin_output($output);
+    }
 
-	$crud->set_table('paginas');
-	$crud->set_subject('Páginas');
-	$crud->columns('titulo_pt', 'imagem');
-	$crud->order_by('id_pagina', 'asc');
+    function servicos_extrusao_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->display_as('titulo_pt', 'Título');
-	$crud->set_field_upload('imagem', 'assets/uploads/paginas');
+        $crud->set_table('servicos_extrusao');
+        $crud->set_subject('Serviços Extrusão');
+        $crud->columns('nome_pt', 'descricao_pt');
 
-	$output = $crud->render();
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
+        $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-	$data['titulo'] = 'Páginas';  
-	$data['sub-titulo'] = 'Faça aqui a gestão das Páginas'; 
+        $output = $crud->render();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $data['titulo'] = 'Serviços Extrusão';
+        $data['sub-titulo'] = 'Faça aqui a gestão dos Serviços de Extrusão';
 
-	$this->_admin_output($output);
-}
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
+        $this->_admin_output($output);
+    }
 
-//APOIO CLIENTE
 
-function apoio_cliente_management()
-{
-	$crud = new grocery_CRUD();
+    //PAGINAS
 
-	$crud->unset_delete();
-	$crud->unset_add();
+    function paginas_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->set_table('apoio_cliente');
-	$crud->set_subject('Apoio ao Cliente');
-	$crud->columns('titulo_pt', 'imagem');
-	$crud->order_by('id_pagina', 'asc');
+        $crud->unset_delete();
+        $crud->unset_add();
 
-	$crud->display_as('titulo_pt', 'Título');
-	$crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
+        $crud->set_table('paginas');
+        $crud->set_subject('Páginas');
+        $crud->columns('titulo_pt', 'imagem');
+        $crud->order_by('id_pagina', 'asc');
 
-	$output = $crud->render();
+        $crud->display_as('titulo_pt', 'Título');
+        $crud->set_field_upload('imagem', 'assets/uploads/paginas');
 
-	$data['titulo'] = 'Apoio ao Cliente';  
-	$data['sub-titulo'] = 'Faça aqui a gestão do Apoio ao Cliente'; 
+        $output = $crud->render();
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $data['titulo'] = 'Páginas';
+        $data['sub-titulo'] = 'Faça aqui a gestão das Páginas';
 
-	$this->_admin_output($output);
-}
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
+        $this->_admin_output($output);
+    }
 
-//AREA TECNICA
 
-function area_tecnica_management()
-{
-	$crud = new grocery_CRUD();
+    //APOIO CLIENTE
 
-	$crud->set_table('area_tecnica');
-	$crud->set_subject('Área Técnica');
-	$crud->columns('titulo_pt', 'imagem');
-	$crud->order_by('id_pagina', 'asc');
+    function apoio_cliente_management()
+    {
+        $crud = new grocery_CRUD();
 
-	$crud->display_as('titulo_pt', 'Título');
-	$crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
+        $crud->unset_delete();
+        $crud->unset_add();
 
-	$output = $crud->render();
+        $crud->set_table('apoio_cliente');
+        $crud->set_subject('Apoio ao Cliente');
+        $crud->columns('titulo_pt', 'imagem');
+        $crud->order_by('id_pagina', 'asc');
 
-	$data['titulo'] = 'Área Técnica';  
-	$data['sub-titulo'] = 'Faça aqui a gestão da Área Técnica'; 
+        $crud->display_as('titulo_pt', 'Título');
+        $crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
 
-	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));	
+        $output = $crud->render();
 
-	$this->_admin_output($output);
-}
+        $data['titulo'] = 'Apoio ao Cliente';
+        $data['sub-titulo'] = 'Faça aqui a gestão do Apoio ao Cliente';
+
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+        $this->_admin_output($output);
+    }
+
+
+    //AREA TECNICA
+
+    function area_tecnica_management()
+    {
+        $crud = new grocery_CRUD();
+
+        $crud->set_table('area_tecnica');
+        $crud->set_subject('Área Técnica');
+        $crud->columns('titulo_pt', 'imagem');
+        $crud->order_by('id_pagina', 'asc');
+
+        $crud->display_as('titulo_pt', 'Título');
+        $crud->set_field_upload('imagem', 'assets/uploads/area_tecnica');
+
+        $output = $crud->render();
+
+        $data['titulo'] = 'Área Técnica';
+        $data['sub-titulo'] = 'Faça aqui a gestão da Área Técnica';
+
+        $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+        $this->_admin_output($output);
+    }
 
 }
