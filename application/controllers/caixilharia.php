@@ -174,8 +174,7 @@ public function send_candidatura()
     $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
 
     if($this->form_validation->run() == FALSE){
-        echo $this->email->print_debugger();
-        $data['message'] = '';
+        $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
         $data['reset'] = FALSE;
         $data['page_style']= "caixilharia";
         $data['current'] = 'grupo_sosoares';
@@ -193,8 +192,8 @@ public function send_candidatura()
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => 'smtp.gmail.com',
-            'smtp_user'        => 'aarao.teixeira88@gmail.com',
+            'smtp_host'        => '',
+            'smtp_user'        => '',
             'smtp_pass'        => '',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,
@@ -212,8 +211,8 @@ public function send_candidatura()
 
         // Run some setup
         $this->email->initialize($config);
-        $this->email->from('aarao.teixeira88@gmail.com');
-        $this->email->to('aarao.teixeira88@gmail.com');
+        $this->email->from('set_value("email")');
+        $this->email->to('$this->sosoares_model->get_destinatario(2)');
         $this->email->subject('Candidatura');
         $this->email->message('set_value("apresentacao")');
         $this->email->attach(set_value('cv'));
@@ -410,6 +409,75 @@ public function contactos()
 
     $this->load->view('pages/contactos', $data);
     $this->load->view('templates/footer', $data);
+}
+
+public function send_contactos() 
+{
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    $this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
+    $this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
+    $this->form_validation->set_rules('cv', 'Curriculum Vitae', 'required');
+    $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
+
+    if($this->form_validation->run() == FALSE){
+        $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+        $data['reset'] = FALSE;
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
+
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
+    else{
+        $data['message'] = 'A candidatura foi enviada com sucesso!';
+        $data['reset'] = TRUE;
+
+        //Enviar email
+        $this->load->library('email');
+        $config = array('useragent'        => 'CodeIgniter',        
+            'protocol'         => 'mail',        
+            'mailpath'         => '/usr/sbin/sendmail',
+            'smtp_host'        => '',
+            'smtp_user'        => '',
+            'smtp_pass'        => '',
+            'smtp_port'        => 25,
+            'smtp_timeout'     => 5,
+            'wordwrap'         => TRUE,
+            'wrapchars'        => 76,
+            'mailtype'         => 'html',
+            'charset'          => 'utf-8',
+            'validate'         => FALSE,
+            'priority'         => 3,
+            //'crlf'             => "\r\n",
+            //'newline'          => "\r\n",
+            'bcc_batch_mode'   => FALSE,
+            'bcc_batch_size'   => 200
+            );
+
+        // Run some setup
+        $this->email->initialize($config);
+        $this->email->from('set_value("email")');
+        $this->email->to('$this->sosoares_model->get_destinatario(2)');
+        $this->email->subject('Candidatura');
+        $this->email->message('set_value("apresentacao")');
+        $this->email->attach(set_value('cv'));
+        $this->email->send();
+
+        // Debug Email
+        if (!$this->email->send()) {
+            echo $this->email->print_debugger();
+        } else {
+            $data['page_style']= "caixilharia";
+            $data['current'] = 'grupo_sosoares';
+            $this->menu($data);
+
+            $this->load->view('pages/candidatura', $data);
+            $this->load->view('templates/footer');
+        }      
+    }
 }
 
 public function account()
