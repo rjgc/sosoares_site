@@ -214,7 +214,7 @@ public function send_candidatura()
         $this->email->from('set_value("email")');
         $this->email->to('$this->sosoares_model->get_destinatario(2)');
         $this->email->subject('Candidatura');
-        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao")'.<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone")'<br>Telemóvel: '.set_value("telemovel")'. P.S.: Envio em anexo o meu Curriculum Vitae.<br><br>Atenciosamente,<br><br>'.set_value("nome")'');
+        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'.<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'. P.S.: Envio em anexo o meu Curriculum Vitae.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
         $this->email->attach(set_value('cv'));
         $this->email->send();
 
@@ -415,9 +415,13 @@ public function send_contactos()
 {
     $this->load->library('form_validation');
     $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+    $this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
+    $this->form_validation->set_rules('cargo', 'Cargo', 'max_length[50]');
+    $this->form_validation->set_rules('telefone', 'Telefone', 'numeric');
+    $this->form_validation->set_rules('fax', 'Fax', 'numeric');
+    $this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-    $this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
-    $this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
+    $this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
     $this->form_validation->set_rules('cv', 'Curriculum Vitae', 'required');
     $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
 
