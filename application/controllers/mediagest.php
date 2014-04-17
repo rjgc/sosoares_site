@@ -101,23 +101,6 @@ class Mediagest extends CI_Controller {
         }
     }
 
-    function callback_after_upload_obras($uploader_response, $field_info, $files_to_upload)
-    {
-        $this->load->library('image_moo');
-
-        $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
-
-        //list - normal - thumb
-        $this->image_moo->load($file_uploaded)->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(650, 350)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 60)->save_pa($prepend="thumb_", $append="", $overwrite=true);
-
-        //refold
-        rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/obras/list/".$uploader_response[0]->name);
-        rename($field_info->upload_path."/"."normal_".$uploader_response[0]->name, "assets/uploads/obras/normal/".$uploader_response[0]->name);
-        rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/obras/thumb/".$uploader_response[0]->name);
-
-        return true;
-    }
-
     function galeria()
     {
         $image_crud = new image_CRUD();
