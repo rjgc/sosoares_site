@@ -32,7 +32,7 @@
                     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                         echo site_url('tratamento/noticia/'.$noticia['id_noticia']);
                     }?>">
-                    <button class="btn button shrink"><?=lang('ler')?></button>
+                    <button class="btn button grow"><?=lang('ler')?></button>
                 </a>
             </div>
             <div class="col-md-1">&nbsp;</div>
@@ -49,7 +49,7 @@
                 <input class="form-control input" id="mail" name="mail" placeholder="<?=lang('email')?>">
             </div>
             <div class="form-group">
-                <input class="btn button shrink" type="submit" id="subs" name="submit" value="<?=lang('subscrever')?>">
+                <input class="btn button grow" type="submit" id="subs" name="submit" value="<?=lang('subscrever')?>">
             </div>
         </form>
     </div>

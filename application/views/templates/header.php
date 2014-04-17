@@ -40,14 +40,14 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="logotipo grow">
+                <div class="logotipo">
                     <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
                 </div>
                 <div class="pages-img">
-                    <a href="<?=site_url('caixilharia/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"><i class="icon-outline_caixilharia grow font"></i></a>
-                    <a href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-outline_vidro grow font"></i></a>
-                    <a href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-outline_extrusao grow font"></i></a>
-                    <a href="<?=site_url('tratamento/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"><i class="icon-outline_tratamento grow font"></i></a>
+                    <a href="<?=site_url('caixilharia/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'caixilharia' ) ? 'font-active' : ''?>"><i class="icon-outline_caixilharia font"></i></a>
+                    <a href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-outline_vidro font"></i></a>
+                    <a href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-outline_extrusao font"></i></a>
+                    <a href="<?=site_url('tratamento/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"><i class="icon-outline_tratamento font"></i></a>
                     <?php   if(isset($page_style)) {
                                 switch($page_style) {
                                     case "caixilharia": ?>
@@ -75,10 +75,10 @@
                     </form>
                 </div>
                 <div id="bd">
-                    <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal" class="grow"></a>
-                    <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom" class="grow"></a>
-                    <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" class="grow"></a>
-                    <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol" class="grow"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom"></a>
+                    <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" ></a>
+                    <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
                     <?php if($this->ion_auth->logged_in() == true){
@@ -86,23 +86,23 @@
                                 if(isset($page_style)) {
                                       switch($page_style) {
                                           case "caixilharia": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
                                   <?php       break;
                                           case "vidro": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
                                   <?php       break;
                                           case "extrusao": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
                                   <?php       break;
                                           case "tratamento": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button shrink" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
                                   <?php       break;
                                           default:
                                               break;
                                       }
                                   }
                          }else{ ?>
-                           <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button shrink" id="btn_signin">Login</button></a>
+                           <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a>
                     <?php } ?>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

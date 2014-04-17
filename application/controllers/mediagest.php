@@ -179,16 +179,16 @@ class Mediagest extends CI_Controller {
 
         $crud->set_table('banners');
         $crud->set_subject('Banners');
-        $crud->columns('nome_pt', 'banner');
+        $crud->columns('nome_pt', 'banner', 'id_categoria_banner');
 
-        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner', 'id_banner_obra', 'id_banner_noticia');
+        $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'banner', 'id_categoria_banner');
         $crud->display_as('id_categoria_banner', 'Categoria')->display_as('id_banner_obra', 'Obra')->display_as('id_banner_noticia', 'Notícia');
 
         $crud->set_field_upload('banner', 'assets/uploads/banners');
 
         $crud->set_relation('id_categoria_banner', 'categorias', 'nome');
-        $crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
-        $crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');
+        /*$crud->set_relation_n_n('id_banner_obra', 'banners_obras', 'obras', 'id_banner', 'id_obra', 'nome_pt', 'priority');
+        $crud->set_relation_n_n('id_banner_noticia', 'banners_noticias', 'noticias', 'id_banner', 'id_noticia', 'titulo_pt', 'priority');*/
 
         $crud->callback_after_upload(array($this,'callback_after_upload_banners'));
 

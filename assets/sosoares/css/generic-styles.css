@@ -65,6 +65,7 @@ header .container .row {position: relative;min-height: 65px;}
     height: 52px;
     display: inline-block;
     vertical-align: top;
+    margin: 0 4px;
 }
 .pages-img img {margin: 5px 0 0 15px;}
 
