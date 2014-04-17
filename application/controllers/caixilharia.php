@@ -428,4 +428,11 @@ public function account()
     }
 
 }
+
+    public function logout()
+    {
+        $this->ion_auth->logout();
+
+        $this->home();
+    }
 }

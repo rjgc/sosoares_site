@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
 <main>
     <div class="container">
         <div class="row">
