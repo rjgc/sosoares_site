@@ -15,7 +15,7 @@
                 <?php if (!empty($obras)) {
                     foreach ($obras as $obra){
                         ?>
-                        <a href="<?=site_url('caixilharia/obras/'.$obra['id_obra'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>"/><p> <?php echo $obra['nome_'.$this->lang->lang()] ?></p></div></a> 
+                        <a href="<?=site_url('caixilharia/obras/'.$obra['id_obra'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/obras/list/<?php echo $obra['url'] ?>"/><p> <?php echo $obra['nome_'.$this->lang->lang()] ?></p></div></a> 
                         <?php
                     }
                 } else {?>

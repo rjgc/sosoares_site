@@ -26,12 +26,12 @@
                                     foreach ($galeria_obra as $gobra){
                                         if($i==0) {?>
                                             <div class="active item" data-slide-number="<?php echo $i ?>">
-                                                <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                                             </div>
                                             <?php $i++;
                                         } else{ ?>
                                             <div class="item" data-slide-number="<?php echo $i ?>">
-                                                <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
+                                                <img src="<?php echo base_url();?>assets/uploads/obras/normal/<?php echo $gobra['url'];?>" class="img-responsive" style="max-width: 98% !important">
                                             </div>
                                             <?php
                                             $i++; }
@@ -60,7 +60,7 @@
                                         <?php if($z==0) {?>
                                             <li>
                                                 <a id="carousel-selector-<?php echo $z ?>" class="selected">
-                                                    <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                                                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
                                                 </a>
                                             </li>
 
@@ -68,7 +68,7 @@
                                         } else{?>
                                             <li>
                                                 <a id="carousel-selector-<?php echo $z ?>">
-                                                    <img src="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
+                                                    <img src="<?php echo base_url();?>assets/uploads/obras/thumb/<?php echo $gobra['url'];?>" class="img-responsive" style="width: 80px !important; height: 60px;">
                                                 </a>
                                             </li>
                                             <?php $z++;
