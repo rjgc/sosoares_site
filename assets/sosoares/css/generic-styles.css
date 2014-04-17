@@ -66,7 +66,7 @@ header .container .row {position: relative;min-height: 65px;}
     display: inline-block;
     vertical-align: top;
 }
-.pages-img img {margin-top: 5px;}
+.pages-img img {margin: 5px 0 0 15px;}
 
 .font {font-size: 320%;color: #fff;}
 .font-active {color: #01aef0!important;border-color: #01aef0!important;}
@@ -303,6 +303,13 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 .panel-group .panel {border-radius: 10px;}
 .panel.panel-default {margin: 0 0 15px;}
 .panel-default > .panel-heading {background-color: #107ca4;border-radius: 10px 10px 0 0;color: #fff;}
+
+
+/* ============ ACCOUNT PAGE ====================== */
+
+.account div b {display: inline-block;min-width: 20%;}
+.account .col-md-8 div {min-height: 30px;margin: 0 0 5px;}
+
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
