@@ -304,6 +304,13 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 .panel.panel-default {margin: 0 0 15px;}
 .panel-default > .panel-heading {background-color: #107ca4;border-radius: 10px 10px 0 0;color: #fff;}
 
+
+/* ============ ACCOUNT PAGE ====================== */
+
+.account div b {display: inline-block;min-width: 20%;}
+.account .col-md-8 div {min-height: 30px;margin: 0 0 5px;}
+
+
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1190px) {
     * {-webkit-transition: all 300ms linear;-moz-transition: all 300ms linear;-o-transition: all 300ms linear;-ms-transition: all 300ms linear;transition: all 300ms linear;}
