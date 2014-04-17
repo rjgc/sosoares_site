@@ -17,6 +17,10 @@
             <h1 class="title3"><?=lang('candidaturas')?></h1>
         </div>
     </div>
+    <?php if (!empty($message))echo $message; ?>
+    <?php //echo validation_errors(); ?>
+    <?php $this->load->helper('form'); ?>
+    <?php echo form_open($this->lang->lang().'/caixilharia/send_candidatura/'); ?>
     <div class="row candidaturas">
         <div class="col-md-8" style="padding-left: 30px;">
             <form method="get">
@@ -25,38 +29,38 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="nome" name="nome" type="text">
+                            <input class="form-control" id="nome" name="nome" type="text" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="mail" name="mail" type="email">
+                            <input class="form-control" id="email" name="email" type="email" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telf"><?=lang('telefone')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telf" name="telf" type="tel">
+                            <input class="form-control" id="telefone" name="telefone" type="telefone" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telm"><?=lang('telemovel')?>:</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telm" name="telm" type="tel">
+                            <input class="form-control" id="telemovel" name="telemovel" type="telemovel" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="cv"><?=lang('cv')?>:</label>
+                        <label class="col-sm-2 control-label" for="cv"><?=lang('cv')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="cv" name="cv" type="file">
+                            <input class="form-control" id="cv" name="cv" type="file" value="<?php echo ($reset) ? "" : set_value('cv'); ?>">
                         </div>
                     </div>
                     <br>
                     <div class="form-group" style="margin-top: -13px;">
-                        <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:</label>
+                        <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:*</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5"></textarea>
+                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -70,4 +74,5 @@
             </form>
         </div>
     </div>
+    <?php echo form_close(); ?>
 </div>

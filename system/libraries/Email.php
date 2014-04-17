@@ -275,11 +275,11 @@ class CI_Email {
 		switch ($this->_get_protocol())
 		{
 			case 'smtp'		:
-				$this->_recipients = $to;
+			$this->_recipients = $to;
 			break;
 			case 'sendmail'	:
 			case 'mail'		:
-				$this->_recipients = implode(", ", $to);
+			$this->_recipients = implode(", ", $to);
 			break;
 		}
 
@@ -388,13 +388,13 @@ class CI_Email {
 		   NOTE: In PHP 5.4 get_magic_quotes_gpc() will always return 0 and
 			 it will probably not exist in future versions at all.
 		*/
-		if ( ! is_php('5.4') && get_magic_quotes_gpc())
-		{
-			$this->_body = stripslashes($this->_body);
-		}
+			 if ( ! is_php('5.4') && get_magic_quotes_gpc())
+			 {
+			 	$this->_body = stripslashes($this->_body);
+			 }
 
-		return $this;
-	}
+			 return $this;
+			}
 
 	// --------------------------------------------------------------------
 
@@ -979,8 +979,11 @@ class CI_Email {
 	{
 		if ($this->protocol == 'mail')
 		{
-			$this->_subject = $this->_headers['Subject'];
-			unset($this->_headers['Subject']);
+			if (array_key_exists('Subject', $this->_headers))
+			{
+				$this->_subject = $this->_headers['Subject'];
+				unset($this->_headers['Subject']);
+			}
 		}
 
 		reset($this->_headers);
@@ -1027,96 +1030,34 @@ class CI_Email {
 		{
 			case 'plain' :
 
-				$hdr .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
-				$hdr .= "Content-Transfer-Encoding: " . $this->_get_encoding();
+			$hdr .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
+			$hdr .= "Content-Transfer-Encoding: " . $this->_get_encoding();
 
-				if ($this->_get_protocol() == 'mail')
-				{
-					$this->_header_str .= $hdr;
-					$this->_finalbody = $this->_body;
-				}
-				else
-				{
-					$this->_finalbody = $hdr . $this->newline . $this->newline . $this->_body;
-				}
+			if ($this->_get_protocol() == 'mail')
+			{
+				$this->_header_str .= $hdr;
+				$this->_finalbody = $this->_body;
+			}
+			else
+			{
+				$this->_finalbody = $hdr . $this->newline . $this->newline . $this->_body;
+			}
 
-				return;
+			return;
 
 			break;
 			case 'html' :
 
-				if ($this->send_multipart === FALSE)
-				{
-					$hdr .= "Content-Type: text/html; charset=" . $this->charset . $this->newline;
-					$hdr .= "Content-Transfer-Encoding: quoted-printable";
-				}
-				else
-				{
-					$hdr .= "Content-Type: multipart/alternative; boundary=\"" . $this->_alt_boundary . "\"" . $this->newline . $this->newline;
-
-					$body .= $this->_get_mime_message() . $this->newline . $this->newline;
-					$body .= "--" . $this->_alt_boundary . $this->newline;
-
-					$body .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
-					$body .= "Content-Transfer-Encoding: " . $this->_get_encoding() . $this->newline . $this->newline;
-					$body .= $this->_get_alt_message() . $this->newline . $this->newline . "--" . $this->_alt_boundary . $this->newline;
-
-					$body .= "Content-Type: text/html; charset=" . $this->charset . $this->newline;
-					$body .= "Content-Transfer-Encoding: quoted-printable" . $this->newline . $this->newline;
-				}
-
-				$this->_finalbody = $body . $this->_prep_quoted_printable($this->_body) . $this->newline . $this->newline;
-
-
-				if ($this->_get_protocol() == 'mail')
-				{
-					$this->_header_str .= $hdr;
-				}
-				else
-				{
-					$this->_finalbody = $hdr . $this->_finalbody;
-				}
-
-
-				if ($this->send_multipart !== FALSE)
-				{
-					$this->_finalbody .= "--" . $this->_alt_boundary . "--";
-				}
-
-				return;
-
-			break;
-			case 'plain-attach' :
-
-				$hdr .= "Content-Type: multipart/".$this->multipart."; boundary=\"" . $this->_atc_boundary."\"" . $this->newline . $this->newline;
-
-				if ($this->_get_protocol() == 'mail')
-				{
-					$this->_header_str .= $hdr;
-				}
+			if ($this->send_multipart === FALSE)
+			{
+				$hdr .= "Content-Type: text/html; charset=" . $this->charset . $this->newline;
+				$hdr .= "Content-Transfer-Encoding: quoted-printable";
+			}
+			else
+			{
+				$hdr .= "Content-Type: multipart/alternative; boundary=\"" . $this->_alt_boundary . "\"" . $this->newline . $this->newline;
 
 				$body .= $this->_get_mime_message() . $this->newline . $this->newline;
-				$body .= "--" . $this->_atc_boundary . $this->newline;
-
-				$body .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
-				$body .= "Content-Transfer-Encoding: " . $this->_get_encoding() . $this->newline . $this->newline;
-
-				$body .= $this->_body . $this->newline . $this->newline;
-
-			break;
-			case 'html-attach' :
-
-				$hdr .= "Content-Type: multipart/".$this->multipart."; boundary=\"" . $this->_atc_boundary."\"" . $this->newline . $this->newline;
-
-				if ($this->_get_protocol() == 'mail')
-				{
-					$this->_header_str .= $hdr;
-				}
-
-				$body .= $this->_get_mime_message() . $this->newline . $this->newline;
-				$body .= "--" . $this->_atc_boundary . $this->newline;
-
-				$body .= "Content-Type: multipart/alternative; boundary=\"" . $this->_alt_boundary . "\"" . $this->newline .$this->newline;
 				$body .= "--" . $this->_alt_boundary . $this->newline;
 
 				$body .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
@@ -1125,9 +1066,71 @@ class CI_Email {
 
 				$body .= "Content-Type: text/html; charset=" . $this->charset . $this->newline;
 				$body .= "Content-Transfer-Encoding: quoted-printable" . $this->newline . $this->newline;
+			}
 
-				$body .= $this->_prep_quoted_printable($this->_body) . $this->newline . $this->newline;
-				$body .= "--" . $this->_alt_boundary . "--" . $this->newline . $this->newline;
+			$this->_finalbody = $body . $this->_prep_quoted_printable($this->_body) . $this->newline . $this->newline;
+
+
+			if ($this->_get_protocol() == 'mail')
+			{
+				$this->_header_str .= $hdr;
+			}
+			else
+			{
+				$this->_finalbody = $hdr . $this->_finalbody;
+			}
+
+
+			if ($this->send_multipart !== FALSE)
+			{
+				$this->_finalbody .= "--" . $this->_alt_boundary . "--";
+			}
+
+			return;
+
+			break;
+			case 'plain-attach' :
+
+			$hdr .= "Content-Type: multipart/".$this->multipart."; boundary=\"" . $this->_atc_boundary."\"" . $this->newline . $this->newline;
+
+			if ($this->_get_protocol() == 'mail')
+			{
+				$this->_header_str .= $hdr;
+			}
+
+			$body .= $this->_get_mime_message() . $this->newline . $this->newline;
+			$body .= "--" . $this->_atc_boundary . $this->newline;
+
+			$body .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
+			$body .= "Content-Transfer-Encoding: " . $this->_get_encoding() . $this->newline . $this->newline;
+
+			$body .= $this->_body . $this->newline . $this->newline;
+
+			break;
+			case 'html-attach' :
+
+			$hdr .= "Content-Type: multipart/".$this->multipart."; boundary=\"" . $this->_atc_boundary."\"" . $this->newline . $this->newline;
+
+			if ($this->_get_protocol() == 'mail')
+			{
+				$this->_header_str .= $hdr;
+			}
+
+			$body .= $this->_get_mime_message() . $this->newline . $this->newline;
+			$body .= "--" . $this->_atc_boundary . $this->newline;
+
+			$body .= "Content-Type: multipart/alternative; boundary=\"" . $this->_alt_boundary . "\"" . $this->newline .$this->newline;
+			$body .= "--" . $this->_alt_boundary . $this->newline;
+
+			$body .= "Content-Type: text/plain; charset=" . $this->charset . $this->newline;
+			$body .= "Content-Transfer-Encoding: " . $this->_get_encoding() . $this->newline . $this->newline;
+			$body .= $this->_get_alt_message() . $this->newline . $this->newline . "--" . $this->_alt_boundary . $this->newline;
+
+			$body .= "Content-Type: text/html; charset=" . $this->charset . $this->newline;
+			$body .= "Content-Transfer-Encoding: quoted-printable" . $this->newline . $this->newline;
+
+			$body .= $this->_prep_quoted_printable($this->_body) . $this->newline . $this->newline;
+			$body .= "--" . $this->_alt_boundary . "--" . $this->newline . $this->newline;
 
 			break;
 		}
@@ -1495,27 +1498,27 @@ class CI_Email {
 		{
 			case 'mail'	:
 
-					if ( ! $this->_send_with_mail())
-					{
-						$this->_set_error_message('lang:email_send_failure_phpmail');
-						return FALSE;
-					}
+			if ( ! $this->_send_with_mail())
+			{
+				$this->_set_error_message('lang:email_send_failure_phpmail');
+				return FALSE;
+			}
 			break;
 			case 'sendmail'	:
 
-					if ( ! $this->_send_with_sendmail())
-					{
-						$this->_set_error_message('lang:email_send_failure_sendmail');
-						return FALSE;
-					}
+			if ( ! $this->_send_with_sendmail())
+			{
+				$this->_set_error_message('lang:email_send_failure_sendmail');
+				return FALSE;
+			}
 			break;
 			case 'smtp'	:
 
-					if ( ! $this->_send_with_smtp())
-					{
-						$this->_set_error_message('lang:email_send_failure_smtp');
-						return FALSE;
-					}
+			if ( ! $this->_send_with_smtp())
+			{
+				$this->_set_error_message('lang:email_send_failure_smtp');
+				return FALSE;
+			}
 			break;
 
 		}
@@ -1683,10 +1686,10 @@ class CI_Email {
 		if ($this->smtp_crypto == 'ssl')
 			$ssl = 'ssl://';
 		$this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
-										$this->smtp_port,
-										$errno,
-										$errstr,
-										$this->smtp_timeout);
+			$this->smtp_port,
+			$errno,
+			$errstr,
+			$this->smtp_timeout);
 
 		if ( ! is_resource($this->_smtp_connect))
 		{
@@ -1722,42 +1725,42 @@ class CI_Email {
 		{
 			case 'hello' :
 
-					if ($this->_smtp_auth OR $this->_get_encoding() == '8bit')
-						$this->_send_data('EHLO '.$this->_get_hostname());
-					else
-						$this->_send_data('HELO '.$this->_get_hostname());
+			if ($this->_smtp_auth OR $this->_get_encoding() == '8bit')
+				$this->_send_data('EHLO '.$this->_get_hostname());
+			else
+				$this->_send_data('HELO '.$this->_get_hostname());
 
-						$resp = 250;
+			$resp = 250;
 			break;
 			case 'starttls'	:
 
-						$this->_send_data('STARTTLS');
+			$this->_send_data('STARTTLS');
 
-						$resp = 220;
+			$resp = 220;
 			break;
 			case 'from' :
 
-						$this->_send_data('MAIL FROM:<'.$data.'>');
+			$this->_send_data('MAIL FROM:<'.$data.'>');
 
-						$resp = 250;
+			$resp = 250;
 			break;
 			case 'to'	:
 
-						$this->_send_data('RCPT TO:<'.$data.'>');
+			$this->_send_data('RCPT TO:<'.$data.'>');
 
-						$resp = 250;
+			$resp = 250;
 			break;
 			case 'data'	:
 
-						$this->_send_data('DATA');
+			$this->_send_data('DATA');
 
-						$resp = 354;
+			$resp = 354;
 			break;
 			case 'quit'	:
 
-						$this->_send_data('QUIT');
+			$this->_send_data('QUIT');
 
-						$resp = 221;
+			$resp = 221;
 			break;
 		}
 
@@ -1994,96 +1997,96 @@ class CI_Email {
 	protected function _mime_types($ext = "")
 	{
 		$mimes = array(	'hqx'	=>	'application/mac-binhex40',
-						'cpt'	=>	'application/mac-compactpro',
-						'doc'	=>	'application/msword',
-						'bin'	=>	'application/macbinary',
-						'dms'	=>	'application/octet-stream',
-						'lha'	=>	'application/octet-stream',
-						'lzh'	=>	'application/octet-stream',
-						'exe'	=>	'application/octet-stream',
-						'class'	=>	'application/octet-stream',
-						'psd'	=>	'application/octet-stream',
-						'so'	=>	'application/octet-stream',
-						'sea'	=>	'application/octet-stream',
-						'dll'	=>	'application/octet-stream',
-						'oda'	=>	'application/oda',
-						'pdf'	=>	'application/pdf',
-						'ai'	=>	'application/postscript',
-						'eps'	=>	'application/postscript',
-						'ps'	=>	'application/postscript',
-						'smi'	=>	'application/smil',
-						'smil'	=>	'application/smil',
-						'mif'	=>	'application/vnd.mif',
-						'xls'	=>	'application/vnd.ms-excel',
-						'ppt'	=>	'application/vnd.ms-powerpoint',
-						'wbxml'	=>	'application/vnd.wap.wbxml',
-						'wmlc'	=>	'application/vnd.wap.wmlc',
-						'dcr'	=>	'application/x-director',
-						'dir'	=>	'application/x-director',
-						'dxr'	=>	'application/x-director',
-						'dvi'	=>	'application/x-dvi',
-						'gtar'	=>	'application/x-gtar',
-						'php'	=>	'application/x-httpd-php',
-						'php4'	=>	'application/x-httpd-php',
-						'php3'	=>	'application/x-httpd-php',
-						'phtml'	=>	'application/x-httpd-php',
-						'phps'	=>	'application/x-httpd-php-source',
-						'js'	=>	'application/x-javascript',
-						'swf'	=>	'application/x-shockwave-flash',
-						'sit'	=>	'application/x-stuffit',
-						'tar'	=>	'application/x-tar',
-						'tgz'	=>	'application/x-tar',
-						'xhtml'	=>	'application/xhtml+xml',
-						'xht'	=>	'application/xhtml+xml',
-						'zip'	=>	'application/zip',
-						'mid'	=>	'audio/midi',
-						'midi'	=>	'audio/midi',
-						'mpga'	=>	'audio/mpeg',
-						'mp2'	=>	'audio/mpeg',
-						'mp3'	=>	'audio/mpeg',
-						'aif'	=>	'audio/x-aiff',
-						'aiff'	=>	'audio/x-aiff',
-						'aifc'	=>	'audio/x-aiff',
-						'ram'	=>	'audio/x-pn-realaudio',
-						'rm'	=>	'audio/x-pn-realaudio',
-						'rpm'	=>	'audio/x-pn-realaudio-plugin',
-						'ra'	=>	'audio/x-realaudio',
-						'rv'	=>	'video/vnd.rn-realvideo',
-						'wav'	=>	'audio/x-wav',
-						'bmp'	=>	'image/bmp',
-						'gif'	=>	'image/gif',
-						'jpeg'	=>	'image/jpeg',
-						'jpg'	=>	'image/jpeg',
-						'jpe'	=>	'image/jpeg',
-						'png'	=>	'image/png',
-						'tiff'	=>	'image/tiff',
-						'tif'	=>	'image/tiff',
-						'css'	=>	'text/css',
-						'html'	=>	'text/html',
-						'htm'	=>	'text/html',
-						'shtml'	=>	'text/html',
-						'txt'	=>	'text/plain',
-						'text'	=>	'text/plain',
-						'log'	=>	'text/plain',
-						'rtx'	=>	'text/richtext',
-						'rtf'	=>	'text/rtf',
-						'xml'	=>	'text/xml',
-						'xsl'	=>	'text/xml',
-						'mpeg'	=>	'video/mpeg',
-						'mpg'	=>	'video/mpeg',
-						'mpe'	=>	'video/mpeg',
-						'qt'	=>	'video/quicktime',
-						'mov'	=>	'video/quicktime',
-						'avi'	=>	'video/x-msvideo',
-						'movie'	=>	'video/x-sgi-movie',
-						'doc'	=>	'application/msword',
-						'word'	=>	'application/msword',
-						'xl'	=>	'application/excel',
-						'eml'	=>	'message/rfc822'
-					);
+			'cpt'	=>	'application/mac-compactpro',
+			'doc'	=>	'application/msword',
+			'bin'	=>	'application/macbinary',
+			'dms'	=>	'application/octet-stream',
+			'lha'	=>	'application/octet-stream',
+			'lzh'	=>	'application/octet-stream',
+			'exe'	=>	'application/octet-stream',
+			'class'	=>	'application/octet-stream',
+			'psd'	=>	'application/octet-stream',
+			'so'	=>	'application/octet-stream',
+			'sea'	=>	'application/octet-stream',
+			'dll'	=>	'application/octet-stream',
+			'oda'	=>	'application/oda',
+			'pdf'	=>	'application/pdf',
+			'ai'	=>	'application/postscript',
+			'eps'	=>	'application/postscript',
+			'ps'	=>	'application/postscript',
+			'smi'	=>	'application/smil',
+			'smil'	=>	'application/smil',
+			'mif'	=>	'application/vnd.mif',
+			'xls'	=>	'application/vnd.ms-excel',
+			'ppt'	=>	'application/vnd.ms-powerpoint',
+			'wbxml'	=>	'application/vnd.wap.wbxml',
+			'wmlc'	=>	'application/vnd.wap.wmlc',
+			'dcr'	=>	'application/x-director',
+			'dir'	=>	'application/x-director',
+			'dxr'	=>	'application/x-director',
+			'dvi'	=>	'application/x-dvi',
+			'gtar'	=>	'application/x-gtar',
+			'php'	=>	'application/x-httpd-php',
+			'php4'	=>	'application/x-httpd-php',
+			'php3'	=>	'application/x-httpd-php',
+			'phtml'	=>	'application/x-httpd-php',
+			'phps'	=>	'application/x-httpd-php-source',
+			'js'	=>	'application/x-javascript',
+			'swf'	=>	'application/x-shockwave-flash',
+			'sit'	=>	'application/x-stuffit',
+			'tar'	=>	'application/x-tar',
+			'tgz'	=>	'application/x-tar',
+			'xhtml'	=>	'application/xhtml+xml',
+			'xht'	=>	'application/xhtml+xml',
+			'zip'	=>	'application/zip',
+			'mid'	=>	'audio/midi',
+			'midi'	=>	'audio/midi',
+			'mpga'	=>	'audio/mpeg',
+			'mp2'	=>	'audio/mpeg',
+			'mp3'	=>	'audio/mpeg',
+			'aif'	=>	'audio/x-aiff',
+			'aiff'	=>	'audio/x-aiff',
+			'aifc'	=>	'audio/x-aiff',
+			'ram'	=>	'audio/x-pn-realaudio',
+			'rm'	=>	'audio/x-pn-realaudio',
+			'rpm'	=>	'audio/x-pn-realaudio-plugin',
+			'ra'	=>	'audio/x-realaudio',
+			'rv'	=>	'video/vnd.rn-realvideo',
+			'wav'	=>	'audio/x-wav',
+			'bmp'	=>	'image/bmp',
+			'gif'	=>	'image/gif',
+			'jpeg'	=>	'image/jpeg',
+			'jpg'	=>	'image/jpeg',
+			'jpe'	=>	'image/jpeg',
+			'png'	=>	'image/png',
+			'tiff'	=>	'image/tiff',
+			'tif'	=>	'image/tiff',
+			'css'	=>	'text/css',
+			'html'	=>	'text/html',
+			'htm'	=>	'text/html',
+			'shtml'	=>	'text/html',
+			'txt'	=>	'text/plain',
+			'text'	=>	'text/plain',
+			'log'	=>	'text/plain',
+			'rtx'	=>	'text/richtext',
+			'rtf'	=>	'text/rtf',
+			'xml'	=>	'text/xml',
+			'xsl'	=>	'text/xml',
+			'mpeg'	=>	'video/mpeg',
+			'mpg'	=>	'video/mpeg',
+			'mpe'	=>	'video/mpeg',
+			'qt'	=>	'video/quicktime',
+			'mov'	=>	'video/quicktime',
+			'avi'	=>	'video/x-msvideo',
+			'movie'	=>	'video/x-sgi-movie',
+			'doc'	=>	'application/msword',
+			'word'	=>	'application/msword',
+			'xl'	=>	'application/excel',
+			'eml'	=>	'message/rfc822'
+			);
 
-		return ( ! isset($mimes[strtolower($ext)])) ? "application/x-unknown-content-type" : $mimes[strtolower($ext)];
-	}
+return ( ! isset($mimes[strtolower($ext)])) ? "application/x-unknown-content-type" : $mimes[strtolower($ext)];
+}
 
 }
 // END CI_Email class
