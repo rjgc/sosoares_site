@@ -249,19 +249,12 @@ public function contactos()
 
 public function account()
 {
-    if($this->ion_auth->logged_in() == true){
         $data['page_style']= "vidro";
         $data['current'] = 'reserved';
         $this->menu($data);
 
         $this->load->view('pages/account', $data);
-        $this->load->view('templates/footer');
-    }
-    else{
-        $this->home();
-        //redirect('home');
-    }
-    
+        $this->load->view('templates/footer');    
 }
     public function logout()
     {

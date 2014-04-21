@@ -69,8 +69,8 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
-$config['language_abbr']    = 'en';
+$config['language']	= 'portuguese';
+$config['language_abbr']    = 'pt';
 
 /*
 |--------------------------------------------------------------------------

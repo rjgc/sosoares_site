@@ -33,6 +33,22 @@ function __construct()
 
     $this->load->model('caixilharia_model');
     $this->load->model('sosoares_model');
+
+
+    $this->lang->load('cizacl',$this->config->item('language'));
+
+    if(!class_exists('CI_Cizacl'))
+        show_error($this->lang->line('library_not_loaded'));
+
+    $this->load->library('cizacl');
+
+    $this->load->library('login');
+
+    $this->load->model('login_mdl');
+
+    $this->load->model('cizacl_mdl');
+    
+    $this->load->library('form_validation'); 
 }
 
 public function get_lang()
@@ -485,26 +501,19 @@ public function send_contactos()
 }
 
 public function account()
-{
-    if($this->ion_auth->logged_in() == true){
-        $data['page_style']= "caixilharia";
-        $data['current'] = 'reserved';
-        $this->menu($data);
+{    
+    $data['page_style']= "caixilharia";
+    $data['current'] = 'reserved';
+    $this->menu($data);
 
-        $this->load->view('pages/account', $data);
-        $this->load->view('templates/footer');
-    }
-    else{
-        $this->home();
-//redirect('home');
-    }
-
+    $this->load->view('pages/account', $data);
+    $this->load->view('templates/footer');
 }
 
-    public function logout()
-    {
-        $this->ion_auth->logout();
+public function logout()
+{
+    $this->ion_auth->logout();
 
-        $this->home();
-    }
+    $this->home();
+}
 }

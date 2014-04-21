@@ -14,27 +14,31 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/share_links.css">
-    <?php   if(isset($page_style)) {
-                switch($page_style) {
-                    case "vidro": ?>
-                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
-                <?php   break;
-                    case "extrusao": ?>
-                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
-                <?php   break;
-                    case "tratamento": ?>
-                        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
-                <?php   break;
-                    default:
-                        break;
-                }
-            }
-    ?>
-
-    <!--[if IE]>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-ie-styles.css">
-    <![endif]-->
-
+    <?php if(isset($page_style)) {
+        switch($page_style) {
+            case "vidro": ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-vidro.css">
+            <?php   break;
+            case "extrusao": ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-extrusao.css">
+            <?php   break;
+            case "tratamento": ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/styles-tratamento.css">
+            <?php   break;
+            default:
+            break;
+        }
+    }
+    
+    if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+        echo $this->login->getScriptsHome('caixilharia');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+        echo $this->login->getScriptsHome('vidro');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+        echo $this->login->getScriptsHome('extrusao');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+        echo $this->login->getScriptsHome('tratamento');
+    } ?>
 </head>
 <body>
     <header>
@@ -48,24 +52,24 @@
                     <a href="<?=site_url('vidro/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'vidro' ) ? 'font-active' : ''?>"><i class="icon-outline_vidro font"></i></a>
                     <a href="<?=site_url('extrusao/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'extrusao' ) ? 'font-active' : ''?>"><i class="icon-outline_extrusao font"></i></a>
                     <a href="<?=site_url('tratamento/home')?>" class="<?php echo ( isset($page_style) && $page_style === 'tratamento' ) ? 'font-active' : ''?>"><i class="icon-outline_tratamento font"></i></a>
-                    <?php   if(isset($page_style)) {
-                                switch($page_style) {
-                                    case "caixilharia": ?>
-                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_caixilharia.png">
-                            <?php       break;
-                                    case "vidro": ?>
-                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_vidro.png">
-                            <?php       break;
-                                    case "extrusao": ?>
-                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_extrusao.png">
-                            <?php       break;
-                                    case "tratamento": ?>
-                                        <img src="<?php echo base_url() ?>assets/sosoares/img/logos_tratamento.png">
-                            <?php       break;
-                                    default:
-                                        break;
-                                }
-                            }
+                    <?php if(isset($page_style)) {
+                        switch($page_style) {
+                            case "caixilharia": ?>
+                            <img src="<?php echo base_url() ?>assets/sosoares/img/logos_caixilharia.png">
+                            <?php break;
+                            case "vidro": ?>
+                            <img src="<?php echo base_url() ?>assets/sosoares/img/logos_vidro.png">
+                            <?php break;
+                            case "extrusao": ?>
+                            <img src="<?php echo base_url() ?>assets/sosoares/img/logos_extrusao.png">
+                            <?php break;
+                            case "tratamento": ?>
+                            <img src="<?php echo base_url() ?>assets/sosoares/img/logos_tratamento.png">
+                            <?php break;
+                            default:
+                            break;
+                        }
+                    }
                     ?>
                 </div>
                 <div class="form">
@@ -81,28 +85,27 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if($this->ion_auth->logged_in() == true){
-                          //echo $this->ion_auth->user()->row()->username; 
-                                if(isset($page_style)) {
-                                      switch($page_style) {
-                                          case "caixilharia": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                  <?php       break;
-                                          case "vidro": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                  <?php       break;
-                                          case "extrusao": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                  <?php       break;
-                                          case "tratamento": ?>
-                                              <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                  <?php       break;
-                                          default:
-                                              break;
-                                      }
-                                  }
-                         }else{ ?>
-                           <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a>
+                    <?php if($this->ion_auth->logged_in() == true) {
+                        if(isset($page_style)) {
+                            switch($page_style) {
+                                case "caixilharia": ?>
+                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                <?php break;
+                                case "vidro": ?>
+                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                <?php break;
+                                case "extrusao": ?>
+                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                <?php break;
+                                case "tratamento": ?>
+                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
+                                <?php break;
+                                default:
+                                break;
+                            }
+                        }
+                    }else{ ?>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a>
                     <?php } ?>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -115,7 +118,7 @@
                                     <li><a href="#registar" data-toggle="tab">Registe-se</a></li>
                                 </ul>
                             </div>
-                            <form method="post" role="form">
+                            <form method="post" role="form" id="form1">
                                 <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
                                 <div class="modal-body" id="form">
                                     <div class="tab-pane fade in active" id="area_privada">
@@ -141,23 +144,23 @@
     </header>
     <nav>
         <?php   if(isset($page_style)) {
-                    switch($page_style) {
-                        case "caixilharia":
-                            require_once('nav_caixilharia.php');
-                            break;
-                        case "vidro":
-                            require_once('nav_vidro.php');
-                            break;
-                        case "extrusao":
-                            require_once('nav_extrusao.php');
-                            break;
-                        case "tratamento":
-                            require_once('nav_tratamento.php');
-                            break;
-                        default:
-                            break;
-                    }
-                }
+            switch($page_style) {
+                case "caixilharia":
+                require_once('nav_caixilharia.php');
+                break;
+                case "vidro":
+                require_once('nav_vidro.php');
+                break;
+                case "extrusao":
+                require_once('nav_extrusao.php');
+                break;
+                case "tratamento":
+                require_once('nav_tratamento.php');
+                break;
+                default:
+                break;
+            }
+        }
         ?>
     </nav>
     <section>
@@ -166,50 +169,3 @@
         <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
-        <script type="text/javascript">
-            function reset () {
-                $('#erro').popover('hide');
-
-                document.getElementById('username').value='';
-                document.getElementById('password').value='';
-            }
-        </script>
-        <?php   if (isset($_POST['login'])) {
-                    if (!empty($_POST['username']) && !empty($_POST['password'])) {
-
-                        $active = isset($_POST['remember']) && $_POST['remember']  ? "1" : "0";
-
-                        $this->ion_auth->login($_POST['username'], $_POST['password'], $active);
-
-                        if (!$this->ion_auth->logged_in()) { ?>
-                            <script type='text/javascript'>
-                                $('#signin').click();
-                                document.getElementById('erro').style.visibility='visible';
-                                $('#erro').popover('show');
-                            </script>
-        <?php           } else if ($this->ion_auth->logged_in()) { ?>
-                            <script type='text/javascript'> $('#cancel').click();</script>
-                        <?php
-
-                            if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                                redirect('caixilharia/account');
-                            } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                                redirect('vidro/account');
-                            } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                                redirect('extrusao/account');
-                            } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                                redirect('tratamento/account');
-                            }
-
-                        ?>
-
-        <?php           }
-                    } else if (isset($_POST['cancel'])) { ?>
-                        <script type='text/javascript'>
-                            $('#erro').popover('hide');
-
-                            document.getElementById('username').value='';
-                            document.getElementById('password').value='';
-                        </script>
-        <?php       }
-                } ?>

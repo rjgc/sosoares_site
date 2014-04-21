@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['userid'])) { ?>
 <style>
 .tabs-right > .nav-tabs {border-bottom: 0;}
 
@@ -47,13 +48,21 @@
             <li><a href="#2" data-toggle="tab">Downloads</a></li>
             <li><a href="#3" data-toggle="tab">Three</a></li>
             <li><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                    echo site_url('caixilharia/logout');
+                    echo site_url('login/logout');
+                    session_unset();
+                    session_destroy();
                 } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                    echo site_url('vidro/logout');
+                    echo site_url('login/logout');
+                    session_unset();
+                    session_destroy();
                 } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                    echo site_url('extrusao/logout');
+                    echo site_url('login/logout');
+                    session_unset();
+                    session_destroy();
                 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                    echo site_url('tratamento/logout');
+                    echo site_url('login/logout');
+                    session_unset();
+                    session_destroy();
                 } ?>">Logout</a></li>
         </ul>
         <div class="tab-content">
@@ -85,3 +94,4 @@
     </div>
     <!-- /tabs -->
 </div>
+<?php } ?>
