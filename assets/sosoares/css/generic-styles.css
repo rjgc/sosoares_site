@@ -365,8 +365,8 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .related .img-responsive {width:125px;height: 120px;}
 
     .contactus .row .col-md-6 .row .col-md-6 {width: 49%;display: inline-block;}
-    #date {text-align: left;margin-bottom: -25px;}
-
+    #date {text-align: left;padding-left: 16px;margin-bottom: -25px;}
+    .navbar-nav {padding-left: 16px;}
 }
 @media (max-width: 800px) {
     header {height: 140px;}

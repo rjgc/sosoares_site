@@ -187,6 +187,8 @@ function send_request(eventRow, clickEl, el) {
 
   if (url.indexOf('produtos_extrusao_management') != -1) {
     url = url.replace('produtos_extrusao_management', 'change_order_extrusao');
+  } else if (url.indexOf('tipos_produto_aluminio_management') != -1) {
+    url = url.replace('tipos_produto_aluminio_management', 'change_order_tipo_produto_aluminio');
   } else if (url.indexOf('produtos_aluminio_management') != -1) {
     url = url.replace('produtos_aluminio_management', 'change_order_aluminio');
   } else {

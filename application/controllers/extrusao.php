@@ -22,17 +22,26 @@ function __construct()
 {
 	parent::__construct();
 
-        // you might want to just autoload these two helpers
+// you might want to just autoload these two helpers
 	$this->load->helper('language');
 	$this->load->helper('url');
 	$this->load->helper('text');
 
+	$this->lang->load('cizacl', $this->config->item('language'));
 	$this->lang->load('cizacl');
 
+	$this->load->library('cizacl');
+	$this->load->library('login');
+	$this->load->library('form_validation'); 
 	$this->load->library('ion_auth');
 
+	$this->load->model('login_mdl');
+	$this->load->model('cizacl_mdl');
 	$this->load->model('extrusao_model');
-	$this->load->model('sosoares_model');
+	$this->load->model('sosoares_model');  
+
+	if(!class_exists('CI_Cizacl'))
+		show_error($this->lang->line('library_not_loaded'));
 }
 
 public function get_lang()
@@ -57,6 +66,38 @@ public function home()
 
 	$this->load->view('templates/carousel', $data, $this->get_lang());
 	$this->load->view('pages/inicio', $data);
+	$this->load->view('templates/footer');
+}
+
+public function area_reservada()
+{   
+	$session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
+
+	$temp = explode('"user_id"', $session['user_data']);
+
+	if (isset($temp['1'])) 
+	{
+		$temp = explode('"', $temp['1']);
+
+		$role = $this->sosoares_model->get_role($temp['1']);
+
+		if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
+		{
+			$data['logged_in'] = True;
+
+			$data['profile'] = $this->sosoares_model->get_profile($temp['1']);
+			$data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
+			$data['ficheiros'] = $this->sosoares_model->get_ficheiros();
+		}
+		else
+			$data['logged_in'] = False;
+	}
+
+	$data['page_style']= "extrusao";
+	$data['current'] = 'reserved';
+	$this->menu($data);
+
+	$this->load->view('pages/area_reservada', $data);
 	$this->load->view('templates/footer');
 }
 
@@ -296,26 +337,4 @@ public function contactos()
 	$this->load->view('templates/footer', $data);
 }
 
-public function account()
-{
-    if($this->ion_auth->logged_in() == true){
-	$data['page_style']= "extrusao";
-	$data['current'] = 'reserved';
-	$this->menu($data);
-
-	$this->load->view('pages/account', $data);
-	$this->load->view('templates/footer');
-    }
-    else{
-	$this->home();
-	//redirect('home');
-    }
-    
-}
-    public function logout()
-    {
-        $this->ion_auth->logout();
-
-        $this->home();
-    }
 }

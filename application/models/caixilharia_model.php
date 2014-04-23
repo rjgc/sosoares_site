@@ -69,6 +69,38 @@ class Caixilharia_model extends CI_Model
 			return false;
 	}
 
+	//ORDEM TIPO PRODUTOS
+
+	public function change_order_tipo_produto_aluminio($event, $clickEl, $el) {
+		$posClickEl = $this->db->query("select ordem from tipos_produto_aluminio where id_tipo_produto_aluminio = $clickEl");
+		$posClickEl = $posClickEl->result_array();
+		$posClickEl = $posClickEl[0]['ordem'];
+
+		$posEl = $this->db->query("select ordem from tipos_produto_aluminio where id_tipo_produto_aluminio = $el");
+		$posEl = $posEl->result_array();
+		$posEl = $posEl[0]['ordem'];
+
+		$resClick = false;
+		$resEl = false;
+
+		$this->db->where('id_tipo_produto_aluminio', $clickEl);              
+		if ($this->db->update('tipos_produto_aluminio', array('ordem' =>  $posEl)))
+			$resClick = true;
+		else
+			$resClick = false;
+
+		$this->db->where('id_tipo_produto_aluminio', $el);              
+		if ($this->db->update('tipos_produto_aluminio', array('ordem' =>  $posClickEl)))
+			$resEl = true;
+		else
+			$resEl = false;
+
+		if($resClick && $resEl)
+			return true;
+		else
+			return false;
+	}
+
 	//SET ORDEM
 
 	public function set_ordem() {
@@ -97,7 +129,7 @@ class Caixilharia_model extends CI_Model
 	}
 
 	public function get_tipos_produtos() {
-		$query = $this->db->query("select * from tipos_produto_aluminio");
+		$query = $this->db->query("select * from tipos_produto_aluminio order by ordem");
 
 		$data = $query->result_array();
 		return $data;

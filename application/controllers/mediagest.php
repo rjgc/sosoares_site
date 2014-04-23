@@ -85,8 +85,8 @@ class Mediagest extends CI_Controller {
         		$crud->callback_before_insert(array($this, 'callback_before_insert'));
 
         		$crud->add_action('Fotos', 'http://www.indelague.pt/assets/uploads/photo.png', 'mediagest/galeria', 'iframe');
-        		$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_extrusao', 'order-position-product-down');
-        		$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_extrusao', 'order-position-product-up');
+        		$crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order', 'order-position-product-down');
+        		$crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order', 'order-position-product-up');
 
         		$output = $crud->render();
 
@@ -509,10 +509,14 @@ class Mediagest extends CI_Controller {
     	$crud->set_table('tipos_produto_aluminio');
     	$crud->set_subject('Tipos de Produto Alumínio');
     	$crud->columns('nome_pt', 'foto');
+        $crud->order_by('ordem', 'asc');
 
     	$crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
 
     	$crud->set_field_upload('foto', 'assets/uploads/produtos');
+
+        $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_tipo_produto_aluminio', 'order-position-product-down');
+        $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_tipo_produto_aluminio', 'order-position-product-up');
 
     	$output = $crud->render();
 
@@ -522,6 +526,28 @@ class Mediagest extends CI_Controller {
     	$this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
     	$this->_admin_output($output);
+    }
+
+    function change_order_tipo_produto_aluminio()
+    {
+        if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+            $this->load->model('caixilharia_model');
+            $event = trim($_POST['eventRow']);
+            $clickEl = intval($_POST['clickEl']);
+            $el = intval($_POST['el']);
+            if ($event && $clickEl && $el) {
+                if ($this->caixilharia_model->change_order_tipo_produto_aluminio($event, $clickEl, $el)) {
+                    exit("success");
+                } else {
+                    exit("error1");
+                }
+                $this->caixilharia_model->change_order_tipo_produto_aluminio($event, $clickEl, $el);
+            } else {
+                exit("error2");
+            }
+        } else {
+            exit("error3");
+        }
     }
 
     function caracteristicas_produto_aluminio_management()

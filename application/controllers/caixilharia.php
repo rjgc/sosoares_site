@@ -27,28 +27,21 @@ function __construct()
     $this->load->helper('url');
     $this->load->helper('text');
 
+    $this->lang->load('cizacl', $this->config->item('language'));
     $this->lang->load('cizacl');
 
+    $this->load->library('cizacl');
+    $this->load->library('login');
+    $this->load->library('form_validation'); 
     $this->load->library('ion_auth');
 
+    $this->load->model('login_mdl');
+    $this->load->model('cizacl_mdl');
     $this->load->model('caixilharia_model');
-    $this->load->model('sosoares_model');
-
-
-    $this->lang->load('cizacl',$this->config->item('language'));
+    $this->load->model('sosoares_model');  
 
     if(!class_exists('CI_Cizacl'))
         show_error($this->lang->line('library_not_loaded'));
-
-    $this->load->library('cizacl');
-
-    $this->load->library('login');
-
-    $this->load->model('login_mdl');
-
-    $this->load->model('cizacl_mdl');
-    
-    $this->load->library('form_validation'); 
 }
 
 public function get_lang()
@@ -103,29 +96,56 @@ public function area_reservada()
 
 public function menu($data)
 {
-    // $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produto($id);
+    $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();
+    
+    $z = 0;
+    $arrayProdutos;
 
-    //     $produto;
+    foreach ($data['tipos'] as $tipo) {
+        $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produtos($tipo['id_tipo_produto_aluminio']);
 
-    //     if (!empty($data['caracteristicas'])) {
-    //         $produto = $this->caixilharia_model->get_produto_com_caracteristica($id, $this->get_lang());
-    //     } else {
-    //         $produto = $this->caixilharia_model->get_produto_sem_caracteristica($id, $this->get_lang());
-    //     }
+        if (!empty($data['caracteristicas'])) {
+            foreach ($data['caracteristicas'] as $caracteristica) {
+                $data['produtos'] = $this->caixilharia_model->get_produtos($tipo['id_tipo_produto_aluminio'], $caracteristica['id_caracteristica_produto_aluminio']);
 
-    $data['batentes_com_corte'] = $this->caixilharia_model->get_batentes_com_corte($this->get_lang());
-    $data['batentes_sem_corte'] = $this->caixilharia_model->get_batentes_sem_corte($this->get_lang());
-    $data['aluminios_madeira_com_corte'] = $this->caixilharia_model->get_aluminios_madeira_com_corte($this->get_lang());
-    $data['aluminios_madeira_sem_corte'] = $this->caixilharia_model->get_aluminios_madeira_sem_corte($this->get_lang());
-    $data['correres_com_corte'] = $this->caixilharia_model->get_correres_com_corte($this->get_lang());
-    $data['correres_sem_corte'] = $this->caixilharia_model->get_correres_sem_corte($this->get_lang());
-    $data['gradeamentos'] = $this->caixilharia_model->get_gradeamentos($this->get_lang());
-    $data['fachadas'] = $this->caixilharia_model->get_fachadas($this->get_lang());
-    $data['portadas'] = $this->caixilharia_model->get_portadas($this->get_lang());
-    $data['portoes'] = $this->caixilharia_model->get_portoes($this->get_lang());
-    $data['standards'] = $this->caixilharia_model->get_standards($this->get_lang());
-    $data['guilhotinas'] = $this->caixilharia_model->get_guilhotinas($this->get_lang());
-    $data['resguardos'] = $this->caixilharia_model->get_resguardos($this->get_lang());
+                foreach ($data['produtos'] as $produto) {
+                    $arrayProdutos[$z][0] = $tipo['nome_pt'];
+                    $arrayProdutos[$z][1] = $caracteristica['nome_pt'];
+                    $arrayProdutos[$z][2] = $produto['nome_pt'];
+                    $arrayProdutos[$z][3] = $produto['id_produto_aluminio'];
+
+                    $z++;
+                }
+            }
+        } else {
+            $data['produtos'] = $this->caixilharia_model->get_produtos_tipo($tipo['id_tipo_produto_aluminio']);
+
+            foreach ($data['produtos'] as $produto) {
+                $arrayProdutos[$z][0] = $tipo['nome_pt'];
+                $arrayProdutos[$z][1] = '';
+                $arrayProdutos[$z][2] = $produto['nome_pt'];
+                $arrayProdutos[$z][3] = $produto['id_produto_aluminio'];
+
+                $z++;
+            }
+        }
+    } 
+
+    $data['array'] = $arrayProdutos;
+
+    // $data['batentes_com_corte'] = $this->caixilharia_model->get_batentes_com_corte($this->get_lang());
+    // $data['batentes_sem_corte'] = $this->caixilharia_model->get_batentes_sem_corte($this->get_lang());
+    // $data['aluminios_madeira_com_corte'] = $this->caixilharia_model->get_aluminios_madeira_com_corte($this->get_lang());
+    // $data['aluminios_madeira_sem_corte'] = $this->caixilharia_model->get_aluminios_madeira_sem_corte($this->get_lang());
+    // $data['correres_com_corte'] = $this->caixilharia_model->get_correres_com_corte($this->get_lang());
+    // $data['correres_sem_corte'] = $this->caixilharia_model->get_correres_sem_corte($this->get_lang());
+    // $data['gradeamentos'] = $this->caixilharia_model->get_gradeamentos($this->get_lang());
+    // $data['fachadas'] = $this->caixilharia_model->get_fachadas($this->get_lang());
+    // $data['portadas'] = $this->caixilharia_model->get_portadas($this->get_lang());
+    // $data['portoes'] = $this->caixilharia_model->get_portoes($this->get_lang());
+    // $data['standards'] = $this->caixilharia_model->get_standards($this->get_lang());
+    // $data['guilhotinas'] = $this->caixilharia_model->get_guilhotinas($this->get_lang());
+    // $data['resguardos'] = $this->caixilharia_model->get_resguardos($this->get_lang());
 
     $data['servicos'] = $this->caixilharia_model->get_servicos();
 
@@ -245,7 +265,7 @@ public function send_candidatura()
         $data['message'] = 'A candidatura foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-        //Enviar email
+//Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -261,13 +281,13 @@ public function send_candidatura()
             'charset'          => 'utf-8',
             'validate'         => FALSE,
             'priority'         => 3,
-            //'crlf'             => "\r\n",
-            //'newline'          => "\r\n",
+//'crlf'             => "\r\n",
+//'newline'          => "\r\n",
             'bcc_batch_mode'   => FALSE,
             'bcc_batch_size'   => 200
             );
 
-        // Run some setup
+// Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(2));
@@ -276,7 +296,7 @@ public function send_candidatura()
         $this->email->attach(set_value('cv'));
         $this->email->send();
 
-        // Debug Email
+// Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
@@ -498,7 +518,7 @@ public function send_contactos()
         $data['message'] = 'A mensagem foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-        //Enviar email
+//Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -514,13 +534,13 @@ public function send_contactos()
             'charset'          => 'utf-8',
             'validate'         => FALSE,
             'priority'         => 3,
-            //'crlf'             => "\r\n",
-            //'newline'          => "\r\n",
+//'crlf'             => "\r\n",
+//'newline'          => "\r\n",
             'bcc_batch_mode'   => FALSE,
             'bcc_batch_size'   => 200
             );
 
-        // Run some setup
+// Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(1));
@@ -528,7 +548,7 @@ public function send_contactos()
         $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'.<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
         $this->email->send();
 
-        // Debug Email
+// Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
