@@ -69,8 +69,50 @@ public function home()
     $this->load->view('templates/footer');
 }
 
+public function area_reservada()
+{   
+    $session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
+
+    $temp = explode('"user_id"', $session['user_data']);
+
+    if (isset($temp['1'])) 
+    {
+        $temp = explode('"', $temp['1']);
+
+        $role = $this->sosoares_model->get_role($temp['1']);
+
+        if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
+        {
+            $data['logged_in'] = True;
+
+            $data['profile'] = $this->sosoares_model->get_profile($temp['1']);
+            $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
+            $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
+        }
+        else
+            $data['logged_in'] = False;
+    }
+
+    $data['page_style']= "caixilharia";
+    $data['current'] = 'reserved';
+    $this->menu($data);
+
+    $this->load->view('pages/area_reservada', $data);
+    $this->load->view('templates/footer');
+}
+
 public function menu($data)
 {
+    // $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produto($id);
+
+    //     $produto;
+
+    //     if (!empty($data['caracteristicas'])) {
+    //         $produto = $this->caixilharia_model->get_produto_com_caracteristica($id, $this->get_lang());
+    //     } else {
+    //         $produto = $this->caixilharia_model->get_produto_sem_caracteristica($id, $this->get_lang());
+    //     }
+
     $data['batentes_com_corte'] = $this->caixilharia_model->get_batentes_com_corte($this->get_lang());
     $data['batentes_sem_corte'] = $this->caixilharia_model->get_batentes_sem_corte($this->get_lang());
     $data['aluminios_madeira_com_corte'] = $this->caixilharia_model->get_aluminios_madeira_com_corte($this->get_lang());
@@ -500,20 +542,4 @@ public function send_contactos()
     }
 }
 
-public function account()
-{    
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'reserved';
-    $this->menu($data);
-
-    $this->load->view('pages/account', $data);
-    $this->load->view('templates/footer');
-}
-
-public function logout()
-{
-    $this->ion_auth->logout();
-
-    $this->home();
-}
 }

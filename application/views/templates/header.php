@@ -29,7 +29,7 @@
             break;
         }
     }
-    
+
     if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo $this->login->getScriptsHome('caixilharia');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
@@ -85,27 +85,18 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if($this->ion_auth->logged_in() == true) {
-                        if(isset($page_style)) {
-                            switch($page_style) {
-                                case "caixilharia": ?>
-                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/caixilharia/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                <?php break;
-                                case "vidro": ?>
-                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/vidro/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                <?php break;
-                                case "extrusao": ?>
-                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/extrusao/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                <?php break;
-                                case "tratamento": ?>
-                                <a id="signin" data-toggle="modal" href="<?php echo site_url() ?>/tratamento/account"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
-                                <?php break;
-                                default:
-                                break;
-                            }
-                        }
-                    }else{ ?>
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a>
+                    <?php if (isset($logged_in) && $logged_in) { ?>
+                    <a id="signin" data-toggle="modal" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                        echo site_url('caixilharia/area_reservada');
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                        echo site_url('vidro/area_reservada');
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                        echo site_url('extrusao/area_reservada');
+                    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                        echo site_url('tratamento/area_reservada');
+                    } ?>"><button class="btn button grow" id="btn_area_reservada">Área Reservada</button></a>
+                    <?php } else { ?>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a> 
                     <?php } ?>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -113,21 +104,18 @@
                         <div class="modal-content" id="tab-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="reset()">&times;</button>
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#area_privada" data-toggle="tab" onclick="login(this)">Área Privada</a></li>
-                                    <li><a href="#registar" data-toggle="tab">Registe-se</a></li>
-                                </ul>
+                                <h4 class="modal-title">Login</h4>
                             </div>
                             <form method="post" role="form" id="form1">
                                 <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
                                 <div class="modal-body" id="form">
                                     <div class="tab-pane fade in active" id="area_privada">
+                                        <div id="jq_msg"></div>
                                         <label>Username:</label>
                                         <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
                                         <p></p>
                                         <label>Password:</label>
                                         <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
-                                        <p style="display:inline-block;">Remember Me:</p><input style="margin:0 0 0 5px !important;" type="checkbox" name="remember" value="1">
                                     </div>
                                     <div class="tab-pane fade" id="registar">...</div>
                                 </div>
@@ -143,7 +131,7 @@
         </div>
     </header>
     <nav>
-        <?php   if(isset($page_style)) {
+        <?php if(isset($page_style)) {
             switch($page_style) {
                 case "caixilharia":
                 require_once('nav_caixilharia.php');
@@ -160,8 +148,7 @@
                 default:
                 break;
             }
-        }
-        ?>
+        } ?>
     </nav>
     <section>
         <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>
@@ -169,3 +156,4 @@
         <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/Dable.js"></script>

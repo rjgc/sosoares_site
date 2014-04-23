@@ -276,8 +276,6 @@ class Login extends CI_Controller {
 
 					$this->session->set_userdata($session);
 
-					$_SESSION['userid'] = $row->user_id;
-
 					$lang;
 
 					if (strpos($_SERVER['REQUEST_URI'], 'pt'))
@@ -290,13 +288,13 @@ class Login extends CI_Controller {
 						$lang = 'es';
 					
 					if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/account'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_reservada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/vidro/account'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/vidro/area_reservada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/extrusao/account'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/extrusao/area_reservada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/tratamento/account'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/tratamento/area_reservada'));
 
 				}
 

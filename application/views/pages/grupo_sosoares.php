@@ -11,7 +11,15 @@
                 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                     echo site_url('tratamento/home');
                 } ?>"><?=lang('home')?></a></li>
-                <li><?=lang('grupo')?></li>
+                <li><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    echo site_url('caixilharia/grupos_sosoares');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                    echo site_url('vidro/grupos_sosoares');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                    echo site_url('extrusao/grupos_sosoares');
+                } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                    echo site_url('tratamento/grupos_sosoares');
+                } ?>"><?=lang('grupo')?></a></li>
                 <li><?php switch ($page['id_pagina']) {                 
                     case 1:
                     echo lang('grupo');
