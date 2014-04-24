@@ -50,48 +50,58 @@ public function get_lang()
 }
 
 public function home()
-{
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'home';
-    $data['noticia'] = $this->sosoares_model->get_destaque();
-    $data['banners'] = $this->sosoares_model->get_banners(1);
-    $this->menu($data);
+{  
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'home';
+        $data['noticia'] = $this->sosoares_model->get_destaque();
+        $data['banners'] = $this->sosoares_model->get_banners(1);
+        $this->menu($data);
 
-    $this->load->view('templates/carousel', $data, $this->get_lang());
-    $this->load->view('pages/inicio', $data);
-    $this->load->view('templates/footer');
+        $this->load->view('templates/carousel', $data, $this->get_lang());
+        $this->load->view('pages/inicio', $data);
+        $this->load->view('templates/footer');
+    }
 }
 
 public function area_reservada()
 {   
-    $session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        // $session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
 
-    $temp = explode('"user_id"', $session['user_data']);
+        // $temp = explode('"user_id"', $session['user_data']);
 
-    if (isset($temp['1'])) 
-    {
-        $temp = explode('"', $temp['1']);
+        // if (isset($temp['1'])) 
+        // {
+        //     $temp = explode('"', $temp['1']);
 
-        $role = $this->sosoares_model->get_role($temp['1']);
+        //     $role = $this->sosoares_model->get_role($temp['1']);
 
-        if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
-        {
-            $data['logged_in'] = True;
+        
 
-            $data['profile'] = $this->sosoares_model->get_profile($temp['1']);
-            $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
-            $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
-        }
-        else
-            $data['logged_in'] = False;
+            if ($this->cizacl->check_isAllowed($this->session->userdata('user_cizacl_role_id'), 'caixilharia', 'account')) 
+            {
+                $data['logged_in'] = True;
+
+                $data['profile'] = $this->sosoares_model->get_profile($this->session->userdata('user_id'));
+                $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
+                $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
+            }
+            else
+                $data['logged_in'] = False;
+        // }
+
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'reserved';
+        $this->menu($data);
+
+        $this->load->view('pages/area_reservada', $data);
+        $this->load->view('templates/footer');
     }
-
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'reserved';
-    $this->menu($data);
-
-    $this->load->view('pages/area_reservada', $data);
-    $this->load->view('templates/footer');
 }
 
 public function pesquisa($pesquisa)
@@ -153,89 +163,113 @@ public function menu($data)
 
 public function grupo_sosoares($page=null)
 {
-    $data['page_style'] = "caixilharia";
-    $data['current'] = 'grupo_sosoares';
-    $data['page'] = $page;
-    $this->menu($data);
-
-    if ($page != null) {
-        $data['page'] = $this->sosoares_model->get_page($page);
-
-        $this->load->view('pages/grupo_sosoares', $data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
     } else {
-        $this->load->view('pages/grupo_sosoares', $data);
-    }
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $data['page'] = $page;
+        $this->menu($data);
 
-    $this->load->view('templates/footer');
+        if ($page != null) {
+            $data['page'] = $this->sosoares_model->get_page($page);
+
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
 }
 
 public function grupos_sosoares()
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'grupos_sosoares';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'grupos_sosoares';
+        $this->menu($data);
 
-    $paginas;
+        $paginas;
 
-    for ($i=1; $i < 7; $i++) {
-        $paginas[$i] = $this->sosoares_model->get_pages($i);
+        for ($i=1; $i < 7; $i++) {
+            $paginas[$i] = $this->sosoares_model->get_pages($i);
+        }
+
+        $data['pages'] = $paginas;
+
+        $this->load->view('pages/grupos_sosoares', $data);
+        $this->load->view('templates/footer');
     }
-
-    $data['pages'] = $paginas;
-
-    $this->load->view('pages/grupos_sosoares', $data);
-    $this->load->view('templates/footer');
 }
 
 public function areas_comerciais()
 {
-    $data['page_style']= "caixilharia";
-    $data['page_title'] = "areas_comerciais";
-    $data['current'] = 'grupo_sosoares';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['page_title'] = "areas_comerciais";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
 
-    $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
+        $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
 
-    $this->load->view('pages/areas_comerciais', $data);
-    $this->load->view('templates/footer', $data);
+        $this->load->view('pages/areas_comerciais', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }
 
 public function noticia($id=null)
 {
-    $data['page_style'] = "caixilharia";
-    $data['current'] = 'grupo_sosoares';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
 
-    $data['id'] = $id;
-    $data['noticia'] = $this->sosoares_model->get_noticia($id);
+        $data['id'] = $id;
+        $data['noticia'] = $this->sosoares_model->get_noticia($id);
 
-    $this->load->view('pages/noticia', $data);
-    $this->load->view('templates/footer', $data);
+        $this->load->view('pages/noticia', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }
 
 public function noticias()
 {
-    $data['page_style'] = "caixilharia";
-    $data['current'] = 'grupo_sosoares';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style'] = "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
 
-    $data['noticias'] = $this->sosoares_model->get_noticias();
+        $data['noticias'] = $this->sosoares_model->get_noticias();
 
-    $this->load->view('pages/noticias', $data);
-    $this->load->view('templates/footer', $data);
+        $this->load->view('pages/noticias', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }
 
 public function candidaturas()
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'grupo_sosoares';
-    $data['reset'] = FALSE;
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $data['reset'] = FALSE;
+        $this->menu($data);
 
-    $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
 
-    $this->load->view('pages/candidatura', $data);
-    $this->load->view('templates/footer');
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
+    }
 }
 
 public function send_candidatura() 
@@ -307,179 +341,211 @@ public function send_candidatura()
 
 public function produto($id=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'produto';
-    $data['id'] = $id;
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'produto';
+        $data['id'] = $id;
+        $this->menu($data);
 
-    if ($id != null) {
-        $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produto($id);
+        if ($id != null) {
+            $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produto($id);
 
-        $produto;
+            $produto;
 
-        if (!empty($data['caracteristicas'])) {
-            $produto = $this->caixilharia_model->get_produto_com_caracteristica($id, $this->get_lang());
+            if (!empty($data['caracteristicas'])) {
+                $produto = $this->caixilharia_model->get_produto_com_caracteristica($id, $this->get_lang());
+            } else {
+                $produto = $this->caixilharia_model->get_produto_sem_caracteristica($id, $this->get_lang());
+            }
+
+            $data['produto'] = $produto;
+            $data['perfis'] = $this->caixilharia_model->get_perfis($id, $this->get_lang());
+            $data['pormenores'] = $this->caixilharia_model->get_pormenores($id, $this->get_lang());
+            $data['catalogos'] = $this->caixilharia_model->get_catalogos($id, $this->get_lang());
+            $data['ensaios'] = $this->caixilharia_model->get_ensaios($id, $this->get_lang());
+            $data['folhetos'] = $this->caixilharia_model->get_folheto_promocional($id, $this->get_lang());
+            $data['obras'] = $this->caixilharia_model->get_obras_produto($id, $this->get_lang());
+
+            $this->load->view('pages/caixilharia/produto', $data, $this->get_lang());
         } else {
-            $produto = $this->caixilharia_model->get_produto_sem_caracteristica($id, $this->get_lang());
+            $this->load->view('pages/caixilharia/produto', $data, $this->get_lang());
         }
 
-        $data['produto'] = $produto;
-        $data['perfis'] = $this->caixilharia_model->get_perfis($id, $this->get_lang());
-        $data['pormenores'] = $this->caixilharia_model->get_pormenores($id, $this->get_lang());
-        $data['catalogos'] = $this->caixilharia_model->get_catalogos($id, $this->get_lang());
-        $data['ensaios'] = $this->caixilharia_model->get_ensaios($id, $this->get_lang());
-        $data['folhetos'] = $this->caixilharia_model->get_folheto_promocional($id, $this->get_lang());
-        $data['obras'] = $this->caixilharia_model->get_obras_produto($id, $this->get_lang());
-
-        $this->load->view('pages/caixilharia/produto', $data, $this->get_lang());
-    } else {
-        $this->load->view('pages/caixilharia/produto', $data, $this->get_lang());
+        $this->load->view('templates/footer');
     }
-
-    $this->load->view('templates/footer');
 }
 
 public function produtos($id_tipo_produto_aluminio=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'produtos';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'produtos';
+        $this->menu($data);
 
-    if ($id_tipo_produto_aluminio != null) {
-        $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produtos($id_tipo_produto_aluminio);
-        $data['tipo'] = $this->caixilharia_model->get_tipo_produtos($id_tipo_produto_aluminio);
+        if ($id_tipo_produto_aluminio != null) {
+            $data['caracteristicas'] = $this->caixilharia_model->get_caracteristicas_produtos($id_tipo_produto_aluminio);
+            $data['tipo'] = $this->caixilharia_model->get_tipo_produtos($id_tipo_produto_aluminio);
 
-        if (!empty($data['caracteristicas'])) {
-            $produtos;
+            if (!empty($data['caracteristicas'])) {
+                $produtos;
 
-            foreach ($data['caracteristicas'] as $caracteristica) {
-                $produtos[$caracteristica['nome_pt']] = $this->caixilharia_model->get_produtos($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
+                foreach ($data['caracteristicas'] as $caracteristica) {
+                    $produtos[$caracteristica['nome_pt']] = $this->caixilharia_model->get_produtos($id_tipo_produto_aluminio, $caracteristica['id_caracteristica_produto_aluminio']);
+                }
+
+                $data['produtos'] = $produtos;
+
+                $this->load->view('pages/caixilharia/produtos_com_caracteristicas', $data, $this->get_lang());
+
+            } else {
+                $data['produtos'] = $this->caixilharia_model->get_produtos_tipo($id_tipo_produto_aluminio);
+
+                $this->load->view('pages/caixilharia/produtos_sem_caracteristicas', $data, $this->get_lang());
             }
-
-            $data['produtos'] = $produtos;
-
-            $this->load->view('pages/caixilharia/produtos_com_caracteristicas', $data, $this->get_lang());
-
-        } else {
-            $data['produtos'] = $this->caixilharia_model->get_produtos_tipo($id_tipo_produto_aluminio);
-
-            $this->load->view('pages/caixilharia/produtos_sem_caracteristicas', $data, $this->get_lang());
         }
-    }
-    else {
-        $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();
+        else {
+            $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();
 
-        $this->load->view('pages/caixilharia/produtos', $data);
-    }
+            $this->load->view('pages/caixilharia/produtos', $data);
+        }
 
-    $this->load->view('templates/footer');
+        $this->load->view('templates/footer');
+    }
 }
 
 public function obras($id=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'obras';
-    $data['id'] = $id;
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'obras';
+        $data['id'] = $id;
+        $this->menu($data);
 
-    if($id != null){
-        $data['obra'] = $this->caixilharia_model->get_obra($id);
-        $data['galeria_obra'] = $this->caixilharia_model->get_galeria_obra($id);
-        $data['produtos_aluminio_obra'] = $this->caixilharia_model->get_produtos_obra($id, $this->get_lang());
+        if($id != null){
+            $data['obra'] = $this->caixilharia_model->get_obra($id);
+            $data['galeria_obra'] = $this->caixilharia_model->get_galeria_obra($id);
+            $data['produtos_aluminio_obra'] = $this->caixilharia_model->get_produtos_obra($id, $this->get_lang());
 
-        $this->load->view('pages/obra', $data, $this->get_lang());
+            $this->load->view('pages/obra', $data, $this->get_lang());
+        }
+        else{
+            $data['obras'] = $this->caixilharia_model->get_obras();
+
+            $this->load->view('pages/obras', $data, $this->get_lang());
+        }
+
+        $this->load->view('templates/footer');
     }
-    else{
-        $data['obras'] = $this->caixilharia_model->get_obras();
-
-        $this->load->view('pages/obras', $data, $this->get_lang());
-    }
-
-    $this->load->view('templates/footer');
 }
 
 public function servico($servico=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'servico';
-    $data['servico'] = $servico;
-    $this->menu($data);
-
-    if ($servico != null) {
-        $data['servico'] = $this->caixilharia_model->get_servico($servico);
-
-        $this->load->view('pages/servico', $data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
     } else {
-        $this->load->view('pages/servico', $data);
-    }
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'servico';
+        $data['servico'] = $servico;
+        $this->menu($data);
 
-    $this->load->view('templates/footer');      
+        if ($servico != null) {
+            $data['servico'] = $this->caixilharia_model->get_servico($servico);
+
+            $this->load->view('pages/servico', $data);
+        } else {
+            $this->load->view('pages/servico', $data);
+        }
+
+        $this->load->view('templates/footer');  
+    }    
 }
 
 public function marcacao($page=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'marcacao';
-    $data['page'] = $page;
-    $this->menu($data);
-
-    if ($page != null) {
-        $data['page'] = $this->sosoares_model->get_page($page);
-
-        $this->load->view('pages/marcacao', $data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
     } else {
-        $this->load->view('pages/marcacao', $data);
-    }
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'marcacao';
+        $data['page'] = $page;
+        $this->menu($data);
 
-    $this->load->view('templates/footer');
+        if ($page != null) {
+            $data['page'] = $this->sosoares_model->get_page($page);
+
+            $this->load->view('pages/marcacao', $data);
+        } else {
+            $this->load->view('pages/marcacao', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
 }
 
 public function apoio_cliente($page=null)
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'apoio_cliente';
-    $data['page'] = $page;
-    $this->menu($data);
-
-    if ($page != null) {
-        $data['page'] = $this->sosoares_model->get_apoio(1, $page);
-
-        $this->load->view('pages/apoio_cliente', $data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
     } else {
-        $this->load->view('pages/apoio_cliente', $data);
-    }
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'apoio_cliente';
+        $data['page'] = $page;
+        $this->menu($data);
 
-    $this->load->view('templates/footer');
+        if ($page != null) {
+            $data['page'] = $this->sosoares_model->get_apoio(1, $page);
+
+            $this->load->view('pages/apoio_cliente', $data);
+        } else {
+            $this->load->view('pages/apoio_cliente', $data);
+        }
+
+        $this->load->view('templates/footer');
+    }
 }
 
 public function apoios_cliente()
 {
-    $data['page_style']= "caixilharia";
-    $data['current'] = 'apoios_cliente';
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'apoios_cliente';
+        $this->menu($data);
 
-    $data['pages'] = $this->sosoares_model->get_apoios(1);
+        $data['pages'] = $this->sosoares_model->get_apoios(1);
 
-    $this->load->view('pages/apoios_cliente', $data);
-    $this->load->view('templates/footer');
+        $this->load->view('pages/apoios_cliente', $data);
+        $this->load->view('templates/footer');
+    }
 }
 
 public function contactos()
 {
-    $data['page_style'] = "caixilharia";
-    $data['page_title'] = "contactos";
-    $data['current'] = 'contactos';
-    $data['reset'] = FALSE;
-    $this->menu($data);
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style'] = "caixilharia";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos';
+        $data['reset'] = FALSE;
+        $this->menu($data);
 
-    $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
-    $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
-    $data['contactos'] = $this->sosoares_model->get_contactos(1);
-    $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
-    $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+        $data['contactos'] = $this->sosoares_model->get_contactos(1);
+        $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
-    $this->load->view('pages/contactos', $data);
-    $this->load->view('templates/footer', $data);
+        $this->load->view('pages/contactos', $data);
+        $this->load->view('templates/footer', $data);
+    }
 }
 
 public function send_contactos() 
