@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
-                        <?php           foreach($contactos as $contacto) { ?>
+                        <?php foreach($contactos as $contacto) { ?>
                         <div class="col-md-6">
                             <h3><?=$contacto['nome_departamento_'.$this->lang->lang()]?></h3>
                             <span id="mails"><a href="mailto:<?=$contacto['email'] ?>"><?=$contacto['email'] ?></a></span>
@@ -17,20 +17,20 @@
                             <p>T +351 <?=$contacto['telefone'] ?></p>
                             <p>F +351 <?=$contacto['fax'] ?></p>
                         </div>
-                        <?php           } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <?php if (!empty($message)) echo $message; ?>
                 <?php $this->load->helper('form'); ?>
-                <?php echo form_open(if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                    echo $this->lang->lang().'/caixilharia/send_contactos';
+                <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    $url = $this->lang->lang().'/caixilharia/send_contactos';
                 } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                    echo $this->lang->lang().'/vidro/send_contactos';
+                    $url = $this->lang->lang().'/vidro/send_contactos';
                 } else if (strpos($_SERVER['REQUEST_URI'], '')) {
-                    echo $this->lang->lang().'/extrusao/send_contactos';
+                    $url = $this->lang->lang().'/extrusao/send_contactos';
                 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                    echo $this->lang->lang().'/tratamento/send_contactos';
-                })?>
+                    $url = $this->lang->lang().'/tratamento/send_contactos';
+                } echo form_open($url)?>
                 <div class="col-md-6">
                     <form method="get">
                         <fieldset>
@@ -91,7 +91,7 @@
                                     <select class="form-control" id="distrito" name="distrito" value="<?php echo ($reset) ? "" : set_value('distrito'); ?>">
                                         <option selected value="-1"><?=lang('item')?></option>
                                         <?php foreach ($distritos as $distrito) { ?>
-                                             <option value="<?=$distrito?>"><?=$distrito?></option>
+                                        <option value="<?=$distrito?>"><?=$distrito?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -102,7 +102,7 @@
                                     <select class="form-control" id="concelho" name="concelho" value="<?php echo ($reset) ? "" : set_value('concelho'); ?>">
                                         <option selected value="-1"><?=lang('item')?></option>
                                         <?php foreach ($concelhos as $concelho) { ?>
-                                             <option value="<?=$concelho?>"><?=$concelho?></option>
+                                        <option value="<?=$concelho?>"><?=$concelho?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

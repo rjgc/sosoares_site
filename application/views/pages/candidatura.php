@@ -19,15 +19,15 @@
     </div>
     <?php if (!empty($message)) echo $message; ?>
     <?php $this->load->helper('form'); ?>
-    <?php echo form_open(if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-        echo $this->lang->lang().'/caixilharia/send_candidatura/';
+    <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+        $url = $this->lang->lang().'/caixilharia/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-        echo $this->lang->lang().'/vidro/send_candidatura/';
+        $url = $this->lang->lang().'/vidro/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], '')) {
-        echo $this->lang->lang().'/extrusao/send_candidatura/';
+        $url = $this->lang->lang().'/extrusao/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-        echo $this->lang->lang().'/tratamento/send_candidatura/';
-    })?>
+        $url = $this->lang->lang().'/tratamento/send_candidatura';
+    } echo form_open($url)?>
     <div class="row candidaturas">
         <div class="col-md-8" style="padding-left: 30px;">
             <form method="get">

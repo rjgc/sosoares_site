@@ -5,6 +5,22 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//PESQUISA
+
+	public function pesquisa_tipos($pesquisa) {
+		$query = $this->db->query("select * from tipos_produtos_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	public function pesquisa_produtos($pesquisa) {
+		$query = $this->db->query("select * from produtos_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	//ORDEM APOIOS CLIENTE
 
 	public function change_order_apoio_cliente($event, $clickEl, $el) {

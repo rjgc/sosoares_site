@@ -94,6 +94,19 @@ public function area_reservada()
     $this->load->view('templates/footer');
 }
 
+public function pesquisa($pesquisa)
+{
+    $data['page_style']= "caixilharia";
+    $data['current'] = 'pesquisa';
+    $this->menu($data);
+
+    $data['tipos'] = $this->sosoares_model->pesquisa_tipos($pesquisa);
+    $data['produtos'] = $this->sosoares_model->pesquisa_produtos($pesquisa);
+
+    $this->load->view('pages/pesquisa', $data);
+    $this->load->view('templates/footer');
+}
+
 public function menu($data)
 {
     $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();

@@ -38,30 +38,29 @@
                                 </div>
                             </a>
                             <?php }
-                        } ?>
-                        <?php
-                    if (!empty($produtos)) {
-                        foreach ($produtos as $produto){
-                            ?>
-                            <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>">
-                                <div class="obras-list grow">
-                                    <?php if(!empty($tipo['foto'])) {
+                        } 
+                        if (!empty($produtos)) {
+                            foreach ($produtos as $produto){
+                                ?>
+                                <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>">
+                                    <div class="obras-list grow">
+                                        <?php if(!empty($tipo['foto'])) {
+                                            ?>
+                                            <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
+                                            <?php
+                                        }
                                         ?>
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
-                                        <?php
-                                    }
-                                    ?>
-                                    <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
-                                </div>
-                            </a>
-                            <?php }
-                        } ?>
+                                        <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
+                                    </div>
+                                </a>
+                                <?php }
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
