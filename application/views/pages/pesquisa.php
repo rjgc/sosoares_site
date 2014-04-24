@@ -44,9 +44,9 @@
                                 ?>
                                 <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>">
                                     <div class="obras-list grow">
-                                        <?php if(!empty($tipo['foto'])) {
+                                        <?php if(!empty($produto['foto'])) {
                                             ?>
-                                            <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
+                                            <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $produto['foto'] ?>"/>
                                             <?php
                                         } else {
                                             ?>
@@ -54,7 +54,7 @@
                                             <?php
                                         }
                                         ?>
-                                        <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
+                                        <p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p>
                                     </div>
                                 </a>
                                 <?php }

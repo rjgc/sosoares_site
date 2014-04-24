@@ -8,9 +8,9 @@ class Sosoares_model extends CI_Model
 	//PESQUISA
 
 	public function pesquisa_tipos($pesquisa) {
-		$query = $this->db->query("select * from tipos_produtos_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+		$query = $this->db->query("select * from tipos_produto_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
 
-		$data = $query->row_array();
+		$data = $query->result_array();
 		return $data;
 	}
 
