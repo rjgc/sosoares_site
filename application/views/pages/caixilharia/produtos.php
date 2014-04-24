@@ -20,7 +20,7 @@
                                 <div class="obras-list grow">
                                     <?php if(!empty($tipo['foto'])) {
                                     ?>
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $tipo['foto'] ?>"/>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
                                     <?php
                                     } else {
                                     ?>
@@ -43,6 +43,5 @@
                 </div>
             </div>
         </div>
-        <!-- /row -->
     </div>
 </div>

@@ -185,12 +185,20 @@ function send_request(eventRow, clickEl, el) {
 
   var url = window.location.pathname;
 
-  if (url.indexOf('produtos_extrusao_management') != -1) {
-    url = url.replace('produtos_extrusao_management', 'change_order_extrusao');
+  if (url.indexOf('produtos_aluminio_management') != -1) {
+    url = url.replace('produtos_aluminio_management', 'change_order_aluminio');
   } else if (url.indexOf('tipos_produto_aluminio_management') != -1) {
     url = url.replace('tipos_produto_aluminio_management', 'change_order_tipo_produto_aluminio');
-  } else if (url.indexOf('produtos_aluminio_management') != -1) {
-    url = url.replace('produtos_aluminio_management', 'change_order_aluminio');
+  } else if (url.indexOf('produtos_vidro_management') != -1) {
+    url = url.replace('produtos_vidro_management', 'change_order_vidro');
+  } else if (url.indexOf('tipos_produto_vidro_management') != -1) {
+    url = url.replace('tipos_produto_vidro_management', 'change_order_tipo_produto_vidro');
+  } else if (url.indexOf('produtos_extrusao_management') != -1) {
+    url = url.replace('produtos_extrusao_management', 'change_order_extrusao');
+  } else if (url.indexOf('tipos_produtos_extrusao_management') != -1) {
+    url = url.replace('tipos_produtos_extrusao_management', 'change_order_tipo_produto_extrusao');
+  } else if (url.indexOf('apoio_cliente_management') != -1) {
+    url = url.replace('apoio_cliente_management', 'change_order_apoio_cliente');
   } else {
     url += '/change_order';
   }

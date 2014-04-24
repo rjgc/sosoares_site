@@ -22,7 +22,7 @@ function __construct()
 {
     parent::__construct();
 
-// you might want to just autoload these two helpers
+    // you might want to just autoload these two helpers
     $this->load->helper('language');
     $this->load->helper('url');
     $this->load->helper('text');
@@ -57,7 +57,7 @@ public function home()
     $data['banners'] = $this->sosoares_model->get_banners(1);
     $this->menu($data);
 
-    $this->load->view('templates/carousel_caixilharia', $data, $this->get_lang());
+    $this->load->view('templates/carousel', $data, $this->get_lang());
     $this->load->view('pages/inicio', $data);
     $this->load->view('templates/footer');
 }
@@ -132,24 +132,8 @@ public function menu($data)
     } 
 
     $data['array'] = $arrayProdutos;
-
-    // $data['batentes_com_corte'] = $this->caixilharia_model->get_batentes_com_corte($this->get_lang());
-    // $data['batentes_sem_corte'] = $this->caixilharia_model->get_batentes_sem_corte($this->get_lang());
-    // $data['aluminios_madeira_com_corte'] = $this->caixilharia_model->get_aluminios_madeira_com_corte($this->get_lang());
-    // $data['aluminios_madeira_sem_corte'] = $this->caixilharia_model->get_aluminios_madeira_sem_corte($this->get_lang());
-    // $data['correres_com_corte'] = $this->caixilharia_model->get_correres_com_corte($this->get_lang());
-    // $data['correres_sem_corte'] = $this->caixilharia_model->get_correres_sem_corte($this->get_lang());
-    // $data['gradeamentos'] = $this->caixilharia_model->get_gradeamentos($this->get_lang());
-    // $data['fachadas'] = $this->caixilharia_model->get_fachadas($this->get_lang());
-    // $data['portadas'] = $this->caixilharia_model->get_portadas($this->get_lang());
-    // $data['portoes'] = $this->caixilharia_model->get_portoes($this->get_lang());
-    // $data['standards'] = $this->caixilharia_model->get_standards($this->get_lang());
-    // $data['guilhotinas'] = $this->caixilharia_model->get_guilhotinas($this->get_lang());
-    // $data['resguardos'] = $this->caixilharia_model->get_resguardos($this->get_lang());
-
+    $data['apoios'] = $this->sosoares_model->get_apoios(1);
     $data['servicos'] = $this->caixilharia_model->get_servicos();
-
-    $data['marcacoes'] = $this->caixilharia_model->get_marcacoes();
 
     $this->load->view('templates/header', $data, $this->get_lang());
 }
@@ -265,7 +249,7 @@ public function send_candidatura()
         $data['message'] = 'A candidatura foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-//Enviar email
+        //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -281,13 +265,11 @@ public function send_candidatura()
             'charset'          => 'utf-8',
             'validate'         => FALSE,
             'priority'         => 3,
-//'crlf'             => "\r\n",
-//'newline'          => "\r\n",
             'bcc_batch_mode'   => FALSE,
             'bcc_batch_size'   => 200
             );
 
-// Run some setup
+        // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(2));
@@ -296,7 +278,7 @@ public function send_candidatura()
         $this->email->attach(set_value('cv'));
         $this->email->send();
 
-// Debug Email
+        // Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
@@ -421,15 +403,15 @@ public function servico($servico=null)
     $this->load->view('templates/footer');      
 }
 
-public function marcacao($marcacao=null)
+public function marcacao($page=null)
 {
     $data['page_style']= "caixilharia";
     $data['current'] = 'marcacao';
-    $data['marcacao'] = $marcacao;
+    $data['page'] = $page;
     $this->menu($data);
 
-    if ($marcacao != null) {
-        $data['marcacao'] = $this->caixilharia_model->get_marcacao($marcacao);
+    if ($page != null) {
+        $data['page'] = $this->sosoares_model->get_page($page);
 
         $this->load->view('pages/marcacao', $data);
     } else {
@@ -447,7 +429,7 @@ public function apoio_cliente($page=null)
     $this->menu($data);
 
     if ($page != null) {
-        $data['page'] = $this->sosoares_model->get_apoio($page);
+        $data['page'] = $this->sosoares_model->get_apoio(1, $page);
 
         $this->load->view('pages/apoio_cliente', $data);
     } else {
@@ -463,13 +445,7 @@ public function apoios_cliente()
     $data['current'] = 'apoios_cliente';
     $this->menu($data);
 
-    $paginas;
-
-    for ($i=1; $i < 8; $i++) {
-        $paginas[$i] = $this->sosoares_model->get_apoios($i);
-    }
-
-    $data['pages'] = $paginas;
+    $data['pages'] = $this->sosoares_model->get_apoios(1);
 
     $this->load->view('pages/apoios_cliente', $data);
     $this->load->view('templates/footer');
@@ -483,6 +459,8 @@ public function contactos()
     $data['reset'] = FALSE;
     $this->menu($data);
 
+    $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+    $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
     $data['contactos'] = $this->sosoares_model->get_contactos(1);
     $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
@@ -501,6 +479,8 @@ public function send_contactos()
     $this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     $this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
+    $this->form_validation->set_rules('distrito', 'Distrito', 'required|max_length[50]');
+    $this->form_validation->set_rules('concelho', 'Concelho', 'required|max_length[50]');
     $this->form_validation->set_rules('assunto', 'Assunto', 'required');
     $this->form_validation->set_rules('mensagem', 'Mensagem', 'required|min_length[5]|max_length[500]');
 
@@ -518,7 +498,7 @@ public function send_contactos()
         $data['message'] = 'A mensagem foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-//Enviar email
+        //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -534,21 +514,19 @@ public function send_contactos()
             'charset'          => 'utf-8',
             'validate'         => FALSE,
             'priority'         => 3,
-//'crlf'             => "\r\n",
-//'newline'          => "\r\n",
             'bcc_batch_mode'   => FALSE,
             'bcc_batch_size'   => 200
             );
 
-// Run some setup
+        // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(1));
         $this->email->subject(set_value("assunto"));
-        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'.<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'.<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
         $this->email->send();
 
-// Debug Email
+        // Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {

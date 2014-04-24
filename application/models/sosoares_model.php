@@ -5,6 +5,48 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//ORDEM APOIOS CLIENTE
+
+	public function change_order_apoio_cliente($event, $clickEl, $el) {
+		$posClickEl = $this->db->query("select ordem from apoio_cliente where id_pagina = $clickEl");
+		$posClickEl = $posClickEl->result_array();
+		$posClickEl = $posClickEl[0]['ordem'];
+
+		$posEl = $this->db->query("select ordem from apoio_cliente where id_pagina = $el");
+		$posEl = $posEl->result_array();
+		$posEl = $posEl[0]['ordem'];
+
+		$resClick = false;
+		$resEl = false;
+
+		$this->db->where('id_pagina', $clickEl);              
+		if ($this->db->update('apoio_cliente', array('ordem' =>  $posEl)))
+			$resClick = true;
+		else
+			$resClick = false;
+
+		$this->db->where('id_pagina', $el);              
+		if ($this->db->update('apoio_cliente', array('ordem' =>  $posClickEl)))
+			$resEl = true;
+		else
+			$resEl = false;
+
+		if($resClick && $resEl)
+			return true;
+		else
+			return false;
+	}
+
+	//SET ORDEM
+
+	public function set_ordem() {
+		$query = $this->db->query("select max(ordem) as ordem from apoio_cliente");
+
+		$ordem = $query->row_array();
+
+		return $ordem['ordem'] + 1;
+	}
+
 	//GET USER ID
 
 	public function get_user_id($session_id) {
@@ -68,13 +110,6 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
-	/*public function get_banners($id_categoria_banner) {
-		$query = $this->db->query("select b.*, bo.id_obra as id_obra from banners b inner join banners_obras bo on b.id_banner = bo.id_banner where id_categoria_banner = '$id_categoria_banner'");
-
-		$data = $query->result_array();
-		return $data;
-	}*/
-
 	//DESTINATARIOS
 
 	public function get_destinatario($id_categoria) {
@@ -134,15 +169,15 @@ class Sosoares_model extends CI_Model
 
     //APOIO CLIENTE
 
-	public function get_apoio($id_pagina) {
-		$query = $this->db->query("select * from apoio_cliente where id_pagina = '$id_pagina'");
+	public function get_apoio($id_categoria, $id_pagina) {
+		$query = $this->db->query("select * from apoio_cliente where id_categoria = '$id_categoria' and id_pagina = '$id_pagina' order by ordem asc");
 
 		$data = $query->row_array();
 		return $data;
 	}
 
-	public function get_apoios($id_pagina) {
-		$query = $this->db->query("select * from apoio_cliente where id_pagina = '$id_pagina'");
+	public function get_apoios($id_categoria) {
+		$query = $this->db->query("select * from apoio_cliente where id_categoria = '$id_categoria' order by ordem asc");
 
 		$data = $query->result_array();
 		return $data;

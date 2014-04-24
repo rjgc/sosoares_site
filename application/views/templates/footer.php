@@ -76,10 +76,18 @@
 
 $(function(){
     var content1 = $('.content-1').height();
+    var content2 = $('.content-2').height();
 
-    document.getElementById("tab-1").checked=true;
+    if (content1 != null) {
+        document.getElementById("tab-1").checked=true;
 
-    $('.tab-content').css('height', content1+40);
+        $('.tab-content').css('height', content1+40);
+    }
+    else if (content2 != null) {
+        document.getElementById("tab-2").checked=true;
+
+        $('.tab-content').css('height', content2+40);
+    }    
 });
 
 function tab(elem){

@@ -3,9 +3,9 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('vidro/home')?>"><?=lang('home')?></a></li>
-                <li><?=lang('vprodutos')?></li>
+                <li><?=lang('cprodutos')?></li>
             </ul>
-            <h1 class="title3"><?=lang('vprodutos')?></h1>
+            <h1 class="title3"><?=lang('cprodutos')?></h1>
         </div>
     </div>
     <div>
@@ -16,24 +16,32 @@
                     if (!empty($tipos)) {
                         foreach ($tipos as $tipo){
                             ?>
-                            <a href="<?=site_url('vidro/produto/'.$tipo['id_tipo_produto_vidro'])?>">
+                            <a href="<?=site_url('vidro/produtos/'.$tipo['id_tipo_produto_vidro'])?>">
                                 <div class="obras-list grow">
-                                    <img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $tipo['foto_1'] ?>"/>
+                                    <?php if(!empty($tipo['foto'])) {
+                                    ?>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
+                                    <?php
+                                    }
+                                    ?>
                                     <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
                                 </div>
                             </a>
-                        <?php }
-                    }
-                    else {?>
+                            <?php }
+                        }
+                        else {?>
                         <div class="alert alert-info">
                             <h5><strong>Atenção!</strong> Página dos produtos indisponível.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/vidro/home">Voltar atrás.</a></h5>
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
             </div>
         </div>
-        <!-- /row -->
     </div>
 </div>

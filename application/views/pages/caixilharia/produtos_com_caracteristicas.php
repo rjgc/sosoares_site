@@ -23,7 +23,7 @@
                         if (!empty($produtos[$caracteristica['nome_'.$this->lang->lang()]])) {
                             foreach ($produtos[$caracteristica['nome_'.$this->lang->lang()]] as $produto){
                                 ?>
-                                <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p></div></a> 
+                                <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p></div></a> 
                                 <?php }
                             }
                             else {?>

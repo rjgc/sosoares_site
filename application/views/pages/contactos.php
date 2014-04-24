@@ -22,7 +22,15 @@
                 </div>
                 <?php if (!empty($message)) echo $message; ?>
                 <?php $this->load->helper('form'); ?>
-                <?php echo form_open($this->lang->lang().'/caixilharia/send_contactos/'); ?>
+                <?php echo form_open(if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    echo $this->lang->lang().'/caixilharia/send_contactos';
+                } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                    echo $this->lang->lang().'/vidro/send_contactos';
+                } else if (strpos($_SERVER['REQUEST_URI'], '')) {
+                    echo $this->lang->lang().'/extrusao/send_contactos';
+                } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                    echo $this->lang->lang().'/tratamento/send_contactos';
+                })?>
                 <div class="col-md-6">
                     <form method="get">
                         <fieldset>
@@ -75,6 +83,28 @@
                                     <div class="col-sm-10">
                                         <textarea class="form-control" id="morada" name="morada" rows="3" value="<?php echo ($reset) ? "" : set_value('morada'); ?>"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="col-sm-2 control-label" for="distrito"><?=lang('distrito')?>:*</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="distrito" name="distrito" value="<?php echo ($reset) ? "" : set_value('distrito'); ?>">
+                                        <option selected value="-1"><?=lang('item')?></option>
+                                        <?php foreach ($distritos as $distrito) { ?>
+                                             <option value="<?=$distrito?>"><?=$distrito?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="col-sm-2 control-label" for="concelho"><?=lang('concelho')?>:*</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="concelho" name="concelho" value="<?php echo ($reset) ? "" : set_value('concelho'); ?>">
+                                        <option selected value="-1"><?=lang('item')?></option>
+                                        <?php foreach ($concelhos as $concelho) { ?>
+                                             <option value="<?=$concelho?>"><?=$concelho?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                         </fieldset>

@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div style="margin-bottom: 10px;"><?php echo $servico['descricao_'.$this->lang->lang()]?></div>
+    <div style="margin-bottom: 10px; padding-left: 15px;"><?php echo $servico['descricao_'.$this->lang->lang()]?></div>
     <?php } else { ?>
 </ul>
 </div>

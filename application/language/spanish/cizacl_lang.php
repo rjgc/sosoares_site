@@ -272,13 +272,17 @@ $lang["fax"] = "Fax";
 
 $lang["morada"] = "Dirección";
 
+$lang["distrito"] = "Distrito";
+
+$lang["concelho"] = "Condado";
+
 $lang["observaçoes"] = "Observaciones";
+
+$lang["item"] = "Seleccione un elemento";
 
 $lang["assunto"] = "Sujeto";
 
 $lang["mensagem"] = "Mensaje";
-
-$lang["item"] = "Seleccione un elemento";
 
 
 /**/
