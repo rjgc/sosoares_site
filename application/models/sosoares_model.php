@@ -207,4 +207,13 @@ class Sosoares_model extends CI_Model
 		$data = $query->result_array();
 		return $data;
 	}
+
+    //AREAS COMERCIAIS
+
+    public function get_contactos_mapa() {
+        $query = $this->db->query("select * from contactos_mapa");
+
+        $data = $query->result_array();
+        return $data;
+    }
 }

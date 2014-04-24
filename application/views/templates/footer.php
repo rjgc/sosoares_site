@@ -164,11 +164,95 @@ $(document).ready(function() {
 <?php
 if(isset($page_title)) {
     switch($page_title) {
-        case 'contactos':
-        ?>
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/sosoares/js/map-contact.js"></script>
+        case 'contactos': ?>
+
+            <script type="text/javascript" >
+                function initialize() {
+
+                    var styles = [
+                        {
+                            featureType: "all",
+                            stylers: [
+                                { saturation: -80 }
+                            ]
+                        },{
+                            featureType: "road",
+                            elementType: "geometry",
+                            stylers: [
+                                { hue: "#1f416e" }
+                            ]
+                        },{
+                            featureType: "water",
+                            elementType: "geometry",
+                            stylers: [
+                                { hue: "#2c5e93" },
+                                { lightness: 0 }
+                            ]
+                        },{
+                            featureType: "poi.business",
+                            elementType: "labels",
+                            stylers: [
+                                { visibility: "off" }
+                            ]
+                        }
+                    ];
+
+                    var image = '<?= base_url() ?>assets/sosoares/img/marker.png';
+
+                    var styledMap = new google.maps.StyledMapType(styles,
+                        {name: "Styled Map 2"});
+
+                    var mapOptions = {
+                        center: new google.maps.LatLng(39.806616, -8.095359),
+                        zoom: 6,
+                        panControl: false,
+                        zoomControl: false,
+                        scaleControl: true,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    };
+
+                    var map = new google.maps.Map(document.getElementById("map-canvas"),
+                        mapOptions);
+
+                    <?php
+                    foreach($contactos_mapa as $contacto) { ?>
+
+                        var myLatLng<?=$contacto['id_contacto']?> = new google.maps.LatLng(<?= $contacto['latitude']?> , <?=$contacto['longitude']?>);
+
+                        var marker<?=$contacto['id_contacto']?> = new google.maps.Marker({
+                            position: myLatLng<?=$contacto['id_contacto']?>,
+                            map: map,
+                            animation: google.maps.Animation.DROP,
+                            icon: image,
+                            title:"<?= $contacto['titulo'] ?>"
+                        });
+
+                        var popup<?=$contacto['id_contacto']?>=new google.maps.InfoWindow({
+                            content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
+                                "<h4><?= $contacto['titulo'] ?></h4>" +
+                                "<div style='font-size: 11px'>" +
+                                "<p><?= $contacto['morada'] ?></p>" +
+                                "<p><div style='display: inline-block; width: 48%;'><b>Telf.:</b> <?= $contacto['telefone'] ?> </div> |&nbsp;&nbsp;&nbsp;<div style='display: inline-block; width: 48%;'><b>Fax:</b> <?= $contacto['fax'] ?> </div></p>" +
+                                "<p><div style='display: inline-block; width: 48%;'><b>Email:</b> <?= $contacto['email'] ?></div> <?php if(!empty($contacto['email2'])) { ?>|&nbsp;&nbsp;&nbsp;<div style='display: inline-block; width: 48%;'><?= $contacto['email2'] ?></div> <?php } ?></p>" +
+                                "</div></div>"
+                        });
+
+                        google.maps.event.addListener(marker<?=$contacto['id_contacto']?>, 'click', function(e) {
+                            console.log(e);
+                            popup<?=$contacto['id_contacto']?>.open(map, this);
+                        });
+
+                    <?php   } ?>
+                        map.mapTypes.set('map_style', styledMap);
+                        map.setMapTypeId('map_style');
+
+
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+
+            </script>
         <?php
-        break;
+            break;
         case 'areas_comerciais':
         ?>
         <script type="text/javascript" >
@@ -202,7 +286,7 @@ if(isset($page_title)) {
                 }
                 ];
 
-                var image = '<?= base_url() ?>assets/sosoares/img/marker.png';
+                var images = '<?= base_url() ?>assets/sosoares/img/marker.png';
 
                 var styledMap = new google.maps.StyledMapType(styles,
                     {name: "Styled Map"});
@@ -222,20 +306,18 @@ if(isset($page_title)) {
 
                 <?php
 
-                foreach($areas_comerciais as $area_comercial) {
-                    $i = 1;
-                    ?>
-                    var myLatLng<?= $i ?> = new google.maps.LatLng(<?= $area_comercial['latitude']?> , <?=$area_comercial['longitude']?>);
+                foreach($areas_comerciais as $area_comercial) { ?>
+                    var myLatLng<?=$area_comercial['id_area_comercial']?> = new google.maps.LatLng(<?= $area_comercial['latitude']?> , <?=$area_comercial['longitude']?>);
 
-                    var marker<?= $i ?> = new google.maps.Marker({
-                        position: myLatLng<?= $i ?>,
+                    var marker<?=$area_comercial['id_area_comercial']?> = new google.maps.Marker({
+                        position: myLatLng<?=$area_comercial['id_area_comercial']?>,
                         map: map,
                         animation: google.maps.Animation.DROP,
-                        icon: image,
+                        icon: images,
                         title:"<?= $area_comercial['titulo'] ?>"
                     });
 
-                    var popup<?= $i ?>=new google.maps.InfoWindow({
+                    var popup<?=$area_comercial['id_area_comercial']?>=new google.maps.InfoWindow({
                         content: "<div style='line-height:1.35;overflow:hidden;white-space:nowrap;'>" +
                         "<h4><?= $area_comercial['titulo'] ?></h4>" +
                         "<div style='font-size: 11px'>" +
@@ -246,15 +328,12 @@ if(isset($page_title)) {
                         "</div></div>"
                     });
 
-                    google.maps.event.addListener(marker<?= $i ?>, 'click', function(e) {
+                    google.maps.event.addListener(marker<?=$area_comercial['id_area_comercial']?>, 'click', function(e) {
                         console.log(e);
-                        popup<?= $i ?>.open(map, this);
+                        popup<?=$area_comercial['id_area_comercial']?>.open(map, this);
                     });
 
-                    <?php
-                    $i++;
-                }
-                ?>
+                <?php } ?>
 
                 map.mapTypes.set('map_style', styledMap);
                 map.setMapTypeId('map_style');
@@ -262,10 +341,11 @@ if(isset($page_title)) {
 
             google.maps.event.addDomListener(window, 'load', initialize);
         </script>
+
         <?php
-        break;
+            break;
         default:
-        break;
+            break;
     }
 }
 ?>
