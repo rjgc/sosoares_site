@@ -414,6 +414,25 @@ function contactos_management()
     $this->_admin_output($output);
 }
 
+function contactos_mapa_management()
+{
+    $crud = new grocery_CRUD();
+
+    $crud->set_table('contactos_mapa');
+    $crud->set_subject('Contactos Mapa');
+
+    $crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Contactos Mapa';
+    $data['sub-titulo'] = 'Faça aqui a gestão dos Contactos do Mapa';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
 
 //NOTICIAS
 
