@@ -232,7 +232,7 @@ if(isset($page_title)) {
                                 "<h4><?= $contacto['titulo'] ?></h4>" +
                                 "<div style='font-size: 11px'>" +
                                 "<p><?= $contacto['morada'] ?></p>" +
-                                "<p><div style='display: inline-block; width: 48%;'><b>Telf.:</b> <?= $contacto['telefone'] ?> </div> |&nbsp;&nbsp;&nbsp;<div style='display: inline-block; width: 48%;'><b>Fax:</b> <?= $contacto['fax'] ?> </div></p>" +
+                                "<p><div style='display: inline-block; width: 48%;'><b>Telf.:</b> <?= $contacto['telefone'] ?> </div>  <?php if(!empty($contacto['fax'])) { ?>|&nbsp;&nbsp;&nbsp;<div style='display: inline-block; width: 48%;'><b>Fax:</b> <?= $contacto['fax'] ?> </div> <?php } ?></p>" +
                                 "<p><div style='display: inline-block; width: 48%;'><b>Email:</b> <?= $contacto['email'] ?></div> <?php if(!empty($contacto['email2'])) { ?>|&nbsp;&nbsp;&nbsp;<div style='display: inline-block; width: 48%;'><?= $contacto['email2'] ?></div> <?php } ?></p>" +
                                 "</div></div>"
                         });

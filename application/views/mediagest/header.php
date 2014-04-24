@@ -39,7 +39,8 @@
                 $data['titulo'] == 'Newsletter' ||
                 $data['titulo'] == 'Destinatários'||
                 $data['titulo'] == 'Áreas Comerciais'||
-                $data['titulo'] == 'Contactos') echo 'class="section"'; ?>>
+                $data['titulo'] == 'Contactos'||
+                $data['titulo'] == 'Contactos Mapa') echo 'class="section"'; ?>>
                 <a href='#'><span class="icon">&#128196;</span> Definições</a>
                 <ul class="submenu">
                     <li><a href='<?php echo site_url("mediagest/background_image_management")?>'> Imagem de Fundo</a></li>
@@ -48,6 +49,7 @@
                     <li><a href='<?php echo site_url("mediagest/destinatarios_management")?>'> Destinatários</a></li>
                     <li><a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'> Áreas Comerciais</a></li>
                     <li><a href='<?php echo site_url("mediagest/contactos_management")?>'> Contactos</a></li>
+                    <li><a href='<?php echo site_url("mediagest/contactos_mapa_management")?>'> Contactos do Mapa</a></li>
                 </ul>
             </li>
             <li <?php if ($data['titulo'] == 'Notícias') echo 'class="section"'; ?>>
