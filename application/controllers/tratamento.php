@@ -301,6 +301,7 @@ public function contactos()
     $data['page_style']= "tratamento";
     $data['page_title']= "contactos";
     $data['current'] = 'contactos';
+    $data['reset'] = FALSE;
 
     $data['contactos'] = $this->sosoares_model->get_contactos(4);
     $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();

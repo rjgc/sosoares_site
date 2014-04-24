@@ -409,6 +409,7 @@ public function contactos()
 	$data['page_style']= "extrusao";
 	$data['page_title']= "contactos";
 	$data['current'] = 'contactos';
+	$data['reset'] = FALSE;
 	$this->menu($data);
 
 	$data['contactos'] = $this->sosoares_model->get_contactos(3);
