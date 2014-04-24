@@ -475,6 +475,7 @@ public function contactos()
     $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
     $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
     $data['contactos'] = $this->sosoares_model->get_contactos(1);
+    $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
     $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
     $this->load->view('pages/contactos', $data);

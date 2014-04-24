@@ -303,6 +303,7 @@ public function contactos()
     $data['current'] = 'contactos';
 
     $data['contactos'] = $this->sosoares_model->get_contactos(4);
+    $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
     $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
     $this->load->view('templates/header', $data);

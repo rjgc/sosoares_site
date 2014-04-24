@@ -189,6 +189,10 @@ function initialize() {
         console.log(e);
         popup6.open(map, this);
     });
+
+
+
+    // FALTA PARA BAIXO
     var myLatLng7 = new google.maps.LatLng(40.627238,-7.885404);
 
     var marker7 = new google.maps.Marker({
@@ -370,6 +374,7 @@ function initialize() {
             "<p><div style='display: inline-block; width: 48%;'><b>Email:</b> peovis@sosoares.pt</div></p>" +
             "</div></div>"
     });
+
     google.maps.event.addListener(marker14, 'click', function(e) {
         console.log(e);
         popup14.open(map, this);
