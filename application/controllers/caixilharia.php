@@ -22,7 +22,7 @@ function __construct()
 {
     parent::__construct();
 
-    // you might want to just autoload these two helpers
+// you might want to just autoload these two helpers
     $this->load->helper('language');
     $this->load->helper('url');
     $this->load->helper('text');
@@ -108,8 +108,13 @@ public function pesquisa($pesquisa)
     $data['current'] = 'pesquisa';
     $this->menu($data);
 
-    $data['tipos'] = $this->sosoares_model->pesquisa_tipos($pesquisa);
-    $data['produtos'] = $this->sosoares_model->pesquisa_produtos($pesquisa);
+    $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
+    $data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
+    $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
+    $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
+    $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
+    $data['produtos_extrusao'] = $this->sosoares_model->pesquisa_produtos_extrusao($pesquisa);
+    $data['obras'] = $this->sosoares_model->pesquisa_obras($pesquisa);
 
     $this->load->view('pages/pesquisa', $data);
     $this->load->view('templates/footer');
@@ -118,7 +123,7 @@ public function pesquisa($pesquisa)
 public function menu($data)
 {
     $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();
-    
+
     $z = 0;
     $arrayProdutos;
 
@@ -294,7 +299,7 @@ public function send_candidatura()
         $data['message'] = 'A candidatura foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-        //Enviar email
+    //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -314,7 +319,7 @@ public function send_candidatura()
             'bcc_batch_size'   => 200
             );
 
-        // Run some setup
+    // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(2));
@@ -323,7 +328,7 @@ public function send_candidatura()
         $this->email->attach(set_value('cv'));
         $this->email->send();
 
-        // Debug Email
+    // Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
@@ -576,7 +581,7 @@ public function send_contactos()
         $data['message'] = 'A mensagem foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-        //Enviar email
+    //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -596,7 +601,7 @@ public function send_contactos()
             'bcc_batch_size'   => 200
             );
 
-        // Run some setup
+    // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(1));
@@ -604,7 +609,7 @@ public function send_contactos()
         $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'.<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
         $this->email->send();
 
-        // Debug Email
+    // Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {

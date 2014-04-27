@@ -7,15 +7,50 @@ class Sosoares_model extends CI_Model
 
 	//PESQUISA
 
-	public function pesquisa_tipos($pesquisa) {
+	public function pesquisa_tipos_aluminio($pesquisa) {
 		$query = $this->db->query("select * from tipos_produto_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
 
 		$data = $query->result_array();
 		return $data;
 	}
 
-	public function pesquisa_produtos($pesquisa) {
+	public function pesquisa_tipos_vidro($pesquisa) {
+		$query = $this->db->query("select * from tipos_produto_vidro where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function pesquisa_tipos_extrusao($pesquisa) {
+		$query = $this->db->query("select * from tipos_produto_extrusao where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function pesquisa_produtos_aluminio($pesquisa) {
 		$query = $this->db->query("select * from produtos_aluminio where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function pesquisa_produtos_vidro($pesquisa) {
+		$query = $this->db->query("select * from produtos_vidro where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function pesquisa_produtos_extrusao($pesquisa) {
+		$query = $this->db->query("select * from produtos_extrusao where nome_pt like '$pesquisa%' or nome_en like '$pesquisa%' or nome_fr like '$pesquisa%' or nome_es like '$pesquisa%'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function pesquisa_obras($pesquisa) {
+		$query = $this->db->query("select o.*, og.url as foto from obras o inner join obras_gallery og on o.id_obra = og.id_obra where o.nome_pt like '$pesquisa%' or o.nome_en like '$pesquisa%' or o.nome_fr like '$pesquisa%' or o.nome_es like '$pesquisa%' or o.localizacao like '$pesquisa%' limit 1");
 
 		$data = $query->result_array();
 		return $data;
