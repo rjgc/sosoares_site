@@ -71,29 +71,27 @@ public function area_reservada()
     if (isset($_GET['search'])) {
         $this->pesquisa($_GET['search']);
     } else {
-        // $session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
+        $session = $this->sosoares_model->get_user_id($this->session->userdata('session_id'));
 
-        // $temp = explode('"user_id"', $session['user_data']);
+        $temp = explode('"user_id"', $session['user_data']);
 
-        // if (isset($temp['1'])) 
-        // {
-        //     $temp = explode('"', $temp['1']);
+        if (isset($temp['1'])) 
+        {
+            $temp = explode('"', $temp['1']);
 
-        //     $role = $this->sosoares_model->get_role($temp['1']);
+            $role = $this->sosoares_model->get_role($temp['1']);
 
-        
-
-            if ($this->cizacl->check_isAllowed($this->session->userdata('user_cizacl_role_id'), 'caixilharia', 'account')) 
+            if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
             {
                 $data['logged_in'] = True;
 
-                $data['profile'] = $this->sosoares_model->get_profile($this->session->userdata('user_id'));
+                $data['profile'] = $this->sosoares_model->get_profile($temp['1']);
                 $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
                 $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
             }
             else
                 $data['logged_in'] = False;
-        // }
+        }
 
         $data['page_style']= "caixilharia";
         $data['current'] = 'reserved';
