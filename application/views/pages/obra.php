@@ -80,9 +80,47 @@
                         </div>
                     </div>
                 </div>
-                <a style="padding-left: 8px;" href="#">
+
+
+                <!-- ========== SLIDESHOW COLOR BOX ===================== -->
+                <link rel="stylesheet" href="<?php echo base_url() ?>/assets/sosoares/css/colorbox.css" />
+                <script src="<?php echo base_url() ?>/assets/sosoares/js/jquery.colorbox.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        //Examples of how to assign the Colorbox event to elements
+                        $(".slideshow").colorbox({rel:'slideshow', slideshow:true});
+                        console.dir($(".slideshow").colorbox({rel:'slideshow', slideshow:true}));
+                        $(".callbacks").colorbox({
+                            onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+                            onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+                            onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+                            onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+                            onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+                        });
+
+                        //Example of preserving a JavaScript event for inline calls.
+                        $("#click").click(function(){
+                            $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+                            return false;
+                        });
+                    });
+                </script>
+
+                <!-- ========== BOTÃO DO SLIDESHOW ===================== -->
+                <a id="" style="padding-left: 8px;" href="<?php echo base_url();?>assets/uploads/obras/<?php echo $galeria_obra[0]['url'];?>" class="slideshow">
                     <button class="btn button shrink" style="width: 200px; margin: 10px;background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center; background-size: 18px"><?=lang('modo')?> Slideshow</button>
                 </a>
+
+
+                <!-- ========== DIV PARA ESCONDER OS LINKS DO SLIDESHOW ===================== -->
+                <div style="display: none">
+                    <?php
+                            foreach ($galeria_obra as $gobra){ ?>
+                                <p><a class="slideshow"  href="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" title="<?=$obra['nome_'.$this->lang->lang()]?>">Slideshow Foto</a></p>
+                    <?php   } ?>
+                </div>
+
+                <!-- ========== END SLIDESHOW COLOR BOX ===================== -->
             </div>
             <div class="col-md-5">
                 <div class="descricao">
