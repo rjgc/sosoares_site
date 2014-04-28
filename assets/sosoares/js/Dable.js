@@ -512,20 +512,55 @@ $export.filters = [
 			  			text = $export.columnData[j].CustomRendering(text, $export.visibleRowObjects[i].RowNumber);
 			  		}
 			  		
-			  		if (j == 2) {			  			
-			  			var href = window.location.href.split( '/' );
+			  		if (j == 0) {
+			  			var categoria = text;
+			  		}
 
-			  			if (href[0] == 'localhost') {
-			  				href = href[0] + '/' + href[1] + '/' + href[2] + '/';
+			  		if (j == 2) {			  			
+			  			var tempHref = window.location.href.split( '/' );
+			  			var href = "";
+
+			  			if (tempHref[2] == 'localhost') {
+			  				href = href.concat(tempHref[0], "//", tempHref[2], "/", tempHref[3], "/", tempHref[4]);
 			  			} else {
-			  				href = href[0] + '/' + href[1] + '/';
+			  				href = href.concat(tempHref[0], "//", tempHref[2], "/", tempHref[3]);
 			  			}
 
 			  			tempLink.innerHTML = text;
-			  			tempLink.href = href + "/assets/uploads/perfis/" + text;
+
+			  			switch(categoria)
+			  			{
+			  				case "Perfis Alumínio":
+			  				var path = "/assets/uploads/perfis/";
+			  				break;
+			  				case "Pormenores Alumínio":
+			  				var path = "/assets/uploads/pormenores/";
+			  				break;
+			  				case "Catálogo Alumínio":
+			  				var path = "/assets/uploads/catalogos/aluminio/";
+			  				break;
+			  				case "Ensaios Alumínio":
+			  				var path = "/assets/uploads/ensaios/aluminio/";
+			  				break;
+			  				case "Folheto Promocional":
+			  				var path = "/assets/uploads/folhetos/";
+			  				break;
+			  				case "Catálogo Extrusão":
+			  				var path = "/assets/uploads/catalogos/extrusao/";
+			  				break;
+			  				case "Catálogo Extrusão":
+			  				var path = "/assets/uploads/catalogos/extrusao/";
+			  				break;
+			  				case "Ferragens de Vidro":
+			  				var path = "/assets/uploads/ferranges_vidro/";
+			  				break;
+			  			}
+
+			  			tempLink.href = href + path + text;
 			  			tempCell.appendChild(tempLink);
-			  		} else 
+			  		} else {
 			  			tempCell.innerHTML = text;
+			  		}
 
 			  		tempRow.appendChild(tempCell);
 			  	}

@@ -226,7 +226,7 @@ if ($cortes || $downloads) { ?>
                                 <ul style="margin-left: 18px;">
                                     <?php foreach ($folhetos as $folheto) { 
                                         if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
                                         <li><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }

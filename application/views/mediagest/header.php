@@ -84,10 +84,10 @@
                 <a href='<?php echo site_url("mediagest")?>'><span class="icon">&#59176;</span> Obras</a>
             </li>
             <li <?php if ($data['titulo'] == 'Serviços Alumínio' ||
-             $data['titulo'] == 'Serviços Vidro' ||
-             $data['titulo'] == 'Serviços Extrusão') echo 'class="section"'; ?> >
-             <a href='#'><span class="icon">&#128196;</span> Serviços</a>
-             <ul class="submenu">
+               $data['titulo'] == 'Serviços Vidro' ||
+               $data['titulo'] == 'Serviços Extrusão') echo 'class="section"'; ?> >
+               <a href='#'><span class="icon">&#128196;</span> Serviços</a>
+               <ul class="submenu">
                 <li><a href='<?php echo site_url("mediagest/servicos_aluminio_management")?>'> Serviços Alumínio</a></li>
                 <li><a href='<?php echo site_url("mediagest/servicos_vidro_management")?>'> Serviços Vidro</a></li>
                 <li><a href='<?php echo site_url("mediagest/servicos_extrusao_management")?>'> Serviços Extrusão</a></li>
