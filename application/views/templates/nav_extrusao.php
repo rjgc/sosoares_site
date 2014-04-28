@@ -205,7 +205,7 @@
                                                 <div class="col-sm-4">
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                            <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                 echo $value[1];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                 echo $value[3];
@@ -218,7 +218,7 @@
                                                         <?php if (!empty($apoios[1])) {
                                                             $value = array_values($apoios[1]);?>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                     echo $value[1];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                     echo $value[3];
@@ -237,7 +237,7 @@
                                                         <div class="col-sm-4">
                                                             <div class="row">
                                                                 <div class="col-sm-6">
-                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                         echo $value[1];
                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                         echo $value[3];
@@ -250,7 +250,7 @@
                                                                 <?php if (!empty($apoios[3])) {
                                                                     $value = array_values($apoios[3]);?>
                                                                     <div class="col-sm-6">
-                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                             echo $value[1];
                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                             echo $value[3];
@@ -269,7 +269,7 @@
                                                                 <div class="col-sm-4">
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
-                                                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                            <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                 echo $value[1];
                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                 echo $value[3];
@@ -282,7 +282,7 @@
                                                                         <?php if (!empty($apoios[5])) {
                                                                             $value = array_values($apoios[5]);?>
                                                                             <div class="col-sm-6">
-                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                     echo $value[1];
                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                     echo $value[3];

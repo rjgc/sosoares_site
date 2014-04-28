@@ -40,27 +40,27 @@
 			};
 
 			$export.RowCount = function () {
-			  return $export.rows.length;
+				return $export.rows.length;
 			}
 			$export.VisibleRowCount = function () {
-			  return $export.visibleRows.length;
+				return $export.visibleRows.length;
 			}
 			$export.NumberOfPages = function () {
-			  var n = $export.VisibleRowCount() / $export.pageSize;
-			  return Math.ceil(n);
+				var n = $export.VisibleRowCount() / $export.pageSize;
+				return Math.ceil(n);
 			};
 			$export.GetPageForRow = function (row) {
-			  return Math.ceil(row / $export.pageSize);
+				return Math.ceil(row / $export.pageSize);
 			}
 			
 			$export.asyncRequest = function (start,
-			                                 filter,
-			                                 sortColumn,
-			                                 ascending,
-			                                 asynchronous) {
-			  if (typeof asynchronous == 'undefined') {
-			    asynchronous = false;
-			  }
+				filter,
+				sortColumn,
+				ascending,
+				asynchronous) {
+				if (typeof asynchronous == 'undefined') {
+					asynchronous = false;
+				}
 				var dableRequest = new XMLHttpRequest();
 				dableRequest.onreadystatechange = function () {
 					if (dableRequest.readyState == 4 && dableRequest.status == 200) {
@@ -74,10 +74,10 @@
 						}
 						actualRows.reverse();
 						for (var i = (start + $export.asyncLength);
-						     i < actualData.includedRowCount;
-						     ++i) {
+							i < actualData.includedRowCount;
+							++i) {
 							actualRows.push([]);
-						}
+					}
 						//update
 						$export.SetDataAsRows(actualRows);
 						$export.RowCount = function () { return actualData.rowCount; };
@@ -85,43 +85,43 @@
 							return actualData.includedRowCount;
 						};
 						if (asynchronous != false
-						    && !!(asynchronous
-						          && asynchronous.call
-						          && asynchronous.apply)) {
+							&& !!(asynchronous
+								&& asynchronous.call
+								&& asynchronous.apply)) {
 							asynchronous();
-						}
 					}
 				}
-				dableRequest.open('POST', $export.async, asynchronous != false);
-				dableRequest.setRequestHeader('content-type', 'application/json');
-				var requestObject = JSON.parse(JSON.stringify($export.asyncData));
-				requestObject['start'] = start;
-				$export.asyncStart = start;
-				requestObject['count'] = $export.asyncLength;
-				requestObject['filter'] = filter;
-				requestObject['sortColumn'] = sortColumn == null ? -1 : sortColumn;
-				requestObject['ascending'] = ascending;
-				dableRequest.send(JSON.stringify(requestObject));
 			}
-			$export.searchFunc = function (event) {
-				var searchBox = this;
-				if (searchBox.id != $export.id + '_search') {
-					return false;
-				}
-				if (!searchBox.value
-				    || searchBox.value.length < $export.minimumSearchLength) {
-				  $export.currentFilter = '';
-				}
-				else {
-				  var searchText = searchBox.value;
-				  $export.currentFilter = searchText;
-				}
-				if ($export.async) {
-					var ascending = true;
-					if ($export.sortOrder.length > 3
-					    && $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
-						ascending = false;
-					}
+			dableRequest.open('POST', $export.async, asynchronous != false);
+			dableRequest.setRequestHeader('content-type', 'application/json');
+			var requestObject = JSON.parse(JSON.stringify($export.asyncData));
+			requestObject['start'] = start;
+			$export.asyncStart = start;
+			requestObject['count'] = $export.asyncLength;
+			requestObject['filter'] = filter;
+			requestObject['sortColumn'] = sortColumn == null ? -1 : sortColumn;
+			requestObject['ascending'] = ascending;
+			dableRequest.send(JSON.stringify(requestObject));
+		}
+		$export.searchFunc = function (event) {
+			var searchBox = this;
+			if (searchBox.id != $export.id + '_search') {
+				return false;
+			}
+			if (!searchBox.value
+				|| searchBox.value.length < $export.minimumSearchLength) {
+				$export.currentFilter = '';
+		}
+		else {
+			var searchText = searchBox.value;
+			$export.currentFilter = searchText;
+		}
+		if ($export.async) {
+			var ascending = true;
+			if ($export.sortOrder.length > 3
+				&& $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
+				ascending = false;
+		}
 					//search is wired up to be async so the user can keep typing,
 					//but it creates a race condition that is not conducive to
 					//fast typing, so I'll have to figure out a fix
@@ -145,111 +145,111 @@
 								}
 								for (var k = 0; k < $export.rows[j].length; ++k) {
 									if ($export.filters[i](
-											$export.currentFilter,
-											$export.rows[j][k])) {
+										$export.currentFilter,
+										$export.rows[j][k])) {
 										includedRows.push($export.rows[j]);
-										includedRowObjects.push($export.rowObjects[j]);
-										break;
-									}
+									includedRowObjects.push($export.rowObjects[j]);
+									break;
 								}
 							}
 						}
 					}
-					else {
-						includedRows = $export.rows;
-						includedRowObjects = $export.rowObjects;
-					}
-					$export.visibleRows = includedRows;
-					$export.visibleRowObjects = includedRowObjects;
-					var body = document.getElementById($export.id + '_body');
-					$export.UpdateDisplayedRows(body);
-					$export.UpdateStyle(document.getElementById($export.id));
 				}
-			};
-			$export.sortFunc = function (event) {
-				var tag = this.tagName;
+				else {
+					includedRows = $export.rows;
+					includedRowObjects = $export.rowObjects;
+				}
+				$export.visibleRows = includedRows;
+				$export.visibleRowObjects = includedRowObjects;
+				var body = document.getElementById($export.id + '_body');
+				$export.UpdateDisplayedRows(body);
+				$export.UpdateStyle(document.getElementById($export.id));
+			}
+		};
+		$export.sortFunc = function (event) {
+			var tag = this.tagName;
 				//prevent sorting from some form elements
 				if(tag != 'INPUT'
-				   && tag != 'BUTTON'
-				   && tag != 'SELECT'
-				   && tag != 'TEXTAREA') {
+					&& tag != 'BUTTON'
+					&& tag != 'SELECT'
+					&& tag != 'TEXTAREA') {
 					var columnCell = this;  //use this here, as the event.srcElement
 																	//is probably a <span>
-					var sortSpan = columnCell.querySelector('.' + $export.sortClass);
-					var columnTag = columnCell.getAttribute('data-tag');
-					var columnIndex = -1;
-	
-					for (var i = 0; i < $export.columnData.length; ++i) {
-						if ($export.columnData[i].Tag.toLowerCase() ==
-							columnTag.toLowerCase()) {
-							columnIndex = i;
-							break;
-						}
-					}
-					if (columnIndex == -1) {
-						return false;
-					}
-					$export.sortColumn = columnIndex;
-					var ascend = false;
-					if ($export.sortOrder.length > 3
-					    && $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
+																	var sortSpan = columnCell.querySelector('.' + $export.sortClass);
+																	var columnTag = columnCell.getAttribute('data-tag');
+																	var columnIndex = -1;
+
+																	for (var i = 0; i < $export.columnData.length; ++i) {
+																		if ($export.columnData[i].Tag.toLowerCase() ==
+																			columnTag.toLowerCase()) {
+																			columnIndex = i;
+																		break;
+																	}
+																}
+																if (columnIndex == -1) {
+																	return false;
+																}
+																$export.sortColumn = columnIndex;
+																var ascend = false;
+																if ($export.sortOrder.length > 3
+																	&& $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
 						ascend = true;  //switching from descending to ascending
-					}
-					if (ascend) {
-						$export.sortOrder = 'asc';
-						sortSpan.innerHTML = '^';
-					}
-					else {
-						$export.sortOrder = 'desc';
-						sortSpan.innerHTML = 'v';
-					}
-	                
-					if ($export.async) {
-					  $export.asyncRequest(
-							$export.asyncStart,
-							$export.currentFilter,
-							columnIndex, ascend);
-					}
-					else if ($export.columnData[columnIndex].CustomSortFunc) {
-						$export.visibleRowObjects = $export.columnData[columnIndex]
-							.CustomSortFunc(columnIndex, ascend, $export.visibleRowObjects);
-					}
-					else {
-						$export.visibleRowObjects = $export
-							.baseSort(columnIndex, ascend, $export.visibleRowObjects);
-					}
-					
-					$export.visibleRows = $export.CreateRowsFromObjects($export.visibleRowObjects);
-					$export.UpdateDisplayedRows(
-						document.getElementById($export.id + '_body'));
-					$export.UpdateStyle();
 				}
-			};
-			
-			$export.baseSort = function (columnIndex, ascending, currentRowObjects) {
-				var isInt = true;
-				var isDate = true;
-				var newRowObjects = currentRowObjects.slice(0);
-				for (var i = 0; i < currentRowObjects.length; ++i) {
+				if (ascend) {
+					$export.sortOrder = 'asc';
+					sortSpan.innerHTML = '^';
+				}
+				else {
+					$export.sortOrder = 'desc';
+					sortSpan.innerHTML = 'v';
+				}
+
+				if ($export.async) {
+					$export.asyncRequest(
+						$export.asyncStart,
+						$export.currentFilter,
+						columnIndex, ascend);
+				}
+				else if ($export.columnData[columnIndex].CustomSortFunc) {
+					$export.visibleRowObjects = $export.columnData[columnIndex]
+					.CustomSortFunc(columnIndex, ascend, $export.visibleRowObjects);
+				}
+				else {
+					$export.visibleRowObjects = $export
+					.baseSort(columnIndex, ascend, $export.visibleRowObjects);
+				}
+
+				$export.visibleRows = $export.CreateRowsFromObjects($export.visibleRowObjects);
+				$export.UpdateDisplayedRows(
+					document.getElementById($export.id + '_body'));
+				$export.UpdateStyle();
+			}
+		};
+
+		$export.baseSort = function (columnIndex, ascending, currentRowObjects) {
+			var isInt = true;
+			var isDate = true;
+			var newRowObjects = currentRowObjects.slice(0);
+			for (var i = 0; i < currentRowObjects.length; ++i) {
 					//simple 2/21/2010 style dates parse cleanly to int, so we can drop out
 					//if this won't parse
 					if (parseInt(currentRowObjects[i].Row[columnIndex]).toString()
 						.toLowerCase() == 'nan') {
 						isInt = false;
-					}
+				}
 					//check for dates
 					var dateString = currentRowObjects[i].Row[columnIndex].toString();
 					var splitDate = dateString.split('/');
 					if (splitDate.length != 3
-							|| (splitDate[0].length < 1 || splitDate[0].length > 2)
-							|| (splitDate[1].length < 1 || splitDate[1].length > 2)
-							|| (splitDate[2].length != 2 && splitDate[2].length != 4)) {
+						|| (splitDate[0].length < 1 || splitDate[0].length > 2)
+						|| (splitDate[1].length < 1 || splitDate[1].length > 2)
+						|| (splitDate[2].length != 2 && splitDate[2].length != 4)) {
 						isDate = false;
-					}
 				}
+			}
 
-				if (isDate) {
-					newRowObjects = newRowObjects.sort(function (a, b) {
+			if (isDate) {
+				newRowObjects = newRowObjects.sort(function (a, b) {
 						//default to US Date schema
 						var splitDateA = a.Row[columnIndex].split('/');
 						var yearA = splitDateA[2].toString();
@@ -283,33 +283,33 @@
 						var yearMonthDayB = yearB + monthB + dayB;
 						return parseInt(yearMonthDayA) - parseInt(yearMonthDayB);
 					});
-				}
-				else if (isInt) {
-					newRowObjects = newRowObjects.sort(function (a, b) {
-						return parseInt(a.Row[columnIndex]) - parseInt(b.Row[columnIndex]);
-					});
-				}
-				else {
-					newRowObjects = newRowObjects.sort(function (a, b) {
-						if (a.Row[columnIndex] > b.Row[columnIndex]) {
-							return 1;
-						}
-						else if (a.Row[columnIndex] < b.Row[columnIndex]) {
-							return -1;
-						}
-						else {
-							return 0;
-						}
-					});
-				}
+}
+else if (isInt) {
+	newRowObjects = newRowObjects.sort(function (a, b) {
+		return parseInt(a.Row[columnIndex]) - parseInt(b.Row[columnIndex]);
+	});
+}
+else {
+	newRowObjects = newRowObjects.sort(function (a, b) {
+		if (a.Row[columnIndex] > b.Row[columnIndex]) {
+			return 1;
+		}
+		else if (a.Row[columnIndex] < b.Row[columnIndex]) {
+			return -1;
+		}
+		else {
+			return 0;
+		}
+	});
+}
 
-				if (!ascending) {
-					newRowObjects = newRowObjects.reverse();
-				}
+if (!ascending) {
+	newRowObjects = newRowObjects.reverse();
+}
 
-				return newRowObjects;
-			};
-			$export.filters = [
+return newRowObjects;
+};
+$export.filters = [
 				//PHRASES FILTER
 				function (searchText, value) {
 					searchText = searchText.toString().toLowerCase();
@@ -354,130 +354,132 @@
 					}
 					return false;
 				}
-			];
+				];
 
-			$export.SetColumnNames = function (columnNames) {
-				if (!columnNames) {
-					return false;
-				};
-				
-				for (var i = 0; i < columnNames.length; ++i) {
-					if ($export.columnData.length <= i) {
-						$export.columnData.push({
-							Tag: columnNames[i],
-							FriendlyName: columnNames[i],
-							CustomSortFunc: null,
-							CustomRendering: null
-						});
-					}
-					else {
-						$export.columnData[i].Name = columnNames[i];
-					}
-				}
-			};
-			
-			$export.DeleteRow = function(rowNumber) {
-				for (var i = 0; i < $export.rowObjects.length; ++i) {
-					if ($export.rowObjects[i].RowNumber == rowNumber) {
-						$export.rowObjects.splice(i, 1);
-						$export.rows = $export.CreateRowsFromObjects($export.rowObjects);
-						break;
-					}
-				}
-				for (var i = 0; i < $export.visibleRowObjects.length; ++i) {
-					if ($export.visibleRowObjects[i].RowNumber == rowNumber) {
-						$export.visibleRowObjects.splice(i, 1);
-						$export.visibleRows = $export.CreateRowsFromObjects($export.visibleRowObjects);
-					}
-				}
-				var event = document.createEvent('KeyboardEvent');
-				event.initEvent('keyup', true, true, window, false, false, false, false, 38, 38);
-				document.querySelector('#' + $export.id + '_search').dispatchEvent(event);
-			};
-			
-			$export.AddRow = function(row) {
-				$export.rows.push(row);
-				$export.rowObjects.push({ Row: row, RowNumber: $export.rowObjects[$export.rowObjects.length - 1].RowNumber + 1 });
-				
-				var event = document.createEvent('KeyboardEvent');
-				event.initEvent('keyup', true, true, window, false, false, false, false, 38, 38);
-				document.querySelector('#' + $export.id + '_search').dispatchEvent(event);
-			};
-			
-			$export.CreateObjectsFromRows = function(rows) {
-				var rowObjects = [];
-				
-				for (var i = 0; i < rows.length; ++i) {
-					rowObjects.push({ Row: rows[i], RowNumber: i});
-				}
-				return rowObjects;
-			};
-			$export.CreateRowsFromObjects = function(objects) {
-				var rows = [];
-				
-				for (var i = 0; i < objects.length; ++i) {
-					rows.push(objects[i].Row);
-				}
-				
-				return rows;
-			}
-			$export.SetDataAsColumns = function (columns) {
-				if (!columns) {
-					return false;
-				}
+				$export.SetColumnNames = function (columnNames) {
+					if (!columnNames) {
+						return false;
+					};
 
-				var tableRows = [];
-				for (var i = 0; i < columns.length; ++i) {
-					while (tableRows.length < columns[i].length) {
-						tableRows.push([]);
-					}
-					for (var j = 0; j < columns[i].length; ++j) {
-						tableRows[j][i] = columns[i][j];
+					for (var i = 0; i < columnNames.length; ++i) {
+						if ($export.columnData.length <= i) {
+							$export.columnData.push({
+								Tag: columnNames[i],
+								FriendlyName: columnNames[i],
+								CustomSortFunc: null,
+								CustomRendering: null
+							});
+						}
+						else {
+							$export.columnData[i].Name = columnNames[i];
+						}
 					}
 				};
 
-				$export.columns = columns;
-				$export.rows = tableRows;
-				$export.rowObjects = $export.CreateObjectsFromRows(tableRows);
-				$export.visibleRows = rows.slice(0);
-				$export.visibleRowObjects = $export.rowObjects.slice(0);
-			};
-			$export.SetDataAsRows = function (rows) {
-				if (!rows) {
-					return false;
-				}
-
-				var tableColumns = [];
-				for (var i = 0; i < rows.length; ++i) {
-					while (tableColumns.length < rows[i].length) {
-						tableColumns.push([]);
+				$export.DeleteRow = function(rowNumber) {
+					for (var i = 0; i < $export.rowObjects.length; ++i) {
+						if ($export.rowObjects[i].RowNumber == rowNumber) {
+							$export.rowObjects.splice(i, 1);
+							$export.rows = $export.CreateRowsFromObjects($export.rowObjects);
+							break;
+						}
 					}
-					for (var j = 0; j < rows[i].length; ++j) {
-						tableColumns[j][i] = rows[i][j];
+					for (var i = 0; i < $export.visibleRowObjects.length; ++i) {
+						if ($export.visibleRowObjects[i].RowNumber == rowNumber) {
+							$export.visibleRowObjects.splice(i, 1);
+							$export.visibleRows = $export.CreateRowsFromObjects($export.visibleRowObjects);
+						}
 					}
+					var event = document.createEvent('KeyboardEvent');
+					event.initEvent('keyup', true, true, window, false, false, false, false, 38, 38);
+					document.querySelector('#' + $export.id + '_search').dispatchEvent(event);
+				};
+
+				$export.AddRow = function(row) {
+					$export.rows.push(row);
+					$export.rowObjects.push({ Row: row, RowNumber: $export.rowObjects[$export.rowObjects.length - 1].RowNumber + 1 });
+
+					var event = document.createEvent('KeyboardEvent');
+					event.initEvent('keyup', true, true, window, false, false, false, false, 38, 38);
+					document.querySelector('#' + $export.id + '_search').dispatchEvent(event);
+				};
+
+				$export.CreateObjectsFromRows = function(rows) {
+					var rowObjects = [];
+
+					for (var i = 0; i < rows.length; ++i) {
+						rowObjects.push({ Row: rows[i], RowNumber: i});
+					}
+					return rowObjects;
+				};
+				$export.CreateRowsFromObjects = function(objects) {
+					var rows = [];
+
+					for (var i = 0; i < objects.length; ++i) {
+						rows.push(objects[i].Row);
+					}
+
+					return rows;
 				}
-
-				$export.columns = tableColumns;
-				$export.rows = rows;
-				$export.rowObjects = $export.CreateObjectsFromRows(rows);
-				$export.visibleRows = rows.slice(0);;
-				$export.visibleRowObjects = $export.rowObjects.slice(0);
-			};
-
-			$export.UpdateDisplayedRows = function (body) {
-				if (!body) {
-					body = document.getElementById($export.id + '_body');
-					if (!body) {
+				$export.SetDataAsColumns = function (columns) {
+					if (!columns) {
 						return false;
 					}
-				}
-				var tempBody = body.cloneNode(false);
-				while (tempBody.firstChild) {
-				  tempBody.removeChild(tempBody.firstChild);
-				}
-				var displayedRows = [];
-				var row = document.createElement('tr');
-				var cell = document.createElement('td');
+
+					var tableRows = [];
+					for (var i = 0; i < columns.length; ++i) {
+						while (tableRows.length < columns[i].length) {
+							tableRows.push([]);
+						}
+						for (var j = 0; j < columns[i].length; ++j) {
+							tableRows[j][i] = columns[i][j];
+						}
+					};
+
+					$export.columns = columns;
+					$export.rows = tableRows;
+					$export.rowObjects = $export.CreateObjectsFromRows(tableRows);
+					$export.visibleRows = rows.slice(0);
+					$export.visibleRowObjects = $export.rowObjects.slice(0);
+				};
+				$export.SetDataAsRows = function (rows) {
+					if (!rows) {
+						return false;
+					}
+
+					var tableColumns = [];
+					for (var i = 0; i < rows.length; ++i) {
+						while (tableColumns.length < rows[i].length) {
+							tableColumns.push([]);
+						}
+						for (var j = 0; j < rows[i].length; ++j) {
+							tableColumns[j][i] = rows[i][j];
+						}
+					}
+
+					$export.columns = tableColumns;
+					$export.rows = rows;
+					$export.rowObjects = $export.CreateObjectsFromRows(rows);
+					$export.visibleRows = rows.slice(0);;
+					$export.visibleRowObjects = $export.rowObjects.slice(0);
+				};
+
+				$export.UpdateDisplayedRows = function (body) {
+					if (!body) {
+						body = document.getElementById($export.id + '_body');
+						if (!body) {
+							return false;
+						}
+					}
+					var tempBody = body.cloneNode(false);
+					while (tempBody.firstChild) {
+						tempBody.removeChild(tempBody.firstChild);
+					}
+					var displayedRows = [];
+					var row = document.createElement('tr');
+					var cell = document.createElement('td');
+					var a = document.createElement('a');
+
 				//get the display start id
 				var pageDisplay = ($export.pageNumber * $export.pageSize);
 				if ($export.VisibleRowCount() <= pageDisplay) {
@@ -492,36 +494,52 @@
 					length = $export.VisibleRowCount();
 				}
 			  //loop through the visible rows and display this page
-				var rows = [];
-				for (var i = pageDisplay; i < length; ++i) {
-					var tempRow = row.cloneNode(false);
-					if (i % 2 == 0) {
-						tempRow.setAttribute('class', $export.evenRowClass);
-					}
-					else {
-						tempRow.setAttribute('class', $export.oddRowClass);
-					}
+			  var rows = [];
+			  for (var i = pageDisplay; i < length; ++i) {
+			  	var tempRow = row.cloneNode(false);
+			  	if (i % 2 == 0) {
+			  		tempRow.setAttribute('class', $export.evenRowClass);
+			  	}
+			  	else {
+			  		tempRow.setAttribute('class', $export.oddRowClass);
+			  	}
 
-					for (var j = 0; j < $export.visibleRows[i].length; ++j) {
-						var tempCell = cell.cloneNode(false);
-						var text = $export.visibleRows[i][j];
-						if ($export.columnData[j].CustomRendering != null) {
-							text = $export.columnData[j].CustomRendering(text, $export.visibleRowObjects[i].RowNumber);
-						}
-						tempCell.innerHTML = text;
-						tempRow.appendChild(tempCell);
-					}
-					tempBody.appendChild(tempRow);
-				}
-				
-				if (body.parentElement) {
-				  body.parentElement.replaceChild(tempBody, body);
-				}
-				body = tempBody;
+			  	for (var j = 0; j < $export.visibleRows[i].length; ++j) {
+			  		var tempCell = cell.cloneNode(false);
+			  		var tempLink = a.cloneNode(false);						
+			  		var text = $export.visibleRows[i][j];
+			  		if ($export.columnData[j].CustomRendering != null) {
+			  			text = $export.columnData[j].CustomRendering(text, $export.visibleRowObjects[i].RowNumber);
+			  		}
+			  		
+			  		if (j == 2) {			  			
+			  			var href = window.location.href.split( '/' );
 
-				var footer = document.getElementById($export.id + '_footer');
-				$export.UpdateFooter(footer);
-				return body;
+			  			if (href[0] == 'localhost') {
+			  				href = href[0] + '/' + href[1] + '/' + href[2] + '/';
+			  			} else {
+			  				href = href[0] + '/' + href[1] + '/';
+			  			}
+
+			  			tempLink.innerHTML = text;
+			  			tempLink.href = href + "/assets/uploads/perfis/" + text;
+			  			tempCell.appendChild(tempLink);
+			  		} else 
+			  			tempCell.innerHTML = text;
+
+			  		tempRow.appendChild(tempCell);
+			  	}
+			  	tempBody.appendChild(tempRow);
+			  }
+
+			  if (body.parentElement) {
+			  	body.parentElement.replaceChild(tempBody, body);
+			  }
+			  body = tempBody;
+
+			  var footer = document.getElementById($export.id + '_footer');
+			  $export.UpdateFooter(footer);
+			  return body;
 			};
 			$export.UpdateFooter = function (footer) {
 				if (!footer) {
@@ -536,29 +554,29 @@
 				var showing = footer.querySelector('#' + $export.id + '_showing');
 				if (showing) {
 					showing.innerHTML = "Showing " + start + " to " + end + " of " +
-						($export.VisibleRowCount()) + " entries";
+					($export.VisibleRowCount()) + " entries";
 					if ($export.VisibleRowCount() != $export.RowCount()) {
 						showing.innerHTML += " (filtered from " + ($export.RowCount()) +
 							" total entries)";
-					}
-				}
-				var right = footer.querySelector('#' + $export.id +
-					'_page_prev').parentElement;
-				footer.replaceChild($export.BuildPager(), right);
+}
+}
+var right = footer.querySelector('#' + $export.id +
+	'_page_prev').parentElement;
+footer.replaceChild($export.BuildPager(), right);
 
-				return footer;
-			};
-			$export.UpdateStyle = function (tableDiv, style) {
-				if (!tableDiv) {
-					tableDiv = document.getElementById($export.id);
-					if (!tableDiv) {
-						return false;
-					}
-				}
-				if (!style) {
-					style = $export.style;
-				}
-				$export.style = style;
+return footer;
+};
+$export.UpdateStyle = function (tableDiv, style) {
+	if (!tableDiv) {
+		tableDiv = document.getElementById($export.id);
+		if (!tableDiv) {
+			return false;
+		}
+	}
+	if (!style) {
+		style = $export.style;
+	}
+	$export.style = style;
 
 				//initial style cleanup
 				$export.RemoveStyles(tableDiv);
@@ -567,11 +585,11 @@
 				if (style.toLowerCase() != 'clear') {
 				  //base styles for 'none', the other styles sometimes build on these
 					//so we apply them beforehand
-				  $export.ApplyBaseStyles(tableDiv);
+					$export.ApplyBaseStyles(tableDiv);
 
-				  if (style.toLowerCase() == 'none') {
-				    return true;
-				  }
+					if (style.toLowerCase() == 'none') {
+						return true;
+					}
 					else {
 						if (style.toLowerCase() == 'jqueryui') {
 							$export.ApplyJqueryUIStyles(tableDiv);
@@ -624,7 +642,7 @@
 					leftChildren[i].removeAttribute('class');
 				}
 				var right = footer.querySelector('#' + $export.id + '_page_prev')
-					.parentElement;
+				.parentElement;
 				footer.replaceChild($export.BuildPager(), right);
 
 				//basically, don't remove style from tfoot, in case user added it
@@ -751,7 +769,7 @@
 					'class',
 					'fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix');
 				var pageClass = 'fg-button ui-button ui-state-default ui-corner-left ' +
-					$export.pagerButtonsClass;
+				$export.pagerButtonsClass;
 
 				var pageButtons = footer.querySelectorAll('.' +
 					$export.pagerButtonsClass);
@@ -777,22 +795,22 @@
 				}
 
 				if ($export.pagerIncludeFirstAndLast) {
-				    var pageFirst = footer.querySelector('#' + $export.id +
-							'_page_first');
-				    var pageLast = footer.querySelector('#' + $export.id +
-							'_page_last');
-				    pageFirst.innerHTML = '';
-				    var pageFirstSpan = span.cloneNode(false);
-				    pageFirstSpan.setAttribute(
-							'class',
-							'ui-icon ui-icon-arrowthickstop-1-w');
-				    pageFirst.appendChild(pageFirstSpan);
-				    pageLast.innerHTML = '';
-				    var pageLastSpan = span.cloneNode(false);
-				    pageLastSpan.setAttribute(
-							'class',
-							'ui-icon ui-icon-arrowthickstop-1-e');
-				    pageLast.appendChild(pageLastSpan);
+					var pageFirst = footer.querySelector('#' + $export.id +
+						'_page_first');
+					var pageLast = footer.querySelector('#' + $export.id +
+						'_page_last');
+					pageFirst.innerHTML = '';
+					var pageFirstSpan = span.cloneNode(false);
+					pageFirstSpan.setAttribute(
+						'class',
+						'ui-icon ui-icon-arrowthickstop-1-w');
+					pageFirst.appendChild(pageFirstSpan);
+					pageLast.innerHTML = '';
+					var pageLastSpan = span.cloneNode(false);
+					pageLastSpan.setAttribute(
+						'class',
+						'ui-icon ui-icon-arrowthickstop-1-e');
+					pageLast.appendChild(pageLastSpan);
 				}
 			};
 			$export.ApplyBootstrapStyles = function (tableDiv) {
@@ -876,7 +894,7 @@
 				var pageButtons = footer.querySelectorAll('.' +
 					$export.pagerButtonsClass);
 				for (var i = 0; i < pageButtons.length; ++i) {
-						pageButtons[i].setAttribute('class', pageClass);
+					pageButtons[i].setAttribute('class', pageClass);
 				}
 			};
 			
@@ -892,28 +910,28 @@
 						}
 					}
 					else if (window.jQuery 
-					         && input instanceof jQuery
-					         && input[0].nodeType) {
+						&& input instanceof jQuery
+						&& input[0].nodeType) {
 						//jquery object
-						if (input[0].hasAttribute('id')) {
-							$export.id = input[0].getAttribute('id');
-						}
-						else {
-							$export.id = 'Dable1';
-							input[0].setAttribute('id', 'Dable1');
-						}
+					if (input[0].hasAttribute('id')) {
+						$export.id = input[0].getAttribute('id');
 					}
 					else {
-						$export.id = input.toString()
+						$export.id = 'Dable1';
+						input[0].setAttribute('id', 'Dable1');
 					}
-					var tableDiv = document.getElementById($export.id);
-					if (tableDiv && $export.rows && $export.rows.length < 1) {
-						var table = tableDiv.querySelector('table');
-						if (table) {
-							if (tableDiv.hasAttribute('class')) {
-								$export.dableClass = tableDiv.getAttribute('class');
-							}
-							var newTable = $export.GenerateTableFromHtml(table);
+				}
+				else {
+					$export.id = input.toString()
+				}
+				var tableDiv = document.getElementById($export.id);
+				if (tableDiv && $export.rows && $export.rows.length < 1) {
+					var table = tableDiv.querySelector('table');
+					if (table) {
+						if (tableDiv.hasAttribute('class')) {
+							$export.dableClass = tableDiv.getAttribute('class');
+						}
+						var newTable = $export.GenerateTableFromHtml(table);
 							//Make it a Dable!
 							return newTable;
 						}
@@ -949,143 +967,143 @@
 				var rowsHtml = tableNode.querySelectorAll('tbody tr');
 				var allRows = [];
 				if (rowsHtml.length > 1
-				    && rowsHtml[0].hasAttribute('class')
-				    && rowsHtml[1].hasAttribute('class')) {
+					&& rowsHtml[0].hasAttribute('class')
+					&& rowsHtml[1].hasAttribute('class')) {
 					$export.evenRowClass = rowsHtml[0].getAttribute('class');
-					$export.oddRowClass = rowsHtml[1].getAttribute('class');
+				$export.oddRowClass = rowsHtml[1].getAttribute('class');
+			}
+			for (var i = 0; i < rowsHtml.length; ++i) {
+				allRows.push([]);
+				var rowCells = rowsHtml[i].children;
+				for (var j = 0; j < rowCells.length; ++j) {
+					allRows[i].push(rowCells[j].innerHTML);
 				}
-				for (var i = 0; i < rowsHtml.length; ++i) {
-					allRows.push([]);
-					var rowCells = rowsHtml[i].children;
-					for (var j = 0; j < rowCells.length; ++j) {
-						allRows[i].push(rowCells[j].innerHTML);
-					}
-				}
-				$export.SetDataAsRows(allRows);
-				
-				var parentDiv = tableNode.parentElement;
-				parentDiv.innerHTML = '';
-				
-				return parentDiv.id;
-			};
-			
-			$export.Exists = function (tableDiv) {
-				var result = false;
-				
-				var checkId = '';
-				if (!tableDiv) {
-					checkId = $export.id;
-				}
-				else if (tableDiv
-					       && tableDiv.nodeType
-					       && tableDiv.nodeName.toLowerCase() == 'div') {
-					checkId = tableDiv.id;
-				}
-				else if (tableDiv
-					       && window.jQuery 
-					       && tableDiv instanceof jQuery
-					       && tableDiv[0].nodeType) {
-					checkId = tableDiv[0].id;
-				}
-				else if (tableDiv) {
-					checkId = tableDiv;
-				}
-				checkId += '_header';
-				var headerElement = document.getElementById(checkId);
-				if (headerElement) {
-					result = true;
-				}
-				
-				return result;
-			};
-			
-			$export.BuildAll = function (tableInput) {
-				var tableId = $export.CheckForTable(tableInput);
-				if (!tableId) {
-					return false;
-				}
-				var tableDiv = document.getElementById(tableId);
-				if (!tableDiv) {
-					return false;
-				}
+			}
+			$export.SetDataAsRows(allRows);
 
-				if ($export.async) {
-				    $export.asyncRequest(0, '', -1, true);
-				}
-				
-				tableDiv.innerHTML = '';
+			var parentDiv = tableNode.parentElement;
+			parentDiv.innerHTML = '';
 
-				var header = $export.BuildHeader(tableDiv);
-				var table = $export.BuildTable(tableDiv);
-				var footer = $export.BuildFooter(tableDiv);
+			return parentDiv.id;
+		};
 
-				tableDiv.appendChild(header);
-				tableDiv.appendChild(table);
-				tableDiv.appendChild(footer);
+		$export.Exists = function (tableDiv) {
+			var result = false;
 
-				$export.UpdateStyle(tableDiv);
-			};
-			$export.BuildHeader = function (tableDiv) {
-				if (!tableDiv) {
-					return false;
-				}
-				var div = document.createElement('div');
-				var span = document.createElement('span');
-				var select = document.createElement('select');
-				var option = document.createElement('option');
-				var input = document.createElement('input');
+			var checkId = '';
+			if (!tableDiv) {
+				checkId = $export.id;
+			}
+			else if (tableDiv
+				&& tableDiv.nodeType
+				&& tableDiv.nodeName.toLowerCase() == 'div') {
+				checkId = tableDiv.id;
+		}
+		else if (tableDiv
+			&& window.jQuery 
+			&& tableDiv instanceof jQuery
+			&& tableDiv[0].nodeType) {
+			checkId = tableDiv[0].id;
+	}
+	else if (tableDiv) {
+		checkId = tableDiv;
+	}
+	checkId += '_header';
+	var headerElement = document.getElementById(checkId);
+	if (headerElement) {
+		result = true;
+	}
 
-				var left = div.cloneNode(false);
-				var show = span.cloneNode(false);
-				show.innerHTML = 'Show ';
-				left.appendChild(show);
-				var entryCount = select.cloneNode(false);
-				for (var i = 0; i < $export.pageSizes.length; ++i) {
-					var tempOption = option.cloneNode(false);
-					tempOption.innerHTML = $export.pageSizes[i];
-					tempOption.setAttribute('value', $export.pageSizes[i]);
-					entryCount.appendChild(tempOption);
-				}
-				entryCount.onchange = function () {
-					var entCnt = this;
-					var value = entCnt.value;
-					$export.pageSize = parseInt(value);
-					$export.UpdateDisplayedRows(document.getElementById($export.id +
-						'_body'));
-					$export.UpdateStyle(tableDiv);
-				};
-				var options = entryCount.querySelectorAll('option');
-				for (var i = 0; i < options.length; ++i) {
-					if (options[i].value == $export.pageSize) {
-						options[i].selected = true;
-						break;
-					}
-				}
-				left.appendChild(entryCount);
+	return result;
+};
 
-				var right = div.cloneNode(false);
-				var search = span.cloneNode(false);
-				search.innerHTML = 'Search ';
-				right.appendChild(search);
-				var inputSearch = input.cloneNode(false);
-				inputSearch.setAttribute('id', $export.id + '_search');
-				inputSearch.onkeyup = $export.searchFunc;
-				right.appendChild(inputSearch);
+$export.BuildAll = function (tableInput) {
+	var tableId = $export.CheckForTable(tableInput);
+	if (!tableId) {
+		return false;
+	}
+	var tableDiv = document.getElementById(tableId);
+	if (!tableDiv) {
+		return false;
+	}
 
-				var clear = div.cloneNode(false);
+	if ($export.async) {
+		$export.asyncRequest(0, '', -1, true);
+	}
 
-				var head = div.cloneNode(false);
-				head.id = $export.id + '_header';
-				head.appendChild(left);
-				head.appendChild(right);
-				head.appendChild(clear);
+	tableDiv.innerHTML = '';
 
-				return head;
-			};
-			$export.BuildTable = function (tableDiv) {
-				if (!tableDiv) {
-					return false;
-				}
+	var header = $export.BuildHeader(tableDiv);
+	var table = $export.BuildTable(tableDiv);
+	var footer = $export.BuildFooter(tableDiv);
+
+	tableDiv.appendChild(header);
+	tableDiv.appendChild(table);
+	tableDiv.appendChild(footer);
+
+	$export.UpdateStyle(tableDiv);
+};
+$export.BuildHeader = function (tableDiv) {
+	if (!tableDiv) {
+		return false;
+	}
+	var div = document.createElement('div');
+	var span = document.createElement('span');
+	var select = document.createElement('select');
+	var option = document.createElement('option');
+	var input = document.createElement('input');
+
+	var left = div.cloneNode(false);
+	var show = span.cloneNode(false);
+	show.innerHTML = 'Show ';
+	left.appendChild(show);
+	var entryCount = select.cloneNode(false);
+	for (var i = 0; i < $export.pageSizes.length; ++i) {
+		var tempOption = option.cloneNode(false);
+		tempOption.innerHTML = $export.pageSizes[i];
+		tempOption.setAttribute('value', $export.pageSizes[i]);
+		entryCount.appendChild(tempOption);
+	}
+	entryCount.onchange = function () {
+		var entCnt = this;
+		var value = entCnt.value;
+		$export.pageSize = parseInt(value);
+		$export.UpdateDisplayedRows(document.getElementById($export.id +
+			'_body'));
+		$export.UpdateStyle(tableDiv);
+	};
+	var options = entryCount.querySelectorAll('option');
+	for (var i = 0; i < options.length; ++i) {
+		if (options[i].value == $export.pageSize) {
+			options[i].selected = true;
+			break;
+		}
+	}
+	left.appendChild(entryCount);
+
+	var right = div.cloneNode(false);
+	var search = span.cloneNode(false);
+	search.innerHTML = 'Search ';
+	right.appendChild(search);
+	var inputSearch = input.cloneNode(false);
+	inputSearch.setAttribute('id', $export.id + '_search');
+	inputSearch.onkeyup = $export.searchFunc;
+	right.appendChild(inputSearch);
+
+	var clear = div.cloneNode(false);
+
+	var head = div.cloneNode(false);
+	head.id = $export.id + '_header';
+	head.appendChild(left);
+	head.appendChild(right);
+	head.appendChild(clear);
+
+	return head;
+};
+$export.BuildTable = function (tableDiv) {
+	if (!tableDiv) {
+		return false;
+	}
 				//all the elements we need to build a neat table
 				var table = document.createElement('table');
 				var head = document.createElement('thead');
@@ -1163,37 +1181,37 @@
 				var right = ul.cloneNode(false);
 
 				if ($export.pagerIncludeFirstAndLast) {
-						var pageFirst = li.cloneNode(false);
-				var pageFirstAnchor = anchor.cloneNode(false);
-						pageFirstAnchor.innerHTML = 'First';
-						pageFirst.setAttribute('class', $export.pagerButtonsClass);
-						pageFirst.id = $export.id + '_page_first';
-						pageFirst.onclick = $export.FirstPage;
-				if ($export.pageNumber <= 0) {
-					pageFirst.setAttribute('disabled', 'disabled');
+					var pageFirst = li.cloneNode(false);
+					var pageFirstAnchor = anchor.cloneNode(false);
+					pageFirstAnchor.innerHTML = 'First';
+					pageFirst.setAttribute('class', $export.pagerButtonsClass);
+					pageFirst.id = $export.id + '_page_first';
+					pageFirst.onclick = $export.FirstPage;
+					if ($export.pageNumber <= 0) {
+						pageFirst.setAttribute('disabled', 'disabled');
 					pageFirst.onclick = function () {};	//disable onclick
 				}
 				pageFirst.appendChild(pageFirstAnchor);
-						right.appendChild(pageFirst);
-				}
+				right.appendChild(pageFirst);
+			}
 
-				var pageLeft = li.cloneNode(false);
-				var pageLeftAnchor = anchor.cloneNode(false);
-				pageLeftAnchor.innerHTML = 'Prev';
-				pageLeft.setAttribute('class', $export.pagerButtonsClass);
-				pageLeft.id = $export.id + '_page_prev';
-				pageLeft.onclick = $export.PreviousPage;
-				if ($export.pageNumber <= 0) {
-						pageLeft.setAttribute('disabled', 'disabled');
+			var pageLeft = li.cloneNode(false);
+			var pageLeftAnchor = anchor.cloneNode(false);
+			pageLeftAnchor.innerHTML = 'Prev';
+			pageLeft.setAttribute('class', $export.pagerButtonsClass);
+			pageLeft.id = $export.id + '_page_prev';
+			pageLeft.onclick = $export.PreviousPage;
+			if ($export.pageNumber <= 0) {
+				pageLeft.setAttribute('disabled', 'disabled');
 				pageLeft.onclick = function () {};	//disable onclick
-				}
-				pageLeft.appendChild(pageLeftAnchor);
-				right.appendChild(pageLeft);
+			}
+			pageLeft.appendChild(pageLeftAnchor);
+			right.appendChild(pageLeft);
 
-				if ($export.pagerSize > 0) {
-					var start = $export.pageNumber - parseInt($export.pagerSize / 2);
-					var length = start + $export.pagerSize;
-					if ($export.pageNumber <= ($export.pagerSize / 2)) {
+			if ($export.pagerSize > 0) {
+				var start = $export.pageNumber - parseInt($export.pagerSize / 2);
+				var length = start + $export.pagerSize;
+				if ($export.pageNumber <= ($export.pagerSize / 2)) {
 						// display from beginning
 						length = $export.pagerSize;
 						start = 0;
@@ -1202,25 +1220,25 @@
 						}   //very small tables
 					}
 					else if (($export.NumberOfPages() - $export.pageNumber) <=
-					         ($export.pagerSize / 2)) {
+						($export.pagerSize / 2)) {
 						//display the last five pages
-						length = $export.NumberOfPages();
-						start = $export.NumberOfPages() - $export.pagerSize;
-					}
+					length = $export.NumberOfPages();
+					start = $export.NumberOfPages() - $export.pagerSize;
+				}
 
-					for (var i = start; i < length; ++i) {
-						var liNode = li.cloneNode(false);
-						var liNodeAnchor = anchor.cloneNode(false);
-						liNodeAnchor.innerHTML = (i + 1).toString();
-						var page = i;
-						liNode.onclick = function(j) {
-							return function() {
-								$export.GoToPage(j);
-							}
-						}(i);
-						liNode.setAttribute('class', $export.pagerButtonsClass);
-						if (i == $export.pageNumber) {
-							liNode.setAttribute('disabled', 'disabled');
+				for (var i = start; i < length; ++i) {
+					var liNode = li.cloneNode(false);
+					var liNodeAnchor = anchor.cloneNode(false);
+					liNodeAnchor.innerHTML = (i + 1).toString();
+					var page = i;
+					liNode.onclick = function(j) {
+						return function() {
+							$export.GoToPage(j);
+						}
+					}(i);
+					liNode.setAttribute('class', $export.pagerButtonsClass);
+					if (i == $export.pageNumber) {
+						liNode.setAttribute('disabled', 'disabled');
 							liNode.onclick = function () {};	//disable onclick
 						}
 						liNode.appendChild(liNodeAnchor);
@@ -1272,60 +1290,60 @@
 			$export.GoToPage = function (page) {
 				$export.pageNumber = page;
 				if ($export.async &&
-				($export.asyncStart > $export.pageNumber * $export.pageSize
-				|| $export.pageNumber * $export.pageSize >=
-					 $export.asyncStart + $export.asyncLength)) {
+					($export.asyncStart > $export.pageNumber * $export.pageSize
+						|| $export.pageNumber * $export.pageSize >=
+						$export.asyncStart + $export.asyncLength)) {
 					var newStart = $export.pageNumber * $export.pageSize;
-					var ascending = true;
-					if ($export.sortOrder.length > 3
-							&& $export.sortOrder.substr(0, 4).toLowerCase() ==
-								 'desc') {
-						ascending = false;
-					}
-					$export.asyncRequest(
-						newStart,
-						$export.currentFilter,
-						$export.sortColumn,
-						ascending);
-				}
-				$export.UpdateDisplayedRows(document.getElementById($export.id +
-					'_body'));
-				$export.UpdateStyle();
-			};
-			
-			$export.NextPage = function() {
-				$export.pageNumber += 1;
-				$export.GoToPage($export.pageNumber);
-			};
-			
-			$export.LastPage = function() {
-				$export.pageNumber = $export.NumberOfPages() - 1;
+				var ascending = true;
+				if ($export.sortOrder.length > 3
+					&& $export.sortOrder.substr(0, 4).toLowerCase() ==
+					'desc') {
+					ascending = false;
+			}
+			$export.asyncRequest(
+				newStart,
+				$export.currentFilter,
+				$export.sortColumn,
+				ascending);
+		}
+		$export.UpdateDisplayedRows(document.getElementById($export.id +
+			'_body'));
+		$export.UpdateStyle();
+	};
+
+	$export.NextPage = function() {
+		$export.pageNumber += 1;
+		$export.GoToPage($export.pageNumber);
+	};
+
+	$export.LastPage = function() {
+		$export.pageNumber = $export.NumberOfPages() - 1;
 				//page number is 0 based
 				if ($export.async
-						&& ($export.asyncStart > $export.pageNumber * $export.pageSize
-								|| $export.pageNumber * $export.pageSize >
-									 $export.asyncStart + $export.asyncLength)) {
+					&& ($export.asyncStart > $export.pageNumber * $export.pageSize
+						|| $export.pageNumber * $export.pageSize >
+						$export.asyncStart + $export.asyncLength)) {
 					var newStart = 0;
-					var pages = (1000 / $export.pageSize) - 1;
+				var pages = (1000 / $export.pageSize) - 1;
 					//-1 for the page number and -1 to include current page
 					if ($export.pageNumber - pages > -1) {
 						newStart = ($export.pageNumber - pages) * $export.pageSize;
 					}
 					var ascending = true;
 					if ($export.sortOrder.length > 3
-							&& $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
+						&& $export.sortOrder.substr(0, 4).toLowerCase() == 'desc') {
 						ascending = false;
-					}
-					$export.asyncRequest(
-						newStart,
-						$export.currentFilter,
-						$export.sortColumn,
-						ascending);
 				}
-				$export.UpdateDisplayedRows(document.getElementById($export.id +
-					'_body'));
-				$export.UpdateStyle();
-			};
+				$export.asyncRequest(
+					newStart,
+					$export.currentFilter,
+					$export.sortColumn,
+					ascending);
+			}
+			$export.UpdateDisplayedRows(document.getElementById($export.id +
+				'_body'));
+			$export.UpdateStyle();
+		};
 
 			//Utility functions
 			function ArrayContains(array, object) {

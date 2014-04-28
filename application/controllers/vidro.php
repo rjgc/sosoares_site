@@ -148,6 +148,7 @@ public function menu($data)
     
     $data['array'] = $arrayProdutos;
     $data['apoios'] = $this->sosoares_model->get_apoios(2);
+    $data['area_tecnica'] = $this->vidro_model->get_areas_tecnicas();
 
     $this->load->view('templates/header', $data, $this->get_lang());
 }
@@ -389,6 +390,28 @@ public function servico()
         $data['servico'] = $this->vidro_model->get_servico();
 
         $this->load->view('pages/servico', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
+public function area_tecnica($page=null)
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {
+        $data['page_style']= "vidro";        
+        $data['current'] = 'area_tecnica';
+        $data['page'] = $page;
+        $this->menu($data);
+
+        if ($page != null) {
+            $data['area_tecnica'] = $this->vidro_model->get_area_tecnica($page);
+
+            $this->load->view('pages/area_tecnica', $data);
+        } else {
+            $this->load->view('pages/area_tecnica', $data);
+        }
+
         $this->load->view('templates/footer');
     }
 }

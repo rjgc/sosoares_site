@@ -151,40 +151,12 @@
                 <ul class="dropdown-menu">
                     <li class="grid-demo">
                         <div class="row">
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Catálogo Ferragens</a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Cálculo Térmico</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Cálculo Acústico</a></h3>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h3 class="menu-h3 links"><a href="#">Cálculo Dimensional</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?=site_url('vidro/apoios_cliente')?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
-                <ul class="dropdown-menu">
-                    <li class="grid-demo">
-                        <div class="row">
-                            <?php if (!empty($apoios[0])) {
-                                $value = array_values($apoios[0]);?>
+                            <?php if (!empty($area_tecnica[0])) {
+                                $value = array_values($area_tecnica[0]);?>
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                            <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                 echo $value[1];
                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                 echo $value[3];
@@ -194,10 +166,10 @@
                                                 $value[7];
                                             }?></a></h3>
                                         </div>
-                                        <?php if (!empty($apoios[1])) {
-                                            $value = array_values($apoios[1]);?>
+                                        <?php if (!empty($area_tecnica[1])) {
+                                            $value = array_values($area_tecnica[1]);?>
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                     echo $value[1];
                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                     echo $value[3];
@@ -211,12 +183,12 @@
                                         </div>
                                     </div>
                                     <?php } ?>
-                                    <?php if (!empty($apoios[2])) {
-                                        $value = array_values($apoios[2]);?>
+                                    <?php if (!empty($area_tecnica[2])) {
+                                        $value = array_values($area_tecnica[2]);?>
                                         <div class="col-sm-4">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                         echo $value[1];
                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                         echo $value[3];
@@ -226,10 +198,10 @@
                                                         $value[7];
                                                     }?></a></h3>
                                                 </div>
-                                                <?php if (!empty($apoios[3])) {
-                                                    $value = array_values($apoios[3]);?>
+                                                <?php if (!empty($area_tecnica[3])) {
+                                                    $value = array_values($area_tecnica[3]);?>
                                                     <div class="col-sm-6">
-                                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                        <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                             echo $value[1];
                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                             echo $value[3];
@@ -243,12 +215,12 @@
                                                 </div>
                                             </div>
                                             <?php } ?>
-                                            <?php if (!empty($apoios[4])) {
-                                                $value = array_values($apoios[4]);?>
+                                            <?php if (!empty($area_tecnica[4])) {
+                                                $value = array_values($area_tecnica[4]);?>
                                                 <div class="col-sm-4">
                                                     <div class="row">
                                                         <div class="col-sm-6">
-                                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                            <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                 echo $value[1];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                 echo $value[3];
@@ -258,10 +230,10 @@
                                                                 $value[7];
                                                             }?></a></h3>
                                                         </div>
-                                                        <?php if (!empty($apoios[5])) {
-                                                            $value = array_values($apoios[5]);?>
+                                                        <?php if (!empty($area_tecnica[5])) {
+                                                            $value = array_values($area_tecnica[5]);?>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/area_tecnica/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                     echo $value[1];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                     echo $value[3];
@@ -279,7 +251,111 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('vidro/contactos')?>"><?=lang('contactos')?></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?=site_url('vidro/apoios_cliente')?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="grid-demo">
+                                                <div class="row">
+                                                    <?php if (!empty($apoios[0])) {
+                                                        $value = array_values($apoios[0]);?>
+                                                        <div class="col-sm-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                        echo $value[1];
+                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                        echo $value[3];
+                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                        $value[5];
+                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                        $value[7];
+                                                                    }?></a></h3>
+                                                                </div>
+                                                                <?php if (!empty($apoios[1])) {
+                                                                    $value = array_values($apoios[1]);?>
+                                                                    <div class="col-sm-6">
+                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                            echo $value[1];
+                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                            echo $value[3];
+                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                            $value[5];
+                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                            $value[7];
+                                                                        }?></a></h3>
+                                                                    </div>
+                                                                    <?php } ?>
+                                                                </div>
+                                                            </div>
+                                                            <?php } ?>
+                                                            <?php if (!empty($apoios[2])) {
+                                                                $value = array_values($apoios[2]);?>
+                                                                <div class="col-sm-4">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                echo $value[1];
+                                                                            } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                echo $value[3];
+                                                                            } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                                $value[5];
+                                                                            } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                                $value[7];
+                                                                            }?></a></h3>
+                                                                        </div>
+                                                                        <?php if (!empty($apoios[3])) {
+                                                                            $value = array_values($apoios[3]);?>
+                                                                            <div class="col-sm-6">
+                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                    echo $value[1];
+                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                    echo $value[3];
+                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                                    $value[5];
+                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                                    $value[7];
+                                                                                }?></a></h3>
+                                                                            </div>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <?php } ?>
+                                                                    <?php if (!empty($apoios[4])) {
+                                                                        $value = array_values($apoios[4]);?>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                        echo $value[1];
+                                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                        echo $value[3];
+                                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                                        $value[5];
+                                                                                    } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                                        $value[7];
+                                                                                    }?></a></h3>
+                                                                                </div>
+                                                                                <?php if (!empty($apoios[5])) {
+                                                                                    $value = array_values($apoios[5]);?>
+                                                                                    <div class="col-sm-6">
+                                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('vidro/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                            echo $value[1];
+                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                            echo $value[3];
+                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                                            $value[5];
+                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                                            $value[7];
+                                                                                        }?></a></h3>
+                                                                                    </div>
+                                                                                    <?php } ?>
+                                                                                </div>
+                                                                            </div>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('vidro/contactos')?>"><?=lang('contactos')?></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>

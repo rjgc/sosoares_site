@@ -132,4 +132,21 @@ class Vidro_model extends CI_Model
 		$data = $query->row_array();
 		return $data;
 	}
+
+	//AREA TECNICA
+
+	public function get_areas_tecnicas(){
+		$query = $this->db->query("select * from area_tecnica");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_area_tecnica($id_pagina){
+		$query = $this->db->query("select * from area_tecnica where id_pagina = '$id_pagina'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 }
