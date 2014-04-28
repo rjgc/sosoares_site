@@ -154,8 +154,13 @@ class Sosoares_model extends CI_Model
 
 	//BANNERS
 
-	public function get_banners($id_categoria_banner) {
-		$query = $this->db->query("select * from banners where id_categoria_banner = '$id_categoria_banner'");
+	public function get_banners($id_categoria_banner = null) {
+		if($id_categoria_banner == null){
+			$query = $this->db->query("select * from banners");
+		} else {
+			$query = $this->db->query("select * from banners where id_categoria_banner = '$id_categoria_banner'");
+		}
+		
 
 		$data = $query->result_array();
 		return $data;

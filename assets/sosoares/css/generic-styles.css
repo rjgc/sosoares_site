@@ -39,7 +39,7 @@
     font-weight: normal;
 }
 /*============================= Menu ==============================================*/
-.menu-h3>a {color: #fff !important;}
+.menu-h3>a {color: #fff !important; font-weight: normal;}
 
 /*============================= BODY ==============================================*/
 body {

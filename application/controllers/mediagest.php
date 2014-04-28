@@ -27,7 +27,7 @@ class Mediagest extends CI_Controller {
         $this->load->library('image_CRUD');
         $this->load->library('session');
 
-        if($this->uri->segment(1) == "pt" || $this->uri->segment(1) == "en" || $this->uri->segment(1) == "fr"  || $this->uri->segment(1) == "es") redirect('login/');
+        if($this->uri->segment(1) == "pt" || $this->uri->segment(1) == "en") redirect('login/');
     }
 
     function _admin_output($output = null)
@@ -165,7 +165,7 @@ function background_image_management()
     $crud->set_subject('Background Image');
     $crud->columns('foto');
 
-    $crud->required_fields('foto');
+    //$crud->required_fields('foto');
 
     $crud->set_field_upload('foto', 'assets/uploads/background');
 
@@ -794,7 +794,7 @@ function produtos_extrusao_management()
 
     $crud->set_relation('id_tipo_produto_extrusao', 'tipos_produto_extrusao', 'nome_pt');
     $crud->set_relation('id_caracteristica_produto_extrusao', 'caracteristicas_produto_extrusao', 'nome_pt');
-    $crud->set_relation_n_n('catalogo', 'catalogos_extrusao_produto', 'ficheiros', 'produto_extrusao_id', 'catalogo_extrusao_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>4));
+    $crud->set_relation_n_n('catalogo', 'catalogos_extrusao_produto', 'ficheiros', 'produto_extrusao_id', 'catalogo_extrusao_id', 'nome_pt', 'priority', array('id_categoria_ficheiro'=>7));
 
     $crud->callback_before_insert(array($this, 'callback_before_insert_produto_extrusao'));
 
@@ -1108,7 +1108,7 @@ function apoio_cliente_management()
     $this->load->model('sosoares_model');
 
     $crud->unset_delete();
-    $crud->unset_add();
+    //$crud->unset_add();
 
     $crud->set_table('apoio_cliente');
     $crud->set_subject('Apoio ao Cliente');
