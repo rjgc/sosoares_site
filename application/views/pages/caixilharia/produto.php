@@ -66,13 +66,13 @@
                             if ($i==1) { ?>
                             <li>
                                 <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                                 </a>
                             </li>
                             <?php } else { ?>
                             <li> 
                                 <a id="carousel-selector-<?php echo $y ?>">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                                 </a>
                             </li>
                             <?php }
@@ -172,45 +172,65 @@ if ($cortes || $downloads) { ?>
                             <li style="margin: 0;float: left;display: block;">
                                 <h3><?=lang('perfis')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($perfis as $perfil) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($perfis as $perfil) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$perfil['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($pormenores)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('pormenores')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($pormenores as $pormenor) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($pormenores as $pormenor) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$pormenor['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($catalogos)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('catalogo')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($catalogos as $catalogo) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($catalogos as $catalogo) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($ensaios)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('itt')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($ensaios as $ensaio) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($ensaios as $ensaio) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$ensaio['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($folhetos)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('folheto')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($folhetos as $folheto) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($folhetos as $folheto) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                             <?php } ?>

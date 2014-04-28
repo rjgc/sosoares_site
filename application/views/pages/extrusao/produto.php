@@ -66,13 +66,13 @@
                             if ($i==1) { ?>
                             <li>
                                 <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                                    <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                                 </a>
                             </li>
                             <?php } else { ?>
                             <li> 
                                 <a id="carousel-selector-<?php echo $y ?>">
-                                    <img src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
                                 </a>
                             </li>
                             <?php }
@@ -162,9 +162,13 @@ if ($cortes || $downloads) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('catalogo')?></h3>
                                 <ul style="margin-left: 18px;">
-                                    <?php foreach ($catalogos as $catalogo) { ?>
-                                    <li><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
-                                    <?php } ?>
+                                    <?php foreach ($catalogos as $catalogo) { 
+                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        <li><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <?php } else { ?>
+                                        <li><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <?php }
+                                    } ?>
                                 </ul>
                             </li>
                         </ul>
