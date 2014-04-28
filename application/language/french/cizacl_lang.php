@@ -116,6 +116,24 @@ $lang["apoio"] = "Service Client";
 $lang["contactos"] = "Contacts";
 
 
+/*Login*/
+
+
+$lang["registar"] = "Signer";
+
+$lang["nome"] = "Prénom";
+
+$lang["apelido"] = "Nom";
+
+$lang["cancelar"] = "Annuler";
+
+
+/*Área Reservada*/
+
+
+$lang["perfil"] = "Profil";
+
+
 /*Menu Vidro*/
 
 
@@ -328,6 +346,8 @@ $lang["no_permissions"]			= "You don't have the permissions to access this page!
 $lang["system_data"]			= "Cannot delete: system data!";
 
 $lang["delete_data_related"]	= "All users connected to this role will be deleted. Are you sure?";
+
+$lang["email_progress"]	        = "Sending email...";
 
 
 

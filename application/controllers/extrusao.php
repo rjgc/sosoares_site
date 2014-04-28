@@ -115,8 +115,13 @@ public function pesquisa($pesquisa)
 	$data['current'] = 'pesquisa';
 	$this->menu($data);
 
-	$data['tipos'] = $this->sosoares_model->pesquisa_tipos($pesquisa);
-	$data['produtos'] = $this->sosoares_model->pesquisa_produtos($pesquisa);
+	$data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
+	$data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
+	$data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
+	$data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
+	$data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
+	$data['produtos_extrusao'] = $this->sosoares_model->pesquisa_produtos_extrusao($pesquisa);
+	$data['obras'] = $this->sosoares_model->pesquisa_obras($pesquisa);
 
 	$this->load->view('pages/pesquisa', $data);
 	$this->load->view('templates/footer');

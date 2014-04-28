@@ -94,7 +94,7 @@
                         echo site_url('extrusao/area_reservada');
                     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                         echo site_url('tratamento/area_reservada');
-                    } ?>"><button class="btn button grow" id="btn_area_reservada">Área Reservada</button></a>
+                    } ?>"><button class="btn button grow" id="btn_area_reservada"><?=lang('area_privada')?></button></a>
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a> 
                     <?php } ?>
@@ -105,17 +105,16 @@
                     <div class="modal-dialog" id="tab">
                         <div class="modal-content" id="tab-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="reset()">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#login" data-toggle="tab"><h4 class="modal-title">Login</h4></a></li>
-                                    <li><a href="#registo" data-toggle="tab"><h4 class="modal-title">Registo</h4></a></li>
+                                    <li><a href="#registo" data-toggle="tab"><h4 class="modal-title"><?=lang('registar')?></h4></a></li>
                                 </ul>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="login">
                                     <form method="post" role="form" id="form1">
-                                        <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
-                                        <div class="modal-body" id="form">
+                                        <div class="modal-body" id="form" style="padding: 0 20px 20px 20px !important;">
                                             <div class="tab-pane fade in active" id="area_privada">
                                                 <div id="jq_msg"></div>
                                                 <label>Username:</label>
@@ -124,40 +123,37 @@
                                                 <label>Password:</label>
                                                 <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
                                             </div>
-                                            <div class="tab-pane fade" id="registar">...</div>
                                         </div>
                                         <div class="modal-footer">
                                             <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
-                                            <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
+                                            <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
                                         </div>
                                     </form>
                                 </div>
                                 <div class="tab-pane" id="registo">
-                                    <form method="post" role="form" id="form1">
-                                        <p id="erro" data-container="#form" data-toggle="popover" data-placement="auto right" data-content="Erro! Verifique o seu username e password."></p>
-                                        <div class="modal-body" id="form">
+                                    <form method="post" role="form" id="form2">        
+                                        <div class="modal-body" id="form2" style="padding: 0 20px 20px 20px !important;">
                                             <div class="tab-pane fade in active" id="area_privada">
-                                                <div id="jq_msg"></div>
-                                                <label>Primeiro Nome:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <div id="jq_msg2"></div>
+                                                <label><?=lang('nome')?>:</label>
+                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>">
                                                 <p></p>
-                                                <label>Último Nome:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <label><?=lang('apelido')?>:</label>
+                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="apelido" name="apelido" placeholder="<?=lang('apelido')?>">
                                                 <p></p>
                                                 <label>E-mail:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="email" name="email" placeholder="E-mail">
                                                 <p></p>
                                                 <label>Username:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
+                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username">
                                                 <p></p>
                                                 <label>Password:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password">
                                             </div>
-                                            <div class="tab-pane fade" id="registar">...</div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input class="btn btn-primary" type="submit" id="login" name="login" value="Enviar Dados">
-                                            <input class="btn btn-default" type="submit" id="cancel" name="cancel" value="Cancel">
+                                            <input class="btn btn-primary" type="submit" id="registar" name="registar" value="<?=lang('registar')?>">
+                                            <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
                                         </div>
                                     </form>
                                 </div>

@@ -49,7 +49,7 @@
     <!-- tabs right -->
     <div class="tabbable tabs-right">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#1" data-toggle="tab">Perfil</a></li>
+            <li class="active"><a href="#1" data-toggle="tab"><?=lang('perfil')?></a></li>
             <li><a href="#2" data-toggle="tab">Downloads</a></li>
             <li><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                 echo $this->session->sess_destroy();
@@ -70,8 +70,8 @@
                 <div class="row account">
                     <div class="col-md-8" style="padding: 0 0 0 30px;">
                         <h3><?=lang('dados')?></h3>
-                        <div><b>Primeiro Nome: </b><?=$profile['user_profile_name'];?></div>
-                        <div><b>Último Nome: </b><?=$profile['user_profile_surname'];?></div>
+                        <div><b><?=lang('nome')?>: </b><?=$profile['user_profile_name'];?></div>
+                        <div><b><?=lang('apelido')?>: </b><?=$profile['user_profile_surname'];?></div>
                         <div><b>E-mail: </b><?=$profile['user_profile_email'];?></div>
                     </div>
                 </div>

@@ -99,7 +99,7 @@ class CI_Login
 	function getScriptsHome($page)
 
 	{
-
+		
 		$array = array(
 
 			'jquery-1.6.1.min',
@@ -117,6 +117,7 @@ class CI_Login
 		}
 
 		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_home?'.$page).'"></script>'.PHP_EOL;
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_home2?'.$page).'"></script>'.PHP_EOL;
 
 		return $data;
 

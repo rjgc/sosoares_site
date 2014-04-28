@@ -187,11 +187,11 @@
                                             <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                 echo $value[1];
                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                echo $value[2];
+                                                echo $value[3];
                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                $value[3];
+                                                $value[5];
                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                $value[4];
+                                                $value[7];
                                             }?></a></h3>
                                         </div>
                                         <?php if (!empty($apoios[1])) {
@@ -200,11 +200,11 @@
                                                 <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                     echo $value[1];
                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                    echo $value[2];
+                                                    echo $value[3];
                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                    $value[3];
+                                                    $value[5];
                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                    $value[4];
+                                                    $value[7];
                                                 }?></a></h3>
                                             </div>
                                             <?php } ?>
@@ -219,11 +219,11 @@
                                                     <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                         echo $value[1];
                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                        echo $value[2];
+                                                        echo $value[3];
                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                        $value[3];
+                                                        $value[5];
                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                        $value[4];
+                                                        $value[7];
                                                     }?></a></h3>
                                                 </div>
                                                 <?php if (!empty($apoios[3])) {
@@ -232,11 +232,11 @@
                                                         <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                             echo $value[1];
                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                            echo $value[2];
+                                                            echo $value[3];
                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                            $value[3];
+                                                            $value[5];
                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                            $value[4];
+                                                            $value[7];
                                                         }?></a></h3>
                                                     </div>
                                                     <?php } ?>
@@ -251,11 +251,11 @@
                                                             <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                 echo $value[1];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                echo $value[2];
+                                                                echo $value[3];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                $value[3];
+                                                                $value[5];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                $value[4];
+                                                                $value[7];
                                                             }?></a></h3>
                                                         </div>
                                                         <?php if (!empty($apoios[5])) {
@@ -264,11 +264,11 @@
                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                     echo $value[1];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                    echo $value[2];
+                                                                    echo $value[3];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                    $value[3];
+                                                                    $value[5];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                    $value[4];
+                                                                    $value[7];
                                                                 }?></a></h3>
                                                             </div>
                                                             <?php } ?>

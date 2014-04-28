@@ -247,10 +247,6 @@ class Login_Js extends CI_Controller {
 
 							setTimeout("window.location =\""+data.more+"\"", 3000);
 
-						else
-
-							$("#content-login").effect("shake",null,"fast");
-
 					}
 
 					
@@ -258,86 +254,6 @@ class Login_Js extends CI_Controller {
 				});
 
 				return false;
-
-			});
-
-			$(".cizacl_btn_add").button({
-
-				icons: {
-
-					primary: "ui-icon-plus"
-
-				}
-
-			});
-
-			$(".cizacl_btn_edit").button({
-
-				icons: {
-
-					primary: "ui-icon-pencil"
-
-				}
-
-			});
-
-			$(".cizacl_btn_view").button({
-
-				icons: {
-
-					primary: "ui-icon-contact"
-
-				}
-
-			});
-
-			$(".cizacl_btn_del").button({
-
-				icons: {
-
-					primary: "ui-icon-trash"
-
-				}
-
-			});
-
-			$(".cizacl_btn_disactive").button({
-
-				icons: {
-
-					primary: "ui-icon-power"
-
-				}
-
-			});
-
-			$(".cizacl_btn_save").button({
-
-				icons: {
-
-					primary: "ui-icon-disk"
-
-				}
-
-			});
-
-			$(".cizacl_btn_check").button({
-
-				icons: {
-
-					primary: "ui-icon-check"
-
-				}
-
-			});
-
-			$(".cizacl_btn_reset").button({
-
-				icons: {
-
-					primary: "ui-icon-arrowreturnthick-1-w"
-
-				}
 
 			});
 
@@ -356,6 +272,89 @@ class Login_Js extends CI_Controller {
 			if(TimeoutValue > 0)
 
 				setTimeout("$(\"#jq_msg\").slideUp(\"slow\")", TimeoutValue);
+
+		}
+
+		';
+
+		
+
+		$output = str_replace(array("\r\n", "\r", "\n", "\t"), ' ', $output);
+
+		$output = preg_replace('/ {2,}/', ' ', $output);
+
+		$this->output->set_content_type('js')->set_output($output);
+
+	}
+
+
+
+	public function scripts_home2()
+
+	{
+
+		$page;
+		$lang = $this->lang->lang();
+
+		if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+	        $page = 'caixilharia';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+	        $page = 'vidro';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+	        $page = 'extrusao';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+	        $page = 'tratamento';
+	    }
+
+		$output = '
+
+		$(document).ready(function()	{
+
+			$("#form2").submit(function()	{
+
+				$.ajax({
+
+					url: 		"'.site_url('login/registar?'.$page.'&'.$lang).'",
+
+					type:		"post",
+
+					data:		$(this).serialize(),
+
+					dataType:	"json",
+
+					success:	function(data)	{
+
+						jq_msg2(data,70,5000);
+
+						if(data.response == "success")
+
+							setTimeout("window.location =\""+data.more+"\"", 3000);
+
+					}
+
+					
+
+				});
+
+				return false;
+
+			});
+
+			
+
+			$("input, button, textarea, select").addClass("ui-corner-all");
+
+		});
+
+		function jq_msg2(data, scrollTopValue, TimeoutValue)	{
+
+			$("html,body").animate({scrollTop: scrollTopValue},"slow");
+
+			$("#jq_msg2").html(data.msg).slideDown("slow");
+
+			if(TimeoutValue > 0)
+
+				setTimeout("$(\"#jq_msg2\").slideUp(\"slow\")", TimeoutValue);
 
 		}
 
