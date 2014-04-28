@@ -124,7 +124,11 @@ nav a {color: #ff0;}
 nav a:hover {color: #fff;}
 .navbar-default {border: 0;}
 .navbar-nav > li > a {color: #fff !important;font-size: 16px;}
-.dropdown-menu {background-color: #107ca4;border: 0;border-radius: 0;}
+.dropdown-menu {background-color:transparent; border: 0;border-radius: 0; padding: 0; 
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.dropdown-menu>.grid-demo {background-color:rgba(17,125,160, 0.94); }
 
 nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {background-color: #107ca4;}
