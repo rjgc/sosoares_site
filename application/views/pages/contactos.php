@@ -32,7 +32,7 @@
                     $url = $this->lang->lang().'/tratamento/send_contactos';
                 } echo form_open($url)?>
                 <div class="col-md-6">
-                    <form method="get">
+                    <form>
                         <fieldset>
                             <legend><?=lang('dados')?></legend>
                             <div class="form-group">
