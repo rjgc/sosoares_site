@@ -26,6 +26,8 @@ class Mediagest extends CI_Controller {
         $this->load->library('grocery_CRUD');
         $this->load->library('image_CRUD');
         $this->load->library('session');
+
+        if($this->uri->segment(1) == "pt" || $this->uri->segment(1) == "en") redirect('login/');
     }
 
     function _admin_output($output = null)
@@ -64,6 +66,8 @@ $html = '
 // por defeito abre a lista de obras
 function index()
 {
+
+	
     try{
         $crud = new grocery_CRUD();
 
