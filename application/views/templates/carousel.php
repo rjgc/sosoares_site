@@ -1,34 +1,20 @@
 <?php if (!empty($banners)) { ?>
 <div id="myCarousel_" class="carousel carousel2 slide" data-ride="carousel">
     <div class="carousel-inner carousel-inner-banner">
-        <?php $i=0;
-        foreach ($banners as $banner) {
+         <?php $i=0;  foreach ($banners as $banner) {
             if ($i == 0) { ?>
             <div class="item active" data-slide-number="<?=$i?>">
-                <img src="<?php if ($banner['id_categoria_banner'] == 1) 
-                echo base_url().'assets/uploads/banners/aluminio/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 2)
-                echo base_url().'assets/uploads/banners/vidro/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 3)
-                echo base_url().'assets/uploads/banners/extrusao/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 4)
-                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];?>" alt="slide">
-                <div class="container"></div>
+                <img src="<?php echo base_url();?>assets/uploads/banners/<?php echo $banner['banner'];?>" alt="slide">
+                <div class="container">
+                </div>
             </div>
             <?php } else { ?>
             <div class="item" data-slide-number="<?=$i?>">
-                <img src="<?php if ($banner['id_categoria_banner'] == 1) 
-                echo base_url().'assets/uploads/banners/aluminio/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 2)
-                echo base_url().'assets/uploads/banners/vidro/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 3)
-                echo base_url().'assets/uploads/banners/extrusao/'.$banner['banner'];
-                else if ($banner['id_categoria_banner'] == 4)
-                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];?>" alt="slide">
-                <div class="container"></div>
+                <img src="<?php echo base_url();?>assets/uploads/banners/<?php echo $banner['banner'];?>" alt="slide">
+                <div class="container">
+                </div>
             </div>
-            <?php }
-            $i++;
+            <?php } $i++;
         } ?>
     </div>
     <div style="position: absolute; padding-top: 59px; left:0px; right:0px;">

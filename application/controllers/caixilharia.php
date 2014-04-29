@@ -57,7 +57,8 @@ public function home()
         $data['page_style']= "caixilharia";
         $data['current'] = 'home';
         $data['noticia'] = $this->sosoares_model->get_destaque();
-        $data['banners'] = $this->sosoares_model->get_banners(1);
+
+        $banners = $this->sosoares_model->get_banners(1);
 
          if (!empty($banners)) {
             $data['banners'] = $banners;
