@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-2">
                     <p class="footer">Tel +351 <b>226 096 709</b></p>
-                    <p class="footer"> Tel +351 <b>226 005 642</b></p>
+                    <p class="footer">Fax +351 <b>226 005 642</b></p>
                 </div>
                 <div class="col-md-3">
                     <p class="footer">geral@sosoares.pt</p>

@@ -1,8 +1,9 @@
 header, .form #search {background-color: #3b6a7c;}
 
 nav, .navbar {background-color: #01adef;}
-nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #054568;}
+nav, .navbar-nav > li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {background-color: #054568;}
+.dropdown-menu>.grid-demo {background-color:rgba(5,69,104, 0.94);}
 .curr {background-color: #2576a3;}
 
 .menu-h3, .li-b {color: #04adf2;}

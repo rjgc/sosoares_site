@@ -1,10 +1,10 @@
 header, .form #search {background-color: #454545;}
 
 nav, .navbar {background-color: #797979;}
-nav .navbar-nav li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus, .dropdown-menu {background-color: #909090;}
+nav, .navbar-nav > li:hover, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {background-color: #909090;}
+.dropdown-menu>.grid-demo {background-color:rgba(144,144,144, 0.94);}
 .curr {background-color: #aa9d9d;}
-/*.font {font-size: 305.5%;}*/
 
 .menu-h3 {color: #454545;}
 .li-b {color: #000;}

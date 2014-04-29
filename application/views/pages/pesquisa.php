@@ -162,36 +162,35 @@
                                             } ?>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </div>
-                                <?php } ?>
-                            </div>
-                            <?php if (!empty($obras)) { ?>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="title3"><?=lang('portfolio')?></h1>
-                                    <div class="obras-container produtos-container">
-                                        <?php                                        
-                                        foreach ($obras as $obra){
-                                            ?>
-                                            <a href="<?=site_url('caixilharia/obras/'.$obra['id_obra'])?>">
-                                                <div class="obras-list grow">
-                                                    <?php if(!empty($obra['foto'])) {
+                                <?php if (!empty($obras)) { ?>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1 class="title3"><?=lang('portfolio')?></h1>
+                                        <div class="obras-container produtos-container">
+                                            <?php                                        
+                                            foreach ($obras as $obra){
+                                                ?>
+                                                <a href="<?=site_url('caixilharia/obras/'.$obra['id_obra'])?>">
+                                                    <div class="obras-list grow">
+                                                        <?php if(!empty($obra['foto'])) {
+                                                            ?>
+                                                            <img src="<?php echo base_url() ?>assets/uploads/obras/list/<?php echo $obra['foto'] ?>"/>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <img src="<?php echo base_url() ?>assets/uploads/obras/3a0ca-3d---os-triple.png?>"/>
+                                                            <?php
+                                                        }
                                                         ?>
-                                                        <img src="<?php echo base_url() ?>assets/uploads/obras/list/<?php echo $obra['foto'] ?>"/>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <img src="<?php echo base_url() ?>assets/uploads/obras/3a0ca-3d---os-triple.png?>"/>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <p> <?php echo $obra['nome_'.$this->lang->lang()] ?></p>
-                                                </div>
-                                            </a>
-                                            <?php } ?>
+                                                        <p> <?php echo $obra['nome_'.$this->lang->lang()] ?></p>
+                                                    </div>
+                                                </a>
+                                                <?php } ?>
+                                            </div>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
-                                <?php } ?>
                             </div>
-                        </div>

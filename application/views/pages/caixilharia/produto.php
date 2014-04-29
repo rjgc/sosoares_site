@@ -171,12 +171,12 @@ if ($cortes || $downloads) { ?>
                             <?php if (!empty($perfis)) { ?>
                             <li style="margin: 0;float: left;display: block;">
                                 <h3><?=lang('perfis')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($perfis as $perfil) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
+                                        if ($perfil['restrito'] == 0) { ?>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$perfil['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><p><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><?=$perfil['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -184,12 +184,12 @@ if ($cortes || $downloads) { ?>
                             <?php } if (!empty($pormenores)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('pormenores')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($pormenores as $pormenor) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                                        if ($pormenor['restrito'] == 0) { ?>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$pormenor['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$pormenor['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -197,12 +197,12 @@ if ($cortes || $downloads) { ?>
                             <?php } if (!empty($catalogos)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('catalogo')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        if ($catalogo['restrito'] == 0) { ?>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -210,12 +210,12 @@ if ($cortes || $downloads) { ?>
                             <?php } if (!empty($ensaios)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('itt')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($ensaios as $ensaio) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
+                                        if ($ensaio['restrito'] == 0) { ?>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$ensaio['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$ensaio['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -223,12 +223,12 @@ if ($cortes || $downloads) { ?>
                             <?php } if (!empty($folhetos)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('folheto')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($folhetos as $folheto) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        if ($folheto['restrito'] == 0) { ?>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>

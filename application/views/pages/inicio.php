@@ -41,6 +41,7 @@
     <div class="col-md-4">
         <h1 class="title1">Newsletter</h1>
         <p><?=lang('newsletter')?></p>
+        <div id="mensagem"></div>
         <form method="post" role="form">
             <div class="form-group">
                 <input class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>">
@@ -49,7 +50,7 @@
                 <input class="form-control input" id="mail" name="mail" placeholder="<?=lang('email')?>">
             </div>
             <div class="form-group">
-                <input class="btn button grow" type="submit" id="subs" name="submit" value="<?=lang('subscrever')?>">
+                <input class="btn button grow" type="submit" id="subs" name="submit" onclick="mensagem()" value="<?=lang('subscrever')?>">
             </div>
         </form>
     </div>
@@ -60,8 +61,16 @@ if (isset($_POST['submit'])) {
     if (!empty($_POST['nome']) && !empty($_POST['mail'])) {
         $data = array('nome' => $_POST["nome"], 'email' => $_POST["mail"]);
 
+        echo "<script>$('#mensagem').slideDown(); document.getElementById('mensagem').innerHTML = 'Registado com sucesso!'; document.getElementById('mensagem').style.padding='0 0 10px 0';</script>"; 
+
         $this->db->insert('newsletter', $data);
+    } else {
+        echo "<script>$('#mensagem').slideDown(); document.getElementById('mensagem').innerHTML = 'Erro!<br><br>Tem de preencher os campos Nome e Email.'; document.getElementById('mensagem').style.padding='0 0 10px 0';</script>"; 
     }
 }
 ?>
-
+<script type="text/javascript">
+    if (document.getElementById('mensagem').innerHTML != '') {
+        setTimeout(function () {$('#mensagem').slideUp('slow')}, 3000); 
+    }
+</script>

@@ -8,7 +8,6 @@
 	<meta name="robots" content="" />
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/mediagest/css/style.css" media="all" />
-	<!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/mediagest/css/form_tabs.css" media="all" /> -->
 	<?php foreach($css_files as $file): ?>
 		<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
 	<?php endforeach; ?>
@@ -18,7 +17,6 @@
     <link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>assets/sosoares/css/change_order.css" />
     <script type="text/javascript" src="<?php echo base_url() ?>assets/sosoares/js/change_order.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/duplicate_item/js/duplicate_item.js" ></script>
-    <!-- <script type="text/javascript" src="<?php echo base_url() ?>assets/mediagest/js/form_tabs.js" ></script> -->
 </head>
 <body>
 	<div class="testing">
@@ -51,6 +49,9 @@
                     <li><a href='<?php echo site_url("mediagest/contactos_management")?>'> Contactos</a></li>
                     <li><a href='<?php echo site_url("mediagest/contactos_mapa_management")?>'> Contactos do Mapa</a></li>
                 </ul>
+            </li>
+            <li <?php if ($data['titulo'] == 'Grupo Sosoares') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/grupo_sosoares_management")?>'><span class="icon">&#59176;</span> Grupo Sosoares</a>
             </li>
             <li <?php if ($data['titulo'] == 'Notícias') echo 'class="section"'; ?>>
                 <a href='<?php echo site_url("mediagest/noticias_management")?>'><span class="icon">&#59176;</span> Notícias</a>

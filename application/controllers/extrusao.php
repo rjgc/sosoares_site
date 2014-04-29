@@ -307,22 +307,22 @@ public function send_candidatura()
         //Enviar email
 		$this->load->library('email');
 		$config = array('useragent'        => 'CodeIgniter',        
-			'protocol'         => 'mail',        
-			'mailpath'         => '/usr/sbin/sendmail',
-			'smtp_host'        => '',
-			'smtp_user'        => '',
-			'smtp_pass'        => '',
-			'smtp_port'        => 25,
-			'smtp_timeout'     => 5,
-			'wordwrap'         => TRUE,
-			'wrapchars'        => 76,
-			'mailtype'         => 'html',
-			'charset'          => 'utf-8',
-			'validate'         => FALSE,
-			'priority'         => 3,
-			'bcc_batch_mode'   => FALSE,
-			'bcc_batch_size'   => 200
-			);
+            'protocol'         => 'mail',        
+            'mailpath'         => '/usr/sbin/sendmail',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
+            'smtp_port'        => 25,
+            'smtp_timeout'     => 5,
+            'wordwrap'         => TRUE,
+            'wrapchars'        => 76,
+            'mailtype'         => 'html',
+            'charset'          => 'utf-8',
+            'validate'         => FALSE,
+            'priority'         => 3,
+            'bcc_batch_mode'   => FALSE,
+            'bcc_batch_size'   => 200
+            );
 
         // Run some setup
 		$this->email->initialize($config);
@@ -337,7 +337,7 @@ public function send_candidatura()
 		if (!$this->email->send()) {
 			echo $this->email->print_debugger();
 		} else {
-			$data['page_style']= "caixilharia";
+			$data['page_style']= "extrusao";
 			$data['current'] = 'grupo_sosoares';
 			$this->menu($data);
 
@@ -369,7 +369,7 @@ public function produto($id=null)
 			}
 
 			$data['produto'] = $produto;
-			$data['catalogos'] = null;
+			$data['catalogos'] = $this->extrusao_model->get_catalogos($id, $this->get_lang());;
 
 			$this->load->view('pages/extrusao/produto', $data, $this->get_lang());
 		} else {
@@ -527,22 +527,22 @@ public function send_contactos()
         //Enviar email
 		$this->load->library('email');
 		$config = array('useragent'        => 'CodeIgniter',        
-			'protocol'         => 'mail',        
-			'mailpath'         => '/usr/sbin/sendmail',
-			'smtp_host'        => '',
-			'smtp_user'        => '',
-			'smtp_pass'        => '',
-			'smtp_port'        => 25,
-			'smtp_timeout'     => 5,
-			'wordwrap'         => TRUE,
-			'wrapchars'        => 76,
-			'mailtype'         => 'html',
-			'charset'          => 'utf-8',
-			'validate'         => FALSE,
-			'priority'         => 3,
-			'bcc_batch_mode'   => FALSE,
-			'bcc_batch_size'   => 200
-			);
+            'protocol'         => 'mail',        
+            'mailpath'         => '/usr/sbin/sendmail',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
+            'smtp_port'        => 25,
+            'smtp_timeout'     => 5,
+            'wordwrap'         => TRUE,
+            'wrapchars'        => 76,
+            'mailtype'         => 'html',
+            'charset'          => 'utf-8',
+            'validate'         => FALSE,
+            'priority'         => 3,
+            'bcc_batch_mode'   => FALSE,
+            'bcc_batch_size'   => 200
+            );
 
         // Run some setup
 		$this->email->initialize($config);

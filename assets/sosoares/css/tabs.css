@@ -118,13 +118,14 @@
 }
 
 .tab-content div p {
+    display: inline-block;
     font-size: 14px;
     line-height: 22px;
     font-style: italic;
     text-align: left;
     margin: 0;
-    color: #777;
-    padding-left: 15px;
+    /*color: #777;
+    padding-left: 15px;*/
     font-family: Cambria, Georgia, serif;
-    border-left: 8px solid rgba(63,148,148, 0.1);
+    /*border-left: 8px solid rgba(63,148,148, 0.1);*/
 }

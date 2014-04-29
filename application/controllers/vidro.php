@@ -292,9 +292,9 @@ public function send_candidatura()
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => '',
-            'smtp_user'        => '',
-            'smtp_pass'        => '',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,
             'wordwrap'         => TRUE,
@@ -320,7 +320,7 @@ public function send_candidatura()
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
-            $data['page_style']= "caixilharia";
+            $data['page_style']= "vidro";
             $data['current'] = 'grupo_sosoares';
             $this->menu($data);
 
@@ -509,9 +509,9 @@ public function send_contactos()
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => '',
-            'smtp_user'        => '',
-            'smtp_pass'        => '',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,
             'wordwrap'         => TRUE,

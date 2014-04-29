@@ -60,7 +60,7 @@ public function home()
 
         $banners = $this->sosoares_model->get_banners(1);
 
-         if (!empty($banners)) {
+        if (!empty($banners)) {
             $data['banners'] = $banners;
         } else {
             $data['banners'] = $this->sosoares_model->get_banners();
@@ -130,6 +130,7 @@ public function pesquisa($pesquisa)
 
 public function menu($data)
 {
+    $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
     $data['tipos'] = $this->caixilharia_model->get_tipos_produtos();
 
     $z = 0;
@@ -183,7 +184,7 @@ public function grupo_sosoares($page=null)
         $this->menu($data);
 
         if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_page($page);
+            $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
 
             $this->load->view('pages/grupo_sosoares', $data);
         } else {
@@ -203,13 +204,7 @@ public function grupos_sosoares()
         $data['current'] = 'grupos_sosoares';
         $this->menu($data);
 
-        $paginas;
-
-        for ($i=1; $i < 7; $i++) {
-            $paginas[$i] = $this->sosoares_model->get_pages($i);
-        }
-
-        $data['pages'] = $paginas;
+        $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
 
         $this->load->view('pages/grupos_sosoares', $data);
         $this->load->view('templates/footer');
@@ -312,9 +307,9 @@ public function send_candidatura()
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => '',
-            'smtp_user'        => '',
-            'smtp_pass'        => '',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,
             'wordwrap'         => TRUE,
@@ -589,14 +584,14 @@ public function send_contactos()
         $data['message'] = 'A mensagem foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-    //Enviar email
+        //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => '',
-            'smtp_user'        => '',
-            'smtp_pass'        => '',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => 'webmaster@sosoares.pt',
+            'smtp_pass'        => '?Web123Sos_',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,
             'wordwrap'         => TRUE,
@@ -609,7 +604,7 @@ public function send_contactos()
             'bcc_batch_size'   => 200
             );
 
-    // Run some setup
+        // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(1));

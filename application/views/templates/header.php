@@ -85,23 +85,9 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if (isset($logged_in) && $logged_in) { ?>
-                    <a id="signin" data-toggle="modal" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                        echo site_url('caixilharia/area_reservada');
-                    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                        echo site_url('vidro/area_reservada');
-                    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                        echo site_url('extrusao/area_reservada');
-                    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                        echo site_url('tratamento/area_reservada');
-                    } ?>"><button class="btn button grow" id="btn_area_reservada"><?=lang('area_privada')?></button></a>
-                    <?php } else { ?>
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin">Login</button></a> 
-                    <?php } ?>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-
                     <div class="modal-dialog" id="tab">
                         <div class="modal-content" id="tab-content">
                             <div class="modal-header">

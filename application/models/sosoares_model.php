@@ -56,6 +56,38 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
+	//ORDEM GRUPO SOSOARES
+
+	public function change_order($event, $clickEl, $el) {
+		$posClickEl = $this->db->query("select ordem from grupo_sosoares where id_pagina = $clickEl");
+		$posClickEl = $posClickEl->result_array();
+		$posClickEl = $posClickEl[0]['ordem'];
+
+		$posEl = $this->db->query("select ordem from grupo_sosoares where id_pagina = $el");
+		$posEl = $posEl->result_array();
+		$posEl = $posEl[0]['ordem'];
+
+		$resClick = false;
+		$resEl = false;
+
+		$this->db->where('id_pagina', $clickEl);              
+		if ($this->db->update('grupo_sosoares', array('ordem' =>  $posEl)))
+			$resClick = true;
+		else
+			$resClick = false;
+
+		$this->db->where('id_pagina', $el);              
+		if ($this->db->update('grupo_sosoares', array('ordem' =>  $posClickEl)))
+			$resEl = true;
+		else
+			$resEl = false;
+
+		if($resClick && $resEl)
+			return true;
+		else
+			return false;
+	}
+
 	//ORDEM APOIOS CLIENTE
 
 	public function change_order_apoio_cliente($event, $clickEl, $el) {
@@ -92,6 +124,14 @@ class Sosoares_model extends CI_Model
 
 	public function set_ordem() {
 		$query = $this->db->query("select max(ordem) as ordem from apoio_cliente");
+
+		$ordem = $query->row_array();
+
+		return $ordem['ordem'] + 1;
+	}
+
+	public function set_ordem_grupo_sosoares() {
+		$query = $this->db->query("select max(ordem) as ordem from grupo_sosoares");
 
 		$ordem = $query->row_array();
 
@@ -154,13 +194,12 @@ class Sosoares_model extends CI_Model
 
 	//BANNERS
 
-	public function get_banners($id_categoria_banner = null) {
+	public function get_banners($id_categoria_banner=null) {
 		if($id_categoria_banner == null){
 			$query = $this->db->query("select * from banners");
 		} else {
 			$query = $this->db->query("select * from banners where id_categoria_banner = '$id_categoria_banner'");
-		}
-		
+		}		
 
 		$data = $query->result_array();
 		return $data;
@@ -170,6 +209,22 @@ class Sosoares_model extends CI_Model
 
 	public function get_destinatario($id_categoria) {
 		$query = $this->db->query("select * from destinatarios where id_categoria = '$id_categoria'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	//GRUPO SOSOARES
+
+	public function get_grupos_sosoares() {
+		$query = $this->db->query("select * from grupo_sosoares where visivel = '1' order by ordem");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_grupo_sosoares($id_pagina) {
+		$query = $this->db->query("select * from grupo_sosoares where id_pagina = '$id_pagina'");
 
 		$data = $query->row_array();
 		return $data;
@@ -248,11 +303,11 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
-    public function get_contactos_mapa() {
-        $query = $this->db->query("select * from contactos_mapa");
+	public function get_contactos_mapa() {
+		$query = $this->db->query("select * from contactos_mapa");
 
-        $data = $query->result_array();
-        return $data;
-    }
-    
+		$data = $query->result_array();
+		return $data;
+	}
+
 }

@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="obras-container">
-                <?php if (!empty($pages)) {
+                <?php print_r($pages[0]['id_pagina']); if (!empty($pages)) {
                     for ($i=1; $i < count($pages); $i++) {
                         foreach ($pages[$i] as $page) {
                             ?>
@@ -56,43 +56,46 @@
                 <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
                 <p><?=lang('comerciais')?></p>
             </div>
-            <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                echo site_url('caixilharia/noticias');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                echo site_url('vidro/noticias');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                echo site_url('extrusao/noticias');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                echo site_url('tratamento/noticias');
-            }?>"><div class="obras-list grow">
-            <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
-            <p><?=lang('noticias')?></p>
-        </div>
+        </a>
         <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-            echo site_url('caixilharia/candidaturas');
+            echo site_url('caixilharia/noticias');
         } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-            echo site_url('vidro/candidaturas');
+            echo site_url('vidro/noticias');
         } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-            echo site_url('extrusao/candidaturas');
+            echo site_url('extrusao/noticias');
         } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-            echo site_url('tratamento/candidaturas');
+            echo site_url('tratamento/noticias');
         }?>"><div class="obras-list grow">
         <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
-        <p><?=lang('candidaturas')?></p>
+        <p><?=lang('noticias')?></p>
     </div>
-    <?php } else { ?>
-    <div class="alert alert-info">
-        <h5><strong>Atenção!</strong> Páginas do Grupo Sosoares indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-            echo site_url('caixilharia/home');
-        } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-            echo site_url('vidro/home');
-        } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-            echo site_url('extrusao/home');
-        } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-            echo site_url('tratamento/home');
-        } ?>">Voltar atrás.</a></h5>
-    </div>
-    <?php } ?>
+</a>
+<a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+    echo site_url('caixilharia/candidaturas');
+} else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+    echo site_url('vidro/candidaturas');
+} else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+    echo site_url('extrusao/candidaturas');
+} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+    echo site_url('tratamento/candidaturas');
+}?>"><div class="obras-list grow">
+<img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
+<p><?=lang('candidaturas')?></p>
+</div>
+</a>
+<?php } else { ?>
+<div class="alert alert-info">
+    <h5><strong>Atenção!</strong> Páginas do Grupo Sosoares indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+        echo site_url('caixilharia/home');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+        echo site_url('vidro/home');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+        echo site_url('extrusao/home');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+        echo site_url('tratamento/home');
+    } ?>">Voltar atrás.</a></h5>
+</div>
+<?php } ?>
 </div>
 </div>
 </div><!-- /row -->

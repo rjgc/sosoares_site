@@ -65,9 +65,7 @@ $html = '
 
 // por defeito abre a lista de obras
 function index()
-{
-
-	
+{	
     try{
         $crud = new grocery_CRUD();
 
@@ -165,7 +163,7 @@ function background_image_management()
     $crud->set_subject('Background Image');
     $crud->columns('foto');
 
-    //$crud->required_fields('foto');
+    $crud->required_fields('foto');
 
     $crud->set_field_upload('foto', 'assets/uploads/background');
 
@@ -435,6 +433,72 @@ function contactos_mapa_management()
     $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
     $this->_admin_output($output);
+}
+
+
+//GRUPO SOSOARES
+
+function grupo_sosoares_management()
+{
+    $crud = new grocery_CRUD();
+
+    $this->load->model('sosoares_model');
+
+    $crud->unset_delete();
+    $crud->unset_add();
+
+    $crud->set_table('grupo_sosoares');
+    $crud->set_subject('Grupo Sosoares');
+    $crud->columns('titulo_pt', 'imagem');
+    $crud->order_by('ordem', 'asc');
+
+    $crud->field_type('ordem', 'hidden');
+    $crud->required_fields('titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es', 'imagem', 'visivel');
+    $crud->display_as('titulo_pt', 'Título')->display_as('visivel', 'Visível');
+    $crud->set_field_upload('imagem', 'assets/uploads/grupo_sosoares');
+
+    $crud->callback_before_insert(array($this, 'callback_before_insert_grupo_sosoares'));
+
+    $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_grupo_sosoares', 'order-position-product-down');
+    $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_grupo_sosoares', 'order-position-product-up');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Grupo Sosoares';
+    $data['sub-titulo'] = 'Faça aqui a gestão do Grupo Sosoares';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
+function callback_before_insert_grupo_sosoares($post_array)
+{
+    $post_array['ordem'] = $this->sosoares_model->set_ordem_grupo_sosoares();
+
+    return $post_array;
+}
+
+function change_order_grupo_sosoares()
+{
+    if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
+        $this->load->model('sosoares_model');
+        $event = trim($_POST['eventRow']);
+        $clickEl = intval($_POST['clickEl']);
+        $el = intval($_POST['el']);
+        if ($event && $clickEl && $el) {
+            if ($this->sosoares_model->change_order($event, $clickEl, $el)) {
+                exit("success");
+            } else {
+                exit("error1");
+            }
+            $this->sosoares_model->change_order($event, $clickEl, $el);
+        } else {
+            exit("error2");
+        }
+    } else {
+        exit("error3");
+    }
 }
 
 
@@ -783,7 +847,7 @@ function produtos_extrusao_management()
 
     $crud->fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'id_tipo_produto_extrusao', 'id_caracteristica_produto_extrusao', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'corte_1', 'corte_2', 'corte_3', 'ordem', 'catalogo');
     $crud->field_type('ordem', 'hidden');
-    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'resultado_pt', 'resultado_en', 'resultado_fr', 'resultado_es', 'id_tipo_produto_extrusao', 'foto_1');
+    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'id_tipo_produto_extrusao', 'foto_1');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('id_tipo_produto_extrusao', 'Tipo')->display_as('id_caracteristica_produto_extrusao', 'Característica');
 
     $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');

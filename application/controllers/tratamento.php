@@ -57,6 +57,7 @@ public function home()
         $data['page_style']= "tratamento";
         $data['current'] = 'home';
         $data['noticia'] = $this->sosoares_model->get_destaque();
+        $this->menu($data);
 
         $banners = $this->sosoares_model->get_banners(4);
 
@@ -66,7 +67,6 @@ public function home()
             $data['banners'] = $this->sosoares_model->get_banners();
         }
 
-        $this->load->view('templates/header', $data);
         $this->load->view('templates/carousel', $data, $this->get_lang());
         $this->load->view('pages/inicio', $data);
         $this->load->view('templates/footer');
@@ -140,8 +140,7 @@ public function grupo_sosoares($page=null)
         $data['page_style'] = "tratamento";
         $data['current'] = 'grupo_sosoares';
         $data['page'] = $page;
-
-        $this->load->view('templates/header', $data);
+        $this->menu($data);
 
         if ($page != null) {
             $data['page'] = $this->sosoares_model->get_page($page);
@@ -162,7 +161,7 @@ public function grupos_sosoares()
     } else {
         $data['page_style']= "tratamento";
         $data['current'] = 'grupos_sosoares';
-        $this->load->view('templates/header', $data);
+        $this->menu($data);
 
         $paginas;
 
@@ -185,10 +184,10 @@ public function areas_comerciais()
         $data['page_style']= "tratamento";
         $data['page_title']= "areas_comerciais";
         $data['current'] = 'areas_comerciais';
+        $this->menu($data);
 
         $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/areas_comerciais', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -201,11 +200,11 @@ public function noticia($id=null)
     } else {
         $data['page_style'] = "tratamento";
         $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
 
         $data['id'] = $id;
         $data['noticia'] = $this->sosoares_model->get_noticia($id);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/noticia', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -218,10 +217,10 @@ public function noticias()
     } else {
         $data['page_style'] = "tratamento";
         $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
 
         $data['noticias'] = $this->sosoares_model->get_noticias();
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/noticias', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -234,10 +233,10 @@ public function candidaturas()
     } else {
         $data['page_style']= "tratamento";
         $data['current'] = 'candidaturas';
+        $this->menu($data);
 
         $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/candidatura', $data);
         $this->load->view('templates/footer');
     }
@@ -300,7 +299,7 @@ public function send_candidatura()
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {
-            $data['page_style']= "caixilharia";
+            $data['page_style']= "tratamento";
             $data['current'] = 'grupo_sosoares';
             $this->menu($data);
 
@@ -317,10 +316,10 @@ public function lacagem()
     } else {
         $data['page_style']= "tratamento";
         $data['current'] = 'lacagem';
+        $this->menu($data);
 
         $data['page'] = $this->sosoares_model->get_page(6);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/lacagem');
         $this->load->view('templates/footer', $data);
     }
@@ -333,10 +332,10 @@ public function anodizacao()
     } else {
         $data['page_style']= "tratamento";
         $data['current'] = 'anodizacao';
+        $this->menu($data);
 
         $data['page'] = $this->sosoares_model->get_page(7);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/anodizacao');
         $this->load->view('templates/footer', $data);
     }
@@ -349,10 +348,10 @@ public function imitacao_madeira()
     } else {
         $data['page_style']= "tratamento";
         $data['current'] = 'imitacao_madeira';
+        $this->menu($data);
 
         $data['page'] = $this->sosoares_model->get_page(8);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/tratamento/imitacao_madeira');
         $this->load->view('templates/footer', $data);
     }
@@ -367,12 +366,12 @@ public function contactos()
         $data['page_title']= "contactos";
         $data['current'] = 'contactos';
         $data['reset'] = FALSE;
+        $this->menu($data);
 
         $data['contactos'] = $this->sosoares_model->get_contactos(4);
         $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
         $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
-        $this->load->view('templates/header', $data);
         $this->load->view('pages/contactos', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -413,8 +412,8 @@ public function send_contactos()
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => '',
-            'smtp_user'        => '',
+            'smtp_host'        => 'smtpa.mail.oni.pt',
+            'smtp_user'        => '$this->sosoares_model->get_destinatario(1)',
             'smtp_pass'        => '',
             'smtp_port'        => 25,
             'smtp_timeout'     => 5,

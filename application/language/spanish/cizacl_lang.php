@@ -180,7 +180,7 @@ $lang["imitacao"] = "Imitación Madera";
 
 $lang["pesquisar"] = "Búsqueda";
 
-$lang["area_privada"] = "Área Reservada";
+$lang["area_privada"] = "Área Privada";
 
 
 /*Footer*/

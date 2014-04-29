@@ -21,9 +21,9 @@
     <!--[if lt IE 9]>
       <script src="<?php echo base_url() ?>assets/js/html5shiv.js"></script>
       <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
+      <![endif]-->
+  </head>
+  <body>
     <header>
         <div class="container">
             <div class="row">
@@ -46,7 +46,11 @@
                 <a href="<?php echo site_url('caixilharia/home')?>">
                     <div class="box shrink" id="caixilharia">
                         <i class="icon-produtos_caixilharia font"></i>
+                        <?php if (strlen(lang('caixilharia')) > 18) { ?>
                         <h3><?=lang('caixilharia')?></h3>
+                        <?php } else { ?>
+                        <h3><?=lang('caixilharia')?><br>&nbsp;</h3>
+                        <?php } ?>
                     </div>
                 </a>
                 <a href="<?php echo site_url('vidro/home')?>">
@@ -65,7 +69,11 @@
                 <a href="<?php echo site_url('tratamento/home')?>">
                     <div class="box shrink" id="abrasivos">
                         <i class="icon-tratamento_new font"></i>
-                        <h3 ><?=lang('tratamento')?></h3>
+                        <?php if (strlen(lang('tratamento')) > 18) { ?>
+                        <h3><?=lang('tratamento')?></h3>
+                        <?php } else { ?>
+                        <h3><?=lang('tratamento')?><br>&nbsp;</h3>
+                        <?php } ?>
                     </div>
                 </a>
             </div>
