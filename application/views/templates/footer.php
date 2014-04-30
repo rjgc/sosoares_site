@@ -24,7 +24,7 @@
                     <?php if (strpos($_SERVER['REQUEST_URI'], 'pt') && strpos($_SERVER['REQUEST_URI'], 'caixilharia') || strpos($_SERVER['REQUEST_URI'], 'vidro') || strpos($_SERVER['REQUEST_URI'], 'tratamento')) { ?>
                     <p class="footer">Tel <b><?=lang('telefone_pt')?></b></p>
                     <p class="footer">Fax <b><?=lang('fax_')?></b></p>
-                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) { ?>
+                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'pt') && strpos($_SERVER['REQUEST_URI'], 'extrusao')) { ?>
                     <p class="footer">Tel <b><?=lang('telefone_extrusao')?></b></p>
                     <p class="footer">Fax <b><?=lang('fax_estrusao')?></b></p>
                     <?php } else { ?>
@@ -34,7 +34,7 @@
                 <div class="col-md-3">
                     <?php if (strpos($_SERVER['REQUEST_URI'], 'pt') && strpos($_SERVER['REQUEST_URI'], 'caixilharia') || strpos($_SERVER['REQUEST_URI'], 'vidro') || strpos($_SERVER['REQUEST_URI'], 'tratamento')) { ?>
                     <p class="footer"><?=lang('email_pt')?></p>
-                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) { ?>
+                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'pt') && strpos($_SERVER['REQUEST_URI'], 'extrusao')) { ?>
                     <p class="footer"><?=lang('email_extrusao')?></p>
                     <?php } else { ?>                    
                     <p class="footer"><?=lang('email_')?></p>

@@ -129,20 +129,7 @@ public function pesquisa($pesquisa)
 public function menu($data) 
 {
     $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
-    
-    $z = 0;
-    $arrayProdutos;
-
     $data['produtos'] = $this->vidro_model->get_produtos();
-
-    foreach ($data['produtos'] as $produto) {
-        $arrayProdutos[$z][0] = $produto['nome_pt'];
-        $arrayProdutos[$z][1] = $produto['id_produto_vidro'];
-
-        $z++;
-    }         
-    
-    $data['array'] = $arrayProdutos;
     $data['apoios'] = $this->sosoares_model->get_apoios(2);
     $data['servicos'] = $this->vidro_model->get_servicos();
     $data['area_tecnica'] = $this->vidro_model->get_areas_tecnicas();
