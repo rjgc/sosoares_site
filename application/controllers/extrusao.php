@@ -116,7 +116,6 @@ public function pesquisa($pesquisa)
 	$this->menu($data);
 
 	$data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
-	$data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
 	$data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
 	$data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
 	$data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
@@ -129,6 +128,7 @@ public function pesquisa($pesquisa)
 
 public function menu($data) 
 {
+	$data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
 	$data['tipos'] = $this->extrusao_model->get_tipos_produtos();
 	
 	$z = 0;
@@ -165,6 +165,7 @@ public function menu($data)
 	} 
 
 	$data['array'] = $arrayProdutos;
+	$data['servicos'] = $this->extrusao_model->get_servicos();
 	$data['apoios'] = $this->sosoares_model->get_apoios(3);
 
 	$this->load->view('templates/header', $data, $this->get_lang());
@@ -177,18 +178,18 @@ public function grupo_sosoares($page=null)
 	} else {
 		$data['page_style'] = "extrusao";
 		$data['current'] = 'grupo_sosoares';
-		$data['page'] = $page;
-		$this->menu($data);
+        $data['page'] = $page;
+        $this->menu($data);
 
-		if ($page != null) {
-			$data['page'] = $this->sosoares_model->get_page($page);
+        if ($page != null) {
+            $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
 
-			$this->load->view('pages/grupo_sosoares', $data);
-		} else {
-			$this->load->view('pages/grupo_sosoares', $data);
-		}
+            $this->load->view('pages/grupo_sosoares', $data);
+        } else {
+            $this->load->view('pages/grupo_sosoares', $data);
+        }
 
-		$this->load->view('templates/footer');
+        $this->load->view('templates/footer');
 	}
 }
 
@@ -199,18 +200,12 @@ public function grupos_sosoares()
 	} else {
 		$data['page_style']= "extrusao";
 		$data['current'] = 'grupos_sosoares';
-		$this->menu($data);
+        $this->menu($data);
 
-		$paginas;
+        $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
 
-		for ($i=1; $i < 7; $i++) {
-			$paginas[$i] = $this->sosoares_model->get_pages($i);
-		}
-
-		$data['pages'] = $paginas;
-
-		$this->load->view('pages/grupos_sosoares', $data);
-		$this->load->view('templates/footer');
+        $this->load->view('pages/grupos_sosoares', $data);
+        $this->load->view('templates/footer');
 	}
 }
 
@@ -420,19 +415,27 @@ public function produtos($id_tipo_produto_extrusao=null)
 	}
 }
 
-public function servico()
+public function servico($servico=null)
 {
 	if (isset($_GET['search'])) {
 		$this->pesquisa($_GET['search']);
 	} else {
 		$data['page_style']= "extrusao";        
 		$data['current'] = 'servico';
-		$this->menu($data);
+        $data['servico'] = $servico;
+        $this->menu($data);
 
-		$data['servico'] = $this->extrusao_model->get_servico();    
+        if ($servico != null) {
+            $data['servico'] = $this->extrusao_model->get_servico($servico);
 
-		$this->load->view('pages/servico', $data);
-		$this->load->view('templates/footer');
+            $this->load->view('pages/servico', $data);
+        } else {
+        	$data['servicos'] = $this->extrusao_model->get_servicos();
+
+            $this->load->view('pages/servicos', $data);
+        }
+
+        $this->load->view('templates/footer'); 
 	}
 }
 

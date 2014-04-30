@@ -61,7 +61,6 @@
                 $data['titulo'] == 'Produtos Extrusão' ||
                 $data['titulo'] == 'Tipos de Produto Alumínio' ||
                 $data['titulo'] == 'Tipos de Produto Extrusão' ||
-                $data['titulo'] == 'Categorias Produtos Vidro'||
                 $data['titulo'] == 'Caract. de Produto Alumínio' ||
                 $data['titulo'] == 'Caract. de Produto Extrusão' ||
                 $data['titulo'] == 'Ficheiros') echo 'class="section"'; ?> >
@@ -72,7 +71,6 @@
                     <li><a href='<?php echo site_url("mediagest/caracteristicas_produto_aluminio_management")?>'>Caract. de Produto Alumínio</a></li>
                     <hr>
                     <li><a href='<?php echo site_url("mediagest/produtos_vidro_management")?>'>Produtos Vidro</a></li>
-                    <li><a href='<?php echo site_url("mediagest/tipos_produto_vidro_management")?>'>Tipos de Produto Vidro</a></li>
                     <hr>
                     <li><a href='<?php echo site_url("mediagest/produtos_extrusao_management")?>'>Produtos Extrusão</a></li>
                     <li><a href='<?php echo site_url("mediagest/tipos_produto_extrusao_management")?>'>Tipos de Produto Extrusão</a></li>

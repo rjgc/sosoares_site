@@ -117,7 +117,6 @@ public function pesquisa($pesquisa)
     $this->menu($data);
 
     $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
-    $data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
     $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
     $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
     $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
@@ -167,6 +166,7 @@ public function menu($data)
     } 
 
     $data['array'] = $arrayProdutos;
+    $data['marcacao'] = $this->sosoares_model->get_page(17);
     $data['apoios'] = $this->sosoares_model->get_apoios(1);
     $data['servicos'] = $this->caixilharia_model->get_servicos();
 
@@ -465,7 +465,9 @@ public function servico($servico=null)
 
             $this->load->view('pages/servico', $data);
         } else {
-            $this->load->view('pages/servico', $data);
+            $data['servicos'] = $this->caixilharia_model->get_servicos();
+
+            $this->load->view('pages/servicos', $data);
         }
 
         $this->load->view('templates/footer');  

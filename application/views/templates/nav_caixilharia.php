@@ -97,8 +97,7 @@
                                                             <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                
+                                                </div>                                                
                                                 <div class="col-sm-3">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -252,7 +251,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="menu-title <?php echo ( isset($current) && $current === 'obras' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/obras')?>"><?=lang('portfolio')?></a></li>
-                                                <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('servicos')?></a>
+                                                <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'servico' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/servico')?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('servicos')?></a>
                                                     <ul class="dropdown-menu">
                                                         <li class="grid-demo">
                                                             <div class="row">
@@ -261,7 +260,7 @@
                                                                     <div class="col-sm-4">
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
-                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                     echo $value[1];
                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                     echo $value[3];
@@ -274,7 +273,7 @@
                                                                             <?php if (!empty($servicos[1])) {
                                                                                 $value = array_values($servicos[1]);?>
                                                                                 <div class="col-sm-6">
-                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                         echo $value[1];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                         echo $value[3];
@@ -293,7 +292,7 @@
                                                                             <div class="col-sm-4">
                                                                                 <div class="row">
                                                                                     <div class="col-sm-6">
-                                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                             echo $value[1];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                             echo $value[3];
@@ -306,7 +305,7 @@
                                                                                     <?php if (!empty($servicos[3])) {
                                                                                         $value = array_values($servicos[3]);?>
                                                                                         <div class="col-sm-6">
-                                                                                            <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                 echo $value[1];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                                 echo $value[3];
@@ -325,7 +324,7 @@
                                                                                     <div class="col-sm-4">
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
-                                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                     echo $value[1];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                                     echo $value[3];
@@ -338,7 +337,7 @@
                                                                                             <?php if (!empty($servicos[5])) {
                                                                                                 $value = array_values($servicos[5]);?>
                                                                                                 <div class="col-sm-6">
-                                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                         echo $value[1];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                                         echo $value[3];
@@ -356,7 +355,10 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </li>
+                                                                        <?php if (!empty($marcacao)) { ?>
                                                                         <li class="menu-title <?php echo ( isset($current) && $current === 'marcacao' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/marcacao/17')?>"><?=lang('marcacao')?></a></li>
+                                                                        <?php } 
+                                                                        if (!empty($apoios)) { ?>                                                                        
                                                                         <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?= site_url('caixilharia/apoios_cliente') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
                                                                             <ul class="dropdown-menu">
                                                                                 <li class="grid-demo">
@@ -461,6 +463,7 @@
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                 </li>
+                                                                                                <?php } ?>
                                                                                                 <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/contactos')?>"><?=lang('contactos')?></a></li>
                                                                                             </ul>
                                                                                         </div>

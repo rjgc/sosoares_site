@@ -14,13 +14,6 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
-	public function pesquisa_tipos_vidro($pesquisa) {
-		$query = $this->db->query("select * from tipos_produto_vidro where nome_pt like '%$pesquisa%' or nome_en like '%$pesquisa%' or nome_fr like '%$pesquisa%' or nome_es like '%$pesquisa%'");
-
-		$data = $query->result_array();
-		return $data;
-	}
-
 	public function pesquisa_tipos_extrusao($pesquisa) {
 		$query = $this->db->query("select * from tipos_produto_extrusao where nome_pt like '%$pesquisa%' or nome_en like '%$pesquisa%' or nome_fr like '%$pesquisa%' or nome_es like '%$pesquisa%'");
 
@@ -233,16 +226,9 @@ class Sosoares_model extends CI_Model
 	//PAGINAS
 
 	public function get_page($id_pagina) {
-		$query = $this->db->query("select * from paginas where id_pagina = '$id_pagina'");
+		$query = $this->db->query("select * from paginas where id_pagina = '$id_pagina' and visivel = '1'");
 
 		$data = $query->row_array();
-		return $data;
-	}
-
-	public function get_pages($id_pagina) {
-		$query = $this->db->query("select * from paginas where id_pagina = '$id_pagina'");
-
-		$data = $query->result_array();
 		return $data;
 	}
 
@@ -288,7 +274,7 @@ class Sosoares_model extends CI_Model
 	}
 
 	public function get_apoios($id_categoria) {
-		$query = $this->db->query("select * from apoio_cliente where id_categoria = '$id_categoria' order by ordem asc");
+		$query = $this->db->query("select * from apoio_cliente where id_categoria = '$id_categoria' and visivel = '1' order by ordem asc");
 
 		$data = $query->result_array();
 		return $data;

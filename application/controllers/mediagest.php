@@ -714,19 +714,16 @@ function produtos_vidro_management()
 
     $crud->set_table('produtos_vidro');
     $crud->set_subject('Produtos Vidro');
-    $crud->columns('nome_pt', 'descricao_pt', 'id_tipo_produto_vidro', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
+    $crud->columns('nome_pt', 'descricao_pt', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
     $crud->order_by('ordem', 'asc');
 
-    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1', 'id_tipo_produto_vidro');
+    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1');
     $crud->field_type('ordem', 'hidden');
-    $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es')->display_as('id_tipo_produto_vidro', 'Tipo');
+    $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es');
 
     $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
     $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
-
-    $crud->set_relation('id_tipo_produto_vidro', 'tipos_produto_vidro', 'nome_pt');
-
     $crud->callback_before_insert(array($this, 'callback_before_insert_produto_vidro'));
 
     $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_vidro', 'order-position-product-down');
@@ -763,66 +760,6 @@ function change_order_vidro()
                 exit("error1");
             }
             $this->vidro_model->change_order_vidro($event, $clickEl, $el);
-        } else {
-            exit("error2");
-        }
-    } else {
-        exit("error3");
-    }
-}
-
-function tipos_produto_vidro_management()
-{
-    $crud = new grocery_CRUD();
-
-    $this->load->model('vidro_model');
-
-    $crud->set_table('tipos_produto_vidro');
-    $crud->set_subject('Tipos de Produto Vidro');
-    $crud->columns('nome_pt', 'foto');
-    $crud->order_by('ordem', 'asc');
-
-    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'foto');
-    $crud->field_type('ordem', 'hidden');
-
-    $crud->set_field_upload('foto', 'assets/uploads/produtos');
-
-    $crud->callback_before_insert(array($this, 'callback_before_insert_tipo_produto_vidro'));
-
-    $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_tipo_produto_vidro', 'order-position-product-down');
-    $crud->add_action('up', 'http://www.indelague.pt/assets/indelague/img/sort_up_green.png', 'mediagest/change_order_tipo_produto_vidro', 'order-position-product-up');
-
-    $output = $crud->render();
-
-    $data['titulo'] = 'Tipos de Produto Vidro';
-    $data['sub-titulo'] = 'Faça aqui a gestão dos Tipos de Produto Vidro';
-
-    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
-
-    $this->_admin_output($output);
-}
-
-function callback_before_insert_tipo_produto_vidro($post_array)
-{
-    $post_array['ordem'] = $this->vidro_model->set_ordem_tipo_produto();
-
-    return $post_array;
-}
-
-function change_order_tipo_produto_vidro()
-{
-    if (isset($_POST['eventRow']) && isset($_POST['clickEl']) && isset($_POST['el'])) {
-        $this->load->model('vidro_model');
-        $event = trim($_POST['eventRow']);
-        $clickEl = intval($_POST['clickEl']);
-        $el = intval($_POST['el']);
-        if ($event && $clickEl && $el) {
-            if ($this->vidro_model->change_order_tipo_produto_vidro($event, $clickEl, $el)) {
-                exit("success");
-            } else {
-                exit("error1");
-            }
-            $this->vidro_model->change_order_tipo_produto_vidro($event, $clickEl, $el);
         } else {
             exit("error2");
         }
@@ -1081,6 +1018,8 @@ function servicos_aluminio_management()
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
+    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/aluminio');
+
     $output = $crud->render();
 
     $data['titulo'] = 'Serviços Alumínio';
@@ -1102,6 +1041,8 @@ function servicos_vidro_management()
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
+    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/vidro');
+
     $output = $crud->render();
 
     $data['titulo'] = 'Serviços Vidro';
@@ -1122,6 +1063,8 @@ function servicos_extrusao_management()
 
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
+
+    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/extrusao');
 
     $output = $crud->render();
 
@@ -1148,8 +1091,8 @@ function paginas_management()
     $crud->columns('titulo_pt', 'imagem');
     $crud->order_by('id_pagina', 'asc');
 
-    $crud->required_fields('titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es', 'imagem');
-    $crud->display_as('titulo_pt', 'Título');
+    $crud->required_fields('titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es', 'imagem', 'visivel');
+    $crud->display_as('titulo_pt', 'Título')->display_as('visivel', 'Visível');
     $crud->set_field_upload('imagem', 'assets/uploads/paginas');
 
     $output = $crud->render();
@@ -1172,16 +1115,15 @@ function apoio_cliente_management()
     $this->load->model('sosoares_model');
 
     $crud->unset_delete();
-    //$crud->unset_add();
 
     $crud->set_table('apoio_cliente');
     $crud->set_subject('Apoio ao Cliente');
     $crud->columns('titulo_pt', 'imagem', 'id_categoria');
     $crud->order_by('ordem', 'asc');
 
-    $crud->required_fields('titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es', 'imagem', 'id_categoria');
+    $crud->required_fields('titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es', 'imagem', 'id_categoria', 'visivel');
     $crud->field_type('ordem', 'hidden');
-    $crud->display_as('titulo_pt', 'Título')->display_as('id_categoria', 'Categoria');
+    $crud->display_as('titulo_pt', 'Título')->display_as('id_categoria', 'Categoria')->display_as('visivel', 'Visível');
     $crud->set_field_upload('imagem', 'assets/uploads/apoio_cliente');
 
     $crud->set_relation('id_categoria', 'categorias', 'nome');

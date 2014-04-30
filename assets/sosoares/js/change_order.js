@@ -185,7 +185,9 @@ function send_request(eventRow, clickEl, el) {
 
   var url = window.location.pathname;
 
-  if (url.indexOf('produtos_aluminio_management') != -1) {
+  if (url.indexOf('grupo_sosoares_management') != -1) {
+    url = url.replace('grupo_sosoares_management', 'change_order_grupo_sosoares');
+  } else if (url.indexOf('produtos_aluminio_management') != -1) {
     url = url.replace('produtos_aluminio_management', 'change_order_aluminio');
   } else if (url.indexOf('tipos_produto_aluminio_management') != -1) {
     url = url.replace('tipos_produto_aluminio_management', 'change_order_tipo_produto_aluminio');

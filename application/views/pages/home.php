@@ -88,10 +88,18 @@
                     <h4>&nbsp;&copy; GRUPO SOSOARES</h4><p> <?=lang('direitos')?> </p>
                 </div>
                 <div class="telefone">
-                    <p>+351 <b>226 096 709</b></p>
+                    <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                    <p><b><?=lang('telefone_pt')?></b></p>
+                    <?php } else { ?>
+                    <p><b><?=lang('telefone_')?></b></p>
+                    <?php } ?>
                 </div>
                 <div class="email">
-                    <p>comercial@sosoares.pt</p>
+                    <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                    <p><?=lang('email_pt')?></p>
+                    <?php } else { ?>
+                    <p><?=lang('email_')?></p>
+                    <?php } ?>
                 </div>
                 <div class="imgSistemas">
                     <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">

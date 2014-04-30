@@ -116,7 +116,6 @@ public function pesquisa($pesquisa)
     $this->menu($data);
 
     $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
-    $data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
     $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
     $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
     $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
@@ -129,25 +128,23 @@ public function pesquisa($pesquisa)
 
 public function menu($data) 
 {
-    $data['tipos'] = $this->vidro_model->get_tipos_produtos();
+    $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
     
     $z = 0;
     $arrayProdutos;
 
-    foreach ($data['tipos'] as $tipo) {
-        $data['produtos'] = $this->vidro_model->get_produtos_tipo($tipo['id_tipo_produto_vidro']);
+    $data['produtos'] = $this->vidro_model->get_produtos();
 
-        foreach ($data['produtos'] as $produto) {
-            $arrayProdutos[$z][0] = $tipo['nome_pt'];
-            $arrayProdutos[$z][1] = $produto['nome_pt'];
-            $arrayProdutos[$z][2] = $produto['id_produto_vidro'];
+    foreach ($data['produtos'] as $produto) {
+        $arrayProdutos[$z][0] = $produto['nome_pt'];
+        $arrayProdutos[$z][1] = $produto['id_produto_vidro'];
 
-            $z++;
-        }         
-    }
+        $z++;
+    }         
     
     $data['array'] = $arrayProdutos;
     $data['apoios'] = $this->sosoares_model->get_apoios(2);
+    $data['servicos'] = $this->vidro_model->get_servicos();
     $data['area_tecnica'] = $this->vidro_model->get_areas_tecnicas();
 
     $this->load->view('templates/header', $data, $this->get_lang());
@@ -160,11 +157,11 @@ public function grupo_sosoares($page=null)
     } else {
         $data['page_style'] = "vidro";
         $data['current'] = 'grupo_sosoares';
-        $data['page'] = $page;    
+        $data['page'] = $page;
         $this->menu($data);
 
         if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_page($page);
+            $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
 
             $this->load->view('pages/grupo_sosoares', $data);
         } else {
@@ -184,13 +181,7 @@ public function grupos_sosoares()
         $data['current'] = 'grupos_sosoares';
         $this->menu($data);
 
-        $paginas;
-
-        for ($i=1; $i < 7; $i++) {
-            $paginas[$i] = $this->sosoares_model->get_pages($i);
-        }
-
-        $data['pages'] = $paginas;
+        $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
 
         $this->load->view('pages/grupos_sosoares', $data);
         $this->load->view('templates/footer');
@@ -378,19 +369,27 @@ public function produtos($id_tipo_produto_vidro=null)
     }
 }
 
-public function servico()
+public function servico($servico=null)
 {
     if (isset($_GET['search'])) {
         $this->pesquisa($_GET['search']);
     } else {
         $data['page_style']= "vidro";        
         $data['current'] = 'servico';
+        $data['servico'] = $servico;
         $this->menu($data);
 
-        $data['servico'] = $this->vidro_model->get_servico();
+        if ($servico != null) {
+            $data['servico'] = $this->vidro_model->get_servico($servico);
 
-        $this->load->view('pages/servico', $data);
-        $this->load->view('templates/footer');
+            $this->load->view('pages/servico', $data);
+        } else {
+            $data['servicos'] = $this->vidro_model->get_servicos();
+
+            $this->load->view('pages/servicos', $data);
+        }
+
+        $this->load->view('templates/footer'); 
     }
 }
 

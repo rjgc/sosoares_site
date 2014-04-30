@@ -188,6 +188,25 @@ $lang["area_privada"] = "Private Area";
 
 $lang["direitos"] = "All Rights Reserved";
 
+$lang["telefone_pt"] = "+351 226 096 709";
+
+$lang["telefone_"] = "+351 234 729 743";
+
+$lang["fax_"] = "+351 226 005 642";
+
+$lang["email_pt"] = "comercial@sosoares.pt";
+
+$lang["email_"] = "export@sosoares.pt";
+
+
+/*Footer Extrusao*/
+
+$lang["telefone_extrusao"] = "+351 219 156 660";
+
+$lang["fax_estrusao"] = "+351 219 156 661";
+
+$lang["email_extrusao"] = "po.comercial@sosoares.pt";
+
 
 /*Paginas*/
 

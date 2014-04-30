@@ -116,7 +116,6 @@ public function pesquisa($pesquisa)
     $this->menu($data);
 
     $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
-    $data['tipos_vidro'] = $this->sosoares_model->pesquisa_tipos_vidro($pesquisa);
     $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
     $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
     $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
@@ -129,6 +128,11 @@ public function pesquisa($pesquisa)
 
 public function menu($data) 
 {
+    $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
+    $data['lacagem'] = $this->sosoares_model->get_page(6);
+    $data['anodizacao'] = $this->sosoares_model->get_page(7);
+    $data['imitacao'] = $this->sosoares_model->get_page(8);
+
     $this->load->view('templates/header', $data, $this->get_lang());
 }
 
@@ -143,7 +147,7 @@ public function grupo_sosoares($page=null)
         $this->menu($data);
 
         if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_page($page);
+            $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
 
             $this->load->view('pages/grupo_sosoares', $data);
         } else {
@@ -163,13 +167,7 @@ public function grupos_sosoares()
         $data['current'] = 'grupos_sosoares';
         $this->menu($data);
 
-        $paginas;
-
-        for ($i=1; $i < 7; $i++) {
-            $paginas[$i] = $this->sosoares_model->get_pages($i);
-        }
-
-        $data['pages'] = $paginas;
+        $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
 
         $this->load->view('pages/grupos_sosoares', $data);
         $this->load->view('templates/footer');
@@ -320,7 +318,7 @@ public function lacagem()
 
         $data['page'] = $this->sosoares_model->get_page(6);
 
-        $this->load->view('pages/tratamento/lacagem');
+        $this->load->view('pages/tratamento/lacagem', $data);
         $this->load->view('templates/footer', $data);
     }
 }
@@ -336,7 +334,7 @@ public function anodizacao()
 
         $data['page'] = $this->sosoares_model->get_page(7);
 
-        $this->load->view('pages/tratamento/anodizacao');
+        $this->load->view('pages/tratamento/anodizacao', $data);
         $this->load->view('templates/footer', $data);
     }
 }
@@ -352,7 +350,7 @@ public function imitacao_madeira()
 
         $data['page'] = $this->sosoares_model->get_page(8);
 
-        $this->load->view('pages/tratamento/imitacao_madeira');
+        $this->load->view('pages/tratamento/imitacao_madeira', $data);
         $this->load->view('templates/footer', $data);
     }
 }
