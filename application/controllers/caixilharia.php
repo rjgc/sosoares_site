@@ -33,7 +33,6 @@ function __construct()
     $this->load->library('cizacl');
     $this->load->library('login');
     $this->load->library('form_validation'); 
-    $this->load->library('ion_auth');
 
     $this->load->model('login_mdl');
     $this->load->model('cizacl_mdl');
@@ -302,7 +301,7 @@ public function send_candidatura()
         $data['message'] = 'A candidatura foi enviada com sucesso!';
         $data['reset'] = TRUE;
 
-    //Enviar email
+        //Enviar email
         $this->load->library('email');
         $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
@@ -322,16 +321,16 @@ public function send_candidatura()
             'bcc_batch_size'   => 200
             );
 
-    // Run some setup
+        // Run some setup
         $this->email->initialize($config);
         $this->email->from(set_value("email"));
         $this->email->to($this->sosoares_model->get_destinatario(2));
         $this->email->subject('Candidatura');
-        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'.<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'. P.S.: Envio em anexo o meu Curriculum Vitae.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'.<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>P.S.: Envio em anexo o meu Curriculum Vitae.<br><br>Atenciosamente,<br><br>'.set_value("nome"));
         $this->email->attach(set_value('cv'));
         $this->email->send();
 
-    // Debug Email
+        // Debug Email
         if (!$this->email->send()) {
             echo $this->email->print_debugger();
         } else {

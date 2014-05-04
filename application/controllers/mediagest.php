@@ -513,7 +513,7 @@ function noticias_management()
     $crud->columns('data_noticia', 'titulo_pt', 'texto_pt', 'foto');
     $crud->display_as('data_noticia', 'Data');
 
-    $crud->required_fields('data', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
+    $crud->required_fields('data_noticia', 'titulo_pt', 'titulo_en', 'titulo_fr', 'titulo_es', 'texto_pt', 'texto_en', 'texto_fr', 'texto_es');
 
     $crud->set_field_upload('foto', 'assets/uploads/noticias');
 
@@ -956,10 +956,10 @@ function callback_after_insert($post_array)
 {
     switch ($post_array['id_categoria_ficheiro']) {
         case '1':
-        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/".$post_array['ficheiro']);
+        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/aluminio/".$post_array['ficheiro']);
         break;
         case '3':
-        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/".$post_array['ficheiro']);
+        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/aluminio/".$post_array['ficheiro']);
         break;
         case '4':
         rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
@@ -968,7 +968,7 @@ function callback_after_insert($post_array)
         rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
         break;
         case '6':
-        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/".$post_array['ficheiro']);
+        rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/aluminio/".$post_array['ficheiro']);
         break;
         case '7':
         rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
@@ -991,7 +991,7 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
     $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
     //list - normal - thumb
-    $this->image_moo->load($file_uploaded)->set_background_colour("#D9D9D9")->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+    $this->image_moo->load($file_uploaded)->set_background_colour("#797979")->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->set_background_colour("#797979")->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->set_background_colour("#797979")->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
     //refold
     rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);

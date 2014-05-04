@@ -33,7 +33,6 @@ function __construct()
     $this->load->library('cizacl');
     $this->load->library('login');
     $this->load->library('form_validation'); 
-    $this->load->library('ion_auth');
 
     $this->load->model('login_mdl');
     $this->load->model('cizacl_mdl');
@@ -323,33 +322,9 @@ public function produto($id=null)
 
             $this->load->view('pages/vidro/produto', $data, $this->get_lang());
         } else {
-            $this->load->view('pages/vidro/produto', $data, $this->get_lang());
-        }
+            $data['produtos'] = $this->vidro_model->get_produtos();
 
-        $this->load->view('templates/footer');
-    }
-}
-
-public function produtos($id_tipo_produto_vidro=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style']= "vidro";
-        $data['current'] = 'produtos';
-        $this->menu($data);
-
-        if ($id_tipo_produto_vidro != null) {
-            $data['tipo'] = $this->vidro_model->get_tipo_produtos($id_tipo_produto_vidro);
-
-            $data['produtos'] = $this->vidro_model->get_produtos_tipo($id_tipo_produto_vidro);
-
-            $this->load->view('pages/vidro/produtos_sem_caracteristicas', $data, $this->get_lang());
-        }
-        else {
-            $data['tipos'] = $this->vidro_model->get_tipos_produtos();
-
-            $this->load->view('pages/vidro/produtos', $data);
+            $this->load->view('pages/vidro/produtos', $data, $this->get_lang());
         }
 
         $this->load->view('templates/footer');
@@ -451,6 +426,8 @@ public function contactos()
         $data['reset'] = FALSE;   
         $this->menu($data);
 
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
         $data['contactos'] = $this->sosoares_model->get_contactos(2);
         $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
         $data['destinatario'] = $this->sosoares_model->get_destinatario(1);

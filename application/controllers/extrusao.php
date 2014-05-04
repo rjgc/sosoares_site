@@ -33,7 +33,6 @@ function __construct()
 	$this->load->library('cizacl');
 	$this->load->library('login');
 	$this->load->library('form_validation'); 
-	$this->load->library('ion_auth');
 
 	$this->load->model('login_mdl');
 	$this->load->model('cizacl_mdl');
@@ -488,6 +487,8 @@ public function contactos()
 		$data['reset'] = FALSE;
 		$this->menu($data);
 
+		$data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
 		$data['contactos'] = $this->sosoares_model->get_contactos(3);
 		$data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
 		$data['destinatario'] = $this->sosoares_model->get_destinatario(1);
