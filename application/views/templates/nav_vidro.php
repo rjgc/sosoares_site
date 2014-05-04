@@ -123,7 +123,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('vidro/produtos') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('vprodutos')?></a>
+                                    <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'produto' || $current === 'produtos') ? 'curr' : ''?>"><a href="<?=site_url('vidro/produto') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('vprodutos')?></a>
                                         <ul class="dropdown-menu">
                                             <li class="grid-demo">
                                                 <?php   $i = 0;

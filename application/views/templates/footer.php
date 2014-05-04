@@ -216,7 +216,7 @@ if(isset($page_title)) {
 
                 var mapOptions = {
                     center: new google.maps.LatLng(39.806616, -8.095359),
-                    zoom: 6,
+                    zoom: 7,
                     panControl: false,
                     zoomControl: false,
                     scaleControl: true,
@@ -306,7 +306,7 @@ if(isset($page_title)) {
 
                     var mapOptions = {
                         center: new google.maps.LatLng(39.806616, -8.095359),
-                        zoom: 6,
+                        zoom: 7,
                         panControl: false,
                         zoomControl: false,
                         scaleControl: true,
@@ -361,4 +361,3 @@ if(isset($page_title)) {
             }
         }
         ?>
-<!--/Share Links-->

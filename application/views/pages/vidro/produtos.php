@@ -3,9 +3,9 @@
         <div class="col-md-12">
             <ul class="breadcrumb">
                 <li><a href="<?=site_url('vidro/home')?>"><?=lang('home')?></a></li>
-                <li><?=lang('cprodutos')?></li>
+                <li><?=lang('vprodutos')?></li>
             </ul>
-            <h1 class="title3"><?=lang('cprodutos')?></h1>
+            <h1 class="title3"><?=lang('vprodutos')?></h1>
         </div>
     </div>
     <div>
@@ -13,22 +13,22 @@
             <div class="col-md-12">
                 <div class="obras-container produtos-container">
                     <?php
-                    if (!empty($tipos)) {
-                        foreach ($tipos as $tipo){
+                    if (!empty($produtos)) {
+                        foreach ($produtos as $produto){
                             ?>
-                            <a href="<?=site_url('vidro/produtos/'.$tipo['id_tipo_produto_vidro'])?>">
+                            <a href="<?=site_url('vidro/produtos/'.$produto['id_produto_vidro'])?>">
                                 <div class="obras-list grow">
-                                    <?php if(!empty($tipo['foto'])) {
-                                    ?>
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $tipo['foto'] ?>"/>
-                                    <?php
+                                    <?php if(!empty($produto['foto_1'])) {
+                                        ?>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $produto['foto_1'] ?>"/>
+                                        <?php
                                     } else {
-                                    ?>
+                                        ?>
                                         <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
-                                    <?php
+                                        <?php
                                     }
                                     ?>
-                                    <p> <?php echo $tipo['nome_'.$this->lang->lang()] ?></p>
+                                    <p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p>
                                 </div>
                             </a>
                             <?php }

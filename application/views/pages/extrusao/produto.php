@@ -161,12 +161,12 @@ if ($cortes || $downloads) { ?>
                             <?php } if (!empty($catalogos)) { ?>
                             <li style="margin: 0 0 0 40px;float: left;display: block;">
                                 <h3><?=lang('catalogo')?></h3>
-                                <ul style="margin-left: 18px;">
+                                <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
                                         if ($ficheiro['restrito'] == 0) { ?>
-                                        <li><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><p><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>

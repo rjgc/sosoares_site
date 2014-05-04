@@ -24,7 +24,7 @@
                                     <?php
                                     } else {
                                     ?>
-                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/3a0ca-3d---os-triple.png?>"/>
+                                        <img src="<?php echo base_url() ?>assets/uploads/produtos/list/3a0ca-3d---os-triple.png?>"/>
                                     <?php
                                     }
                                     ?>
