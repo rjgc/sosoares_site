@@ -159,7 +159,7 @@ nav, .navbar-nav > li:hover, .navbar-default .navbar-nav > .open > a, .navbar-de
     border: 1px solid #fff;
     text-align: left;
     height: 65px;
-    max-width: 1170px;
+    width: 1170px;
     margin: 20px auto;
     right: 0;
     left: 0;
