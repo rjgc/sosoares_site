@@ -339,14 +339,14 @@ class Login extends CI_Controller {
 
 		else	{
 
-    //Enviar email
+    		//Enviar email
 			$this->load->library('email');
 			$config = array('useragent'        => 'CodeIgniter',        
 				'protocol'         => 'mail',        
 				'mailpath'         => '/usr/sbin/sendmail',
-				'smtp_host'        => '',
-				'smtp_user'        => '',
-				'smtp_pass'        => '',
+				'smtp_host'        => 'smtpa.mail.oni.pt',
+				'smtp_user'        => 'webmaster@sosoares.pt',
+				'smtp_pass'        => '?Web123Sos_',
 				'smtp_port'        => 25,
 				'smtp_timeout'     => 5,
 				'wordwrap'         => TRUE,
@@ -359,15 +359,89 @@ class Login extends CI_Controller {
 				'bcc_batch_size'   => 200
 				);
 
-    // Run some setup
+    		// Run some setup
 			$this->email->initialize($config);
 			$this->email->from(set_value("email"));
 			$this->email->to($this->sosoares_model->get_destinatario(1));
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>.<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Sobrenome: '.set_value("apelido").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Sobrenome: '.set_value("apelido").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 			$this->email->send();
 
-    // Debug Email
+    		// Debug Email
+			if (!$this->email->send()) {
+				echo $this->email->print_debugger();
+			} else {
+				$lang;
+
+				if (strpos($_SERVER['REQUEST_URI'], 'pt'))
+					$lang = 'pt';
+				else if (strpos($_SERVER['REQUEST_URI'], 'en'))
+					$lang = 'en';
+				else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
+					$lang = 'fr';
+				else if (strpos($_SERVER['REQUEST_URI'], 'es'))
+					$lang = 'es';
+
+				if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/home'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/home'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/home'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/home'));
+			}     
+		}
+
+	}
+
+
+
+	function scripts_recuperar_password()
+
+	{ 
+
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+
+		if ($this->form_validation->run() == false)	{
+
+			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
+
+		}
+
+		else	{
+
+    		//Enviar email
+			$this->load->library('email');
+			$config = array('useragent'        => 'CodeIgniter',        
+				'protocol'         => 'mail',        
+				'mailpath'         => '/usr/sbin/sendmail',
+				'smtp_host'        => 'smtpa.mail.oni.pt',
+				'smtp_user'        => 'webmaster@sosoares.pt',
+				'smtp_pass'        => '?Web123Sos_',
+				'smtp_port'        => 25,
+				'smtp_timeout'     => 5,
+				'wordwrap'         => TRUE,
+				'wrapchars'        => 76,
+				'mailtype'         => 'html',
+				'charset'          => 'utf-8',
+				'validate'         => FALSE,
+				'priority'         => 3,
+				'bcc_batch_mode'   => FALSE,
+				'bcc_batch_size'   => 200
+				);
+
+    		// Run some setup
+			$this->email->initialize($config);
+			$this->email->from($this->sosoares_model->get_destinatario(1));
+			$this->email->to(set_value("email"));
+			$this->email->subject('Recuperar Password');
+			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você estão aqui os seus dados:<br><br>Username: '.$username.'<br>Password: '.$password.'<br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
+			$this->email->send();
+
+    		// Debug Email
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();
 			} else {

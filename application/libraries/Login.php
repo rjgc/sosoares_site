@@ -96,7 +96,7 @@ class CI_Login
 
 
 
-	function getScriptsHome($page)
+	function getScriptsLogin($page)
 
 	{
 		
@@ -116,8 +116,9 @@ class CI_Login
 
 		}
 
-		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_home?'.$page).'"></script>'.PHP_EOL;
-		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_home2?'.$page).'"></script>'.PHP_EOL;
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_login?'.$page).'"></script>'.PHP_EOL;
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_registar?'.$page).'"></script>'.PHP_EOL;
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_recuperar_password?'.$page).'"></script>'.PHP_EOL;
 
 		return $data;
 

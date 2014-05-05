@@ -22,7 +22,7 @@
       <script src="<?php echo base_url() ?>assets/js/html5shiv.js"></script>
       <script src="<?php echo base_url() ?>assets/js/respond.min.js"></script>
       <![endif]-->
-      <?php echo $this->login->getScriptsHome('home'); ?>
+      <?php echo $this->login->getScriptsLogin('home'); ?>
 </head>
 <body>
     <header>
@@ -106,7 +106,11 @@
                     <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
                 </div>
                 <div class="areaReservada">
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a>
+                    <?php if (!empty($profile)) { ?>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=$profile['user_profile_name']?></button></a> 
+                    <?php } else { ?>
+                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
+                    <?php } ?>
                 </div>
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" id="tab">

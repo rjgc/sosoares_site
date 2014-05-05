@@ -97,7 +97,15 @@
                         <script type="text/javascript">
                             var dable = new Dable();
                             var data = <?php echo json_encode($arrayFicheiros); ?>;
-                            var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                            <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                var columns = [ "Category", "Name", "File" ];
+                            <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                var columns = [ "Catégorie", "Non", "Dossier" ];
+                            <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                var columns = [ "Categoría", "Nombre", "Expediente" ];
+                            <?php } ?>
                             dable.SetDataAsRows(data);
                             dable.SetColumnNames(columns);
                             dable.BuildAll("DefaultDable");

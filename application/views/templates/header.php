@@ -30,13 +30,13 @@
     }
 
     if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-        echo $this->login->getScriptsHome('caixilharia');
+        echo $this->login->getScriptsLogin('caixilharia');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-        echo $this->login->getScriptsHome('vidro');
+        echo $this->login->getScriptsLogin('vidro');
     } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-        echo $this->login->getScriptsHome('extrusao');
+        echo $this->login->getScriptsLogin('extrusao');
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-        echo $this->login->getScriptsHome('tratamento');
+        echo $this->login->getScriptsLogin('tratamento');
     } ?>
 </head>
 <body>
