@@ -17,7 +17,8 @@
             <h1 class="title3"><?=lang('candidaturas')?></h1>
         </div>
     </div>
-    <?php if (!empty($message)) echo $message; ?>
+    <?php if (!empty($message)) ?> 
+    <p style="padding-left: 18px;"><?php echo $message; ?></p>  
     <?php $this->load->helper('form'); ?>
     <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         $url = $this->lang->lang().'/caixilharia/send_candidatura';
@@ -27,7 +28,7 @@
         $url = $this->lang->lang().'/extrusao/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         $url = $this->lang->lang().'/tratamento/send_candidatura';
-    } echo form_open($url)?>
+    } echo form_open_multipart($url)?>
     <div class="row candidaturas">
         <div class="col-md-8" style="padding-left: 30px;">
             <form method="get">
@@ -36,7 +37,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="nome" name="nome" type="text" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
+                            <input class="form-control" id="nome" name="nome" type="text" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
                         </div>
                     </div>
                     <div class="form-group">

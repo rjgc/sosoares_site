@@ -19,8 +19,7 @@
                         </div>
                         <?php } ?>
                     </div>
-                </div>
-                <?php if (!empty($message)) echo $message; ?>
+                </div>                
                 <?php $this->load->helper('form'); ?>
                 <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                     $url = $this->lang->lang().'/caixilharia/send_contactos';
@@ -32,9 +31,11 @@
                     $url = $this->lang->lang().'/tratamento/send_contactos';
                 } echo form_open($url)?>
                 <div class="col-md-6">
+                    <?php if (!empty($message)) ?> 
+                    <p><?php echo $message; ?></p>
                     <form>
                         <fieldset>
-                            <legend><?=lang('dados')?></legend>
+                            <legend style="padding: 0!important;"><?=lang('dados')?></legend>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                                 <div class="col-sm-10">

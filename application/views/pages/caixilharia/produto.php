@@ -294,7 +294,7 @@ if ($cortes || $downloads) { ?>
                                     if (!empty($obras[$i])) {
                                         $obra = $obras[$i]; ?>
                                         <div class="col-sm-2">
-                                            <a href="<?=site_url('caixilharia/obra/'.$obra['id'])?>">
+                                            <a href="<?=site_url('caixilharia/obras/'.$obra['id'])?>">
                                                 <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                                 <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                             </a>
@@ -311,7 +311,7 @@ if ($cortes || $downloads) { ?>
                                         if (!empty($obras[$i])) {
                                             $obra = $obras[$i]; ?>
                                             <div class="col-sm-2">
-                                                <a href="<?=site_url('caixilharia/obra/'.$obra['id'])?>">
+                                                <a href="<?=site_url('caixilharia/obras/'.$obra['id'])?>">
                                                     <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
                                                     <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                                 </a>

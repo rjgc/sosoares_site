@@ -25,7 +25,7 @@
                         } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
                             echo site_url('vidro/servico/'.$servico['id_servico_vidro']);
                         } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                            echo site_url('extrusao/servico/'.$servico['id_servico_estrusao']);
+                            echo site_url('extrusao/servico/'.$servico['id_servico_extrusao']);
                         } ?>">
                         <div class="obras-list grow">
                             <?php if(empty($servico['imagem'])) { ?>

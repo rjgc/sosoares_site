@@ -216,9 +216,9 @@ if(isset($page_title)) {
 
                 var mapOptions = {
                     center: new google.maps.LatLng(39.806616, -8.095359),
-                    zoom: 7,
+                    zoom: 6,
                     panControl: false,
-                    zoomControl: false,
+                    zoomControl: true,
                     scaleControl: true,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                 };
@@ -306,9 +306,9 @@ if(isset($page_title)) {
 
                     var mapOptions = {
                         center: new google.maps.LatLng(39.806616, -8.095359),
-                        zoom: 7,
+                        zoom: 6,
                         panControl: false,
-                        zoomControl: false,
+                        zoomControl: true,
                         scaleControl: true,
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
                     };

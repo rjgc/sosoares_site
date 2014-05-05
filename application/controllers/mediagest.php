@@ -239,6 +239,9 @@ function callback_after_insert_banner($post_array)
         case '4':
         rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/tratamento/".$post_array['banner']);
         break;
+        case '5':
+        rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/todos/".$post_array['banner']);
+        break;
     }
 
     return true;

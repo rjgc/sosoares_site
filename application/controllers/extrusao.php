@@ -264,81 +264,110 @@ public function candidaturas()
 		$this->pesquisa($_GET['search']);
 	} else {
 		$data['page_style']= "extrusao";
-		$data['current'] = 'candidaturas';
-		$this->menu($data);
+		$data['current'] = 'grupo_sosoares';
+        $data['reset'] = FALSE;
+        $data['message'] = null;
+        $this->menu($data);
 
-		$data['destinatario'] = $this->sosoares_model->get_destinatario(2);
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(2);
 
-		$this->load->view('pages/candidatura', $data);
-		$this->load->view('templates/footer');
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
 	}
 }
 
 public function send_candidatura() 
 {
-	$this->load->library('form_validation');
-	$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
-	$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-	$this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
-	$this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
-	$this->form_validation->set_rules('cv', 'Curriculum Vitae', 'required');
-	$this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
+    //load the helper
+    $this->load->helper('form');
 
-	if($this->form_validation->run() == FALSE){
-		$data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
-		$data['reset'] = FALSE;
-		$data['page_style']= "caixilharia";
-		$data['current'] = 'grupo_sosoares';
-		$this->menu($data);
+    //Configure
+    //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+    $config['upload_path'] = 'assets/uploads/candidaturas/';
 
-		$this->load->view('pages/candidatura', $data);
-		$this->load->view('templates/footer');
-	}
-	else{
-		$data['message'] = 'A candidatura foi enviada com sucesso!';
-		$data['reset'] = TRUE;
+    // set the filter image types
+    $config['allowed_types'] = 'pdf';
 
-        //Enviar email
-		$this->load->library('email');
-		$config = array('useragent'        => 'CodeIgniter',        
-            'protocol'         => 'mail',        
-            'mailpath'         => '/usr/sbin/sendmail',
-            'smtp_host'        => 'smtpa.mail.oni.pt',
-            'smtp_user'        => 'webmaster@sosoares.pt',
-            'smtp_pass'        => '?Web123Sos_',
-            'smtp_port'        => 25,
-            'smtp_timeout'     => 5,
-            'wordwrap'         => TRUE,
-            'wrapchars'        => 76,
-            'mailtype'         => 'html',
-            'charset'          => 'utf-8',
-            'validate'         => FALSE,
-            'priority'         => 3,
-            'bcc_batch_mode'   => FALSE,
-            'bcc_batch_size'   => 200
-            );
+    //load the upload library
+    $this->load->library('upload', $config);
+    
+    $this->upload->initialize($config);
+    
+    $this->upload->set_allowed_types('*');
 
-        // Run some setup
-		$this->email->initialize($config);
-		$this->email->from(set_value("email"));
-		$this->email->to($this->sosoares_model->get_destinatario(2));
-		$this->email->subject('Candidatura');
-		$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'.<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'. P.S.: Envio em anexo o meu Curriculum Vitae.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
-		$this->email->attach(set_value('cv'));
-		$this->email->send();
+    $data['upload_data'] = '';
+    
+    //if not successful, set the error message
+    if (!$this->upload->do_upload('cv')) {
+        $data = array('msg' => $this->upload->display_errors());
+    } else { 
+        //else, set the success message
+        $data = array('msg' => "Upload success!");
 
-        // Debug Email
-		if (!$this->email->send()) {
-			echo $this->email->print_debugger();
-		} else {
-			$data['page_style']= "extrusao";
-			$data['current'] = 'grupo_sosoares';
-			$this->menu($data);
+        $data['upload_data'] = $this->upload->data();
 
-			$this->load->view('pages/candidatura', $data);
-			$this->load->view('templates/footer');
-		}      
-	}
+        $cv = $data['upload_data']['file_name'];
+        
+        $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
+        $this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
+        $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
+
+        if($this->form_validation->run() == FALSE){
+            $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+            $data['reset'] = FALSE;
+            $data['page_style']= "extrusao";
+            $data['current'] = 'grupo_sosoares';
+            $this->menu($data);
+
+            $this->load->view('pages/candidatura', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $data['message'] = 'A candidatura foi enviada com sucesso!';
+            $data['reset'] = TRUE;
+
+            //Enviar email
+            $this->load->library('email');
+            $config = array('useragent'        => 'CodeIgniter',        
+                'protocol'         => 'mail',        
+                'mailpath'         => '/usr/sbin/sendmail',
+                'smtp_host'        => 'smtpa.mail.oni.pt',
+                'smtp_user'        => 'webmaster@sosoares.pt',
+                'smtp_pass'        => '?Web123Sos_',
+                'smtp_port'        => 25,
+                'smtp_timeout'     => 5,
+                'wordwrap'         => TRUE,
+                'wrapchars'        => 76,
+                'mailtype'         => 'html',
+                'charset'          => 'utf-8',
+                'validate'         => FALSE,
+                'priority'         => 3,
+                'bcc_batch_mode'   => FALSE,
+                'bcc_batch_size'   => 200
+                );
+
+            // Run some setup
+            $this->email->initialize($config);
+            $this->email->from(set_value("email"));
+            $this->email->to($this->sosoares_model->get_destinatario(2));
+            $this->email->subject('Candidatura');
+            $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
+            
+            // Debug Email
+            if (!$this->email->send()) {
+                echo $this->email->print_debugger();
+            } else {
+                $data['page_style']= "extrusao";
+                $data['current'] = 'grupo_sosoares';
+                $this->menu($data);
+
+                $this->load->view('pages/candidatura', $data);
+                $this->load->view('templates/footer');
+            }      
+        }
+    } 
 }
 
 public function produto($id=null)
@@ -482,55 +511,63 @@ public function contactos()
 		$this->pesquisa($_GET['search']);
 	} else {
 		$data['page_style']= "extrusao";
-		$data['page_title']= "contactos";
-		$data['current'] = 'contactos';
-		$data['reset'] = FALSE;
-		$this->menu($data);
+		$data['page_title'] = "contactos";
+        $data['current'] = 'contactos';
+        $data['reset'] = FALSE;
+        $data['message'] = null;
+        $this->menu($data);
 
-		$data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
         $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
-		$data['contactos'] = $this->sosoares_model->get_contactos(3);
-		$data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
-		$data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+        $data['contactos'] = $this->sosoares_model->get_contactos(1);
+        $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
-		$this->load->view('pages/contactos', $data);
-		$this->load->view('templates/footer', $data);
+        $this->load->view('pages/contactos', $data);
+        $this->load->view('templates/footer', $data);
 	}
 }
 
 public function send_contactos() 
 {
-	$this->load->library('form_validation');
-	$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
-	$this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
-	$this->form_validation->set_rules('cargo', 'Cargo', 'max_length[50]');
-	$this->form_validation->set_rules('telefone', 'Telefone', 'numeric');
-	$this->form_validation->set_rules('fax', 'Fax', 'numeric');
-	$this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
-	$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-	$this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
-	$this->form_validation->set_rules('distrito', 'Distrito', 'required|max_length[50]');
-	$this->form_validation->set_rules('concelho', 'Concelho', 'required|max_length[50]');
-	$this->form_validation->set_rules('assunto', 'Assunto', 'required');
-	$this->form_validation->set_rules('mensagem', 'Mensagem', 'required|min_length[5]|max_length[500]');
+    $this->load->library('form_validation');
+    $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+    $this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
+    $this->form_validation->set_rules('cargo', 'Cargo', 'max_length[50]');
+    $this->form_validation->set_rules('telefone', 'Telefone', 'numeric');
+    $this->form_validation->set_rules('fax', 'Fax', 'numeric');
+    $this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    $this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
+    $this->form_validation->set_rules('distrito', 'Distrito', 'required|max_length[50]');
+    $this->form_validation->set_rules('concelho', 'Concelho', 'required|max_length[50]');
+    $this->form_validation->set_rules('assunto', 'Assunto', 'required');
+    $this->form_validation->set_rules('mensagem', 'Mensagem', 'required|min_length[5]|max_length[500]');
 
-	if($this->form_validation->run() == FALSE){
-		$data['message'] = 'Erro no envio da mensagem! Volte a tentar.';
-		$data['reset'] = FALSE;
-		$data['page_style']= "caixilharia";
-		$data['current'] = 'grupo_sosoares';
-		$this->menu($data);
+    if($this->form_validation->run() == FALSE){
+        $data['message'] = 'Erro no envio da mensagem! Volte a tentar.';
+        $data['page_style'] = "extrusao";
+        $data['page_title'] = "contactos";
+        $data['current'] = 'contactos';
+        $data['reset'] = FALSE;
+        $this->menu($data);
 
-		$this->load->view('pages/contactos', $data);
-		$this->load->view('templates/footer');
-	}
-	else{
-		$data['message'] = 'A mensagem foi enviada com sucesso!';
-		$data['reset'] = TRUE;
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+        $data['contactos'] = $this->sosoares_model->get_contactos(1);
+        $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
+        $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+
+        $this->load->view('pages/contactos', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    else{
+        $data['message'] = 'A mensagem foi enviada com sucesso!';
+        $data['reset'] = TRUE;
 
         //Enviar email
-		$this->load->library('email');
-		$config = array('useragent'        => 'CodeIgniter',        
+        $this->load->library('email');
+        $config = array('useragent'        => 'CodeIgniter',        
             'protocol'         => 'mail',        
             'mailpath'         => '/usr/sbin/sendmail',
             'smtp_host'        => 'smtpa.mail.oni.pt',
@@ -549,25 +586,32 @@ public function send_contactos()
             );
 
         // Run some setup
-		$this->email->initialize($config);
-		$this->email->from(set_value("email"));
-		$this->email->to($this->sosoares_model->get_destinatario(1));
-		$this->email->subject(set_value("assunto"));
-		$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'.<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
-		$this->email->send();
+        $this->email->initialize($config);
+        $this->email->from(set_value("email"));
+        $this->email->to($this->sosoares_model->get_destinatario(1));
+        $this->email->subject(set_value("assunto"));
+        $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
 
         // Debug Email
-		if (!$this->email->send()) {
-			echo $this->email->print_debugger();
-		} else {
-			$data['page_style']= "caixilharia";
-			$data['current'] = 'grupo_sosoares';
-			$this->menu($data);
+        if (!$this->email->send()) {
+            echo $this->email->print_debugger();
+        } else {
+            $data['page_style'] = "extrusao";
+            $data['page_title'] = "contactos";
+            $data['current'] = 'contactos';
+            $data['reset'] = TRUE;
+            $this->menu($data);
 
-			$this->load->view('pages/contactos', $data);
-			$this->load->view('templates/footer');
-		}      
-	}
+            $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+            $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+            $data['contactos'] = $this->sosoares_model->get_contactos(1);
+            $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
+            $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+
+            $this->load->view('pages/contactos', $data);
+            $this->load->view('templates/footer', $data);
+        }      
+    }
 }
 
 }

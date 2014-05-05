@@ -12,7 +12,9 @@
             else if ($banner['id_categoria_banner'] == 3)
                 echo base_url().'assets/uploads/banners/extrusao/'.$banner['banner'];
             else if ($banner['id_categoria_banner'] == 4)
-                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];?>" alt="slide">
+                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];
+            else if ($banner['id_categoria_banner'] == 5)
+                echo base_url().'assets/uploads/banners/todos/'.$banner['banner'];?>" alt="slide">
             <div class="container"></div>
         </div>
         <?php } else { ?>
@@ -24,7 +26,9 @@
             else if ($banner['id_categoria_banner'] == 3)
                 echo base_url().'assets/uploads/banners/extrusao/'.$banner['banner'];
             else if ($banner['id_categoria_banner'] == 4)
-                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];?>" alt="slide">
+                echo base_url().'assets/uploads/banners/tratamento/'.$banner['banner'];
+            else if ($banner['id_categoria_banner'] == 5)
+                echo base_url().'assets/uploads/banners/todos/'.$banner['banner'];?>" alt="slide">
             <div class="container"></div>
         </div>
         <?php } $i++;

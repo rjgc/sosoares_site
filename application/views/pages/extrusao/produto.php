@@ -163,10 +163,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('catalogo')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
-                                        if ($ficheiro['restrito'] == 0) { ?>
+                                        if ($catalogo['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
                                     } ?>
                                 </ul>

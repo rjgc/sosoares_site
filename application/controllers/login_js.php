@@ -221,6 +221,8 @@ class Login_Js extends CI_Controller {
 	        $page = 'extrusao';
 	    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
 	        $page = 'tratamento';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'home')) {
+	        $page = 'home';
 	    }
 
 		$output = '
@@ -304,6 +306,8 @@ class Login_Js extends CI_Controller {
 	        $page = 'extrusao';
 	    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
 	        $page = 'tratamento';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'home')) {
+	        $page = 'home';
 	    }
 
 		$output = '

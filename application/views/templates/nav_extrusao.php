@@ -273,11 +273,11 @@
                                                                                     <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                         echo $value[1];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                        echo $value[3];
+                                                                                        echo $value[2];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                        echo $value[5];
+                                                                                        echo $value[3];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                        echo $value[7];
+                                                                                        echo $value[4];
                                                                                     }?></a></h3>
                                                                                 </div>
                                                                                 <?php if (!empty($servicos[1])) {
@@ -286,11 +286,11 @@
                                                                                         <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                             echo $value[1];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                            echo $value[3];
+                                                                                            echo $value[2];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                            echo $value[5];
+                                                                                            echo $value[3];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                            echo $value[7];
+                                                                                            echo $value[4];
                                                                                         }?></a></h3>
                                                                                     </div>
                                                                                     <?php } ?>
@@ -305,11 +305,11 @@
                                                                                             <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                 echo $value[1];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                echo $value[3];
+                                                                                                echo $value[2];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                echo $value[5];
+                                                                                                echo $value[3];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                echo $value[7];
+                                                                                                echo $value[4];
                                                                                             }?></a></h3>
                                                                                         </div>
                                                                                         <?php if (!empty($servicos[3])) {
@@ -318,11 +318,11 @@
                                                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                     echo $value[1];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                    echo $value[3];
+                                                                                                    echo $value[2];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                    echo $value[5];
+                                                                                                    echo $value[3];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                    echo $value[7];
+                                                                                                    echo $value[4];
                                                                                                 }?></a></h3>
                                                                                             </div>
                                                                                             <?php } ?>
@@ -337,11 +337,11 @@
                                                                                                     <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                         echo $value[1];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                        echo $value[3];
+                                                                                                        echo $value[2];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                        echo $value[5];
+                                                                                                        echo $value[3];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                        echo $value[7];
+                                                                                                        echo $value[4];
                                                                                                     }?></a></h3>
                                                                                                 </div>
                                                                                                 <?php if (!empty($servicos[5])) {
@@ -350,11 +350,11 @@
                                                                                                         <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                             echo $value[1];
                                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                            echo $value[3];
+                                                                                                            echo $value[2];
                                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                            echo $value[5];
+                                                                                                            echo $value[3];
                                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                            echo $value[7];
+                                                                                                            echo $value[4];
                                                                                                         }?></a></h3>
                                                                                                     </div>
                                                                                                     <?php } ?>

@@ -27,9 +27,19 @@ class Home extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('text');
 
-        $this->lang->load('cizacl');
+		$this->lang->load('cizacl', $this->config->item('language'));
+		$this->lang->load('cizacl');
 
-        $this->load->model('sosoares_model');
+		$this->load->model('sosoares_model');
+		$this->load->model('login_mdl');
+		$this->load->model('cizacl_mdl');
+
+		$this->load->library('cizacl');
+		$this->load->library('login');
+		$this->load->library('form_validation');       
+
+		if(!class_exists('CI_Cizacl'))
+			show_error($this->lang->line('library_not_loaded'));
 	}
 	
 	

@@ -272,83 +272,117 @@
                                                                             <div class="row">
                                                                                 <div class="col-sm-6">
                                                                                     <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                     echo $value[1];
+                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                    echo $value[2];
+                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+                                                                                    echo $value[3];
+                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+                                                                                    echo $value[4];
+                                                                                }?></a></h3>
+                                                                            </div>
+                                                                            <?php if (!empty($servicos[1])) {
+                                                                                $value = array_values($servicos[1]);?>
+                                                                                <div class="col-sm-6">
+                                                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                         echo $value[1];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                        echo $value[3];
+                                                                                        echo $value[2];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                        echo $value[5];
+                                                                                        echo $value[3];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                        echo $value[7];
+                                                                                        echo $value[4];
                                                                                     }?></a></h3>
                                                                                 </div>
-                                                                                <?php if (!empty($servicos[1])) {
-                                                                                    $value = array_values($servicos[1]);?>
+                                                                                <?php } ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <?php } ?>
+                                                                        <?php if (!empty($servicos[2])) {
+                                                                            $value = array_values($servicos[2]);?>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="row">
                                                                                     <div class="col-sm-6">
                                                                                         <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                             echo $value[1];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                            echo $value[3];
+                                                                                            echo $value[2];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                            echo $value[5];
+                                                                                            echo $value[3];
                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                            echo $value[7];
+                                                                                            echo $value[4];
                                                                                         }?></a></h3>
                                                                                     </div>
-                                                                                    <?php } ?>
-                                                                                </div>
-                                                                            </div>
-                                                                            <?php } ?>
-                                                                            <?php if (!empty($servicos[2])) {
-                                                                                $value = array_values($servicos[2]);?>
-                                                                                <div class="col-sm-4">
-                                                                                    <div class="row">
+                                                                                    <?php if (!empty($servicos[3])) {
+                                                                                        $value = array_values($servicos[3]);?>
                                                                                         <div class="col-sm-6">
                                                                                             <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                 echo $value[1];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                echo $value[3];
+                                                                                                echo $value[2];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                echo $value[5];
+                                                                                                echo $value[3];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                echo $value[7];
+                                                                                                echo $value[4];
                                                                                             }?></a></h3>
                                                                                         </div>
-                                                                                        <?php if (!empty($servicos[3])) {
-                                                                                            $value = array_values($servicos[3]);?>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <?php } ?>
+                                                                                <?php if (!empty($servicos[4])) {
+                                                                                    $value = array_values($servicos[4]);?>
+                                                                                    <div class="col-sm-4">
+                                                                                        <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                     echo $value[1];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                    echo $value[3];
+                                                                                                    echo $value[2];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                    echo $value[5];
+                                                                                                    echo $value[3];
                                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                    echo $value[7];
+                                                                                                    echo $value[4];
                                                                                                 }?></a></h3>
                                                                                             </div>
-                                                                                            <?php } ?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <?php } ?>
-                                                                                    <?php if (!empty($servicos[4])) {
-                                                                                        $value = array_values($servicos[4]);?>
-                                                                                        <div class="col-sm-4">
-                                                                                            <div class="row">
+                                                                                            <?php if (!empty($servicos[5])) {
+                                                                                                $value = array_values($servicos[5]);?>
                                                                                                 <div class="col-sm-6">
                                                                                                     <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                         echo $value[1];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                        echo $value[3];
+                                                                                                        echo $value[2];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                        echo $value[5];
+                                                                                                        echo $value[3];
                                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                        echo $value[7];
+                                                                                                        echo $value[4];
                                                                                                     }?></a></h3>
                                                                                                 </div>
-                                                                                                <?php if (!empty($servicos[5])) {
-                                                                                                    $value = array_values($servicos[5]);?>
+                                                                                                <?php } ?>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <?php } ?>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <?php if (!empty($marcacao)) { ?>
+                                                                        <li class="menu-title <?php echo ( isset($current) && $current === 'marcacao' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/marcacao/17')?>"><?=lang('marcacao')?></a></li>
+                                                                        <?php } 
+                                                                        if (!empty($apoios)) { ?>                                                                        
+                                                                        <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?= site_url('caixilharia/apoios_cliente') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
+                                                                            <ul class="dropdown-menu">
+                                                                                <li class="grid-demo">
+                                                                                    <div class="row">
+                                                                                        <?php $i = 0;
+
+                                                                                        while ($i < count($apoios)) { ?>
+                                                                                        <div class="col-sm-3">
+                                                                                            <div class="row">
+                                                                                                <?php if (array_key_exists($i, $apoios)) { 
+                                                                                                    $value = array_values($apoios[$i]);?>
                                                                                                     <div class="col-sm-6">
-                                                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                                                        <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                                             echo $value[1];
                                                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                                             echo $value[3];
@@ -358,28 +392,8 @@
                                                                                                             echo $value[7];
                                                                                                         }?></a></h3>
                                                                                                     </div>
-                                                                                                    <?php } ?>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <?php } ?>
-                                                                                        </div>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <?php if (!empty($marcacao)) { ?>
-                                                                            <li class="menu-title <?php echo ( isset($current) && $current === 'marcacao' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/marcacao/17')?>"><?=lang('marcacao')?></a></li>
-                                                                            <?php } 
-                                                                            if (!empty($apoios)) { ?>                                                                        
-                                                                            <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?= site_url('caixilharia/apoios_cliente') ?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
-                                                                                <ul class="dropdown-menu">
-                                                                                    <li class="grid-demo">
-                                                                                        <div class="row">
-                                                                                            <?php $i = 0;
-
-                                                                                            while ($i < count($apoios)) { ?>
-                                                                                            <div class="col-sm-3">
-                                                                                                <div class="row">
-                                                                                                    <?php if (array_key_exists($i, $apoios)) { 
+                                                                                                    <?php } $i++;
+                                                                                                    if (array_key_exists($i, $apoios)) { 
                                                                                                         $value = array_values($apoios[$i]);?>
                                                                                                         <div class="col-sm-6">
                                                                                                             <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
@@ -390,32 +404,18 @@
                                                                                                                 echo $value[5];
                                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
                                                                                                                 echo $value[7];
-                                                                                                            }?></a></h3>
+                                                                                                            }?></a></h3>                                                                    
                                                                                                         </div>
-                                                                                                        <?php } $i++;
-                                                                                                        if (array_key_exists($i, $apoios)) { 
-                                                                                                            $value = array_values($apoios[$i]);?>
-                                                                                                            <div class="col-sm-6">
-                                                                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/apoio_cliente/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
-                                                                                                                    echo $value[1];
-                                                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                                                    echo $value[3];
-                                                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                                                    echo $value[5];
-                                                                                                                } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                                                    echo $value[7];
-                                                                                                                }?></a></h3>                                                                    
-                                                                                                            </div>
-                                                                                                            <?php } $i++; ?>
-                                                                                                        </div>
+                                                                                                        <?php } $i++; ?>
                                                                                                     </div>
-                                                                                                    <?php } ?>
                                                                                                 </div>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                    <?php } ?>
-                                                                                    <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/contactos')?>"><?=lang('contactos')?></a></li>
-                                                                                </ul>
-                                                                            </div>
+                                                                                                <?php } ?>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <?php } ?>
+                                                                                <li class="menu-title <?php echo ( isset($current) && $current === 'contactos' ) ? 'curr' : ''?>"><a href="<?=site_url('caixilharia/contactos')?>"><?=lang('contactos')?></a></li>
+                                                                            </ul>
                                                                         </div>
+                                                                    </div>

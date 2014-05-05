@@ -35,7 +35,7 @@
                             <?php if(empty($page['imagem'])) { ?>
                             <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
                             <?php } else { ?>
-                            <img src="<?php echo base_url() ?>assets/uploads/paginas/<?php echo $page['imagem'] ?>"/>
+                            <img src="<?php echo base_url() ?>assets/uploads/grupo_sosoares/<?php echo $page['imagem'] ?>"/>
                             <?php } ?>
                             <p> <?php echo $page['titulo_'.$this->lang->lang()]?></p>
                         </div>

@@ -295,6 +295,8 @@ class Login extends CI_Controller {
 						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/extrusao/area_reservada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
 						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/tratamento/area_reservada'));
+					else if (strpos($_SERVER['REQUEST_URI'], 'home'))
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_reservada'));
 
 				}
 
