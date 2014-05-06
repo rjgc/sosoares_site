@@ -62,7 +62,7 @@ public function home()
         if (!empty($banners)) {
             $data['banners'] = $banners;
         } else {
-            $data['banners'] = $this->sosoares_model->get_banners();
+            $data['banners'] = $this->sosoares_model->get_banners(5);
         }
         
         $this->menu($data);

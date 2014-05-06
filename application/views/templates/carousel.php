@@ -1,8 +1,8 @@
 <?php if (!empty($banners)) { ?>
 <div id="myCarousel_" class="carousel carousel2 slide" data-ride="carousel">
     <div class="carousel-inner carousel-inner-banner">
-     <?php $i=0;  
-     foreach ($banners as $banner) {
+       <?php $i=0;  
+       foreach ($banners as $banner) {
         if ($i == 0) { ?>
         <div class="item active" data-slide-number="<?=$i?>">
             <img src="<?php if ($banner['id_categoria_banner'] == 1) 
@@ -47,9 +47,10 @@
 </div>
 <div class="carousel-caption">
     <ul>
+        <?php if (count($banners) != 1) { ?>
         <li><a class="control-try" href="#myCarousel_" data-slide="prev"><span class="glyphicon icon-back"></span></a></li>
         <li><a class="control-try" href="#myCarousel_" data-slide="next"><span class="glyphicon icon-front"></span></a></li>
-        <?php   $i=0;
+        <?php } $i=0;
         foreach ($banners as $banner) {
             if ($i == 0) { ?>
             <li id="title-<?=$i?>" class=""><h1 class="slider-h1"><?=$banner['nome_'.$this->lang->lang()]?></h1>
