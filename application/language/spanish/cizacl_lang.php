@@ -159,6 +159,12 @@ $lang["geral"] = "General";
 $lang["confirmar"] = "Confirmar Password";
 
 
+/*Recuperar Password*/
+
+
+$lang["recuperar"] = "Recuperar";
+
+
 /*Área Reservada*/
 
 

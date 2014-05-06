@@ -5,6 +5,16 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//RECUPERAR PASSWORD
+
+	public function recuperar_password($email)
+	{
+		$query = $this->db->query("select u.user_username, u.user_password from users u inner join user_profiles up on u.user_id = up.user_profile_user_id where up.user_profile_email = '$email'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 	//PESQUISA
 
 	public function pesquisa_tipos_aluminio($pesquisa) {

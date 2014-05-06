@@ -58,6 +58,8 @@ class Login extends CI_Controller {
 
 		$this->load->library('login');
 
+		$this->load->model('sosoares_model');
+
 		$this->load->model('login_mdl');
 
 		$this->load->model('cizacl_mdl');
@@ -412,13 +414,13 @@ class Login extends CI_Controller {
 
 
 
-	function scripts_recuperar_password()
+	function recuperar_password()
 
 	{ 
 
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|matches[user_profile.user_profile_email]');
 
 		if ($this->form_validation->run() == false)	{
 
@@ -448,12 +450,14 @@ class Login extends CI_Controller {
 				'bcc_batch_size'   => 200
 				);
 
+			$data = $this->sosoares_model->recuperar_password(set_value('email'));
+
     		// Run some setup
 			$this->email->initialize($config);
 			$this->email->from($this->sosoares_model->get_destinatario(1));
 			$this->email->to(set_value("email"));
 			$this->email->subject('Recuperar Password');
-			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você estão aqui os seus dados:<br><br>Username: '.$username.'<br>Password: '.$password.'<br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
+			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você estão aqui os seus dados:<br><br>Username: '.$data['user_username'].'<br>Password: '.md5($data['u.user_password']).'<br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
 			
     		// Debug Email
 			if (!$this->email->send()) {

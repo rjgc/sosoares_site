@@ -399,8 +399,8 @@ class Login_Js extends CI_Controller {
 
 		$(document).ready(function()	{
 
-			$("#form2").submit(function()	{
-
+			$("#form3").submit(function()	{
+				
 				$.ajax({
 
 					url: 		"'.site_url('login/recuperar_password?'.$page.'&'.$lang).'",

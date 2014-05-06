@@ -129,7 +129,7 @@ $lang["cancelar"] = "Annuler";
 
 $lang["recuperar_password"] = "Récupérer password ?";
 
-$lang["recuperar_password2"] = "Recuperar password";
+$lang["recuperar_password2"] = "Récupérer password";
 
 
 /*Registar*/
@@ -156,6 +156,12 @@ $lang["rtratamento"] = "Zone de Traitement";
 $lang["geral"] = "Général";
 
 $lang["confirmar"] = "Confirmer Password";
+
+
+/*Recuperar Password*/
+
+
+$lang["recuperar"] = "Récupérer";
 
 
 /*Área Reservada*/

@@ -13,10 +13,10 @@
                 <li><?=lang('registar')?></li>
             </ul>
             <h1 class="title3"><?=lang('registar')?></h1>
-            <div id="jq_msg2"></div>
+            <div style="padding-left: 18px;" id="jq_msg2"></div>
         </div>
     </div>
-    <form style="padding_left: 18px;" method="post" role="form" id="form2"> 
+    <form style="padding-left: 18px;" method="post" role="form" id="form2"> 
         <div class="row">
           <div class="col-md-6">            
             <label><?=lang('nome')?>:</label>
