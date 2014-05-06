@@ -19,7 +19,7 @@
     <form method="post" role="form" id="form3">
         <div style="padding-left: 15px;">
             <P>Insira o seu email para recuperar a sua password. Você pode precisar de ver a sua pasta de spam.</P>
-            <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4; width: 54.2%;" class="form-control input" type="text" id="email" name="email" placeholder="E-mail">
+            <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4; width: 54.2%;" class="form-control input" type="text" id="email" name="email" placeholder="E-mail" value="<?php echo (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>">
             <p></p>
             <div style="padding-left: 538px;">
                 <input class="btn btn-primary" type="submit" id="recuperar" name="recuperar" value="<?=lang('recuperar')?>">
