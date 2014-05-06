@@ -16,7 +16,7 @@
                     if (!empty($produtos)) {
                         foreach ($produtos as $produto){
                             ?>
-                            <a href="<?=site_url('vidro/produtos/'.$produto['id_produto_vidro'])?>">
+                            <a href="<?=site_url('vidro/produto/'.$produto['id_produto_vidro'])?>">
                                 <div class="obras-list grow">
                                     <?php if(!empty($produto['foto_1'])) {
                                         ?>
