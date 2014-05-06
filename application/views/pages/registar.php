@@ -75,7 +75,7 @@
         <p></p>
         <div style="padding-left: 92px;">
             <input class="btn btn-primary" type="submit" id="registar" name="registar" value="<?=lang('registar')?>">
-            <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
+            <input class="btn btn-default" type="reset" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
         </div>
     </div>
 </div>

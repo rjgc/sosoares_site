@@ -420,7 +420,7 @@ class Login extends CI_Controller {
 
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|matches[user_profile.user_profile_email]');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
 
 		if ($this->form_validation->run() == false)	{
 
