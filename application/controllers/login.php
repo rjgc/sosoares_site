@@ -321,15 +321,31 @@ class Login extends CI_Controller {
 		$this->load->library('form_validation');
 
 		
-		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[20]');
+		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
 
-		$this->form_validation->set_rules('apelido', 'Apelido', 'required|min_length[5]|max_length[20]');
+		$this->form_validation->set_rules('morada', 'Morada', 'required|min_length[5]|max_length[100]');
+
+		$this->form_validation->set_rules('codigo', 'Código Postal', 'required|alpha_numeric');
+
+		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
+
+		$this->form_validation->set_rules('bi', 'BI', 'required|numeric');
+
+		$this->form_validation->set_rules('contribuinte', 'Contribuinte', 'required|numeric');
 
 		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
 
-		$this->form_validation->set_rules('username', $this->lang->line('username'), 'required');
+		$this->form_validation->set_rules('username', $this->lang->line('username'), 'required|is_unique[users.user_username]');
 
 		$this->form_validation->set_rules('password', $this->lang->line('password'), 'required');
+
+		$this->form_validation->set_rules('confirmar', 'Confirmar', 'required|matches[password]');
 
 		if ($this->form_validation->run() == false)	{
 
@@ -364,8 +380,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to($this->sosoares_model->get_destinatario(1));
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Sobrenome: '.set_value("apelido").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
-			$this->email->send();
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de BI: '.set_value("bi").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
     		// Debug Email
 			if (!$this->email->send()) {
@@ -439,8 +454,7 @@ class Login extends CI_Controller {
 			$this->email->to(set_value("email"));
 			$this->email->subject('Recuperar Password');
 			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você estão aqui os seus dados:<br><br>Username: '.$username.'<br>Password: '.$password.'<br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
-			$this->email->send();
-
+			
     		// Debug Email
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();

@@ -174,7 +174,7 @@ if ($cortes || $downloads) { ?>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($perfis as $perfil) { 
                                         if ($perfil['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/perfis/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/perfis/aluminio/<?php echo $perfil['ficheiro'];?>"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
                                         <li><p><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><?=$perfil['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
@@ -187,7 +187,7 @@ if ($cortes || $downloads) { ?>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($pormenores as $pormenor) { 
                                         if ($pormenor['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/aluminio/<?php echo $pormenor['ficheiro'];?>"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
                                         <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$pormenor['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
@@ -226,7 +226,7 @@ if ($cortes || $downloads) { ?>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($folhetos as $folheto) { 
                                         if ($folheto['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/aluminio/<?php echo $folheto['ficheiro'];?>"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
                                         <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }

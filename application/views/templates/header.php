@@ -95,10 +95,7 @@
                         <div class="modal-content" id="tab-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#login" data-toggle="tab"><h4 class="modal-title">Login</h4></a></li>
-                                    <li><a href="#registo" data-toggle="tab"><h4 class="modal-title"><?=lang('registar')?></h4></a></li>
-                                </ul>
+                                <h4 class="modal-title">Login</h4>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="login">
@@ -106,42 +103,20 @@
                                         <div class="modal-body" id="form" style="padding: 0 20px 20px 20px !important;">
                                             <div class="tab-pane fade in active" id="area_privada">
                                                 <div id="jq_msg"></div>
+                                                <p></p>
                                                 <label>Username:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
+                                                <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
                                                 <p></p>
                                                 <label>Password:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                                <p></p>
+                                                <a href="<?=site_url('caixilharia/registar')?>"><?=lang('registar')?></a>
+                                                <p></p>
+                                                <a href="<?=site_url('caixilharia/recuperar')?>"><?=lang('recuperar_password')?></a>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
-                                            <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="registo">
-                                    <form method="post" role="form" id="form2">        
-                                        <div class="modal-body" id="form2" style="padding: 0 20px 20px 20px !important;">
-                                            <div class="tab-pane fade in active" id="area_privada">
-                                                <div id="jq_msg2"></div>
-                                                <label><?=lang('nome')?>:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>">
-                                                <p></p>
-                                                <label><?=lang('apelido')?>:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="apelido" name="apelido" placeholder="<?=lang('apelido')?>">
-                                                <p></p>
-                                                <label>E-mail:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="email" name="email" placeholder="E-mail">
-                                                <p></p>
-                                                <label>Username:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="text" id="username" name="username" placeholder="Username">
-                                                <p></p>
-                                                <label>Password:</label>
-                                                <input style="padding: 0 0 0 10px !important;" class="form-control input" type="password" id="password" name="password" placeholder="Password">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input class="btn btn-primary" type="submit" id="registar" name="registar" value="<?=lang('registar')?>">
                                             <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
                                         </div>
                                     </form>

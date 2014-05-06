@@ -146,11 +146,11 @@
                                                                         <h3 class="menu-h3 links"><a href="<?=site_url('vidro/produto/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                             echo $value[1];
                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                            echo $value[3];
+                                                                            echo $value[2];
                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                            echo $value[5];
+                                                                            echo $value[3];
                                                                         } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                            echo $value[7];
+                                                                            echo $value[4];
                                                                         }?></a></h3>
                                                                     </div>
                                                                     <?php } $i++;
@@ -160,11 +160,11 @@
                                                                             <h3 class="menu-h3 links"><a href="<?=site_url('vidro/produto/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                 echo $value[1];
                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                echo $value[3];
+                                                                                echo $value[2];
                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                echo $value[5];
+                                                                                echo $value[3];
                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                echo $value[7];
+                                                                                echo $value[4];
                                                                             }?></a></h3>                                                                    
                                                                         </div>
                                                                         <?php } $i++; ?>
@@ -184,11 +184,11 @@
                                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('vidro/produto/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                     echo $value[1];
                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                    echo $value[3];
+                                                                                    echo $value[2];
                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                    echo $value[5];
+                                                                                    echo $value[3];
                                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                    echo $value[7];
+                                                                                    echo $value[4];
                                                                                 }?></a></h3>
                                                                             </div>
                                                                             <?php } $i++;
@@ -198,11 +198,11 @@
                                                                                     <h3 class="menu-h3 links"><a href="<?=site_url('vidro/produto/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                                         echo $value[1];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-                                                                                        echo $value[3];
+                                                                                        echo $value[2];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-                                                                                        echo $value[5];
+                                                                                        echo $value[3];
                                                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-                                                                                        echo $value[7];
+                                                                                        echo $value[4];
                                                                                     }?></a></h3>                                                                    
                                                                                 </div>
                                                                                 <?php } $i++; ?>
@@ -271,8 +271,8 @@
                                                                                             $value = array_values($servicos[3]);?>
                                                                                             <div class="col-sm-6">
                                                                                                 <h3 class="menu-h3 links"><a href="<?=site_url('vidro/servico/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
-                                                                                                   echo $value[1];
-                                                                                               } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+                                                                                                 echo $value[1];
+                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                                                 echo $value[2];
                                                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
                                                                                                 echo $value[3];

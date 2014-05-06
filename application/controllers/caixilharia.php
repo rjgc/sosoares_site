@@ -73,6 +73,34 @@ public function home()
     }
 }
 
+public function registar()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'registar';
+        $this->menu($data);
+
+        $this->load->view('pages/registar', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
+public function recuperar()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'recuperar';
+        $this->menu($data);
+
+        $this->load->view('pages/recuperar_password', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
 public function area_reservada()
 {   
     if (isset($_GET['search'])) {

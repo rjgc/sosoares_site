@@ -127,6 +127,36 @@ $lang["apelido"] = "Nom";
 
 $lang["cancelar"] = "Annuler";
 
+$lang["recuperar_password"] = "Récupérer password ?";
+
+$lang["recuperar_password2"] = "Recuperar password";
+
+
+/*Registar*/
+
+
+$lang["codigo"] = "Code Postal";
+
+$lang["localidade"] = "Localité";
+
+$lang["bi"] = "Nº de BI";
+
+$lang["contribuinte"] = "Nº de Contribuable";
+
+$lang["area"] = "Région";
+
+$lang["rcaixilharia"] = "Cadres Région";
+
+$lang["rvidraria"] = "Verrerie Région";
+
+$lang["rextrusao"] = "Extrusion Région";
+
+$lang["rtratamento"] = "Zone de Traitement";
+
+$lang["geral"] = "Général";
+
+$lang["confirmar"] = "Confirmer Password";
+
 
 /*Área Reservada*/
 

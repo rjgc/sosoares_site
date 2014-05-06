@@ -128,6 +128,36 @@ $lang["apelido"] = "Apelido";
 
 $lang["cancelar"] = "Cancelar";
 
+$lang["recuperar_password"] = "Recuperar password ?";
+
+$lang["recuperar_password2"] = "Recuperar password";
+
+
+/*Registar*/
+
+
+$lang["codigo"] = "Código Postal";
+
+$lang["localidade"] = "Localidade";
+
+$lang["bi"] = "Nº de BI";
+
+$lang["contribuinte"] = "Nº de Contribuinte";
+
+$lang["area"] = "Área";
+
+$lang["rcaixilharia"] = "Área Caixilharia";
+
+$lang["rvidraria"] = "Área Vidraria";
+
+$lang["rextrusao"] = "Área Extrusão";
+
+$lang["rtratamento"] = "Área Tratamento";
+
+$lang["geral"] = "Geral";
+
+$lang["confirmar"] = "Confirmar Password";
+
 
 /*Área Reservada*/
 
