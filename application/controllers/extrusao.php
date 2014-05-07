@@ -58,13 +58,7 @@ public function home()
 		$data['noticia'] = $this->sosoares_model->get_destaque();
 		$this->menu($data);
 
-		$banners = $this->sosoares_model->get_banners(3);
-
-		if (!empty($banners)) {
-			$data['banners'] = $banners;
-		} else {
-			$data['banners'] = $this->sosoares_model->get_banners(5);
-		}
+		$data['banners'] = $this->sosoares_model->get_banners(3);
 
 		$this->load->view('templates/carousel', $data, $this->get_lang());
 		$this->load->view('pages/inicio', $data);

@@ -138,13 +138,13 @@ if ($cortes || $downloads) { ?>
                                 if (!empty($produto['corte_'.$i])) {
                                     if ($i==1) { ?>
                                     <li style="margin: 0;float: left;display: block;">
-                                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank">
                                             <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width: 180px;margin:2px 0 2px 0;">
                                         </a>
                                     </li>
                                     <?php } else { ?>
                                     <li style=" margin: 0 0 0 15px; float: left;display: block;">
-                                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
+                                        <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank">
                                             <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width: 180px;margin:2px 0 2px 0;">
                                         </a>
                                     </li>
@@ -164,7 +164,7 @@ if ($cortes || $downloads) { ?>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
                                         if ($catalogo['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
                                         <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
                                         <?php }
