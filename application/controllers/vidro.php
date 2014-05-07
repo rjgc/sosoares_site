@@ -130,6 +130,13 @@ public function area_reservada()
     }
 }
 
+public function logout()
+{
+    $this->session->sess_destroy();
+
+    $this->home();
+}
+
 public function pesquisa($pesquisa)
 {
     $data['page_style']= "vidro";

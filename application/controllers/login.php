@@ -276,7 +276,9 @@ class Login extends CI_Controller {
 
 					
 
-					$this->session->set_userdata($session);
+					$teste = $this->session->set_userdata($session);
+
+					print_r($teste);
 
 					$lang;
 

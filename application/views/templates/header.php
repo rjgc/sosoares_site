@@ -84,8 +84,8 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if (!empty($profile)) { ?>
-                    <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=$profile['user_profile_name']?></button></a> 
+                    <?php if ($_SESSION['logged_in']) { ?>
+                    <a id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><button class="btn button grow" id="btn_signin"><?=$_SESSION['profile']['user_profile_name']?></button></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                     <?php } ?>

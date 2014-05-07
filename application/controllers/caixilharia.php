@@ -112,14 +112,14 @@ public function area_reservada()
 
             if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
             {
-                $data['logged_in'] = True;
+                $_SESSION['logged_in'] = True;
 
-                $data['profile'] = $this->sosoares_model->get_profile($temp['1']);
+                $_SESSION['profile'] = $this->sosoares_model->get_profile($temp['1']);
                 $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
                 $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
             }
             else
-                $data['logged_in'] = False;
+                $_SESSION['logged_in'] = False;
         }
 
         $data['page_style']= "caixilharia";
@@ -129,6 +129,15 @@ public function area_reservada()
         $this->load->view('pages/area_reservada', $data);
         $this->load->view('templates/footer');
     }
+}
+
+public function logout()
+{
+    $this->session->sess_destroy();
+
+    $_SESSION['logged_in'] = False;
+
+    $this->home();
 }
 
 public function pesquisa($pesquisa)

@@ -38,38 +38,34 @@
             <h1 class="title3"><?=lang('area_privada')?></h1>
         </div>
     </div>
-    <?php if (!isset($logged_in)) { ?>
+    <?php if (!$_SESSION['logged_in']) { ?>
     <div style="padding-left: 15px;">
         <div class="alert alert-warning">
             <h5><strong>Atenção!</strong> Tem de efectuar o login.</h5>
         </div>
     </div>
     <?php } else { ?>
-    <?php if ($logged_in) { ?>
+    <?php if ($_SESSION['logged_in']) { ?>
     <!-- tabs right -->
     <div class="tabbable tabs-right">
         <ul class="nav nav-tabs">
             <li class="active"><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                echo $this->session->sess_destroy();
-                echo site_url('caixilharia/home');
+                echo site_url('caixilharia/logout');
             } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                echo $this->session->sess_destroy();
-                echo site_url('vidro/home');
+                echo site_url('vidro/logout');
             } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                echo $this->session->sess_destroy();
-                echo site_url('extrusao/home');
+                echo site_url('extrusao/logout');
             } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                echo $this->session->sess_destroy();
-                echo site_url('tratamento/home');
+                echo site_url('tratamento/logout');
             } ?>">Logout</a></li>
         </ul>
     </div>
     <!-- /tabs -->
     <div style="width: 91%; padding-left: 15px;">
         <h3><?=lang('dados')?></h3>
-        <div><b><?=lang('nome')?>: </b><?=$profile['user_profile_name'];?></div>
-        <div><b><?=lang('apelido')?>: </b><?=$profile['user_profile_surname'];?></div>
-        <div><b>E-mail: </b><?=$profile['user_profile_email'];?></div>
+        <div><b><?=lang('nome')?>: </b><?=$_SESSION['profile']['user_profile_name'];?></div>
+        <div><b><?=lang('apelido')?>: </b><?=$_SESSION['profile']['user_profile_surname'];?></div>
+        <div><b>E-mail: </b><?=$_SESSION['profile']['user_profile_email'];?></div>
         <h3>Downloads</h3>
         <div id="DefaultDable"></div>
         <?php $arrayFicheiros;
