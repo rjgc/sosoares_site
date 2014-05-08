@@ -147,3 +147,19 @@
         </div>
     </div>
 </main>
+<script type="text/javascript">
+    $('select#distrito').change(function(e){
+        alert('aqui');
+        $(document).ready(function(){
+            var newSelect=document.createElement('select');
+            var selectHTML="";
+            var choice = document.write("<?php file(base_url().'assets/uploads/"+$(this).val()+"'); ?>");
+            for(i=0; i<choice.length i=i+1){
+                selectHTML+= "<option value='"+choices[i]+"'>"+choices[i]+"</option>";
+            }
+
+            newSelect.innerHTML= selectHTML;
+            document.getElementById('concelho').appendChild(newSelect);    
+        });            
+    });    
+</script>
