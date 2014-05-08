@@ -164,9 +164,9 @@ if ($cortes || $downloads) { ?>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']|| $catalogo['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
