@@ -1,4 +1,4 @@
-Águeda
+ï»¿Ãgueda
 Albergaria-a-Velha
 Anadia
 Arouca
@@ -7,12 +7,13 @@ Castelo de Paiva
 Espinho
 Estarreja
 Santa Maria da Feira
-Ílhavo, Mealhada
+Ãlhavo
+Mealhada
 Murtosa
-Oliveira de Azeméis
+Oliveira de AzemÃ©is
 Oliveira do Bairro
 Ovar
-São João da Madeira
+SÃ£o JoÃ£o da Madeira
 Sever do Vouga
 Vagos
 Vale de Cambra

@@ -359,7 +359,11 @@ $lang["concelho"] = "Condado";
 
 $lang["observaçoes"] = "Observaciones";
 
-$lang["item"] = "Seleccione un elemento";
+$lang["item"] = "Seleccione un Tema";
+
+$lang["sdistrito"] = "Seleccione Distrito";
+
+$lang["sconcelho"] = "Seleccione un Estado";
 
 $lang["assunto"] = "Sujeto";
 

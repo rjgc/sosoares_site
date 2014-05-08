@@ -1,10 +1,10 @@
-Arganil
+ï»¿Arganil
 Cantanhede
 Coimbra
 Condeixa-a-Nova
 Figueira da Foz
-Góis
-Lousã
+GÃ³is
+LousÃ£
 Mira
 Miranda do Corvo
 Montemor-o-Velho
@@ -13,5 +13,5 @@ Pampilhosa da Serra
 Penacova
 Penela
 Soure
-Tábua
+TÃ¡bua
 Vila Nova de Poiares

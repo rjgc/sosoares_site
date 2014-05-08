@@ -1,4 +1,5 @@
-﻿Aveiro
+﻿
+Aveiro
 Beja
 Braga
 Bragança
@@ -6,11 +7,11 @@ Castelo Branco
 Coimbra
 Évora
 Faro
-Distrito da Guarda
+Guarda
 Leiria
 Lisboa
 Portalegre
-Distrito do Porto
+Porto
 Santarém
 Setúbal
 Viana do Castelo
