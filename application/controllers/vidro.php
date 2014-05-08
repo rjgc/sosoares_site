@@ -80,6 +80,22 @@ public function registar()
     }
 }
 
+public function registado()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "vidro";
+        $data['current'] = 'registado';
+        $this->menu($data);
+
+        $data['registado'] = $this->sosoares_model->get_page(18);
+
+        $this->load->view('pages/confirmacao', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
 public function recuperar()
 {
     if (isset($_GET['search'])) {
@@ -90,6 +106,38 @@ public function recuperar()
         $this->menu($data);
 
         $this->load->view('pages/recuperar_password', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
+public function alterar_password()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else if (isset($_GET['password'])) {      
+        $data['page_style']= "vidro";
+        $data['current'] = 'alterar_password';
+        $this->menu($data);
+
+        $_SESSION['old_password'] = $_GET['password'];
+
+        $this->load->view('pages/alterar_password', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
+public function alterada()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "vidro";
+        $data['current'] = 'alterada';
+        $this->menu($data);
+
+        $data['registado'] = $this->sosoares_model->get_page(19);
+
+        $this->load->view('pages/confirmacao', $data);
         $this->load->view('templates/footer');
     }
 }
@@ -487,7 +535,7 @@ public function contactos()
 
         $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
         $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
-        $data['contactos'] = $this->sosoares_model->get_contactos(1);
+        $data['contactos'] = $this->sosoares_model->get_contactos(2);
         $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
         $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 

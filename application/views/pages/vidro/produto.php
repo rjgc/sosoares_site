@@ -109,10 +109,12 @@ $y++;
 </div>
 <div class="col-md-3">
     <div class="descricao" style="margin-bottom: 50px;">
+        <?php if (!empty($produto['aplicacao_'.$this->lang->lang()])) { ?>
         <h3 class="title4"><?=lang('aplicacao')?></h3>
         <div>
             <p><?php echo $produto['aplicacao_'.$this->lang->lang()]; ?></p>
         </div>
+        <?php } ?>
     </div>
 </div>
 </div>

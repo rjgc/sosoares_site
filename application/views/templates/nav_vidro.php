@@ -320,6 +320,7 @@
                                                                                 </li>
                                                                             </ul>
                                                                         </li>
+                                                                        <?php if (!empty($area_tecnica)) { ?> 
                                                                         <li class="dropdown yamm-fw menu-title"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false">Área Técnica</a>
                                                                             <ul class="dropdown-menu">
                                                                                 <li class="grid-demo">
@@ -424,7 +425,8 @@
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                 </li>
-                                                                                                <?php if (!empty($apoios)) { ?>  
+                                                                                                <?php }
+                                                                                                if (!empty($apoios)) { ?>  
                                                                                                 <li class="dropdown yamm-fw menu-title <?php echo ( isset($current) && $current === 'apoio_cliente' || $current === 'apoios_cliente') ? 'curr' : ''?>"><a href="<?=site_url('vidro/apoios_cliente')?>" class="dropdown-toggle" data-hover="dropdown" data-delay="100" data-close-others="false"><?=lang('apoio')?></a>
                                                                                                     <ul class="dropdown-menu">
                                                                                                         <li class="grid-demo">

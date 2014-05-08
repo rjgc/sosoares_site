@@ -38,10 +38,7 @@
             <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="distrito" name="distrito" placeholder="<?=lang('distrito')?>" value="<?php echo (isset($_POST['distrito']) ? htmlspecialchars($_POST['distrito']) : ''); ?>">
             <p></p>
             <label><?=lang('telefone')?>:</label>
-            <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="telefone" name="telefone" placeholder="<?=lang('telefone')?>" value="<?php echo (isset($_POST['telefone']) ? htmlspecialchars($_POST['telefone']) : ''); ?>">
-            <p></p>
-            <label><?=lang('bi')?>:</label>
-            <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="bi" name="bi" placeholder="<?=lang('bi')?>" value="<?php echo (isset($_POST['bi']) ? htmlspecialchars($_POST['bi']) : ''); ?>">
+            <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="telefone" name="telefone" placeholder="<?=lang('telefone')?>" value="<?php echo (isset($_POST['telefone']) ? htmlspecialchars($_POST['telefone']) : ''); ?>">            
             <p></p>
             <label><?=lang('contribuinte')?>:</label>
             <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="contribuinte" name="contribuinte" placeholder="<?=lang('contribuinte')?>" value="<?php echo (isset($_POST['contribuinte']) ? htmlspecialchars($_POST['contribuinte']) : ''); ?>">        
@@ -71,7 +68,7 @@
         <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
         <p></p>
         <label><?=lang('confirmar')?>:</label>
-        <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="confirmar" name="confirmar" placeholder="<?=lang('confirmar')?>" value="<?php echo (isset($_POST['confirmar']) ? htmlspecialchars($_POST['confirmar']) : ''); ?>">
+        <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="confirmar" name="confirmar" placeholder="<?=lang('confirmar')?>" value="<?php echo (isset($_POST['confirmar']) ? htmlspecialchars($_POST['confirmar']) : ''); ?>">
         <p></p>
         <div style="padding-left: 92px;">
             <input class="btn btn-primary" type="submit" id="registar" name="registar" value="<?=lang('registar')?>">

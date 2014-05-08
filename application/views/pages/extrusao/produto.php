@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-8">
         <div class="descricao">
             <h3 class="title4"><?=lang('descricao')?></h3>
             <div>
@@ -159,14 +159,14 @@ if ($cortes || $downloads) { ?>
                     <div class="content-2" style="width: 100%;">
                         <ul>
                             <?php } if (!empty($catalogos)) { ?>
-                            <li style="margin: 0 0 0 40px;float: left;display: block;">
+                            <li style="margin: 0;float: left;display: block;">
                                 <h3><?=lang('catalogo')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
-                                        if ($catalogo['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']|| $catalogo['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/extrusao/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -182,3 +182,8 @@ if ($cortes || $downloads) { ?>
 </div>
 <?php } ?>
 </main>
+<script type="text/javascript">
+    function erro() {
+        alert('Acesso Restrito! Tem de fazer login.');
+    }
+</script>

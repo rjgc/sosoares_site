@@ -84,44 +84,38 @@
                     <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if ($_SESSION['logged_in']) { ?>
+                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
                     <a id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><button class="btn button grow" id="btn_signin"><?=$_SESSION['profile']['user_profile_name']?></button></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                     <?php } ?>
                 </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="myModal">
                     <div class="modal-dialog" id="tab">
-                        <div class="modal-content" id="tab-content">
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title">Login</h4>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="login">
-                                    <form method="post" role="form" id="form1">
-                                        <div class="modal-body" id="form" style="padding: 0 20px 20px 20px !important;">
-                                            <div class="tab-pane fade in active" id="area_privada">
-                                                <div id="jq_msg"></div>
-                                                <p></p>
-                                                <label>Username:</label>
-                                                <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
-                                                <p></p>
-                                                <label>Password:</label>
-                                                <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
-                                                <p></p>
-                                                <a href="<?=site_url('caixilharia/registar')?>"><?=lang('registar')?></a>
-                                                <p></p>
-                                                <a href="<?=site_url('caixilharia/recuperar')?>"><?=lang('recuperar_password')?></a>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
-                                            <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
-                                        </div>
-                                    </form>
+                            <form method="post" role="form" id="form1">
+                                <div class="modal-body" id="form" style="padding: 0 20px 20px 20px !important;">
+                                    <div id="jq_msg"></div>
+                                    <p></p>
+                                    <label>Username:</label>
+                                    <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
+                                    <p></p>
+                                    <label>Password:</label>
+                                    <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                    <p></p>
+                                    <a href="<?=site_url('caixilharia/registar')?>"><?=lang('registar')?></a>
+                                    <p></p>
+                                    <a href="<?=site_url('caixilharia/recuperar')?>"><?=lang('recuperar_password')?></a>
                                 </div>
-                            </div>
+                                <div class="modal-footer">
+                                    <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">
+                                    <input class="btn btn-default" type="button" data-dismiss="modal" id="cancel" name="cancel" value="<?=lang('cancelar')?>">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

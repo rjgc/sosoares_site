@@ -165,6 +165,14 @@ $lang["confirmar"] = "Confirmar Password";
 $lang["recuperar"] = "Recuperar";
 
 
+/*Alterar Password*/
+
+
+$lang["alterar_password"] = "Alterar Password";
+
+$lang["alterar"] = "Alterar";
+
+
 /*Área Reservada*/
 
 
@@ -404,6 +412,8 @@ $lang["system_data"]			= "Cannot delete: system data!";
 $lang["delete_data_related"]	= "All users connected to this role will be deleted. Are you sure?";
 
 $lang["email_progress"]	        = "Sending email...";
+
+$lang["password_progress"]	    = "Changing password...";
 
 
 

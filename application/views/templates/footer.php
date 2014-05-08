@@ -123,9 +123,6 @@ function login(elem){
     document.getElementById("form").style.padding="0 0 0 20px";
 }
 
-function registar(elem){
-}
-
 //BANNERS
 
 $(function() {

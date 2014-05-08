@@ -173,10 +173,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('perfis')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($perfis as $perfil) { 
-                                        if ($perfil['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $perfil['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/perfis/aluminio/<?php echo $perfil['ficheiro'];?>" target="_blank"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><p><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><?=$perfil['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -186,10 +186,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('pormenores')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($pormenores as $pormenor) { 
-                                        if ($pormenor['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $pormenor['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/aluminio/<?php echo $pormenor['ficheiro'];?>" target="_blank"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$pormenor['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -199,10 +199,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('catalogo')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($catalogos as $catalogo) { 
-                                        if ($catalogo['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $catalogo['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$catalogo['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -212,10 +212,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('itt')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($ensaios as $ensaio) { 
-                                        if ($ensaio['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $ensaio['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>" target="_blank"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$ensaio['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -225,10 +225,10 @@ if ($cortes || $downloads) { ?>
                                 <h3><?=lang('folheto')?></h3>
                                 <ul style="list-style-type: none;">
                                     <?php foreach ($folhetos as $folheto) { 
-                                        if ($folheto['restrito'] == 0) { ?>
+                                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $folheto['restrito'] == 0) { ?>
                                         <li><span class="glyphicon glyphicon-download" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/aluminio/<?php echo $folheto['ficheiro'];?>" target="_blank"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><p><?=$folheto['nome_'.$this->lang->lang()]?></p></li>
+                                        <li><span class="glyphicon glyphicon-file" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -335,3 +335,8 @@ if ($cortes || $downloads) { ?>
         <?php } ?>
         <?php } ?>
     </main>
+    <script type="text/javascript">
+        function erro() {
+            alert('Acesso Restrito! Tem de fazer login.');
+        }
+    </script>

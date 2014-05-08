@@ -462,7 +462,7 @@ function callback_after_upload_noticia($uploader_response, $field_info, $files_t
     $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
 //thumb
-    $this->image_moo->load($file_uploaded)->set_background_colour("#D9D9D9")->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+    $this->image_moo->load($file_uploaded)->set_background_colour("#d5d5d5")->resize_crop(200, 133)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
 //refold
     rename($field_info->upload_path."/"."thumb_".$uploader_response[0]->name, "assets/uploads/noticias/thumb/".$uploader_response[0]->name);
@@ -643,7 +643,7 @@ function produtos_vidro_management()
     $crud->columns('nome_pt', 'descricao_pt', 'aplicacao_pt', 'foto_1', 'foto_2', 'foto_3', 'foto_4');
     $crud->order_by('ordem', 'asc');
 
-    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'aplicacao_pt', 'aplicacao_en', 'aplicacao_fr', 'aplicacao_es', 'foto_1');
+    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es', 'foto_1');
     $crud->field_type('ordem', 'hidden');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es')->display_as('aplicacao_pt', 'Aplicação pt')->display_as('aplicacao_en', 'Aplicação en')->display_as('aplicacao_fr', 'Aplicação fr')->display_as('aplicacao_es', 'Aplicação es');
 
@@ -917,7 +917,7 @@ function callback_after_upload_produto($uploader_response, $field_info, $files_t
     $file_uploaded = $field_info->upload_path.'/'.$uploader_response[0]->name;
 
     //list - normal - thumb
-    $this->image_moo->load($file_uploaded)->set_background_colour("#797979")->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->set_background_colour("#797979")->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->set_background_colour("#797979")->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
+    $this->image_moo->load($file_uploaded)->set_background_colour("#d5d5d5")->resize_crop(256, 230)->save_pa($prepend="list_", $append="", $overwrite=true)->set_background_colour("#d5d5d5")->resize_crop(330, 393)->save_pa($prepend="normal_", $append="", $overwrite=true)->set_background_colour("#d5d5d5")->resize_crop(80, 80)->save_pa($prepend="thumb_", $append="", $overwrite=true);
 
     //refold
     rename($field_info->upload_path."/"."list_".$uploader_response[0]->name, "assets/uploads/produtos/list/".$uploader_response[0]->name);

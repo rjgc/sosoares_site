@@ -48,6 +48,8 @@ class Login extends CI_Controller {
 
 		$this->load->helper('language');
 
+		$this->load->helper('url');
+
 		$this->lang->load('cizacl',$this->config->item('language'));
 
 		if(!class_exists('CI_Cizacl'))
@@ -339,8 +341,6 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
 
-		$this->form_validation->set_rules('bi', 'BI', 'required|numeric');
-
 		$this->form_validation->set_rules('contribuinte', 'Contribuinte', 'required|numeric');
 
 		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
@@ -349,7 +349,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('password', $this->lang->line('password'), 'required');
 
-		$this->form_validation->set_rules('confirmar', 'Confirmar', 'required|matches[password]');
+		$this->form_validation->set_rules('confirmar', 'Confirmar Password', 'required|matches[password]');
 
 		if ($this->form_validation->run() == false)	{
 
@@ -384,7 +384,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to($this->sosoares_model->get_destinatario(1));
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de BI: '.set_value("bi").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
     		// Debug Email
 			if (!$this->email->send()) {
@@ -402,13 +402,13 @@ class Login extends CI_Controller {
 					$lang = 'es';
 
 				if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/registado'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/registado'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/registado'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/registado'));
 			}     
 		}
 
@@ -453,13 +453,23 @@ class Login extends CI_Controller {
 				);
 
 			$data = $this->sosoares_model->recuperar_password(set_value('email'));
+			$url;
+
+			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+					$url = site_url('caixilharia/alterar_password?password='.$data['user_password']);
+				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+					$url = site_url('vidro/alterar_password?password='.$data['user_password']);
+				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+					$url = site_url('extrusao/alterar_password?password='.$data['user_password']);
+				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+					$url = site_url('tratamento/alterar_password?password='.$data['user_password']);
 
     		// Run some setup
 			$this->email->initialize($config);
 			$this->email->from($this->sosoares_model->get_destinatario(1));
 			$this->email->to(set_value("email"));
 			$this->email->subject('Recuperar Password');
-			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você estão aqui os seus dados:<br><br>Username: '.$data['user_username'].'<br>Password: '.md5($data['u.user_password']).'<br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
+			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você aceda a este link: <a href="'.$url.'">Clique aqui</a><br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
 			
     		// Debug Email
 			if (!$this->email->send()) {
@@ -487,6 +497,55 @@ class Login extends CI_Controller {
 			}     
 		}
 
+	}
+
+
+
+	function alterar_password()
+
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('password', $this->lang->line('password'), 'required');
+
+		$this->form_validation->set_rules('confirmar', 'Confirmar Password', 'required|matches[password]');
+
+		if ($this->form_validation->run() == false)	{
+
+			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
+
+		}
+
+		else	{
+
+			$data = array(
+				'user_password' => md5(set_value('password'))
+				);
+
+			$this->db->where('user_password', $_SESSION['old_password']);
+			$this->db->update('users', $data); 
+			
+			$lang;
+
+			if (strpos($_SERVER['REQUEST_URI'], 'pt'))
+				$lang = 'pt';
+			else if (strpos($_SERVER['REQUEST_URI'], 'en'))
+				$lang = 'en';
+			else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
+				$lang = 'fr';
+			else if (strpos($_SERVER['REQUEST_URI'], 'es'))
+				$lang = 'es';
+
+			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/alterada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/vidro/alterada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/extrusao/alterada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/tratamento/alterada'));
+
+		}
 	}
 
 
