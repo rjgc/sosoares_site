@@ -856,10 +856,10 @@ function ficheiros_management()
 
     $crud->set_table('ficheiros');
     $crud->set_subject('Ficheiros');
-    $crud->columns('nome_pt', 'id_categoria_ficheiro');
+    $crud->columns('nome_pt', 'id_categoria_ficheiro', 'restrito');
     $crud->order_by('id_ficheiro', 'asc');
 
-    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro');
+    $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'ficheiro', 'id_categoria_ficheiro', 'restrito');
     $crud->display_as('id_categoria_ficheiro', 'Categoria');
 
     $crud->set_field_upload('ficheiro', 'assets/uploads/files');
@@ -944,7 +944,7 @@ function servicos_aluminio_management()
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/aluminio');
+    $crud->set_field_upload('imagem', 'assets/uploads/servicos/aluminio');
 
     $output = $crud->render();
 
@@ -967,7 +967,7 @@ function servicos_vidro_management()
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/vidro');
+    $crud->set_field_upload('imagem', 'assets/uploads/servicos/vidro');
 
     $output = $crud->render();
 
@@ -990,7 +990,7 @@ function servicos_extrusao_management()
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');
 
-    $crud->set_field_upload('ficheiro', 'assets/uploads/servicos/extrusao');
+    $crud->set_field_upload('imagem', 'assets/uploads/servicos/extrusao');
 
     $output = $crud->render();
 

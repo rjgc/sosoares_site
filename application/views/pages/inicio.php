@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <div class="row">
                 <div class="md-3">
                     <h1 class="title1"><?=lang('destaque')?></h1>
@@ -18,7 +18,7 @@
                 <div class="col-md-1">&nbsp;</div>
             </div>
             <div class="row">
-                <div class="col-md-4" style="padding-left: 0!important;">
+                <div class="col-md-4" style="padding-left: 8px!important;">
                     <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
                 </div>
                 <div class="col-md-7">
