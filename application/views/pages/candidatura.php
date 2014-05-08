@@ -24,7 +24,7 @@
         $url = $this->lang->lang().'/caixilharia/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
         $url = $this->lang->lang().'/vidro/send_candidatura';
-    } else if (strpos($_SERVER['REQUEST_URI'], '')) {
+    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
         $url = $this->lang->lang().'/extrusao/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         $url = $this->lang->lang().'/tratamento/send_candidatura';
