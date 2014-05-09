@@ -164,7 +164,13 @@ public function area_reservada()
 
                 $_SESSION['profile'] = $this->sosoares_model->get_profile($temp['1']);
                 $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
-                $data['ficheiros'] = $this->sosoares_model->get_ficheiros();
+                $data['todos'] = $this->sosoares_model->get_ficheiros();
+                $data['perfis'] = $this->sosoares_model->get_perfis();
+                $data['pormenores'] = $this->sosoares_model->get_pormenores();
+                $data['catalogos'] = $this->sosoares_model->get_catalogos();
+                $data['ensaios'] = $this->sosoares_model->get_ensaios();
+                $data['folhetos'] = $this->sosoares_model->get_folhetos();
+                $data['ferragens_vidro'] = $this->sosoares_model->get_ferragens_vidro();
             }
             else
                 $_SESSION['logged_in'] = False;

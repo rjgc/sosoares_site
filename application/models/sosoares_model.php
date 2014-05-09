@@ -186,6 +186,48 @@ class Sosoares_model extends CI_Model
 		return $data;
 	}
 
+	public function get_perfis() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '1'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_pormenores() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '3'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_catalogos() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '4' and id_categoria_ficheiro = '7'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_ensaios() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '5'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_folhetos() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '6'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
+	public function get_ferragens_vidro() {
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '9'");
+
+		$data = $query->result_array();
+		return $data;
+	}
+
 	//BACKGROUND IMAGE
 
 	public function get_background_image() {

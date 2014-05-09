@@ -67,51 +67,286 @@
         <div><b><?=lang('apelido')?>: </b><?=$_SESSION['profile']['user_profile_surname'];?></div>
         <div><b>E-mail: </b><?=$_SESSION['profile']['user_profile_email'];?></div>
         <h3>Downloads</h3>
-        <div id="DefaultDable"></div>
-        <?php $arrayFicheiros;
-        $z = 0;
-        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
-            for ($y=0; $y < count($ficheiros); $y++) {
-                if ($ficheiros[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
-                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
-                    $arrayFicheiros[$z][1] = $ficheiros[$y]['nome_pt'];
-                    $arrayFicheiros[$z][2] = $ficheiros[$y]['ficheiro'];
-                    $z++;
-                }                                
-            }
-        }
-        ?>
-        <script type="text/javascript">
-            var dable = new Dable();
-            var data = <?php echo json_encode($arrayFicheiros); ?>;
-            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
-                var columns = [ "Categoria", "Nome", "Ficheiro" ];
-                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
-                    var columns = [ "Category", "Name", "File" ];
-                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
-                        var columns = [ "Catégorie", "Non", "Dossier" ];
-                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
-                            var columns = [ "Categoría", "Nombre", "Expediente" ];
-                            <?php } ?>
-                            dable.SetDataAsRows(data);
-                            dable.SetColumnNames(columns);
-                            dable.BuildAll("DefaultDable");
-                        </script>
-                    </div>
-                </div>
-                <?php } else { ?>
-                <div style="padding-left: 15px;">
-                    <div class="alert alert-warning">
-                        <h5><strong>Atenção!</strong> Você não permissões para ver esta página. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                            echo site_url('caixilharia/home');
-                        } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                            echo site_url('vidro/home');
-                        } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                            echo site_url('extrusao/home');
-                        } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                            echo site_url('tratamento/home');
-                        } ?>">Voltar atrás.</a></h5>
-                    </div>
-                </div>
-                <?php } 
-            }?>
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#1" data-toggle="tab">Todos</a></li>
+                <li><a href="#2" data-toggle="tab">Perfis</a></li>
+                <li><a href="#3" data-toggle="tab">Pormenores</a></li>
+                <li><a href="#4" data-toggle="tab">Catálogos</a></li>
+                <li><a href="#5" data-toggle="tab">Ensaios</a></li>
+                <li><a href="#6" data-toggle="tab">Folhetos</a></li>
+                <li><a href="#7" data-toggle="tab">Ferragens de Vidro</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <div class="row account">
+                    <div class="col-md-8" style="width: 100%;">
+                        <div id="DefaultDable"></div>
+                        <?php $arrayFicheiros = [];
+                        $z = 0;
+                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                            for ($y=0; $y < count($todos); $y++) {
+                                if ($todos[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                    $arrayFicheiros[$z][1] = $todos[$y]['nome_pt'];
+                                    $arrayFicheiros[$z][2] = $todos[$y]['ficheiro'];
+                                    $z++;
+                                }                                
+                            }
+                        }
+                        ?>
+                        <script type="text/javascript">
+                            var dable = new Dable();
+                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                    var columns = [ "Category", "Name", "File" ];
+                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                            <?php } ?>
+                                            dable.SetDataAsRows(data);
+                                            dable.SetColumnNames(columns);
+                                            dable.BuildAll("DefaultDable");
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="2">
+                                <div class="row account">
+                                    <div class="col-md-8" style="width: 100%;">
+                                        <div id="DefaultDable2"></div>
+                                        <?php $arrayFicheiros = [];
+                                        $z = 0;
+                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                            for ($y=0; $y < count($perfis); $y++) {
+                                                if ($perfis[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                    $arrayFicheiros[$z][1] = $perfis[$y]['nome_pt'];
+                                                    $arrayFicheiros[$z][2] = $perfis[$y]['ficheiro'];
+                                                    $z++;
+                                                }                                
+                                            }
+                                        }
+                                        ?>
+                                        <script type="text/javascript">
+                                            var dable = new Dable();
+                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                    var columns = [ "Category", "Name", "File" ];
+                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                            <?php } ?>
+                                                            dable.SetDataAsRows(data);
+                                                            dable.SetColumnNames(columns);
+                                                            dable.BuildAll("DefaultDable2");
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="tab-pane" id="3">
+                                                <div class="row account">
+                                                    <div class="col-md-8" style="width: 100%;">
+                                                        <div id="DefaultDable3"></div>
+                                                        <?php $arrayFicheiros = [];
+                                                        $z = 0;
+                                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                                            for ($y=0; $y < count($pormenores); $y++) {
+                                                                if ($pormenores[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                                    $arrayFicheiros[$z][1] = $pormenores[$y]['nome_pt'];
+                                                                    $arrayFicheiros[$z][2] = $pormenores[$y]['ficheiro'];
+                                                                    $z++;
+                                                                }                                
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <script type="text/javascript">
+                                                            var dable = new Dable();
+                                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                                    var columns = [ "Category", "Name", "File" ];
+                                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                                            <?php } ?>
+                                                                            dable.SetDataAsRows(data);
+                                                                            dable.SetColumnNames(columns);
+                                                                            dable.BuildAll("DefaultDable3");
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="4">
+                                                                <div class="row account">
+                                                                    <div class="col-md-8" style="width: 100%;">
+                                                                        <div id="DefaultDable4"></div>
+                                                                        <?php $arrayFicheiros = [];
+                                                                        $z = 0;
+                                                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                                                            for ($y=0; $y < count($catalogos); $y++) {
+                                                                                if ($catalogos[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                                                    $arrayFicheiros[$z][1] = $catalogos[$y]['nome_pt'];
+                                                                                    $arrayFicheiros[$z][2] = $catalogos[$y]['ficheiro'];
+                                                                                    $z++;
+                                                                                }                                
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                        <script type="text/javascript">
+                                                                            var dable = new Dable();
+                                                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                                                    var columns = [ "Category", "Name", "File" ];
+                                                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                                                            <?php } ?>
+                                                                                            dable.SetDataAsRows(data);
+                                                                                            dable.SetColumnNames(columns);
+                                                                                            dable.BuildAll("DefaultDable4");
+                                                                                        </script>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="5">
+                                                                                <div class="row account">
+                                                                                    <div class="col-md-8" style="width: 100%;">
+                                                                                        <div id="DefaultDable5"></div>
+                                                                                        <?php $arrayFicheiros = [];
+                                                                                        $z = 0;
+                                                                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                                                                            for ($y=0; $y < count($ensaios); $y++) {
+                                                                                                if ($ensaios[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                                                                    $arrayFicheiros[$z][1] = $ensaios[$y]['nome_pt'];
+                                                                                                    $arrayFicheiros[$z][2] = $ensaios[$y]['ficheiro'];
+                                                                                                    $z++;
+                                                                                                }                                
+                                                                                            }
+                                                                                        }
+                                                                                        ?>
+                                                                                        <script type="text/javascript">
+                                                                                            var dable = new Dable();
+                                                                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                                                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                                                                    var columns = [ "Category", "Name", "File" ];
+                                                                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                                                                            <?php } ?>
+                                                                                                            dable.SetDataAsRows(data);
+                                                                                                            dable.SetColumnNames(columns);
+                                                                                                            dable.BuildAll("DefaultDable5");
+                                                                                                        </script>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div> 
+                                                                                            <div class="tab-pane" id="6">
+                                                                                                <div class="row account">
+                                                                                                    <div class="col-md-8" style="width: 100%;">
+                                                                                                        <div id="DefaultDable6"></div>
+                                                                                                        <?php $arrayFicheiros = [];
+                                                                                                        $z = 0;
+                                                                                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                                                                                            for ($y=0; $y < count($folhetos); $y++) {
+                                                                                                                if ($folhetos[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                                                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                                                                                    $arrayFicheiros[$z][1] = $folhetos[$y]['nome_pt'];
+                                                                                                                    $arrayFicheiros[$z][2] = $folhetos[$y]['ficheiro'];
+                                                                                                                    $z++;
+                                                                                                                }                                
+                                                                                                            }
+                                                                                                        }
+                                                                                                        ?>
+                                                                                                        <script type="text/javascript">
+                                                                                                            var dable = new Dable();
+                                                                                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                                                                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                                                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                                                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                                                                                    var columns = [ "Category", "Name", "File" ];
+                                                                                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                                                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                                                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                                                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                                                                                            <?php } ?>
+                                                                                                                            dable.SetDataAsRows(data);
+                                                                                                                            dable.SetColumnNames(columns);
+                                                                                                                            dable.BuildAll("DefaultDable6");
+                                                                                                                        </script>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div> 
+                                                                                                            <div class="tab-pane" id="7">
+                                                                                                                <div class="row account">
+                                                                                                                    <div class="col-md-8" style="width: 100%;">
+                                                                                                                        <div id="DefaultDable7"></div>
+                                                                                                                        <?php $arrayFicheiros = [];
+                                                                                                                        $z = 0;
+                                                                                                                        for ($i=0; $i < count($categoria_ficheiros); $i++) { 
+                                                                                                                            for ($y=0; $y < count($ferragens_vidro); $y++) {
+                                                                                                                                if ($ferragens_vidro[$y]['id_categoria_ficheiro'] == $categoria_ficheiros[$i]['id_categoria_ficheiro']) {
+                                                                                                                                    $arrayFicheiros[$z][0] = $categoria_ficheiros[$i]['nome'];
+                                                                                                                                    $arrayFicheiros[$z][1] = $ferragens_vidro[$y]['nome_pt'];
+                                                                                                                                    $arrayFicheiros[$z][2] = $ferragens_vidro[$y]['ficheiro'];
+                                                                                                                                    $z++;
+                                                                                                                                }                                
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                        ?>
+                                                                                                                        <script type="text/javascript">
+                                                                                                                            var dable = new Dable();
+                                                                                                                            var data = <?php echo json_encode($arrayFicheiros); ?>;
+                                                                                                                            <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) { ?>
+                                                                                                                                var columns = [ "Categoria", "Nome", "Ficheiro" ];
+                                                                                                                                <?php } else if (strpos($_SERVER['REQUEST_URI'], 'en')) { ?>
+                                                                                                                                    var columns = [ "Category", "Name", "File" ];
+                                                                                                                                    <?php } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) { ?>
+                                                                                                                                        var columns = [ "Catégorie", "Non", "Dossier" ];
+                                                                                                                                        <?php } else if (strpos($_SERVER['REQUEST_URI'], 'es')) { ?>
+                                                                                                                                            var columns = [ "Categoría", "Nombre", "Expediente" ];
+                                                                                                                                            <?php } ?>
+                                                                                                                                            dable.SetDataAsRows(data);
+                                                                                                                                            dable.SetColumnNames(columns);
+                                                                                                                                            dable.BuildAll("DefaultDable7");
+                                                                                                                                        </script>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </div>   
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <?php } else { ?>
+                                                                                                                <div style="padding-left: 15px;">
+                                                                                                                    <div class="alert alert-warning">
+                                                                                                                        <h5><strong>Atenção!</strong> Você não permissões para ver esta página. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                                                                                                                            echo site_url('caixilharia/home');
+                                                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+                                                                                                                            echo site_url('vidro/home');
+                                                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+                                                                                                                            echo site_url('extrusao/home');
+                                                                                                                        } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+                                                                                                                            echo site_url('tratamento/home');
+                                                                                                                        } ?>">Voltar atrás.</a></h5>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <?php } 
+                                                                                                            }?>
