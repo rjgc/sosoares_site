@@ -24,7 +24,7 @@
                                         <?php if (array_key_exists($i, $grupo_sosoares)) { 
                                             $value = array_values($grupo_sosoares[$i]);?>
                                             <div class="col-sm-6">
-                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                     echo $value[1];
                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                     echo $value[3];
@@ -38,7 +38,7 @@
                                             if (array_key_exists($i, $grupo_sosoares)) { 
                                                 $value = array_values($grupo_sosoares[$i]);?>
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                         echo $value[1];
                                                     } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                         echo $value[3];
@@ -55,17 +55,17 @@
                                         <div class="col-sm-3">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/noticias')?>"><?=lang('noticias')?></a></h3>
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/noticias')?>"><?=lang('noticias')?></a></h3>
                                                 </div>                                                
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
                                                 </div>
                                             </div>
                                         </div> 
@@ -76,7 +76,7 @@
                                                     <?php if (array_key_exists($i, $grupo_sosoares)) { 
                                                         $value = array_values($grupo_sosoares[$i]);?>
                                                         <div class="col-sm-6">
-                                                            <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                            <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                 echo $value[1];
                                                             } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                 echo $value[3];
@@ -90,7 +90,7 @@
                                                         if (array_key_exists($i, $grupo_sosoares)) { 
                                                             $value = array_values($grupo_sosoares[$i]);?>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/grupo_sosoares/'.$value[0])?>"><?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
                                                                     echo $value[1];
                                                                 } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
                                                                     echo $value[3];
@@ -102,7 +102,7 @@
                                                             </div>
                                                             <?php } else { ?>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
                                                             </div>
                                                             <?php } $i++; ?>
                                                         </div>
@@ -111,10 +111,10 @@
                                                     <div class="col-sm-3">
                                                         <div class="row">
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/noticias')?>"><?=lang('noticias')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/noticias')?>"><?=lang('noticias')?></a></h3>
                                                             </div>   
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('caixilharia/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('tratamento/candidaturas')?>"><?=lang('candidaturas')?></a></h3>
                                                             </div>                                             
                                                         </div>
                                                     </div>

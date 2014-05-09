@@ -170,6 +170,7 @@ public function area_reservada()
                 $data['ensaios'] = $this->sosoares_model->get_ensaios();
                 $data['folhetos'] = $this->sosoares_model->get_folhetos();
                 $data['ferragens_vidro'] = $this->sosoares_model->get_ferragens_vidro();
+            } 
             else
                 $_SESSION['notAllowed'] = True;
         }

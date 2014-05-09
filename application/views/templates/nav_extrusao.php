@@ -55,7 +55,7 @@
                                         <div class="col-sm-3">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <h3 class="menu-h3 links"><a href="<?=site_url('vidro/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
+                                                    <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/noticias')?>"><?=lang('noticias')?></a></h3>
@@ -102,7 +102,7 @@
                                                             </div>
                                                             <?php } else { ?>
                                                             <div class="col-sm-6">
-                                                                <h3 class="menu-h3 links"><a href="<?=site_url('vidro/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
+                                                                <h3 class="menu-h3 links"><a href="<?=site_url('extrusao/areas_comerciais')?>"><?=lang('comerciais')?></a></h3>
                                                             </div>
                                                             <?php } $i++; ?>
                                                         </div>

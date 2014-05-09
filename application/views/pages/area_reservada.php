@@ -46,21 +46,15 @@
     </div>
     <?php } else { ?>
     <?php if ($_SESSION['logged_in']) { ?>
-    <!-- tabs right -->
-    <div class="tabbable tabs-right">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                echo site_url('caixilharia/logout');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                echo site_url('vidro/logout');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                echo site_url('extrusao/logout');
-            } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                echo site_url('tratamento/logout');
-            } ?>">Logout</a></li>
-        </ul>
-    </div>
-    <!-- /tabs -->
+    <button style="float: right;" class="btn button grow ui-corner-all" id="btn_signin"><a style="color: #fff!important;" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+        echo site_url('caixilharia/logout');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+        echo site_url('vidro/logout');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+        echo site_url('extrusao/logout');
+    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+        echo site_url('tratamento/logout');
+    } ?>">Logout</a></button>
     <div style="width: 91%; padding-left: 15px;">
         <h3><?=lang('dados')?></h3>
         <div><b><?=lang('nome')?>: </b><?=$_SESSION['profile']['user_profile_name'];?></div>
@@ -82,6 +76,7 @@
             <div class="tab-pane active" id="1">
                 <div class="row account">
                     <div class="col-md-8" style="width: 100%;">
+                        <?php if (!empty($todos)) { ?>
                         <div id="DefaultDable"></div>
                         <?php $arrayFicheiros;
                         unset($arrayFicheiros);
@@ -113,12 +108,16 @@
                                             dable.SetColumnNames(columns);
                                             dable.BuildAll("DefaultDable");
                                         </script>
+                                        <?php } else { ?>
+                                        <p>Não existem ficheiros nesta categoria.</p>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="2">
                                 <div class="row account">
                                     <div class="col-md-8" style="width: 100%;">
+                                        <?php if (!empty($perfis)) { ?>
                                         <div id="DefaultDable2"></div>
                                         <?php $arrayFicheiros;
                                         unset($arrayFicheiros);
@@ -150,12 +149,16 @@
                                                             dable.SetColumnNames(columns);
                                                             dable.BuildAll("DefaultDable2");
                                                         </script>
+                                                        <?php } else { ?>
+                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
                                             </div> 
                                             <div class="tab-pane" id="3">
                                                 <div class="row account">
                                                     <div class="col-md-8" style="width: 100%;">
+                                                        <?php if (!empty($pormenores)) { ?>
                                                         <div id="DefaultDable3"></div>
                                                         <?php $arrayFicheiros;
                                                         unset($arrayFicheiros);
@@ -187,13 +190,17 @@
                                                                             dable.SetColumnNames(columns);
                                                                             dable.BuildAll("DefaultDable3");
                                                                         </script>
+                                                                        <?php } else { ?>
+                                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                                        <?php } ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="tab-pane" id="4">
                                                                 <div class="row account">
                                                                     <div class="col-md-8" style="width: 100%;">
-                                                                        <div id="DefaultDable4"></div>
+                                                                        <?php if (!empty($catalogos)) { ?>
+                                                                        <div id="DefaultDable4"></div>                                                                        
                                                                         <?php $arrayFicheiros;
                                                                         unset($arrayFicheiros);
                                                                         $z = 0;
@@ -224,12 +231,16 @@
                                                                                             dable.SetColumnNames(columns);
                                                                                             dable.BuildAll("DefaultDable4");
                                                                                         </script>
+                                                                                        <?php } else { ?>
+                                                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                                                        <?php } ?>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tab-pane" id="5">
                                                                                 <div class="row account">
                                                                                     <div class="col-md-8" style="width: 100%;">
+                                                                                        <?php if (!empty($ensaios)) { ?>
                                                                                         <div id="DefaultDable5"></div>
                                                                                         <?php $arrayFicheiros;
                                                                                         unset($arrayFicheiros);
@@ -261,12 +272,16 @@
                                                                                                             dable.SetColumnNames(columns);
                                                                                                             dable.BuildAll("DefaultDable5");
                                                                                                         </script>
+                                                                                                        <?php } else { ?>
+                                                                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                                                                        <?php } ?>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div> 
                                                                                             <div class="tab-pane" id="6">
                                                                                                 <div class="row account">
                                                                                                     <div class="col-md-8" style="width: 100%;">
+                                                                                                        <?php if (!empty($folhetos)) { ?>
                                                                                                         <div id="DefaultDable6"></div>
                                                                                                         <?php $arrayFicheiros;
                                                                                                         unset($arrayFicheiros);
@@ -298,12 +313,16 @@
                                                                                                                             dable.SetColumnNames(columns);
                                                                                                                             dable.BuildAll("DefaultDable6");
                                                                                                                         </script>
+                                                                                                                        <?php } else { ?>
+                                                                                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                                                                                        <?php } ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div> 
                                                                                                             <div class="tab-pane" id="7">
                                                                                                                 <div class="row account">
                                                                                                                     <div class="col-md-8" style="width: 100%;">
+                                                                                                                        <?php if (!empty($ferragens_vidro)) { ?>
                                                                                                                         <div id="DefaultDable7"></div>
                                                                                                                         <?php $arrayFicheiros;
                                                                                                                         unset($arrayFicheiros);
@@ -335,6 +354,9 @@
                                                                                                                                             dable.SetColumnNames(columns);
                                                                                                                                             dable.BuildAll("DefaultDable7");
                                                                                                                                         </script>
+                                                                                                                                        <?php } else { ?>
+                                                                                                                                        <p>Não existem ficheiros nesta categoria.</p>
+                                                                                                                                        <?php } ?>
                                                                                                                                     </div>
                                                                                                                                 </div>
                                                                                                                             </div>   
