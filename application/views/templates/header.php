@@ -78,10 +78,10 @@
                     </form>
                 </div>
                 <div id="bd">
-                    <a href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal"></a>
-                    <a href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom"></a>
-                    <a href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" ></a>
-                    <a href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
+                    <a id="lang-1" href="<?=site_url($this->lang->switch_uri('pt')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_pt.png" width="22" height="15" alt="Portugal" title="Portugal"></a>
+                    <a id="lang-2" href="<?=site_url($this->lang->switch_uri('en')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_uk.png" width="22" height="15" alt="United Kingdom" title="United Kingdom"></a>
+                    <a id="lang-3" href="<?=site_url($this->lang->switch_uri('fr')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_fr.png" width="22" height="15" alt="France" title="France" ></a>
+                    <a id="lang-4" href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
@@ -149,3 +149,20 @@
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/Dable.js"></script>
+        <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
+            echo "<script>$('#lang-2').addClass('inactive'); 
+            $('#lang-3').addClass('inactive'); 
+            $('#lang-4').addClass('inactive');</script>";
+        } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
+            echo "<script>$('#lang-1').addClass('inactive'); 
+            $('#lang-3').addClass('inactive'); 
+            $('#lang-4').addClass('inactive');</script>";
+        } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
+            echo "<script>$('#lang-1').addClass('inactive');
+            $('#lang-2').addClass('inactive');                  
+            $('#lang-4').addClass('inactive');</script>";
+        } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
+            echo "<script>$('#lang-1').addClass('inactive'); 
+            $('#lang-2').addClass('inactive'); 
+            $('#lang-3').addClass('inactive');</script>";
+        } ?>

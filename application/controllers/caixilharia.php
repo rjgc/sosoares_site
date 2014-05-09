@@ -173,7 +173,11 @@ public function area_reservada()
                 $data['ferragens_vidro'] = $this->sosoares_model->get_ferragens_vidro();
             }
             else
-                $_SESSION['logged_in'] = False;
+                $_SESSION['notAllowed'] = True;
+        }
+        else {
+            $_SESSION['logged_in'] = False;
+            $_SESSION['notAllowed'] = False;
         }
 
         $data['page_style']= "caixilharia";

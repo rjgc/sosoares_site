@@ -38,7 +38,7 @@
             <h1 class="title3"><?=lang('area_privada')?></h1>
         </div>
     </div>
-    <?php if (!$_SESSION['logged_in']) { ?>
+    <?php if (!$_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
     <div style="padding-left: 15px;">
         <div class="alert alert-warning">
             <h5><strong>Atenção!</strong> Tem de efectuar o login.</h5>
@@ -83,7 +83,8 @@
                 <div class="row account">
                     <div class="col-md-8" style="width: 100%;">
                         <div id="DefaultDable"></div>
-                        <?php $arrayFicheiros = [];
+                        <?php $arrayFicheiros;
+                        unset($arrayFicheiros);
                         $z = 0;
                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                             for ($y=0; $y < count($todos); $y++) {
@@ -119,7 +120,8 @@
                                 <div class="row account">
                                     <div class="col-md-8" style="width: 100%;">
                                         <div id="DefaultDable2"></div>
-                                        <?php $arrayFicheiros = [];
+                                        <?php $arrayFicheiros;
+                                        unset($arrayFicheiros);
                                         $z = 0;
                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                             for ($y=0; $y < count($perfis); $y++) {
@@ -155,7 +157,8 @@
                                                 <div class="row account">
                                                     <div class="col-md-8" style="width: 100%;">
                                                         <div id="DefaultDable3"></div>
-                                                        <?php $arrayFicheiros = [];
+                                                        <?php $arrayFicheiros;
+                                                        unset($arrayFicheiros);
                                                         $z = 0;
                                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                                             for ($y=0; $y < count($pormenores); $y++) {
@@ -191,7 +194,8 @@
                                                                 <div class="row account">
                                                                     <div class="col-md-8" style="width: 100%;">
                                                                         <div id="DefaultDable4"></div>
-                                                                        <?php $arrayFicheiros = [];
+                                                                        <?php $arrayFicheiros;
+                                                                        unset($arrayFicheiros);
                                                                         $z = 0;
                                                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                                                             for ($y=0; $y < count($catalogos); $y++) {
@@ -227,7 +231,8 @@
                                                                                 <div class="row account">
                                                                                     <div class="col-md-8" style="width: 100%;">
                                                                                         <div id="DefaultDable5"></div>
-                                                                                        <?php $arrayFicheiros = [];
+                                                                                        <?php $arrayFicheiros;
+                                                                                        unset($arrayFicheiros);
                                                                                         $z = 0;
                                                                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                                                                             for ($y=0; $y < count($ensaios); $y++) {
@@ -263,7 +268,8 @@
                                                                                                 <div class="row account">
                                                                                                     <div class="col-md-8" style="width: 100%;">
                                                                                                         <div id="DefaultDable6"></div>
-                                                                                                        <?php $arrayFicheiros = [];
+                                                                                                        <?php $arrayFicheiros;
+                                                                                                        unset($arrayFicheiros);
                                                                                                         $z = 0;
                                                                                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                                                                                             for ($y=0; $y < count($folhetos); $y++) {
@@ -299,7 +305,8 @@
                                                                                                                 <div class="row account">
                                                                                                                     <div class="col-md-8" style="width: 100%;">
                                                                                                                         <div id="DefaultDable7"></div>
-                                                                                                                        <?php $arrayFicheiros = [];
+                                                                                                                        <?php $arrayFicheiros;
+                                                                                                                        unset($arrayFicheiros);
                                                                                                                         $z = 0;
                                                                                                                         for ($i=0; $i < count($categoria_ficheiros); $i++) { 
                                                                                                                             for ($y=0; $y < count($ferragens_vidro); $y++) {
@@ -334,7 +341,7 @@
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <?php } else { ?>
+                                                                                                                <?php } else if ($_SESSION['notAllowed']) { ?>
                                                                                                                 <div style="padding-left: 15px;">
                                                                                                                     <div class="alert alert-warning">
                                                                                                                         <h5><strong>Atenção!</strong> Você não permissões para ver esta página. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {

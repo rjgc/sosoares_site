@@ -171,9 +171,13 @@ public function area_reservada()
                 $data['folhetos'] = $this->sosoares_model->get_folhetos();
                 $data['ferragens_vidro'] = $this->sosoares_model->get_ferragens_vidro();
             }
-            else
-                $data['logged_in'] = False;
+            else {
+                $_SESSION['logged_in'] = False;
+                $_SESSION['notAllowed'] = False;
+            }
         }
+        else
+            $_SESSION['logged_in'] = False;
 
         $data['page_style'] = "tratamento";
         $data['current'] = 'reserved';
