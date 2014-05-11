@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/grupo-sosoares.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -42,12 +43,12 @@
             <h1 class="title3"><?php echo $page['titulo_'.$this->lang->lang()]?></h1>
         </div>
     </div>
-    <div style="padding-left: 16px;" class="row">
+    <div class="row texto">
         <div class="col-md-12">
             <?php echo $page['texto_'.$this->lang->lang()]?>
         </div>
         <?php } else { ?>
-        <div style="padding-left: 15px;">
+        <div class="alerta">
             <div class="alert alert-warning">
                 <h5><strong>Atenção!</strong> Página indisponível.<a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                     echo site_url('caixilharia/home');

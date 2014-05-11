@@ -1,0 +1,10 @@
+.localizacao {margin: 0 5px 10px 17px;}
+.carossel {max-height: 350px;}
+.imagem {width: 80px !important; height: 60px;}
+.botao {padding-left: 8px;}
+.botao button {width: 200px; margin: 10px; background-size: 18px!important;}
+.galeria {display: none;}
+.descricao {margin-bottom: 25px;}
+.produtos {padding-left: 32px;}
+.produtos-titulo {margin-bottom: 30px;}
+.carossel-indicadores {margin-bottom: -60px;}

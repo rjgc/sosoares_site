@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/areas-comerciais.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -18,7 +19,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12" style="padding-left: 30px;">
+        <div class="col-md-12 mapa">
             <div id="map-instaladores">
                 <div id="map-canvas"></div>
             </div>

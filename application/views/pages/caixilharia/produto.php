@@ -1,22 +1,21 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                    <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
-                    <li><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('cprodutos')?></a></li>
-                    <?php if(empty($id)) { ?>
-                </ul>
-            </div>
-        </div>
-        <div style="padding-left: 15px;">
-            <div class="alert alert-warning">
-                <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
-            </div>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/produtos.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a href="<?=site_url('caixilharia/home')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('cprodutos')?></a></li>
+                <?php if(empty($id)) { ?>
+            </ul>
         </div>
     </div>
-</main>
+    <div class="titulo">
+        <div class="alert alert-warning">
+            <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
+        </div>
+    </div>
+</div>
 <?php } else { ?>
 <li><a href="<?=site_url('caixilharia/produtos/'.$produto['id_tipo_produto_aluminio'])?>"><?=$produto['tipo']?></a></li>
 <?php if (!empty($produto['caracteristica'])) { ?>
@@ -32,19 +31,21 @@
         <div class="row">
             <div class="col-md-12" id="carousel-bounding-box">
                 <div id="myCarousel" class="carousel slide">
-                    <div class="carousel-inner" style="max-height: 400px;">
-                        <?php   $i=1;
+                    <div class="carousel-inner carossel">
+                        <?php   
+                        $i=1;
+
                         while ($i<5) {
-                            if (!empty($produto['foto_'.$i])){
-                                if ($i==1){ ?>
+                            if (!empty($produto['foto_'.$i])) {
+                                if ($i==1) { ?>
                                 <div class="active item" data-slide-number="<?php echo $i ?>">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                                    <img class="titulo" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                                 </div>
-                                <?php   } else { ?>
+                                <?php } else { ?>
                                 <div class="item" data-slide-number="<?php echo $i ?>">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
+                                    <img class="titulo" src="<?php echo base_url();?>assets/uploads/produtos/normal/<?php echo $produto['foto_'.$i];?>" class="img-responsive">
                                 </div>
-                                <?php   }
+                                <?php }
                             }
                             $i++;
                         } ?>
@@ -57,22 +58,24 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs" style="padding: 20px 0px 10px 15px !important;">
+            <div class="col-md-12 hidden-sm hidden-xs thumb" id="slider-thumbs">
                 <ul class="list-inline">
-                    <?php $i=1;
+                    <?php 
+                    $i=1;
                     $y=0;
+
                     while ($i<5) {
                         if (!empty($produto['foto_'.$i])) {
                             if ($i==1) { ?>
                             <li>
                                 <a id="carousel-selector-<?php echo $y ?>" class="selected">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img class="titulo img-responsive thumb-img" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>">
                                 </a>
                             </li>
                             <?php } else { ?>
                             <li> 
                                 <a id="carousel-selector-<?php echo $y ?>">
-                                    <img style="padding-left: 15px;" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>" class="img-responsive" style="width: 80px; height: 80px; border-radius: 10px;">
+                                    <img class="titulo img-responsive thumb-img" src="<?php echo base_url();?>assets/uploads/produtos/thumb/<?php echo $produto['foto_'.$i];?>">
                                 </a>
                             </li>
                             <?php }
@@ -84,7 +87,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="padding-left: 30px;">
+            <div class="col-md-12 share">
                 <div class="facebook"><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div></div>
                 <div class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div>
                 <div class="google"><div class="g-plusone" data-size="tall" data-annotation="none"></div></div>
@@ -100,7 +103,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="descricao" style="margin-bottom: 50px;">
+        <div class="descricao resultados">
             <?php if (!empty($produto['resultado_'.$this->lang->lang()])) { ?>
             <h3 class="title4"><?=lang('resultados')?></h3>
             <div>
@@ -114,16 +117,16 @@
 $cortes = True;
 $downloads = True;
 
-if (empty($produto['corte_1']) && empty($produto['corte_2']) && empty($produto['corte_3']) && empty($produto['corte_4'])){
+if (empty($produto['corte_1']) && empty($produto['corte_2']) && empty($produto['corte_3']) && empty($produto['corte_4'])) {
     $cortes = False; 
 }
-if (empty($perfis) && empty($pormenores) && empty($catalogos) && empty($ensaios) && empty($folhetos)){
+if (empty($perfis) && empty($pormenores) && empty($catalogos) && empty($ensaios) && empty($folhetos)) {
     $downloads = False;
 }
 
 if ($cortes || $downloads) { ?>
 <div class="row">
-    <div class="col-md-12" style="margin-left: 15px;">
+    <div class="col-md-12 info">
         <h2 class="title4"><?=lang('info')?></h2>
         <div class="tabs">
             <?php if ($cortes) { ?>
@@ -141,21 +144,21 @@ if ($cortes || $downloads) { ?>
                 <div class="clear-shadow"></div>
                 <div class="tab-content">
                     <?php if ($cortes) { ?>
-                    <div class="content-1" style="width: 100%;">
+                    <div class="content-1 cortes">
                         <ul>
                             <?php $i=1;
                             while ($i<5) {
                                 if (!empty($produto['corte_'.$i])) {
                                     if ($i==1) { ?>
-                                    <li style="margin: 0;float: left;display: block;">
+                                    <li>
                                         <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width: 180px;margin:2px 0 2px 0;">
+                                            <img class="corte" src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's">
                                         </a>
                                     </li>
                                     <?php } else { ?>
-                                    <li style=" margin: 0 0 0 15px; float: left;display: block;">
+                                    <li>
                                         <a href="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" target="_blank" >
-                                            <img src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's" style="width: 180px;margin:2px 0 2px 0;">
+                                            <img class="corte" src="<?php echo base_url();?>assets/uploads/files/<?php echo $produto['corte_'.$i];?>" alt="unfortunately your browser doesn't display PDF's">
                                         </a>
                                     </li>
                                     <?php }
@@ -166,69 +169,69 @@ if ($cortes || $downloads) { ?>
                     </div>
                     <?php } ?>
                     <?php if ($downloads) { ?>
-                    <div class="content-2" style="width: 100%;">
+                    <div class="content-2 downloads">
                         <ul>
                             <?php if (!empty($perfis)) { ?>
-                            <li style="margin: 0;float: left;display: block;">
+                            <li class="downloads-titulo">
                                 <h3><?=lang('perfis')?></h3>
-                                <ul style="list-style-type: none;">
+                                <ul>
                                     <?php foreach ($perfis as $perfil) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $perfil['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/perfis/aluminio/<?php echo $perfil['ficheiro'];?>" target="_blank"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save"></span><a href="<?php echo base_url();?>assets/uploads/perfis/aluminio/<?php echo $perfil['ficheiro'];?>" target="_blank"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove"></span><a href="#a" onclick="erro()"><?=$perfil['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($pormenores)) { ?>
-                            <li style="margin: 0 0 0 40px;float: left;display: block;">
+                            <li class="downloads-titulo">
                                 <h3><?=lang('pormenores')?></h3>
-                                <ul style="list-style-type: none;">
+                                <ul>
                                     <?php foreach ($pormenores as $pormenor) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $pormenor['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/aluminio/<?php echo $pormenor['ficheiro'];?>" target="_blank"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save"></span><a href="<?php echo base_url();?>assets/uploads/pormenores/aluminio/<?php echo $pormenor['ficheiro'];?>" target="_blank"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove"></span><a href="#a" onclick="erro()"><?=$pormenor['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($catalogos)) { ?>
-                            <li style="margin: 0 0 0 40px;float: left;display: block;">
+                            <li class="downloads-titulo">
                                 <h3><?=lang('catalogo')?></h3>
-                                <ul style="list-style-type: none;">
+                                <ul>
                                     <?php foreach ($catalogos as $catalogo) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $catalogo['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save"></span><a href="<?php echo base_url();?>assets/uploads/catalogos/aluminio/<?php echo $catalogo['ficheiro'];?>" target="_blank"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove"></span><a href="#a" onclick="erro()"><?=$catalogo['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($ensaios)) { ?>
-                            <li style="margin: 0 0 0 40px;float: left;display: block;">
+                            <li class="downloads-titulo">
                                 <h3><?=lang('itt')?></h3>
-                                <ul style="list-style-type: none;">
+                                <ul>
                                     <?php foreach ($ensaios as $ensaio) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $ensaio['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>" target="_blank"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save"></span><a href="<?php echo base_url();?>assets/uploads/ensaios/aluminio/<?php echo $ensaio['ficheiro'];?>" target="_blank"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove"></span><a href="#a" onclick="erro()"><?=$ensaio['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
                             </li>
                             <?php } if (!empty($folhetos)) { ?>
-                            <li style="margin: 0 0 0 40px;float: left;display: block;">
+                            <li class="downloads-titulo">
                                 <h3><?=lang('folheto')?></h3>
-                                <ul style="list-style-type: none;">
+                                <ul>
                                     <?php foreach ($folhetos as $folheto) { 
                                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] || $folheto['restrito'] == 0) { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-save" style="padding-right: 5px;"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/aluminio/<?php echo $folheto['ficheiro'];?>" target="_blank"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-save"></span><a href="<?php echo base_url();?>assets/uploads/folhetos/aluminio/<?php echo $folheto['ficheiro'];?>" target="_blank"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php } else { ?>
-                                        <li><span class="glyphicon glyphicon-floppy-remove" style="padding-right: 5px;"></span><a href="#a" onclick="erro()"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
+                                        <li><span class="glyphicon glyphicon-floppy-remove"></span><a href="#a" onclick="erro()"><?=$folheto['nome_'.$this->lang->lang()]?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
@@ -245,15 +248,15 @@ if ($cortes || $downloads) { ?>
 </div>
 <?php if(!empty($obras)) { ?>
 <section class="related">
-    <div style="padding-left: 32px;" class="container">
+    <div class="container obras">
         <div id="center">
             <div id="myCarousel2" class="carousel slide">
                 <div class="row">
                     <div class="col-md-11">
-                        <h3 class="title1" style="margin-bottom: 30px"><?=lang('obras')?></h3>
+                        <h3 class="title1 obras-titulo"><?=lang('obras')?></h3>
                     </div>
                     <div class="col-md-1">
-                        <ol class="carousel-indicators" style="margin-bottom: -60px">
+                        <ol class="carousel-indicators obras-indicadores">
                             <?php $i=0;
                             $div = 1;
                             $count = count($obras)/6;
@@ -295,7 +298,7 @@ if ($cortes || $downloads) { ?>
                                         $obra = $obras[$i]; ?>
                                         <div class="col-sm-2">
                                             <a href="<?=site_url('caixilharia/obras/'.$obra['id'])?>">
-                                                <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                                <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive obras-img"/>
                                                 <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                             </a>
                                         </div>
@@ -312,7 +315,7 @@ if ($cortes || $downloads) { ?>
                                             $obra = $obras[$i]; ?>
                                             <div class="col-sm-2">
                                                 <a href="<?=site_url('caixilharia/obras/'.$obra['id'])?>">
-                                                    <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive" style="width:150px; height: 150px"/>
+                                                    <img src="<?php echo base_url() ?>assets/uploads/obras/<?php echo $obra['url'] ?>" alt="Image" class="img-responsive obras-img"/>
                                                     <p><?php echo $obra['nome_'.$this->lang->lang()] ?></p>
                                                 </a>
                                             </div>
@@ -334,9 +337,8 @@ if ($cortes || $downloads) { ?>
         </section>
         <?php } ?>
         <?php } ?>
-    </main>
-    <script type="text/javascript">
-        function erro() {
-            alert('Acesso Restrito! Tem de fazer login.');
-        }
-    </script>
+        <script type="text/javascript">
+            function erro() {
+                alert('Acesso Restrito! Tem de fazer login.');
+            }
+        </script>

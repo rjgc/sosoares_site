@@ -38,8 +38,7 @@
                     </a>
                     <?php
                 }
-            }
-            else { ?>
+            } else { ?>
             <div class="alert alert-info">
                 <h5><strong>Atenção!</strong> Páginas de apoio ao cliente indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                     echo site_url('caixilharia/home');
@@ -52,5 +51,5 @@
             <?php } ?>
         </div>
     </div>
-</div><!-- /row -->
+</div>
 </div>

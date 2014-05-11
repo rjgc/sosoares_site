@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/contactos.css">
 <div id="map">
     <div id="map-canvas"></div>
 </div>
@@ -34,7 +35,7 @@
                 <p><?php echo $message; ?></p>
                 <form>
                     <fieldset>
-                        <legend style="padding: 0!important;"><?=lang('dados')?></legend>
+                        <legend class="dados"><?=lang('dados')?></legend>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                             <div class="col-sm-10">
@@ -129,8 +130,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <span style="display: inline-block; padding-left: 15px;">* <?=lang('obrigatorio')?></span>
-                            <div style="float: right;margin: 15px 30px">
+                            <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
+                            <div class="botoes">
                                 <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
                                 <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
                             </div>
@@ -142,50 +143,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select#distrito').change(function(e){            
-            var newOptions = getNewOptions($(this).val());
-            $('select#concelho').html('');
-
-            $.each(newOptions,function(i,o){
-                $('<option value='+ o +'>' + o + '</option>').appendTo('select#concelho');
-            });            
-        });
-
-        function getNewOptions(val){
-            var concelhos = [];
-            var url = "";
-            var tmpUrl = window.location.href.split('/');
-
-            for (var i = 0; i < tmpUrl.length - 4 ; i++) {
-                url += tmpUrl[i] + "/";
-            }
-
-            var rawFile = new XMLHttpRequest();
-            rawFile.open("GET", url + "assets/uploads/"+val+".txt", false);
-            rawFile.onreadystatechange = function ()
-            {
-                if(rawFile.readyState === 4)
-                {
-                    if(rawFile.status === 200 || rawFile.status == 0)
-                    {
-                        var allText = rawFile.responseText;
-                        var lines = allText.split("\n");
-
-                        concelhos.push('<?=lang("sconcelho")?>');
-                        concelhos.push(' ');
-
-                        for(var i = 0; i < lines.length; i ++)
-                        {
-                            concelhos.push(lines[i]);
-                        }
-                    }
-                }
-            }
-            rawFile.send(null);
-
-            return concelhos;
-        }
-    });
-</script>
+<script type="text/javascript">var item = '<?=lang("sconcelho")?>'</script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/contactos.js"></script>

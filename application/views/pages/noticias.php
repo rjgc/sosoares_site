@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/noticias.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -17,11 +18,11 @@
     </div>
     <div class="noticias">
         <ul>
-         <?php foreach($noticias as $noticia) { ?>
-         <li>
+           <?php foreach($noticias as $noticia) { ?>
+           <li>
             <div class="row">
-            <div class="col-md-3">
-                    <img src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>" style="border-radius: 10px;" width="230" height="160">
+                <div class="col-md-3">
+                    <img class="noticias-img" src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>">
                 </div>
                 <div class="col-md-9">
                     <h3><?php echo $noticia['titulo_'.$this->lang->lang()] ?></h3>

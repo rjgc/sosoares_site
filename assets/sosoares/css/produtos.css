@@ -1,0 +1,21 @@
+.titulo {padding-left: 15px;}
+.sem-produto {margin: 2px 0 2px 10px;}
+.carossel {max-height: 400px;}
+.thumb {padding: 20px 0px 10px 15px !important;}
+.thumb-img {width: 80px; height: 80px;}
+.share {padding-left: 30px;}
+.resultados {margin-bottom: 50px;}
+.info {margin-left: 15px;}
+.cortes {width: 100%;}
+.cortes ul li:first-child {margin: 0;float: left;display: block;}
+.cortes ul li {margin: 0 0 0 15px; float: left;display: block;}
+.corte {width: 180px;margin:2px 0 2px 0;}
+.downloads {width: 100%;}
+.downloads-titulo:first-child {margin: 0;float: left;display: block;}
+.downloads-titulo {margin: 0 0 0 40px;float: left;display: block;}
+.downloads ul li ul li {list-style-type: none;}
+.downloads ul li ul li span {padding-right: 5px;}
+.obras {padding-left: 32px!important;}
+.obras-titulo {margin-bottom: 30px}
+.obras-indicadores {margin-bottom: -60px}
+.obras-img {width:150px; height: 150px;}
