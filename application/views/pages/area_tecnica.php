@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/area-tecnica.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -10,8 +11,7 @@
             <h1 class="title3"><?php echo $area_tecnica['titulo_'.$this->lang->lang()]?></h1>
         </div>
     </div>
-
-    <div style="margin-bottom: 10px; padding-left: 15px;"><?php echo $area_tecnica['texto_'.$this->lang->lang()]?></div>
+    <div class="texto"><?php echo $area_tecnica['texto_'.$this->lang->lang()]?></div>
     <?php } else { ?>
 </ul>
 </div>

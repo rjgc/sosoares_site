@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/component.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/styles_fonts.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/generic-styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/share_links.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/header.css">
     <?php if(isset($page_style)) {
         switch($page_style) {
             case "vidro": ?>
@@ -98,14 +98,14 @@
                                 <h4 class="modal-title">Login</h4>
                             </div>
                             <form method="post" role="form" id="form1">
-                                <div class="modal-body" id="form" style="padding: 0 20px 20px 20px !important;">
+                                <div class="modal-body login" id="form">
                                     <div id="jq_msg"></div>
                                     <p></p>
                                     <label>Username:</label>
-                                    <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
+                                    <input class="form-control input" type="text" id="username" name="username" placeholder="Username" value="<?php echo (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''); ?>">
                                     <p></p>
                                     <label>Password:</label>
-                                    <input style="padding: 0 0 0 10px !important; border: 1px solid #107ca4;" class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                                    <input class="form-control input" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
                                     <p></p>
                                     <a href="<?=site_url('caixilharia/registar')?>"><?=lang('registar')?></a>
                                     <p></p>
@@ -148,21 +148,4 @@
         <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/Dable.js"></script>
-        <?php if (strpos($_SERVER['REQUEST_URI'], 'pt')) {
-            echo "<script>$('#lang-2').addClass('inactive'); 
-            $('#lang-3').addClass('inactive'); 
-            $('#lang-4').addClass('inactive');</script>";
-        } else if (strpos($_SERVER['REQUEST_URI'], 'en')) {
-            echo "<script>$('#lang-1').addClass('inactive'); 
-            $('#lang-3').addClass('inactive'); 
-            $('#lang-4').addClass('inactive');</script>";
-        } else if (strpos($_SERVER['REQUEST_URI'], 'fr')) {
-            echo "<script>$('#lang-1').addClass('inactive');
-            $('#lang-2').addClass('inactive');                  
-            $('#lang-4').addClass('inactive');</script>";
-        } else if (strpos($_SERVER['REQUEST_URI'], 'es')) {
-            echo "<script>$('#lang-1').addClass('inactive'); 
-            $('#lang-2').addClass('inactive'); 
-            $('#lang-3').addClass('inactive');</script>";
-        } ?>
+        <?php require_once('assets/sosoares/php/header.php'); ?>

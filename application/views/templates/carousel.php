@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/carousel.css">
 <?php if (!empty($banners)) { ?>
 <div id="myCarousel_" class="carousel carousel2 slide" data-ride="carousel">
     <div class="carousel-inner carousel-inner-banner">
@@ -34,7 +35,7 @@
         <?php } $i++;
     } ?>
 </div>
-<div style="position: absolute; padding-top: 59px; left:0px; right:0px;">
+<div class="carossel">
     <ol class="carousel-indicators">
         <?php for ($i=0; $i < count($banners); $i++) {
             if ($i == 0) { ?>

@@ -445,6 +445,13 @@ public function send_candidatura()
             $this->email->to($this->sosoares_model->get_destinatario(2));
             $this->email->subject('Candidatura');
             $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
+
+            // Run some setup
+            $this->email->initialize($config);
+            $this->email->from($this->sosoares_model->get_destinatario(2));
+            $this->email->to(set_value("email"));
+            $this->email->subject('Candidatura');
+            $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>Nome: '.set_value("nome").'<br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Apresentação: '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
             
             // Debug Email
             if (!$this->email->send()) {
@@ -736,6 +743,13 @@ public function send_contactos()
         $this->email->to($this->sosoares_model->get_destinatario(1));
         $this->email->subject(set_value("assunto"));
         $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+
+        // Run some setup
+        $this->email->initialize($config);
+        $this->email->from($this->sosoares_model->get_destinatario(1));
+        $this->email->to(set_value("email"));
+        $this->email->subject('Contactos');
+        $this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
         // Debug Email
         if (!$this->email->send()) {

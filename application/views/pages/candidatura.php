@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/candidatura.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -18,7 +19,7 @@
         </div>
     </div>
     <?php if (!empty($message)) ?> 
-    <p style="padding-left: 18px;"><?php echo $message; ?></p>  
+    <p class="mensagem"><?php echo $message; ?></p>  
     <?php $this->load->helper('form'); ?>
     <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         $url = $this->lang->lang().'/caixilharia/send_candidatura';
@@ -30,7 +31,7 @@
         $url = $this->lang->lang().'/tratamento/send_candidatura';
     } echo form_open_multipart($url)?>
     <div class="row candidaturas">
-        <div class="col-md-8" style="padding-left: 30px;">
+        <div class="col-md-8 candidatura">
             <form method="get">
                 <fieldset>
                     <legend><?=lang('dados')?></legend>
@@ -65,15 +66,15 @@
                         </div>
                     </div>
                     <br>
-                    <div class="form-group" style="margin-top: -13px;">
+                    <div class="form-group apresentacao">
                         <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:*</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
                         </div>
                     </div>
                     <div class="row">
-                        <span style="display: inline-block; padding-left: 30px;">* <?=lang('obrigatorio')?></span>
-                        <div style="float: right;margin: 15px 30px">
+                        <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
+                        <div class="botoes">
                             <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
                             <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
                         </div>

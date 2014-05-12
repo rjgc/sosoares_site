@@ -187,3 +187,4 @@
 <?php } ?>
 <script src="<?php echo base_url() ?>/assets/sosoares/js/jquery.colorbox.js"></script>
 <script src="<?php echo base_url() ?>/assets/sosoares/js/slideshow.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/carossel.js"></script>

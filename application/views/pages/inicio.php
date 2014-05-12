@@ -59,3 +59,4 @@
 </div>
 <?php require_once('assets/sosoares/php/inicio.php'); ?>
 <script src="<?php echo base_url() ?>assets/sosoares/js/inicio.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/banner.js"></script>

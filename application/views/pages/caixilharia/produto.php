@@ -1,5 +1,6 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/produtos.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/share_links.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -337,8 +338,9 @@ if ($cortes || $downloads) { ?>
         </section>
         <?php } ?>
         <?php } ?>
-        <script type="text/javascript">
-            function erro() {
-                alert('Acesso Restrito! Tem de fazer login.');
-            }
-        </script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/carossel.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/facebook.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/twitter.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/google.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/tabs.js"></script>
+        <script src="<?php echo base_url() ?>assets/sosoares/js/erro.js"></script>
