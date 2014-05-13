@@ -191,6 +191,7 @@ if ($cortes || $downloads) { ?>
 <?php } ?>
 </main>
 <script src="<?php echo base_url() ?>assets/sosoares/js/carossel.js"></script>
+<div id="fb-root"></div>
 <script src="<?php echo base_url() ?>assets/sosoares/js/facebook.js"></script>
 <script src="<?php echo base_url() ?>assets/sosoares/js/twitter.js"></script>
 <script src="<?php echo base_url() ?>assets/sosoares/js/google.js"></script>

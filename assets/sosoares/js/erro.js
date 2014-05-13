@@ -1,5 +1,3 @@
-$( document ).ready(function() {
-	function erro() {
-		alert('Acesso Restrito! Tem de fazer login.');
-	}
-});
+function erro() {
+	alert('Acesso Restrito! Tem de fazer login.');
+}

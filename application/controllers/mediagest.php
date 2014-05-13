@@ -148,6 +148,33 @@ function change_order()
 }
 
 
+//USERS
+
+function users_management()
+{
+    $crud = new grocery_CRUD();
+
+    $crud->unset_delete();
+    $crud->unset_add();
+
+    $crud->set_table('user_profiles');
+    $crud->set_subject('User Profile');
+    $crud->columns('user_profile_name', 'user_profile_surname', 'user_profile_email', 'user_profile_user_status_code');
+    $crud->display_as('user_profile_name', 'Nome')->display_as('user_profile_surname', 'Apelido')->display_as('user_profile_email', 'Email')->display_as('user_profile_user_status_code', 'Estado');
+
+    $crud->fields('user_profile_name', 'user_profile_surname', 'user_profile_email', 'user_profile_user_status_code');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Utilizadores';
+    $data['sub-titulo'] = 'Faça aqui a gestão dos Utilizadores';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
+
 //DEFINICOES
 
 //IMAGEM DE FUNDO

@@ -32,6 +32,9 @@
 	</div>
 	<nav>
         <ul>
+            <li <?php if ($data['titulo'] == 'Users') echo 'class="section"'; ?>>
+                <a href='<?php echo site_url("mediagest/users_management")?>'><span class="icon">&#59176;</span> Utilizadores</a>
+            </li>
             <li <?php if ($data['titulo'] == 'Imagem de Fundo' ||
                 $data['titulo'] == 'Banners' ||
                 $data['titulo'] == 'Newsletter' ||
