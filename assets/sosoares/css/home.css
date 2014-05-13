@@ -134,8 +134,8 @@ main {position: absolute;top: 35%!important;right: 0;left: 0;}
 
     footer {height: 120px;}
     footer .rights, footer .telefone, footer .email {display: block!important;width: 350px;text-align: center;padding-left: 15px;}
-    footer .telefone, footer .email {padding-left: 7%;}
-    footer .areaReservada {top: 70px;right: 35px;}
+    footer .telefone, footer .email {padding-left: 0%;}
+    footer .areaReservada {top: 70px;right: 20px;}
     footer .imgSistemas {top: 15px;right: 10px;}
     .row {margin: 0;}
 
@@ -159,15 +159,14 @@ main {position: absolute;top: 35%!important;right: 0;left: 0;}
 
 @media screen and (max-width: 550px){
     footer > .container > .row {height: 100%;}
-    footer > .container > .row > div.rights {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 0;
-    }
+    footer > .container > .row > div.rights {display: block;padding: 0;}
     footer > .container > .row > div.imgSistemas {display: none;}
-    footer > .container > .row > div.telefone, footer > .container > .row > div.email {display: block;width: 50%;}
-    footer .areaReservada {top: 55px;right: 25px;}
+    .icon-sosoares {display: none;}
+    footer > .container > .row > div.telefone, footer > .container > .row > div.email {display: block;}
+    footer .areaReservada {top: 44px;right: 25px;}
+    footer .container .row div .h4, footer .container .row div .p {display: block;}
+    footer .container {padding-top: 14px;}
+    footer .rights, footer .telefone, footer .email {width: 250px;}
 }
 
 @media screen and (max-height: 600px) {
@@ -198,6 +197,12 @@ main {position: absolute;top: 35%!important;right: 0;left: 0;}
     .box {width: 140px;height: 145px;}
     .h3 {font-size: 13px;}
     .icon-sosoares {font-size: 20px!important;}
+}
+
+@media screen and (max-width: 410px){
+    #bd {width: 185px;margin:0 auto;display: block;position: relative;padding-left: 10px;}
+    .logotipo {width: 175px;margin:0 auto;display: block;}
+    footer .rights, footer .telefone, footer .email {width: 200px;}
 }
 
 @media screen and (max-width: 390px){
