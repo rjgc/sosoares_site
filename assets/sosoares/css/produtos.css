@@ -19,3 +19,21 @@
 .obras-titulo {margin-bottom: 30px}
 .obras-indicadores {margin-bottom: -60px}
 .obras-img {width:150px; height: 150px;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media (max-width: 1250px) {
+	.info {width: 98.2%;}
+}
+
+@media (max-width: 1010px) {
+	.col-md-5 {width: 60%;}
+	.col-md-3 {width: 100%;}
+	.resultados {float: right;width: calc(100% - 41%);}
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 808px) {
+	.info {width: 97.2%;}
+}

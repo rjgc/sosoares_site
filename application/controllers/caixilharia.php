@@ -90,7 +90,7 @@ public function registado()
         $data['current'] = 'registado';
         $this->menu($data);
 
-        $data['registado'] = $this->sosoares_model->get_page(18);
+        $data['page'] = $this->sosoares_model->get_page(18);
 
         $this->load->view('pages/confirmacao', $data);
         $this->load->view('templates/footer');
@@ -136,7 +136,7 @@ public function alterada()
         $data['current'] = 'alterada';
         $this->menu($data);
 
-        $data['registado'] = $this->sosoares_model->get_page(19);
+        $data['page'] = $this->sosoares_model->get_page(19);
 
         $this->load->view('pages/confirmacao', $data);
         $this->load->view('templates/footer');

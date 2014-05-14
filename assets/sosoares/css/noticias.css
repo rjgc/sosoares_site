@@ -1,3 +1,57 @@
+.noticias {padding-left: 16px;}
+.noticias ul {list-style: none;}
+.noticias ul li {max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
+.noticias ul li:last-child {border: 0;}
+.noticias ul li h3 {color: #107ca4;font-size: 18px;margin: 0 0 2px;}
+.noticias ul li .date {font-size: 11px;color: #717171;}
+.noticias ul li .news-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 30px;     /* fallback */
+	max-height: 60px;      /* fallback */
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+	padding-right: 100px;
+}
+
 .noticias-img {border-radius: 10px; width: 230px; height: 160px;}
 .titulo {padding-left: 15px;}
 .noticia-img {border-radius: 10px; width: 300px; height: 200px;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 1080px) {
+	.noticias ul li .row {overflow: hidden;}
+	.noticias ul li .row .col-md-3 {width: 260px; margin-right: 5px;display: inline-block;vertical-align: top;}
+	.noticias ul li .row .col-md-9 {width: 64%;display: inline-block;vertical-align: top;}
+	.noticias ul li .news-text {padding: 0;}
+}
+
+@media screen and (max-width: 768px) {
+	.noticias ul li .row {height: 135px;}
+	.noticias ul li .row .col-md-3 {display: inline;margin-bottom: 5px;}
+	.noticias ul li .row .col-md-3 img {width: 190px;height: 130px;}
+	.noticias ul li h3 {white-space: nowrap;overflow: hidden}
+}
+
+@media screen and (max-width: 635px) {
+	.noticias ul li {max-height: 100%;}
+	.noticias ul li .row {height: 270px;}
+	.noticias ul li .row .col-md-3 {display: inherit;margin-bottom: 5px;}
+	.noticias ul li .row .col-md-3 img {width: 100%;}
+	.noticias ul li .row .col-md-9 {width: 100%;}
+	.noticias ul li h3 {white-space: nowrap;overflow: hidden}
+}
+
+@media screen and (max-width: 580px) {
+	.noticias ul li .row {height: 145px;}
+	.noticias ul li .row > .col-md-3 {display: none;}
+	.noticias ul li .row > .col-md-9 {margin: 0}
+	.noticias ul li {max-height: 200px;}
+	.noticias ul li .row > .col-md-9 a {float: left;margin: 10px 10px 0 0;}
+	.noticias ul li h3 {width: 100%;white-space: normal;overflow: visible}
+}
+
+@media screen and (max-width: 370px) {
+	.noticias ul li .row {height: 160px;}
+}

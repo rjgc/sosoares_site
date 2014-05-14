@@ -36,7 +36,7 @@
                         echo site_url('extrusao/noticia/'.$noticia['id_noticia']);
                     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                         echo site_url('tratamento/noticia/'.$noticia['id_noticia']);
-                    } ?>"><button class="btn button shrink"><?=lang('ler')?></button></a>
+                    } ?>"><button class="btn button grow"><?=lang('ler')?></button></a>
                 </div>
             </div>
         </li>
@@ -44,3 +44,4 @@
     </ul>
 </div>
 </div>
+<script src="<?php echo base_url() ?>assets/sosoares/js/noticias.js"></script>

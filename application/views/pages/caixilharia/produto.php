@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 hidden-sm hidden-xs thumb" id="slider-thumbs">
+            <div class="col-md-12 thumb" id="slider-thumbs">
                 <ul class="list-inline">
                     <?php 
                     $i=1;
@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" id="descricao">
         <div class="descricao">
             <h3 class="title4"><?=lang('descricao')?></h3>
             <div>

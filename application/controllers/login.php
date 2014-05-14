@@ -386,12 +386,15 @@ class Login extends CI_Controller {
 			$this->email->subject('Registo');
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
+			$this->email->send();
+			
 			// Run some setup
 			$this->email->initialize($config);
 			$this->email->from($this->sosoares_model->get_destinatario(1));
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
 			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+    		
     		// Debug Email
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();

@@ -74,7 +74,7 @@
                 <div class="form">
                     <form>
                         <input type="search" class="form-control" id="search" name="search" placeholder="<?=lang('pesquisar')?>" />
-                        <button id="searchButton" class="btn btn-default"><i class="icon-search"></i></button>
+                        <button id="searchButton" class="btn btn-default grow"><i class="icon-search"></i></button>
                     </form>
                 </div>
                 <div id="bd">

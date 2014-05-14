@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 noticia">
-                    <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive" style="width:200px; height: 133px; border-radius: 10px">
+                    <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive">
                 </div>
                 <div class="col-md-7">
                     <p><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>

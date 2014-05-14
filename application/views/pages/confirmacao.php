@@ -21,7 +21,6 @@
                 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                     echo site_url('tratamento/home');
                 } ?>"><? echo $page['titulo_'.$this->lang->lang()]?></a></li>
-                <?php if (!empty($page)) { ?>
                 <li><?php echo $page['titulo_'.$this->lang->lang()]?></li>
             </ul>
             <h1 class="title3"><?php echo $page['titulo_'.$this->lang->lang()]?></h1>

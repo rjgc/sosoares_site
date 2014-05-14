@@ -52,7 +52,7 @@ body {
     min-width: 320px;
 }
 a:hover {text-decoration: none}
-p {line-height: 1.8;}
+p {line-height: 1.8;margin: 0;}
 
 header {width: 100%;height: 100px;background-color: #054568;padding: 15px;}
 header .container .row {position: relative;min-height: 65px;}
@@ -69,6 +69,7 @@ header .container .row {position: relative;min-height: 65px;}
     margin: 0 4px;
 }
 .pages-img img {margin: 5px 0 0 15px;}
+.pages-img a:hover {-webkit-transform: scale(1.1);-ms-transform: scale(1.1);transform: scale(1.1);}
 
 .font {font-size: 320%;color: #fff;}
 .font-active {color: #01aef0!important;border-color: #01aef0!important;}
@@ -288,29 +289,6 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 .container {margin: 0 auto  25px}
 .divider {border: 0;margin: -10px 0 40px;}
 
-/* ============================== NOTICIAS =================================== */
-.noticias {padding-left: 16px;}
-.noticias ul {list-style: none;}
-.noticias ul li {max-height: 220px;overflow: hidden;border-bottom: 1px solid #ccc;padding: 25px 0;}
-.noticias ul li:last-child {border: 0;}
-.noticias ul li h3 {color: #107ca4;font-size: 18px;margin: 0 0 2px;}
-.noticias ul li .date {font-size: 11px;color: #717171;}
-.noticias ul li .news-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-height: 30px;     /* fallback */
-    max-height: 60px;      /* fallback */
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-    padding-right: 100px;
-}
-.noticia {margin: 0 0 30px;padding-left: 0;}
-.noticia h3 {color: #107ca4;font-size: 26px;margin: 0 0 2px;}
-.noticia .date {font-size: 11px;color: #717171;}
-.noticia .news-text {padding-left: 25px;line-height: 25px;text-indent: 20px;}
-.data-noticia {width: 27.6%;}
-
 /* ============ BOOTSTRAP ACORDION ====================== */
 .panel-group {width: 100%;}
 .panel-group .panel {border-radius: 10px;}
@@ -330,23 +308,14 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .logotipo {margin-left: 15px;}
     .pages-img {left: 200px;}
     .form, #bd, #signIn {right: 10px;}
-
     .carousel-caption li .slider-h1 {font-size: 25px;max-width: 500px;}
-    .col-md-4 .title1 {margin: 20px 0 10px;}
     .carousel-caption {width: 80%;}
     .img-responsive {max-width: none;}
 }
 
-@media screen and (max-width: 1220px) {
-    .title1 {margin: 20px 0 10px;}
-}
-
 @media screen and (max-width: 1217px) {
     .row {margin-right: 0;}
-    .title1 {margin: 20px 10px 10px;}
     .title2 {padding-left: 26px;}
-    .noticia {padding-left: 10px;}
-    .data-noticia {width: 29.8%;}
 }
 
 @media screen and (max-width: 1184px) {
@@ -355,7 +324,6 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .obras-list img {position: relative;}
     div.obras-container {text-align: center;}
     #date {text-align: left;}
-    .data-noticia {margin-left: -5px;}
 }
 
 @media screen and (max-width: 1070px) {
@@ -366,7 +334,7 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     header .pages-img img {display: none;}
 }
 
-@media screen and (max-width: 995px) {
+@media screen and (max-width: 1010px) {
     header .pages-img img {display: none;}
     section > .container > .row .col-md-8 {display: inline-block;width: 60%;vertical-align: top;}
     section > .container > .row .col-md-4 {display: inline-block;width: 40%;vertical-align: top;}
@@ -378,10 +346,6 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .navbar-nav > li > a {font-size: 14px;padding: 15px 10px;}
 
     .title2 {padding-left: 0;margin-bottom: 0;}
-    .noticias ul li .row {max-height: 190px;overflow: hidden;}
-    .noticias ul li .row .col-md-3 {width: 260px; margin-right: 5px;display: inline-block;vertical-align: top;}
-    .noticias ul li .row .col-md-9 {width: 64%;display: inline-block;vertical-align: top;}
-    .noticias ul li .news-text {padding: 0;}
 
     .portfolio .col-md-12.thumbs {max-width: 770px;}
     .related #center {margin: 80px auto 0;}
@@ -394,8 +358,7 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 
 @media screen and (max-width: 992px) {
     .title2 {margin-top: 0;margin-left: -5px;}
-    .noticia {margin: 0;}
-    .col-md-7 > p, button {margin-left: -5px;}
+    .col-md-7 > p,.col-md-7 > button {margin-left: -5px;}
 
     section > .container > .row .col-md-4 {width: 39%;}
     #date {margin-top: 0;}
@@ -466,13 +429,6 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .candidaturas form .row div, .contactos form .row div {margin: 0 15px!important;}
     .contactos form:last-child legend {padding-top: 50px}
 
-    .noticias ul li {max-height: 280px;}
-    .noticias ul li .row {max-height: 250px;height: 250px;}
-    .noticias ul li .row .col-md-3 {width: 100%;margin-bottom: 5px;}
-    .noticias ul li .row .col-md-3 img {float: right;width: 190px;height: 130px;}
-    .noticias ul li .row .col-md-9 {width: 100%;margin-top: -50px;}
-    .noticias ul li h3 {width: 340px;white-space: nowrap;overflow: hidden}
-
     .portfolio .carousel {max-height: 320px;}
     .related .container #center .carousel.slide .row .col-md-2 {top: 0;}
     .related .carousel-inner .active {max-width: 580px;}
@@ -486,16 +442,11 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 @media screen and (max-width: 580px) {
     header .row .form {bottom:-50px;}
     .carousel-indicators {text-align: right;}
-    .noticias ul li .row > .col-md-3 {display: none;}
-    .noticias ul li .row > .col-md-9 {margin: 0}
-    .noticias ul li {max-height: 200px;}
-    .noticias ul li .row > .col-md-9 a {float: right;margin: 10px 10px 0 0;}
-    .noticias ul li h3 {width: 100%;white-space: normal;overflow: visible}
     .contactus .row .col-md-6 .row .col-md-6 {width: 100%;display: block;text-align: center}
 
     section > .container > .row .col-md-8 {width: 100%}
     section > .container > .row .col-md-4 {width: 80%}
-    .col-md-4 .title1,.col-md-4 p,.col-md-4 form,.col-md-4 button {margin: 0 10px 10px;}
+    .col-md-4 p,.col-md-4 form,.col-md-4 button {margin: 0 10px 10px;}
 }
 
 @media screen and (max-width: 490px) {
@@ -516,6 +467,10 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 }
 
 @media screen and (max-width: 360px) {
-    header #signIn {top: 153px;left: 0;padding-left: 15px;}
+    header #signIn {width: 150px;top: 153px;left: 0;padding-left: 15px;}
     #bd img {margin: 0 0 0 5px;}
+}
+
+@media screen and (max-width: 335px) {
+    .breadcrumb {font-size: 90%}
 }
