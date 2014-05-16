@@ -253,10 +253,10 @@ if ($cortes || $downloads) { ?>
         <div id="center">
             <div id="myCarousel2" class="carousel slide">
                 <div class="row">
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                         <h3 class="title1 obras-titulo"><?=lang('obras')?></h3>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <ol class="carousel-indicators obras-indicadores">
                             <?php $i=0;
                             $div = 1;

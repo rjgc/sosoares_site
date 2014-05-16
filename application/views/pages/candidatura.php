@@ -72,7 +72,7 @@
                             <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="row">
                         <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
                         <div class="botoes">
                             <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">

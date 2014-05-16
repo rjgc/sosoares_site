@@ -17,9 +17,12 @@
             <h1 class="title3"><?php echo $page['titulo_'.$this->lang->lang()]?></h1>
         </div>
     </div>
-    <div class="texto"><?php echo $page['texto_'.$this->lang->lang()]?></div>
-    <?php } else { ?>
-</ul>
+    <div class="row texto">
+        <div class="col-md-12">
+            <div class="texto"><?php echo $page['texto_'.$this->lang->lang()]?></div>
+        </div>
+        <?php } else { ?>
+    </ul>
 </div>
 </div>
 <div class="alerta">
@@ -34,4 +37,5 @@
     </div>
 </div>
 <?php } ?>
+</div>
 </div>

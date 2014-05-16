@@ -23,7 +23,11 @@
             <h1 class="title3"><?php echo $servico['nome_'.$this->lang->lang()]?></h1>
         </div>
     </div>
-    <div class="descricao"><?php echo $servico['descricao_'.$this->lang->lang()]?></div>
+    <div class="row texto">
+        <div class="col-md-12">
+            <div class="descricao"><?php echo $servico['descricao_'.$this->lang->lang()]?></div>
+        </div>
+    </div>
     <?php } else { ?>
 </ul>
 </div>
@@ -38,4 +42,5 @@
     } ?>">Voltar atrás.</a></h5>
 </div>
 <?php } ?>
+</div>
 </div>

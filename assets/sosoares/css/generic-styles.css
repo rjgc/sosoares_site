@@ -77,7 +77,7 @@ header .container .row {position: relative;min-height: 65px;}
 
 .form {width: 175px;display: inline-block;position: absolute;top: 37px;right: 0;}
 .form #search, .form #searchButton {background-color: transparent;display: inline-block;height: 34px;width: 100%;padding: 10px;color: #fff;border-radius: 5px;border: 1px solid #107ca4;}
-.form #searchButton {height: 31px;width: 31px;border: 0;font-size: 18px;padding: 5px;margin: 0;position: absolute;top: 2px;right: 2px;color: #03a1dc;}
+.form #searchButton {height: 31px;width: 31px;border: 0;font-size: 18px;padding: 4px;margin: 0;position: absolute;top: 2px;right: 2px;color: #03a1dc;}
 .form #search::-webkit-input-placeholder {color: #00aeef;}
 
 .button {background-color: #107ca4;box-shadow: 0 3px 0 #05698e;color: #fff;border: 0;font-size: 16px;width: 125px;height: 31px;}
@@ -203,7 +203,6 @@ nav, .navbar-nav > li:hover, .navbar-default .navbar-nav > .open > a, .navbar-de
 .carousel-indicators .active {background-color: #969696;}
 .carousel-control {border-radius: 10px;width: 65px;height: 65px;display: inline-block;}
 
-
 /*============================== SLIDER PRODUTOS / OBRAS =======================================*/
 /* PRODUTOS */
 .control-try3 {bottom: auto;top: 45% !important;background-image: none !important;font-size: 40px !important;}
@@ -252,7 +251,7 @@ div.obras-container a {width: 256px;height: 230px;display:inline-block;float: le
     position: absolute;
     z-index: 9;
     font-size: 18px;
-    bottom: -10px;
+    bottom: 0;
     left: 0px;
     width: 100%;
     color: #fff !important;
@@ -295,12 +294,9 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 .panel.panel-default {margin: 0 0 15px;}
 .panel-default > .panel-heading {background-color: #107ca4;border-radius: 10px 10px 0 0;color: #fff;}
 
-
 /* ============ ACCOUNT PAGE ====================== */
-
 .account div b {display: inline-block;min-width: 20%;}
 .account .col-md-8 div {min-height: 30px;margin: 0 0 5px;}
-
 
 /*============================== MEDIA QUERIES ===================================*/
 @media (max-width: 1240px) {
@@ -326,15 +322,15 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     #date {text-align: left;}
 }
 
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 1100px) {
     header .pages-img img {height: 45px;}
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1060px) {
     header .pages-img img {display: none;}
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 1030px) {
     header .pages-img img {display: none;}
     section > .container > .row .col-md-8 {display: inline-block;width: 60%;vertical-align: top;}
     section > .container > .row .col-md-4 {display: inline-block;width: 40%;vertical-align: top;}
@@ -364,20 +360,20 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     #date {margin-top: 0;}
 }
 
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 850px) {
     .navbar-nav > li > a {font-size: 14px;padding: 15px 5px;}
 
     .carousel-caption {width: 80%;}
     .carousel-caption li .slider-h1 {max-width: 380px;}
 
-    .related {height: 550px;overflow: hidden;}
-    .related .carousel-inner {height: 500px; text-align: center;}
+    .related {overflow: hidden;}
+    .related .carousel-inner {height: 500px;}
     .related .carousel-inner .item .row .col-sm-2 {
         display: inline-block;
         margin-bottom: 25px;
-        width: 33%;
+        width: 43%;
         height: 150px;
-        text-align: center;
+        text-align: left;
         position: relative;
     }
     .related .carousel-inner .item .row .col-sm-2 a {display: inline-block;}
@@ -385,37 +381,20 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .related .carousel-inner .active {max-width: 600px;margin: 0 auto;display: inline-block;}
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 780px) {
     header {height: 140px;}
     header .row .pages-img {top: 50px;left: 10px;}
     header #signIn {top: 81px;}
-    .navbar-nav > li > a {font-size: 16px;padding: 15px 5px;}
-
-    .carousel-caption {width: 80%;}
-    .carousel-caption li .slider-h1 {max-width: 380px;}
-
-    .related {height: 550px;overflow: hidden;}
-    .related .carousel-inner {height: 500px; text-align: center;}
-    .related .carousel-inner .item .row .col-sm-2 {
-        display: inline-block;
-        margin-bottom: 25px;
-        width: 33%;
-        height: 150px;
-        text-align: center;
-        position: relative;
-    }
-    .related .carousel-inner .item .row .col-sm-2 a {display: inline-block;}
-    .related .carousel.slide .controls {margin-top: 193px;}
-    .related .carousel-inner .active {max-width: 600px;margin: 0 auto;display: inline-block;}
+    .navbar-nav {max-width: 100%;margin: 0 15px;}
+    .navbar-nav > li > a {font-size: 16px;}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
     .navbar-collapse.in {overflow-y: inherit;}
     .content, .input, #contacts {width: 100% !important;}
     .nav > li {background-color: #016285;}
     .yamm .dropdown.yamm-fw .dropdown-menu {display: none;}
     .carousel-caption {display: none;}
-    .navbar-nav {max-width: 100%;margin: 7.5px 0;}
 
     footer > .container > .row .col-md-9 {width: 100%;text-align: center;}
     footer > .container > .row:first-child > .col-md-3 {display: none;}
@@ -432,7 +411,7 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
     .portfolio .carousel {max-height: 320px;}
     .related .container #center .carousel.slide .row .col-md-2 {top: 0;}
     .related .carousel-inner .active {max-width: 580px;}
-    .related .carousel-inner .item .row .col-sm-2 {width: 28%;}
+    .carousel-indicators {bottom: 10px;}
 }
 
 @media screen and (max-width: 600px) {

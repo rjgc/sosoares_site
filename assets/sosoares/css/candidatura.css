@@ -3,3 +3,30 @@
 .apresentacao {margin-top: -13px;}
 .obrigatorio {display: inline-block; padding-left: 30px;}
 .botoes {float: right;margin: 15px 30px;}
+.botoes input {margin-left: 10px;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 1120px) {
+	.col-sm-10 input, .col-sm-10 textarea {margin-left: 5%;}
+}
+
+@media screen and (max-width: 992px) {
+	.candidatura {width: 80%;}
+}
+
+@media screen and (max-width: 767px) {
+	.col-sm-10 input, .col-sm-10 textarea {margin-left: 0%;}
+	#row {padding-top: 80px;}
+}
+
+@media screen and (max-width: 600px) {
+	.candidatura {width: 100%;}
+}
+
+@media screen and (max-width: 365px) {
+	.botoes {margin: 15px 16px;}
+}
+
+@media screen and (max-width: 365px) {
+	.botoes input {width: 120px;}
+}

@@ -76,7 +76,7 @@
     <button class="btn button grow" style="background: url('<?= base_url() ?>assets/sosoares/img/slideshow_mode.png') #107ca4 no-repeat 15px center;"><?=lang('modo')?> Slideshow</button>
 </a>
 <div class="galeria">
-    <?php foreach ($galeria_obra as $gobra){ ?>
+    <?php foreach ($galeria_obra as $gobra) { ?>
     <p><a class="slideshow" href="<?php echo base_url();?>assets/uploads/obras/<?php echo $gobra['url'];?>" title="<?=$obra['nome_'.$this->lang->lang()]?>">Slideshow Foto</a></p>
     <?php } ?>
 </div>

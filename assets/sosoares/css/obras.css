@@ -7,4 +7,9 @@
 .descricao {margin-bottom: 25px;}
 .produtos {padding-left: 32px;}
 .produtos-titulo {margin-bottom: 30px;}
-.carossel-indicadores {margin-bottom: -60px;}
+.carossel-indicadores {margin-bottom: -58px;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 992px) {
+	.descricao {padding-left: 18px;}
+}

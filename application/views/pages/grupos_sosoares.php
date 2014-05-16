@@ -51,7 +51,7 @@
                 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                     echo site_url('tratamento/areas_comerciais');
                 }?>"><div class="obras-list grow">
-                <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
+                <img src="<?php echo base_url() ?>assets/uploads/grupo_sosoares/ic_ss_web-areas.jpg"/>
                 <p><?=lang('comerciais')?></p>
             </div>
         </a>
@@ -64,7 +64,7 @@
         } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
             echo site_url('tratamento/noticias');
         }?>"><div class="obras-list grow">
-        <img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
+        <img src="<?php echo base_url() ?>assets/uploads/grupo_sosoares/ic_ss_web-noticias.jpg"/>
         <p><?=lang('noticias')?></p>
     </div>
 </a>
@@ -77,7 +77,7 @@
 } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
     echo site_url('tratamento/candidaturas');
 }?>"><div class="obras-list grow">
-<img src="<?php echo base_url() ?>assets/sosoares/img/logotipo.png"/>
+<img src="<?php echo base_url() ?>assets/uploads/grupo_sosoares/ic_ss_web-candidaturas.jpg"/>
 <p><?=lang('candidaturas')?></p>
 </div>
 </a>
