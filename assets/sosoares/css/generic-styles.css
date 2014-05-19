@@ -390,6 +390,8 @@ legend {font-size: 24px;padding: 15px 0 20px;font-weight: 500;}
 }
 
 @media screen and (max-width: 769px) {
+    .navbar-default {height: 100%;}
+    .navbar-nav {margin: 0;}
     .navbar-collapse.in {overflow-y: inherit;}
     .content, .input, #contacts {width: 100% !important;}
     .nav > li {background-color: #016285;}

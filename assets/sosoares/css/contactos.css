@@ -1,3 +1,28 @@
 .dados {padding: 0!important;}
 .obrigatorio {display: inline-block; padding-left: 15px;}
-.botoes {float: right;margin: 15px 30px;}
+#row .col-md-12 {width: 97.5%;}
+.botoes {float: right;margin-top: 20px;}
+.botoes input {margin-left: 10px!important;}
+.contactus .row form div.col-md-6 {padding-top: 10px;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 1217px) {
+	#row .col-md-12 {width: 100%;}
+}
+
+@media screen and (max-width: 992px) {
+	.contactus .row form div.col-md-6 {width: 65%;}
+}
+
+@media screen and (max-width: 767px) {
+	.contactus > .row > form label {padding: 0 15px 0 15px;}
+}
+
+@media screen and (max-width: 518px) {
+	.contactus .row form div.col-md-6 {width: 80%;}
+	.botoes input {width: 120px;}
+}
+
+@media screen and (max-width: 450px) {
+	.contactus .row form div.col-md-6 {width: 100%;}
+}

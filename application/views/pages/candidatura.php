@@ -73,10 +73,12 @@
                         </div>
                     </div>
                     <div class="row" id="row">
-                        <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
-                        <div class="botoes">
-                            <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
-                            <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
+                        <div class="col-md-12">
+                            <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
+                            <div class="botoes">
+                                <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
+                                <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
+                            </div>
                         </div>
                     </div>
                 </fieldset>

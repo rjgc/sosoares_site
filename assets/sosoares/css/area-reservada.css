@@ -19,7 +19,21 @@
 .tabs-right > .nav-tabs .active > a:focus {background: #107ca4;}
 
 .alerta {padding-left: 15px;}
-.botao {float: right;}
+.botao {margin: 20px 0 0 0;float: right;}
 .botao a {color: #fff!important;}
 .dados {width: 89.5%; padding-left: 15px;}
 .tabela {width: 100%;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 1217px) {
+	.botao {margin: 20px 4px 0 0;}
+}
+
+@media screen and (max-width: 810px) {
+	.botao {margin: 20px 4px 0 0;}
+	.dados {width: 100%;}
+}
+
+@media screen and (max-width: 769px) {
+	.nav > li {background-color: transparent;}
+}

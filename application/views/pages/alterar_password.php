@@ -19,18 +19,22 @@
             <div class="mensagem" id="jq_msg2"></div>
         </div>
     </div>
-    <form method="post" role="form" id="form4">
-        <div class="texto">
-            <P>Insira a sua nova password.</P>
-            <label>Password:</label>
-            <input class="form-control input caixa-texto" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
-            <p></p>
-            <label><?=lang('confirmar')?>:</label>
-            <input class="form-control input caixa-texto" type="password" id="confirmar" name="confirmar" placeholder="<?=lang('confirmar')?>" value="<?php echo (isset($_POST['confirmar']) ? htmlspecialchars($_POST['confirmar']) : ''); ?>">
-            <p></p>
-            <div class="alterar">
-                <input class="btn btn-primary" type="submit" id="alterar" name="alterar" value="<?=lang('alterar')?>">
-            </div>
+    <div class="row">
+    <div class="col-md-3">
+            <form method="post" role="form" id="form4">
+                <div class="texto">
+                    <P>Insira a sua nova password.</P>
+                    <label>Password:</label>
+                    <input class="form-control input caixa-texto" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
+                    <p></p>
+                    <label><?=lang('confirmar')?>:</label>
+                    <input class="form-control input caixa-texto" type="password" id="confirmar" name="confirmar" placeholder="<?=lang('confirmar')?>" value="<?php echo (isset($_POST['confirmar']) ? htmlspecialchars($_POST['confirmar']) : ''); ?>">
+                    <p></p>
+                    <div class="alterar">
+                        <input class="btn btn-primary" type="submit" id="alterar" name="alterar" value="<?=lang('alterar')?>">
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

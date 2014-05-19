@@ -26,5 +26,9 @@
             <h1 class="title3"><?php echo $page['titulo_'.$this->lang->lang()]?></h1>
         </div>
     </div>
-    <div class="texto"><?php echo $page['texto_'.$this->lang->lang()]?></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="texto"><?php echo $page['texto_'.$this->lang->lang()]?></div>
+        </div>
+    </div>
 </div>

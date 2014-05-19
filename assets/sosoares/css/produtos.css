@@ -54,14 +54,21 @@
 }
 
 @media screen and (max-width:  850px) {
-	.related {height: 600px;}
-	.related .carousel-inner .item .row .col-sm-2 {width: 30%;margin-bottom: 50px;}
+	.related {height: 650px;}
+	.related .carousel-inner {width: 100%;}
+	.related .carousel-inner .active {width: 500px;display: block!important;}
+	.related .carousel-inner .item .row .col-sm-2 {width: 30%;margin-bottom: 75px;}
+	.related .carousel.slide .controls {margin-top: 250px;}
 }
 
 @media screen and (max-width:  808px) {
 	.info {width: 97.2%;}
 	.downloads-titulo:nth-child(1n+0) {margin: 0 0 0 40px;}
 	.cortes ul {display: table-caption;}
+}
+
+@media screen and (max-width:  767px) {
+	.row .col-sm-2 {vertical-align: bottom;}
 }
 
 @media screen and (max-width:  625px) {

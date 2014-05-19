@@ -1,3 +1,10 @@
 .mensagem {padding-left: 18px;}
-.caixa-texto {padding: 0 0 0 10px !important; border: 1px solid #107ca4;}
-.botoes {padding-left: 92px;}
+.caixa-texto {margin-bottom: 10px; padding: 0 0 0 10px !important; border: 1px solid #107ca4;}
+.botoes {width: 247px;padding-top: 20px;}
+.botoes input {margin-left: 10px;float: right;}
+
+/*============================== MEDIA QUERIES ===================================*/
+@media screen and (max-width: 992px) {
+	.row .col-md-6 {margin-bottom: 10px;}
+	.row .col-md-4:nth-child(2) {padding-left: 44px;width: 78%!important;}
+}

@@ -19,14 +19,19 @@
             <div class="mensagem" id="jq_msg2"></div>
         </div>
     </div>
-    <form method="post" role="form" id="form3">
-        <div class="texto">
-            <P>Insira o seu email para recuperar a sua password. Você pode precisar de ver a sua pasta de spam.</P>
-            <input class="form-control input caixa-texto" type="text" id="email" name="email" placeholder="E-mail" value="<?php echo (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>">
-            <p></p>
-            <div class="recuperar">
-                <input class="btn btn-primary" type="submit" id="recuperar" name="recuperar" value="<?=lang('recuperar')?>">
-            </div>
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post" role="form" id="form3">
+                <div class="texto">
+                    <P>Insira o seu email para recuperar a sua password. Você pode precisar de ver a sua pasta de spam.</P>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input class="form-control input caixa-texto" type="text" id="email" name="email" placeholder="E-mail" value="<?php echo (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>">
+                            <input class="btn btn-primary" type="submit" id="recuperar" name="recuperar" value="<?=lang('recuperar')?>">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
