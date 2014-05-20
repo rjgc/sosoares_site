@@ -31,4 +31,6 @@
 
 @media screen and (max-width: 580px) {
 	.col-md-4 .title1 {margin: 0 10px 10px;}
+	.col-md-4 {width: 60%!important;}
+	.mensagem {padding-left: 10px;}
 }

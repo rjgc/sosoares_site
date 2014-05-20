@@ -416,6 +416,8 @@ $lang["system_data"]			= "Cannot delete: system data!";
 
 $lang["delete_data_related"]	= "All users connected to this role will be deleted. Are you sure?";
 
+$lang["newsletter_progress"]	= "Saving info...";
+
 $lang["email_progress"]	        = "Sending email...";
 
 $lang["password_progress"]	    = "Changing password...";

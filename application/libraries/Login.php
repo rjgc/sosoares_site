@@ -52,7 +52,7 @@ class CI_Login
 
 			'ui-cizacl/jquery-ui-1.8.14.custom'
 
-		);
+			);
 
 		$data = '';
 
@@ -78,7 +78,7 @@ class CI_Login
 
 			'jquery-ui-1.8.14.custom.min'
 
-		);
+			);
 
 		$data = '';
 
@@ -106,7 +106,7 @@ class CI_Login
 
 			'jquery-ui-1.8.14.custom.min'
 
-		);
+			);
 
 		$data = '';
 
@@ -116,6 +116,8 @@ class CI_Login
 
 		}
 
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_newsletter?'.$page).'"></script>'.PHP_EOL;
+		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_contactos?'.$page).'"></script>'.PHP_EOL;
 		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_login?'.$page).'"></script>'.PHP_EOL;
 		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_registar?'.$page).'"></script>'.PHP_EOL;
 		$data .= '<script type="text/javascript" src="'.site_url('login_js/scripts_recuperar_password?'.$page).'"></script>'.PHP_EOL;
@@ -127,14 +129,14 @@ class CI_Login
 
 
 
-    function __get($var)    {
+	function __get($var)    {
 
-        static $CI;
+		static $CI;
 
-        (is_object($CI)) OR $CI = get_instance();
+		(is_object($CI)) OR $CI = get_instance();
 
-        return $CI->$var;
+		return $CI->$var;
 
-    }
+	}
 
 }

@@ -3,6 +3,7 @@
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/inicio.css">
 <![endif]-->
+<?php echo $this->login->getScriptsLogin('home'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 destaque">
@@ -45,21 +46,18 @@
     <div class="col-md-4">
         <h1 class="title1">Newsletter</h1>
         <p><?=lang('newsletter')?></p>
-        <div id="mensagem"></div>
-        <form method="post" role="form">
+        <div class="mensagem" id="jq_msg2"></div>
+        <form method="post" role="form" id="form5">
             <div class="form-group">
-                <input class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>">
+                <input class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>" value="<?php echo set_value('nome'); ?>">
             </div>
             <div class="form-group">
-                <input class="form-control input" id="mail" name="mail" placeholder="<?=lang('email')?>">
+                <input class="form-control input" type="text" id="email" name="email" placeholder="<?=lang('email')?>" value="<?php echo set_value('email'); ?>">
             </div>
             <div class="form-group">
-                <input class="btn button grow" type="submit" id="subs" name="submit" onclick="mensagem()" value="<?=lang('subscrever')?>">
+                <input class="btn button grow" type="submit" id="submit" name="submit" value="<?=lang('subscrever')?>">
             </div>
         </form>
     </div>
 </div>
 </div>
-<?php require_once('assets/sosoares/php/inicio.php'); ?>
-<script src="<?php echo base_url() ?>assets/sosoares/js/inicio.js"></script>
-<script src="<?php echo base_url() ?>assets/sosoares/js/banner.js"></script>

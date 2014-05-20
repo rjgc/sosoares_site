@@ -206,6 +206,175 @@ class Login_Js extends CI_Controller {
 
 
 
+	public function scripts_newsletter()
+
+	{
+
+		$page;
+		$lang = $this->lang->lang();
+
+		if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+	        $page = 'caixilharia';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+	        $page = 'vidro';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+	        $page = 'extrusao';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+	        $page = 'tratamento';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'home')) {
+	        $page = 'home';
+	    }
+
+		$output = '
+
+		$(document).ready(function()	{
+
+			$("#form5").submit(function()	{
+
+				$.ajax({
+
+					url: 		"'.site_url('login/newsletter?'.$page.'&'.$lang).'",
+
+					type:		"post",
+
+					data:		$(this).serialize(),
+
+					dataType:	"json",
+
+					success:	function(data)	{
+
+						jq_msg2(data,70,5000);
+
+						if(data.response == "success")
+
+							setTimeout("window.location =\""+data.more+"\"", 3000);
+
+					}
+
+					
+
+				});
+
+				return false;
+
+			});
+
+			
+
+			$("input, button, textarea, select").addClass("ui-corner-all");
+
+		});
+
+		function jq_msg2(data, scrollTopValue, TimeoutValue)	{
+
+			$("html,body").animate({scrollTop: scrollTopValue},"slow");
+
+			$("#jq_msg2").html(data.msg).slideDown("slow");
+
+			if(TimeoutValue > 0)
+
+				setTimeout("$(\"#jq_msg2\").slideUp(\"slow\")", TimeoutValue);
+
+		}
+
+		';
+
+		
+
+		$output = str_replace(array("\r\n", "\r", "\n", "\t"), ' ', $output);
+
+		$output = preg_replace('/ {2,}/', ' ', $output);
+
+		$this->output->set_content_type('js')->set_output($output);
+
+	}
+
+
+
+	public function scripts_contactos()
+
+	{
+
+		$page;
+		$lang = $this->lang->lang();
+
+		if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+	        $page = 'caixilharia';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+	        $page = 'vidro';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+	        $page = 'extrusao';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+	        $page = 'tratamento';
+	    } else if (strpos($_SERVER['REQUEST_URI'], 'home')) {
+	        $page = 'home';
+	    }
+
+		$output = '
+
+		$(document).ready(function()	{
+
+			$("#form6").submit(function()	{
+
+				$.ajax({
+
+					url: 		"'.site_url('login/contactos?'.$page.'&'.$lang).'",
+
+					type:		"post",
+
+					data:		$(this).serialize(),
+
+					dataType:	"json",
+
+					success:	function(data)	{
+
+						jq_msg2(data,70,5000);
+
+						if(data.response == "success")
+
+							setTimeout("window.location =\""+data.more+"\"", 3000);
+
+					}
+
+					
+
+				});
+
+				return false;
+
+			});
+
+			
+
+			$("input, button, textarea, select").addClass("ui-corner-all");
+
+		});
+
+		function jq_msg2(data, scrollTopValue, TimeoutValue)	{
+
+			$("html,body").animate({scrollTop: scrollTopValue},"slow");
+
+			$("#jq_msg2").html(data.msg).slideDown("slow");
+
+			if(TimeoutValue > 0)
+
+				setTimeout("$(\"#jq_msg2\").slideUp(\"slow\")", TimeoutValue);
+
+		}
+
+		';
+
+		
+
+		$output = str_replace(array("\r\n", "\r", "\n", "\t"), ' ', $output);
+
+		$output = preg_replace('/ {2,}/', ' ', $output);
+
+		$this->output->set_content_type('js')->set_output($output);
+
+	}
+
+
 	public function scripts_login()
 
 	{

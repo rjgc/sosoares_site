@@ -276,11 +276,6 @@ class Login extends CI_Controller {
 
 					$this->db->update('user_profiles', array('user_profile_lastaccess ' => mktime()), 'user_profile_user_id = '.$row->user_id);
 
-					
-
-					$teste = $this->session->set_userdata($session);
-
-					print_r($teste);
 
 					$lang;
 
@@ -316,6 +311,141 @@ class Login extends CI_Controller {
 
 		}
 
+	}
+
+
+
+	function newsletter()
+
+	{
+		$this->load->library('form_validation');
+
+		
+		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+
+		if ($this->form_validation->run() == false)	{
+
+			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
+
+		}
+
+		else	{
+
+			$data = array('nome' => set_value('nome'), 'email' => set_value('mail'));
+
+			$this->db->insert('newsletter', $data);
+
+			$lang;
+
+			if (strpos($_SERVER['REQUEST_URI'], 'pt'))
+				$lang = 'pt';
+			else if (strpos($_SERVER['REQUEST_URI'], 'en'))
+				$lang = 'en';
+			else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
+				$lang = 'fr';
+			else if (strpos($_SERVER['REQUEST_URI'], 'es'))
+				$lang = 'es';
+
+			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('newsletter_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/home'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('newsletter_progress'),false,base_url().'index.php/'.$lang.'/vidro/home'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('newsletter_progress'),false,base_url().'index.php/'.$lang.'/extrusao/home'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('newsletter_progress'),false,base_url().'index.php/'.$lang.'/tratamento/home'));    
+		}
+	}
+
+
+
+	function contactos()
+
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+		$this->form_validation->set_rules('empresa', 'Empresa', 'max_length[50]');
+		$this->form_validation->set_rules('cargo', 'Cargo', 'max_length[50]');
+		$this->form_validation->set_rules('telefone', 'Telefone', 'numeric');
+		$this->form_validation->set_rules('fax', 'Fax', 'numeric');
+		$this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
+		$this->form_validation->set_rules('distrito', 'Distrito', 'required|max_length[50]');
+		$this->form_validation->set_rules('concelho', 'Concelho', 'required|max_length[50]');
+		$this->form_validation->set_rules('assunto', 'Assunto', 'required');
+		$this->form_validation->set_rules('mensagem', 'Mensagem', 'required|min_length[5]|max_length[500]');
+
+		if($this->form_validation->run() == FALSE){
+
+			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
+
+		}
+		else{
+
+        	//Enviar email
+			$this->load->library('email');
+			$config = array('useragent'        => 'CodeIgniter',        
+				'protocol'         => 'mail',        
+				'mailpath'         => '/usr/sbin/sendmail',
+				'smtp_host'        => 'smtpa.mail.oni.pt',
+				'smtp_user'        => 'webmaster@sosoares.pt',
+				'smtp_pass'        => '?Web123Sos_',
+				'smtp_port'        => 25,
+				'smtp_timeout'     => 5,
+				'wordwrap'         => TRUE,
+				'wrapchars'        => 76,
+				'mailtype'         => 'html',
+				'charset'          => 'utf-8',
+				'validate'         => FALSE,
+				'priority'         => 3,
+				'bcc_batch_mode'   => FALSE,
+				'bcc_batch_size'   => 200
+				);
+
+        	// Run some setup
+			$this->email->initialize($config);
+			$this->email->from(set_value("email"));
+			$this->email->to($this->sosoares_model->get_destinatario(1));
+			$this->email->subject(set_value("assunto"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+
+			$this->email->send();
+
+        	// Run some setup
+			$this->email->initialize($config);
+			$this->email->from($this->sosoares_model->get_destinatario(1));
+			$this->email->to(set_value("email"));
+			$this->email->subject('Contactos');
+			$this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+
+        	// Debug Email
+			if (!$this->email->send()) {
+				echo $this->email->print_debugger();
+			} else {
+				$lang;
+
+				if (strpos($_SERVER['REQUEST_URI'], 'pt'))
+					$lang = 'pt';
+				else if (strpos($_SERVER['REQUEST_URI'], 'en'))
+					$lang = 'en';
+				else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
+					$lang = 'fr';
+				else if (strpos($_SERVER['REQUEST_URI'], 'es'))
+					$lang = 'es';
+
+				if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/contactos'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/contactos'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/contactos'));
+				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/contactos'));
+			}      
+		} 
 	}
 
 
@@ -394,7 +524,7 @@ class Login extends CI_Controller {
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
 			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
-    		
+
     		// Debug Email
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();
@@ -465,13 +595,13 @@ class Login extends CI_Controller {
 			$url;
 
 			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-					$url = site_url('caixilharia/alterar_password?password='.$data['user_password']);
-				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-					$url = site_url('vidro/alterar_password?password='.$data['user_password']);
-				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-					$url = site_url('extrusao/alterar_password?password='.$data['user_password']);
-				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-					$url = site_url('tratamento/alterar_password?password='.$data['user_password']);
+				$url = site_url('caixilharia/alterar_password?password='.$data['user_password']);
+			else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+				$url = site_url('vidro/alterar_password?password='.$data['user_password']);
+			else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+				$url = site_url('extrusao/alterar_password?password='.$data['user_password']);
+			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+				$url = site_url('tratamento/alterar_password?password='.$data['user_password']);
 
     		// Run some setup
 			$this->email->initialize($config);

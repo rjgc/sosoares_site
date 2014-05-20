@@ -1,23 +1,22 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/produtos.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/share_links.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/tabs.css">
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="breadcrumb">
-                    <li><a href="<?=site_url('extrusao/home')?>"><?=lang('home')?></a></li>
-                    <li><a href="<?=site_url('extrusao/produtos')?>"><?=lang('eprodutos')?></a></li>
-                    <?php if(empty($id)) { ?>
-                </ul>
-            </div>
-        </div>
-        <div class="titulo">
-            <div class="alert alert-warning">
-                <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('extrusao/produtos')?>">Voltar atrás.</a></h5>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li><a href="<?=site_url('extrusao/home')?>"><?=lang('home')?></a></li>
+                <li><a href="<?=site_url('extrusao/produtos')?>"><?=lang('eprodutos')?></a></li>
+                <?php if(empty($id)) { ?>
+            </ul>
         </div>
     </div>
+    <div class="titulo">
+        <div class="alert alert-warning">
+            <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('extrusao/produtos')?>">Voltar atrás.</a></h5>
+        </div>
+    </div>
+</div>
 </main>
 <?php } else { ?>
 <li><a href="<?=site_url('extrusao/produtos/'.$produto['id_tipo_produto_extrusao'])?>"><?=$produto['tipo']?></a></li>
@@ -189,7 +188,7 @@ if ($cortes || $downloads) { ?>
     <?php } ?>
 </div>
 <?php } ?>
-</main>
+<script src="<?php echo base_url() ?>assets/sosoares/js/banner.js"></script>
 <script src="<?php echo base_url() ?>assets/sosoares/js/carossel.js"></script>
 <div id="fb-root"></div>
 <script src="<?php echo base_url() ?>assets/sosoares/js/facebook.js"></script>

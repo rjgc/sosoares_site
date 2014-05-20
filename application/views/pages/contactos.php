@@ -19,21 +19,10 @@
                     </div>
                     <?php } ?>
                 </div>
-            </div>                
-            <?php $this->load->helper('form'); ?>
-            <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-                $url = $this->lang->lang().'/caixilharia/send_contactos';
-            } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-                $url = $this->lang->lang().'/vidro/send_contactos';
-            } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-                $url = $this->lang->lang().'/extrusao/send_contactos';
-            } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-                $url = $this->lang->lang().'/tratamento/send_contactos';
-            } echo form_open($url)?>
+            </div>               
             <div class="col-md-6">
-                <?php if (!empty($message)) ?> 
-                <p><?php echo $message; ?></p>
-                <form>
+                <div class="mensagem" id="jq_msg2"></div>
+                <form method="post" role="form" id="form6">  
                     <fieldset>
                         <legend class="dados"><?=lang('dados')?></legend>
                         <div class="form-group">
@@ -78,15 +67,13 @@
                                 <input class="form-control" id="email" name="email" type="email" placeholder="<?=lang('email')?>" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
                             </div>
                         </div>
-                        <div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="morada"><?=lang('morada')?>:</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="morada" name="morada" rows="3" placeholder="<?=lang('morada')?>" value="<?php echo ($reset) ? "" : set_value('morada'); ?>"></textarea>
-                                </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="morada"><?=lang('morada')?>:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="morada" name="morada" rows="3" placeholder="<?=lang('morada')?>" value="<?php echo ($reset) ? "" : set_value('morada'); ?>"></textarea>
                             </div>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label class="col-sm-2 control-label" for="distrito"><?=lang('distrito')?>:*</label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="distrito" name="distrito" placeholder="<?=lang('distrito')?>" value="<?php echo ($reset) ? "" : set_value('distrito'); ?>">
@@ -97,7 +84,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label class="col-sm-2 control-label" for="concelho"><?=lang('concelho')?>:*</label>
                             <div class="col-sm-10">
                                 <select class="form-control" id="concelho" name="concelho" placeholder="<?=lang('concelho')?>" value="<?php echo ($reset) ? "" : set_value('concelho'); ?>">
@@ -133,15 +120,14 @@
                             <div class="col-md-12">
                                 <span class="obrigatorio">* <?=lang('obrigatorio')?></span>
                                 <div class="botoes">
-                                    <input class="btn button grow" type="reset" value="<?=lang('limpar')?>">
-                                    <input class="btn button grow" type="submit" value="<?=lang('enviar')?>">
+                                    <input class="btn button grow" type="reset" id="limpar" name="limpar" value="<?=lang('limpar')?>">
+                                    <input class="btn button grow" type="submit" id="enviar" name="enviar" value="<?=lang('enviar')?>">
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
