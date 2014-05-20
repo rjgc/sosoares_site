@@ -28,7 +28,7 @@
                     <h3><?php echo $noticia['titulo_'.$this->lang->lang()] ?></h3>
                     <p class="date"><b><?=lang('publicado')?>:</b> <?= $noticia['data_noticia'] ?></p>
                     <div class="news-text"><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></div>
-                    <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    <a class="btn button grow" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                         echo site_url('caixilharia/noticia/'.$noticia['id_noticia']);
                     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
                         echo site_url('vidro/noticia/'.$noticia['id_noticia']);
@@ -36,7 +36,7 @@
                         echo site_url('extrusao/noticia/'.$noticia['id_noticia']);
                     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                         echo site_url('tratamento/noticia/'.$noticia['id_noticia']);
-                    } ?>"><button class="btn button grow"><?=lang('ler')?></button></a>
+                    } ?>"><?=lang('ler')?></a>
                 </div>
             </div>
         </li>

@@ -139,6 +139,8 @@ $lang["codigo"] = "Code Postal";
 
 $lang["localidade"] = "Localité";
 
+$lang["pais"] = "Pays";
+
 $lang["bi"] = "Nº de BI";
 
 $lang["contribuinte"] = "Nº de Contribuable";

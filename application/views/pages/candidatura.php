@@ -1,4 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/candidatura.css">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/candidatura.css">
+<![endif]-->
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -38,25 +42,25 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="nome" name="nome" type="text" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
+                            <input class="form-control" id="nome" name="nome" type="text" placeholder="<?=lang('nome')?>" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="email" name="email" type="email" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
+                            <input class="form-control" id="email" name="email" type="email" placeholder="<?=lang('email')?>" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telf"><?=lang('telefone')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telefone" name="telefone" type="telefone" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
+                            <input class="form-control" id="telefone" name="telefone" type="telefone" placeholder="<?=lang('telefone')?>" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telm"><?=lang('telemovel')?>:</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telemovel" name="telemovel" type="telemovel" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
+                            <input class="form-control" id="telemovel" name="telemovel" type="telemovel" placeholder="<?=lang('telemovel')?>" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,7 +73,7 @@
                     <div class="form-group apresentacao">
                         <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:*</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
+                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" placeholder="<?=lang('apresentacao')?>" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
                         </div>
                     </div>
                     <div class="row" id="row">

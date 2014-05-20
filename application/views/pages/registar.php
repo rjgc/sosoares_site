@@ -1,4 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/registar.css">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/registar.css">
+<![endif]-->
 <?php echo $this->login->getScriptsLogin('home'); ?>
 <div class="container">
     <div class="row">
@@ -31,6 +35,9 @@
             <p></p>
             <label><?=lang('localidade')?>*:</label>
             <input class="form-control input caixa-texto" type="text" id="localidade" name="localidade" placeholder="<?=lang('localidade')?>" value="<?php echo set_value('localidade'); ?>">
+            <p></p>
+            <label><?=lang('pais')?>*:</label>
+            <input class="form-control input caixa-texto" type="text" id="pais" name="pais" placeholder="<?=lang('pais')?>" value="<?php echo set_value('pais'); ?>">
             <p></p>
             <label><?=lang('concelho')?>*:</label>
             <input class="form-control input caixa-texto" type="text" id="concelho" name="concelho" placeholder="<?=lang('concelho')?>" value="<?php echo set_value('concelho'); ?>">

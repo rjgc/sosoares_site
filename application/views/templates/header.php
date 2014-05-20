@@ -38,17 +38,28 @@
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         echo $this->login->getScriptsLogin('tratamento');
     } ?>
+
+    <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>    
+    <script src="<?php echo base_url() ?>assets/sosoares/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>    
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]>    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/header.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/generic-styles.css">
     <script src="<?php echo base_url() ?>assets/sosoares/js/html5shiv.js"></script>
     <script src="<?php echo base_url() ?>assets/sosoares/js/respond.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.placeholder.js"></script>    
+    <script src="<?php echo base_url() ?>assets/sosoares/js/placeholder.js"></script>
     <![endif]-->
 </head>
 <body>
     <header>
         <div class="container">
             <div class="row">
-                <div class="logotipo">
+                <div class="logotipo grow">
                     <a href="<?php echo base_url() ?>"><h1>Grupo Sosoares</h1></a>
                 </div>
                 <div class="pages-img">
@@ -78,7 +89,7 @@
                 </div>
                 <div class="form">
                     <form>
-                        <input type="search" class="form-control" id="search" name="search" placeholder="<?=lang('pesquisar')?>" />
+                        <input type="search" class="form-control placeholder" id="search" name="search" placeholder="<?=lang('pesquisar')?>" />
                         <button id="searchButton" class="btn btn-default grow"><i class="icon-search"></i></button>
                     </form>
                 </div>
@@ -90,7 +101,7 @@
                 </div>
                 <div id="signIn">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
-                    <a id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><button class="btn button grow" id="btn_signin"><?=$_SESSION['profile']['user_profile_name']?></button></a> 
+                    <a class="btn button grow" id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><?=$_SESSION['profile']['user_profile_name']?></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                     <?php } ?>
@@ -148,9 +159,4 @@
         } ?>
     </nav>
     <section>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/bootstrap.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/docs.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="<?php echo base_url() ?>assets/sosoares/js/menu-hover.js"></script>
         <?php require_once('assets/sosoares/php/header.php'); ?>

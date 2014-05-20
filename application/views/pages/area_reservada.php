@@ -25,7 +25,7 @@
     </div>
     <?php } else { ?>
     <?php if ($_SESSION['logged_in']) { ?>
-    <button class="btn button grow ui-corner-all botao" id="btn_signin"><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+    <a class="btn button grow ui-corner-all botao" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo site_url('caixilharia/logout');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
         echo site_url('vidro/logout');
@@ -33,7 +33,7 @@
         echo site_url('extrusao/logout');
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         echo site_url('tratamento/logout');
-    } ?>">Logout</a></button>
+    } ?>">Logout</a>
     <div class="dados">
         <h3><?=lang('dados')?></h3>
         <div><b><?=lang('nome')?>: </b><?=$_SESSION['profile']['user_profile_name'];?></div>

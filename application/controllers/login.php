@@ -331,7 +331,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('morada', 'Morada', 'required|min_length[5]|max_length[100]');
 
-		$this->form_validation->set_rules('codigo', 'Código Postal', 'required|alpha_numeric');
+		$this->form_validation->set_rules('codigo', 'Código Postal', 'required');
 
 		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
 
@@ -351,7 +351,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('confirmar', 'Confirmar Password', 'required|matches[password]');
 
-		if ($this->form_validation->run() == false)	{
+		if ($this->form_validation->run() == false || !preg_match('^\d{4}-\d{3}$', set_value('codigo')))	{
 
 			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
 

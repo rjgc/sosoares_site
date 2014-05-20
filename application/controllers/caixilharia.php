@@ -390,7 +390,14 @@ public function send_candidatura()
     
     //if not successful, set the error message
     if (!$this->upload->do_upload('cv')) {
-        $data = array('msg' => $this->upload->display_errors());
+        $data['message'] = 'Tem de enviar um Curriculum Vitae.';
+        $data['reset'] = FALSE;
+        $data['page_style']= "caixilharia";
+        $data['current'] = 'grupo_sosoares';
+        $this->menu($data);
+
+        $this->load->view('pages/candidatura', $data);
+        $this->load->view('templates/footer');
     } else { 
         //else, set the success message
         $data = array('msg' => "Upload success!");

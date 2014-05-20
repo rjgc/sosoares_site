@@ -1,4 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/inicio.css">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/inicio.css">
+<![endif]-->
 <div class="container">
     <div class="row">
         <div class="col-md-8 destaque">
@@ -24,7 +28,7 @@
                 </div>
                 <div class="col-md-7">
                     <p><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>
-                    <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+                    <a class="btn button grow" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                         echo site_url('caixilharia/noticia/'.$noticia['id_noticia']);
                     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
                         echo site_url('vidro/noticia/'.$noticia['id_noticia']);
@@ -33,8 +37,7 @@
                     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
                         echo site_url('tratamento/noticia/'.$noticia['id_noticia']);
                     }?>">
-                    <button class="btn button grow"><?=lang('ler')?></button>
-                </a>
+                    <?=lang('ler')?></a>
             </div>
             <div class="col-md-1">&nbsp;</div>
         </div>

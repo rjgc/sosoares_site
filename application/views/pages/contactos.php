@@ -39,57 +39,57 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="nome" name="nome" type="text" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
+                                <input class="form-control" id="nome" name="nome" type="text" placeholder="<?=lang('nome')?>" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="empresa"><?=lang('empresa')?>:</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="empresa" name="empresa" type="text" value="<?php echo ($reset) ? "" : set_value('empresa'); ?>">
+                                <input class="form-control" id="empresa" name="empresa" type="text" placeholder="<?=lang('empresa')?>" value="<?php echo ($reset) ? "" : set_value('empresa'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="cargo"><?=lang('cargo')?>:</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="cargo" name="cargo" type="text" value="<?php echo ($reset) ? "" : set_value('cargo'); ?>">
+                                <input class="form-control" id="cargo" name="cargo" type="text" placeholder="<?=lang('cargo')?>" value="<?php echo ($reset) ? "" : set_value('cargo'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="telf"><?=lang('telefone')?>:</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="telefone" name="telefone" type="tel" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
+                                <input class="form-control" id="telefone" name="telefone" type="tel" placeholder="<?=lang('telefone')?>" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="fax"><?=lang('fax')?>:</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="fax" name="fax" type="tel" value="<?php echo ($reset) ? "" : set_value('fax'); ?>">
+                                <input class="form-control" id="fax" name="fax" type="tel" placeholder="<?=lang('fax')?>" value="<?php echo ($reset) ? "" : set_value('fax'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="telm"><?=lang('telemovel')?>:*</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="telemovel" name="telemovel" type="tel" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
+                                <input class="form-control" id="telemovel" name="telemovel" type="tel" placeholder="<?=lang('telemovel')?>" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="email" name="email" type="email" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
+                                <input class="form-control" id="email" name="email" type="email" placeholder="<?=lang('email')?>" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
                             </div>
                         </div>
                         <div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="morada"><?=lang('morada')?>:</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="morada" name="morada" rows="3" value="<?php echo ($reset) ? "" : set_value('morada'); ?>"></textarea>
+                                    <textarea class="form-control" id="morada" name="morada" rows="3" placeholder="<?=lang('morada')?>" value="<?php echo ($reset) ? "" : set_value('morada'); ?>"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <label class="col-sm-2 control-label" for="distrito"><?=lang('distrito')?>:*</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="distrito" name="distrito" value="<?php echo ($reset) ? "" : set_value('distrito'); ?>">
+                                <select class="form-control" id="distrito" name="distrito" placeholder="<?=lang('distrito')?>" value="<?php echo ($reset) ? "" : set_value('distrito'); ?>">
                                     <option selected value="-1"><?=lang('sdistrito')?></option>
                                     <?php foreach ($distritos as $distrito) { ?>
                                     <option value="<?=$distrito?>"><?=$distrito?></option>
@@ -100,7 +100,7 @@
                         <div>
                             <label class="col-sm-2 control-label" for="concelho"><?=lang('concelho')?>:*</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="concelho" name="concelho" value="<?php echo ($reset) ? "" : set_value('concelho'); ?>">
+                                <select class="form-control" id="concelho" name="concelho" placeholder="<?=lang('concelho')?>" value="<?php echo ($reset) ? "" : set_value('concelho'); ?>">
                                     <option selected value="-1"><?=lang('sdistrito')?></option>
                                 </select>
                             </div>
@@ -111,7 +111,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="assunto"><?=lang('assunto')?>:*</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="assunto" name="assunto" value="<?php echo ($reset) ? "" : set_value('assunto'); ?>">
+                                <select class="form-control" id="assunto" name="assunto" placeholder="<?=lang('assunto')?>" value="<?php echo ($reset) ? "" : set_value('assunto'); ?>">
                                     <option selected value="-1"><?=lang('item')?></option>
                                     <option value="Departamento Comercial"></option>
                                     <option value="Departamento Comercial"><?=lang('dcomercial')?></option>
@@ -125,7 +125,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="mensagem"><?=lang('mensagem')?>:*</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" value="<?php echo ($reset) ? "" : set_value('mensagem'); ?>"></textarea>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="<?=lang('mensagem')?>" value="<?php echo ($reset) ? "" : set_value('mensagem'); ?>"></textarea>
                                 </div>
                             </div>
                         </div>

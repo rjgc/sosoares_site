@@ -18,6 +18,7 @@
     </style>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/home.css">
     <script src="<?php echo base_url() ?>assets/sosoares/js/html5shiv.js"></script>
     <script src="<?php echo base_url() ?>assets/sosoares/js/respond.min.js"></script>
     <![endif]-->
@@ -105,7 +106,7 @@
                 </div>
                 <div class="areaReservada">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
-                    <a id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><button class="btn button grow" id="btn_signin"><?=$_SESSION['profile']['user_profile_name']?></button></a> 
+                    <a class="btn button grow" id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><?=$_SESSION['profile']['user_profile_name']?></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                     <?php } ?>
