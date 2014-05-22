@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <img class="noticia-img" src="<?php echo base_url(); ?>assets/uploads/noticias/<?php echo $noticia['foto'] ?>">
         </div>
         <div class="col-md-7">

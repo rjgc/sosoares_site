@@ -461,13 +461,19 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('morada', 'Morada', 'required|min_length[5]|max_length[100]');
 
-		$this->form_validation->set_rules('codigo', 'Código Postal', 'required');
+		$this->form_validation->set_rules('codigo', 'Código Postal', 'required|numeric');
+
+		$this->form_validation->set_rules('codigo2', 'Código Postal 2', 'required|numeric');
+
+		$this->form_validation->set_rules('pais', 'País', 'required|min_length[5]|max_length[50]');
 
 		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
 
-		$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
+		if ($_POST["distrito"] != '') {
+			$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
 
-		$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
+			$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
+		}		
 
 		$this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
 
@@ -475,19 +481,36 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
 
-		$this->form_validation->set_rules('username', $this->lang->line('username'), 'required|is_unique[users.user_username]');
-
 		$this->form_validation->set_rules('password', $this->lang->line('password'), 'required');
 
 		$this->form_validation->set_rules('confirmar', 'Confirmar Password', 'required|matches[password]');
 
-		if ($this->form_validation->run() == false || !preg_match('^\d{4}-\d{3}$', set_value('codigo')))	{
+		if ($this->form_validation->run() == false)	{
 
 			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
 
 		}
 
 		else	{
+
+			$distrito;
+			$concelho;
+			$codigo;
+
+			if (set_value('distrito') == '') {
+				$distrito = NULL;
+				$concelho = NULL;
+			}
+
+			$codigo =  set_value('codigo')."-".set_value('codigo2');
+
+			$data = array('user_username' => set_value('email'), 'user_password' => md5(set_value('password')), 'user_cizacl_role_id' => '2', 'user_auth' => NULL, 'user_auth_date' => NULL);
+
+			$this->db->insert('users', $data);
+
+			$data2 = array('user_profile_user_id' => $this->db->insert_id(), 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
+
+			$this->db->insert('user_profiles', $data2);
 
     		//Enviar email
 			$this->load->library('email');
@@ -514,7 +537,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to($this->sosoares_model->get_destinatario(1));
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$_POST["caixilharia"].'<br>Área Vidraria: '.$_POST["vidraria"].'<br>Área Extrusão: '.$_POST["extrusao"].'<br>Área Tratamento: '.$_POST["tratamento"].'<br>Geral: '.$_POST["geral"].'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
 			$this->email->send();
 			
@@ -523,7 +546,7 @@ class Login extends CI_Controller {
 			$this->email->from($this->sosoares_model->get_destinatario(1));
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
-			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.set_value("codigo").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.set_value("caixilharia").'<br>Área Vidraria: '.set_value("vidraria").'<br>Área Extrusão: '.set_value("extrusao").'<br>Área Tratamento: '.set_value("tratamento").'<br>Geral: '.set_value("geral").'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$_POST["caixilharia"].'<br>Área Vidraria: '.$_POST["vidraria"].'<br>Área Extrusão: '.$_POST["extrusao"].'<br>Área Tratamento: '.$_POST["tratamento"].'<br>Geral: '.$_POST["geral"].'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
     		// Debug Email
 			if (!$this->email->send()) {

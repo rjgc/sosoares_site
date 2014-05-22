@@ -3,7 +3,6 @@
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>    
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/obra.css">
-<script src="<?php echo base_url() ?>assets/sosoares/js/ie8/tabs.js"></script>
 <![endif]-->
 <div class="container">
     <div class="row">

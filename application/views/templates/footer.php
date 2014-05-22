@@ -7,7 +7,8 @@
                 <img src="<?php echo base_url() ?>assets/sosoares/img/gs.jpg" width="29" height="28" alt="GS" /> &nbsp;&copy; <b id="group">GRUPO SOSOARES</b> <?=lang('direitos')?>
             </div>
             <div class="col-md-3">
-                <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="165" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
+                <img src="<?php echo base_url() ?>assets/sosoares/img/facebook.png" width="15" height="27" alt="facebook.com" title="Facebook">
+                <img src="<?php echo base_url() ?>assets/sosoares/img/euro2000.jpg" width="140" height="43" alt="Sistemas Euro2000" title="Sistemas Euro2000">
                 <a href="http://www.critec.pt"><img src="<?php echo base_url() ?>assets/sosoares/img/critec.jpg" width="70" height="23" alt="Critec.pt" title="Critec.pt"></a>
             </div>
         </div>

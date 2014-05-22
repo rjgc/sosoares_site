@@ -49,8 +49,8 @@
 		slideshow: false,
 		slideshowAuto: true,
 		slideshowSpeed: 2500,
-		slideshowStart: "start slideshow",
-		slideshowStop: "stop slideshow",
+		slideshowStart: "start",
+		slideshowStop: "stop",
 		photoRegex: /\.(gif|png|jp(e|g|eg)|bmp|ico|webp|jxr|svg)((#|\?).*)?$/i,
 
 		// alternate image paths for high-res displays
@@ -59,7 +59,7 @@
 		retinaSuffix: '@2x.$1',
 
 		// internationalization
-		current: "image {current} of {total}",
+		current: "{current} of {total}",
 		previous: "previous",
 		next: "next",
 		close: "close",
