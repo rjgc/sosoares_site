@@ -65,6 +65,7 @@
 	.info {width: 97.2%;}
 	.downloads-titulo:nth-child(1n+0) {margin: 0 0 0 40px;}
 	.cortes ul {display: table-caption;}
+	.tab-content {min-height: 490px!important;}
 }
 
 @media screen and (max-width:  767px) {

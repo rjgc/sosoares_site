@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="row">
-      <div class="col-md-4">  
+      <div class="col-md-4" id="col1">  
         <form class="mensagem" method="post" role="form" id="form2">                   
             <label><?=lang('nome')?>:*</label>
             <input class="form-control input caixa-texto" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>" value="<?php echo set_value('nome'); ?>">
@@ -55,18 +55,18 @@
             <label><?=lang('contribuinte')?>:*</label>
             <input class="form-control input caixa-texto" type="text" id="contribuinte" name="contribuinte" placeholder="<?=lang('contribuinte')?>" value="<?php echo set_value('contribuinte'); ?>">        
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="col2">
             <p></p>
             <div class="row">
                 <div class="col-md-2">  
                     <label><?=lang('area')?>:*</label>
                 </div>
                 <div class="col-md-6">  
-                    <input style="vertical-align: text-top;" type="checkbox" name="caixilharia" value="Área Caixilharia" <?php echo set_checkbox('caixilharia', 'Área Caixilharia'); ?> /><?=lang('rcaixilharia')?><br>
-                    <input style="vertical-align: text-top;" type="checkbox" name="vidraria" value="Área Vidraria" <?php echo set_checkbox('vidraria', 'Área Vidraria'); ?> /><?=lang('rvidraria')?><br>
-                    <input style="vertical-align: text-top;" type="checkbox" name="extrusao" value="Área Extrusão" <?php echo set_checkbox('extrusao', 'Área Extrusão'); ?> /><?=lang('rextrusao')?><br>
-                    <input style="vertical-align: text-top;" type="checkbox" name="tratamento" value="Área Tratamento" <?php echo set_checkbox('tratamento', 'Área Tratamento'); ?> /><?=lang('rtratamento')?><br>
-                    <input style="vertical-align: text-top;" type="checkbox" name="geral" value="Geral" <?php echo set_checkbox('geral', 'Geral'); ?> /><?=lang('geral')?><br>
+                    <input class="area" type="checkbox" name="caixilharia" value="Área Caixilharia" <?php echo set_checkbox('caixilharia', 'Área Caixilharia'); ?> /><?=lang('rcaixilharia')?><br>
+                    <input class="area" type="checkbox" name="vidraria" value="Área Vidraria" <?php echo set_checkbox('vidraria', 'Área Vidraria'); ?> /><?=lang('rvidraria')?><br>
+                    <input class="area" type="checkbox" name="extrusao" value="Área Extrusão" <?php echo set_checkbox('extrusao', 'Área Extrusão'); ?> /><?=lang('rextrusao')?><br>
+                    <input class="area" type="checkbox" name="tratamento" value="Área Tratamento" <?php echo set_checkbox('tratamento', 'Área Tratamento'); ?> /><?=lang('rtratamento')?><br>
+                    <input class="area" type="checkbox" name="geral" value="Geral" <?php echo set_checkbox('geral', 'Geral'); ?> /><?=lang('geral')?><br>
                 </div>
             </div>
             <p></p>

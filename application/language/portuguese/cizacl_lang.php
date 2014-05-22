@@ -421,6 +421,8 @@ $lang["newsletter_progress"]	= "Saving info...";
 
 $lang["email_progress"]	        = "Sending email...";
 
+$lang["email_error"]	        = "Failed to send email.";
+
 $lang["password_progress"]	    = "Changing password...";
 
 

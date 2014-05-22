@@ -16,7 +16,7 @@
                 <li><?=lang('recuperar_password2')?></li>
             </ul>
             <h1 class="title3"><?=lang('recuperar_password')?></h1>
-            <div class="mensagem" id="jq_msg2"></div>
+            <div class="mensagem alert alert-warning" id="jq_msg2"></div>
         </div>
     </div>
     <div class="row">

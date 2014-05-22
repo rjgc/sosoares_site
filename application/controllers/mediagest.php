@@ -966,7 +966,7 @@ function servicos_aluminio_management()
 
     $crud->set_table('servicos_aluminio');
     $crud->set_subject('Serviços Alumínio');
-    $crud->columns('nome_pt', 'descricao_pt');
+    $crud->columns('nome_pt', 'descricao_pt', 'imagem');
 
     $crud->required_fields('nome_pt', 'nome_en', 'nome_fr', 'nome_es', 'descricao_pt', 'descricao_en', 'descricao_fr', 'descricao_es');
     $crud->display_as('descricao_pt', 'Descrição pt')->display_as('descricao_en', 'Descrição en')->display_as('descricao_fr', 'Descrição fr')->display_as('descricao_es', 'Descrição es');

@@ -390,9 +390,9 @@ class Login extends CI_Controller {
 			$config = array('useragent'        => 'CodeIgniter',        
 				'protocol'         => 'mail',        
 				'mailpath'         => '/usr/sbin/sendmail',
-				'smtp_host'        => 'smtpa.mail.oni.pt',
-				'smtp_user'        => 'webmaster@sosoares.pt',
-				'smtp_pass'        => '?Web123Sos_',
+				'smtp_host'        => 'mail.critecns.com',
+				'smtp_user'        => 'webmaster@critecns.com',
+				'smtp_pass'        => 'k45wrhyb3n',
 				'smtp_port'        => 25,
 				'smtp_timeout'     => 5,
 				'wordwrap'         => TRUE,
@@ -408,7 +408,7 @@ class Login extends CI_Controller {
         	// Run some setup
 			$this->email->initialize($config);
 			$this->email->from(set_value("email"));
-			$this->email->to($this->sosoares_model->get_destinatario(1));
+			$this->email->to('webmaster@critecns.com');
 			$this->email->subject(set_value("assunto"));
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
 
@@ -416,14 +416,14 @@ class Login extends CI_Controller {
 
         	// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_destinatario(1));
+			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
 			$this->email->subject('Contactos');
 			$this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
         	// Debug Email
 			if (!$this->email->send()) {
-				echo $this->email->print_debugger();
+				die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('user_disabled'),true));
 			} else {
 				$lang;
 
@@ -496,6 +496,11 @@ class Login extends CI_Controller {
 			$distrito;
 			$concelho;
 			$codigo;
+			$caixilharia;
+			$vidraria;
+			$extrusao;
+			$tratamento;
+			$geral;
 
 			if (set_value('distrito') == '') {
 				$distrito = NULL;
@@ -503,6 +508,31 @@ class Login extends CI_Controller {
 			}
 
 			$codigo =  set_value('codigo')."-".set_value('codigo2');
+
+			if (empty($_POST['caixilharia']))
+				$caixilharia = ' ';
+			else
+				$caixilharia = $_POST['caixilharia'];
+
+			if (empty($_POST['vidraria']))
+				$vidraria = ' ';
+			else
+				$vidraria = $_POST['vidraria'];
+
+			if (empty($_POST['extrusao']))
+				$extrusao = ' ';
+			else
+				$extrusao = $_POST['extrusao'];
+
+			if (empty($_POST['tratamento']))
+				$tratamento = ' ';
+			else
+				$tratamento = $_POST['tratamento'];
+
+			if (empty($_POST['geral']))
+				$geral = ' ';
+			else
+				$geral = $_POST['geral'];
 
 			$data = array('user_username' => set_value('email'), 'user_password' => md5(set_value('password')), 'user_cizacl_role_id' => '2', 'user_auth' => NULL, 'user_auth_date' => NULL);
 
@@ -517,9 +547,9 @@ class Login extends CI_Controller {
 			$config = array('useragent'        => 'CodeIgniter',        
 				'protocol'         => 'mail',        
 				'mailpath'         => '/usr/sbin/sendmail',
-				'smtp_host'        => 'smtpa.mail.oni.pt',
-				'smtp_user'        => 'webmaster@sosoares.pt',
-				'smtp_pass'        => '?Web123Sos_',
+				'smtp_host'        => 'mail.critecns.com',
+				'smtp_user'        => 'webmaster@critecns.com',
+				'smtp_pass'        => 'k45wrhyb3n',
 				'smtp_port'        => 25,
 				'smtp_timeout'     => 5,
 				'wordwrap'         => TRUE,
@@ -535,22 +565,22 @@ class Login extends CI_Controller {
     		// Run some setup
 			$this->email->initialize($config);
 			$this->email->from(set_value("email"));
-			$this->email->to($this->sosoares_model->get_destinatario(1));
+			$this->email->to('webmaster@critecns.com');
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$_POST["caixilharia"].'<br>Área Vidraria: '.$_POST["vidraria"].'<br>Área Extrusão: '.$_POST["extrusao"].'<br>Área Tratamento: '.$_POST["tratamento"].'<br>Geral: '.$_POST["geral"].'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$caixilharia.'<br>Área Vidraria: '.$vidraria.'<br>Área Extrusão: '.$extrusao.'<br>Área Tratamento: '.$tratamento.'<br>Geral: '.$geral.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
 			$this->email->send();
 			
 			// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_destinatario(1));
+			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
-			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$_POST["caixilharia"].'<br>Área Vidraria: '.$_POST["vidraria"].'<br>Área Extrusão: '.$_POST["extrusao"].'<br>Área Tratamento: '.$_POST["tratamento"].'<br>Geral: '.$_POST["geral"].'<br>E-mail: '.set_value("email").'<br>Username: '.set_value("username").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$caixilharia.'<br>Área Vidraria: '.$vidraria.'<br>Área Extrusão: '.$extrusao.'<br>Área Tratamento: '.$tratamento.'<br>Geral: '.$geral.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
     		// Debug Email
 			if (!$this->email->send()) {
-				echo $this->email->print_debugger();
+				die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('email_error'),true));
 			} else {
 				$lang;
 
@@ -599,9 +629,9 @@ class Login extends CI_Controller {
 			$config = array('useragent'        => 'CodeIgniter',        
 				'protocol'         => 'mail',        
 				'mailpath'         => '/usr/sbin/sendmail',
-				'smtp_host'        => 'smtpa.mail.oni.pt',
-				'smtp_user'        => 'webmaster@sosoares.pt',
-				'smtp_pass'        => '?Web123Sos_',
+				'smtp_host'        => 'mail.critecns.com',
+				'smtp_user'        => 'webmaster@critecns.com',
+				'smtp_pass'        => 'k45wrhyb3n',
 				'smtp_port'        => 25,
 				'smtp_timeout'     => 5,
 				'wordwrap'         => TRUE,
@@ -628,14 +658,14 @@ class Login extends CI_Controller {
 
     		// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_destinatario(1));
+			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
 			$this->email->subject('Recuperar Password');
 			$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você aceda a este link: <a href="'.$url.'">Clique aqui</a><br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');
 			
     		// Debug Email
 			if (!$this->email->send()) {
-				echo $this->email->print_debugger();
+				die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('user_disabled'),true));
 			} else {
 				$lang;
 

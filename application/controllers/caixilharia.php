@@ -431,9 +431,9 @@ public function send_candidatura()
             $config = array('useragent'        => 'CodeIgniter',        
                 'protocol'         => 'mail',        
                 'mailpath'         => '/usr/sbin/sendmail',
-                'smtp_host'        => 'smtpa.mail.oni.pt',
-                'smtp_user'        => 'webmaster@sosoares.pt',
-                'smtp_pass'        => '?Web123Sos_',
+                'smtp_host'        => 'mail.critecns.com',
+                'smtp_user'        => 'webmaster@critecns.com',
+                'smtp_pass'        => 'k45wrhyb3n',
                 'smtp_port'        => 25,
                 'smtp_timeout'     => 5,
                 'wordwrap'         => TRUE,
@@ -449,7 +449,7 @@ public function send_candidatura()
             // Run some setup
             $this->email->initialize($config);
             $this->email->from(set_value("email"));
-            $this->email->to($this->sosoares_model->get_destinatario(2));
+            $this->email->to('webmaster@critecns.com');
             $this->email->subject('Candidatura');
             $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
@@ -457,14 +457,14 @@ public function send_candidatura()
 
             // Run some setup
             $this->email->initialize($config);
-            $this->email->from($this->sosoares_model->get_destinatario(2));
+            $this->email->from('webmaster@critecns.com');
             $this->email->to(set_value("email"));
             $this->email->subject('Candidatura');
             $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>Nome: '.set_value("nome").'<br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Apresentação: '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
             
             // Debug Email
             if (!$this->email->send()) {
-                echo $this->email->print_debugger();
+                die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('email_error'),true));
             } else {
                 $data['page_style']= "caixilharia";
                 $data['current'] = 'grupo_sosoares';

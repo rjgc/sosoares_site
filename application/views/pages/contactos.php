@@ -20,11 +20,11 @@
                     <?php } ?>
                 </div>
             </div>               
-            <div class="col-md-6">
-                <div class="mensagem" id="jq_msg2"></div>
+            <div class="col-md-6">                
                 <form method="post" role="form" id="form6">  
                     <fieldset>
                         <legend class="dados"><?=lang('dados')?></legend>
+                        <div class="mensagem alert alert-warning" id="jq_msg2"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                             <div class="col-sm-10">

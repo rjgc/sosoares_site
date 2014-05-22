@@ -1,9 +1,11 @@
-.dados {padding: 0!important;}
+.alert {display: none;}
+.dados {padding: 11px 0 0 0!important;}
 .obrigatorio {display: inline-block; padding-left: 15px;}
 #row .col-md-12 {width: 97.5%;}
 .botoes {float: right;margin-top: 20px;}
 .botoes input {margin-left: 10px!important;}
 .contactus .row form div.col-md-6 {padding-top: 10px;}
+legend {border-bottom: 0;}
 
 /*============================== MEDIA QUERIES ===================================*/
 @media screen and (max-width: 1217px) {
@@ -12,6 +14,7 @@
 
 @media screen and (max-width: 992px) {
 	.contactus .row form div.col-md-6 {width: 65%;}
+	.dados {padding: 0!important;}
 }
 
 @media screen and (max-width: 767px) {

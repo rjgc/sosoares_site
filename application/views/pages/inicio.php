@@ -27,7 +27,7 @@
                 <div class="col-md-4 noticia">
                     <img src="<?php echo base_url();?>assets/uploads/noticias/thumb/<?php echo $noticia['foto'];?>" alt="Image" class="img-responsive">
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 texto">
                     <p><?php echo substr($noticia['texto_'.$this->lang->lang()], 0, 150); if (strlen($noticia['texto_'.$this->lang->lang()]) > 150) echo '...' ?></p>
                     <a class="btn button grow" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
                         echo site_url('caixilharia/noticia/'.$noticia['id_noticia']);
@@ -46,7 +46,7 @@
     <div class="col-md-4">
         <h1 class="title1">Newsletter</h1>
         <p><?=lang('newsletter')?></p>
-        <div class="mensagem" id="jq_msg2"></div>
+        <div class="mensagem alert alert-warning" id="jq_msg2"></div>
         <form method="post" role="form" id="form5">
             <div class="form-group">
                 <input class="form-control input" type="text" id="nome" name="nome" placeholder="<?=lang('nome')?>" value="<?php echo set_value('nome'); ?>">
@@ -61,3 +61,4 @@
     </div>
 </div>
 </div>
+<script src="<?php echo base_url() ?>assets/sosoares/js/inicio.js"></script>

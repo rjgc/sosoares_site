@@ -22,9 +22,12 @@
             <h1 class="title3"><?=lang('candidaturas')?></h1>
         </div>
     </div>
-    <?php if (!empty($message)) ?> 
-    <p class="mensagem"><?php echo $message; ?></p>  
-    <?php $this->load->helper('form'); ?>
+    <?php if (!empty($message)) { ?> 
+    <p class="alert alert-warning" id="jq_msg2"><?php echo $message; ?></p> 
+    <?php } else { ?>
+    <p class="mensagem alert alert-warning" id="jq_msg2"><?php echo $message; ?></p>
+    <?php }
+    $this->load->helper('form'); ?>
     <?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         $url = $this->lang->lang().'/caixilharia/send_candidatura';
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
@@ -70,7 +73,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="form-group apresentacao">
+                    <div class="form-group">
                         <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:*</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" placeholder="<?=lang('apresentacao')?>" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
@@ -91,3 +94,4 @@
     </div>
     <?php echo form_close(); ?>
 </div>
+<script src="<?php echo base_url() ?>assets/sosoares/js/candidatura.js"></script>
