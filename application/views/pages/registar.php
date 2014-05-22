@@ -3,7 +3,6 @@
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/ie8/registar.css">
 <![endif]-->
-<?php echo $this->login->getScriptsLogin('home'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

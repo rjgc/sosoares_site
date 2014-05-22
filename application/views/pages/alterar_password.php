@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/password.css">
-<?php echo $this->login->getScriptsLogin('home'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
