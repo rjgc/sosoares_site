@@ -125,7 +125,7 @@
                                     <p></p>
                                     <a href="<?=site_url('caixilharia/registar')?>"><?=lang('registar')?></a>
                                     <p></p>
-                                    <a href="<?=site_url('caixilharia/recuperar')?>"><?=lang('recuperar_password')?></a>
+                                    <a href="<?=site_url('caixilharia/recuperar_password')?>"><?=lang('recuperar_password')?></a>
                                 </div>
                                 <div class="modal-footer">
                                     <input class="btn btn-primary" type="submit" id="login" name="login" value="Login">

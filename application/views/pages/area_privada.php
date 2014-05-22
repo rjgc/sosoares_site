@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/area-reservada.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/area-privada.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -148,6 +148,6 @@
 </div>
 <?php } 
 }?>
-<?php require_once('assets/sosoares/php/area-reservada.php'); ?>
+<?php require_once('assets/sosoares/php/area-privada.php'); ?>
 <script src="<?php echo base_url() ?>assets/sosoares/js/Dable.js"></script>
-<script src="<?php echo base_url() ?>assets/sosoares/js/area-reservada.js"></script>
+<script src="<?php echo base_url() ?>assets/sosoares/js/area-privada.js"></script>

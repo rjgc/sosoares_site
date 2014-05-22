@@ -96,16 +96,32 @@ public function registado()
     }
 }
 
-public function recuperar()
+public function recuperar_password()
 {
     if (isset($_GET['search'])) {
         $this->pesquisa($_GET['search']);
     } else {      
         $data['page_style']= "vidro";
-        $data['current'] = 'recuperar';
+        $data['current'] = 'recuperar_password';
         $this->menu($data);
 
         $this->load->view('pages/recuperar_password', $data);
+        $this->load->view('templates/footer');
+    }
+}
+
+public function password_recuperada()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "vidro";
+        $data['current'] = 'password_recuperada';
+        $this->menu($data);
+
+        $data['page'] = $this->sosoares_model->get_page(20);
+
+        $this->load->view('pages/confirmacao', $data);
         $this->load->view('templates/footer');
     }
 }
@@ -126,13 +142,13 @@ public function alterar_password()
     }
 }
 
-public function alterada()
+public function password_alterada()
 {
     if (isset($_GET['search'])) {
         $this->pesquisa($_GET['search']);
     } else {      
         $data['page_style']= "vidro";
-        $data['current'] = 'alterada';
+        $data['current'] = 'password_alterada';
         $this->menu($data);
 
         $data['registado'] = $this->sosoares_model->get_page(19);
@@ -142,7 +158,7 @@ public function alterada()
     }
 }
 
-public function area_reservada()
+public function area_privada()
 {   
     if (isset($_GET['search'])) {
         $this->pesquisa($_GET['search']);
@@ -180,10 +196,10 @@ public function area_reservada()
         }
 
         $data['page_style']= "vidro";
-        $data['current'] = 'reserved';
+        $data['current'] = 'area_privada';
         $this->menu($data);
 
-        $this->load->view('pages/area_reservada', $data);
+        $this->load->view('pages/area_privada', $data);
         $this->load->view('templates/footer');
     }
 }
@@ -558,6 +574,22 @@ public function contactos()
 
         $this->load->view('pages/contactos', $data);
         $this->load->view('templates/footer', $data);
+    }
+}
+
+public function contacto_recebido()
+{
+    if (isset($_GET['search'])) {
+        $this->pesquisa($_GET['search']);
+    } else {      
+        $data['page_style']= "vidro";
+        $data['current'] = 'contacto_recebido';
+        $this->menu($data);
+
+        $data['page'] = $this->sosoares_model->get_page(22);
+
+        $this->load->view('pages/confirmacao', $data);
+        $this->load->view('templates/footer');
     }
 }
 

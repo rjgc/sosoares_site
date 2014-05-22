@@ -257,7 +257,6 @@ class Login extends CI_Controller {
 					$user_lastaccess = !empty($row->user_profile_lastaccess) ? $this->cizacl_mdl->mktime_format($row->user_profile_lastaccess) : '-';
 
 
-
 					$session = array(
 
 						'user_id'				=> $row->user_id,
@@ -271,6 +270,10 @@ class Login extends CI_Controller {
 						'user_cizacl_role_id'	=> $row->user_cizacl_role_id
 
 						);
+
+
+
+					$this->session->set_userdata($session);
 
 					
 
@@ -289,15 +292,15 @@ class Login extends CI_Controller {
 						$lang = 'es';
 					
 					if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_reservada'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_privada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/vidro/area_reservada'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/vidro/area_privada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/extrusao/area_reservada'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/extrusao/area_privada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/tratamento/area_reservada'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/tratamento/area_privada'));
 					else if (strpos($_SERVER['REQUEST_URI'], 'home'))
-						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_reservada'));
+						die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('login_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_privada'));
 
 				}
 
@@ -333,7 +336,7 @@ class Login extends CI_Controller {
 
 		else	{
 
-			$data = array('nome' => set_value('nome'), 'email' => set_value('mail'));
+			$data = array('nome' => set_value('nome'), 'email' => set_value('email'), 'activo' => '1');
 
 			$this->db->insert('newsletter', $data);
 
@@ -418,7 +421,7 @@ class Login extends CI_Controller {
 			$this->email->initialize($config);
 			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
-			$this->email->subject('Contactos');
+			$this->email->subject(set_value("assunto"));
 			$this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
         	// Debug Email
@@ -437,13 +440,13 @@ class Login extends CI_Controller {
 					$lang = 'es';
 
 				if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/contactos'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/contacto_recebido'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/contactos'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/contacto_recebido'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/contactos'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/contacto_recebido'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/contactos'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/contacto_recebido'));
 			}      
 		} 
 	}
@@ -679,13 +682,13 @@ class Login extends CI_Controller {
 					$lang = 'es';
 
 				if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/password_recuperada'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/password_recuperada'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/password_recuperada'));
 				else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/home'));
+					die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/password_recuperada'));
 			}     
 		}
 
@@ -729,13 +732,13 @@ class Login extends CI_Controller {
 				$lang = 'es';
 
 			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
-				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/alterada'));
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/password_alterada'));
 			else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
-				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/vidro/alterada'));
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/vidro/password_alterada'));
 			else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
-				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/extrusao/alterada'));
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/extrusao/password_alterada'));
 			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
-				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/tratamento/alterada'));
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/tratamento/password_alterada'));
 
 		}
 	}
