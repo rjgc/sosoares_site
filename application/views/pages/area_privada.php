@@ -24,7 +24,7 @@
         </div>
     </div>
     <?php } else { ?>
-    <?php if ($_SESSION['logged_in']) { ?>
+    <?php if ($_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
     <a class="btn button grow ui-corner-all botao" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo site_url('caixilharia/logout');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {

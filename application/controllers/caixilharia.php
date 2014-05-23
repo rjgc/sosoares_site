@@ -177,6 +177,7 @@ public function area_privada()
             if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
             {
                 $_SESSION['logged_in'] = True;
+                $_SESSION['notAllowed'] = False;
 
                 $_SESSION['profile'] = $this->sosoares_model->get_profile($temp['1']);
                 $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
@@ -188,8 +189,10 @@ public function area_privada()
                 $data['folhetos'] = $this->sosoares_model->get_folhetos();
                 $data['ferragens_vidro'] = $this->sosoares_model->get_ferragens_vidro();
             }
-            else
+            else {
                 $_SESSION['notAllowed'] = True;
+                $_SESSION['logged_in'] = True;
+            }
         }
         else {
             $_SESSION['logged_in'] = False;

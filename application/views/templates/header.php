@@ -100,7 +100,7 @@
                     <a id="lang-4" href="<?=site_url($this->lang->switch_uri('es')) ?>"><img src="<?php echo base_url() ?>assets/sosoares/img/bd_sp.png" width="22" height="15" alt="Espanhol" title="Espanhol"></a>
                 </div>
                 <div id="signIn">
-                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) { ?>
+                    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['notAllowed'] == false) { ?>
                     <a class="btn button grow" id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><?=$_SESSION['profile']['user_profile_name']?></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
