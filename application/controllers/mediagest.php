@@ -157,17 +157,44 @@ function users_management()
     $crud->unset_delete();
     $crud->unset_add();
 
-    $crud->set_table('user_profiles');
-    $crud->set_subject('User Profile');
-    $crud->columns('user_profile_name', 'user_profile_surname', 'user_profile_email', 'user_profile_user_status_code');
-    $crud->display_as('user_profile_name', 'Nome')->display_as('user_profile_surname', 'Apelido')->display_as('user_profile_email', 'Email')->display_as('user_profile_user_status_code', 'Estado');
+    $crud->set_table('users');
+    $crud->set_subject('Users');
+    $crud->columns('user_username', 'user_cizacl_role_id');
+    $crud->display_as('user_username', 'Username')->display_as('user_cizacl_role_id', 'Role');
 
-    $crud->fields('user_profile_name', 'user_profile_surname', 'user_profile_email', 'user_profile_user_status_code');
+    $crud->fields('user_username', 'user_cizacl_role_id');
+
+    $crud->set_relation('user_cizacl_role_id', 'cizacl_roles', 'cizacl_role_name');
 
     $output = $crud->render();
 
     $data['titulo'] = 'Utilizadores';
     $data['sub-titulo'] = 'Faça aqui a gestão dos Utilizadores';
+
+    $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+    $this->_admin_output($output);
+}
+
+function user_profiles_management()
+{
+    $crud = new grocery_CRUD();
+
+    $crud->unset_delete();
+    $crud->unset_add();
+
+    $crud->set_table('user_profiles');
+    $crud->set_subject('User Profiles');
+    $crud->columns('user_profile_name', 'user_profile_area_caixilharia', 'user_profile_area_vidraria', 'user_profile_area_extrusao', 'user_profile_area_tratamento', 'user_profile_area_geral');
+    $crud->display_as('user_profile_name', 'Nome')->display_as('user_profile_email', 'E-mail')->display_as('user_profile_morada', 'Morada')->display_as('user_profile_codigo_postal', 'Código Postal')->display_as('user_profile_pais', 'País')->display_as('user_profile_localidade', 'Localidade')->display_as('user_profile_distrito', 'Distrito')->display_as('user_profile_concelho', 'Concelho')->display_as('user_profile_telefone', 'Telefone')->display_as('user_profile_contribuinte', 'Contribuinte')->display_as('user_profile_area_caixilharia', 'Área Caixilharia')->display_as('user_profile_area_vidraria', 'Área Vidraria')->display_as('user_profile_area_extrusao', 'Área Extrusão')->display_as('user_profile_area_tratamento', 'Área Tratamento')->display_as('user_profile_area_geral', 'Área Geral');
+
+    $crud->fields('user_profile_name', 'user_profile_email', 'user_profile_morada', 'user_profile_codigo_postal', 'user_profile_pais', 'user_profile_localidade', 'user_profile_distrito', 'user_profile_concelho', 'user_profile_telefone', 'user_profile_contribuinte');
+    $crud->field_type('user_profile_name', 'readonly')->field_type('user_profile_email', 'readonly')->field_type('user_profile_morada', 'readonly')->field_type('user_profile_codigo_postal', 'readonly')->field_type('user_profile_pais', 'readonly')->field_type('user_profile_localidade', 'readonly')->field_type('user_profile_distrito', 'readonly')->field_type('user_profile_concelho', 'readonly')->field_type('user_profile_telefone', 'readonly')->field_type('user_profile_contribuinte', 'readonly');
+
+    $output = $crud->render();
+
+    $data['titulo'] = 'Perfis de Utilizadores';
+    $data['sub-titulo'] = 'Faça aqui a gestão dos Perfis de Utilizadores';
 
     $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
 
