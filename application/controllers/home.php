@@ -36,7 +36,7 @@ class Home extends CI_Controller {
 
 		$this->load->library('cizacl');
 		$this->load->library('login');
-		$this->load->library('form_validation');       
+		$this->load->library('form_validation');        
 
 		if(!class_exists('CI_Cizacl'))
 			show_error($this->lang->line('library_not_loaded'));
@@ -45,9 +45,20 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-		$data['background_image'] = $this->sosoares_model->get_background_image();
+		require_once('assets/sosoares/php/Browser.php');
 
-		$this->load->view('pages/home', $data, $this->lang->lang());
+		$browser = new Browser();
+
+    	if($browser->getBrowser() == Browser::BROWSER_IE && $browser->getVersion() < 8)
+		{
+			$this->load->view('pages/obsoleto');
+		}
+		else
+		{
+			$data['background_image'] = $this->sosoares_model->get_background_image();
+
+			$this->load->view('pages/home', $data, $this->lang->lang());
+		}
 	}	
 	
 }

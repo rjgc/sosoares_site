@@ -148,15 +148,19 @@ $lang["contribuinte"] = "Nº de Contribuinte";
 
 $lang["area"] = "Área";
 
-$lang["rcaixilharia"] = "Área Caixilharia";
+$lang["serralharia"] = "Serralharia";
 
-$lang["rvidraria"] = "Área Vidraria";
+$lang["rvidraria"] = "Vidraria";
 
-$lang["rextrusao"] = "Área Extrusão";
+$lang["armazenista"] = "Armazenista";
 
-$lang["rtratamento"] = "Área Tratamento";
+$lang["arquitectura"] = "Arquitectura";
 
-$lang["geral"] = "Geral";
+$lang["construtora"] = "Construtora";
+
+$lang["cfinal"] = "Cliente Final";
+
+$lang["outros"] = "Outros";
 
 $lang["confirmar"] = "Confirmar Password";
 

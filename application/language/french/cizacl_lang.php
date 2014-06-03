@@ -147,15 +147,19 @@ $lang["contribuinte"] = "Nº de Contribuable";
 
 $lang["area"] = "Région";
 
-$lang["rcaixilharia"] = "Cadres Région";
+$lang["serralharia"] = "Serruriers";
 
-$lang["rvidraria"] = "Verrerie Région";
+$lang["rvidraria"] = "Verrerie";
 
-$lang["rextrusao"] = "Extrusion Région";
+$lang["armazenista"] = "Armazenista";
 
-$lang["rtratamento"] = "Zone de Traitement";
+$lang["arquitectura"] = "Magasinier";
 
-$lang["geral"] = "Général";
+$lang["construtora"] = "Construction";
+
+$lang["cfinal"] = "Client Final";
+
+$lang["outros"] = "Autre";
 
 $lang["confirmar"] = "Confirmer Password";
 
@@ -286,7 +290,7 @@ $lang["email"] = "E-mail";
 
 $lang["telefone"] = "Téléphone";
 
-$lang["telemovel"] = "Téléphone Portable";
+$lang["telemovel"] = "T. Portable";
 
 $lang["cv"] = "Curriculum Vitae";
 

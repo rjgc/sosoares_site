@@ -499,11 +499,13 @@ class Login extends CI_Controller {
 			$distrito;
 			$concelho;
 			$codigo;
-			$caixilharia;
+			$serralharia;
 			$vidraria;
-			$extrusao;
-			$tratamento;
-			$geral;
+			$armazenista;
+			$arquitectura;
+			$construtora;
+			$cfinal;
+			$outros;
 
 			if (set_value('distrito') == '') {
 				$distrito = NULL;
@@ -512,36 +514,46 @@ class Login extends CI_Controller {
 
 			$codigo =  set_value('codigo')."-".set_value('codigo2');
 
-			if (empty($_POST['caixilharia']))
-				$caixilharia = ' ';
+			if (empty($_POST['serralharia']))
+				$serralharia = ' ';
 			else
-				$caixilharia = $_POST['caixilharia'];
+				$serralharia = $_POST['serralharia'];
 
 			if (empty($_POST['vidraria']))
 				$vidraria = ' ';
 			else
 				$vidraria = $_POST['vidraria'];
 
-			if (empty($_POST['extrusao']))
-				$extrusao = ' ';
+			if (empty($_POST['armazenista']))
+				$armazenista = ' ';
 			else
-				$extrusao = $_POST['extrusao'];
+				$armazenista = $_POST['armazenistas'];
 
-			if (empty($_POST['tratamento']))
-				$tratamento = ' ';
+			if (empty($_POST['arquitectura']))
+				$arquitectura = ' ';
 			else
-				$tratamento = $_POST['tratamento'];
+				$arquitectura = $_POST['arquitectura'];
 
-			if (empty($_POST['geral']))
-				$geral = ' ';
+			if (empty($_POST['construtora']))
+				$construtora = ' ';
 			else
-				$geral = $_POST['geral'];
+				$construtora = $_POST['construtora'];
+
+			if (empty($_POST['cfinal']))
+				$cfinal = ' ';
+			else
+				$cfinal = $_POST['cfinal'];
+
+			if (empty($_POST['outros']))
+				$outros = ' ';
+			else
+				$outros = $_POST['outros'];
 
 			$data = array('user_username' => set_value('email'), 'user_password' => md5(set_value('password')), 'user_cizacl_role_id' => '2', 'user_auth' => NULL, 'user_auth_date' => NULL);
 
 			$this->db->insert('users', $data);
 
-			$data2 = array('user_profile_user_id' => $this->db->insert_id(), 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_area_caixilharia' => $caixilharia, 'user_profile_area_vidraria' => $vidraria, 'user_profile_area_extrusao' => $extrusao, 'user_profile_area_tratamento' => $tratamento, 'user_profile_area_geral' => $geral, 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
+			$data2 = array('user_profile_user_id' => $this->db->insert_id(), 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_serralharia' => $serralharia, 'user_profile_vidraria' => $vidraria, 'user_profile_armazenista' => $armazenista, 'user_profile_arquitectura' => $arquitectura, 'user_profile_construtora' => $construtora, 'user_profile_cliente_final' => $cfinal, 'user_profile_outros' => $outros, 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
 
 			$this->db->insert('user_profiles', $data2);
 
@@ -570,7 +582,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to('webmaster@critecns.com');
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$caixilharia.'<br>Área Vidraria: '.$vidraria.'<br>Área Extrusão: '.$extrusao.'<br>Área Tratamento: '.$tratamento.'<br>Geral: '.$geral.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
 			$this->email->send();
 			
@@ -579,7 +591,7 @@ class Login extends CI_Controller {
 			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
-			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Área Caixilharia: '.$caixilharia.'<br>Área Vidraria: '.$vidraria.'<br>Área Extrusão: '.$extrusao.'<br>Área Tratamento: '.$tratamento.'<br>Geral: '.$geral.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+			$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
     		// Debug Email
 			if (!$this->email->send()) {

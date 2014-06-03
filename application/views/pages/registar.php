@@ -61,11 +61,13 @@
 						<label><?=lang('area')?>:*</label>
 					</div>
 					<div class="col-md-6">  
-						<input class="area" type="checkbox" name="caixilharia" value="Área Caixilharia" <?php echo set_checkbox('caixilharia', 'Área Caixilharia'); ?> /><?=lang('rcaixilharia')?><br>
-						<input class="area" type="checkbox" name="vidraria" value="Área Vidraria" <?php echo set_checkbox('vidraria', 'Área Vidraria'); ?> /><?=lang('rvidraria')?><br>
-						<input class="area" type="checkbox" name="extrusao" value="Área Extrusão" <?php echo set_checkbox('extrusao', 'Área Extrusão'); ?> /><?=lang('rextrusao')?><br>
-						<input class="area" type="checkbox" name="tratamento" value="Área Tratamento" <?php echo set_checkbox('tratamento', 'Área Tratamento'); ?> /><?=lang('rtratamento')?><br>
-						<input class="area" type="checkbox" name="geral" value="Geral" <?php echo set_checkbox('geral', 'Geral'); ?> /><?=lang('geral')?><br>
+						<input class="area" type="checkbox" name="serralharia" value="Serralharia" <?php echo set_checkbox('serralharia', 'Serralharia'); ?> /><?=lang('serralharia')?><br>
+						<input class="area" type="checkbox" name="vidraria" value="Vidraria" <?php echo set_checkbox('vidraria', 'Vidraria'); ?> /><?=lang('rvidraria')?><br>
+						<input class="area" type="checkbox" name="armazenista" value="Armazenista" <?php echo set_checkbox('armazenista', 'Armazenista'); ?> /><?=lang('armazenista')?><br>
+						<input class="area" type="checkbox" name="arquitectura" value="Arquitectura" <?php echo set_checkbox('arquitectura', 'Arquitectura'); ?> /><?=lang('arquitectura')?><br>
+						<input class="area" type="checkbox" name="construtora" value="Construtora" <?php echo set_checkbox('construtora', 'Construtora'); ?> /><?=lang('construtora')?><br>
+						<input class="area" type="checkbox" name="cfinal" value="Cliente Final" <?php echo set_checkbox('cfinal', 'Cliente Final'); ?> /><?=lang('cfinal')?><br>
+						<input class="area" type="checkbox" name="outros" value="Outros" <?php echo set_checkbox('outros', 'Outros'); ?> /><?=lang('outros')?><br>
 					</div>
 				</div>
 				<p></p>

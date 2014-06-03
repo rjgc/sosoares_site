@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-<?php ?>
 <head>
     <title>GRUPO SOSOARES</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

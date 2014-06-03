@@ -5,6 +5,32 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//GET PROFILE FIELDS
+
+	public function get_value($user_profile_user_id)
+	{
+		$query = $this->db->query("select * from user_profiles where user_profile_user_id = '$user_profile_user_id'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
+	//ACTIVATE USER
+
+	public function activate_user($user_profile_user_id)
+	{
+		$this->db->where('user_profile_user_id', $user_profile_user_id);              
+		$this->db->update('user_profiles', array('user_profile_user_status_code' =>  1));
+	}
+
+	//DEACTIVATE USER
+
+	public function deactivate_user($user_profile_user_id)
+	{
+		$this->db->where('user_profile_user_id', $user_profile_user_id);              
+		$this->db->update('user_profiles', array('user_profile_user_status_code' =>  0));
+	}
+
 	//RECUPERAR PASSWORD
 
 	public function recuperar_password($email)

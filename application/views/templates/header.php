@@ -159,5 +159,6 @@
             }
         } ?>
     </nav>
-    <section>
-        <?php require_once('assets/sosoares/php/header.php'); ?>
+</body>
+</html>
+<?php require_once('assets/sosoares/php/header.php'); ?>
