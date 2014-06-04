@@ -102,7 +102,7 @@
                 </div>
                 <div id="signIn">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['notAllowed'] == false) { ?>
-                    <a class="btn button grow" id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_reservada')?>"><?=$_SESSION['profile']['user_profile_name']?></a> 
+                    <a class="btn button grow" id="signin" data-toggle="modal" href="<?=site_url('caixilharia/area_privada')?>"><?=$_SESSION['profile']['user_profile_name']?></a> 
                     <?php } else { ?>
                     <a id="signin" data-toggle="modal" href="#myModal"><button class="btn button grow" id="btn_signin"><?=lang('area_privada')?></button></a> 
                     <?php } ?>

@@ -1,3 +1,4 @@
+<?php $array = array("Super Admin", "Administrator", "Mediagest", "Comercial", "Logistica", "Promotor", "Orcamentista", "Desenvolvimento", "Producao", "Geral"); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/sosoares/css/area-privada.css">
 <div class="container">
     <div class="row">
@@ -24,8 +25,9 @@
         </div>
     </div>
     <?php } else { ?>
+    <a class="btn button grow ui-corner-all botao" href="www.sosoares.pt/intranet">Intranet</a>
     <?php if ($_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
-    <a class="btn button grow ui-corner-all botao" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+    <a class="btn button grow ui-corner-all botao2" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo site_url('caixilharia/logout');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
         echo site_url('vidro/logout');
@@ -34,6 +36,7 @@
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         echo site_url('tratamento/logout');
     } ?>">Logout</a>
+    <?php if (in_array($_SESSION['profile']['cizacl_role_name'], $array)) ?>
     <div class="dados">
         <h3><?=lang('dados')?></h3>
         <div><b><?=lang('nome')?>: </b><?=$_SESSION['profile']['user_profile_name'];?></div>

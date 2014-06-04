@@ -188,7 +188,7 @@ class Sosoares_model extends CI_Model
 	//GET PROFILE
 
 	public function get_profile($user_id) {
-		$query = $this->db->query("select * from user_profiles where user_profile_user_id = '$user_id'");
+		$query = $this->db->query("select up.*, cr.cizacl_role_name from user_profiles up inner join users u on up.user_profile_user_id = u.user_id inner join cizacl_roles cr on u.user_cizacl_role_id = cr.cizacl_role_id where up.user_profile_user_id = '$user_id'");
 
 		$data = $query->row_array();
 		return $data;
