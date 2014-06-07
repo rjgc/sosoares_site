@@ -6,6 +6,7 @@
 .botoes input {margin-left: 10px!important;}
 .contactus .row form div.col-md-6 {padding-top: 10px;}
 legend {border-bottom: 0;}
+#labelConcelho, #labelDistrito, #concelho, #distrito {display: none;}
 
 /*============================== MEDIA QUERIES ===================================*/
 @media screen and (max-width: 1217px) {

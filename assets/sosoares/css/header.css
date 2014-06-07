@@ -1,2 +1,3 @@
 .login {padding: 20px!important;}
 .login input {padding: 0 0 0 10px !important; border: 1px solid #107ca4;margin-bottom: 10px;}
+#myModal {display: none;}

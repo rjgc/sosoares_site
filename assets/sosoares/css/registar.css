@@ -1,20 +1,37 @@
 .mensagem {padding-left: 18px;}
 .alert {display: none;width: calc(100% - 66.7%);margin-left: 15px;}
-.caixa-texto {margin-bottom: 10px; padding: 0 0 0 10px !important; border: 1px solid #107ca4;}
+.caixa-texto {margin-bottom: 10px; padding: 0 0 0 10px !important;}
 .botoes {width: 247px;padding-top: 20px;}
 .botoes input {margin-left: 10px;float: right;}
 .codigo {display: flex;width: 247px;}
 .hifen {margin: 0 5px 0 5px!important;}
 #labelConcelho, #labelDistrito, #concelho, #distrito {display: none;}
-.row .col-md-4:nth-child(2) {width: 36.6%;}
 .area {vertical-align: baseline;margin: 0 5px 0 0!important;}
+.row .col-md-4:first-child {margin-right: 40px;}
 
 /*============================== MEDIA QUERIES ===================================*/
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
 	.row .col-md-6 {margin-bottom: 10px;}
+	.mensagem {width: 50%;}
+	.row .col-md-4:first-child {margin-right: 0;}
+}
+
+@media screen and (max-width: 800px) {
+	.mensagem {width: 55%;}
+}
+
+@media screen and (max-width: 700px) {
+	.mensagem {width: 60%;}
+}
+
+@media screen and (max-width: 600px) {
+	.mensagem {width: 65%;}
+}
+
+@media screen and (max-width: 500px) {
+	.mensagem {width: 85%;}
 }
 
 @media screen and (max-width: 581px) {
-	.row .col-md-4:nth-child(2) {padding-left: 35px;}
 	.col-md-4 p, .col-md-4 form, .col-md-4 button {margin: 0 10px 10px 0;}
 }

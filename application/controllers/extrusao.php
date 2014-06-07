@@ -75,6 +75,10 @@ public function registar()
 		$data['current'] = 'registar';
 		$this->menu($data);
 
+		$data['paises'] = file(base_url().'assets/uploads/paises.txt');
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+
 		$this->load->view('pages/registar', $data);
 		$this->load->view('templates/footer');
 	}
@@ -202,10 +206,35 @@ public function area_privada()
 		$data['current'] = 'area_privada';
 		$this->menu($data);
 
-		$this->load->view('pages/area_privada', $data);
-		$this->load->view('templates/footer');
-	}
-}
+        if (isset($temp['1'])) 
+            if (!empty($this->sosoares_model->check_user_profile($temp['1']))) 
+                $this->load->view('pages/area_privada', $data);
+            else 
+            {
+                $data['paises'] = file(base_url().'assets/uploads/paises.txt');
+                $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+                $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+
+                $this->load->view('pages/editar_perfil', $data); 
+            }
+
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function editar_perfil() 
+    {
+        $data['page_style']= "extrusao";
+        $data['current'] = 'editar_perfil';
+        $this->menu($data);
+
+        $data['paises'] = file(base_url().'assets/uploads/paises.txt');
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+
+        $this->load->view('pages/editar_perfil', $data); 
+        $this->load->view('templates/footer');
+    }
 
 public function logout()
 {
@@ -626,12 +655,11 @@ public function contactos()
 		$data['page_style']= "extrusao";
 		$data['page_title'] = "contactos";
 		$data['current'] = 'contactos';
-		$data['reset'] = FALSE;
-		$data['message'] = null;
 		$this->menu($data);
 
-		$data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
-		$data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+		$data['paises'] = file(base_url().'assets/uploads/paises.txt');
+        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
 		$data['contactos'] = $this->sosoares_model->get_contactos(3);
 		$data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
 		$data['destinatario'] = $this->sosoares_model->get_destinatario(1);

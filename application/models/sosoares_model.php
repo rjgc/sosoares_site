@@ -5,6 +5,16 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//CHECK USER PROFILE
+
+	public function check_user_profile($user_profile_user_id)
+	{
+		$query = $this->db->query("select * from user_profiles where user_profile_serralharia like 'Serralharia' or user_profile_vidraria like 'Vidraria' or user_profile_armazenista like 'Armazenista' or user_profile_arquitectura like 'Arquitectura' or user_profile_construtora like 'Construtora' or user_profile_cliente_final like 'Cliente Final' or user_profile_outros like 'Outros' and user_profile_user_id = '$user_profile_user_id'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 	//GET PROFILE FIELDS
 
 	public function get_value($user_profile_user_id)

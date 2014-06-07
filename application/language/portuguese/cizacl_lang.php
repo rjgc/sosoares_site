@@ -185,6 +185,13 @@ $lang["alterar"] = "Alterar";
 $lang["perfil"] = "Perfil";
 
 
+/*Editar Perfil*/
+
+$lang["editar"] = "Editar Perfil";
+
+$lang["guardar"] = "Guardar";
+
+
 /*Menu Vidro*/
 
 
@@ -367,6 +374,8 @@ $lang["observaçoes"] = "observações";
 
 $lang["item"] = "Seleccione um Assunto";
 
+$lang["spais"] = "Seleccione um País";
+
 $lang["sdistrito"] = "Seleccione um Distrito";
 
 $lang["sconcelho"] = "Seleccione um Concelho";
@@ -428,6 +437,8 @@ $lang["email_progress"]	        = "Sending email...";
 $lang["email_error"]	        = "Failed to send email.";
 
 $lang["password_progress"]	    = "Changing password...";
+
+$lang["update_progress"]	    = "Updating profile...";
 
 
 

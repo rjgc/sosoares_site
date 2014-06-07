@@ -185,6 +185,13 @@ $lang["alterar"] = "Change";
 $lang["perfil"] = "Profile";
 
 
+/*Editar Perfil*/
+
+$lang["editar"] = "Edit Profile";
+
+$lang["guardar"] = "Save";
+
+
 /*Menu Vidro*/
 
 
@@ -367,6 +374,8 @@ $lang["observaçoes"] = "Observations";
 
 $lang["item"] = "Select a Topic";
 
+$lang["spais"] = "Choose a Country";
+
 $lang["sdistrito"] = "Select District";
 
 $lang["sconcelho"] = "Select a County";
@@ -428,6 +437,8 @@ $lang["email_progress"]	        = "Sending email...";
 $lang["email_error"]	        = "Failed to send email.";
 
 $lang["password_progress"]	    = "Changing password...";
+
+$lang["update_progress"]	    = "Updating profile...";
 
 
 

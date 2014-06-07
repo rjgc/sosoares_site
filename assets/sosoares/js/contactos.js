@@ -1,4 +1,18 @@
 $(document).ready(function() {
+	$('select#pais').change(function(e){
+        if ($(this).val().indexOf('Portugal') > -1) {
+            document.getElementById('labelDistrito').style.display = "inherit";
+            document.getElementById('labelConcelho').style.display = "inherit";
+            document.getElementById('distrito').style.display = "inherit";
+            document.getElementById('concelho').style.display = "inherit";
+        } else {
+        	document.getElementById('labelDistrito').style.display = "none";
+            document.getElementById('labelConcelho').style.display = "none";
+            document.getElementById('distrito').style.display = "none";
+            document.getElementById('concelho').style.display = "none";
+        }
+    });
+
 	$('select#distrito').change(function(e){            
 		var newOptions = getNewOptions($(this).val());
 		$('select#concelho').html('');

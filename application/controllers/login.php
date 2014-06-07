@@ -376,9 +376,15 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('telemovel', 'Telemóvel', 'required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('morada', 'Morada', 'max_length[50]');
-		$this->form_validation->set_rules('distrito', 'Distrito', 'required|max_length[50]');
-		$this->form_validation->set_rules('concelho', 'Concelho', 'required|max_length[50]');
-		$this->form_validation->set_rules('assunto', 'Assunto', 'required');
+		$this->form_validation->set_rules('pais', 'País', 'required|min_length[5]|max_length[50]');
+
+		if ($_POST['pais'] == 'Portugal') 
+		{
+			$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
+			$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
+		}
+		
+		$this->form_validation->set_rules('assunto', 'Assunto', 'required|min_length[5]|max_length[50]');
 		$this->form_validation->set_rules('mensagem', 'Mensagem', 'required|min_length[5]|max_length[500]');
 
 		if($this->form_validation->run() == FALSE){
@@ -413,7 +419,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to('webmaster@critecns.com');
 			$this->email->subject(set_value("assunto"));
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>País: '.set_value("pais").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
 
 			$this->email->send();
 
@@ -422,7 +428,7 @@ class Login extends CI_Controller {
 			$this->email->from('webmaster@critecns.com');
 			$this->email->to(set_value("email"));
 			$this->email->subject(set_value("assunto"));
-			$this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+			$this->email->message('Agradecemos o seu contacto. Ao qual responderemos o mais breve possível.<br><br>Nome: '.set_value("nome").'<br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>País: '.set_value("pais").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'<br>Mensagem: '.set_value('mensagem').'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 
         	// Debug Email
 			if (!$this->email->send()) {
@@ -472,7 +478,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
 
-		if ($_POST["distrito"] != '') {
+		if ($_POST['pais'] == 'Portugal') {
 			$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
 
 			$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
@@ -506,6 +512,7 @@ class Login extends CI_Controller {
 			$construtora;
 			$cfinal;
 			$outros;
+			$idUser;
 
 			if (set_value('distrito') == '') {
 				$distrito = NULL;
@@ -549,11 +556,23 @@ class Login extends CI_Controller {
 			else
 				$outros = $_POST['outros'];
 
-			$data = array('user_username' => set_value('email'), 'user_password' => md5(set_value('password')), 'user_cizacl_role_id' => '2', 'user_auth' => NULL, 'user_auth_date' => NULL);
+			if (strpos(set_value('email'), '@sosoares')) 
+			{
+				$idUser = $this->db->query('select max(user_id) from users where user_id < 1000');
+				$idUser++;
+			}
+			else
+			{
+				$idUser = $this->db->query('select max(user_id) from users where');
+				$idUser++;
+			}
+
+
+			$data = array('user_id' => $idUser, 'user_username' => set_value('email'), 'user_password' => md5(set_value('password')), 'user_cizacl_role_id' => '2', 'user_auth' => NULL, 'user_auth_date' => NULL);
 
 			$this->db->insert('users', $data);
 
-			$data2 = array('user_profile_user_id' => $this->db->insert_id(), 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_serralharia' => $serralharia, 'user_profile_vidraria' => $vidraria, 'user_profile_armazenista' => $armazenista, 'user_profile_arquitectura' => $arquitectura, 'user_profile_construtora' => $construtora, 'user_profile_cliente_final' => $cfinal, 'user_profile_outros' => $outros, 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
+			$data2 = array('user_profile_id' => $idUser, 'user_profile_user_id' => $idUser, 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_serralharia' => $serralharia, 'user_profile_vidraria' => $vidraria, 'user_profile_armazenista' => $armazenista, 'user_profile_arquitectura' => $arquitectura, 'user_profile_construtora' => $construtora, 'user_profile_cliente_final' => $cfinal, 'user_profile_outros' => $outros, 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
 
 			$this->db->insert('user_profiles', $data2);
 
@@ -753,6 +772,128 @@ class Login extends CI_Controller {
 				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('password_progress'),false,base_url().'index.php/'.$lang.'/tratamento/password_alterada'));
 
 		}
+	}
+
+
+
+	function editar_perfil()
+
+	{ 
+
+		$this->load->library('form_validation');
+
+		
+		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('morada', 'Morada', 'required|min_length[5]|max_length[100]');
+
+		$this->form_validation->set_rules('codigo', 'Código Postal', 'required|numeric');
+
+		$this->form_validation->set_rules('codigo2', 'Código Postal 2', 'required|numeric');
+
+		$this->form_validation->set_rules('pais', 'País', 'required|min_length[5]|max_length[50]');
+
+		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
+
+		if ($_POST['pais'] == 'Portugal') {
+			$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
+
+			$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
+		}		
+
+		$this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
+
+		$this->form_validation->set_rules('contribuinte', 'Contribuinte', 'required|numeric');
+
+		if ($this->form_validation->run() == false)	{
+
+			die($this->cizacl->json_msg('error',$this->lang->line('attention'),validation_errors("<p><span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></span>","</p>"),true));
+
+		}
+
+		else	{
+
+			$distrito;
+			$concelho;
+			$codigo;
+			$serralharia;
+			$vidraria;
+			$armazenista;
+			$arquitectura;
+			$construtora;
+			$cfinal;
+			$outros;
+			$idUser;
+
+			if (set_value('distrito') == '') {
+				$distrito = NULL;
+				$concelho = NULL;
+			}
+
+			$codigo =  set_value('codigo')."-".set_value('codigo2');
+
+			if (empty($_POST['serralharia']))
+				$serralharia = ' ';
+			else
+				$serralharia = $_POST['serralharia'];
+
+			if (empty($_POST['vidraria']))
+				$vidraria = ' ';
+			else
+				$vidraria = $_POST['vidraria'];
+
+			if (empty($_POST['armazenista']))
+				$armazenista = ' ';
+			else
+				$armazenista = $_POST['armazenistas'];
+
+			if (empty($_POST['arquitectura']))
+				$arquitectura = ' ';
+			else
+				$arquitectura = $_POST['arquitectura'];
+
+			if (empty($_POST['construtora']))
+				$construtora = ' ';
+			else
+				$construtora = $_POST['construtora'];
+
+			if (empty($_POST['cfinal']))
+				$cfinal = ' ';
+			else
+				$cfinal = $_POST['cfinal'];
+
+			if (empty($_POST['outros']))
+				$outros = ' ';
+			else
+				$outros = $_POST['outros'];
+
+
+			$data2 = array('user_profile_id' => $_SESSION["profile"]["user_profile_id"], 'user_profile_user_id' => $_SESSION["profile"]["user_profile_user_id"], 'user_profile_name' => set_value('nome'), 'user_profile_surname' => ' ', 'user_profile_email' => set_value('email'), 'user_profile_morada' => set_value('morada'), 'user_profile_codigo_postal' => $codigo, 'user_profile_pais' => set_value('pais'), 'user_profile_localidade' => set_value('localidade'), 'user_profile_distrito' => $distrito, 'user_profile_concelho' => $concelho, 'user_profile_telefone' => set_value('telefone'), 'user_profile_contribuinte' => set_value('contribuinte'), 'user_profile_serralharia' => $serralharia, 'user_profile_vidraria' => $vidraria, 'user_profile_armazenista' => $armazenista, 'user_profile_arquitectura' => $arquitectura, 'user_profile_construtora' => $construtora, 'user_profile_cliente_final' => $cfinal, 'user_profile_outros' => $outros, 'user_profile_user_status_code' => '1', 'user_profile_lastaccess' => NULL, 'user_profile_added' => NULL, 'user_profile_edited' => NULL, 'user_profile_added_by' => '1', 'user_profile_edited_by' => NULL);
+
+			$this->db->update('user_profiles', $data2);
+
+
+			$lang;
+
+			if (strpos($_SERVER['REQUEST_URI'], 'pt'))
+				$lang = 'pt';
+			else if (strpos($_SERVER['REQUEST_URI'], 'en'))
+				$lang = 'en';
+			else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
+				$lang = 'fr';
+			else if (strpos($_SERVER['REQUEST_URI'], 'es'))
+				$lang = 'es';
+
+			if (strpos($_SERVER['REQUEST_URI'], 'caixilharia'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/caixilharia/area_privada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'vidro'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/vidro/area_privada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'extrusao'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/extrusao/area_privada'));
+			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
+				die($this->cizacl->json_msg('success',$this->lang->line('wait'),$this->lang->line('email_progress'),false,base_url().'index.php/'.$lang.'/tratamento/area_privada'));    
+		}
+
 	}
 
 

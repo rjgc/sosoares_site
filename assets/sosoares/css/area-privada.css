@@ -20,21 +20,36 @@
 
 .alerta {padding-left: 15px;}
 .botao {margin: 20px 0 0 0;float: right;}
-.botao2 {float: right;clear: right;margin: 10px 0 0 0;}
-.botao a,.botao2 a {color: #fff!important;}
+.botao2, .botao3 {float: right;clear: right;margin: 10px 0 0 0;}
+.botao a,.botao3 a {color: #fff!important;}
 .dados {width: 89.5%; padding-left: 15px;}
 .tabela {width: 100%;}
 
 /*============================== MEDIA QUERIES ===================================*/
 @media screen and (max-width: 1217px) {
-	.botao {margin: 20px 4px 0 0;}
+	.botao {margin: 20px 8px 0 0;}
+	.botao2, .botao3 {margin: 10px 8px 0 0;}
 }
 
 @media screen and (max-width: 810px) {
-	.botao {margin: 20px 4px 0 0;}
 	.dados {width: 100%;}
 }
 
 @media screen and (max-width: 769px) {
 	.nav > li {background-color: transparent;}
+}
+
+@media screen and (max-width: 724px) {
+	.botao {float: none;margin: 10px 8px 10px 0;}
+	.botao2, .botao3 {float: none;clear: none;margin: 10px 12px 10px 0;}
+	.dados {clear: both;}
+	.botoes {float: right;}
+}
+
+@media screen and (max-width: 500px) {
+	.button {width: 100px;}
+}
+
+@media screen and (max-width: 400px) {
+	.button {width: 89px;font-size: 14px;}
 }
