@@ -1,6 +1,13 @@
 $( document ).ready(function() {
 	$(function() {
-		document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth + "px";
+		var mql = window.matchMedia("screen and (max-width: 991px)")
+
+	    if (mql.matches) {
+	       document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth + "px";
+	    }
+	    else
+	    	document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth - 64 + "px";
+		
 		document.getElementById("divCodigo").style.width = document.getElementById("morada").offsetWidth + "px";
 		document.getElementById("jq_msg2").style.width = (document.getElementById("col1").offsetWidth + document.getElementById("col2").offsetWidth - 178) + "px";
 	});
@@ -142,7 +149,14 @@ $( document ).ready(function() {
 	$(window).resize(function () 
 	{
 		$(function() {
-			document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth + "px";
+			var mql = window.matchMedia("screen and (max-width: 991px)")
+
+		    if (mql.matches) {
+		       document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth + "px";
+		    }
+		    else
+		    	document.getElementById("botoes").style.width = document.getElementById("contribuinte").offsetWidth - 64 + "px";
+	    
 			document.getElementById("divCodigo").style.width = document.getElementById("morada").offsetWidth + "px";
 			document.getElementById("jq_msg2").style.width = (document.getElementById("col1").offsetWidth + document.getElementById("col2").offsetWidth - 178) + "px";
 		});

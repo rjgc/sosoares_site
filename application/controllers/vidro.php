@@ -182,7 +182,7 @@ public function area_privada()
                 $data['logged_in'] = True;
                 $_SESSION['notAllowed'] = False;
 
-                $data['profile'] = $this->sosoares_model->get_profile($temp['1']);
+                $_SESSION['profile'] = $this->sosoares_model->get_profile($temp['1']);
                 $data['categoria_ficheiros'] = $this->sosoares_model->get_categoria_ficheiros();
                 $data['todos'] = $this->sosoares_model->get_ficheiros();
                 $data['perfis'] = $this->sosoares_model->get_perfis();
