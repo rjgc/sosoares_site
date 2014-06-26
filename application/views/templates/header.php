@@ -161,4 +161,4 @@
     </nav>
 </body>
 </html>
-<?php require_once('assets/sosoares/php/header.php'); ?>
+<?php require('assets/sosoares/php/header.php'); ?>

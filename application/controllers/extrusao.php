@@ -207,7 +207,7 @@ public function area_privada()
 		$this->menu($data);
 
         if (isset($temp['1'])) 
-            if (!empty($this->sosoares_model->check_user_profile($temp['1']))) 
+            if ($this->sosoares_model->check_user_profile($temp['1'])) 
                 $this->load->view('pages/area_privada', $data);
             else 
             {
