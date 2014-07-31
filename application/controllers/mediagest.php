@@ -693,6 +693,8 @@ class Mediagest extends CI_Controller {
 
             $crud->set_field_upload('foto', 'assets/uploads/produtos');
 
+            $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+
             $crud->callback_before_insert(array($this, 'callback_before_insert_tipo_produto_aluminio'));
 
             $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_tipo_produto_aluminio', 'order-position-product-down');
@@ -775,6 +777,7 @@ class Mediagest extends CI_Controller {
             $crud->set_field_upload('foto_1', 'assets/uploads/produtos')->set_field_upload('foto_2', 'assets/uploads/produtos')->set_field_upload('foto_3', 'assets/uploads/produtos')->set_field_upload('foto_4', 'assets/uploads/produtos');
 
             $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
+            
             $crud->callback_before_insert(array($this, 'callback_before_insert_produto_vidro'));
 
             $crud->add_action('down', 'http://www.indelague.pt/assets/indelague/img/sort_down_green.png', 'mediagest/change_order_vidro', 'order-position-product-down');
@@ -901,6 +904,8 @@ class Mediagest extends CI_Controller {
             $crud->field_type('ordem', 'hidden');
 
             $crud->set_field_upload('foto', 'assets/uploads/produtos');
+
+            $crud->callback_after_upload(array($this,'callback_after_upload_produto'));
 
             $crud->callback_before_insert(array($this, 'callback_before_insert_tipo_produto_extrusao'));
 

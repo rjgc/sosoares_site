@@ -18,8 +18,8 @@
             <div class="col-md-12">
                 <div class="obras-container">
                     <?php
-                    if (!empty($produtos[$caracteristica['nome_'.$this->lang->lang()]])) {
-                        foreach ($produtos[$caracteristica['nome_'.$this->lang->lang()]] as $produto) { ?>
+                    if (!empty($produtos[$caracteristica['nome_pt']])) {
+                        foreach ($produtos[$caracteristica['nome_pt']] as $produto) { ?>
                         <a href="<?=site_url('caixilharia/produto/'.$produto['id_produto_aluminio'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p></div></a> 
                         <?php }
                     } else { ?>

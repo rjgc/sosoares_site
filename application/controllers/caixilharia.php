@@ -207,17 +207,17 @@ public function area_privada()
         $data['current'] = 'area_privada';
         $this->menu($data);
 
-        if (isset($temp['1'])) 
-            if ($this->sosoares_model->check_user_profile($temp['1'])) 
+        // if (isset($temp['1'])) 
+        //     if ($this->sosoares_model->check_user_profile($temp['1'])) 
                 $this->load->view('pages/area_privada', $data);
-            else 
-            {
-                $data['paises'] = file(base_url().'assets/uploads/paises.txt');
-                $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
-                $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+            // else 
+            // {
+            //     $data['paises'] = file(base_url().'assets/uploads/paises.txt');
+            //     $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+            //     $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
 
-                $this->load->view('pages/editar_perfil', $data); 
-            }
+            //     $this->load->view('pages/editar_perfil', $data); 
+            // }
 
             $this->load->view('templates/footer');
         }
@@ -438,7 +438,15 @@ public function area_privada()
         
     //if not successful, set the error message
         if (!$this->upload->do_upload('cv')) {
-            $data['message'] = 'Tem de enviar um Curriculum Vitae.';
+            if ($this->lang->lang() === 'pt')
+                $data['message'] = 'Tem de enviar um Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'en')
+                $data['message'] = 'Must submit a Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'fr')
+                $data['message'] = 'Doit présenter un Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'es')
+                $data['message'] = 'Debe presentar un Curriculum Vitae.';
+
             $data['reset'] = FALSE;
             $data['page_style']= "caixilharia";
             $data['current'] = 'grupo_sosoares';
@@ -461,7 +469,15 @@ public function area_privada()
             $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
 
             if($this->form_validation->run() == FALSE){
-                $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+                if ($this->lang->lang() === 'pt')
+                    $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+                elseif ($this->lang->lang() === 'en')
+                    $data['message'] = 'Error in sending the application! Try again.';
+                elseif ($this->lang->lang() === 'fr')
+                    $data['message'] = "Erreur dans l'envoi de la demande! Essayer à nouveau.";
+                elseif ($this->lang->lang() === 'es')
+                    $data['message'] = 'Error en el envío de la aplicación! Inténtalo de nuevo.';
+
                 $data['reset'] = FALSE;
                 $data['page_style']= "caixilharia";
                 $data['current'] = 'grupo_sosoares';
@@ -471,7 +487,15 @@ public function area_privada()
                 $this->load->view('templates/footer');
             }
             else{
-                $data['message'] = 'A candidatura foi enviada com sucesso!';
+                if ($this->lang->lang() === 'pt')
+                    $data['message'] = 'A candidatura foi enviada com sucesso!';
+                elseif ($this->lang->lang() === 'en')
+                    $data['message'] = 'The application was successfully sent!';
+                elseif ($this->lang->lang() === 'fr')
+                    $data['message'] = "La demande a été envoyée avec succès!";
+                elseif ($this->lang->lang() === 'es')
+                    $data['message'] = 'La solicitud se ha enviado correctamente!';
+                
                 $data['reset'] = TRUE;
 
             //Enviar email
@@ -500,8 +524,6 @@ public function area_privada()
                 $this->email->to('webmaster@critecns.com');
                 $this->email->subject('Candidatura');
                 $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
-
-                $this->email->send();
 
             // Run some setup
                 $this->email->initialize($config);

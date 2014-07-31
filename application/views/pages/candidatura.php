@@ -45,38 +45,38 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="nome"><?=lang('nome')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="nome" name="nome" type="text" placeholder="<?=lang('nome')?>" value="<?php echo ($reset) ? "" : set_value('nome'); ?>">
+                            <input class="form-control" id="nome" name="nome" type="text" placeholder="<?=lang('nome')?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="mail"><?=lang('email')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="email" name="email" type="email" placeholder="<?=lang('email')?>" value="<?php echo ($reset) ? "" : set_value('email'); ?>">
+                            <input class="form-control" id="email" name="email" type="email" placeholder="<?=lang('email')?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telf"><?=lang('telefone')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telefone" name="telefone" type="telefone" placeholder="<?=lang('telefone')?>" value="<?php echo ($reset) ? "" : set_value('telefone'); ?>">
+                            <input class="form-control" id="telefone" name="telefone" type="telefone" placeholder="<?=lang('telefone')?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="telm"><?=lang('telemovel')?>:</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="telemovel" name="telemovel" type="telemovel" placeholder="<?=lang('telemovel')?>" value="<?php echo ($reset) ? "" : set_value('telemovel'); ?>">
+                            <input class="form-control" id="telemovel" name="telemovel" type="telemovel" placeholder="<?=lang('telemovel')?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="cv"><?=lang('cv')?>:*</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="cv" name="cv" type="file" value="<?php echo ($reset) ? "" : set_value('cv'); ?>">
+                            <input class="form-control" id="cv" name="cv" type="file">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="apresentacao"><?=lang('apresentacao')?>:*</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" placeholder="<?=lang('apresentacao')?>" value="<?php echo ($reset) ? "" : set_value('apresentacao'); ?>"></textarea>
+                            <textarea class="form-control" id="apresentacao" name="apresentacao" rows="5" placeholder="<?=lang('apresentacao')?>"></textarea>
                         </div>
                     </div>
                     <div class="row" id="row">

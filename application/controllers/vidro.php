@@ -22,7 +22,7 @@ function __construct()
 {
     parent::__construct();
 
-// you might want to just autoload these two helpers
+    // you might want to just autoload these two helpers
     $this->load->helper('language');
     $this->load->helper('url');
     $this->load->helper('text');
@@ -206,17 +206,17 @@ public function area_privada()
         $data['current'] = 'area_privada';
         $this->menu($data);
 
-        if (isset($temp['1'])) 
-            if ($this->sosoares_model->check_user_profile($temp['1'])) 
+        // if (isset($temp['1'])) 
+        //     if ($this->sosoares_model->check_user_profile($temp['1'])) 
                 $this->load->view('pages/area_privada', $data);
-            else 
-            {
-                $data['paises'] = file(base_url().'assets/uploads/paises.txt');
-                $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
-                $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+            // else 
+            // {
+            //     $data['paises'] = file(base_url().'assets/uploads/paises.txt');
+            //     $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+            //     $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
 
-                $this->load->view('pages/editar_perfil', $data); 
-            }
+            //     $this->load->view('pages/editar_perfil', $data); 
+            // }
 
             $this->load->view('templates/footer');
         }
@@ -236,187 +236,179 @@ public function area_privada()
         $this->load->view('templates/footer');
     }
 
-public function logout()
-{
-    $this->session->sess_destroy();
+    public function logout()
+    {
+        $this->session->sess_destroy();
 
-    $this->home();
-}
-
-public function pesquisa($pesquisa)
-{
-    $data['page_style']= "vidro";
-    $data['current'] = 'pesquisa';
-    $this->menu($data);
-
-    $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
-    $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
-    $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
-    $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
-    $data['produtos_extrusao'] = $this->sosoares_model->pesquisa_produtos_extrusao($pesquisa);
-    $data['obras'] = $this->sosoares_model->pesquisa_obras($pesquisa);
-
-    $this->load->view('pages/pesquisa', $data);
-    $this->load->view('templates/footer');
-}
-
-public function menu($data) 
-{
-    $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
-    $data['produtos'] = $this->vidro_model->get_produtos();
-    $data['apoios'] = $this->sosoares_model->get_apoios(2);
-    $data['servicos'] = $this->vidro_model->get_servicos();
-    $data['area_tecnica'] = $this->vidro_model->get_areas_tecnicas();
-
-    $this->load->view('templates/header', $data, $this->get_lang());
-}
-
-public function grupo_sosoares($page=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['current'] = 'grupo_sosoares';
-        $data['page'] = $page;
-        $this->menu($data);
-
-        if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
-
-            $this->load->view('pages/grupo_sosoares', $data);
-        } else {
-            $this->load->view('pages/grupo_sosoares', $data);
-        }
-
-        $this->load->view('templates/footer');
+        $this->home();
     }
-}
 
-public function grupos_sosoares()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
+    public function pesquisa($pesquisa)
+    {
         $data['page_style']= "vidro";
-        $data['current'] = 'grupos_sosoares';
+        $data['current'] = 'pesquisa';
         $this->menu($data);
 
-        $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
+        $data['tipos_aluminio'] = $this->sosoares_model->pesquisa_tipos_aluminio($pesquisa);
+        $data['tipos_extrusao'] = $this->sosoares_model->pesquisa_tipos_extrusao($pesquisa);
+        $data['produtos_aluminio'] = $this->sosoares_model->pesquisa_produtos_aluminio($pesquisa);
+        $data['produtos_vidro'] = $this->sosoares_model->pesquisa_produtos_vidro($pesquisa);
+        $data['produtos_extrusao'] = $this->sosoares_model->pesquisa_produtos_extrusao($pesquisa);
+        $data['obras'] = $this->sosoares_model->pesquisa_obras($pesquisa);
 
-        $this->load->view('pages/grupos_sosoares', $data);
+        $this->load->view('pages/pesquisa', $data);
         $this->load->view('templates/footer');
     }
-}
 
-public function areas_comerciais()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['page_title'] = "areas_comerciais";
-        $data['current'] = 'areas_comerciais'; 
-        $this->menu($data);
+    public function menu($data) 
+    {
+        $data['grupo_sosoares'] = $this->sosoares_model->get_grupos_sosoares();
+        $data['produtos'] = $this->vidro_model->get_produtos();
+        $data['apoios'] = $this->sosoares_model->get_apoios(2);
+        $data['servicos'] = $this->vidro_model->get_servicos();
+        $data['area_tecnica'] = $this->vidro_model->get_areas_tecnicas();
 
-        $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
-
-        $this->load->view('pages/areas_comerciais', $data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/header', $data, $this->get_lang());
     }
-}
 
-public function noticia($id=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['current'] = 'grupo_sosoares';
-        $this->menu($data);
+    public function grupo_sosoares($page=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['current'] = 'grupo_sosoares';
+            $data['page'] = $page;
+            $this->menu($data);
 
-        $data['id'] = $id;
-        $data['noticia'] = $this->sosoares_model->get_noticia($id);
+            if ($page != null) {
+                $data['page'] = $this->sosoares_model->get_grupo_sosoares($page);
 
-        $this->load->view('pages/noticia', $data);
-        $this->load->view('templates/footer', $data);
+                $this->load->view('pages/grupo_sosoares', $data);
+            } else {
+                $this->load->view('pages/grupo_sosoares', $data);
+            }
+
+            $this->load->view('templates/footer');
+        }
     }
-}
 
-public function noticias()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['current'] = 'grupo_sosoares';
-        $this->menu($data);
+    public function grupos_sosoares()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style']= "vidro";
+            $data['current'] = 'grupos_sosoares';
+            $this->menu($data);
 
-        $data['noticias'] = $this->sosoares_model->get_noticias();
+            $data['pages'] = $this->sosoares_model->get_grupos_sosoares();
 
-        $this->load->view('pages/noticias', $data);
-        $this->load->view('templates/footer', $data);
+            $this->load->view('pages/grupos_sosoares', $data);
+            $this->load->view('templates/footer');
+        }
     }
-}
 
-public function candidaturas()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['current'] = 'grupo_sosoares';
-        $data['reset'] = FALSE;
-        $data['message'] = null;
-        $this->menu($data);
+    public function areas_comerciais()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['page_title'] = "areas_comerciais";
+            $data['current'] = 'areas_comerciais'; 
+            $this->menu($data);
 
-        $data['destinatario'] = 'webmaster@critecns.com';
+            $data['areas_comerciais'] = $this->sosoares_model->get_areas_comerciais();
 
-        $this->load->view('pages/candidatura', $data);
-        $this->load->view('templates/footer');
+            $this->load->view('pages/areas_comerciais', $data);
+            $this->load->view('templates/footer', $data);
+        }
     }
-}
 
-public function send_candidatura() 
-{
-    //load the helper
-    $this->load->helper('form');
+    public function noticia($id=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['current'] = 'grupo_sosoares';
+            $this->menu($data);
 
-    //Configure
-    //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
-    $config['upload_path'] = 'assets/uploads/candidaturas/';
+            $data['id'] = $id;
+            $data['noticia'] = $this->sosoares_model->get_noticia($id);
 
-    // set the filter image types
-    $config['allowed_types'] = 'pdf';
+            $this->load->view('pages/noticia', $data);
+            $this->load->view('templates/footer', $data);
+        }
+    }
 
-    //load the upload library
-    $this->load->library('upload', $config);
-    
-    $this->upload->initialize($config);
-    
-    $this->upload->set_allowed_types('*');
+    public function noticias()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['current'] = 'grupo_sosoares';
+            $this->menu($data);
 
-    $data['upload_data'] = '';
-    
-    //if not successful, set the error message
-    if (!$this->upload->do_upload('cv')) {
-        $data = array('msg' => $this->upload->display_errors());
-    } else { 
-        //else, set the success message
-        $data = array('msg' => "Upload success!");
+            $data['noticias'] = $this->sosoares_model->get_noticias();
 
-        $data['upload_data'] = $this->upload->data();
+            $this->load->view('pages/noticias', $data);
+            $this->load->view('templates/footer', $data);
+        }
+    }
 
-        $cv = $data['upload_data']['file_name'];
-        
-        $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
-        $this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
-        $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
+    public function candidaturas()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['current'] = 'grupo_sosoares';
+            $data['reset'] = FALSE;
+            $data['message'] = null;
+            $this->menu($data);
 
-        if($this->form_validation->run() == FALSE){
-            $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+            $data['destinatario'] = 'webmaster@critecns.com';
+
+            $this->load->view('pages/candidatura', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function send_candidatura() 
+    {
+        //load the helper
+        $this->load->helper('form');
+
+        //Configure
+        //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+        $config['upload_path'] = 'assets/uploads/candidaturas/';
+
+        // set the filter image types
+        $config['allowed_types'] = 'pdf';
+
+        //load the upload library
+        $this->load->library('upload', $config);
+
+        $this->upload->initialize($config);
+
+        $this->upload->set_allowed_types('*');
+
+        $data['upload_data'] = '';
+
+        //if not successful, set the error message
+        if (!$this->upload->do_upload('cv')) {
+            if ($this->lang->lang() === 'pt')
+                $data['message'] = 'Tem de enviar um Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'en')
+                $data['message'] = 'Must submit a Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'fr')
+                $data['message'] = 'Doit présenter un Curriculum Vitae.';
+            elseif ($this->lang->lang() === 'es')
+                $data['message'] = 'Debe presentar un Curriculum Vitae.';
+
             $data['reset'] = FALSE;
             $data['page_style']= "vidro";
             $data['current'] = 'grupo_sosoares';
@@ -424,204 +416,243 @@ public function send_candidatura()
 
             $this->load->view('pages/candidatura', $data);
             $this->load->view('templates/footer');
-        }
-        else{
-            $data['message'] = 'A candidatura foi enviada com sucesso!';
-            $data['reset'] = TRUE;
+        } else { 
+            //else, set the success message
+            $data = array('msg' => "Upload success!");
 
-            //Enviar email
-            $this->load->library('email');
-            $config = array('useragent'        => 'CodeIgniter',        
-                'protocol'         => 'mail',        
-                'mailpath'         => '/usr/sbin/sendmail',
-                'smtp_host'        => 'mail.critecns.com',
-                'smtp_user'        => 'webmaster@critecns.com',
-                'smtp_pass'        => 'k45wrhyb3n',
-                'smtp_port'        => 25,
-                'smtp_timeout'     => 5,
-                'wordwrap'         => TRUE,
-                'wrapchars'        => 76,
-                'mailtype'         => 'html',
-                'charset'          => 'utf-8',
-                'validate'         => FALSE,
-                'priority'         => 3,
-                'bcc_batch_mode'   => FALSE,
-                'bcc_batch_size'   => 200
-                );
+            $data['upload_data'] = $this->upload->data();
 
-            // Run some setup
-            $this->email->initialize($config);
-            $this->email->from(set_value("email"));
-            $this->email->to('webmaster@critecns.com');
-            $this->email->subject('Candidatura');
-            $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
-            
-            // Run some setup
-            $this->email->initialize($config);
-            $this->email->from('webmaster@critecns.com');
-            $this->email->to(set_value("email"));
-            $this->email->subject('Candidatura');
-            $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>Nome: '.set_value("nome").'<br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Apresentação: '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+            $cv = $data['upload_data']['file_name'];
 
-            // Debug Email
-            if (!$this->email->send()) {
-                die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('email_error'),true));
-            } else {
+            $this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]|max_length[50]');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('telefone', 'Telefone', 'required|numeric');
+            $this->form_validation->set_rules('telemovel', 'Telemóvel', 'numeric');
+            $this->form_validation->set_rules('apresentacao', 'Apresentação', 'required|min_length[5]|max_length[500]');
+
+            if($this->form_validation->run() == FALSE){
+                if ($this->lang->lang() === 'pt')
+                    $data['message'] = 'Erro no envio da candidatura! Volte a tentar.';
+                elseif ($this->lang->lang() === 'en')
+                    $data['message'] = 'Error in sending the application! Try again.';
+                elseif ($this->lang->lang() === 'fr')
+                    $data['message'] = "Erreur dans l'envoi de la demande! Essayer à nouveau.";
+                elseif ($this->lang->lang() === 'es')
+                    $data['message'] = 'Error en el envío de la aplicación! Inténtalo de nuevo.';
+
+                $data['reset'] = FALSE;
                 $data['page_style']= "vidro";
                 $data['current'] = 'grupo_sosoares';
                 $this->menu($data);
 
                 $this->load->view('pages/candidatura', $data);
                 $this->load->view('templates/footer');
-            }      
-        }
-    } 
-}
+            }
+            else{
+                if ($this->lang->lang() === 'pt')
+                    $data['message'] = 'A candidatura foi enviada com sucesso!';
+                elseif ($this->lang->lang() === 'en')
+                    $data['message'] = 'The application was successfully sent!';
+                elseif ($this->lang->lang() === 'fr')
+                    $data['message'] = "La demande a été envoyée avec succès!";
+                elseif ($this->lang->lang() === 'es')
+                    $data['message'] = 'La solicitud se ha enviado correctamente!';
 
-public function produto($id=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";        
-        $data['current'] = 'produto';
-        $data['id'] = $id;    
-        $this->menu($data);
+                $data['reset'] = TRUE;
 
-        if ($id != null) {
-            $data['produto'] = $this->vidro_model->get_produto($id);
+                //Enviar email
+                $this->load->library('email');
+                $config = array('useragent'        => 'CodeIgniter',        
+                    'protocol'         => 'mail',        
+                    'mailpath'         => '/usr/sbin/sendmail',
+                    'smtp_host'        => 'mail.critecns.com',
+                    'smtp_user'        => 'webmaster@critecns.com',
+                    'smtp_pass'        => 'k45wrhyb3n',
+                    'smtp_port'        => 25,
+                    'smtp_timeout'     => 5,
+                    'wordwrap'         => TRUE,
+                    'wrapchars'        => 76,
+                    'mailtype'         => 'html',
+                    'charset'          => 'utf-8',
+                    'validate'         => FALSE,
+                    'priority'         => 3,
+                    'bcc_batch_mode'   => FALSE,
+                    'bcc_batch_size'   => 200
+                    );
 
-            $this->load->view('pages/vidro/produto', $data, $this->get_lang());
+                // Run some setup
+                $this->email->initialize($config);
+                $this->email->from(set_value("email"));
+                $this->email->to('webmaster@critecns.com');
+                $this->email->subject('Candidatura');
+                $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
+
+                // Run some setup
+                $this->email->initialize($config);
+                $this->email->from('webmaster@critecns.com');
+                $this->email->to(set_value("email"));
+                $this->email->subject('Candidatura');
+                $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>Nome: '.set_value("nome").'<br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Apresentação: '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+
+                // Debug Email
+                if (!$this->email->send()) {
+                    die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('email_error'),true));
+                } else {
+                    $data['page_style']= "vidro";
+                    $data['current'] = 'grupo_sosoares';
+                    $this->menu($data);
+
+                    $this->load->view('pages/candidatura', $data);
+                    $this->load->view('templates/footer');
+                }      
+            }
+        } 
+    }
+
+    public function produto($id=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
         } else {
-            $data['produtos'] = $this->vidro_model->get_produtos();
+            $data['page_style'] = "vidro";        
+            $data['current'] = 'produto';
+            $data['id'] = $id;    
+            $this->menu($data);
 
-            $this->load->view('pages/vidro/produtos', $data, $this->get_lang());
+            if ($id != null) {
+                $data['produto'] = $this->vidro_model->get_produto($id);
+
+                $this->load->view('pages/vidro/produto', $data, $this->get_lang());
+            } else {
+                $data['produtos'] = $this->vidro_model->get_produtos();
+
+                $this->load->view('pages/vidro/produtos', $data, $this->get_lang());
+            }
+
+            $this->load->view('templates/footer');
         }
-
-        $this->load->view('templates/footer');
     }
-}
 
-public function servico($servico=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style']= "vidro";        
-        $data['current'] = 'servico';
-        $data['servico'] = $servico;
-        $this->menu($data);
-
-        if ($servico != null) {
-            $data['servico'] = $this->vidro_model->get_servico($servico);
-
-            $this->load->view('pages/servico', $data);
+    public function servico($servico=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
         } else {
-            $data['servicos'] = $this->vidro_model->get_servicos();
+            $data['page_style']= "vidro";        
+            $data['current'] = 'servico';
+            $data['servico'] = $servico;
+            $this->menu($data);
 
-            $this->load->view('pages/servicos', $data);
+            if ($servico != null) {
+                $data['servico'] = $this->vidro_model->get_servico($servico);
+
+                $this->load->view('pages/servico', $data);
+            } else {
+                $data['servicos'] = $this->vidro_model->get_servicos();
+
+                $this->load->view('pages/servicos', $data);
+            }
+
+            $this->load->view('templates/footer'); 
         }
-
-        $this->load->view('templates/footer'); 
     }
-}
 
-public function area_tecnica($page=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style']= "vidro";        
-        $data['current'] = 'area_tecnica';
-        $data['page'] = $page;
-        $this->menu($data);
-
-        if ($page != null) {
-            $data['area_tecnica'] = $this->vidro_model->get_area_tecnica($page);
-
-            $this->load->view('pages/area_tecnica', $data);
+    public function area_tecnica($page=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
         } else {
-            $this->load->view('pages/area_tecnica', $data);
+            $data['page_style']= "vidro";        
+            $data['current'] = 'area_tecnica';
+            $data['page'] = $page;
+            $this->menu($data);
+
+            if ($page != null) {
+                $data['area_tecnica'] = $this->vidro_model->get_area_tecnica($page);
+
+                $this->load->view('pages/area_tecnica', $data);
+            } else {
+                $this->load->view('pages/area_tecnica', $data);
+            }
+
+            $this->load->view('templates/footer');
         }
-
-        $this->load->view('templates/footer');
     }
-}
 
-public function apoio_cliente($page=null)
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";        
-        $data['current'] = 'apoio_cliente';
-        $data['page'] = $page;  
-        $this->menu($data); 
-
-        if ($page != null) {
-            $data['page'] = $this->sosoares_model->get_apoio(2, $page);
-
-            $this->load->view('pages/apoio_cliente', $data);
+    public function apoio_cliente($page=null)
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
         } else {
-            $this->load->view('pages/apoio_cliente', $data);
+            $data['page_style'] = "vidro";        
+            $data['current'] = 'apoio_cliente';
+            $data['page'] = $page;  
+            $this->menu($data); 
+
+            if ($page != null) {
+                $data['page'] = $this->sosoares_model->get_apoio(2, $page);
+
+                $this->load->view('pages/apoio_cliente', $data);
+            } else {
+                $this->load->view('pages/apoio_cliente', $data);
+            }
+
+            $this->load->view('templates/footer');
         }
-
-        $this->load->view('templates/footer');
     }
-}
 
-public function apoios_cliente()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['current'] = 'apoios_cliente';    
-        $this->menu($data);
+    public function apoios_cliente()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['current'] = 'apoios_cliente';    
+            $this->menu($data);
 
-        $data['pages'] = $this->sosoares_model->get_apoios(2);
+            $data['pages'] = $this->sosoares_model->get_apoios(2);
 
-        $this->load->view('pages/apoios_cliente', $data);
-        $this->load->view('templates/footer');
+            $this->load->view('pages/apoios_cliente', $data);
+            $this->load->view('templates/footer');
+        }
     }
-}
 
-public function contactos()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {
-        $data['page_style'] = "vidro";
-        $data['page_title'] = "contactos";
-        $data['current'] = 'contactos';
-        $this->menu($data);
+    public function contactos()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {
+            $data['page_style'] = "vidro";
+            $data['page_title'] = "contactos";
+            $data['current'] = 'contactos';
+            $this->menu($data);
 
-        $data['paises'] = file(base_url().'assets/uploads/paises.txt');
-        $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
-        $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
-        $data['contactos'] = $this->sosoares_model->get_contactos(2);
-        $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
-        $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
+            $data['paises'] = file(base_url().'assets/uploads/paises.txt');
+            $data['distritos'] = file(base_url().'assets/uploads/distritos.txt');
+            $data['concelhos'] = file(base_url().'assets/uploads/concelhos.txt');
+            $data['contactos'] = $this->sosoares_model->get_contactos(2);
+            $data['contactos_mapa'] = $this->sosoares_model->get_contactos_mapa();
+            $data['destinatario'] = $this->sosoares_model->get_destinatario(1);
 
-        $this->load->view('pages/contactos', $data);
-        $this->load->view('templates/footer', $data);
+            $this->load->view('pages/contactos', $data);
+            $this->load->view('templates/footer', $data);
+        }
     }
-}
 
-public function contacto_recebido()
-{
-    if (isset($_GET['search'])) {
-        $this->pesquisa($_GET['search']);
-    } else {      
-        $data['page_style']= "vidro";
-        $data['current'] = 'contacto_recebido';
-        $this->menu($data);
+    public function contacto_recebido()
+    {
+        if (isset($_GET['search'])) {
+            $this->pesquisa($_GET['search']);
+        } else {      
+            $data['page_style']= "vidro";
+            $data['current'] = 'contacto_recebido';
+            $this->menu($data);
 
-        $data['page'] = $this->sosoares_model->get_page(22);
+            $data['page'] = $this->sosoares_model->get_page(22);
 
-        $this->load->view('pages/confirmacao', $data);
-        $this->load->view('templates/footer');
+            $this->load->view('pages/confirmacao', $data);
+            $this->load->view('templates/footer');
+        }
     }
-}
 
 }
