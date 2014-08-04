@@ -435,6 +435,25 @@ class Mediagest extends CI_Controller {
 
     // ÁREAS COMERCIAIS
 
+         function zonas_management()
+        {
+            $crud = new grocery_CRUD();
+
+            $crud->set_table('zonas');
+            $crud->set_subject('Zonas Áreas Comerciais');
+
+            $crud->required_fields('zona');
+
+            $output = $crud->render();
+
+            $data['titulo'] = 'Áreas Comerciais';
+            $data['sub-titulo'] = 'Faça aqui a gestão das Zonas de Áreas Comerciais';
+
+            $this->load->view('mediagest/header', (object)array('data' => $data, 'js_files' => $crud->get_js_files(), 'css_files' => $crud->get_css_files()));
+
+            $this->_admin_output($output);
+        }
+
         function areas_comerciais_management()
         {
             $crud = new grocery_CRUD();
@@ -442,7 +461,10 @@ class Mediagest extends CI_Controller {
             $crud->set_table('areas_comerciais');
             $crud->set_subject('Áreas Comerciais');
 
-            $crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude');
+            $crud->required_fields('titulo', 'morada', 'nome', 'telefone', 'email', 'latitude', 'longitude', 'zona');
+            $crud->display_as('id_zona', 'Zona');
+
+            $crud->set_relation('id_zona', 'zonas', 'nome');
 
             $output = $crud->render();
 

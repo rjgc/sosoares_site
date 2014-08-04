@@ -495,8 +495,6 @@ public function area_privada()
                     $data['message'] = "La demande a été envoyée avec succès!";
                 elseif ($this->lang->lang() === 'es')
                     $data['message'] = 'La solicitud se ha enviado correctamente!';
-                
-                $data['reset'] = TRUE;
 
             //Enviar email
                 $this->load->library('email');
@@ -525,6 +523,15 @@ public function area_privada()
                 $this->email->subject('Candidatura');
                 $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
 
+                if ($this->lang->lang() === 'pt')
+                    $data['message'] = 'A candidatura foi enviada com sucesso!';
+                elseif ($this->lang->lang() === 'en')
+                    $data['message'] = 'The application was successfully sent!';
+                elseif ($this->lang->lang() === 'fr')
+                    $data['message'] = "La demande a été envoyée avec succès!";
+                elseif ($this->lang->lang() === 'es')
+                    $data['message'] = 'La solicitud se ha enviado correctamente!';
+
             // Run some setup
                 $this->email->initialize($config);
                 $this->email->from('webmaster@critecns.com');
@@ -538,6 +545,7 @@ public function area_privada()
                 } else {
                     $data['page_style']= "caixilharia";
                     $data['current'] = 'grupo_sosoares';
+                    $data['reset'] = TRUE;
                     $this->menu($data);
 
                     $this->load->view('pages/candidatura', $data);

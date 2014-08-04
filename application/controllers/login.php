@@ -421,8 +421,6 @@ class Login extends CI_Controller {
 			$this->email->subject(set_value("assunto"));
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>País: '.set_value("pais").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
 
-			$this->email->send();
-
         	// Run some setup
 			$this->email->initialize($config);
 			$this->email->from('webmaster@critecns.com');
@@ -602,8 +600,6 @@ class Login extends CI_Controller {
 			$this->email->to('webmaster@critecns.com');
 			$this->email->subject('Registo');
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
-
-			$this->email->send();
 			
 			// Run some setup
 			$this->email->initialize($config);

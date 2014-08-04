@@ -19,29 +19,32 @@ $( document ).ready(function() {
 	});
 
 	window.onload = function() {
-    	var nome = localStorage.getItem('nome');
+		if (reset != true)
+		{
+			var nome = localStorage.getItem('nome');
 
-	    if (nome !== null) 
-	    	$('#nome').val(nome);
+		    if (nome !== null) 
+		    	$('#nome').val(nome);
 
-	    var email = localStorage.getItem('email');
+		    var email = localStorage.getItem('email');
 
-	    if (email !== null) 
-	    	$('#email').val(email);
+		    if (email !== null) 
+		    	$('#email').val(email);
 
-	    var telefone = localStorage.getItem('telefone');
+		    var telefone = localStorage.getItem('telefone');
 
-	    if (telefone !== null) 
-	    	$('#telefone').val(telefone);
+		    if (telefone !== null) 
+		    	$('#telefone').val(telefone);
 
-	    var telemovel = localStorage.getItem('telemovel');
+		    var telemovel = localStorage.getItem('telemovel');
 
-	    if (telemovel !== null) 
-	    	$('#telemovel').val(telemovel);
+		    if (telemovel !== null) 
+		    	$('#telemovel').val(telemovel);
 
-	    var apresentacao = localStorage.getItem('apresentacao');
+		    var apresentacao = localStorage.getItem('apresentacao');
 
-	    if (apresentacao !== null) 
-	    	$('#apresentacao').val(apresentacao);
+		    if (apresentacao !== null) 
+		    	$('#apresentacao').val(apresentacao);
+		}
 	}
 });

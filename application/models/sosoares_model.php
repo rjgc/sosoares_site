@@ -319,7 +319,7 @@ class Sosoares_model extends CI_Model
 	//AREAS COMERCIAIS
 
 	public function get_areas_comerciais() {
-		$query = $this->db->query("select * from areas_comerciais");
+		$query = $this->db->query("select ac.*, z.nome as zona from areas_comerciais ac inner join zonas z on z.id_zona = ac.id_zona");
 
 		$data = $query->result_array();
 		return $data;

@@ -94,4 +94,5 @@
     </div>
     <?php echo form_close(); ?>
 </div>
+<script type="text/javascript">var reset = '<?= $reset ?>';</script>
 <script src="<?php echo base_url() ?>assets/sosoares/js/candidatura.js"></script>

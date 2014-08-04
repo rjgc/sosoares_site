@@ -455,9 +455,7 @@ public function area_privada()
                 elseif ($this->lang->lang() === 'fr')
                     $data['message'] = "La demande a été envoyée avec succès!";
                 elseif ($this->lang->lang() === 'es')
-                    $data['message'] = 'La solicitud se ha enviado correctamente!';
-                
-                $data['reset'] = TRUE;
+                    $data['message'] = 'La solicitud se ha enviado correctamente!';            
 
                 //Enviar email
                 $this->load->library('email');
@@ -499,6 +497,7 @@ public function area_privada()
                 } else {
                     $data['page_style']= "tratamento";
                     $data['current'] = 'grupo_sosoares';
+                    $data['reset'] = TRUE;
                     $this->menu($data);
 
                     $this->load->view('pages/candidatura', $data);

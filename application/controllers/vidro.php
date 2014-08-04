@@ -458,8 +458,6 @@ public function area_privada()
                 elseif ($this->lang->lang() === 'es')
                     $data['message'] = 'La solicitud se ha enviado correctamente!';
 
-                $data['reset'] = TRUE;
-
                 //Enviar email
                 $this->load->library('email');
                 $config = array('useragent'        => 'CodeIgniter',        
@@ -500,6 +498,7 @@ public function area_privada()
                 } else {
                     $data['page_style']= "vidro";
                     $data['current'] = 'grupo_sosoares';
+                    $data['reset'] = TRUE;
                     $this->menu($data);
 
                     $this->load->view('pages/candidatura', $data);

@@ -1,1 +1,10 @@
+body { overflow-y:hidden; }
+
 .mapa {padding-left: 30px;}
+
+#map-instaladores img { width: 100%; }
+
+/*============================== MEDIA QUERIES =======================================*/
+@media screen and (max-width: 992px) {
+    .col-md-3 { text-align: center; }
+}

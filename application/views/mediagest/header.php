@@ -39,6 +39,7 @@
                 $data['titulo'] == 'Banners' ||
                 $data['titulo'] == 'Newsletter' ||
                 $data['titulo'] == 'Destinatários'||
+                $data['titulo'] == 'Zonas Áreas Comerciais'||
                 $data['titulo'] == 'Áreas Comerciais'||
                 $data['titulo'] == 'Contactos'||
                 $data['titulo'] == 'Contactos Mapa') echo 'class="section"'; ?>>
@@ -48,6 +49,7 @@
                     <li><a href='<?php echo site_url("mediagest/banners_management")?>'> Banners</a></li>
                     <li><a href='<?php echo site_url("mediagest/newsletter_management")?>'> Newsletter</a></li>
                     <li><a href='<?php echo site_url("mediagest/destinatarios_management")?>'> Destinatários</a></li>
+                    <li><a href='<?php echo site_url("mediagest/zonas_management")?>'> Zonas de Áreas Comerciais</a></li>
                     <li><a href='<?php echo site_url("mediagest/areas_comerciais_management")?>'> Áreas Comerciais</a></li>
                     <li><a href='<?php echo site_url("mediagest/contactos_management")?>'> Contactos</a></li>
                     <li><a href='<?php echo site_url("mediagest/contactos_mapa_management")?>'> Contactos do Mapa</a></li>
