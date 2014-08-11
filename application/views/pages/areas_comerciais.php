@@ -63,11 +63,9 @@
 </div>
 
 <script src="<?php echo base_url() ?>assets/sosoares/js/jquery.rwdImageMaps.min.js"></script>
-<script type="text/javascript" src="http://davidlynch.org/js/maphilight/jquery.maphilight.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(e) {
         $('img[usemap]').rwdImageMaps();
-        //$('img[usemap]').maphilight({ stroke: false, fillColor: '009DDF', fillOpacity: 1 });
     });
 
     var area = jQuery.parseJSON('<?php echo json_encode($areas_comerciais); ?>');

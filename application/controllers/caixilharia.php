@@ -417,17 +417,17 @@ public function area_privada()
 
     public function send_candidatura() 
     {
-    //load the helper
+        //load the helper
         $this->load->helper('form');
 
-    //Configure
-    //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+        //Configure
+        //set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
         $config['upload_path'] = 'assets/uploads/candidaturas/';
 
-    // set the filter image types
+        // set the filter image types
         $config['allowed_types'] = 'pdf';
 
-    //load the upload library
+        //load the upload library
         $this->load->library('upload', $config);
         
         $this->upload->initialize($config);
@@ -436,7 +436,7 @@ public function area_privada()
 
         $data['upload_data'] = '';
         
-    //if not successful, set the error message
+        //if not successful, set the error message
         if (!$this->upload->do_upload('cv')) {
             if ($this->lang->lang() === 'pt')
                 $data['message'] = 'Tem de enviar um Curriculum Vitae.';
@@ -455,7 +455,7 @@ public function area_privada()
             $this->load->view('pages/candidatura', $data);
             $this->load->view('templates/footer');
         } else { 
-        //else, set the success message
+            //else, set the success message
             $data = array('msg' => "Upload success!");
 
             $data['upload_data'] = $this->upload->data();
@@ -496,7 +496,7 @@ public function area_privada()
                 elseif ($this->lang->lang() === 'es')
                     $data['message'] = 'La solicitud se ha enviado correctamente!';
 
-            //Enviar email
+                //Enviar email
                 $this->load->library('email');
                 $config = array('useragent'        => 'CodeIgniter',        
                     'protocol'         => 'mail',        
@@ -516,30 +516,41 @@ public function area_privada()
                     'bcc_batch_size'   => 200
                     );
 
-            // Run some setup
+                // Run some setup
                 $this->email->initialize($config);
                 $this->email->from(set_value("email"));
                 $this->email->to('webmaster@critecns.com');
                 $this->email->subject('Candidatura');
-                $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));
+                $this->email->message('Exmo.(s) do Grupo Sosoares,<br><br> Venho apresentar a V. Ex.as a minha candidatura para uma possível colaboração com a vossa empresa.<br><br>Segue uma breve apresentação da minha pessoa:<br><br>'.set_value("apresentacao").'<br><br>O(s) meu(s) contacto(s) é/são:<br><br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br><br>Curriculum Vitae: <a href="'.base_url().'assets/uploads/candidaturas/'.$cv.'">'.$cv.'</a><br><br>Atenciosamente,<br><br>'.set_value("nome"));                  
 
-                if ($this->lang->lang() === 'pt')
-                    $data['message'] = 'A candidatura foi enviada com sucesso!';
-                elseif ($this->lang->lang() === 'en')
-                    $data['message'] = 'The application was successfully sent!';
-                elseif ($this->lang->lang() === 'fr')
-                    $data['message'] = "La demande a été envoyée avec succès!";
-                elseif ($this->lang->lang() === 'es')
-                    $data['message'] = 'La solicitud se ha enviado correctamente!';
-
-            // Run some setup
+                // Run some setup
                 $this->email->initialize($config);
                 $this->email->from('webmaster@critecns.com');
                 $this->email->to(set_value("email"));
                 $this->email->subject('Candidatura');
-                $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>Nome: '.set_value("nome").'<br>Telefone: '.set_value("telefone").'<br>Telemóvel: '.set_value("telemovel").'<br>Apresentação: '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+
+                if ($this->lang->lang() === 'pt')
+                {
+                    $this->email->message('A sua candidatura foi enviada com sucesso!<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('telemovel').': '.set_value("telemovel").'<br>'.lang('apresentacao').': '.set_value("apresentacao").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+                    $data['message'] = 'A candidatura foi enviada com sucesso!';
+                }                    
+                elseif ($this->lang->lang() === 'en')
+                {
+                    $this->email->message('The application was successfully sent!<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('telemovel').': '.set_value("telemovel").'<br>'.lang('apresentacao').': '.set_value("apresentacao").'<br><br>Yours sincerely,<br><br>Sosoares');
+                    $data['message'] = 'The application was successfully sent!';
+                }                    
+                elseif ($this->lang->lang() === 'fr')
+                {   
+                    $this->email->message('La demande a été envoyée avec succès!<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('telemovel').': '.set_value("telemovel").'<br>'.lang('apresentacao').': '.set_value("apresentacao").'<br><br>Cordialement,<br><br>Sosoares');
+                    $data['message'] = "La demande a été envoyée avec succès!";
+                }                    
+                elseif ($this->lang->lang() === 'es')
+                {
+                    $this->email->message('La solicitud se ha enviado correctamente!<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('telemovel').': '.set_value("telemovel").'<br>'.lang('apresentacao').': '.set_value("apresentacao").'<br><br>Tuyo sinceramente,<br><br>Sosoares');
+                    $data['message'] = 'La solicitud se ha enviado correctamente!';
+                }  
                 
-            // Debug Email
+                // Debug Email
                 if (!$this->email->send()) {
                     die($this->cizacl->json_msg('error',$this->lang->line('attention'),$this->lang->line('email_error'),true));
                 } else {
