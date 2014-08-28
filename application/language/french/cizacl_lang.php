@@ -409,9 +409,9 @@ $lang["submit"]					= "Submit";
 
 $lang["cancel"]					= "Cancel";
 
-$lang["wait"]					= "Wait, please";
+$lang["wait"]					= "Attendez, s'il vous plaît";
 
-$lang["login_progress"]			= "Login in progress...";
+$lang["login_progress"]			= "Connectez-vous en cours...";
 
 $lang["forgotten_password"]		= "Forgotten Password?";
 
@@ -431,7 +431,7 @@ $lang["delete_data_related"]	= "All users connected to this role will be deleted
 
 $lang["newsletter_progress"]	= "Saving info...";
 
-$lang["email_progress"]	        = "Sending email...";
+$lang["email_progress"]	        = "Envoi email...";
 
 $lang["email_error"]	        = "Failed to send email.";
 

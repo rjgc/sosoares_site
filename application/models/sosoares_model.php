@@ -5,6 +5,16 @@ class Sosoares_model extends CI_Model
 		parent::__construct();
 	}
 
+	//GET EMAIL
+
+	public function get_email($id_categoria)
+	{
+		$query = $this->db->query("select distinct d.email from destinatarios d inner join categoria_destinatario cd on cd.id_categoria where cd.id_categoria = '$id_categoria'");
+
+		$data = $query->row_array();
+		return $data;
+	}
+
 	//CHECK USER PROFILE
 
 	public function check_user_profile($user_profile_user_id)
