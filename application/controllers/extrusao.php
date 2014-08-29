@@ -277,7 +277,16 @@ public function area_privada()
 
 					foreach ($data['produtos'] as $produto) {
 						$arrayProdutos[$z][0] = $tipo['nome_pt'];
-						$arrayProdutos[$z][1] = $caracteristica['nome_pt'];
+						
+						if ($this->get_lang() == 'pt')
+                            $arrayProdutos[$z][1] = $caracteristica['nome_pt'];
+                        elseif ($this->get_lang() == 'en')
+                            $arrayProdutos[$z][1] = $caracteristica['nome_en'];
+                        elseif ($this->get_lang() == 'fr')
+                            $arrayProdutos[$z][1] = $caracteristica['nome_fr'];
+                        elseif ($this->get_lang() == 'es')
+                            $arrayProdutos[$z][1] = $caracteristica['nome_es'];
+
 						$arrayProdutos[$z][2] = $produto['nome_pt'];
 						$arrayProdutos[$z][3] = $produto['id_produto_extrusao'];
 
