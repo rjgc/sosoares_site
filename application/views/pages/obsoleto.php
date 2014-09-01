@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="alert alert-warning">
-        Detectámos que está a usar uma versão desactualizada do Internet Explorer. Por favor atualize para a versão mais recente ou experimente usar outro browser como o <a href="http://www.google.com/intl/pt-PT/chrome/browser/">Google Chrome</a> ou o <a href="http://www.mozilla.org/pt-PT/firefox/new/">Firefox</a> para aproveitar todas as funcionalidades do site Grupo Sosoares.
+        <?=lang('obsoleto')?><a href="http://www.google.com/intl/pt-PT/chrome/browser/">Google Chrome</a><?=lang('obsoleto2')?><a href="http://www.mozilla.org/pt-PT/firefox/new/">Firefox</a><?=lang('obsoleto3')?>
     </div>
 </body>
 </html>

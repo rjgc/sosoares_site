@@ -21,7 +21,7 @@
 	<?php if (!$_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
 	<div class="alerta">
 		<div class="alert alert-warning">
-			<h5><strong>Atenção!</strong> Tem de efectuar o login.</h5>
+			<h5><strong><?=lang('atencao')?></strong><?=lang('efectuar')?></h5>
 		</div>
 	</div>
 	<?php } else { ?>
@@ -57,13 +57,13 @@
 		<h3>Downloads</h3>
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#1" data-toggle="tab">Todos</a></li>
-				<li><a href="#2" data-toggle="tab">Perfis</a></li>
-				<li><a href="#3" data-toggle="tab">Pormenores</a></li>
-				<li><a href="#4" data-toggle="tab">Catálogos</a></li>
-				<li><a href="#5" data-toggle="tab">Ensaios</a></li>
-				<li><a href="#6" data-toggle="tab">Folhetos</a></li>
-				<li><a href="#7" data-toggle="tab">Ferragens de Vidro</a></li>
+				<li class="active"><a href="#1" data-toggle="tab"><?=lang('todos')?></a></li>
+				<li><a href="#2" data-toggle="tab"><?=lang('perfis')?></a></li>
+				<li><a href="#3" data-toggle="tab"><?=lang('pormenores')?></a></li>
+				<li><a href="#4" data-toggle="tab"><?=lang('catalogo')?></a></li>
+				<li><a href="#5" data-toggle="tab"><?=lang('ensaios')?></a></li>
+				<li><a href="#6" data-toggle="tab"><?=lang('folhetos')?></a></li>
+				<li><a href="#7" data-toggle="tab"><?=lang('ferragens')?></a></li>
 			</ul>
 		</div>
 		<div class="tab-content">
@@ -73,7 +73,7 @@
 						<?php if (!empty($todos)) { ?>
 						<div id="DefaultDable"></div>                        
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 						<?php if (!empty($perfis)) { ?>
 						<div id="DefaultDable2"></div>
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 						<?php if (!empty($pormenores)) { ?>
 						<div id="DefaultDable3"></div>
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 						<?php if (!empty($catalogos)) { ?>
 						<div id="DefaultDable4"></div>                                  
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -117,7 +117,7 @@
 						<?php if (!empty($ensaios)) { ?>
 						<div id="DefaultDable5"></div>
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -128,7 +128,7 @@
 						<?php if (!empty($folhetos)) { ?>
 						<div id="DefaultDable6"></div>
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 						<?php if (!empty($ferragens_vidro)) { ?>
 						<div id="DefaultDable7"></div>
 						<?php } else { ?>
-						<p>Não existem ficheiros nesta categoria.</p>
+						<p><?=lang('nficheiros')?></p>
 						<?php } ?>
 					</div>
 				</div>
@@ -150,7 +150,7 @@
 <?php } else if ($_SESSION['notAllowed']) { ?>
 <div class="alerta">
 	<div class="alert alert-warning">
-		<h5><strong>Atenção!</strong> Você não permissões para ver esta página. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+		<h5><strong><?=lang('atencao')?></strong><?=lang('permissao')?><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
 			echo site_url('caixilharia/home');
 		} else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
 			echo site_url('vidro/home');
@@ -158,7 +158,7 @@
 			echo site_url('extrusao/home');
 		} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
 			echo site_url('tratamento/home');
-		} ?>">Voltar atrás.</a></h5>
+		} ?>"><?=lang('voltar')?></a></h5>
 	</div>
 </div>
 <?php } 

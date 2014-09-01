@@ -184,12 +184,24 @@ $lang["alterar"] = "Cambio";
 
 $lang["perfil"] = "Perfil";
 
+$lang["efectuar"] = " Tiene que iniciar sesión.";
+
+$lang["todos"] = "Todos";
+
+$lang["ensaios"] = "Ensayos";
+
+$lang["folhetos"] = "Folletos Promocionales";
+
+$lang["ferragens"] = "Hardware Glass";
+
 
 /*Editar Perfil*/
 
 $lang["editar"] = "Editar Perfil";
 
 $lang["guardar"] = "Guardar";
+
+$lang["insira"] = "Ingrese su nueva contraseña.";
 
 
 /*Menu Vidro*/
@@ -292,8 +304,6 @@ $lang["publicado"] = "Publicado";
 
 $lang["dados"] = "Datos Personales";
 
-$lang["nome"] = "Nombre";
-
 $lang["email"] = "E-mail";
 
 $lang["telefone"] = "Teléfono";
@@ -383,6 +393,51 @@ $lang["sconcelho"] = "Seleccione un Estado";
 $lang["assunto"] = "Sujeto";
 
 $lang["mensagem"] = "Mensaje";
+
+
+/**/
+
+
+$lang["atencao"] = "Aviso!";
+
+$lang["sapoio"] = " Debe seleccionar una página de soporte al cliente. ";
+
+$lang["sapoios"] = " Páginas de soporte de cliente disponible.";
+
+$lang["desculpa"] = " Lo siento por los inconvenientes ocasionados. ";
+
+$lang["voltar"] = "Volver.";
+
+$lang["nficheiros"] = "No hay archivos en esta categoría.";
+
+$lang["permissao"] = " No tienes permiso para ver esta página. ";
+
+$lang["sarea"] = " Debe seleccionar una página desde el área técnica. ";
+
+$lang["indisponivel"] = " Página no disponible. ";
+
+$lang["sgrupo"] = " Páginas Grupo Sosoares no disponibles. ";
+
+$lang["smarcacao"] = " Usted debe seleccionar la página del Marcado CE. ";
+
+$lang["snoticia"] = " Debe seleccionar una noticia. ";
+
+$lang["sobras"] = " Página trabaja disponible. ";
+
+$lang["obsoleto"] = "Hemos detectado que está utilizando una versión antigua de Internet Explorer. Por favor actualice a la última versión o intente utilizar otro navegador como ";
+
+$lang["obsoleto2"] = " o ";
+
+$lang["obsoleto3"] = " para tomar ventaja de todas las características del sitio Grupo Sosoares.";
+
+$lang["semail"] = "Introduzca su dirección de correo electrónico para recuperar su contraseña. Usted puede necesitar ver a su carpeta de correo no deseado.";
+
+$lang["sservico"] = " Debe seleccionar una página de servicio. ";
+
+$lang["sservicos"] = " Páginas de Servicio no disponible.";
+
+
+/**/
 
 
 /**/

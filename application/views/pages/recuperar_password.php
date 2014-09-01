@@ -22,7 +22,7 @@
         <div class="col-md-8">
             <form method="post" role="form" id="form3">
                 <div class="texto">
-                    <P>Insira o seu email para recuperar a sua password. Você pode precisar de ver a sua pasta de spam.</P>
+                    <P><?=lang('semail')?></P>
                     <div class="row">
                         <div class="col-md-8">
                             <input class="form-control input caixa-texto" type="text" id="email" name="email" placeholder="E-mail" value="<?php echo (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>">

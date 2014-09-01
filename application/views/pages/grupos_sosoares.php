@@ -87,7 +87,7 @@
 </a>
 <?php } else { ?>
 <div class="alert alert-info">
-    <h5><strong>Atenção!</strong> Páginas do Grupo Sosoares indisponíveis.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+    <h5><strong><?=lang('atencao')?></strong><?=lang('sgrupo')?></br></br><?=lang('desculpa')?><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo site_url('caixilharia/home');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
         echo site_url('vidro/home');
@@ -95,7 +95,7 @@
         echo site_url('extrusao/home');
     } else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
         echo site_url('tratamento/home');
-    } ?>">Voltar atrás.</a></h5>
+    } ?>"><?=lang('voltar')?></a></h5>
 </div>
 <?php } ?>
 </div>

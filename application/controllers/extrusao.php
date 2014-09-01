@@ -179,7 +179,7 @@ public function area_privada()
 
 			if ($this->cizacl->check_isAllowed($role['cizacl_role_name'], 'caixilharia', 'account')) 
 			{
-				$data['logged_in'] = True;
+				$_SESSION['logged_in'] = True;
 				$_SESSION['notAllowed'] = False;
 
 				$_SESSION['profile'] = $this->sosoares_model->get_profile($temp['1']);

@@ -50,6 +50,8 @@ class Login extends CI_Controller {
 
 		$this->load->helper('url');
 
+		$this->load->helper('text');
+
 		$this->lang->load('cizacl',$this->config->item('language'));
 
 		if(!class_exists('CI_Cizacl'))
@@ -414,16 +416,24 @@ class Login extends CI_Controller {
 				'bcc_batch_size'   => 200
 				);
 
+			$this->db->from('destinatarios');
+
+			$this->db->where('id_categoria = 1');
+
+			$query = $this->db->get();
+
+			$row = $query->row();
+
         	// Run some setup
 			$this->email->initialize($config);
 			$this->email->from(set_value("email"));
-			$this->email->to($this->sosoares_model->get_email(1));
+			$this->email->to($row->email);
 			$this->email->subject(set_value("assunto"));
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>'.set_value("mensagem").'<br><br>Os meus dados pessoais são:<br><br>Empresa: '.set_value("empresa").'<br>Cargo: '.set_value("cargo").'<br>Telefone: '.set_value("telefone").'<br>Fax: '.set_value("fax").'<br>Telemóvel: '.set_value("telemovel").'<br>Morada: '.set_value("morada").'<br>País: '.set_value("pais").'<br>Distrito: '.set_value("distrito").'<br>Concelho: '.set_value("concelho").'.<br><br>Venho por este meio informar que:<br>'.set_value("mensagem").'<br><br>Atenciosamente,<br><br>'.set_value("nome").'');
 
         	// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_email(1));
+			$this->email->from($row->email);
 			$this->email->to(set_value("email"));
 			$this->email->subject(set_value("assunto"));
 
@@ -602,16 +612,24 @@ class Login extends CI_Controller {
 				'bcc_batch_size'   => 200
 				);
 
+			$this->db->from('destinatarios');
+
+			$this->db->where('id_categoria = 3');
+
+			$query = $this->db->get();
+
+			$row = $query->row();
+
     		// Run some setup
 			$this->email->initialize($config);
 			$this->email->from(set_value("email"));
-			$this->email->to($this->sosoares_model->get_email(3));
+			$this->email->to($row->email);
 			$this->email->subject('Registo');
 			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 			
 			// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_email(3));
+			$this->email->from($row->email);
 			$this->email->to(set_value("email"));
 			$this->email->subject('Registo');
 
@@ -702,11 +720,19 @@ class Login extends CI_Controller {
 			else if (strpos($_SERVER['REQUEST_URI'], 'tratamento'))
 				$url = site_url('tratamento/alterar_password?password='.$data['user_password']);
 
+			$this->db->from('destinatarios');
+
+			$this->db->where('id_categoria = 3');
+
+			$query = $this->db->get();
+
+			$row = $query->row();
+
     		// Run some setup
 			$this->email->initialize($config);
-			$this->email->from($this->sosoares_model->get_email(3));
+			$this->email->from($row->email);
 			$this->email->to(set_value("email"));
-			$this->email->subject($this->sosoares_model->get_email(3));
+			$this->email->subject($row->email);
 
 			if (strpos($_SERVER['REQUEST_URI'], 'pt'))
 				$this->email->message('Viva,<br><br>Alguém recentemente pediu para relembrar a sua password. Caso tenha sido você aceda a este link: <a href="'.$url.'">Clique aqui</a><br><br>Caso não tenha sido você ignore este email e elimine-o.<br><br>Para manter a sua conta segura não reencaminhe este email para ninguém.<br><br>Atenciosamente,<br><br>Grupo Sosoares');

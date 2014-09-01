@@ -178,11 +178,23 @@ $lang["alterar_password"] = "Alterar Password";
 
 $lang["alterar"] = "Alterar";
 
+$lang["insira"] = "Insira a sua nova password.";
+
 
 /*Área Reservada*/
 
 
 $lang["perfil"] = "Perfil";
+
+$lang["efectuar"] = " Tem de efectuar o login.";
+
+$lang["todos"] = "Todos";
+
+$lang["ensaios"] = "Ensaios";
+
+$lang["folhetos"] = "Folhetos Promocionais";
+
+$lang["ferragens"] = "Ferragens de Vidro";
 
 
 /*Editar Perfil*/
@@ -292,8 +304,6 @@ $lang["publicado"] = "Publicado";
 
 $lang["dados"] = "Dados Pessoais";
 
-$lang["nome"] = "Nome";
-
 $lang["email"] = "E-mail";
 
 $lang["telefone"] = "Telefone";
@@ -383,6 +393,51 @@ $lang["sconcelho"] = "Seleccione um Concelho";
 $lang["assunto"] = "Assunto";
 
 $lang["mensagem"] = "Mensagem";
+
+
+/**/
+
+
+$lang["atencao"] = "Atenção!";
+
+$lang["sapoio"] = " Tem de seleccionar uma página de apoio ao cliente. ";
+
+$lang["sapoios"] = " Páginas de apoio ao cliente indisponíveis.";
+
+$lang["desculpa"] = " Pedimos desculpa pelo incómodo. ";
+
+$lang["voltar"] = "Voltar atrás.";
+
+$lang["nficheiros"] = "Não existem ficheiros nesta categoria.";
+
+$lang["permissao"] = " Você não tem permissões para ver esta página. ";
+
+$lang["sarea"] = " Tem de seleccionar uma página da área técnica. ";
+
+$lang["indisponivel"] = " Página indisponível. ";
+
+$lang["sgrupo"] = " Páginas do Grupo Sosoares indisponíveis. ";
+
+$lang["smarcacao"] = " Tem de seleccionar a página de Marcação CE. ";
+
+$lang["snoticia"] = " Tem de seleccionar uma notícia. ";
+
+$lang["sobras"] = " Página de obras indisponível. ";
+
+$lang["obsoleto"] = "Detectámos que está a usar uma versão desactualizada do Internet Explorer. Por favor atualize para a versão mais recente ou experimente usar outro browser como o ";
+
+$lang["obsoleto2"] = " ou o ";
+
+$lang["obsoleto3"] = " para aproveitar todas as funcionalidades do site Grupo Sosoares.";
+
+$lang["semail"] = "Insira o seu email para recuperar a sua password. Você pode precisar de ver a sua pasta de spam.";
+
+$lang["sservico"] = " Tem de seleccionar uma página de apoio ao cliente. ";
+
+$lang["sservicos"] = " Páginas de serviço indisponíveis.";
+
+
+/**/
 
 
 /**/

@@ -20,7 +20,7 @@
 </div>
 </div>
 <div class="alert alert-warning">
-    <h5><strong>Atenção!</strong> Tem de seleccionar uma página da área técnica. <a href="<?php echo site_url('vidro/home'); ?>">Voltar atrás.</a></h5>
+    <h5><strong><?=lang('atencao')?></strong><?=lang('sarea')?><a href="<?php echo site_url('vidro/home'); ?>"><?=lang('voltar')?></a></h5>
 </div>
 <?php } ?>
 </div>

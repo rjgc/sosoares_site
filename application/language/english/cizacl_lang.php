@@ -184,12 +184,24 @@ $lang["alterar"] = "Change";
 
 $lang["perfil"] = "Profile";
 
+$lang["efectuar"] = " Have to login.";
+
+$lang["todos"] = "All";
+
+$lang["ensaios"] = "Essays";
+
+$lang["folhetos"] = "Promotional flyers";
+
+$lang["ferragens"] = "Hardware Glass";
+
 
 /*Editar Perfil*/
 
 $lang["editar"] = "Edit Profile";
 
 $lang["guardar"] = "Save";
+
+$lang["insira"] = "Enter your new password.";
 
 
 /*Menu Vidro*/
@@ -292,8 +304,6 @@ $lang["publicado"] = "Published";
 
 $lang["dados"] = "Personal Data";
 
-$lang["nome"] = "Name";
-
 $lang["email"] = "E-mail";
 
 $lang["telefone"] = "Phone";
@@ -383,6 +393,51 @@ $lang["sconcelho"] = "Select a County";
 $lang["assunto"] = "Subject";
 
 $lang["mensagem"] = "Message";
+
+
+/**/
+
+
+$lang["atencao"] = "Attention!";
+
+$lang["sapoio"] = " You must select a page of customer support. ";
+
+$lang["sapoios"] = " Client support pages unavailable.";
+
+$lang["desculpa"] = " Sorry for the inconvenience. ";
+
+$lang["voltar"] = "Back.";
+
+$lang["nficheiros"] = "There are no files in this category.";
+
+$lang["permissao"] = " You do not have permissions to view this page. ";
+
+$lang["sarea"] = " You must select a page from the technical area. ";
+
+$lang["indisponivel"] = " Page unavailable. ";
+
+$lang["sgrupo"] = " Pages unavailable Grupo Sosoares. ";
+
+$lang["smarcacao"] = " You must select the page of CE Marking. ";
+
+$lang["snoticia"] = " You must select a news story. ";
+
+$lang["sobras"] = " Page works unavailable. ";
+
+$lang["obsoleto"] = "We have detected that you are using an outdated version of Internet Explorer. Please upgrade to the latest version or try using another browser such as ";
+
+$lang["obsoleto2"] = " or ";
+
+$lang["obsoleto2"] = " to take advantage of all the features of the site Grupo Sosoares.";
+
+$lang["semail"] = "Enter your email address to retrieve your password. You may need to see your spam folder.";
+
+$lang["sservico"] = " You must select a service page. ";
+
+$lang["sservicos"] = " Service pages unavailable.";
+
+
+/**/
 
 
 /**/

@@ -22,7 +22,7 @@
     <div class="col-md-3">
             <form method="post" role="form" id="form4">
                 <div class="texto">
-                    <P>Insira a sua nova password.</P>
+                    <P><?=lang('insira')?></P>
                     <label>Password:</label>
                     <input class="form-control input caixa-texto" type="password" id="password" name="password" placeholder="Password" value="<?php echo (isset($_POST['password']) ? htmlspecialchars($_POST['password']) : ''); ?>">
                     <p></p>

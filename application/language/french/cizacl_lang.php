@@ -177,11 +177,23 @@ $lang["alterar_password"] = "Changement Password";
 
 $lang["alterar"] = "Changement";
 
+$lang["insira"] = "Entrez votre nouveau mot de passe.";
+
 
 /*Área Reservada*/
 
 
 $lang["perfil"] = "Profil";
+
+$lang["efectuar"] = " À vous identifier.";
+
+$lang["todos"] = "Tous";
+
+$lang["ensaios"] = "Essais";
+
+$lang["folhetos"] = "Dépliants Promotionnels";
+
+$lang["ferragens"] = "Quincaillerie pour le Verre";
 
 
 /*Editar Perfil*/
@@ -291,8 +303,6 @@ $lang["publicado"] = "Publié";
 
 $lang["dados"] = "Données Personnelles";
 
-$lang["nome"] = "Nom";
-
 $lang["email"] = "E-mail";
 
 $lang["telefone"] = "Téléphone";
@@ -382,6 +392,51 @@ $lang["sconcelho"] = "Sélectionner un Comté";
 $lang["assunto"] = "Sujet";
 
 $lang["mensagem"] = "Message";
+
+
+/**/
+
+
+$lang["atencao"] = "La tête haute!";
+
+$lang["sapoio"] = " Vous devez sélectionner une page de soutien à la clientèle. ";
+
+$lang["sapoios"] = " Pages de support à la clientèle disponible.";
+
+$lang["desculpa"] = " Désolé pour le désagrément. ";
+
+$lang["voltar"] = "Retour.";
+
+$lang["nficheiros"] = "Il n'y a pas de fichiers dans cette catégorie.";
+
+$lang["permissao"] = " Vous n'avez pas les permissions nécessaires pour voir cette page. ";
+
+$lang["sarea"] = " Vous devez sélectionner une page dans le domaine technique. ";
+
+$lang["indisponivel"] = " Cette page n'est pas disponible. ";
+
+$lang["sgrupo"] = " Pages indisponibles Grupo Sosoares. ";
+
+$lang["smarcacao"] = " Vous devez sélectionner la page de la marque CE. ";
+
+$lang["snoticia"] = " Vous devez sélectionner une histoire de nouvelles. ";
+
+$lang["sobras"] = " Page fonctionne indisponible. ";
+
+$lang["obsoleto"] = "Nous avons détecté que vous utilisez une ancienne version de Internet Explorer. S'il vous plaît mettre à niveau vers la dernière version ou essayez d'utiliser un autre navigateur tel que ";
+
+$lang["obsoleto2"] = " ou ";
+
+$lang["obsoleto3"] = " pour profiter de toutes les fonctionnalités du site Grupo Sosoares.";
+
+$lang["semail"] = "Entrez votre adresse email pour récupérer votre mot de passe. Vous devrez peut-être consulter votre dossier spam.";
+
+$lang["sservico"] = " Vous devez sélectionner une page de service. ";
+
+$lang["sservicos"] = " Pages de service disponible.";
+
+
+/**/
 
 
 /**/

@@ -33,13 +33,13 @@
 </div>
 </div>
 <div class="alert alert-warning">
-    <h5><strong>Atenção!</strong> Tem de seleccionar uma página de apoio ao cliente. <a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+    <h5><strong><?=lang('atencao')?></strong><?=lang('sservico')?><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
         echo site_url('caixilharia/home');
     } else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
         echo site_url('vidro/home');
     } else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
         echo site_url('extrusao/home');
-    } ?>">Voltar atrás.</a></h5>
+    } ?>"><?=lang('voltar')?></a></h5>
 </div>
 <?php } ?>
 </div>

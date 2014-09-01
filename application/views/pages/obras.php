@@ -18,7 +18,7 @@
                 }
             } else { ?>
             <div class="alert alert-info">
-                <h5><strong>Atenção!</strong> Página de obras indisponível.</br></br> Pedimos desculpa pelo incómodo. <a href="<?=site_url('caixilharia/home')?>">Voltar atrás.</a></h5>
+                <h5><strong><?=lang('atencao')?></strong><?=lang('sobras')?></br></br><?=lang('desculpa')?><a href="<?=site_url('caixilharia/home')?>"><?=lang('voltar')?></a></h5>
             </div>
             <?php } ?>
         </div>
