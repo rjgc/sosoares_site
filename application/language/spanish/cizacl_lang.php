@@ -436,6 +436,12 @@ $lang["sservico"] = " Debe seleccionar una página de servicio. ";
 
 $lang["sservicos"] = " Páginas de Servicio no disponible.";
 
+$lang["sproduto"] = " Debe seleccionar un producto. ";
+
+$lang["sprodutos"] = " Página no disponible Productos.";
+
+$lang["sem_produtos"] = "No hay productos";
+
 
 /**/
 

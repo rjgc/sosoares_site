@@ -37,7 +37,7 @@
 			echo site_url('extrusao/editar_perfil');
 		} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
 			echo site_url('tratamento/editar_perfil');
-		} ?>">Editar Perfil</a>
+		} ?>"><?=lang('editar')?></a>
 		<?php if ($_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
 		<a class="btn button grow ui-corner-all botao3" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
 			echo site_url('caixilharia/logout');

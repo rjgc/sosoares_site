@@ -17,7 +17,7 @@
 </div>
 <div class="alerta">
     <div class="alert alert-warning">
-        <h5><strong>Atenção!</strong> Tem de seleccionar uma página de apoio ao cliente. <a href="<?php echo site_url('tratamento/home'); ?>">Voltar atrás.</a></h5>
+        <h5><strong><?=lang('atencao')?></strong><?=lang('sapoio')?><a href="<?php echo site_url('tratamento/home'); ?>"><?=lang('voltar')?></a></h5>
     </div>
 </div>
 <?php } ?>

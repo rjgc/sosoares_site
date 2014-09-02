@@ -20,7 +20,7 @@
                         <a href="<?=site_url('extrusao/produto/'.$produto['id_produto_extrusao'])?>"><div class="obras-list grow"><img src="<?php echo base_url() ?>assets/uploads/produtos/list/<?php echo $produto['foto_1'] ?>"/><p> <?php echo $produto['nome_'.$this->lang->lang()] ?></p></div></a> 
                         <?php }
                     } else { ?>
-                    <h6 class="sem-produto">Sem produtos</h6>
+                    <h6 class="sem-produto"><?=lang('sem_produtos')?></h6>
                     <?php } ?>
                 </div>
             </div>

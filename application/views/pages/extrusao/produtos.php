@@ -27,7 +27,7 @@
                         <?php }
                     } else { ?>
                     <div class="alert alert-info">
-                        <h5><strong>Atenção!</strong> Página dos produtos indisponível.</br></br> Pedimos desculpa pelo incómodo. <a href="<?php echo base_url();?>index.php/extrusao/home">Voltar atrás.</a></h5>
+                        <h5><strong><?=lang('atencao')?></strong><?=lang('sprodutos')?></br></br><?=lang('desculpa')?><a href="<?php echo base_url();?>index.php/extrusao/home"><?=lang('voltar')?></a></h5>
                     </div>
                     <?php } ?>
                 </div>

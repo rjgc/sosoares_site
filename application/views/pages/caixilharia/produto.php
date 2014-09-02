@@ -18,7 +18,7 @@
     </div>
     <div class="titulo">
         <div class="alert alert-warning">
-            <h5><strong>Atenção!</strong> Tem de seleccionar um produto. <a href="<?=site_url('caixilharia/produtos')?>">Voltar atrás.</a></h5>
+            <h5><strong><?=lang('atencao')?></strong><?=lang('sproduto')?><a href="<?=site_url('caixilharia/produtos')?>"><?=lang('voltar')?></a></h5>
         </div>
     </div>
 </div>
