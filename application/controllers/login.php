@@ -504,7 +504,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('contribuinte', 'Contribuinte', 'required|numeric');
 
-		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[user_profiles.user_profile_email]');
 
 		$this->form_validation->set_rules('password', $this->lang->line('password'), 'required');
 
