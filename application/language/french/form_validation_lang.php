@@ -1,27 +1,27 @@
-<?php
-
-$lang['required']			= "The %s field is required.";
-$lang['isset']				= "The %s field must have a value.";
-$lang['valid_email']		= "The %s field must contain a valid email address.";
-$lang['valid_emails']		= "The %s field must contain all valid email addresses.";
-$lang['valid_url']			= "The %s field must contain a valid URL.";
-$lang['valid_ip']			= "The %s field must contain a valid IP.";
-$lang['min_length']			= "The %s field must be at least %s characters in length.";
-$lang['max_length']			= "The %s field can not exceed %s characters in length.";
-$lang['exact_length']		= "The %s field must be exactly %s characters in length.";
-$lang['alpha']				= "The %s field may only contain alphabetical characters.";
-$lang['alpha_numeric']		= "The %s field may only contain alpha-numeric characters.";
-$lang['alpha_dash']			= "The %s field may only contain alpha-numeric characters, underscores, and dashes.";
-$lang['numeric']			= "The %s field must contain only numbers.";
-$lang['is_numeric']			= "The %s field must contain only numeric characters.";
-$lang['integer']			= "The %s field must contain an integer.";
-$lang['regex_match']		= "The %s field is not in the correct format.";
-$lang['matches']			= "The %s field does not match the %s field.";
-$lang['is_natural']			= "The %s field must contain only positive numbers.";
-$lang['is_natural_no_zero']	= "The %s field must contain a number greater than zero.";
-$lang['decimal']			= "The %s field must contain a decimal number.";
-$lang['less_than']			= "The %s field must contain a number less than %s.";
-$lang['greater_than']		= "The %s field must contain a number greater than %s.";
-$lang['valid_url']			= "The %s field must contain a valid url.";
-$lang['valid_option']		= "A valid option in the %s field must be selected.";
-$lang['valid_username']		= "Another user exists with the same username.";
+<?php
+
+$lang['required']			= "Le champ de l'% est nécessaire.";
+$lang['isset']				= "Le champ de l'% doit avoir une valeur.";
+$lang['valid_email']		= "Le champ de l'% doit contenir une adresse email valide.";
+$lang['valid_emails']		= "Le champ de l'% doit contenir toutes les adresses e-mail valides.";
+$lang['valid_url']			= "Le champ de l'% doit contenir une adresse URL valide.";
+$lang['valid_ip']			= "Le champ de l'% doit contenir une adresse IP valide.";
+$lang['min_length']			= "Le champ de l'% doit être au moins caractères% s de longueur.";
+$lang['max_length']			= "Le champ de l'% ne peut dépasser les caractères% de la longueur.";
+$lang['exact_length']		= "Le champ de l'% doit être exactement les caractères% de la longueur.";
+$lang['alpha']				= "Le champ de l'% ne peut contenir que des caractères alphabétiques.";
+$lang['alpha_numeric']		= "Le champ de l'% ne peut contenir que des caractères alphanumériques.";
+$lang['alpha_dash']			= "Le champ de l'% ne peut contenir que des caractères alphanumériques, des traits de soulignement et des tirets.";
+$lang['numeric']			= "Le champ de l'% doit contenir que des chiffres.";
+$lang['is_numeric']			= "Le champ de l'% ne doit contenir que des caractères numériques.";
+$lang['integer']			= "Le champ de l'% doit contenir un nombre entier.";
+$lang['regex_match']		= "Le champ de l'% n'est pas dans le bon format.";
+$lang['matches']			= "Le champ de l'% ne correspond pas du champ de l'%.";
+$lang['is_natural']			= "Le champ de l'% doit contenir que des chiffres positifs.";
+$lang['is_natural_no_zero']	= "Le champ de l'% doit contenir un nombre supérieur à zéro.";
+$lang['decimal']			= "Le champ de l'% doit contenir un nombre décimal.";
+$lang['less_than']			= "Le champ de l'% doit contenir un nombre inférieur à% s.";
+$lang['greater_than']		= "Le champ de l'% doit contenir un nombre supérieur à% s.";
+$lang['valid_url']			= "Le champ de l'% doit contenir une url valide.";
+$lang['valid_option']		= "Une option valable dans le champ de l'% doit être sélectionné.";
+$lang['valid_username']		= "Un autre utilisateur existe avec le même nom d'utilisateur.";

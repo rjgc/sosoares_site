@@ -523,7 +523,7 @@ $export.filters = [
 			  			if (tempHref[2] == 'localhost') {
 			  				href = href.concat(tempHref[0], "//", tempHref[2], "/", tempHref[3], "/", tempHref[4]);
 			  			} else {
-			  				href = href.concat(tempHref[0], "//", tempHref[2], "/", tempHref[3]);
+			  				href = href.concat(tempHref[0], "//", tempHref[2]);
 			  			}
 
 			  			tempLink.innerHTML = text;
@@ -531,10 +531,10 @@ $export.filters = [
 			  			switch(categoria)
 			  			{
 			  				case "Perfis Alumínio":
-			  				var path = "/assets/uploads/perfis/";
+			  				var path = "/assets/uploads/perfis/aluminio/";
 			  				break;
 			  				case "Pormenores Alumínio":
-			  				var path = "/assets/uploads/pormenores/";
+			  				var path = "/assets/uploads/pormenores/aluminio/";
 			  				break;
 			  				case "Catálogo Alumínio":
 			  				var path = "/assets/uploads/catalogos/aluminio/";
@@ -543,7 +543,7 @@ $export.filters = [
 			  				var path = "/assets/uploads/ensaios/aluminio/";
 			  				break;
 			  				case "Folheto Promocional":
-			  				var path = "/assets/uploads/folhetos/";
+			  				var path = "/assets/uploads/folhetos/aluminio/";
 			  				break;
 			  				case "Catálogo Extrusão":
 			  				var path = "/assets/uploads/catalogos/extrusao/";

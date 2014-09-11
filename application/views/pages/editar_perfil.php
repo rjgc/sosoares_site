@@ -45,7 +45,9 @@
 					if (!empty($_SESSION['profile']['user_profile_codigo_postal'])) {
 						$array = explode("-", $_SESSION['profile']['user_profile_codigo_postal']);
 						$codigo = $array[0];
-						$codigo2 = $array[1]; 
+
+						if (count($array) > 1)
+							$codigo2 = $array[1];
 					}
 					?>
 					<input class="form-control caixa-texto" type="text" id="codigo" name="codigo" placeholder="<?=lang('codigo')?>" value="<?=$codigo?>">

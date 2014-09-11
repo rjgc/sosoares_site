@@ -38,4 +38,6 @@ $( document ).ready(function() {
 			dable.BuildAll("DefaultDable7");
 		}
 	}
+
+	$('.tabela table td a').attr('target', '_blank');
 });

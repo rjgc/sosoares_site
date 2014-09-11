@@ -494,7 +494,7 @@ class Login extends CI_Controller {
 
 		$this->form_validation->set_rules('localidade', 'Localidade', 'required|min_length[5]|max_length[50]');
 
-		if ($_POST['pais'] == 'Portugal') {
+		if (strpos($_POST['pais'], 'Portugal') !== false) {
 			$this->form_validation->set_rules('distrito', 'Distrito', 'required|min_length[5]|max_length[50]');
 
 			$this->form_validation->set_rules('concelho', 'Concelho', 'required|min_length[5]|max_length[50]');
@@ -530,9 +530,14 @@ class Login extends CI_Controller {
 			$outros;
 			$idUser;
 
-			if (set_value('distrito') == '') {
+			if (strpos(set_value('distrito'), "-1") !== true) {
 				$distrito = NULL;
 				$concelho = NULL;
+			}
+			else
+			{
+				$distrito = $_POST['distrito'];
+				$concelho = $_POST['concelho'];
 			}
 
 			$codigo =  set_value('codigo')."-".set_value('codigo2');
@@ -574,12 +579,32 @@ class Login extends CI_Controller {
 
 			if (strpos(set_value('email'), '@sosoares')) 
 			{
-				$idUser = $this->db->query('select max(user_id) from users where user_id < 1000');
+				$this->db->select_max('user_id');
+
+				$this->db->from('users');
+
+				$this->db->where('user_id < 1000');
+
+				$query = $this->db->get();
+
+				$row = $query->row();
+
+				$idUser = $row->user_id;
+
 				$idUser++;
 			}
 			else
 			{
-				$idUser = $this->db->query('select max(user_id) from users where');
+				$this->db->select_max('user_id');
+
+				$this->db->from('users');
+
+				$query = $this->db->get();
+
+				$row = $query->row();
+
+				$idUser = $row->user_id;
+
 				$idUser++;
 			}
 
@@ -625,7 +650,7 @@ class Login extends CI_Controller {
 			$this->email->from(set_value("email"));
 			$this->email->to($row->email);
 			$this->email->subject('Registo');
-			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Concelho: '.set_value("concelho").'<br>Distrito: '.set_value("distrito").'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
+			$this->email->message('Exmo.(s) do Grupo Sosoares,<br><br>Gostaria de me registar no vosso site. Os meus dados pessoais são:<br><br>Nome: '.set_value("nome").'<br>Morada: '.set_value("morada").'<br>Código Postal: '.$codigo.'<br>País: '.set_value("pais").'<br>Localidade: '.set_value("localidade").'<br>Distrito: '.$distrito.'<br>Concelho: '.$concelho.'<br>Telefone: '.set_value("telefone").'<br>Nº de Contribuinte: '.set_value("contribuinte").'<br>Serralharia: '.$serralharia.'<br>Vidraria: '.$vidraria.'<br>Armazenista: '.$armazenista.'<br>Arquitectura: '.$arquitectura.'<br>Construtora: '.$construtora.'<br>Cliente Final: '.$cfinal.'<br>Outros: '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Atenciosamente,<br><br>'.set_value("nome"));
 			
 			// Run some setup
 			$this->email->initialize($config);
@@ -634,13 +659,13 @@ class Login extends CI_Controller {
 			$this->email->subject('Registo');
 
 			if (strpos($_SERVER['REQUEST_URI'], 'pt'))
-				$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('concelho').': '.set_value("concelho").'<br>'.lang('distrito').': '.set_value("distrito").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
+				$this->email->message('Caro '.set_value('nome').',<br><br>O seu pedido de registo foi submetido, encontrando-se pendente.<br>Receberá um e-mail logo que o seu registo seja aprovado.<br><br> Dados de registo:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('distrito').': '.$distrito.'<br>'.lang('concelho').': '.$concelho.'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Com os melhores cumprimentos,<br><br>Sosoares');
 			else if (strpos($_SERVER['REQUEST_URI'], 'en'))
-				$this->email->message('Dear '.set_value('nome').',<br><br>Your application for registration was submitted, and is now pending.<br>You will receive an email once your registration is approved.<br><br> Registration data:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('concelho').': '.set_value("concelho").'<br>'.lang('distrito').': '.set_value("distrito").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Yours sincerely,<br><br>Sosoares');
+				$this->email->message('Dear '.set_value('nome').',<br><br>Your application for registration was submitted, and is now pending.<br>You will receive an email once your registration is approved.<br><br> Registration data:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('distrito').': '.$distrito.'<br>'.lang('concelho').': '.$concelho.'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Yours sincerely,<br><br>Sosoares');
 			else if (strpos($_SERVER['REQUEST_URI'], 'fr'))
-				$this->email->message('Cher '.set_value('nome').',<br><br>Votre demande d´enregistrement a été soumis, et est actuellement en instance.<br>Vous recevrez un e-mail une fois votre inscription approuvée.<br><br> Données de l´enregistrement:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('concelho').': '.set_value("concelho").'<br>'.lang('distrito').': '.set_value("distrito").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Cordialement,<br><br>Sosoares');
+				$this->email->message('Cher '.set_value('nome').',<br><br>Votre demande d´enregistrement a été soumis, et est actuellement en instance.<br>Vous recevrez un e-mail une fois votre inscription approuvée.<br><br> Données de l´enregistrement:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('distrito').': '.$distrito.'<br>'.lang('concelho').': '.$concelho.'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Cordialement,<br><br>Sosoares');
 			else if (strpos($_SERVER['REQUEST_URI'], 'es'))
-				$this->email->message('Querido(a) '.set_value('nome').',<br><br>Se presentó su solicitud de registro, y ahora está pendiente.<br>Usted recibirá un correo electrónico una vez que se apruebe su registro.<br><br> Datos registrales:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('concelho').': '.set_value("concelho").'<br>'.lang('distrito').': '.set_value("distrito").'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Tuyo sinceramente,<br><br>Sosoares');
+				$this->email->message('Querido(a) '.set_value('nome').',<br><br>Se presentó su solicitud de registro, y ahora está pendiente.<br>Usted recibirá un correo electrónico una vez que se apruebe su registro.<br><br> Datos registrales:<br><br>'.lang('nome').': '.set_value("nome").'<br>'.lang('morada').': '.set_value("morada").'<br>'.lang('codigo').': '.$codigo.'<br>'.lang('pais').': '.set_value("pais").'<br>'.lang('localidade').': '.set_value("localidade").'<br>'.lang('distrito').': '.$distrito.'<br>'.lang('concelho').': '.$concelho.'<br>'.lang('telefone').': '.set_value("telefone").'<br>'.lang('contribuinte').': '.set_value("contribuinte").'<br>'.lang('serralharia').': '.$serralharia.'<br>'.lang('vidraria').': '.$vidraria.'<br>'.lang('armazenista').': '.$armazenista.'<br>'.lang('arquitectura').': '.$arquitectura.'<br>'.lang('construtora').': '.$construtora.'<br>'.lang('cfinal').': '.$cfinal.'<br>'.lang('outros').': '.$outros.'<br>Username: '.set_value("email").'<br>Password: '.set_value("password").'<br><br>Tuyo sinceramente,<br><br>Sosoares');
 
     		// Debug Email
 			if (!$this->email->send()) {
