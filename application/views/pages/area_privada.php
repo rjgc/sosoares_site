@@ -24,10 +24,24 @@
 			<h5><strong><?=lang('atencao')?></strong><?=lang('efectuar')?></h5>
 		</div>
 	</div>
-	<?php } else { ?>
+	<?php } else if ($_SESSION['logged_in'] && $_SESSION['notAllowed']) { ?>
+	<div class="alerta">
+		<div class="alert alert-warning">
+			<h5><strong><?=lang('atencao')?></strong><?=lang('permissao')?><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
+				echo site_url('caixilharia/home');
+			} else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
+				echo site_url('vidro/home');
+			} else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
+				echo site_url('extrusao/home');
+			} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
+				echo site_url('tratamento/home');
+			} ?>"><?=lang('voltar')?></a></h5>
+		</div>
+	</div>
+	<?php } else if ($_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
 	<div class="botoes">
 		<?php if (in_array($_SESSION['profile']['cizacl_role_name'], $array)) { ?>
-		<a class="btn button grow ui-corner-all botao" href="www.sosoares.pt/intranet">Intranet</a>
+		<a class="btn button grow ui-corner-all botao" target="_BLank" href="<?php echo site_url('intranet'); ?>">Intranet</a>
 		<?php } ?>
 		<a class="btn button grow ui-corner-all botao2" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
 			echo site_url('caixilharia/editar_perfil');
@@ -38,7 +52,6 @@
 		} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
 			echo site_url('tratamento/editar_perfil');
 		} ?>"><?=lang('editar')?></a>
-		<?php if ($_SESSION['logged_in'] && !$_SESSION['notAllowed']) { ?>
 		<a class="btn button grow ui-corner-all botao3" href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
 			echo site_url('caixilharia/logout');
 		} else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
@@ -52,8 +65,7 @@
 	<div class="dados">
 		<h3><?=lang('dados')?></h3>
 		<div><b><?=lang('nome')?>: </b><?=$_SESSION['profile']['user_profile_name'];?></div>
-		<div><b>E-mail: </b><?=$_SESSION['profile']['user_profile_email'];?></div>
-		<div><b><?=lang('role')?>: </b><?=$_SESSION['profile']['cizacl_role_name'];?></div>		
+		<div><b>E-mail: </b><?=$_SESSION['profile']['user_profile_email'];?></div>		
 		<h3>Downloads</h3>
 		<div class="tabbable">
 			<ul class="nav nav-tabs">
@@ -147,22 +159,7 @@
 		</div>
 	</div>
 </div>
-<?php } else if ($_SESSION['notAllowed']) { ?>
-<div class="alerta">
-	<div class="alert alert-warning">
-		<h5><strong><?=lang('atencao')?></strong><?=lang('permissao')?><a href="<?php if (strpos($_SERVER['REQUEST_URI'], 'caixilharia')) {
-			echo site_url('caixilharia/home');
-		} else if (strpos($_SERVER['REQUEST_URI'], 'vidro')) {
-			echo site_url('vidro/home');
-		} else if (strpos($_SERVER['REQUEST_URI'], 'extrusao')) {
-			echo site_url('extrusao/home');
-		} else if (strpos($_SERVER['REQUEST_URI'], 'tratamento')) {
-			echo site_url('tratamento/home');
-		} ?>"><?=lang('voltar')?></a></h5>
-	</div>
-</div>
-<?php } 
-}?>
+<?php } ?>
 <?php require_once('assets/sosoares/php/area-privada.php'); ?>
 <script src="<?php echo base_url() ?>assets/sosoares/js/Dable.js"></script>
 <script src="<?php echo base_url() ?>assets/sosoares/js/area-privada.js"></script>
