@@ -36,6 +36,6 @@ class Custom_grocery_crud_model extends grocery_CRUD_Model
 
 			$results = $this->db->get($this->table_name)->result();
 
-			return $results;
-		}
+		return $results;
 	}
+}
