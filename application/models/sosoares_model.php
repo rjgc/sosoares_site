@@ -247,7 +247,7 @@ class Sosoares_model extends CI_Model
 	}
 
 	public function get_catalogos() {
-		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '4' and id_categoria_ficheiro = '7'");
+		$query = $this->db->query("select * from ficheiros where id_categoria_ficheiro = '4' or id_categoria_ficheiro = '7'");
 
 		$data = $query->result_array();
 		return $data;

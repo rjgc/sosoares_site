@@ -345,6 +345,8 @@ class Mediagest extends CI_Controller {
 
             $crud->callback_after_insert(array($this, 'callback_after_insert_banner'));
 
+            $crud->callback_after_update(array($this, 'callback_after_update_banner'));
+
             $output = $crud->render();
 
             $data['titulo'] = 'Banners';
@@ -369,6 +371,29 @@ class Mediagest extends CI_Controller {
         }
 
         function callback_after_insert_banner($post_array)
+        {
+            switch ($post_array['id_categoria_banner']) {
+                case '1':
+                rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/aluminio/".$post_array['banner']);
+                break;
+                case '2':
+                rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/vidro/".$post_array['banner']);
+                break;
+                case '3':
+                rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/extrusao/".$post_array['banner']);
+                break;
+                case '4':
+                rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/tratamento/".$post_array['banner']);
+                break;
+                case '5':
+                rename("assets/uploads/banners/".$post_array['banner'], "assets/uploads/banners/todos/".$post_array['banner']);
+                break;
+            }
+
+            return true;
+        }
+
+        function callback_after_update_banner($post_array)
         {
             switch ($post_array['id_categoria_banner']) {
                 case '1':
@@ -1019,6 +1044,8 @@ class Mediagest extends CI_Controller {
 
             $crud->callback_after_insert(array($this, 'callback_after_insert'));
 
+            $crud->callback_after_update(array($this, 'callback_after_update'));
+
             $output = $crud->render();
 
             $data['titulo'] = 'Ficheiros';
@@ -1030,6 +1057,35 @@ class Mediagest extends CI_Controller {
         }
 
         function callback_after_insert($post_array)
+        {
+            switch ($post_array['id_categoria_ficheiro']) {
+                case '1':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/perfis/aluminio/".$post_array['ficheiro']);
+                break;
+                case '3':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/pormenores/aluminio/".$post_array['ficheiro']);
+                break;
+                case '4':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/aluminio/".$post_array['ficheiro']);
+                break;
+                case '5':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ensaios/aluminio/".$post_array['ficheiro']);
+                break;
+                case '6':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/folhetos/aluminio/".$post_array['ficheiro']);
+                break;
+                case '7':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/catalogos/extrusao/".$post_array['ficheiro']);
+                break;
+                case '9':
+                rename("assets/uploads/files/".$post_array['ficheiro'], "assets/uploads/ferragens_vidro/".$post_array['ficheiro']);
+                break;
+            }
+
+            return true;
+        }
+
+        function callback_after_update($post_array)
         {
             switch ($post_array['id_categoria_ficheiro']) {
                 case '1':
